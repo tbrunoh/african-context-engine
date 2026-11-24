@@ -92,7 +92,7 @@ None of these sources is in the code yet. The [V2 design](docs/v2/README.md) pla
 | [WMO Register of Alerting Authorities](https://alertingauthority.wmo.int), national CAP feeds and the [IFRC Alert Hub](https://preparecenter.org/?p=26279) | WMO, national alerting authorities, IFRC | Public | The issuing authority, named on every warning |
 | [FAO FAMEWS](https://www.fao.org/fall-armyworm/monitoring-tools/en) | FAO | Free; FAO states the data is freely available | FAO FAMEWS |
 | [PlantVillage Nuru](https://pmc.ncbi.nlm.nih.gov/articles/PMC7775399) and [kilimoAI datasets](https://icml.cc/virtual/2026/78313) | PlantVillage (Penn State) with FAO, IITA and CIMMYT; the kilimoAI team | Confirm before use | As their terms require |
-| [CABI PlantwisePlus Knowledge Bank](https://blog.plantwise.org/2022/11/29/plantwiseplus-knowledge-bank-joins-the-cabi-digital-library/) | CABI | Free to read; reuse terms vary by item | Linked, not copied, unless CABI grants reuse |
+| [CABI PlantwisePlus Knowledge Bank](https://blog.plantwise.org/2022/11/29/plantwiseplus-knowledge-bank-joins-the-cabi-digital-library/) | CABI | Free to read; reuse terms to be confirmed with CABI | Linked, not copied, unless CABI grants reuse |
 | [WFP food prices on HDX HAPI](https://data.humdata.org/hapi) | World Food Programme, via OCHA's Humanitarian Data Exchange | HDX HAPI terms of use | WFP, via HDX |
 | [FEWS NET Data Warehouse](https://help.fews.net/fde/fews-net-api) | FEWS NET | FEWS NET data use and attribution policy | As that policy requires |
 | [WHO SMART Guidelines, antenatal care kit](https://www.who.int/publications/i/item/9789240020306) | World Health Organization | WHO publication terms | WHO, with the title of the kit |

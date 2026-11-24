@@ -9,11 +9,14 @@ seconds to answer, so every screen here is composed locally and quickly.
 The app is stateless: it rebuilds the session state by replaying the input
 path, so it scales horizontally without a session store.
 
-Menu:
-    1..n  browse a context pack one fact at a time
-    n+1   ask a question in your own words
-    n+2   check a suspicious message (Scam Shield)
-    n+3   language
+Menu (V2):
+    1..6  decision services: rain this week, official warnings, nearest health facility,
+          market prices, pregnancy check, crop problem
+    7     topics: browse a context pack one fact at a time
+    8     ask a question in your own words
+    9     check a suspicious message (Scam Shield)
+    10    language
+Without snapshots (a V1 deployment) the services are left out and the packs are listed directly.
 """
 from __future__ import annotations
 
@@ -34,18 +37,28 @@ UI = {
            "more": "98 More", "next": "1 Next", "back": "0 Back", "menu": "0 Menu",
            "ask_prompt": "Type your question:", "scam_prompt": "Type or paste the message:",
            "invalid": "Invalid choice.", "end_pack": "That is all for this topic.",
-           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais"},
+           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais", "topics": "Topics",
+           "place_prompt": "Type your {area}:", "food_prompt": "Type the food and your {area}, e.g. maize {example}:",
+           "weeks_prompt": "How many weeks pregnant are you?", "crop_prompt": "Type the crop and what you see:"},
     "sw": {"ask": "Uliza swali", "scam": "Kagua ujumbe", "lang": "Lugha/Language",
            "more": "98 Zaidi", "next": "1 Endelea", "back": "0 Rudi", "menu": "0 Menyu",
            "ask_prompt": "Andika swali lako:", "scam_prompt": "Andika au bandika ujumbe:",
            "invalid": "Chaguo si sahihi.", "end_pack": "Hayo ndiyo yote kwa mada hii.",
-           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais"},
+           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais", "topics": "Mada",
+           "place_prompt": "Andika {area} yako:", "food_prompt": "Andika chakula na {area} yako, mf. mahindi {example}:",
+           "weeks_prompt": "Una ujauzito wa wiki ngapi?", "crop_prompt": "Andika zao na unachokiona:"},
     "fr": {"ask": "Poser une question", "scam": "Verifier un message", "lang": "Langue/Language",
            "more": "98 Suite", "next": "1 Suivant", "back": "0 Retour", "menu": "0 Menu",
            "ask_prompt": "Tapez votre question :", "scam_prompt": "Tapez ou collez le message :",
            "invalid": "Choix invalide.", "end_pack": "C'est tout pour ce sujet.",
-           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais"},
+           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais", "topics": "Sujets",
+           "place_prompt": "Tapez votre {area} :", "food_prompt": "Tapez l'aliment et votre {area}, ex. maïs {example} :",
+           "weeks_prompt": "Enceinte de combien de semaines ?", "crop_prompt": "Tapez la culture et ce que vous voyez :"},
 }
+SERVICE_ORDER = ("rain_this_week", "official_warnings", "nearest_facility", "market_prices", "pregnancy_companion",
+                 "pest_check")
+PROMPT_KEY = {"rain_this_week": "place_prompt", "official_warnings": "place_prompt", "nearest_facility": "place_prompt",
+              "market_prices": "food_prompt", "pregnancy_companion": "weeks_prompt", "pest_check": "crop_prompt"}
 _LANG_CHOICES = {"1": "en", "2": "sw", "3": "fr"}
 
 
@@ -78,7 +91,8 @@ def split_inputs(text: str) -> list[str]:
 
 @dataclass
 class _State:
-    screen: str = "main"      # main, pack, ask, scam, lang, answer
+    screen: str = "main"      # main, topics, pack, svc, ask, scam, lang, answer
+    service: str = ""
     page: int = 0
     pack_index: int = 0
     fact_index: int = 0
@@ -118,13 +132,23 @@ class UssdApp:
         return self.engine.packs_for(self.engine.country_for(phone))
 
     def _items(self, lang: str, phone: str) -> list[tuple[str, str]]:
-        items = [("pack:" + p.id, p.label(lang)) for p in self._packs(phone)]
-        return items + [("ask", UI[lang]["ask"]), ("scam", UI[lang]["scam"]), ("lang", UI[lang]["lang"])]
+        tail = [("ask", UI[lang]["ask"]), ("scam", UI[lang]["scam"]), ("lang", UI[lang]["lang"])]
+        if self.engine.services is None:  # V1: packs straight on the main menu
+            return [("pack:" + p.id, p.label(lang)) for p in self._packs(phone)] + tail
+        from ..services import SERVICES
 
-    def _pages(self, lang: str, phone: str) -> list[list[tuple[int, str, str]]]:
+        services = [("svc:" + sid, SERVICES[sid].title[lang]) for sid in SERVICE_ORDER]
+        return services + [("topics", UI[lang]["topics"])] + tail
+
+    def _topic_items(self, lang: str, phone: str) -> list[tuple[str, str]]:
+        return [("pack:" + p.id, p.label(lang)) for p in self._packs(phone)]
+
+    def _pages(self, lang: str, phone: str, topics: bool = False) -> list[list[tuple[int, str, str]]]:
         """Split the numbered menu into screens that fit, leaving room for the More line."""
-        numbered = [(n, key, label) for n, (key, label) in enumerate(self._items(lang, phone), start=1)]
-        budget = self.max_chars - 4 - len(self.title) - 1 - len(UI[lang]["more"]) - 1
+        items = self._topic_items(lang, phone) if topics else self._items(lang, phone)
+        numbered = [(n, key, label) for n, (key, label) in enumerate(items, start=1)]
+        head = max(len(self.title), len(UI[lang]["invalid"]), len(UI[lang]["topics"]))  # room for any title line
+        budget = self.max_chars - 4 - head - 1 - len(UI[lang]["more"]) - 1 - (len(UI[lang]["back"]) + 1 if topics else 0)
         pages: list[list[tuple[int, str, str]]] = [[]]
         used = 0
         for item in numbered:
@@ -149,8 +173,12 @@ class UssdApp:
         if s.screen in ("pack", "answer") and token == "00":
             s.screen, s.page = "main", 0
             return
-        if s.screen == "main":
-            pages = self._pages(lang, phone)
+        if s.screen in ("main", "topics"):
+            topics = s.screen == "topics"
+            if topics and token == "0":
+                s.screen, s.page = "main", 0
+                return
+            pages = self._pages(lang, phone, topics)
             if token == "98" and s.page + 1 < len(pages):
                 s.page += 1
                 return
@@ -160,6 +188,10 @@ class UssdApp:
             elif choice.startswith("pack:"):
                 s.screen, s.pack_index, s.fact_index = "pack", [p.id for p in self._packs(phone)].index(
                     choice[5:]), 0
+            elif choice.startswith("svc:"):
+                s.screen, s.service = "svc", choice[4:]
+            elif choice == "topics":
+                s.screen, s.page = "topics", 0
             else:
                 s.screen = choice
         elif s.screen == "pack":
@@ -169,13 +201,17 @@ class UssdApp:
                 s.screen, s.page = "main", 0
             else:
                 s.error = True
-        elif s.screen in ("ask", "scam", "answer"):
+        elif s.screen in ("ask", "scam", "svc", "answer"):
             if s.screen == "answer" and token == "0":
                 s.screen, s.page = "main", 0
                 return
             if last:
                 text = f"SCAM {token}" if s.screen == "scam" else token
-                reply = self._ask(phone, text, session_id)
+                if s.screen == "svc":
+                    message = Message(channel=Channel.USSD, sender=phone, text=token, session_id=session_id)
+                    reply = self.engine.run_service(s.service, message, self._answer_budget(lang))
+                else:
+                    reply = self._ask(phone, text, session_id)
                 s.answer = reply.text
                 s.end = reply.kind is ReplyKind.EMERGENCY or reply.end_session
             s.screen = "answer"
@@ -193,13 +229,24 @@ class UssdApp:
         prefix = ""
         if s.error:
             prefix = ui["invalid"] + "\n"
-        if s.screen == "main":
-            pages = self._pages(lang, phone)
+        if s.screen in ("main", "topics"):
+            topics = s.screen == "topics"
+            pages = self._pages(lang, phone, topics)
             page = pages[min(s.page, len(pages) - 1)]
-            lines = [ui["invalid"] if s.error else self.title] + [f"{n} {label}" for n, _, label in page]
+            title = ui["topics"] if topics else self.title
+            lines = [ui["invalid"] if s.error else title] + [f"{n} {label}" for n, _, label in page]
             if s.page + 1 < len(pages):
                 lines.append(ui["more"])
+            if topics:
+                lines.append(ui["back"])
             return self._con("\n".join(lines))
+        if s.screen == "svc":
+            from ..services.base import EXAMPLE_PLACE, area_word
+
+            country = self.engine.country_for(phone)
+            prompt = ui[PROMPT_KEY[s.service]].format(area=area_word(country, lang),
+                                                      example=EXAMPLE_PLACE.get(country or "", "Kano"))
+            return self._con(prefix + prompt)
         if s.screen == "pack":
             pack = self._packs(phone)[s.pack_index]
             footer_full = f"\n{ui['next']}  {ui['back']}"

@@ -35,6 +35,8 @@ You do not need to write code to contribute a pack. You need to know a topic and
   review_status: sourced
   expires: 2027-11-23                 # optional: withheld after this date until re-checked
   safety_critical: false              # true if a wrong answer could cause harm; answers then carry numbers
+  refer_queue: maternal               # optional, for packs in several countries: add the caller's own
+                                      # national numbers for this safety queue instead of listing contacts
 ```
 
 ## Review status
@@ -68,14 +70,19 @@ Warnings (not failures): translations not yet reviewed, facts last checked more 
 - **Stay inside the source.** Do not add advice the source does not give. If two sources disagree, open an issue.
 - **No product brands, prices or doses** unless a licensed reviewer for that place adds them.
 - **Keywords are where local knowledge lives.** Add the Swahili, Sheng and local names people actually use.
-- **Health and safety facts are `safety_critical`** and should list the numbers to call.
+- **Health and safety facts are `safety_critical`** and should list the numbers to call, or name a `refer_queue` when the pack serves several countries.
+- **Never borrow a number.** An emergency pack lists only numbers a public source publishes for that country. If two official sources disagree, leave the number out and open an issue.
+
+## Packs for several countries
+
+Guidance that holds across borders, such as WHO danger signs or FAO pest guidance, lives in `context_packs/africa/`. List the countries the pack serves in a pack level `countries: [KE, TZ, UG]` field instead of `country`. A fact can narrow that list with its own `scope.countries`. Safety critical facts in these packs carry no numbers of their own: they name a `refer_queue`, and ACE adds the caller's national numbers for that queue from their country's emergency pack. Give every fact a rendering in each language of every country it serves; the test suite checks this.
 
 ## Starting a new pack
 
 1. Copy `context_packs/_template.yaml` into a folder for the country, for example `context_packs/ug/`.
 2. Fill in the pack fields, including menu `labels` in each language and an `order`.
 3. Add facts with sources. Start them as `draft` if you have not checked them against the source yourself.
-4. Run `ace packs validate context_packs/ug` and `ace chat --packs context_packs/ug --country UG`.
+4. Run `ace packs validate context_packs/ug` and `ace chat --country UG`. Without `--country`, ACE picks the country from the phone number.
 5. Open a pull request using the context pack template.
 
 The JSON schema for editors and other tools is in [spec/context-pack.schema.json](../spec/context-pack.schema.json).

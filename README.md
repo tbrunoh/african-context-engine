@@ -1,5 +1,10 @@
 # ACE: the African Context Engine
 
+[![CI](https://github.com/tbrunoh/african-context-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/tbrunoh/african-context-engine/actions/workflows/ci.yml)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-0E7490)](LICENSE)
+[![Python 3.10 to 3.13](https://img.shields.io/badge/python-3.10%20to%203.13-1E40AF)](pyproject.toml)
+[![MCP server](https://img.shields.io/badge/MCP-server-2DD4BF)](docs/architecture.md)
+
 **One open context engine behind every entry point people in Africa already use.**
 
 ACE grounds AI answers in hyperlocal knowledge that global models do not learn: which pest control works at 2,100m in the Rift Valley, what tomatoes cost on Thursdays at Wakulima, how land law changes 30km across a border. It serves that knowledge through any channel: a voice call, USSD, SMS, WhatsApp, a smartphone app, a trusted local agent, interactive radio, or another company's AI assistant through MCP.
@@ -78,3 +83,7 @@ ACE is not a doctor, agronomist or lawyer. Urgent health cases escalate to human
 ## License
 
 Code: [Apache License 2.0](LICENSE). Baseline context packs: CC BY 4.0. Verified tier: commercial license.
+
+---
+
+<sub>Created by <a href="https://github.com/tbrunoh">Tom Bruno</a>, Product and Ecosystem Leader, AI Ecosystems, and maintained with the <a href="AUTHORS">ACE contributors</a>.</sub>

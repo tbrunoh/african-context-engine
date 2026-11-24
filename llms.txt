@@ -4,6 +4,7 @@
 
 ## Start here
 
+- [Project page](https://tbrunoh.github.io/ace/): the problems ACE solves, how it works, coverage, V2 and answers to common questions
 - [README](https://github.com/tbrunoh/african-context-engine/blob/main/README.md): what ACE does, coverage for all 13 countries and a quickstart
 - [Architecture](https://github.com/tbrunoh/african-context-engine/blob/main/docs/architecture.md): the request flow, modules, retrieval, channel budgets, language models and the MCP server
 - [Context packs](https://github.com/tbrunoh/african-context-engine/blob/main/docs/context-packs.md): how sourced facts are written, reviewed and validated

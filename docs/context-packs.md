@@ -1,47 +1,81 @@
-# Context pack specification, version 0.1
+# Context packs
 
-A context pack is a versioned YAML or JSON file of context facts. The machine readable schema is [spec/context-pack.schema.json](../spec/context-pack.schema.json).
+A context pack is a YAML file of facts that ACE can stand behind. Packs are versioned in git, reviewed in pull requests and licensed CC BY 4.0, so any service, government or AI assistant can reuse them.
 
-## Pack fields
+You do not need to write code to contribute a pack. You need to know a topic and a place, and to cite where each fact comes from.
 
-| Field | Required | Notes |
-|---|---|---|
-| `spec_version` | yes | `"0.1"` |
-| `id` | yes | Lowercase slug, unique across packs, for example `ke-maize-nyeri` |
-| `title` | yes | Human readable name |
-| `license` | yes | `CC-BY-4.0` for open tier packs |
-| `tier` | no | `open` (default) or `verified` |
-| `maintainers` | yes | People or organizations responsible for the pack |
-| `description` | no | Scope and intended use |
-| `facts` | yes | List of facts |
+## A fact, annotated
 
-## Fact fields
+```yaml
+- id: drying-moisture                 # lowercase letters, digits and dashes; unique in the pack
+  claim: >-                           # the full fact, in plain words a person can act on
+    Dry maize to about 13 percent moisture before storing it. KALRO advises that maize for food and
+    animal feed should be at 13 to 13.5 percent moisture.
+  short: "Dry maize to about 13% moisture before storage. KALRO advises 13 to 13.5% for food and feed."
+                                      # at most 160 characters; used on USSD, SMS and voice
+  topic: storage                      # groups facts for menus and follow ups
+  vertical: agriculture               # agriculture, health, finance, safety, legal, education, climate
+  kind: action                        # action (what to do), sign (how to recognise), or info
+  subjects: [maize]                   # crops, conditions or services the fact is about
+  keywords: [dry, moisture, kausha, unyevu, sumukuvu]   # the words people actually type, any language
+  months: [7, 8, 9]                   # optional: only serve in these months
+  scope:                              # optional: where it applies (country defaults to the pack's)
+    admin_areas: [Nakuru, Uasin Gishu]
+    altitude_min_m: 1500
+  translations:
+    sw:
+      claim: Kausha mahindi hadi unyevu wa takriban asilimia 13 ...
+      short: Kausha mahindi hadi unyevu wa asilimia 13 kabla ya kuhifadhi ...
+      reviewed: false                 # set true only after a fluent speaker has checked it
+  contacts:                           # optional: lines people can call, with the safety queues they serve
+    - {label: Emergency, number: "999", queues: [emergency, health_urgent]}
+  source: KALRO, Maize post harvest   # who published it
+  source_url: https://www.kalro.org/maize/maize-post-harvest
+  checked_on: 2026-11-23              # when a maintainer last compared the claim with the source
+  review_status: sourced
+  expires: 2027-11-23                 # optional: withheld after this date until re-checked
+  safety_critical: false              # true if a wrong answer could cause harm; answers then carry numbers
+```
 
-| Field | Required | Notes |
-|---|---|---|
-| `id` | yes | Unique within the pack. The engine prefixes it with the pack id |
-| `claim` | yes | One practical statement, written for the person who will act on it |
-| `topic` | yes | For example `pest`, `soil`, `market`, `planting`, `maternal`, `land` |
-| `vertical` | yes | `agriculture`, `health`, `legal` or `finance` |
-| `source` | yes | Where the claim comes from |
-| `subjects` | no | Crops, livestock or conditions |
-| `scope` | no | `countries` (ISO alpha-2), `admin_areas`, `center` with `radius_km`, `altitude_min_m`, `altitude_max_m` |
-| `months` | no | 1 to 12. Empty means all year |
-| `languages` | no | BCP 47 tags with a localized rendering |
-| `review_status` | no | `draft` (default), `expert_reviewed`, `outcome_verified` |
-| `reviewed_by` | if reviewed | Named reviewer |
-| `expires` | no | ISO date after which the fact needs re-review |
-| `safety_critical` | no | `true` makes every answer using it offer a human expert |
+## Review status
 
-## Validation rules enforced by the loader
+| Status | Meaning | Required | Served by default |
+|:--|:--|:--|:-:|
+| `draft` | Submitted, not yet checked | source | no |
+| `sourced` | A maintainer checked the claim against the cited public source | source_url, checked_on | yes |
+| `expert_reviewed` | A named domain expert reviewed it for this place | plus reviewed_by | yes |
+| `outcome_verified` | Measured outcomes from real deployments confirm it | plus reviewed_by | yes |
 
-- Required fields present; fact ids unique within the pack.
-- Reviewed facts name a reviewer.
-- Months fall between 1 and 12.
-- Open tier packs declare `CC-BY-4.0`.
+Never mark a fact `expert_reviewed` or `outcome_verified` unless you are the named reviewer or have their written agreement on the pull request.
+
+## Rules the validator enforces
+
+Run `ace packs validate` before you open a pull request. CI runs it too.
+
+- Required pack fields: `spec_version` (1.0), `id`, `title`, `license`, `maintainers`, `facts`.
+- Open packs use `CC-BY-4.0`. Only cite sources you are allowed to summarise.
+- `sourced` and better need `source_url` and `checked_on`; expert levels also need `reviewed_by`.
+- `short` forms are at most 160 characters in every language.
+- Contact numbers are digits, optionally with a leading plus.
+- Dates are ISO (`2026-11-23`); months are 1 to 12.
+
+Warnings (not failures): translations not yet reviewed, facts last checked more than a year ago, expired facts, safety critical facts without contacts, and menu labels longer than 24 characters. See them all with `ace packs validate --strict`.
 
 ## Writing good facts
 
-- Scope as tightly as the evidence allows. A fact true at 2,100m may be wrong at 800m.
-- One claim per fact. Split compound advice.
-- Prefer actions a person can take today over background explanation.
+- **One fact, one action.** If a person can only remember one sentence, it should be this one.
+- **Say it the way an extension officer would say it**, not the way a paper abstract would.
+- **Stay inside the source.** Do not add advice the source does not give. If two sources disagree, open an issue.
+- **No product brands, prices or doses** unless a licensed reviewer for that place adds them.
+- **Keywords are where local knowledge lives.** Add the Swahili, Sheng and local names people actually use.
+- **Health and safety facts are `safety_critical`** and should list the numbers to call.
+
+## Starting a new pack
+
+1. Copy `context_packs/_template.yaml` into a folder for the country, for example `context_packs/ug/`.
+2. Fill in the pack fields, including menu `labels` in each language and an `order`.
+3. Add facts with sources. Start them as `draft` if you have not checked them against the source yourself.
+4. Run `ace packs validate context_packs/ug` and `ace chat --packs context_packs/ug --country UG`.
+5. Open a pull request using the context pack template.
+
+The JSON schema for editors and other tools is in [spec/context-pack.schema.json](../spec/context-pack.schema.json).

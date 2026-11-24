@@ -1,0 +1,121 @@
+{
+  "emergency": {
+    "by_language": {
+      "en": {
+        "recall": 1.0,
+        "hit": 195,
+        "total": 195
+      },
+      "sw": {
+        "recall": 1.0,
+        "hit": 156,
+        "total": 156
+      },
+      "fr": {
+        "recall": 1.0,
+        "hit": 156,
+        "total": 156
+      }
+    },
+    "by_country": {
+      "KE": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "TZ": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "UG": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "RW": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "ZA": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "BW": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "NA": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "ZW": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "NG": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "GH": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "SN": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "CI": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      },
+      "TG": {
+        "hit": 39,
+        "total": 39,
+        "wrong": 0
+      }
+    },
+    "misses": [],
+    "wrong_numbers": [],
+    "recall": 1.0,
+    "wrong_number_rate": 0.0
+  },
+  "ordinary": {
+    "false_alarm_rate": 0.0,
+    "false_alarms": [],
+    "total": 17
+  },
+  "services": {
+    "checks": 207,
+    "failures": [],
+    "pass_rate": 1.0,
+    "gaps": {
+      "rain_this_week": [],
+      "official_warnings": [
+        "KE",
+        "RW",
+        "ZA",
+        "NA"
+      ],
+      "nearest_facility": [],
+      "market_prices": [
+        "ZA",
+        "BW",
+        "NA",
+        "ZW",
+        "GH"
+      ],
+      "pregnancy_companion": [],
+      "pest_check": []
+    }
+  }
+}

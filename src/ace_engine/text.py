@@ -1,4 +1,4 @@
-"""Text utilities for short, noisy, code switched messages in English and Swahili.
+"""Text utilities for short, noisy, code switched messages in English, Swahili and French.
 
 Messages to ACE are typed on feature phones, spoken into voice lines and
 forwarded from mobile money inboxes. They mix languages, drop vowels and

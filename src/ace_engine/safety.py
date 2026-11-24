@@ -10,8 +10,8 @@ when every one of its groups has at least one phrase present, so "pregnant"
 plus "bleeding" fires the maternal rule while "bleeding" alone fires the
 general urgent rule.
 
-IMPORTANT: the starter rules cover English and Swahili and were written from
-WHO and Kenyan helpline guidance. Every deployment must have them reviewed by
+IMPORTANT: the starter rules cover English, Swahili and French and were written
+from WHO guidance and national helpline guidance. Every deployment must have them reviewed by
 clinicians and fluent speakers for each language it serves, and should add a
 classifier on top. Keyword rules are a floor, not a ceiling.
 """

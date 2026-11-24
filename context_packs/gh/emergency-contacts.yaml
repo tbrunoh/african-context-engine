@@ -1,0 +1,111 @@
+# Ghana emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: gh-emergency-contacts
+title: Ghana emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in Ghana when a message signals danger.
+  Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: GH
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Ghana, call 112 for any emergency. You can also call 191 or 18555 for the police, 192 for the fire service
+    and 193 for an ambulance.
+  short: 'Emergency in Ghana: 112. Police 191 or 18555, fire 192, ambulance 193.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Emergency
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - violence
+    - gbv
+    - child_protection
+    - self_harm
+  - label: Police
+    number: '191'
+    queues: &id001
+    - violence
+    - gbv
+    - child_protection
+  - label: Police
+    number: '18555'
+    queues: *id001
+  - label: Ambulance
+    number: '193'
+    queues:
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Fire
+    number: '192'
+    queues:
+    - fire
+  source: Government of Canada, Ghana; Australian Government Smartraveller; UK FCDO (112)
+  source_url: https://travel.gc.ca/assistance/embassies-consulates/ghana
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: orange-support-centre
+  claim: Ghana's Orange Support Centre on 0800 111 222 is a free line for reporting domestic and gender based violence
+    and getting counselling and legal support. It is run with the Ministry of Gender, Children and Social Protection.
+  short: 'Domestic or gender based violence in Ghana: call 0800 111 222, free.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - violence
+  - abuse
+  - rape
+  - assault
+  - beaten
+  - gbv
+  - viol
+  - violences
+  - conjugale
+  - dhuluma
+  - ubakaji
+  - kupigwa
+  contacts:
+  - label: Orange Support Centre
+    number: 0800 111 222
+    queues:
+    - gbv
+    - violence
+    free: true
+  source: Ministry of Gender, Children and Social Protection; UNFPA Ghana
+  source_url: https://www.mogcsp.gov.gh/market-sensitization/
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

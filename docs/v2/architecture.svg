@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-label="ACE V2 architecture: four entry points share one identity; the engine runs the safety rail, Scam Shield 2, decision services and a cited answer; a knowledge layer of signed packs and dated snapshots is fed by public data connectors; alerts and handoffs go back out.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#050B1C"/><stop offset="100%" stop-color="#0B2A3F"/></linearGradient>
+    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
+    <linearGradient id="enginev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2DD4BF"/></marker>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .flow { stroke-dasharray: 5 6; animation: f 10s linear infinite; }
+      @keyframes f { to { stroke-dashoffset: -110; } }
+      @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+    </style>
+  </defs>
+  <rect width="1200" height="700" rx="18" fill="url(#bg)"/>
+  <text x="48" y="54" class="mono" font-size="12" fill="#2DD4BF" letter-spacing="3">ACE V2 ARCHITECTURE</text>
+  <text x="48" y="84" class="sans" font-size="22" fill="#FFFFFF" font-weight="700">One pipeline for every channel, fed by signed facts and public data.</text>
+  <text x="48" y="126" class="mono" font-size="11" fill="#94A3B8" letter-spacing="2">ENTRY POINTS</text>
+  <rect x="1042" y="112" width="110" height="22" rx="11" fill="#2DD4BF" fill-opacity="0.16" stroke="#2DD4BF" stroke-opacity="0.7"/>
+  <text x="1097.0" y="127" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" text-anchor="middle" letter-spacing="1">NEW IN V2</text>
+  <rect x="48.0" y="138" width="264.0" height="44" rx="22" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="180.0" y="165" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">Voice line</text>
+  <rect x="328.0" y="138" width="264.0" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.05" stroke="#2DD4BF" stroke-opacity="0.45"/>
+  <text x="460.0" y="165" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">USSD and SMS</text>
+  <rect x="608.0" y="138" width="264.0" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.05" stroke="#2DD4BF" stroke-opacity="0.45"/>
+  <text x="740.0" y="165" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">WhatsApp and web</text>
+  <rect x="888.0" y="138" width="264.0" height="44" rx="22" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="1020.0" y="165" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">Other AI · MCP and API</text>
+  <path class="flow" d="M180 186 L180 200" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="48" y="204" width="264.0" height="44" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="66" y="231" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Speech layer</text>
+  <text x="176" y="231" class="sans" font-size="12.5" fill="#CCFBF1">listens and speaks</text>
+  <rect x="328" y="204" width="824" height="44" rx="10" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <text x="348" y="231" class="mono" font-size="13" fill="#5EEAD4">identity</text>
+  <text x="436" y="231" class="sans" font-size="13.5" fill="#CBD5E1">One pseudonymous profile per phone. Its dialling code picks the country, numbers and language.</text>
+  <path class="flow" d="M600 252 L600 270" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="48" y="276" width="1104" height="70" rx="12" fill="url(#engine)"/>
+  <text x="72" y="306" class="sans" font-size="17" fill="#FFFFFF" font-weight="700">Engine</text>
+  <text x="72" y="328" class="sans" font-size="12" fill="#CCFBF1">Grounded or honest</text>
+  <rect x="200" y="293" width="196" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="298.0" y="316" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">1  Safety rail</text>
+  <rect x="412" y="293" width="220" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="522.0" y="316" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">2  Scam Shield 2</text>
+  <rect x="648" y="293" width="236" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="766.0" y="316" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">3  Decision services</text>
+  <rect x="900" y="293" width="228" height="36" rx="18" fill="#FFFFFF" fill-opacity="0.12"/>
+  <text x="1014.0" y="316" class="sans" font-size="14" fill="#FFFFFF" font-weight="600" text-anchor="middle">4  Cited answer</text>
+  <path class="flow" d="M430 350 L430 370" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <path class="flow" d="M1018 350 L1018 370" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="48" y="376" width="820" height="100" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <text x="68" y="400" class="mono" font-size="11" fill="#94A3B8" letter-spacing="2">KNOWLEDGE LAYER  ·  WHAT AN ANSWER MAY SAY</text>
+  <rect x="68.0" y="412" width="186.0" height="50" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="82.0" y="433" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Signed packs</text>
+  <text x="82.0" y="451" class="sans" font-size="12" fill="#CCFBF1">by publishers</text>
+  <rect x="266.0" y="412" width="186.0" height="50" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="280.0" y="433" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Number watcher</text>
+  <text x="280.0" y="451" class="sans" font-size="12" fill="#CCFBF1">weekly recheck</text>
+  <rect x="464.0" y="412" width="186.0" height="50" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="478.0" y="433" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">WHO and FAO</text>
+  <text x="478.0" y="451" class="sans" font-size="12" fill="#CCFBF1">guideline import</text>
+  <rect x="662.0" y="412" width="186.0" height="50" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="676.0" y="433" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Data snapshots</text>
+  <text x="676.0" y="451" class="sans" font-size="12" fill="#CCFBF1">dated, licensed</text>
+  <rect x="48" y="500" width="820" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <text x="68" y="524" class="mono" font-size="11" fill="#94A3B8" letter-spacing="2">PUBLIC DATA CONNECTORS  ·  THE ONLY CODE THAT CALLS OUTSIDE SOURCES</text>
+  <rect x="68.0" y="536" width="146.4" height="72" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="82.0" y="558" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Weather</text>
+  <text x="82.0" y="577" class="sans" font-size="12" fill="#CCFBF1">WeatherNext</text>
+  <text x="82.0" y="594" class="sans" font-size="12" fill="#CCFBF1">TAHMO, CHIRPS</text>
+  <rect x="226.4" y="536" width="146.4" height="72" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="240.4" y="558" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Floods</text>
+  <text x="240.4" y="577" class="sans" font-size="12" fill="#CCFBF1">Flood API</text>
+  <text x="240.4" y="594" class="sans" font-size="12" fill="#CCFBF1">CAP alerts</text>
+  <rect x="384.8" y="536" width="146.4" height="72" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="398.8" y="558" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Land and soil</text>
+  <text x="398.8" y="577" class="sans" font-size="12" fill="#CCFBF1">iSDAsoil</text>
+  <text x="398.8" y="594" class="sans" font-size="12" fill="#CCFBF1">ALU fields</text>
+  <rect x="543.2" y="536" width="146.4" height="72" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="557.2" y="558" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Prices, food</text>
+  <text x="557.2" y="577" class="sans" font-size="12" fill="#CCFBF1">WFP prices</text>
+  <text x="557.2" y="594" class="sans" font-size="12" fill="#CCFBF1">FEWS NET</text>
+  <rect x="701.6" y="536" width="146.4" height="72" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="715.6" y="558" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Facilities</text>
+  <text x="715.6" y="577" class="sans" font-size="12" fill="#CCFBF1">KMHFL</text>
+  <text x="715.6" y="594" class="sans" font-size="12" fill="#CCFBF1">healthsites.io</text>
+  <path class="flow" d="M755 534 L755 468" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="884" y="376" width="268" height="248" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <text x="904" y="400" class="mono" font-size="11" fill="#94A3B8" letter-spacing="2">OUTBOUND AND OPTIONAL</text>
+  <rect x="904" y="412" width="228" height="56" rx="10" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
+  <text x="920" y="435" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Alerts</text>
+  <text x="920" y="454" class="sans" font-size="12" fill="#CCFBF1">opt in only, SMS or voice</text>
+  <rect x="904" y="480" width="228" height="56" rx="10" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <text x="920" y="503" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Handoff</text>
+  <text x="920" y="522" class="sans" font-size="12" fill="#CBD5E1">to helplines and health workers</text>
+  <rect x="904" y="548" width="228" height="56" rx="10" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <text x="920" y="571" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Any model</text>
+  <text x="920" y="590" class="sans" font-size="12" fill="#CBD5E1">optional, kept to the facts</text>
+  <text x="48" y="666" class="sans" font-size="13" fill="#94A3B8">The safety rail runs before anything else and needs no model and no network. Services read only dated snapshots, so answers stay fast on USSD.</text>
+</svg>

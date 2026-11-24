@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 624" role="img" aria-label="Twelve V2 decision services, each built on named public data, coloured by the phase in which it ships.">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#050B1C"/><stop offset="100%" stop-color="#0B2A3F"/></linearGradient>
+    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
+    <linearGradient id="enginev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2DD4BF"/></marker>
+    <style>
+      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .flow { stroke-dasharray: 5 6; animation: f 10s linear infinite; }
+      @keyframes f { to { stroke-dashoffset: -110; } }
+      @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+    </style>
+  </defs>
+  <rect width="1200" height="624" rx="18" fill="url(#bg)"/>
+  <text x="48" y="54" class="mono" font-size="12" fill="#2DD4BF" letter-spacing="3">TWELVE DECISION SERVICES</text>
+  <text x="48" y="84" class="sans" font-size="22" fill="#FFFFFF" font-weight="700">Each service answers one real decision, built on named public data.</text>
+  <rect x="48" y="108" width="92" height="22" rx="11" fill="#34D399" fill-opacity="0.16" stroke="#34D399" stroke-opacity="0.7"/>
+  <text x="94.0" y="123" class="mono" font-size="11" fill="#34D399" font-weight="700" text-anchor="middle" letter-spacing="1">LIVE IN V1</text>
+  <rect x="150" y="108" width="71" height="22" rx="11" fill="#38BDF8" fill-opacity="0.16" stroke="#38BDF8" stroke-opacity="0.7"/>
+  <text x="185.5" y="123" class="mono" font-size="11" fill="#38BDF8" font-weight="700" text-anchor="middle" letter-spacing="1">PHASE 2</text>
+  <rect x="231" y="108" width="71" height="22" rx="11" fill="#818CF8" fill-opacity="0.16" stroke="#818CF8" stroke-opacity="0.7"/>
+  <text x="266.5" y="123" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="middle" letter-spacing="1">PHASE 3</text>
+  <rect x="312" y="108" width="71" height="22" rx="11" fill="#C084FC" fill-opacity="0.16" stroke="#C084FC" stroke-opacity="0.7"/>
+  <text x="347.5" y="123" class="mono" font-size="11" fill="#C084FC" font-weight="700" text-anchor="middle" letter-spacing="1">PHASE 4</text>
+  <rect x="48.0" y="150" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="48.0" y="164" width="3" height="96" rx="1.5" fill="#34D399"/>
+  <text x="68.0" y="178" class="mono" font-size="12" fill="#34D399" font-weight="700" letter-spacing="1">01</text>
+  <text x="68.0" y="200" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Emergency and helplines</text>
+  <text x="68.0" y="224" class="sans" font-size="12.5" fill="#CBD5E1">13 country packs, 54 numbers</text>
+  <text x="68.0" y="242" class="sans" font-size="12.5" fill="#CBD5E1">Rechecked weekly from phase 1</text>
+  <text x="294.0" y="178" class="mono" font-size="11" fill="#34D399" font-weight="700" text-anchor="end" letter-spacing="1">LIVE</text>
+  <rect x="328.0" y="150" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="328.0" y="164" width="3" height="96" rx="1.5" fill="#38BDF8"/>
+  <text x="348.0" y="178" class="mono" font-size="12" fill="#38BDF8" font-weight="700" letter-spacing="1">02</text>
+  <text x="348.0" y="200" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Rain this week</text>
+  <text x="348.0" y="224" class="sans" font-size="12.5" fill="#CBD5E1">WeatherNext ensembles</text>
+  <text x="348.0" y="242" class="sans" font-size="12.5" fill="#CBD5E1">TomorrowNow GAP, TAHMO</text>
+  <text x="574.0" y="178" class="mono" font-size="11" fill="#38BDF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 2</text>
+  <rect x="608.0" y="150" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="608.0" y="164" width="3" height="96" rx="1.5" fill="#818CF8"/>
+  <text x="628.0" y="178" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="1">03</text>
+  <text x="628.0" y="200" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Planting window</text>
+  <text x="628.0" y="224" class="sans" font-size="12.5" fill="#CBD5E1">CHIRPS rainfall history</text>
+  <text x="628.0" y="242" class="sans" font-size="12.5" fill="#CBD5E1">Benchmarked open AI models</text>
+  <text x="854.0" y="178" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 3</text>
+  <rect x="888.0" y="150" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="888.0" y="164" width="3" height="96" rx="1.5" fill="#38BDF8"/>
+  <text x="908.0" y="178" class="mono" font-size="12" fill="#38BDF8" font-weight="700" letter-spacing="1">04</text>
+  <text x="908.0" y="200" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Flood warning</text>
+  <text x="908.0" y="224" class="sans" font-size="12.5" fill="#CBD5E1">Google Flood Forecasting API</text>
+  <text x="908.0" y="242" class="sans" font-size="12.5" fill="#CBD5E1">Official CAP alerts</text>
+  <text x="1134.0" y="178" class="mono" font-size="11" fill="#38BDF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 2</text>
+  <rect x="48.0" y="290" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="48.0" y="304" width="3" height="96" rx="1.5" fill="#38BDF8"/>
+  <text x="68.0" y="318" class="mono" font-size="12" fill="#38BDF8" font-weight="700" letter-spacing="1">05</text>
+  <text x="68.0" y="340" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Official warnings</text>
+  <text x="68.0" y="364" class="sans" font-size="12.5" fill="#CBD5E1">National CAP alert feeds</text>
+  <text x="68.0" y="382" class="sans" font-size="12.5" fill="#CBD5E1">WMO register, IFRC Alert Hub</text>
+  <text x="294.0" y="318" class="mono" font-size="11" fill="#38BDF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 2</text>
+  <rect x="328.0" y="290" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="328.0" y="304" width="3" height="96" rx="1.5" fill="#818CF8"/>
+  <text x="348.0" y="318" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="1">06</text>
+  <text x="348.0" y="340" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Soil and fertiliser</text>
+  <text x="348.0" y="364" class="sans" font-size="12.5" fill="#CBD5E1">iSDAsoil 30 m soil maps</text>
+  <text x="348.0" y="382" class="sans" font-size="12.5" fill="#CBD5E1">Signed agronomy packs</text>
+  <text x="574.0" y="318" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 3</text>
+  <rect x="608.0" y="290" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="608.0" y="304" width="3" height="96" rx="1.5" fill="#818CF8"/>
+  <text x="628.0" y="318" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="1">07</text>
+  <text x="628.0" y="340" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Pest and disease check</text>
+  <text x="628.0" y="364" class="sans" font-size="12.5" fill="#CBD5E1">Signed symptom guides, FAMEWS</text>
+  <text x="628.0" y="382" class="sans" font-size="12.5" fill="#CBD5E1">Open leaf image datasets</text>
+  <text x="854.0" y="318" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 3</text>
+  <rect x="888.0" y="290" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="888.0" y="304" width="3" height="96" rx="1.5" fill="#818CF8"/>
+  <text x="908.0" y="318" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="1">08</text>
+  <text x="908.0" y="340" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Prices and food outlook</text>
+  <text x="908.0" y="364" class="sans" font-size="12.5" fill="#CBD5E1">WFP prices through HDX HAPI</text>
+  <text x="908.0" y="382" class="sans" font-size="12.5" fill="#CBD5E1">FEWS NET outlooks</text>
+  <text x="1134.0" y="318" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 3</text>
+  <rect x="48.0" y="430" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="48.0" y="444" width="3" height="96" rx="1.5" fill="#38BDF8"/>
+  <text x="68.0" y="458" class="mono" font-size="12" fill="#38BDF8" font-weight="700" letter-spacing="1">09</text>
+  <text x="68.0" y="480" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Nearest health facility</text>
+  <text x="68.0" y="504" class="sans" font-size="12.5" fill="#CBD5E1">Kenya Master Facility List</text>
+  <text x="68.0" y="522" class="sans" font-size="12.5" fill="#CBD5E1">healthsites.io, KEMRI-Wellcome</text>
+  <text x="294.0" y="458" class="mono" font-size="11" fill="#38BDF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 2</text>
+  <rect x="328.0" y="430" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="328.0" y="444" width="3" height="96" rx="1.5" fill="#818CF8"/>
+  <text x="348.0" y="458" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="1">10</text>
+  <text x="348.0" y="480" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Pregnancy companion</text>
+  <text x="348.0" y="504" class="sans" font-size="12.5" fill="#CBD5E1">WHO antenatal care tables</text>
+  <text x="348.0" y="522" class="sans" font-size="12.5" fill="#CBD5E1">V1 danger signs pack</text>
+  <text x="574.0" y="458" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 3</text>
+  <rect x="608.0" y="430" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="608.0" y="444" width="3" height="96" rx="1.5" fill="#C084FC"/>
+  <text x="628.0" y="458" class="mono" font-size="12" fill="#C084FC" font-weight="700" letter-spacing="1">11</text>
+  <text x="628.0" y="480" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Health worker assist</text>
+  <text x="628.0" y="504" class="sans" font-size="12.5" fill="#CBD5E1">Inside Community Health</text>
+  <text x="628.0" y="522" class="sans" font-size="12.5" fill="#CBD5E1">Toolkit apps, Kenya eCHIS</text>
+  <text x="854.0" y="458" class="mono" font-size="11" fill="#C084FC" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 4</text>
+  <rect x="888.0" y="430" width="264.0" height="124" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <rect x="888.0" y="444" width="3" height="96" rx="1.5" fill="#818CF8"/>
+  <text x="908.0" y="458" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="1">12</text>
+  <text x="908.0" y="480" class="sans" font-size="15.5" fill="#FFFFFF" font-weight="700">Scam Shield 2</text>
+  <text x="908.0" y="504" class="sans" font-size="12.5" fill="#CBD5E1">GSMA SIM Swap signal</text>
+  <text x="908.0" y="522" class="sans" font-size="12.5" fill="#CBD5E1">Scam Signal, community reports</text>
+  <text x="1134.0" y="458" class="mono" font-size="11" fill="#818CF8" font-weight="700" text-anchor="end" letter-spacing="1">PHASE 3</text>
+  <text x="48" y="594" class="sans" font-size="13" fill="#94A3B8">Every service is reachable by voice, USSD and SMS, WhatsApp and web, and by partners through the grounding API and MCP.</text>
+</svg>

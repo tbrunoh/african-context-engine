@@ -78,6 +78,8 @@ Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language
 
 ## How it works
 
+<img src="docs/architecture.svg" alt="ACE V1 architecture: six entry points, one pseudonymous identity, an engine that runs the safety rail, Scam Shield, checked context and cited answers over sourced context packs" width="100%">
+
 ```
  USSD   SMS   Voice   WhatsApp   Web/API   MCP        thin adapters, one Message type
    \      \     |        |         /       /

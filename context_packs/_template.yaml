@@ -1,0 +1,39 @@
+# Copy this file to context_packs/<country>/<topic>.yaml and fill it in.
+# Files that start with an underscore are skipped by the loader.
+# Guide: docs/context-packs.md    Check: ace packs validate --strict
+spec_version: "1.0"
+id: xx-topic-name                  # country code, then topic; lowercase and dashes
+title: Topic name
+description: >-
+  One or two sentences on what this pack covers and who it is for.
+version: 0.1.0
+order: 50                          # menu position, lowest first
+labels:                            # short menu labels, at most 24 characters each
+  en: Topic name
+  sw: Jina la mada
+license: CC-BY-4.0
+country: XX                        # ISO 3166-1 alpha-2
+language: en
+maintainers:
+  - Your name or organisation
+facts:
+  - id: first-fact
+    claim: >-
+      The full fact in plain words a person can act on.
+    short: "At most 160 characters, for USSD and SMS."
+    topic: topic_name
+    vertical: agriculture          # agriculture, health, finance, safety, legal, education, climate
+    kind: action                   # action, sign or info
+    subjects: []
+    keywords: []                   # words people actually type, in every language they use
+    translations:
+      sw:
+        claim: >-
+          Tafsiri kamili.
+        short: "Tafsiri fupi."
+        reviewed: false
+    source: Publisher, Document title
+    source_url: https://example.org/document
+    checked_on: 2026-01-01
+    review_status: draft           # draft until you have compared the claim with the source
+    safety_critical: false

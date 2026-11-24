@@ -1,0 +1,138 @@
+# Uganda emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: ug-emergency-contacts
+title: Uganda emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in Uganda when a message signals danger.
+  Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: UG
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Uganda, call 999 or 112 for police, fire and ambulance emergencies.
+  short: 'Emergency in Uganda: call 999 or 112.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Emergency
+    number: '999'
+    queues: &id001
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - violence
+    - gbv
+    - child_protection
+    - self_harm
+  - label: Emergency
+    number: '112'
+    queues: *id001
+  translations:
+    sw:
+      claim: Kwa dharura nchini Uganda, piga 999 au 112 kupata polisi, zimamoto au ambulensi.
+      short: 'Dharura Uganda: piga 999 au 112.'
+  source: UK FCDO, Uganda travel advice, getting help; Australian Government Smartraveller; Uganda Police Force
+  source_url: https://www.gov.uk/foreign-travel-advice/uganda/getting-help
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: police-gbv-line
+  claim: The Uganda Police free line for reporting gender based violence and violence against children is 0800 199 195.
+  short: 'Gender based violence or a child at risk in Uganda: call police on 0800 199 195, free.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - violence
+  - abuse
+  - rape
+  - assault
+  - beaten
+  - gbv
+  - viol
+  - violences
+  - conjugale
+  - dhuluma
+  - ubakaji
+  - kupigwa
+  contacts:
+  - label: Police GBV and child protection line
+    number: 0800 199 195
+    queues:
+    - gbv
+    - violence
+    - child_protection
+    free: true
+  translations:
+    sw:
+      claim: Simu ya bure ya Polisi wa Uganda ya kuripoti dhuluma za kijinsia na ukatili dhidi ya watoto ni 0800 199
+        195.
+      short: 'Dhuluma za kijinsia au mtoto hatarini Uganda: piga 0800 199 195, bure.'
+  source: Uganda Police Force Child and Family Protection Department, via Nile Post; UN Women Uganda
+  source_url: https://nilepost.co.ug/news/109883/police-ask-gender-based-violence-victims-to-always-speak-out
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: sauti-116
+  claim: Sauti 116 is Uganda's national helpline for child abuse and gender based violence, run by the Ministry of Gender,
+    Labour and Social Development.
+  short: 'Child abuse or gender based violence in Uganda: call Sauti 116.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - child
+  - children
+  - childline
+  - abuse
+  - enfant
+  - enfants
+  - maltraitance
+  - mtoto
+  - watoto
+  - gbv
+  - violence
+  contacts:
+  - label: Sauti 116
+    number: '116'
+    queues:
+    - child_protection
+    - gbv
+  translations:
+    sw:
+      claim: Sauti 116 ni simu ya msaada ya kitaifa ya Uganda kuhusu unyanyasaji wa watoto na dhuluma za kijinsia, inayoendeshwa
+        na Wizara ya Jinsia, Kazi na Maendeleo ya Jamii.
+      short: 'Unyanyasaji wa mtoto au dhuluma za kijinsia Uganda: piga Sauti 116.'
+  source: UNICEF Uganda, Sauti 116 bolsters government response to violence and abuse
+  source_url: https://www.unicef.org/uganda/stories/sauti-116-bolsters-government-response-violence-and-abuse-homes-and-communities-uganda
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

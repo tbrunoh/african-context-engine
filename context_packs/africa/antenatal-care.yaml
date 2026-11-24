@@ -1,0 +1,66 @@
+# When to go for antenatal care, from WHO's 2016 recommendations. Applies in every covered country.
+# Used by the V2 pregnancy companion together with the maternal danger signs pack.
+# Next step: review by a midwife in each country against the national antenatal schedule, and review of the
+# Swahili and French text by fluent speakers.
+spec_version: '1.0'
+id: africa-antenatal-care
+title: Antenatal care schedule
+description: The eight antenatal care contacts WHO recommends, so a pregnant woman knows when her next check is due.
+version: 1.0.0
+order: 8
+labels:
+  en: Antenatal checks
+  sw: Kliniki ya ujauzito
+  fr: Visites prénatales
+license: CC-BY-4.0
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: eight-contacts
+  claim: WHO recommends at least eight antenatal care contacts with a health worker in every pregnancy. The first should
+    be in the first 12 weeks, then at 20, 26, 30, 34, 36, 38 and 40 weeks.
+  short: 'WHO advises 8 antenatal checks: by 12 weeks, then at 20, 26, 30, 34, 36, 38 and 40 weeks.'
+  topic: antenatal_care
+  vertical: health
+  kind: action
+  subjects:
+  - pregnancy
+  keywords: [antenatal, clinic, checkup, check, visit, weeks, pregnant, pregnancy, kliniki, ujauzito, mjamzito, wiki,
+             prenatale, consultation, visite, semaines, enceinte, grossesse]
+  translations:
+    sw:
+      claim: WHO inapendekeza angalau mara nane za kliniki ya ujauzito na mhudumu wa afya katika kila ujauzito. Ya kwanza
+        iwe ndani ya wiki 12 za kwanza, kisha wiki ya 20, 26, 30, 34, 36, 38 na 40.
+      short: 'WHO inashauri kliniki mara 8: kabla ya wiki 12, kisha wiki ya 20, 26, 30, 34, 36, 38 na 40.'
+    fr:
+      claim: L'OMS recommande au moins huit contacts prénatals avec un agent de santé à chaque grossesse. Le premier au cours
+        des 12 premières semaines, puis à 20, 26, 30, 34, 36, 38 et 40 semaines.
+      short: 'L''OMS conseille 8 visites prénatales : avant 12 semaines, puis à 20, 26, 30, 34, 36, 38 et 40 semaines.'
+  source: WHO, New guidelines on antenatal care for a positive pregnancy experience (7 November 2016)
+  source_url: https://www.who.int/news/item/07-11-2016-new-guidelines-on-antenatal-care-for-a-positive-pregnancy-experience
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: why-eight
+  claim: Eight or more antenatal care contacts can reduce deaths of babies around birth by up to 8 per 1,000 births,
+    compared with 4 visits, because problems are found and treated earlier.
+  short: Eight or more antenatal checks can prevent up to 8 baby deaths per 1,000 births, compared with 4 visits.
+  topic: antenatal_care
+  vertical: health
+  kind: info
+  subjects:
+  - pregnancy
+  keywords: [antenatal, eight, visits, why, kliniki, ujauzito, prenatale, visites]
+  translations:
+    sw:
+      claim: Kliniki ya ujauzito mara nane au zaidi inaweza kupunguza vifo vya watoto wakati wa kuzaliwa kwa hadi 8 kwa kila
+        vizazi 1,000, ukilinganisha na mara 4, kwa sababu matatizo hugunduliwa na kutibiwa mapema.
+      short: Kliniki mara nane au zaidi inaweza kuzuia hadi vifo 8 vya watoto kwa kila vizazi 1,000, ukilinganisha na mara 4.
+    fr:
+      claim: Huit contacts prénatals ou plus peuvent réduire les décès de bébés autour de la naissance de jusqu'à 8 pour 1 000
+        naissances, par rapport à 4 visites, car les problèmes sont détectés et traités plus tôt.
+      short: Huit visites prénatales ou plus peuvent éviter jusqu'à 8 décès de bébés pour 1 000 naissances, par rapport à 4.
+  source: WHO, Pregnant women must be able to access the right care at the right time (7 November 2016)
+  source_url: https://www.who.int/reproductivehealth/news/antenatal-care/en/
+  checked_on: 2026-11-24
+  review_status: sourced

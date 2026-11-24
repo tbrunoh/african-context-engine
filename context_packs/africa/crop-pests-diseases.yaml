@@ -1,0 +1,255 @@
+# Four crop problems that threaten food across the covered countries, for the V2 pest and disease check.
+# Maize lethal necrosis (CIMMYT), cassava mosaic disease (CABI Plantwise), banana Xanthomonas wilt
+# (Bioversity International and IITA) and the tomato leaf miner (CABI Plantwise and the World Vegetable Center).
+# Pesticide products and rates are deliberately excluded. Next step: review by national extension services
+# and plant protection organisations, and review of the Swahili and French text by fluent speakers.
+spec_version: '1.0'
+id: africa-crop-pests-diseases
+title: Crop pests and diseases
+description: How farmers can recognise four serious crop problems and what to do first, with a referral to an extension
+  officer before any spraying. Fall armyworm has its own pack.
+version: 1.0.0
+order: 7
+labels:
+  en: Crop pests and diseases
+  sw: Wadudu na magonjwa
+  fr: Ravageurs et maladies
+license: CC-BY-4.0
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: mln-signs
+  claim: Maize lethal necrosis starts as yellow mottling on the leaves. The leaves then die from the edges inward, the
+    young centre of the plant dies (dead heart), husks dry early and cobs fill with little or no grain.
+  short: 'MLN signs: yellow mottled leaves dying from the edges, a dead centre (dead heart), husks drying early, cobs with
+    little or no grain.'
+  topic: crop_disease
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - maize
+  keywords: [maize, mln, lethal, necrosis, mottling, yellow, dead heart, husks, mahindi, njano, mahindi kufa, mais, jaunissement, necrose]
+  translations:
+    sw:
+      claim: Ugonjwa wa mahindi wa MLN huanza kama madoa ya njano kwenye majani. Kisha majani hukauka kuanzia kingoni
+        kuelekea ndani, kitovu cha mmea hufa, maganda hukauka mapema na mahindi hujaa punje chache au hakuna kabisa.
+      short: 'Dalili za MLN: majani yenye madoa ya njano yanayokauka kuanzia kingoni, kitovu kufa, maganda kukauka mapema,
+        punje chache.'
+    fr:
+      claim: La nécrose létale du maïs commence par des marbrures jaunes sur les feuilles. Les feuilles meurent ensuite
+        depuis les bords, le cœur de la plante meurt, les spathes sèchent tôt et les épis se remplissent peu ou pas du tout.
+      short: 'Nécrose létale du maïs : feuilles marbrées de jaune qui meurent depuis les bords, cœur mort, spathes sèches tôt,
+        épis peu remplis.'
+  source: CIMMYT, Disease symptoms of maize lethal necrosis (MLN), farmer flyer
+  source_url: https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: mln-action
+  claim: Pull out and burn maize plants that show maize lethal necrosis. Do not feed them to animals and do not keep their
+    seed. Plant certified seed, follow maize with beans or another crop that is not maize, keep a break of two months
+    with no maize, clean your tools and remove weeds. Ask your agriculture office before spraying the insects that spread
+    it.
+  short: 'MLN: pull out and burn sick plants; never feed them to animals or keep their seed. Use certified seed, rotate with
+    beans, ask your agriculture office.'
+  topic: crop_disease
+  vertical: agriculture
+  kind: action
+  subjects:
+  - maize
+  keywords: [maize, mln, lethal, necrosis, control, certified seed, rotate, mahindi, kudhibiti, mbegu, mais, lutte, semences]
+  translations:
+    sw:
+      claim: Ng'oa na uchome mimea ya mahindi yenye ugonjwa wa MLN. Usiwalishe mifugo na usihifadhi mbegu zake. Panda mbegu
+        zilizothibitishwa, panda maharagwe au zao lisilo mahindi baada ya mahindi, acha miezi miwili bila mahindi, safisha
+        zana zako na ondoa magugu. Uliza ofisi ya kilimo kabla ya kunyunyizia dawa wadudu wanaoueneza.
+      short: 'MLN: ng''oa na uchome mimea yenye ugonjwa; usiwalishe mifugo wala kuhifadhi mbegu zake. Tumia mbegu
+        zilizothibitishwa, uliza ofisi ya kilimo.'
+    fr:
+      claim: Arrachez et brûlez les plants de maïs atteints de nécrose létale. Ne les donnez pas aux animaux et ne gardez
+        pas leurs semences. Semez des semences certifiées, faites suivre le maïs par des haricots ou une autre culture que le
+        maïs, laissez deux mois sans maïs, nettoyez vos outils et enlevez les mauvaises herbes. Demandez au service agricole
+        avant de traiter contre les insectes qui la transmettent.
+      short: 'Nécrose du maïs : arrachez et brûlez les plants malades, ni fourrage ni semences. Semences certifiées,
+        rotation, demandez au service agricole.'
+  source: CIMMYT, Best practices to avoid maize lethal necrosis, farmer flyer
+  source_url: https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: cmd-signs
+  claim: Cassava mosaic disease shows as curled leaves with yellow green or white green patches. In bad cases new leaves
+    are small and twisted and the plant is stunted. Leaves that are evenly yellow or brown point to a different problem.
+    Whiteflies spread the disease from plant to plant.
+  short: 'Cassava mosaic signs: curled leaves with yellow green patches; small, twisted new leaves; stunted plants.
+    Whiteflies spread it.'
+  topic: crop_disease
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - cassava
+  keywords: [cassava, mosaic, curled, patches, twisted, whitefly, muhogo, mihogo, majani, manioc, mosaique, feuilles]
+  translations:
+    sw:
+      claim: Ugonjwa wa batobato wa muhogo huonekana kama majani yaliyojikunja yenye mabaka ya njano na kijani au meupe na
+        kijani. Ukizidi, majani mapya huwa madogo na yaliyopinda na mmea hudumaa. Majani ya njano tupu au ya kahawia ni
+        tatizo jingine. Inzi weupe hueneza ugonjwa huu.
+      short: 'Batobato ya muhogo: majani yaliyojikunja yenye mabaka ya njano na kijani; majani mapya madogo na yaliyopinda;
+        mmea kudumaa.'
+    fr:
+      claim: La mosaïque du manioc se voit à des feuilles enroulées avec des taches jaune vert ou blanc vert. Dans les cas
+        graves, les nouvelles feuilles sont petites et déformées et la plante reste chétive. Des feuilles uniformément
+        jaunes ou brunes signalent un autre problème. Les aleurodes (mouches blanches) propagent la maladie.
+      short: 'Mosaïque du manioc : feuilles enroulées avec taches jaune vert, jeunes feuilles petites et déformées, plante
+        chétive.'
+  source: CABI Plantwise, Control of cassava mosaic disease by uprooting, factsheet for farmers (Tanzania, 2014)
+  source_url: https://farmknowledge.info/sites/default/files/resource/20157800492.pdf
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: cmd-action
+  claim: No chemical controls cassava mosaic disease. Check plants every week for the first two to three months. Uproot
+    sick plants, carry them out of the field, dry them in the sun and burn them, and replace them with healthy cuttings
+    15 to 20 cm long from plants that show no signs. Do not plant cassava next to a field that has the disease.
+  short: 'Cassava mosaic: no chemical cures it. Uproot, dry and burn sick plants; replant with cuttings from healthy plants;
+    check weekly.'
+  topic: crop_disease
+  vertical: agriculture
+  kind: action
+  subjects:
+  - cassava
+  keywords: [cassava, mosaic, uproot, cuttings, control, muhogo, mihogo, vipandikizi, kung'oa, manioc, boutures, arracher]
+  translations:
+    sw:
+      claim: Hakuna dawa inayotibu batobato ya muhogo. Kagua mimea kila wiki kwa miezi miwili hadi mitatu ya kwanza.
+        Ng'oa mimea yenye ugonjwa, ipeleke nje ya shamba, ikaushe juani na uichome, kisha panda vipandikizi vyenye afya vya
+        sentimita 15 hadi 20 kutoka mimea isiyo na dalili. Usipande muhogo karibu na shamba lenye ugonjwa.
+      short: 'Batobato ya muhogo: hakuna dawa. Ng''oa, kausha na uchome mimea yenye ugonjwa; panda vipandikizi vyenye afya;
+        kagua kila wiki.'
+    fr:
+      claim: Aucun produit chimique ne traite la mosaïque du manioc. Inspectez les plants chaque semaine pendant les deux à
+        trois premiers mois. Arrachez les plants malades, sortez-les du champ, séchez-les au soleil et brûlez-les, puis
+        remplacez-les par des boutures saines de 15 à 20 cm prises sur des plants sans symptômes. Ne plantez pas à côté d'un
+        champ atteint.
+      short: 'Mosaïque du manioc : aucun produit ne la traite. Arrachez et brûlez les plants malades, replantez des boutures
+        saines, inspectez chaque semaine.'
+  source: CABI Plantwise, Control of cassava mosaic disease by uprooting, factsheet for farmers (Tanzania, 2014)
+  source_url: https://farmknowledge.info/sites/default/files/resource/20157800492.pdf
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: bxw-signs
+  claim: Banana Xanthomonas wilt makes leaves turn yellow and wilt, bunches ripen too early and rot, and the plant dies.
+    The disease is found in East and Central Africa.
+  short: 'Banana wilt signs: leaves yellowing and wilting, bunches ripening too early and rotting, plants dying.'
+  topic: crop_disease
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - banana
+  keywords: [banana, bxw, xanthomonas, wilt, yellow, bunch, ndizi, mnyauko, migomba, banane, fletrissement, regime]
+  translations:
+    sw:
+      claim: Ugonjwa wa mnyauko bakteria wa migomba hufanya majani kugeuka njano na kunyauka, mikungu kuiva mapema na
+        kuoza, na mgomba kufa. Ugonjwa huu upo Afrika Mashariki na Kati.
+      short: 'Mnyauko wa migomba: majani kugeuka njano na kunyauka, mikungu kuiva mapema na kuoza, migomba kufa.'
+    fr:
+      claim: Le flétrissement bactérien du bananier (Xanthomonas) fait jaunir et faner les feuilles, mûrir et pourrir les
+        régimes trop tôt, puis mourir la plante. La maladie est présente en Afrique de l'Est et centrale.
+      short: 'Flétrissement du bananier : feuilles qui jaunissent et fanent, régimes qui mûrissent trop tôt et pourrissent,
+        plantes qui meurent.'
+  source: Bioversity International, Single diseased stem removal for Xanthomonas wilt of banana, brief
+  source_url: https://core.ac.uk/download/211048384.pdf
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: bxw-action
+  claim: There is no cure for banana Xanthomonas wilt. As soon as a plant shows signs, cut that plant at soil level and
+    leave the healthy plants in the mat. Clean the tool after each cut by holding it in a fire for up to a minute or
+    washing it with soap and water or chlorine. Once the last hand has formed, remove the male bud with a forked stick,
+    and check plants often.
+  short: 'Banana wilt: no cure. Cut each sick plant at soil level, clean the tool in fire or with soap after each cut, remove
+    the male bud with a forked stick.'
+  topic: crop_disease
+  vertical: agriculture
+  kind: action
+  subjects:
+  - banana
+  keywords: [banana, bxw, wilt, cut, male bud, tools, ndizi, mnyauko, migomba, kukata, banane, couper, bourgeon]
+  translations:
+    sw:
+      claim: Hakuna tiba ya mnyauko bakteria wa migomba. Mara mgomba unapoonyesha dalili, ukate usawa wa ardhi na uache
+        migomba yenye afya kwenye shina. Safisha zana baada ya kila ukataji kwa kuishika motoni hadi dakika moja au kuiosha
+        kwa sabuni na maji au klorini. Chana la mwisho likishatokea, ondoa ua dume kwa fimbo yenye panda, na kagua migomba
+        mara kwa mara.
+      short: 'Mnyauko wa migomba: hakuna tiba. Kata mgomba wenye ugonjwa usawa wa ardhi, safisha zana kwa moto au sabuni,
+        ondoa ua dume kwa fimbo yenye panda.'
+    fr:
+      claim: Il n'existe aucun traitement contre le flétrissement bactérien du bananier. Dès qu'un plant montre des
+        symptômes, coupez-le au ras du sol en laissant les plants sains de la touffe. Nettoyez l'outil après chaque coupe en
+        le tenant dans le feu jusqu'à une minute ou en le lavant au savon et à l'eau ou au chlore. Une fois la dernière main
+        formée, enlevez le bourgeon mâle avec un bâton fourchu, et surveillez souvent.
+      short: 'Flétrissement du bananier : pas de traitement. Coupez chaque plant malade au ras du sol, nettoyez l''outil au
+        feu ou au savon, enlevez le bourgeon mâle.'
+  source: IITA, Novel and effective technique to control banana Xanthomonas wilt (single diseased stem removal), 2020
+  source_url: https://www.iita.org/news-item/novel-and-effective-technique-to-control-banana-xanthomonas-wilt-is-suitable-for-rwandan-agroecology/
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: tuta-signs
+  claim: Tomato leaf miner larvae dig wide, silvery tunnels in tomato leaves that turn brown and dry out. They also bore
+    into stems and fruit, leaving exit holes in the fruit. The caterpillars are green to pink, up to 9 mm long, with a
+    black band behind the head. Eggplant, pepper and potato can also be attacked.
+  short: 'Tomato leaf miner signs: silvery tunnels in leaves that turn brown, holes in fruit, small green to pink caterpillars
+    with a black band.'
+  topic: pest
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - tomato
+  keywords: [tomato, tuta, leaf miner, leafminer, tunnels, mines, holes, nyanya, kantangaze, tomate, mineuse, galeries]
+  translations:
+    sw:
+      claim: Viwavi wa Tuta absoluta huchimba mifereji mipana inayong'aa kama fedha ndani ya majani ya nyanya, nayo hubadilika
+        kahawia na kukauka. Pia hutoboa mashina na matunda, wakiacha matundu kwenye tunda. Viwavi ni wa kijani hadi pinki,
+        hadi milimita 9, na mstari mweusi nyuma ya kichwa. Biringanya, pilipili na viazi navyo hushambuliwa.
+      short: 'Tuta absoluta: mifereji inayong''aa kwenye majani inayogeuka kahawia, matundu kwenye nyanya, viwavi wadogo wa
+        kijani hadi pinki.'
+    fr:
+      claim: Les larves de la mineuse de la tomate creusent de larges galeries argentées dans les feuilles, qui brunissent et
+        sèchent. Elles percent aussi les tiges et les fruits, en laissant des trous de sortie. Les chenilles sont vertes à
+        roses, jusqu'à 9 mm, avec une bande noire derrière la tête. L'aubergine, le poivron et la pomme de terre peuvent
+        aussi être attaqués.
+      short: 'Mineuse de la tomate : galeries argentées dans les feuilles qui brunissent, trous dans les fruits, petites
+        chenilles vertes à roses.'
+  source: CABI Plantwise, Life cycle of the tomato leaf miner, factsheet for farmers (Ghana, 2018)
+  source_url: https://factsheetadmin.plantwise.org/Uploads/PDFs/20187800458.pdf
+  checked_on: 2026-11-24
+  review_status: sourced
+- id: tuta-action
+  claim: Remove and destroy infested tomato fruit quickly and clear other host plants around the field. Pheromone traps
+    catch the moths, and products based on neem or Bacillus thuringiensis can help. Ordinary sprays often fail because the
+    larvae feed inside the leaf, and the pest soon resists pesticides, so ask an extension officer before spraying.
+  short: 'Tomato leaf miner: destroy infested fruit, use pheromone traps, neem or Bt products; ask an extension officer before
+    spraying.'
+  topic: pest
+  vertical: agriculture
+  kind: action
+  subjects:
+  - tomato
+  keywords: [tomato, tuta, leaf miner, control, trap, pheromone, neem, nyanya, mtego, dawa, tomate, piege, lutte]
+  translations:
+    sw:
+      claim: Ondoa na uharibu haraka matunda ya nyanya yaliyoshambuliwa na safisha mimea mingine inayowahifadhi wadudu hawa
+        kuzunguka shamba. Mitego ya feromoni huwanasa nondo, na bidhaa za mwarobaini au Bacillus thuringiensis zinaweza
+        kusaidia. Dawa za kawaida mara nyingi hushindwa kwa sababu viwavi hula ndani ya jani, na mdudu huyu huzoea dawa
+        haraka, hivyo uliza afisa ugani kabla ya kunyunyizia.
+      short: 'Tuta absoluta: haribu nyanya zilizoshambuliwa, tumia mitego ya feromoni, mwarobaini au Bt; uliza afisa ugani
+        kabla ya kunyunyizia.'
+    fr:
+      claim: >-
+        Enlevez et détruisez vite les fruits infestés et éliminez les autres plantes hôtes autour du champ. Les pièges à
+        phéromones capturent les papillons, et les produits à base de neem ou de Bacillus thuringiensis peuvent aider. Les
+        traitements ordinaires échouent souvent car les larves se nourrissent dans la feuille et le ravageur devient vite
+        résistant, alors demandez à un agent de vulgarisation avant de traiter.
+      short: 'Mineuse de la tomate : détruisez les fruits infestés, pièges à phéromones, neem ou Bt ; demandez à un agent
+        agricole avant de traiter.'
+  source: World Vegetable Center, with TAHA and icipe, Tuta absoluta flyer (2016)
+  source_url: https://worldveg.tind.io/record/66511/files/Tuta-revised-flyer.pdf
+  checked_on: 2026-11-24
+  review_status: sourced

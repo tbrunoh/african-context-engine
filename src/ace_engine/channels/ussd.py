@@ -1,28 +1,58 @@
-"""USSD adapter.
+"""USSD: a full menu app for any phone, built for Africa's Talking style gateways.
 
-Parses the callback shape used by common African USSD gateways (for example
-Africa's Talking): form fields sessionId, serviceCode, phoneNumber and text,
-where text holds every menu input of the session joined by "*". Responses
-start with CON to keep the session open or END to close it.
+The gateway POSTs sessionId, serviceCode, phoneNumber and text on every
+screen, where text holds every input of the session joined by "*". Replies
+start with CON to keep the session open or END to close it. A screen holds
+about 182 characters, and some networks give the application only a few
+seconds to answer, so every screen here is composed locally and quickly.
+
+The app is stateless: it rebuilds the session state by replaying the input
+path, so it scales horizontally without a session store.
+
+Menu:
+    1..n  browse a context pack one fact at a time
+    n+1   ask a question in your own words
+    n+2   check a suspicious message (Scam Shield)
+    n+3   language
 """
 from __future__ import annotations
 
-from typing import Any
+from dataclasses import dataclass
+from typing import TYPE_CHECKING, Any
 
-from ..models import Channel, Message, Reply
+from ..models import Channel, Message, Reply, ReplyKind
+from ..router import Budget
 from .base import ChannelAdapter, truncate_words
 
-USSD_MAX_CHARS = 182  # a common gateway limit for one USSD screen
+if TYPE_CHECKING:
+    from ..engine import Engine
+
+USSD_MAX_CHARS = 182
+
+UI = {
+    "en": {"ask": "Ask a question", "scam": "Check a message", "lang": "Language/Lugha",
+           "more": "98 More", "next": "1 Next", "back": "0 Back", "menu": "0 Menu",
+           "ask_prompt": "Type your question:", "scam_prompt": "Type or paste the message:",
+           "invalid": "Invalid choice.", "end_pack": "That is all for this topic.",
+           "lang_prompt": "1 English\n2 Kiswahili"},
+    "sw": {"ask": "Uliza swali", "scam": "Kagua ujumbe", "lang": "Lugha/Language",
+           "more": "98 Zaidi", "next": "1 Endelea", "back": "0 Rudi", "menu": "0 Menyu",
+           "ask_prompt": "Andika swali lako:", "scam_prompt": "Andika au bandika ujumbe:",
+           "invalid": "Chaguo si sahihi.", "end_pack": "Hayo ndiyo yote kwa mada hii.",
+           "lang_prompt": "1 English\n2 Kiswahili"},
+}
 
 
 class UssdAdapter(ChannelAdapter):
+    """Parse a gateway callback into a Message carrying the latest input."""
+
     channel = Channel.USSD
 
     def __init__(self, max_chars: int = USSD_MAX_CHARS) -> None:
         self.max_chars = max_chars
 
     def parse_inbound(self, payload: dict[str, Any]) -> Message:
-        inputs = [p for p in str(payload.get("text", "")).split("*") if p != ""]
+        inputs = split_inputs(str(payload.get("text", "")))
         return Message(
             channel=self.channel,
             sender=str(payload["phoneNumber"]),
@@ -33,5 +63,169 @@ class UssdAdapter(ChannelAdapter):
 
     def render(self, reply: Reply) -> list[str]:
         prefix = "END " if reply.end_session else "CON "
-        body = truncate_words(reply.text, self.max_chars - len(prefix))
-        return [prefix + body]
+        return [prefix + truncate_words(reply.text, self.max_chars - len(prefix))]
+
+
+def split_inputs(text: str) -> list[str]:
+    return [p for p in text.split("*")] if text else []
+
+
+@dataclass
+class _State:
+    screen: str = "main"      # main, pack, ask, scam, lang, answer
+    page: int = 0
+    pack_index: int = 0
+    fact_index: int = 0
+    error: bool = False
+    answer: str = ""
+    end: bool = False
+
+
+class UssdApp:
+    """The menu state machine. One call per gateway request; returns the CON or END string."""
+
+    def __init__(self, engine: Engine, title: str = "ACE", max_chars: int = USSD_MAX_CHARS) -> None:
+        self.engine = engine
+        self.title = title
+        self.max_chars = max_chars
+
+    # -- public ---------------------------------------------------------------
+
+    def respond(self, phone: str, text: str, session_id: str | None = None) -> str:
+        inputs = split_inputs(text)
+        state = _State()
+        for i, token in enumerate(inputs):
+            self._step(state, token.strip(), phone, session_id, last=(i == len(inputs) - 1))
+        return self._render(state, phone)
+
+    def handle_payload(self, payload: dict[str, Any]) -> str:
+        return self.respond(str(payload["phoneNumber"]), str(payload.get("text", "")),
+                            str(payload.get("sessionId", "")) or None)
+
+    # -- helpers --------------------------------------------------------------
+
+    def _lang(self, phone: str) -> str:
+        profile = self.engine.profiles.peek(phone)
+        lang = (profile.language if profile else None) or self.engine.config.default_language
+        return lang if lang in UI else "en"
+
+    def _items(self, lang: str) -> list[tuple[str, str]]:
+        items = [("pack:" + p.id, p.label(lang)) for p in self.engine.packs]
+        return items + [("ask", UI[lang]["ask"]), ("scam", UI[lang]["scam"]), ("lang", UI[lang]["lang"])]
+
+    def _pages(self, lang: str) -> list[list[tuple[int, str, str]]]:
+        """Split the numbered menu into screens that fit, leaving room for the More line."""
+        numbered = [(n, key, label) for n, (key, label) in enumerate(self._items(lang), start=1)]
+        budget = self.max_chars - 4 - len(self.title) - 1 - len(UI[lang]["more"]) - 1
+        pages: list[list[tuple[int, str, str]]] = [[]]
+        used = 0
+        for item in numbered:
+            line = len(f"{item[0]} {item[2]}") + 1
+            if pages[-1] and used + line > budget:
+                pages.append([])
+                used = 0
+            pages[-1].append(item)
+            used += line
+        return pages
+
+    def _answer_budget(self, lang: str) -> Budget:
+        return Budget(max_chars=self.max_chars - 4 - len(UI[lang]["menu"]) - 1, short=True, max_facts=1)
+
+    def _ask(self, phone: str, text: str, session_id: str | None) -> Reply:
+        message = Message(channel=Channel.USSD, sender=phone, text=text, session_id=session_id)
+        return self.engine.handle(message, self._answer_budget(self._lang(phone)))
+
+    def _step(self, s: _State, token: str, phone: str, session_id: str | None, last: bool) -> None:
+        s.error = False
+        lang = self._lang(phone)
+        if s.screen in ("pack", "answer") and token == "00":
+            s.screen, s.page = "main", 0
+            return
+        if s.screen == "main":
+            pages = self._pages(lang)
+            if token == "98" and s.page + 1 < len(pages):
+                s.page += 1
+                return
+            choice = next((key for n, key, _ in (i for p in pages for i in p) if str(n) == token), None)
+            if choice is None:
+                s.error = True
+            elif choice.startswith("pack:"):
+                s.screen, s.pack_index, s.fact_index = "pack", [p.id for p in self.engine.packs].index(
+                    choice[5:]), 0
+            else:
+                s.screen = choice
+        elif s.screen == "pack":
+            if token == "1":
+                s.fact_index += 1
+            elif token == "0":
+                s.screen, s.page = "main", 0
+            else:
+                s.error = True
+        elif s.screen in ("ask", "scam", "answer"):
+            if s.screen == "answer" and token == "0":
+                s.screen, s.page = "main", 0
+                return
+            if last:
+                text = f"SCAM {token}" if s.screen == "scam" else token
+                reply = self._ask(phone, text, session_id)
+                s.answer = reply.text
+                s.end = reply.kind is ReplyKind.EMERGENCY or reply.end_session
+            s.screen = "answer"
+        elif s.screen == "lang":
+            if token in ("1", "2"):
+                profile = self.engine.profiles.get_or_create(phone)
+                profile.language = "en" if token == "1" else "sw"
+                s.screen, s.page = "main", 0
+            else:
+                s.error = True
+
+    def _render(self, s: _State, phone: str) -> str:
+        lang = self._lang(phone)
+        ui = UI[lang]
+        prefix = ""
+        if s.error:
+            prefix = ui["invalid"] + "\n"
+        if s.screen == "main":
+            pages = self._pages(lang)
+            page = pages[min(s.page, len(pages) - 1)]
+            lines = [ui["invalid"] if s.error else self.title] + [f"{n} {label}" for n, _, label in page]
+            if s.page + 1 < len(pages):
+                lines.append(ui["more"])
+            return self._con("\n".join(lines))
+        if s.screen == "pack":
+            pack = self.engine.packs[s.pack_index]
+            footer_full = f"\n{ui['next']}  {ui['back']}"
+            budget = Budget(self.max_chars - 4 - len(prefix) - len(footer_full), short=True, max_facts=1)
+            text, has_more = self.engine.browse(pack.id, s.fact_index, lang, budget)
+            if not text:
+                return self._con(f"{prefix}{ui['end_pack']}\n{ui['back']}")
+            footer = footer_full if has_more else f"\n{ui['back']}"
+            return self._con(prefix + text + footer)
+        if s.screen == "ask":
+            return self._con(prefix + ui["ask_prompt"])
+        if s.screen == "scam":
+            return self._con(prefix + ui["scam_prompt"])
+        if s.screen == "lang":
+            return self._con(prefix + ui["lang_prompt"])
+        if s.screen == "answer":
+            if s.end:
+                return self._end(s.answer)
+            return self._con(f"{s.answer}\n{ui['menu']}")
+        return self._con(self.title)
+
+    def _con(self, body: str) -> str:
+        return "CON " + _fit(body, self.max_chars - 4)
+
+    def _end(self, body: str) -> str:
+        return "END " + _fit(body, self.max_chars - 4)
+
+
+def _fit(body: str, limit: int) -> str:
+    """Trim a multi line screen to the limit, keeping the menu lines at the end intact."""
+    if len(body) <= limit:
+        return body
+    lines = body.split("\n")
+    tail = [ln for ln in lines[1:] if ln[:2].strip().isdigit()]
+    head = "\n".join(ln for ln in lines if ln not in tail)
+    room = limit - sum(len(t) + 1 for t in tail)
+    return "\n".join([truncate_words(head, max(10, room)), *tail])[:limit]

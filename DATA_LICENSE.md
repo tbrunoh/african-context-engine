@@ -7,7 +7,7 @@ ACE separates code from knowledge. The code is open. The knowledge comes in two 
 | What | Baseline context packs built from open government, research and community sources | Facts that passed expert review and outcome checks, refreshed by season and location |
 | License | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | Commercial license from an ACE Verified operator |
 | Who can use it | Anyone, with attribution | Licensed partners: operators, banks, insurers, NGOs, AI assistants |
-| Review status allowed | `draft`, `expert_reviewed`, `outcome_verified` | `expert_reviewed`, `outcome_verified` |
+| Review status allowed | `draft`, `sourced`, `expert_reviewed`, `outcome_verified` | `expert_reviewed`, `outcome_verified` |
 | Where it ships | In this repository under `context_packs/` | Never in this repository |
 
 ## Principles

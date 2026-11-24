@@ -4,38 +4,56 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ace-engine"
-version = "0.1.0"
-description = "The African Context Engine: one hyperlocal context engine behind every entry point"
+version = "1.0.0"
+description = "The African Context Engine: checked, local, citable knowledge behind USSD, SMS, voice, WhatsApp and AI assistants"
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.10"
 authors = [{ name = "Tom Bruno" }]
-keywords = ["africa", "context", "mcp", "ussd", "sms", "whatsapp", "voice", "agriculture", "health"]
+keywords = ["africa", "ussd", "sms", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "mpesa", "swahili"]
 classifiers = [
-  "Development Status :: 2 - Pre-Alpha",
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
   "License :: OSI Approved :: Apache Software License",
+  "Natural Language :: English",
   "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Communications :: Telephony",
   "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
-dependencies = []
+dependencies = ["PyYAML>=6"]
 
 [project.optional-dependencies]
-yaml = ["PyYAML>=6"]
 mcp = ["mcp>=1.2"]
-dev = ["PyYAML>=6", "pytest>=8", "ruff>=0.6"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.urls]
+Homepage = "https://github.com/tbrunoh/african-context-engine"
+Issues = "https://github.com/tbrunoh/african-context-engine/issues"
 
 [project.scripts]
-ace-demo = "ace_engine.cli:main"
+ace = "ace_engine.cli:main"
+ace-demo = "ace_engine.cli:demo_main"
 ace-mcp = "ace_engine.mcp_server:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ace_engine"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"context_packs" = "ace_engine/context_packs"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
 
 [tool.ruff]
-line-length = 110
+line-length = 130
 target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["B008"]

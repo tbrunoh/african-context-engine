@@ -1,0 +1,29 @@
+# ACE: the African Context Engine
+
+> ACE gives checked, local, citable knowledge for Africa on any phone, over USSD, SMS, voice, WhatsApp, the web and MCP. Release 1.1.0 serves 13 countries in English, Swahili and French. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
+
+## Start here
+
+- [README](https://github.com/tbrunoh/african-context-engine/blob/main/README.md): what ACE does, coverage for all 13 countries and a quickstart
+- [Architecture](https://github.com/tbrunoh/african-context-engine/blob/main/docs/architecture.md): the request flow, modules, retrieval, channel budgets, language models and the MCP server
+- [Context packs](https://github.com/tbrunoh/african-context-engine/blob/main/docs/context-packs.md): how sourced facts are written, reviewed and validated
+- [Safety and privacy](https://github.com/tbrunoh/african-context-engine/blob/main/docs/safety-and-privacy.md): what the code guarantees, what every deployment must do and how to report a safety problem
+
+## V2 design, published 24 November 2026
+
+- [V2 overview](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/README.md): twelve decision services built on public data, a voice line in African languages, signed knowledge and a shared grounding layer
+- [Product spec](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/product-spec.md): who V2 serves, the services, journeys, architecture, roadmap, measures and risks
+- [Data and model catalog](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/data-catalog.md): every public dataset and model V2 builds on, with access and licence
+- [Build plan](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/build-plan.md): epics, contracts and evaluation for building V2 with Google Antigravity
+
+## For contributors and agents
+
+- [AGENTS.md](https://github.com/tbrunoh/african-context-engine/blob/main/AGENTS.md): rules every AI coding agent follows in this repository
+- [CONTRIBUTING.md](https://github.com/tbrunoh/african-context-engine/blob/main/CONTRIBUTING.md): how to add knowledge or code
+- [ACKNOWLEDGMENTS.md](https://github.com/tbrunoh/african-context-engine/blob/main/ACKNOWLEDGMENTS.md): every organisation whose published work ACE uses, and the credit each requires
+- [ROADMAP.md](https://github.com/tbrunoh/african-context-engine/blob/main/ROADMAP.md): the four V2 phases
+
+## Licences
+
+- [Code: Apache License 2.0](https://github.com/tbrunoh/african-context-engine/blob/main/LICENSE)
+- [Knowledge: CC BY 4.0 for open packs](https://github.com/tbrunoh/african-context-engine/blob/main/DATA_LICENSE.md)

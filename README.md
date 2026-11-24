@@ -25,7 +25,7 @@ Sources:
 ## Why ACE exists
 
 - About 1 billion Africans live inside mobile broadband coverage but do not use mobile internet (GSMA, Mobile Economy Africa 2026). USSD, SMS and voice still reach them.
-- AI advisory services are proving demand: Digital Green's FarmerChat reaches more than 1.7 million farmers, Jacaranda Health's PROMPTS has reached 2.5 million mothers, and MTN Rwanda launched a voice AI anyone can call. Each one rebuilds its own knowledge base, channel stack and safety layer, and the knowledge stays locked inside.
+- AI advisory services are proving demand: Digital Green's FarmerChat reaches nearly 3 million farmers, Jacaranda Health's PROMPTS has reached more than 3.8 million mothers in Kenya, and MTN Rwanda's voice AI, Miss Baza, has reached more than 500,000 users on a basic phone call. Each one rebuilds its own knowledge base, channel stack and safety layer, and the knowledge stays locked inside.
 - African language models are arriving (InkubaLM, Sunflower), but a model does not know which hotline handles gender based violence in Kenya or what moisture level keeps maize free of aflatoxin. Models need grounding.
 
 ACE is the shared layer underneath: open knowledge packs anyone can load, a channel toolkit for the phones people actually use, and a safety rail that runs before anything else. The full competitive map is in [docs/landscape.md](docs/landscape.md).

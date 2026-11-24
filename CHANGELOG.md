@@ -8,11 +8,12 @@
 - `AGENTS.md`, the rules every AI coding agent follows in this repository.
 - `llms.txt`, a plain summary of ACE and its key documents for AI agents and search tools.
 - `ACKNOWLEDGMENTS.md`, which credits every organisation whose published work ACE uses today, with links, and lists the sources planned for V2 with the licence and credit each requires.
-- A project page at [tbrunoh.github.io/ace](https://tbrunoh.github.io/ace/), linked from the README and `llms.txt`.
+- A project page at [tbrunoh.github.io/ace](https://tbrunoh.github.io/ace/), linked from the README and `llms.txt`, and two essays on why ACE exists, linked from `llms.txt`.
 
 ### Changed
 - `NOTICE`, `DATA_LICENSE.md` and `CONTRIBUTING.md` now explain that third party sources keep their own rights, that a credit is not an endorsement, and that each new source must be credited in the same pull request.
 - `ROADMAP.md` now follows the four V2 phases.
+- The README, `docs/landscape.md` and the V2 product spec carry the latest public figures for FarmerChat, PROMPTS and Miss Baza, checked on 24 November 2026.
 
 ## 1.1.0 (2026-11-23)
 

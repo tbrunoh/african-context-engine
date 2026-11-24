@@ -47,7 +47,7 @@ Every V2 service is built on the sources below. Each row says what ACE takes fro
 | [FAO FAMEWS](https://www.fao.org/fall-armyworm/monitoring-tools/en) | Fall armyworm scouting and trap reports, mapped at country and sub country level | Africa and beyond | Free app and platform; FAO states the data is freely available | Pest check, scouting reminders |
 | [PlantVillage Nuru](https://pmc.ncbi.nlm.nih.gov/articles/PMC7775399) | Offline phone model for cassava pests and diseases, built as a public good and field tested in East Africa | East Africa | Public good; confirm reuse terms | Design reference for the photo check |
 | [kilimoAI](https://icml.cc/virtual/2026/78313) | Over 500,000 curated maize and bean leaf images, published as open datasets, with an offline first deployment | Tanzania | Open datasets | Photo check model |
-| [CABI PlantwisePlus Knowledge Bank](https://blog.plantwise.org/2022/11/29/plantwiseplus-knowledge-bank-joins-the-cabi-digital-library/) | Over 15,000 factsheets, decision guides and videos | Plantwise countries | Free to read; reuse terms vary by item | References in pest answers |
+| [CABI PlantwisePlus Knowledge Bank](https://blog.plantwise.org/2022/11/29/plantwiseplus-knowledge-bank-joins-the-cabi-digital-library/) | Over 15,000 factsheets, decision guides and videos | Plantwise countries | Free to read; reuse terms to be confirmed with CABI | References in pest answers |
 
 ## Food security and markets
 

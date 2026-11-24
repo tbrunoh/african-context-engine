@@ -35,7 +35,7 @@
   <text x="66" y="417" class="sans" font-size="12.5" fill="#CBD5E1">Facility registries, WHO guidance</text>
   <rect x="48" y="436" width="328" height="50" rx="10" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
   <text x="66" y="457" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Language</text>
-  <text x="66" y="475" class="sans" font-size="12.5" fill="#CBD5E1">WAXAL, Sunbird, N-ATLaS speech data</text>
+  <text x="66" y="475" class="sans" font-size="12.5" fill="#CBD5E1">WAXAL data, Sunbird and N-ATLaS models</text>
   <rect x="824" y="146" width="328" height="50" rx="10" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
   <text x="842" y="167" class="sans" font-size="14" fill="#FFFFFF" font-weight="700">Farmer</text>
   <text x="842" y="185" class="sans" font-size="12.5" fill="#CBD5E1">When to plant, spray or sell</text>

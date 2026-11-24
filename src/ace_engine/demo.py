@@ -28,7 +28,7 @@ def run_demo(pack_roots: list[Path]) -> list[tuple[str, str]]:
     reply = engine.handle(Message(channel=Channel.SMS, sender=phone, text="zaidi"))
     log.append(("sms", " ".join(sms.render(reply))))
 
-    screen = ussd.respond(phone, "8*Safaricom: your line is double registered. Send your M-PESA PIN to 0711000000")
+    screen = ussd.respond(phone, "9*Safaricom: your line is double registered. Send your M-PESA PIN to 0711000000")
     log.append(("ussd", screen.replace("\n", " / ")))
 
     profile = engine.profiles.peek(phone)

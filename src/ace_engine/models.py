@@ -63,6 +63,8 @@ class Citation:
     source: str
     review_status: str
     source_url: str | None = None
+    licence: str | None = None   # set for snapshot data, from the licence register
+    date: str | None = None      # when the fact was checked, or the date its data describes
 
 
 @dataclass

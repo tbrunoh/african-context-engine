@@ -8,9 +8,13 @@
     ace packs list                                  what is loaded
     ace demo                                        one person, several channels, one memory
     ace tips list --file tips.jsonl                 review community tips
+    ace services                                    V2 services and their coverage in each country
+    ace refresh [--source cap] [--country KE]       run connectors and write dated snapshots
+    ace watch                                       recheck every served phone number against its source
 
-Packs load from ./context_packs, or from the folders given with --packs.
-Everything runs offline with no model and no API key.
+Packs load from ./context_packs, or from the folders given with --packs. V2 services read
+./snapshots, or the folder given with --snapshots. Everything a person sees runs offline with no
+model and no API key; only ace refresh and ace watch touch the network.
 """
 from __future__ import annotations
 
@@ -52,7 +56,8 @@ def _engine(args: argparse.Namespace) -> Engine:
         args.phone = f"+{COUNTRIES[country or 'KE'].dial}700000001"
     config = EngineConfig(country=country)
     tips = TipQueue(getattr(args, "tips_file", None))
-    return Engine.from_packs(*_pack_roots(args.packs), config=config, tips=tips)
+    snapshots = getattr(args, "snapshots", None) or "auto"
+    return Engine.from_packs(*_pack_roots(args.packs), config=config, tips=tips, snapshots=snapshots)
 
 
 def cmd_ask(args: argparse.Namespace) -> int:
@@ -189,6 +194,7 @@ def build_parser() -> argparse.ArgumentParser:
     common.add_argument("--packs", action="append", help="pack file or folder (repeatable)")
     common.add_argument("--country", default=None,
                         help="pin one country, for example NG or SN (default: detect from each phone number)")
+    common.add_argument("--snapshots", default=None, help="snapshots folder for the V2 services")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p = sub.add_parser("ask", parents=[common], help="ask one question")
@@ -230,7 +236,79 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("demo", parents=[common], help="multichannel walkthrough")
     p.set_defaults(func=cmd_demo)
+
+    p = sub.add_parser("services", parents=[common], help="V2 services and their coverage by country")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_services)
+
+    p = sub.add_parser("refresh", help="run connectors and write dated snapshots (uses the network)")
+    p.add_argument("--source", action="append", help="connector name (repeatable; default: all)")
+    p.add_argument("--country", action="append", help="ISO country code (repeatable; default: all 13)")
+    p.add_argument("--out", default="snapshots", help="snapshots folder")
+    p.set_defaults(func=cmd_refresh)
+
+    p = sub.add_parser("watch", help="recheck every served phone number against its source page (uses the network)")
+    p.add_argument("--packs", action="append", help="pack file or folder (repeatable)")
+    p.add_argument("--json", action="store_true")
+    p.add_argument("--report", help="also write the Markdown report to this file")
+    p.set_defaults(func=cmd_watch)
     return parser
+
+
+def cmd_services(args: argparse.Namespace) -> int:
+    engine = _engine(args)
+    if engine.services is None:
+        print("No snapshots found, so V2 services are off. Run from the repository root or pass --snapshots.")
+        return 1
+    coverage = engine.services.coverage()
+    if args.json:
+        print(json.dumps(coverage, ensure_ascii=False, indent=2))
+        return 0
+    from .services import SERVICES
+
+    codes = list(COUNTRIES)
+    print("V2 preview. Y: available. -: gap, see the detail below.\n")
+    print(f"{'service':22} " + " ".join(f"{c:>2}" for c in codes))
+    for sid, by_country in coverage.items():
+        print(f"{sid:22} " + " ".join(f"{'Y' if by_country[c]['available'] else '-':>2}" for c in codes))
+    print("\nGaps:")
+    for sid, by_country in coverage.items():
+        for c in codes:
+            if not by_country[c]["available"]:
+                print(f"  {SERVICES[sid].title['en']}, {COUNTRIES[c].name}: {by_country[c]['detail']}")
+    return 0
+
+
+def cmd_refresh(args: argparse.Namespace) -> int:
+    from .connectors import CONNECTORS, refresh
+
+    names = args.source or list(CONNECTORS)
+    unknown = [n for n in names if n not in CONNECTORS]
+    if unknown:
+        sys.exit(f"Unknown source {', '.join(unknown)}. Sources: {', '.join(CONNECTORS)}")
+    countries = [c.upper() for c in (args.country or [])] or None
+    report = refresh(args.out, names, countries)
+    for name, country in report.written:
+        print(f"wrote   {name:26} {country}")
+    for h in report.failed:
+        print(f"FAILED  {h.name:26} {h.country}  {h.detail}")
+    for h in report.skipped:
+        print(f"gap     {h.name:26} {h.country}  {h.detail}")
+    return 1 if report.failed and not report.written else 0
+
+
+def cmd_watch(args: argparse.Namespace) -> int:
+    from .context.packs import load_packs
+    from .watch import as_dicts, check, report_markdown
+
+    results = check(load_packs(*_pack_roots(args.packs)))
+    if args.json:
+        print(json.dumps(as_dicts(results), ensure_ascii=False, indent=2))
+    else:
+        print(report_markdown(results))
+    if args.report:
+        Path(args.report).write_text(report_markdown(results), encoding="utf-8")
+    return 2 if any(r.status == "missing" for r in results) else 0
 
 
 def main(argv: list[str] | None = None) -> int:

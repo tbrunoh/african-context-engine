@@ -75,6 +75,9 @@ class Profile:
     last_topic: tuple[str, str] | None = None  # (vertical, topic) of the last grounded answer
     last_fact_ids: list[str] = field(default_factory=list)
     last_query: str | None = None
+    last_place: tuple[str, str] | None = None     # (country, area code) the person last named, for V2 services
+    pending_service: str | None = None            # a V2 service waiting for the person's place or details
+    pending_text: str = ""                        # the question that service is answering
     channels: list[Channel] = field(default_factory=list)
     history: list[Turn] = field(default_factory=list)
     opted_out: bool = False

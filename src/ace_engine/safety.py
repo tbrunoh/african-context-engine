@@ -37,12 +37,15 @@ MATERNAL_DANGER = ("bleeding", "fits", "convulsion", "convulsions", "seizure", "
                    "bebe ne bouge pas", "perte des eaux", "poche des eaux")
 URGENT = ("not breathing", "cannot breathe", "can't breathe", "difficulty breathing", "unconscious",
           "collapsed", "fainted", "convulsion", "convulsions", "seizure", "having fits", "heavy bleeding",
-          "bleeding heavily", "chest pain", "snake bite", "snakebite", "bitten by a snake", "severe burn",
+          "bleeding heavily", "chest pain", "snake bite", "snakebite", "bitten by a snake", "snake bit", "snake has bitten",
+          "severe burn",
           "hapumui", "anashindwa kupumua", "amezimia", "amepoteza fahamu", "kupoteza fahamu", "degedege",
           "kutokwa na damu nyingi", "damu nyingi", "maumivu ya kifua", "ameumwa na nyoka", "kuumwa na nyoka",
+          "ameng'atwa na nyoka",
           "ne respire plus", "ne respire pas", "respire mal", "inconscient", "inconsciente", "evanoui", "evanouie",
           "convulse", "saigne beaucoup", "hemorragie", "douleur a la poitrine", "douleur thoracique",
-          "morsure de serpent", "mordu par un serpent", "mordue par un serpent", "brulure grave")
+          "morsure de serpent", "mordu par un serpent", "mordue par un serpent", "serpent a mordu",
+          "brulure grave")
 POISON_ACT = ("swallowed", "drank", "ate", "amekunywa", "amemeza", "alikunywa", "alimeza", "amekula",
               "a avale", "avale", "a bu", "a mange")
 POISON_WHAT = ("poison", "pesticide", "insecticide", "chemical", "chemicals", "rat poison", "paraffin",

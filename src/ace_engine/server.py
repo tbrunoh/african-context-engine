@@ -7,6 +7,8 @@ Routes
     POST /v1/ask              JSON question in, grounded JSON answer out
     POST /v1/scam             JSON message in, Scam Shield verdict out
     GET  /v1/emergency        numbers for a safety queue, for example ?queue=gbv
+    GET  /v1/services         V2 decision services and their coverage in each country
+    POST /v1/services/<id>    run one service: {"country", "place" or "lat"/"lon", "language", "text", ...}
     POST /ussd                Africa's Talking USSD callback (form)  -> text/plain CON or END
     POST /sms                 Africa's Talking inbound SMS (form)     -> JSON, and sends replies if configured
     POST /voice               Africa's Talking voice callback (form)  -> XML actions
@@ -132,6 +134,29 @@ class AceApp:
                 return _json(400, {"error": "country is required, one of " + ", ".join(COUNTRIES)})
             contacts = contacts_for(queue, list(self.engine.store), country)
             return _json(200, {"queue": queue, "country": country, "contacts": [c.__dict__ for c in contacts]})
+        if path == "/v1/services" and method == "GET":
+            hub = self.engine.services
+            if hub is None:
+                return _json(200, {"services": [], "note": "no snapshots loaded, so V2 services are off"})
+            from .services import SERVICES
+
+            coverage = hub.coverage()
+            return _json(200, {"preview": True, "services": [
+                {"id": sid, "title": svc.title, "connectors": list(svc.connectors), "coverage": coverage[sid]}
+                for sid, svc in SERVICES.items()]})
+        if path.startswith("/v1/services/") and method == "POST":
+            hub = self.engine.services
+            if hub is None:
+                return _json(503, {"error": "no snapshots loaded, so V2 services are off"})
+            data = _json_body(body)
+            params = {k: data[k] for k in ("weeks", "crop", "food") if data.get(k) is not None}
+            if self.engine.safety.check(str(data.get("text", ""))).escalate:
+                message = Message(channel=Channel.API, sender=str(data.get("phone") or "+254700000000"),
+                                  text=str(data["text"]), language=data.get("language"))
+                return _json(200, {"outcome": "emergency", **self.engine.handle(message).to_dict()})
+            return _json(200, hub.call(path.rsplit("/", 1)[-1], data.get("country"), data.get("place"),
+                                       data.get("lat"), data.get("lon"), data.get("language") or "en",
+                                       str(data.get("text", "")), params))
         if method != "POST":
             return _json(405, {"error": "method not allowed"})
         data = _json_body(body)

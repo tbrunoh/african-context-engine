@@ -1,4 +1,4 @@
-"""The countries ACE V1 covers, and how a phone number tells us which one a caller is in.
+"""The 13 countries ACE covers, and how a phone number tells us which one a caller is in.
 
 One deployment can serve every covered country at once: the international
 dialling code of the caller's number picks the country, so the emergency
@@ -33,12 +33,15 @@ COUNTRIES: dict[str, Country] = {c.code: c for c in (
     Country("TG", "Togo", "228", ("fr",)),
 )}
 
+ISO3: dict[str, str] = {"KE": "KEN", "TZ": "TZA", "UG": "UGA", "RW": "RWA", "ZA": "ZAF", "BW": "BWA", "NA": "NAM",
+                        "ZW": "ZWE", "NG": "NGA", "GH": "GHA", "SN": "SEN", "CI": "CIV", "TG": "TGO"}
+
 # Longest prefixes first, so "27" never shadows a longer code that starts with 27.
 _BY_DIAL = sorted(COUNTRIES.values(), key=lambda c: -len(c.dial))
 
 
 def country_for_msisdn(msisdn: str) -> Country | None:
-    """The covered country for an E.164 number, or None when it is outside V1 coverage."""
+    """The covered country for an E.164 number, or None when it is outside ACE coverage."""
     digits = msisdn.lstrip("+")
     for country in _BY_DIAL:
         if digits.startswith(country.dial):

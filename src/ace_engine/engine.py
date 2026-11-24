@@ -1,6 +1,6 @@
 """The engine: one pipeline behind every entry point.
 
-    identity -> country -> safety rail -> commands -> Scam Shield -> retrieval -> compose -> reply
+    identity -> country -> safety rail -> commands -> Scam Shield -> V2 services -> retrieval -> compose -> reply
 
 Every stage is small, replaceable and tested on its own. The order is the
 design: nothing can delay or override an emergency, and nothing reaches a
@@ -34,6 +34,8 @@ from .safety import (
     format_numbers,
 )
 from .scam import GENERIC_REPORT_LINE, HEADLINES, NEUTRAL_ADVICE, REPORT_LINE, SIGNS_LABEL, ScamReport, Verdict, analyse
+from .services import PLACE_SERVICES, ServiceHub, detect
+from .snapshots import SnapshotStore, default_root
 from .text import SUPPORTED_LANGUAGES, guess_language, terms, truncate_words, wants_action
 from .tips import Tip, TipQueue
 
@@ -47,6 +49,9 @@ CHANNEL_BUDGETS: dict[Channel, Budget] = {
     Channel.API: Budget(max_chars=1500, short=False, max_facts=4),
     Channel.AGENT: Budget(max_chars=1500, short=False, max_facts=4),
 }
+
+
+SAFETY_CONTEXT = {"pregnancy_companion": "pregnant"}
 
 
 @dataclass
@@ -63,7 +68,8 @@ class Engine:
                  profiles: ProfileStore | None = None,
                  composer: ExtractiveComposer | GroundedGenerator | None = None,
                  safety: EscalationPolicy | None = None, handoffs: HandoffSink | None = None,
-                 tips: TipQueue | None = None, config: EngineConfig | None = None) -> None:
+                 tips: TipQueue | None = None, config: EngineConfig | None = None,
+                 services: ServiceHub | None = None) -> None:
         self.store = store
         self.packs = sorted(packs or [], key=lambda p: (p.order, p.id))
         self.profiles = profiles or ProfileStore()
@@ -72,14 +78,33 @@ class Engine:
         self.handoffs = handoffs or InMemoryHandoffs()
         self.tips = tips or TipQueue()
         self.config = config or EngineConfig()
+        self.services = services
+        if self.services is not None:
+            self.services.ctx.store = self.store
+            self.services.ctx.numbers = self.numbers_for
 
     @classmethod
-    def from_packs(cls, *paths: str | Path, **kwargs) -> Engine:
+    def from_packs(cls, *paths: str | Path, snapshots: str | Path | SnapshotStore | None = "auto",
+                   **kwargs) -> Engine:
+        """Build an engine from packs. V2 services read snapshots from the given folder, or from the
+        repository or installed copy when snapshots is "auto"; pass None to run with packs only (V1)."""
         packs = load_packs(*paths)
         store = ContextStore()
         for pack in packs:
             store.extend(pack.facts)
+        if "services" not in kwargs and snapshots is not None:
+            if isinstance(snapshots, SnapshotStore):
+                snap_store = snapshots
+            else:
+                root = default_root() if snapshots == "auto" else Path(snapshots)
+                snap_store = SnapshotStore(root) if root else None
+            if snap_store is not None:
+                kwargs["services"] = ServiceHub(snap_store)
         return cls(store, packs=packs, **kwargs)
+
+    def numbers_for(self, queue: str, country: str | None) -> list[Contact]:
+        """Verified numbers for a queue in one country, from the V1 emergency packs."""
+        return contacts_for(queue, self._contact_facts(country), country) if country else []
 
     # ------------------------------------------------------------------ country and language
 
@@ -122,6 +147,7 @@ class Engine:
         reply = (self._safety(text, lang, profile, message, country)
                  or self._command(text, lang, profile, message, budget, country)
                  or self._scam_auto(text, lang, message, budget, country)
+                 or self._service(text, lang, profile, message, budget, country)
                  or self._answer(text, lang, profile, message, budget, country))
         if reply.kind is not ReplyKind.EMERGENCY and len(reply.text) > budget.max_chars:
             reply.text = truncate_words(reply.text, budget.max_chars)  # last line of defence
@@ -208,6 +234,61 @@ class Engine:
         if report.verdict is Verdict.LIKELY_SCAM:
             return self.scam_reply(report, lang, budget, country)
         return None
+
+    def _service(self, text: str, lang: str, profile: Profile, message: Message, budget: Budget,
+                 country: str | None) -> Reply | None:
+        """V2 decision services: rain, warnings, facilities, prices, pregnancy checks and crop problems."""
+        if self.services is None:
+            return None
+        sid = detect(text)
+        pending = profile.pending_service
+        asked = text
+        if sid is None and pending:
+            sid, asked = pending, f"{profile.pending_text} {text}".strip()
+            if sid in PLACE_SERVICES and self.services.resolve_place(text, country, message.location) is None:
+                profile.pending_service, profile.pending_text = None, ""
+                return None  # not a place: treat it as a new question
+        if sid is None:
+            return None
+        return self._service_reply(sid, asked, lang, profile, message, budget, country, pending=pending)
+
+    def run_service(self, service_id: str, message: Message, budget: Budget | None = None,
+                    params: dict | None = None) -> Reply:
+        """Run one named V2 service, for menus and the API. The safety rail still runs first."""
+        if self.services is None:
+            raise RuntimeError("this engine has no snapshots, so V2 services are off")
+        budget = budget or self.config.budgets.get(message.channel, CHANNEL_BUDGETS[Channel.API])
+        text = " ".join(message.text.split())
+        lang = self.language_for(message.sender, text, message.language)
+        profile = self.profiles.record_inbound(message)
+        country = self.country_for(message.sender)
+        # A menu screen sets the context a message would otherwise carry: "bleeding" typed on the
+        # pregnancy screen is a pregnancy emergency, so the safety rail sees it that way.
+        context = SAFETY_CONTEXT.get(service_id, "")
+        reply = (self._safety(f"{context} {text}".strip(), lang, profile, message, country)
+                 or self._service_reply(service_id, text, lang, profile, message, budget, country,
+                                        pending=service_id, params=params))
+        self.profiles.record_reply(profile, message.channel, reply.text)
+        return reply
+
+    def _service_reply(self, sid: str, asked: str, lang: str, profile: Profile, message: Message, budget: Budget,
+                       country: str | None, pending: str | None = None, params: dict | None = None) -> Reply:
+        run = self.services.run(sid, asked, country, lang, budget.max_chars, location=message.location,
+                                remembered=profile.last_place, params=params)
+        result = run.result
+        if run.place is not None:
+            profile.last_place = (run.place.country, run.place.code)
+        if not run.ok and result.reason in ("needs_place", "needs_crop", "needs_weeks") and pending != sid:
+            profile.pending_service, profile.pending_text = sid, asked
+        else:
+            profile.pending_service, profile.pending_text = None, ""
+        action = {"type": "service", "service": sid, "preview": result.preview, "outcome":
+                  "answer" if run.ok else result.reason, "data": result.data}
+        if run.ok:
+            action["data_date"] = result.data_date
+            action["confidence"] = result.confidence
+        kind = ReplyKind.ANSWER if run.ok else ReplyKind.CLARIFY
+        return Reply(run.text(lang), kind, lang, list(result.citations), actions=[action])
 
     def _answer(self, text: str, lang: str, profile: Profile, message: Message, budget: Budget,
                 country: str | None, exclude: set[str] | None = None) -> Reply:

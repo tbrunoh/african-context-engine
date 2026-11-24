@@ -8,6 +8,16 @@ Then add it to any MCP client as a stdio server. Tools:
     check_message       Scam Shield verdict on a suspicious mobile money message
     emergency_contacts  verified numbers for a kind of emergency in a country
     list_packs          what knowledge is loaded, with review status
+
+V2 decision services (preview), each answering with dated, cited data:
+
+    rain_this_week      chance of rain each day for an area
+    official_warnings   warnings in force from the national alerting authority
+    nearest_facility    nearest public health facilities
+    market_prices       WFP market prices near a place
+    pregnancy_companion when the next antenatal check is due, and when to go now
+    pest_check          the likely crop problem and the first step
+    service_coverage    which service works in which country, and why not where it does not
 """
 from __future__ import annotations
 
@@ -25,7 +35,9 @@ INSTRUCTIONS = (
     "Checked, local context for Africa from the African Context Engine (ACE). Before answering questions "
     "about farming, pregnancy danger signs, mobile money fraud or emergency numbers for a place in Africa, "
     "call search_context or ask_ace and cite the sources returned. If a person describes an emergency, call "
-    "emergency_contacts and give the numbers first. Never present facts with review_status draft as checked."
+    "emergency_contacts and give the numbers first. Never present facts with review_status draft as checked. "
+    "The V2 services (rain_this_week, official_warnings, nearest_facility, market_prices, pregnancy_companion, "
+    "pest_check) are a preview: pass on their date and source, and call service_coverage to see gaps by country."
 )
 
 
@@ -96,7 +108,51 @@ def build_tools(engine: Engine) -> dict[str, Any]:
                         "license": p.license, "facts": len(p.facts), "review_status": statuses})
         return out
 
-    return {f.__name__: f for f in (ask_ace, search_context, check_message, emergency_contacts, list_packs)}
+    tools = [ask_ace, search_context, check_message, emergency_contacts, list_packs]
+    hub = engine.services
+    if hub is not None:
+        def rain_this_week(country: str, place: str | None = None, lat: float | None = None, lon: float | None = None,
+                           language: str = "en") -> dict[str, Any]:
+            """Chance of rain each day this week for an area of a covered country (ISO code such as KE, NG, SN),
+            from the ECMWF ensemble. Give the area name (county, state, region or district) or lat and lon."""
+            return hub.call("rain_this_week", country, place, lat, lon, language)
+
+        def official_warnings(country: str, place: str | None = None, lat: float | None = None,
+                              lon: float | None = None, language: str = "en") -> dict[str, Any]:
+            """Official CAP warnings in force from the national alerting authority for an area. Says when the
+            authority publishes no feed or when the feed could not be checked recently."""
+            return hub.call("official_warnings", country, place, lat, lon, language)
+
+        def nearest_facility(country: str, place: str | None = None, lat: float | None = None,
+                             lon: float | None = None, language: str = "en") -> dict[str, Any]:
+            """Nearest public health facilities (2019 list, no phone numbers) and the country's emergency number."""
+            return hub.call("nearest_facility", country, place, lat, lon, language)
+
+        def market_prices(country: str, place: str | None = None, food: str | None = None, lat: float | None = None,
+                          lon: float | None = None, language: str = "en") -> dict[str, Any]:
+            """Latest WFP market prices near a place, optionally for one food such as maize, beans or rice.
+            Refuses prices older than about four months."""
+            return hub.call("market_prices", country, place, lat, lon, language, text=food or "",
+                            params={"food": food} if food else None)
+
+        def pregnancy_companion(country: str, weeks: int | None = None, language: str = "en") -> dict[str, Any]:
+            """When the next antenatal check is due (WHO 2016 schedule), with the danger signs and the country's
+            numbers. If the person describes a danger sign, call ask_ace or emergency_contacts first."""
+            return hub.call("pregnancy_companion", country, None, None, None, language,
+                            params={"weeks": weeks} if weeks else None)
+
+        def pest_check(crop: str, symptoms: str = "", country: str = "KE", language: str = "en") -> dict[str, Any]:
+            """The likely problem for maize, cassava, banana or tomato from what the farmer sees, the first step,
+            and a referral to an extension officer before spraying."""
+            return hub.call("pest_check", country, None, None, None, language, text=f"{crop} {symptoms}".strip())
+
+        def service_coverage() -> dict[str, Any]:
+            """Which V2 service is available in which covered country, and the reason where it is not."""
+            return hub.coverage()
+
+        tools += [rain_this_week, official_warnings, nearest_facility, market_prices, pregnancy_companion, pest_check,
+                  service_coverage]
+    return {f.__name__: f for f in tools}
 
 
 def build_server(engine: Engine) -> Any:

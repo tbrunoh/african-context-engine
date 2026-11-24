@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACE playground</title>
+<style>
+  :root { --bg:#0f1412; --panel:#161d1a; --line:#24302b; --ink:#e8efe9; --muted:#93a39a; --accent:#e0a33a;
+          --lcd:#b9d4a1; --lcd-ink:#1d2a17; --ok:#5fb07a; --warn:#e0a33a; --bad:#e2665a; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); }
+  header { padding:28px 32px 8px; max-width:1180px; margin:0 auto; }
+  header h1 { margin:0; font-size:22px; letter-spacing:.2px; }
+  header p { margin:6px 0 0; color:var(--muted); max-width:760px; }
+  main { display:grid; grid-template-columns: 380px 1fr; gap:28px; padding:20px 32px 40px; max-width:1180px; margin:0 auto; }
+  @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .phone { background:#0a0d0c; border:1px solid var(--line); border-radius:36px; padding:22px 18px 26px; box-shadow:0 30px 60px rgba(0,0,0,.45); }
+  .tabs { display:flex; gap:6px; margin-bottom:14px; }
+  .tabs button { flex:1; background:var(--panel); color:var(--muted); border:1px solid var(--line); border-radius:10px; padding:8px 0; cursor:pointer; font-weight:600; }
+  .tabs button.on { color:var(--ink); border-color:var(--accent); }
+  .screen { background:var(--lcd); color:var(--lcd-ink); border-radius:14px; min-height:300px; padding:16px; font:15px/1.45 ui-monospace,Menlo,Consolas,monospace; white-space:pre-wrap; }
+  .chat { background:#101614; border-radius:14px; height:360px; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; }
+  .msg { max-width:85%; padding:8px 11px; border-radius:14px; white-space:pre-wrap; }
+  .me { align-self:flex-end; background:#2b4a3a; }
+  .ace { align-self:flex-start; background:#1e2723; border:1px solid var(--line); }
+  .seg { display:block; font-size:11px; color:var(--muted); margin-top:4px; }
+  .row { display:flex; gap:8px; margin-top:12px; }
+  .row input { flex:1; background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:10px 12px; font-size:15px; }
+  .row button, .dial { background:var(--accent); color:#1a1205; border:0; border-radius:10px; padding:10px 14px; font-weight:700; cursor:pointer; }
+  .dial { width:100%; margin-top:12px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:20px 22px; }
+  .panel h2 { margin:0 0 4px; font-size:16px; }
+  .panel .sub { color:var(--muted); margin:0 0 14px; }
+  .kind { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; background:#22302a; }
+  .kind.emergency { background:var(--bad); color:#fff; } .kind.scam { background:var(--warn); color:#1a1205; } .kind.answer { background:var(--ok); color:#06210f; }
+  .cite { border-top:1px solid var(--line); padding:10px 0; }
+  .cite b { font-weight:600; } .cite a { color:var(--accent); word-break:break-all; }
+  .cite small { color:var(--muted); display:block; }
+  .tries { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
+  .tries button { background:#1e2723; color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:6px 12px; cursor:pointer; font-size:13px; }
+  .note { color:var(--muted); font-size:13px; margin-top:16px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>ACE playground</h1>
+  <p>Try the African Context Engine the way people reach it: a USSD menu on any phone, or a plain SMS conversation. Every answer comes from checked context packs and shows its sources.</p>
+</header>
+<main>
+  <section class="phone">
+    <div class="tabs"><button id="tab-ussd" class="on">USSD</button><button id="tab-sms">SMS</button></div>
+    <div id="ussd">
+      <div class="screen" id="lcd">Press Dial to open the ACE menu.</div>
+      <div class="row"><input id="ussd-in" placeholder="Reply" autocomplete="off"><button id="ussd-send">Send</button></div>
+      <button class="dial" id="dial">Dial ACE</button>
+    </div>
+    <div id="sms" hidden>
+      <div class="chat" id="chat"></div>
+      <div class="row"><input id="sms-in" placeholder="Type an SMS in English or Swahili" autocomplete="off"><button id="sms-send">Send</button></div>
+    </div>
+  </section>
+  <section class="panel">
+    <h2>What ACE did</h2>
+    <p class="sub" id="why">Send a message to see how the answer was grounded.</p>
+    <div id="cites"></div>
+    <h2 style="margin-top:22px">Try these</h2>
+    <div class="tries" id="tries"></div>
+    <p class="note">This playground runs on your machine. Phone numbers are pseudonymised and nothing leaves the server unless you configure a provider.</p>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const phone = "+2547" + String(Math.floor(10000000 + Math.random() * 89999999));
+let path = [], session = "play-" + Date.now();
+
+const tries = ["Armyworm is eating my maize, what do I do?", "viwavi wanakula mahindi yangu nifanye nini",
+  "How do I store maize to avoid aflatoxin?", "Your SIM is registered twice, send your M-PESA PIN to confirm",
+  "Someone says they sent me money by mistake", "I am pregnant and bleeding", "When are the long rains?", "HELP"];
+for (const t of tries) { const b = document.createElement("button"); b.textContent = t;
+  b.onclick = () => { show("sms"); $("sms-in").value = t; sendSms(); }; $("tries").appendChild(b); }
+
+function show(which) { $("ussd").hidden = which !== "ussd"; $("sms").hidden = which !== "sms";
+  $("tab-ussd").classList.toggle("on", which === "ussd"); $("tab-sms").classList.toggle("on", which === "sms"); }
+$("tab-ussd").onclick = () => show("ussd"); $("tab-sms").onclick = () => show("sms");
+
+async function ussd() {
+  const body = new URLSearchParams({ sessionId: session, serviceCode: "*384#", phoneNumber: phone, text: path.join("*") });
+  const r = await fetch("/ussd", { method: "POST", body });
+  const t = await r.text();
+  $("lcd").textContent = t.slice(4);
+  if (t.startsWith("END")) { path = []; session = "play-" + Date.now(); $("lcd").textContent += "\n\n[session ended]"; }
+  $("why").textContent = "USSD screen: " + (t.length) + " of 182 characters.";
+}
+$("dial").onclick = () => { path = []; session = "play-" + Date.now(); ussd(); };
+$("ussd-send").onclick = () => { const v = $("ussd-in").value.trim(); if (!v) return; path.push(v); $("ussd-in").value = ""; ussd(); };
+$("ussd-in").addEventListener("keydown", (e) => { if (e.key === "Enter") $("ussd-send").click(); });
+
+function bubble(text, who, segs) { const d = document.createElement("div"); d.className = "msg " + who; d.textContent = text;
+  if (segs) { const s = document.createElement("span"); s.className = "seg"; s.textContent = segs + " SMS segment" + (segs > 1 ? "s" : ""); d.appendChild(s); }
+  $("chat").appendChild(d); $("chat").scrollTop = 1e9; }
+async function sendSms() {
+  const text = $("sms-in").value.trim(); if (!text) return; $("sms-in").value = ""; bubble(text, "me");
+  const r = await fetch("/v1/ask", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, phone, channel: "sms" }) });
+  const data = await r.json();
+  if (!r.ok) { bubble(data.error || "Error", "ace"); return; }
+  bubble((data.segments || [data.text]).join(" "), "ace", (data.segments || []).length);
+  explain(data);
+}
+$("sms-send").onclick = sendSms; $("sms-in").addEventListener("keydown", (e) => { if (e.key === "Enter") sendSms(); });
+
+function explain(d) {
+  const labels = { answer: "Grounded answer", emergency: "Safety rail: emergency numbers, human handoff raised",
+    scam: "Scam Shield verdict", clarify: "No checked guidance matched, so ACE said so", system: "System command" };
+  $("why").innerHTML = ""; const k = document.createElement("span"); k.className = "kind " + d.kind; k.textContent = d.kind;
+  $("why").append(k, " ", labels[d.kind] || "", d.language ? " (" + d.language + ")" : "");
+  $("cites").innerHTML = "";
+  for (const c of d.citations || []) { const div = document.createElement("div"); div.className = "cite";
+    const b = document.createElement("b"); b.textContent = c.fact_id; div.appendChild(b);
+    const s = document.createElement("small"); s.textContent = c.source + " | " + c.review_status; div.appendChild(s);
+    if (c.source_url) { const a = document.createElement("a"); a.href = c.source_url; a.target = "_blank"; a.rel = "noopener"; a.textContent = c.source_url; div.appendChild(a); }
+    $("cites").appendChild(div); }
+}
+</script>
+</body>
+</html>

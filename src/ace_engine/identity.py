@@ -19,10 +19,14 @@ import warnings
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
+from .countries import COUNTRIES
 from .models import Channel, GeoPoint, Message
 
 _E164 = re.compile(r"^\+[1-9]\d{6,14}$")
 DEV_SALT = "ace-development-salt-change-me"
+
+
+_COVERED_DIAL_CODES = tuple(c.dial for c in COUNTRIES.values())
 
 
 def normalize_msisdn(number: str, default_country_code: str = "254") -> str:
@@ -41,6 +45,8 @@ def normalize_msisdn(number: str, default_country_code: str = "254") -> str:
         candidate = "+" + default_country_code + digits[1:]
     elif digits.startswith(default_country_code):
         candidate = "+" + digits
+    elif len(digits) >= 11 and any(digits.startswith(code) for code in _COVERED_DIAL_CODES):
+        candidate = "+" + digits  # a full international number sent without the plus
     else:
         candidate = "+" + default_country_code + digits
     if not _E164.match(candidate):

@@ -9,7 +9,7 @@ from .identity import ProfileStore, normalize_msisdn
 from .models import Channel, Citation, GeoPoint, Message, Reply, ReplyKind
 from .scam import Verdict, analyse
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 __all__ = [
     "CHANNEL_BUDGETS", "Channel", "Citation", "ContextFact", "ContextQuery", "ContextStore", "Engine",

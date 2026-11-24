@@ -26,31 +26,46 @@ from .text import contains_phrase
 
 # Groups of phrases. A rule is a tuple of groups; all groups must match.
 PREGNANCY = ("pregnant", "pregnancy", "expecting", "months pregnant", "mjamzito", "ujauzito", "mimba",
-             "nina mimba", "ana mimba")
+             "nina mimba", "ana mimba", "enceinte", "grossesse")
 POSTPARTUM = ("gave birth", "just delivered", "after delivery", "after birth", "amejifungua", "nimejifungua",
-              "baada ya kujifungua")
+              "baada ya kujifungua", "accouche", "vient d accoucher", "apres l accouchement")
 MATERNAL_DANGER = ("bleeding", "fits", "convulsion", "convulsions", "seizure", "blurred vision",
                    "severe headache", "baby not moving", "baby stopped moving", "not kicking", "water broke",
                    "damu", "degedege", "kifafa", "kichwa kinauma sana", "maumivu makali", "haoni vizuri",
-                   "mtoto hachezi", "hachezi tumboni")
+                   "mtoto hachezi", "hachezi tumboni", "saigne", "saignement", "saignements", "sang",
+                   "vision trouble", "maux de tete violents", "mal de tete severe", "le bebe ne bouge plus",
+                   "bebe ne bouge pas", "perte des eaux", "poche des eaux")
 URGENT = ("not breathing", "cannot breathe", "can't breathe", "difficulty breathing", "unconscious",
           "collapsed", "fainted", "convulsion", "convulsions", "seizure", "having fits", "heavy bleeding",
           "bleeding heavily", "chest pain", "snake bite", "snakebite", "bitten by a snake", "severe burn",
           "hapumui", "anashindwa kupumua", "amezimia", "amepoteza fahamu", "kupoteza fahamu", "degedege",
-          "kutokwa na damu nyingi", "damu nyingi", "maumivu ya kifua", "ameumwa na nyoka", "kuumwa na nyoka")
-POISON_ACT = ("swallowed", "drank", "ate", "amekunywa", "amemeza", "alikunywa", "alimeza", "amekula")
+          "kutokwa na damu nyingi", "damu nyingi", "maumivu ya kifua", "ameumwa na nyoka", "kuumwa na nyoka",
+          "ne respire plus", "ne respire pas", "respire mal", "inconscient", "inconsciente", "evanoui", "evanouie",
+          "convulse", "saigne beaucoup", "hemorragie", "douleur a la poitrine", "douleur thoracique",
+          "morsure de serpent", "mordu par un serpent", "mordue par un serpent", "brulure grave")
+POISON_ACT = ("swallowed", "drank", "ate", "amekunywa", "amemeza", "alikunywa", "alimeza", "amekula",
+              "a avale", "avale", "a bu", "a mange")
 POISON_WHAT = ("poison", "pesticide", "insecticide", "chemical", "chemicals", "rat poison", "paraffin",
-               "kerosene", "bleach", "jik", "sumu", "dawa ya wadudu", "dawa ya panya", "mafuta taa")
-POISONED = ("poisoned", "poisoning", "amewekewa sumu", "amekunywa sumu", "amemeza sumu", "sumu ya panya")
+               "kerosene", "bleach", "jik", "sumu", "dawa ya wadudu", "dawa ya panya", "mafuta taa",
+               "produit chimique", "mort aux rats", "petrole", "eau de javel", "javel")
+POISONED = ("poisoned", "poisoning", "amewekewa sumu", "amekunywa sumu", "amemeza sumu", "sumu ya panya",
+            "empoisonne", "empoisonnee", "empoisonnement", "intoxication", "intoxique", "intoxiquee")
 GBV = ("raped", "rape", "sexually assaulted", "assaulted me", "beats me", "beating me", "he hit me",
        "my husband beats", "domestic violence", "threatened to kill me", "nimebakwa", "amebakwa", "kubakwa",
-       "ananipiga", "amenipiga", "mume wangu ananipiga", "dhuluma za kijinsia", "ukatili wa kijinsia")
-CHILD = ("child", "my daughter", "my son", "girl", "boy", "mtoto", "msichana", "mvulana", "binti")
+       "ananipiga", "amenipiga", "mume wangu ananipiga", "dhuluma za kijinsia", "ukatili wa kijinsia",
+       "viol", "violee", "agression sexuelle", "agressee sexuellement", "mon mari me bat", "il me bat",
+       "il me frappe", "m a frappee", "violence conjugale", "violences conjugales", "violence domestique",
+       "menace de me tuer", "violences basees sur le genre")
+CHILD = ("child", "my daughter", "my son", "girl", "boy", "mtoto", "msichana", "mvulana", "binti",
+         "enfant", "ma fille", "mon fils", "fillette", "garcon")
 CHILD_HARM = ("defiled", "defilement", "abused", "abuse", "molested", "touched", "beaten", "married off",
-              "amenajisiwa", "unajisi", "ananyanyaswa", "amenyanyaswa", "anapigwa", "kuolewa kwa lazima")
+              "amenajisiwa", "unajisi", "ananyanyaswa", "amenyanyaswa", "anapigwa", "kuolewa kwa lazima",
+              "abuse", "abusee", "maltraite", "maltraitee", "agresse", "agressee", "battu", "battue",
+              "mariee de force", "mariage force", "attouchements")
 SELF_HARM = ("kill myself", "end my life", "suicide", "suicidal", "want to die", "better off dead",
              "hurt myself", "harm myself", "kujiua", "nataka kufa", "kujitoa uhai", "kujiumiza",
-             "sitaki kuishi")
+             "sitaki kuishi", "me suicider", "je vais me tuer", "je veux mourir", "mettre fin a mes jours",
+             "en finir avec la vie", "me faire du mal", "je ne veux plus vivre")
 
 DEFAULT_RULES: dict[str, tuple[tuple[str, ...], ...]] = {
     # Order matters: the first queue whose rule fires wins.
@@ -110,33 +125,41 @@ OPENERS: dict[str, dict[str, str]] = {
     "self_harm": {
         "en": "I am really sorry you are feeling this way. You deserve support right now. {numbers}",
         "sw": "Pole sana kwa unavyojisikia. Unastahili msaada sasa hivi. {numbers}",
+        "fr": "Je suis vraiment désolé que vous vous sentiez ainsi. Vous méritez de l'aide maintenant. {numbers}",
     },
     "maternal": {
         "en": "This could be a pregnancy emergency. Go to the nearest health facility now. {numbers}",
         "sw": "Hii inaweza kuwa dharura ya ujauzito. Nenda kituo cha afya kilicho karibu sasa. {numbers}",
+        "fr": "Cela peut être une urgence de grossesse. Allez au centre de santé le plus proche maintenant. {numbers}",
     },
     "poisoning": {
         "en": "This sounds like poisoning. Get medical help now and take the container with you. {numbers}",
         "sw": "Hii inaonekana kuwa sumu. Tafuta msaada wa matibabu sasa na ubebe chombo cha sumu. {numbers}",
+        "fr": "Cela ressemble à un empoisonnement. Obtenez une aide médicale maintenant et emportez le produit. {numbers}",
     },
     "child_protection": {
         "en": "A child may be in danger. Please get help now. {numbers}",
         "sw": "Mtoto anaweza kuwa hatarini. Tafadhali tafuta msaada sasa. {numbers}",
+        "fr": "Un enfant est peut-être en danger. Obtenez de l'aide maintenant. {numbers}",
     },
     "gbv": {
         "en": "I am sorry this is happening. You can get help now. {numbers}",
         "sw": "Pole kwa yanayokupata. Unaweza kupata msaada sasa. {numbers}",
+        "fr": "Je suis désolé que cela vous arrive. Vous pouvez obtenir de l'aide maintenant. {numbers}",
     },
     "health_urgent": {
         "en": "This sounds urgent. Get medical help now. {numbers}",
         "sw": "Hii inaonekana ya dharura. Tafuta msaada wa matibabu sasa. {numbers}",
+        "fr": "Cela semble urgent. Obtenez une aide médicale maintenant. {numbers}",
     },
 }
-CALL_WORD = {"en": "Call", "sw": "Piga"}
-OR_WORD = {"en": "or", "sw": "au"}
+CALL_WORD = {"en": "Call", "sw": "Piga", "fr": "Appelez le"}
+OR_WORD = {"en": "or", "sw": "au", "fr": "ou"}
+EMERGENCY_WORD = {"en": "emergency", "sw": "dharura", "fr": "urgence"}
 FALLBACK_NUMBERS = {
     "en": "Call your local emergency number or go to the nearest health facility.",
     "sw": "Piga nambari ya dharura ya eneo lako au nenda kituo cha afya kilicho karibu.",
+    "fr": "Appelez le numéro d'urgence local ou allez au centre de santé le plus proche.",
 }
 
 
@@ -160,13 +183,12 @@ def format_numbers(contacts: list[Contact], language: str) -> str:
     others = [c for c in contacts if "emergency" not in c.queues]
     parts = []
     if emergency:
-        parts.append(f" {OR_WORD[lang]} ".join(emergency) + " (emergency)" if lang == "en"
-                     else f" {OR_WORD[lang]} ".join(emergency) + " (dharura)")
+        parts.append(f" {OR_WORD[lang]} ".join(emergency) + f" ({EMERGENCY_WORD[lang]})")
     parts.extend(f"{c.number} ({c.label})" for c in others)
     return f"{CALL_WORD[lang]} " + ", ".join(parts) + "."
 
 
 def emergency_text(queue: str, contacts: list[Contact], language: str) -> str:
-    lang = language if language in ("en", "sw") else "en"
+    lang = language if language in CALL_WORD else "en"
     opener = OPENERS.get(queue, OPENERS["health_urgent"])[lang]
     return opener.format(numbers=format_numbers(contacts, lang))

@@ -22,6 +22,7 @@ from pathlib import Path
 from . import __version__
 from .channels import SmsAdapter, UssdApp, VoiceAdapter, WhatsAppAdapter
 from .context.packs import check_file, pack_files
+from .countries import COUNTRIES, default_language
 from .engine import Engine, EngineConfig
 from .models import Channel, Message
 from .scam import analyse
@@ -44,7 +45,12 @@ def _pack_roots(given: list[str] | None) -> list[Path]:
 
 
 def _engine(args: argparse.Namespace) -> Engine:
-    config = EngineConfig(country=args.country or None)
+    country = (args.country or "").upper() or None
+    if country and country not in COUNTRIES:
+        sys.exit(f"Unknown country {country}. Covered: {', '.join(COUNTRIES)}")
+    if getattr(args, "phone", "unset") is None:  # a sample number in the chosen country
+        args.phone = f"+{COUNTRIES[country or 'KE'].dial}700000001"
+    config = EngineConfig(country=country)
     tips = TipQueue(getattr(args, "tips_file", None))
     return Engine.from_packs(*_pack_roots(args.packs), config=config, tips=tips)
 
@@ -117,7 +123,8 @@ def _ussd_loop(engine: Engine, phone: str) -> int:
 def cmd_scam(args: argparse.Namespace) -> int:
     engine = _engine(args)
     report = analyse(" ".join(args.text), args.sender)
-    reply = engine.scam_reply(report, args.language or "en", engine.config.budgets[Channel.WHATSAPP])
+    reply = engine.scam_reply(report, args.language or default_language(engine.config.country),
+                              engine.config.budgets[Channel.WHATSAPP], engine.config.country)
     print(reply.text)
     print(f"\nverdict: {report.verdict.value}  score: {report.score}  signals: "
           f"{', '.join(s.id for s in report.signals) or 'none'}")
@@ -180,27 +187,28 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--version", action="version", version=f"ace {__version__}")
     common = argparse.ArgumentParser(add_help=False)
     common.add_argument("--packs", action="append", help="pack file or folder (repeatable)")
-    common.add_argument("--country", default="KE", help="ISO country code of the deployment (default KE)")
+    common.add_argument("--country", default=None,
+                        help="pin one country, for example NG or SN (default: detect from each phone number)")
     sub = parser.add_subparsers(dest="command", required=True)
 
     p = sub.add_parser("ask", parents=[common], help="ask one question")
     p.add_argument("text", nargs="+")
     p.add_argument("--channel", default="api", choices=[c.value for c in Channel])
-    p.add_argument("--language", choices=["en", "sw"])
-    p.add_argument("--phone", default="+254700000000")
+    p.add_argument("--language", choices=["en", "sw", "fr"])
+    p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_ask)
 
     p = sub.add_parser("chat", parents=[common], help="interactive session")
     p.add_argument("--channel", default="sms", choices=["sms", "ussd", "whatsapp", "voice", "api"])
-    p.add_argument("--phone", default="+254700000001")
+    p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country")
     p.add_argument("--tips-file", dest="tips_file")
     p.set_defaults(func=cmd_chat)
 
     p = sub.add_parser("scam", parents=[common], help="check a suspicious message")
     p.add_argument("text", nargs="+")
     p.add_argument("--sender", help="number or name the message came from")
-    p.add_argument("--language", choices=["en", "sw"])
+    p.add_argument("--language", choices=["en", "sw", "fr"])
     p.set_defaults(func=cmd_scam)
 
     p = sub.add_parser("serve", parents=[common], help="run the web server")

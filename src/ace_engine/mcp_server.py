@@ -15,6 +15,7 @@ import argparse
 from typing import Any
 
 from .context import ContextQuery
+from .countries import COUNTRIES
 from .engine import Engine, EngineConfig
 from .models import Channel, GeoPoint, Message
 from .safety import contacts_for
@@ -41,11 +42,19 @@ def _fact_dict(f: Any, score: float | None = None) -> dict[str, Any]:
 def build_tools(engine: Engine) -> dict[str, Any]:
     """Plain functions, so they are testable without the MCP SDK installed."""
 
-    def ask_ace(question: str, language: str | None = None, lat: float | None = None,
+    def _country(country: str | None) -> str:
+        code = (country or engine.config.country or "").upper()
+        if code not in COUNTRIES:
+            raise ValueError("country is required, one of " + ", ".join(COUNTRIES))
+        return code
+
+    def ask_ace(question: str, country: str = "KE", language: str | None = None, lat: float | None = None,
                 lon: float | None = None) -> dict[str, Any]:
-        """Answer a person's question from checked context packs. Returns text, kind and citations."""
+        """Answer a person's question from checked context packs for one country (ISO code such as KE, NG
+        or SN). Returns text, kind and citations. Emergencies get that country's numbers."""
         location = GeoPoint(lat, lon) if lat is not None and lon is not None else None
-        reply = engine.handle(Message(channel=Channel.AGENT, sender="+254700000009", text=question,
+        sender = f"+{COUNTRIES[_country(country)].dial}700000009"
+        reply = engine.handle(Message(channel=Channel.AGENT, sender=sender, text=question,
                                       language=language, location=location))
         return reply.to_dict()
 
@@ -61,17 +70,19 @@ def build_tools(engine: Engine) -> dict[str, Any]:
             min_review=engine.config.min_review, limit=max(1, min(limit, 20))))
         return [_fact_dict(r.fact, r.score) for r in results]
 
-    def check_message(text: str, sender: str | None = None, language: str = "en") -> dict[str, Any]:
-        """Scam Shield: check a suspicious M-PESA style message. Never declares a message safe."""
+    def check_message(text: str, sender: str | None = None, language: str = "en",
+                      country: str = "KE") -> dict[str, Any]:
+        """Scam Shield: check a suspicious mobile money message (en, sw or fr). Never declares a message safe.
+        Operator guidance is cited only for the country it belongs to."""
         report = analyse(text, sender)
-        reply = engine.scam_reply(report, language, engine.config.budgets[Channel.AGENT])
+        reply = engine.scam_reply(report, language, engine.config.budgets[Channel.AGENT], _country(country))
         return {**reply.to_dict(), "verdict": report.verdict.value, "score": report.score,
                 "signals": [s.id for s in report.signals]}
 
-    def emergency_contacts(queue: str = "emergency", country: str | None = None) -> list[dict[str, Any]]:
-        """Verified numbers for a queue: emergency, health_urgent, maternal, poisoning, gbv,
-        child_protection, self_harm, counselling, fraud."""
-        return [c.__dict__ for c in contacts_for(queue, list(engine.store), country or engine.config.country)]
+    def emergency_contacts(country: str, queue: str = "emergency") -> list[dict[str, Any]]:
+        """Verified numbers in one country (ISO code such as KE, ZA or CI) for a queue: emergency,
+        health_urgent, maternal, poisoning, gbv, violence, child_protection, self_harm, counselling."""
+        return [c.__dict__ for c in contacts_for(queue, list(engine.store), _country(country))]
 
     def list_packs() -> list[dict[str, Any]]:
         """Loaded packs with versions, fact counts and review status."""
@@ -81,6 +92,7 @@ def build_tools(engine: Engine) -> dict[str, Any]:
             for f in p.facts:
                 statuses[f.review_status.value] = statuses.get(f.review_status.value, 0) + 1
             out.append({"id": p.id, "title": p.title, "version": p.version, "country": p.country,
+                        "countries": sorted({c for f in p.facts for c in f.scope.countries}),
                         "license": p.license, "facts": len(p.facts), "review_status": statuses})
         return out
 
@@ -101,7 +113,7 @@ def build_server(engine: Engine) -> Any:
 def main() -> None:
     parser = argparse.ArgumentParser(description="ACE context MCP server")
     parser.add_argument("--packs", action="append", help="pack file or folder (repeatable)")
-    parser.add_argument("--country", default="KE")
+    parser.add_argument("--country", default=None, help="pin one country (default: callers choose per call)")
     args = parser.parse_args()
     from .cli import _pack_roots
 

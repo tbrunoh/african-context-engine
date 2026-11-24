@@ -48,21 +48,27 @@ class ScamReport:
         return out
 
 
-_PIN = ("pin", "password", "passcode", "secret code", "siri", "nenosiri", "namba ya siri", "nambari ya siri")
+_PIN = ("pin", "password", "passcode", "secret code", "siri", "nenosiri", "namba ya siri", "nambari ya siri",
+        "code secret", "mot de passe", "code pin", "code confidentiel")
 _ASK = ("send", "share", "give", "confirm", "enter", "reply with", "tell us", "verify", "tuma", "nitumie",
-        "nipe", "tupe", "thibitisha", "weka", "ingiza", "andika")
+        "nipe", "tupe", "thibitisha", "weka", "ingiza", "andika", "envoyez", "envoyer", "envoie",
+        "donnez", "communiquez", "confirmez", "saisissez", "tapez", "entrez")
 _MISTAKE = ("sent by mistake", "sent to you by mistake", "wrong number", "wrongly sent", "send it back",
             "send back", "please refund", "reverse the money", "kimakosa", "nimekosea", "kwa makosa",
-            "rudisha", "nirudishie", "nitumie zangu")
+            "rudisha", "nirudishie", "nitumie zangu", "par erreur", "renvoyer", "renvoyez", "remboursez",
+            "me rembourser")
 _DOUBLE = ("registered twice", "double registration", "double registered", "registered two times",
            "imesajiliwa mara mbili", "umesajiliwa mara mbili", "usajili mara mbili")
 _PRIZE = ("you have won", "you won", "winner", "congratulations", "lucky draw", "promotion", "bonus",
-          "umeshinda", "hongera", "mshindi", "zawadi", "bahati nasibu")
+          "umeshinda", "hongera", "mshindi", "zawadi", "bahati nasibu", "vous avez gagne", "felicitations",
+          "gagnant", "tirage au sort", "cadeau")
 _URGENT = ("urgent", "immediately", "within 24 hours", "will be blocked", "will be suspended", "deactivated",
-           "last warning", "haraka", "sasa hivi", "itafungwa", "itasimamishwa", "itazimwa")
+           "last warning", "haraka", "sasa hivi", "itafungwa", "itasimamishwa", "itazimwa", "immediatement",
+           "sera bloque", "sera bloquee", "sera suspendu", "sera suspendue", "dernier avertissement", "dans 24 heures")
 _CLAIMS_OPERATOR = ("safaricom", "m-pesa", "mpesa", "customer care", "customer service", "fuliza", "huduma kwa wateja")
-_DIAL = ("dial", "press", "key in", "bonyeza", "piga", "ingiza")
-_LINK = re.compile(r"(https?://|www\.|bit\.ly|tinyurl|\b[a-z0-9-]+\.(com|co\.ke|ke|net|org|info|xyz)\b)", re.I)
+_DIAL = ("dial", "press", "key in", "bonyeza", "piga", "ingiza", "composez", "tapez")
+_TLDS = r"com|net|org|info|xyz|ke|co\.ke|za|co\.za|ng|com\.ng|gh|com\.gh|tz|co\.tz|ug|co\.ug|rw|bw|zw|co\.zw|sn|ci|tg"
+_LINK = re.compile(rf"(https?://|www\.|bit\.ly|tinyurl|\b[a-z0-9-]+\.({_TLDS})\b)", re.I)
 _USSD_CODE = re.compile(r"\*\d{2,4}(\*\d+)*#")
 _PHONE = re.compile(r"(?<!\d)(?:\+?254|0)(?:7|1)\d{8}(?!\d)")
 _OFFICIAL = {"0722000000", "254722000000", "+254722000000"}
@@ -72,31 +78,40 @@ _MPESA_CONFIRMATION = re.compile(r"\bconfirmed\b.*\b(ksh|kes)\s?[\d,]+.*\b(recei
 SIGNALS: dict[str, Signal] = {s.id: s for s in (
     Signal("asks_for_pin", 3, "never-share-pin", {
         "en": "it asks for your PIN or password",
-        "sw": "unaomba PIN au nenosiri lako"}),
+        "sw": "unaomba PIN au nenosiri lako",
+        "fr": "il demande votre code secret ou mot de passe"}),
     Signal("double_registration", 3, "double-registration", {
         "en": "it claims your SIM is registered twice",
-        "sw": "unadai SIM yako imesajiliwa mara mbili"}),
+        "sw": "unadai SIM yako imesajiliwa mara mbili",
+        "fr": "il prétend que votre SIM est enregistrée deux fois"}),
     Signal("refund_request", 3, "sent-by-mistake", {
         "en": "it asks you to send back money sent by mistake",
-        "sw": "unakuomba urudishe pesa zilizotumwa kimakosa"}),
+        "sw": "unakuomba urudishe pesa zilizotumwa kimakosa",
+        "fr": "il vous demande de renvoyer de l'argent envoyé par erreur"}),
     Signal("confirmation_from_personal_number", 3, "genuine-sender", {
         "en": "it looks like an M-PESA confirmation but came from a personal number",
-        "sw": "unaonekana kama uthibitisho wa M-PESA lakini umetoka nambari ya mtu binafsi"}),
+        "sw": "unaonekana kama uthibitisho wa M-PESA lakini umetoka nambari ya mtu binafsi",
+        "fr": "il ressemble à une confirmation M-PESA mais vient d'un numéro personnel"}),
     Signal("unofficial_operator_number", 2, "official-number", {
         "en": "it claims to be Safaricom but gives a number other than 0722000000",
-        "sw": "unadai kuwa Safaricom lakini unatoa nambari tofauti na 0722000000"}),
+        "sw": "unadai kuwa Safaricom lakini unatoa nambari tofauti na 0722000000",
+        "fr": "il prétend venir de Safaricom mais donne un autre numéro que 0722000000"}),
     Signal("dial_code_instruction", 2, "unknown-callers", {
         "en": "it tells you to dial a code on your phone",
-        "sw": "unakuagiza kubonyeza msimbo kwenye simu yako"}),
+        "sw": "unakuagiza kubonyeza msimbo kwenye simu yako",
+        "fr": "il vous demande de composer un code sur votre téléphone"}),
     Signal("prize_or_offer", 2, "prize-messages", {
         "en": "it says you have won something or offers money",
-        "sw": "unasema umeshinda au unaahidi pesa"}),
+        "sw": "unasema umeshinda au unaahidi pesa",
+        "fr": "il dit que vous avez gagné quelque chose ou promet de l'argent"}),
     Signal("link", 1, "fake-links", {
         "en": "it contains a link",
-        "sw": "una kiungo cha mtandao"}),
+        "sw": "una kiungo cha mtandao",
+        "fr": "il contient un lien"}),
     Signal("pressure", 1, "report-333", {
         "en": "it pressures you to act fast",
-        "sw": "unakulazimisha kuchukua hatua haraka"}),
+        "sw": "unakulazimisha kuchukua hatua haraka",
+        "fr": "il vous presse d'agir vite"}),
 )}
 
 
@@ -148,15 +163,25 @@ def analyse(text: str, sender: str | None = None) -> ScamReport:
 
 
 HEADLINES = {
-    Verdict.LIKELY_SCAM: {"en": "LIKELY SCAM.", "sw": "HUU NI UTAPELI MTARAJIWA."},
-    Verdict.SUSPICIOUS: {"en": "BE CAREFUL.", "sw": "KUWA MWANGALIFU."},
+    Verdict.LIKELY_SCAM: {"en": "LIKELY SCAM.", "sw": "HUU NI UTAPELI MTARAJIWA.", "fr": "ARNAQUE PROBABLE."},
+    Verdict.SUSPICIOUS: {"en": "BE CAREFUL.", "sw": "KUWA MWANGALIFU.", "fr": "SOYEZ PRUDENT."},
     Verdict.NO_KNOWN_SIGNS: {
         "en": "I found no known scam signs, but that does not prove it is safe.",
-        "sw": "Sijaona dalili zinazojulikana za utapeli, lakini hilo halithibitishi kuwa ni salama."},
+        "sw": "Sijaona dalili zinazojulikana za utapeli, lakini hilo halithibitishi kuwa ni salama.",
+        "fr": "Aucun signe d'arnaque connu, mais cela ne prouve pas que le message est sûr."},
 }
-SIGNS_LABEL = {"en": "Warning signs:", "sw": "Dalili za hatari:"}
-REPORT_LINE = {"en": "Forward it to 333, it is free.", "sw": "Utume kwa 333, ni bure."}
+SIGNS_LABEL = {"en": "Warning signs:", "sw": "Dalili za hatari:", "fr": "Signes d'alerte :"}
+# Kenya: Safaricom's free fraud short code, cited from the mobile money safety pack.
+REPORT_LINE = {"en": "Forward it to 333, it is free.", "sw": "Utume kwa 333, ni bure.",
+               "fr": "Transférez-le au 333, c'est gratuit."}
+# Every other country: no operator pack yet, so ACE gives no number it cannot cite.
+GENERIC_REPORT_LINE = {
+    "en": "Do not reply or send money. Report it to your provider using the number on its official website or SIM pack.",
+    "sw": "Usijibu wala kutuma pesa. Ripoti kwa mtoa huduma wako kupitia nambari iliyo kwenye tovuti yake rasmi.",
+    "fr": "Ne répondez pas et n'envoyez pas d'argent. Signalez-le à votre opérateur via le numéro de son site officiel.",
+}
 NEUTRAL_ADVICE = {
-    "en": "Never share your PIN, and check your M-PESA balance before acting on any message.",
-    "sw": "Usitoe PIN yako, na angalia salio lako la M-PESA kabla ya kufuata ujumbe wowote.",
+    "en": "Never share your PIN, and check your mobile money balance before acting on any message.",
+    "sw": "Usitoe PIN yako, na angalia salio lako la pesa kwa simu kabla ya kufuata ujumbe wowote.",
+    "fr": "Ne partagez jamais votre code secret et vérifiez votre solde mobile money avant de suivre un message.",
 }

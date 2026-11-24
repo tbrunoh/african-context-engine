@@ -30,6 +30,7 @@ from typing import Any
 from urllib.parse import parse_qs
 
 from .channels import SmsAdapter, UssdApp, VoiceApp, WhatsAppAdapter, verify_signature, verify_subscription
+from .countries import COUNTRIES
 from .engine import Engine
 from .models import Channel, GeoPoint, Message
 from .safety import contacts_for
@@ -122,11 +123,15 @@ class AceApp:
         if path == "/v1/packs" and method == "GET":
             return _json(200, {"packs": [{
                 "id": p.id, "title": p.title, "version": p.version, "country": p.country,
-                "license": p.license, "facts": len(p.facts), "labels": p.labels} for p in self.engine.packs]})
+                "countries": sorted({c for f in p.facts for c in f.scope.countries}), "license": p.license,
+                "facts": len(p.facts), "labels": p.labels} for p in self.engine.packs]})
         if path == "/v1/emergency" and method == "GET":
             queue = query.get("queue", "emergency")
-            contacts = contacts_for(queue, list(self.engine.store), query.get("country") or self.engine.config.country)
-            return _json(200, {"queue": queue, "contacts": [c.__dict__ for c in contacts]})
+            country = (query.get("country") or self.engine.config.country or "").upper()
+            if country not in COUNTRIES:  # never mix numbers from different countries
+                return _json(400, {"error": "country is required, one of " + ", ".join(COUNTRIES)})
+            contacts = contacts_for(queue, list(self.engine.store), country)
+            return _json(200, {"queue": queue, "country": country, "contacts": [c.__dict__ for c in contacts]})
         if method != "POST":
             return _json(405, {"error": "method not allowed"})
         data = _json_body(body)

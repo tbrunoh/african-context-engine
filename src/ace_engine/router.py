@@ -1,72 +1,157 @@
-"""Model agnostic routing. ACE never depends on one model provider.
+"""Turn retrieved facts into an answer that fits the channel.
 
-A provider is anything that can turn a grounded prompt into text. The router
-picks one per task (reasoning, translation, on-device) and always passes the
-retrieved context facts, so answers stay grounded and cite their sources.
+ACE has two answerers and never depends on either one alone:
+
+* ExtractiveComposer (default): deterministic, offline, free. It renders the
+  best facts in the person's language and packs them into the channel's
+  character budget. It cannot invent anything.
+* GroundedGenerator: wraps any language model. The model sees only the
+  retrieved facts and must cite them. ACE checks the output: every sentence
+  must cite a fact it was given and no new phone numbers may appear. If the
+  check fails, the model is slow, or the call errors, ACE falls back to the
+  extractive answer. A model can make answers more natural; it can never make
+  them less grounded.
 """
 from __future__ import annotations
 
+import json
+import os
+import re
+import urllib.request
 from dataclasses import dataclass
 from typing import Protocol
 
 from .context.schema import ContextFact
+from .text import truncate_words
 
-SYSTEM_PROMPT = (
-    "You are ACE, a hyperlocal expert assistant. Answer only from the CONTEXT facts provided. "
-    "If the facts do not answer the question, say so plainly and offer to connect the person "
-    "to a human expert. Keep answers short and practical, in the person's language. "
-    "Cite fact ids in square brackets."
-)
+
+@dataclass(frozen=True)
+class Budget:
+    """How much a channel can carry in one reply."""
+
+    max_chars: int
+    short: bool          # prefer each fact's short rendering
+    max_facts: int = 3
+
+
+@dataclass
+class Composed:
+    text: str
+    used: list[ContextFact]
+    language: str
+    generator: str = "extractive"
+
+
+class ExtractiveComposer:
+    name = "extractive"
+
+    def compose(self, facts: list[ContextFact], language: str, budget: Budget) -> Composed:
+        parts: list[str] = []
+        used: list[ContextFact] = []
+        langs: list[str] = []
+        for f in facts[: budget.max_facts]:
+            text, rendered_in = f.render(language, short=budget.short)
+            if parts and len(" ".join([*parts, text])) > budget.max_chars:
+                break
+            parts.append(text)
+            used.append(f)
+            langs.append(rendered_in)
+        body = truncate_words(" ".join(parts), budget.max_chars)
+        return Composed(body, used, langs[0] if langs else language)
 
 
 class ModelProvider(Protocol):
     name: str
 
-    def generate(self, system: str, prompt: str, language: str | None = None) -> str: ...
+    def generate(self, system: str, prompt: str, timeout_s: float) -> str: ...
 
 
-@dataclass
-class GroundedPrompt:
-    system: str
-    prompt: str
-    fact_ids: list[str]
+SYSTEM_PROMPT = (
+    "You are ACE, a local expert service for people in Africa. Answer ONLY from the numbered FACTS. "
+    "Write in the requested language, in short plain sentences a farmer or mother can act on. "
+    "End every sentence with the number of the fact it comes from in square brackets, like [1]. "
+    "Never add advice, numbers, doses, products or phone numbers that are not in the FACTS. "
+    "If the FACTS do not answer the question, reply exactly: NO_ANSWER"
+)
+_CITE = re.compile(r"\[(\d+)\]")
+_PHONE_LIKE = re.compile(r"\+?\d[\d ]{2,}\d")
 
 
-def build_prompt(question: str, facts: list[ContextFact], language: str | None,
-                 history: list[str] | None = None) -> GroundedPrompt:
-    lines = [f"[{f.id}] ({f.review_status.value}; source: {f.source}) {f.claim}" for f in facts]
-    context = "\n".join(lines) if lines else "(no matching facts)"
-    convo = "\n".join(history or [])
-    prompt = (f"CONTEXT:\n{context}\n\nRECENT CONVERSATION:\n{convo or '(none)'}\n\n"
-              f"LANGUAGE: {language or 'match the question'}\n\nQUESTION: {question}")
-    return GroundedPrompt(SYSTEM_PROMPT, prompt, [f.id for f in facts])
+def build_prompt(question: str, facts: list[ContextFact], language: str, max_chars: int) -> str:
+    lines = [f"[{i}] {f.render(language)[0]}" for i, f in enumerate(facts, start=1)]
+    return ("FACTS:\n" + "\n".join(lines) + f"\n\nLANGUAGE: {language}\nMAXIMUM LENGTH: {max_chars} characters"
+            f"\n\nQUESTION: {question}")
 
 
-class ExtractiveProvider:
-    """A deterministic offline provider for tests, demos and no-connectivity fallback.
-    It answers with the top facts verbatim and never invents content."""
+def check_grounded(output: str, facts: list[ContextFact], language: str) -> tuple[bool, str, list[int]]:
+    """Validate a model answer. Returns (ok, cleaned_text, cited_fact_numbers)."""
+    text = output.strip()
+    if not text or "NO_ANSWER" in text:
+        return False, "", []
+    sentences = [s.strip() for s in re.split(r"(?<=[.!?\]])\s+", text) if s.strip()]
+    cited: list[int] = []
+    for s in sentences:
+        nums = [int(n) for n in _CITE.findall(s)]
+        if not nums or any(n < 1 or n > len(facts) for n in nums):
+            return False, "", []
+        cited.extend(n for n in nums if n not in cited)
+    allowed = " ".join(f.render(language)[0] + " " + f.claim for f in facts)
+    for number in _PHONE_LIKE.findall(_CITE.sub("", text)):
+        if number.replace(" ", "") not in allowed.replace(" ", ""):
+            return False, "", []
+    cleaned = " ".join(_CITE.sub("", text).split()).replace(" .", ".")
+    return True, cleaned, cited
 
-    name = "extractive"
 
-    def generate(self, system: str, prompt: str, language: str | None = None) -> str:
-        context = prompt.split("CONTEXT:\n", 1)[1].split("\n\nRECENT CONVERSATION:", 1)[0]
-        if context.strip() == "(no matching facts)":
-            return ("I do not have verified local guidance for that yet. "
-                    "I can connect you to a human expert.")
-        picks = []
-        for line in context.splitlines()[:2]:
-            fid = line[1:line.index("]")]
-            claim = line.split(") ", 1)[1]
-            picks.append(f"{claim.rstrip().rstrip('.')} [{fid}].")
-        return " ".join(picks)
+class GroundedGenerator:
+    """Use a model for fluency, with extractive fallback on any doubt."""
+
+    def __init__(self, provider: ModelProvider, timeout_s: float = 8.0,
+                 fallback: ExtractiveComposer | None = None) -> None:
+        self.provider = provider
+        self.timeout_s = timeout_s
+        self.fallback = fallback or ExtractiveComposer()
+        self.name = f"grounded:{provider.name}"
+
+    def compose(self, facts: list[ContextFact], language: str, budget: Budget,
+                question: str = "") -> Composed:
+        chosen = facts[: budget.max_facts]
+        try:
+            raw = self.provider.generate(SYSTEM_PROMPT, build_prompt(question, chosen, language, budget.max_chars),
+                                         self.timeout_s)
+        except Exception:  # noqa: BLE001  any provider failure means fall back
+            return self.fallback.compose(facts, language, budget)
+        ok, text, cited = check_grounded(raw, chosen, language)
+        if not ok or len(text) > budget.max_chars * 1.1:
+            return self.fallback.compose(facts, language, budget)
+        return Composed(text, [chosen[n - 1] for n in cited], language, self.name)
 
 
-class Router:
-    def __init__(self, providers: dict[str, ModelProvider] | None = None,
-                 default_task: str = "reasoning") -> None:
-        self.providers = providers or {"reasoning": ExtractiveProvider()}
-        self.default_task = default_task
+class OpenAICompatibleProvider:
+    """Any server that speaks the OpenAI chat completions format: hosted APIs,
+    vLLM, Ollama, llama.cpp or a model on a local box. Standard library only.
 
-    def generate(self, grounded: GroundedPrompt, language: str | None, task: str | None = None) -> str:
-        provider = self.providers.get(task or self.default_task) or self.providers[self.default_task]
-        return provider.generate(grounded.system, grounded.prompt, language)
+    Configure with ACE_LLM_BASE_URL, ACE_LLM_MODEL and ACE_LLM_API_KEY.
+    """
+
+    def __init__(self, base_url: str | None = None, model: str | None = None,
+                 api_key: str | None = None) -> None:
+        self.base_url = (base_url or os.environ.get("ACE_LLM_BASE_URL", "")).rstrip("/")
+        self.model = model or os.environ.get("ACE_LLM_MODEL", "")
+        self.api_key = api_key or os.environ.get("ACE_LLM_API_KEY", "")
+        if not self.base_url or not self.model:
+            raise ValueError("Set ACE_LLM_BASE_URL and ACE_LLM_MODEL to use a language model")
+        self.name = self.model
+
+    def generate(self, system: str, prompt: str, timeout_s: float) -> str:
+        body = json.dumps({
+            "model": self.model, "temperature": 0,
+            "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
+        }).encode()
+        headers = {"Content-Type": "application/json"}
+        if self.api_key:
+            headers["Authorization"] = f"Bearer {self.api_key}"
+        req = urllib.request.Request(f"{self.base_url}/chat/completions", data=body, headers=headers)
+        with urllib.request.urlopen(req, timeout=timeout_s) as resp:  # noqa: S310  operator configured URL
+            data = json.loads(resp.read())
+        return str(data["choices"][0]["message"]["content"])

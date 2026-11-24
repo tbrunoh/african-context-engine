@@ -8,7 +8,7 @@ from typing import Any
 
 
 class Channel(str, Enum):
-    """The eight entry points. Every one maps onto the same Message and Reply types."""
+    """Entry points. Every one maps onto the same Message and Reply types."""
 
     VOICE = "voice"
     USSD = "ussd"
@@ -49,11 +49,20 @@ class Message:
     raw: dict[str, Any] = field(default_factory=dict)
 
 
+class ReplyKind(str, Enum):
+    ANSWER = "answer"          # grounded in context facts
+    EMERGENCY = "emergency"    # safety rail fired: numbers to call, human handoff raised
+    SCAM = "scam"              # Scam Shield verdict
+    CLARIFY = "clarify"        # no checked guidance matched; ACE says so and offers options
+    SYSTEM = "system"          # commands such as language change, data deletion, help
+
+
 @dataclass
 class Citation:
     fact_id: str
     source: str
     review_status: str
+    source_url: str | None = None
 
 
 @dataclass
@@ -61,9 +70,17 @@ class Reply:
     """What the engine says back. Channel adapters decide how to render it."""
 
     text: str
+    kind: ReplyKind = ReplyKind.ANSWER
+    language: str = "en"
     citations: list[Citation] = field(default_factory=list)
     end_session: bool = False
     escalated: bool = False
     escalation_queue: str | None = None
-    follow_up_channel: Channel | None = None
-    actions: list[dict[str, Any]] = field(default_factory=list)  # for example a payment request
+    actions: list[dict[str, Any]] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "text": self.text, "kind": self.kind.value, "language": self.language,
+            "escalated": self.escalated, "escalation_queue": self.escalation_queue,
+            "citations": [c.__dict__ for c in self.citations], "actions": self.actions,
+        }

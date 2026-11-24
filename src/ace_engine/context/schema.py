@@ -1,27 +1,38 @@
-"""The context fact: the unit of hyperlocal knowledge ACE grounds every answer in."""
+"""The context fact: the unit of local knowledge every ACE answer is grounded in."""
 from __future__ import annotations
 
 import math
 from dataclasses import dataclass, field
+from datetime import date
 from enum import Enum
 
 from ..models import GeoPoint
 
 
 class ReviewStatus(str, Enum):
-    """How far a fact has travelled through the contribution pipeline."""
+    """How far a fact has travelled through the contribution pipeline.
 
-    DRAFT = "draft"                        # submitted by the community, not yet reviewed
-    EXPERT_REVIEWED = "expert_reviewed"    # checked by a named domain expert
-    OUTCOME_VERIFIED = "outcome_verified"  # confirmed by results from real sessions
+    draft             submitted, not yet checked; never served unless a deployment opts in
+    sourced           a maintainer checked the claim against the cited public source
+    expert_reviewed   a named domain expert reviewed the claim for this place
+    outcome_verified  confirmed by measured outcomes from real deployments
+    """
+
+    DRAFT = "draft"
+    SOURCED = "sourced"
+    EXPERT_REVIEWED = "expert_reviewed"
+    OUTCOME_VERIFIED = "outcome_verified"
 
     @property
     def rank(self) -> int:
-        return {"draft": 0, "expert_reviewed": 1, "outcome_verified": 2}[self.value]
+        return _RANK[self.value]
+
+
+_RANK = {"draft": 0, "sourced": 1, "expert_reviewed": 2, "outcome_verified": 3}
 
 
 class Tier(str, Enum):
-    """Open facts ship under CC BY 4.0. Verified facts carry commercial terms."""
+    """Open facts ship under CC BY 4.0. Verified facts may carry other terms."""
 
     OPEN = "open"
     VERIFIED = "verified"
@@ -42,7 +53,7 @@ class GeoScope:
                  admin_area: str | None = None) -> bool:
         if self.countries and country and country.upper() not in self.countries:
             return False
-        if self.admin_areas and admin_area and admin_area not in self.admin_areas:
+        if self.admin_areas and admin_area and admin_area.lower() not in {a.lower() for a in self.admin_areas}:
             return False
         if point is not None:
             if (self.center is not None and self.radius_km is not None
@@ -55,26 +66,91 @@ class GeoScope:
                     return False
         return True
 
+    @property
+    def specificity(self) -> float:
+        """Higher for narrower scopes, so local facts outrank national ones."""
+        score = 0.0
+        if self.center is not None and self.radius_km is not None:
+            score += 1.5
+        if self.altitude_min_m is not None or self.altitude_max_m is not None:
+            score += 1.0
+        if self.admin_areas:
+            score += 0.75
+        if self.countries:
+            score += 0.25
+        return score
+
+
+@dataclass(frozen=True)
+class Rendering:
+    """A fact in one language: the full claim and a short form for USSD and SMS."""
+
+    claim: str
+    short: str | None = None
+    reviewed: bool = False  # True once a fluent speaker has checked this rendering
+
+
+@dataclass(frozen=True)
+class Contact:
+    """A phone line or short code people can reach, for emergency and referral facts."""
+
+    label: str
+    number: str
+    queues: tuple[str, ...] = ()           # safety queues this line serves, for example ("gbv",)
+    free: bool | None = None
+    hours: str | None = None
+
 
 @dataclass(frozen=True)
 class ContextFact:
     id: str
     claim: str
-    topic: str                             # for example "pest", "soil", "market", "maternal_health", "land"
-    vertical: str                          # "agriculture", "health", "legal", "finance"
+    topic: str                             # for example "pest", "storage", "fraud", "danger_signs"
+    vertical: str                          # "agriculture", "health", "finance", "safety", "legal"
+    kind: str = "info"                     # "action" (what to do), "sign" (how to recognise), "info"
     scope: GeoScope = field(default_factory=GeoScope)
-    subjects: tuple[str, ...] = ()         # crops, livestock, conditions, for example ("maize",)
+    subjects: tuple[str, ...] = ()         # crops, conditions or services, for example ("maize",)
+    keywords: tuple[str, ...] = ()         # words people actually use, in any language
     months: tuple[int, ...] = ()           # 1 to 12; empty means all year
-    languages: tuple[str, ...] = ()        # languages a localized rendering exists for
+    short: str | None = None               # at most 160 characters, for USSD and SMS
+    translations: dict[str, Rendering] = field(default_factory=dict)
+    language: str = "en"                   # language of claim and short
+    contacts: tuple[Contact, ...] = ()
     source: str = ""
+    source_url: str | None = None
+    checked_on: str | None = None          # ISO date the claim was last checked against its source
     reviewed_by: str | None = None
     review_status: ReviewStatus = ReviewStatus.DRAFT
     tier: Tier = Tier.OPEN
-    expires: str | None = None             # ISO date after which the fact needs re-review
-    safety_critical: bool = False          # answers using this fact always offer human escalation
+    expires: str | None = None             # ISO date after which the fact is withheld until re-reviewed
+    safety_critical: bool = False          # answers using this fact always point to human help
+    pack_id: str = ""
 
     def applies_in_month(self, month: int | None) -> bool:
         return not self.months or month is None or month in self.months
+
+    def is_expired(self, today: date | None = None) -> bool:
+        if not self.expires:
+            return False
+        return date.fromisoformat(self.expires) < (today or date.today())
+
+    def render(self, language: str | None, short: bool = False) -> tuple[str, str]:
+        """Return (text, language_used), falling back to the fact's own language."""
+        if language and language != self.language and language in self.translations:
+            r = self.translations[language]
+            return ((r.short or r.claim) if short else r.claim), language
+        return ((self.short or self.claim) if short else self.claim), self.language
+
+    @property
+    def languages(self) -> tuple[str, ...]:
+        return (self.language, *sorted(self.translations))
+
+    def search_text(self) -> str:
+        parts = [self.claim, self.short or "", self.topic.replace("_", " "), " ".join(self.subjects),
+                 " ".join(self.keywords)]
+        for r in self.translations.values():
+            parts.extend([r.claim, r.short or ""])
+        return " ".join(parts)
 
 
 def haversine_km(a: GeoPoint, b: GeoPoint) -> float:

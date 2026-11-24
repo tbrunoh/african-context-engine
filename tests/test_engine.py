@@ -1,75 +1,150 @@
-from datetime import datetime, timezone
+from __future__ import annotations
 
-from ace_engine import Channel, Engine, EngineConfig, GeoPoint, Intent, KeywordClassifier, Message
-from ace_engine.cli import run_demo
-from ace_engine.context import ContextFact, ContextStore, GeoScope
-from ace_engine.payments import MpesaStkPush, PaymentRequest
+import pytest
 
-WHEN = datetime(2026, 4, 14, 7, 30, tzinfo=timezone.utc)
-
-
-def make_engine() -> Engine:
-    s = ContextStore()
-    s.add(ContextFact(id="f1", claim="Highland maize note.", topic="pest", vertical="agriculture",
-                      subjects=("maize",), scope=GeoScope(altitude_min_m=1800), source="Test source"))
-    s.add(ContextFact(id="f2", claim="Danger sign note.", topic="maternal", vertical="health",
-                      source="Test source", safety_critical=True))
-    return Engine(s, classifier=KeywordClassifier({
-        "armyworm": Intent("agriculture", "pest", "maize"),
-        "pregnant": Intent("health", "maternal", None),
-    }), config=EngineConfig(country="KE"))
+from ace_engine.commands import parse_command
+from ace_engine.engine import CHANNEL_BUDGETS
+from ace_engine.identity import ProfileStore, normalize_msisdn
+from ace_engine.models import Channel, GeoPoint, Message, ReplyKind
 
 
-def test_grounded_answer_cites_facts():
-    e = make_engine()
-    r = e.handle(Message(Channel.VOICE, "0712000001", "armyworm on my maize",
-                         location=GeoPoint(-0.4, 36.9, 1950), received_at=WHEN))
-    assert "[f1]" in r.text and r.citations[0].fact_id == "f1"
+def test_grounded_answer_has_citations(engine):
+    reply = engine.ask("Armyworm is eating my maize, what do I do?", channel=Channel.SMS)
+    assert reply.kind is ReplyKind.ANSWER
+    assert reply.citations and all(c.source_url for c in reply.citations)
+    assert any(c.fact_id.endswith(("squash-eggs-larvae", "push-pull")) for c in reply.citations)
 
 
-def test_context_carries_across_channels():
-    e = make_engine()
-    e.handle(Message(Channel.VOICE, "0712000002", "armyworm problem", location=GeoPoint(-0.4, 36.9, 1950),
-                     received_at=WHEN))
-    r = e.handle(Message(Channel.WHATSAPP, "+254712000002", "here is a photo", received_at=WHEN))
-    assert r.citations and r.citations[0].fact_id == "f1"  # same intent and location, different channel
-    profile = e.profiles.get_or_create("+254712000002")
-    assert profile.channels_used() == [Channel.VOICE, Channel.WHATSAPP]
+def test_swahili_question_gets_swahili_answer(engine):
+    reply = engine.ask("viwavi wanakula mahindi yangu nifanye nini", channel=Channel.SMS)
+    assert reply.language == "sw"
+    assert "mahindi" in reply.text.lower() or "viwavi" in reply.text.lower()
 
 
-def test_no_facts_means_no_invention():
-    e = make_engine()
-    r = e.handle(Message(Channel.SMS, "0712000003", "what about cassava prices", received_at=WHEN))
-    assert r.citations == [] and "human expert" in r.text
+def test_unknown_topic_is_admitted_not_invented(engine):
+    reply = engine.ask("what is the price of tomatoes in Nairobi")
+    assert reply.kind is ReplyKind.CLARIFY and not reply.citations
+    assert "no checked guidance" in reply.text
 
 
-def test_urgent_message_escalates_before_any_generation():
-    e = make_engine()
-    r = e.handle(Message(Channel.SMS, "0712000004", "I am pregnant and bleeding", received_at=WHEN))
-    assert r.escalated and r.escalation_queue == "health_urgent" and r.citations == []
+def test_greeting_gets_help(engine):
+    assert engine.ask("Hello").kind is ReplyKind.SYSTEM
+    assert engine.ask("Habari").language == "sw"
 
 
-def test_safety_critical_fact_offers_human():
-    e = make_engine()
-    r = e.handle(Message(Channel.SMS, "0712000005", "I am pregnant, what should I watch for", received_at=WHEN))
-    assert "HELP" in r.text
+@pytest.mark.parametrize("channel", list(CHANNEL_BUDGETS))
+@pytest.mark.parametrize("question", [
+    "Armyworm is eating my maize, what do I do?", "how do I store maize", "pregnancy danger signs",
+    "dalili za hatari kwa mama mjamzito", "someone says they sent me money by mistake", "HELP",
+])
+def test_every_answer_fits_its_channel(engine, channel, question):
+    reply = engine.handle(Message(channel=channel, sender="+254700000000", text=question))
+    assert len(reply.text) <= CHANNEL_BUDGETS[channel].max_chars, (channel, len(reply.text), reply.text)
 
 
-def test_forget_deletes_profile():
-    e = make_engine()
-    e.handle(Message(Channel.SMS, "0712000006", "hello", received_at=WHEN))
-    assert e.profiles.forget("0712000006") is True
+def test_safety_critical_answers_carry_numbers(engine):
+    reply = engine.ask("what are pregnancy danger signs", channel=Channel.SMS)
+    assert reply.kind is ReplyKind.ANSWER
+    assert "999" in reply.text and "1199" in reply.text
+    assert reply.text.count("999") == 1
 
 
-def test_mpesa_stk_request_shape():
-    p = MpesaStkPush("174379", "passkey", "https://example.org/cb",
-                     clock=lambda: datetime(2026, 4, 14, 10, 30, 0))
-    body = p.build_request(PaymentRequest("+254712000000", 450, "ORDER12345", "Biocontrol"))
-    assert body["Timestamp"] == "20260414103000" and body["PartyA"] == "254712000000"
-    assert body["TransactionType"] == "CustomerPayBillOnline" and body["Amount"] == 450
+def test_language_command_persists(engine):
+    phone = "+254700000101"
+    engine.ask("LANG SW", sender=phone, channel=Channel.SMS)
+    reply = engine.ask("how do I store maize", sender=phone, channel=Channel.SMS)
+    assert reply.language == "sw"
 
 
-def test_demo_runs_end_to_end():
-    log = dict(run_demo())
-    assert "faw-highland-placeholder" in log["voice"]
-    assert log["sms"].startswith("This sounds urgent")
+def test_tip_is_queued_with_pseudonym(engine):
+    phone = "+254700000102"
+    reply = engine.ask("TIP neem leaves help against armyworm in Embu", sender=phone, channel=Channel.SMS)
+    assert reply.kind is ReplyKind.SYSTEM
+    tip = engine.tips.pending()[-1]
+    assert tip.text.startswith("neem leaves") and tip.person != phone and "700000102" not in tip.person
+
+
+def test_forget_deletes_profile_and_tips(engine):
+    phone = "+254700000103"
+    engine.ask("TIP plant early", sender=phone, channel=Channel.SMS)
+    assert engine.profiles.peek(phone) is not None
+    reply = engine.ask("FORGET", sender=phone, channel=Channel.SMS)
+    assert reply.end_session
+    assert engine.profiles.peek(phone) is None
+    assert engine.tips.pending() == []
+
+
+def test_sources_and_more(engine):
+    phone = "+254700000104"
+    first = engine.ask("how do I store maize to avoid aflatoxin", sender=phone, channel=Channel.SMS)
+    sources = engine.ask("SOURCES", sender=phone, channel=Channel.SMS)
+    assert "KALRO" in sources.text or "USAID" in sources.text
+    more = engine.ask("MORE", sender=phone, channel=Channel.SMS)
+    assert more.kind is ReplyKind.ANSWER
+    assert not {c.fact_id for c in more.citations} & {c.fact_id for c in first.citations}
+    assert all(c.fact_id.startswith("ke-maize-post-harvest/") for c in more.citations)
+
+
+def test_more_runs_out_politely(engine):
+    phone = "+254700000105"
+    engine.ask("when are the long rains", sender=phone, channel=Channel.SMS)
+    for _ in range(3):
+        last = engine.ask("more", sender=phone, channel=Channel.SMS)
+    assert "That is all" in last.text
+
+
+def test_phone_numbers_are_never_stored_in_clear():
+    store = ProfileStore(salt="test-salt")
+    store.record_inbound(Message(channel=Channel.SMS, sender="0712345678", text="hi"))
+    stored = str(store._profiles)
+    assert "712345678" not in stored
+    assert store.peek("+254712345678") is store.peek("254712345678")
+
+
+def test_history_can_be_disabled():
+    store = ProfileStore(keep_history=False)
+    profile = store.record_inbound(Message(channel=Channel.SMS, sender="0712345678", text="hi"))
+    assert profile.history == []
+
+
+def test_one_identity_across_channels(engine):
+    engine.handle(Message(channel=Channel.VOICE, sender="0712000000", text="armyworm"))
+    engine.handle(Message(channel=Channel.WHATSAPP, sender="+254712000000", text="more"))
+    profile = engine.profiles.peek("254712000000")
+    assert profile.channels == [Channel.VOICE, Channel.WHATSAPP]
+
+
+def test_location_is_remembered(engine):
+    engine.handle(Message(channel=Channel.WHATSAPP, sender="0712000001", text="hello",
+                          location=GeoPoint(-0.42, 36.95)))
+    assert engine.profiles.peek("0712000001").last_location == GeoPoint(-0.42, 36.95)
+
+
+@pytest.mark.parametrize("number, expected", [
+    ("0712345678", "+254712345678"), ("254712345678", "+254712345678"), ("+254 712 345 678", "+254712345678"),
+    ("00254712345678", "+254712345678"),
+])
+def test_normalize_msisdn(number, expected):
+    assert normalize_msisdn(number) == expected
+
+
+def test_normalize_rejects_garbage():
+    with pytest.raises(ValueError):
+        normalize_msisdn("hello")
+
+
+@pytest.mark.parametrize("text, name, arg", [
+    ("HELP", "help", ""), ("msaada", "help", ""), ("FUTA", "forget", ""), ("lang sw", "swahili", ""),
+    ("LUGHA EN", "english", ""), ("TIP plant early", "tip", "plant early"), ("dokezo panda mapema", "tip",
+                                                                            "panda mapema"),
+    ("SCAM send your pin", "scam", "send your pin"), ("vyanzo", "sources", ""), ("zaidi", "more", ""),
+])
+def test_commands(text, name, arg):
+    cmd = parse_command(text)
+    assert cmd is not None and cmd.name == name and cmd.arg == arg
+
+
+@pytest.mark.parametrize("text", ["help me with armyworm", "check my maize for armyworm", "more rain this year?",
+                                  "stop armyworm"])
+def test_questions_that_start_with_a_command_word_stay_questions(text):
+    assert parse_command(text) is None

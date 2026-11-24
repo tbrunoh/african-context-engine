@@ -1,56 +1,151 @@
-from ace_engine.channels import SmsAdapter, UssdAdapter, VoiceAdapter, WhatsAppAdapter, segment
-from ace_engine.identity import normalize_msisdn
-from ace_engine.models import Channel, Citation, Reply
+from __future__ import annotations
 
+import hashlib
+import hmac
+import itertools
+import xml.etree.ElementTree as ET
 
-def test_normalize_msisdn_formats():
-    assert normalize_msisdn("0712345678") == "+254712345678"
-    assert normalize_msisdn("254712345678") == "+254712345678"
-    assert normalize_msisdn("+234 803 123 4567") == "+2348031234567"
+from ace_engine.channels import (
+    SmsAdapter,
+    UssdAdapter,
+    UssdApp,
+    VoiceApp,
+    WhatsAppAdapter,
+    is_gsm7,
+    segment,
+    send_payload,
+    to_gsm7,
+    verify_signature,
+    verify_subscription,
+)
+from ace_engine.models import Citation, Reply
 
+# ---------------------------------------------------------------- SMS
 
-def test_ussd_parse_takes_last_input_and_renders_within_limit():
-    a = UssdAdapter()
-    m = a.parse_inbound({"sessionId": "s", "serviceCode": "*384#", "phoneNumber": "+254712345678",
-                         "text": "1*3*maize"})
-    assert m.channel is Channel.USSD and m.text == "maize" and m.raw["inputs"] == ["1", "3", "maize"]
-    out = a.render(Reply(text="word " * 100))[0]
-    assert out.startswith("CON ") and len(out) <= 182
-    assert a.render(Reply(text="Bye", end_session=True)) == ["END Bye"]
-
-
-def test_sms_segmentation_gsm_and_unicode():
-    assert len(segment("a" * 160)) == 1
-    parts = segment(("hello " * 60).strip())
+def test_gsm7_segmentation():
+    assert segment("short") == ["short"]
+    parts = segment("word " * 80)
     assert len(parts) == 3 and all(len(p) <= 153 for p in parts)
-    assert all(len(p) <= 67 for p in segment(("ሰላም " * 40).strip()))  # Amharic forces UCS-2
 
 
-def test_sms_render_caps_segments():
-    out = SmsAdapter(max_segments=2).render(Reply(text="word " * 200))
-    assert len(out) == 2 and out[-1].endswith("...")
+def test_ucs2_segmentation():
+    text = "maji " * 30 + "م"  # one Arabic letter forces UCS-2
+    assert not is_gsm7(text)
+    assert all(len(p) <= 67 for p in segment(text))
 
 
-def test_whatsapp_parse_text_image_location():
-    def wrap(msg):
-        return {"entry": [{"changes": [{"value": {"messages": [msg]}}]}]}
-
-    a = WhatsAppAdapter()
-    t = a.parse_inbound(wrap({"from": "254712345678", "type": "text", "text": {"body": "hi"}}))
-    assert t.sender == "+254712345678" and t.text == "hi"
-    i = a.parse_inbound(wrap({"from": "254712345678", "type": "image",
-                              "image": {"id": "MEDIA1", "mime_type": "image/jpeg", "caption": "leaf"}}))
-    assert i.attachments[0].uri == "whatsapp-media:MEDIA1" and i.text == "leaf"
-    loc = a.parse_inbound(wrap({"from": "254712345678", "type": "location",
-                                "location": {"latitude": -0.42, "longitude": 36.95}}))
-    assert loc.location.lat == -0.42
+def test_typographic_characters_are_replaced():
+    assert is_gsm7(to_gsm7("Don’t “share” – ever…"))
 
 
-def test_whatsapp_render_appends_sources():
-    out = WhatsAppAdapter().render(Reply(text="Answer", citations=[Citation("f1", "KALRO", "draft")]))
-    assert out[0].endswith("Sources: KALRO")
+def test_sms_parse_and_render_africas_talking():
+    msg = SmsAdapter().parse_inbound({"from": "+254711000000", "to": "21606", "text": " hello ", "linkId": "L1"})
+    assert msg.text == "hello" and msg.session_id == "L1"
+    parts = SmsAdapter(max_segments=2).render(Reply(text="word " * 200))
+    assert len(parts) == 2 and parts[-1].endswith("...")
 
 
-def test_voice_render_splits_turns():
-    turns = VoiceAdapter(max_sentences_per_turn=2).render(Reply(text="One. Two. Three. Four. Five."))
-    assert turns == ["One. Two.", "Three. Four.", "Five."]
+# ---------------------------------------------------------------- USSD
+
+def test_ussd_adapter():
+    msg = UssdAdapter().parse_inbound({"sessionId": "s", "serviceCode": "*384#", "phoneNumber": "0711000000",
+                                       "text": "1*2"})
+    assert msg.text == "2" and msg.raw["inputs"] == ["1", "2"]
+    assert UssdAdapter().render(Reply(text="bye", end_session=True)) == ["END bye"]
+
+
+def test_ussd_main_menu(engine):
+    screen = UssdApp(engine).respond("0711000001", "")
+    assert screen.startswith("CON ACE\n1 Maize armyworm")
+    assert "Ask a question" in screen and len(screen) <= 182
+
+
+def test_ussd_browse_a_pack(engine):
+    app = UssdApp(engine)
+    first = app.respond("0711000002", "1")
+    second = app.respond("0711000002", "1*1")
+    assert first != second and "1 Next" in first and "0 Back" in first
+    assert app.respond("0711000002", "1*1*0").startswith("CON ACE")
+
+
+def test_ussd_ask_and_scam(engine):
+    app = UssdApp(engine)
+    answer = app.respond("0711000003", "7*how do I store maize")
+    assert "13" in answer and answer.endswith("0 Menu")
+    verdict = app.respond("0711000003", "8*Send your M-PESA PIN now")
+    assert "LIKELY SCAM" in verdict
+
+
+def test_ussd_emergency_ends_the_session(engine):
+    assert UssdApp(engine).respond("0711000004", "7*mtoto amekunywa sumu").startswith("END ")
+
+
+def test_ussd_language_switch(engine):
+    app = UssdApp(engine)
+    screen = app.respond("0711000005", "9*2")
+    assert "Viwavijeshi" in screen and "Uliza swali" in screen
+
+
+def test_ussd_invalid_choice(engine):
+    assert UssdApp(engine).respond("0711000006", "77").startswith("CON Invalid choice.")
+
+
+def test_every_ussd_screen_fits(engine):
+    """Walk every short path through the menu in both languages; no screen may exceed 182 characters."""
+    app = UssdApp(engine)
+    tokens = ["1", "2", "3", "4", "5", "6", "0", "98", "00"]
+    for lang_prefix in ([], ["9", "2"]):
+        for depth in (1, 2, 3):
+            for combo in itertools.product(tokens, repeat=depth):
+                screen = app.respond("0711000007", "*".join([*lang_prefix, *combo]))
+                assert screen.startswith(("CON ", "END ")) and len(screen) <= 182, (combo, len(screen), screen)
+
+
+# ---------------------------------------------------------------- Voice
+
+def test_voice_menu_and_topic_are_valid_xml(engine):
+    app = VoiceApp(engine)
+    menu = app.respond({"callerNumber": "+254711000008", "isActive": "1"})
+    root = ET.fromstring(menu)
+    assert root.tag == "Response" and root.find("GetDigits/Say").text.startswith("Welcome to ACE.")
+    topic = ET.fromstring(app.respond({"callerNumber": "+254711000008", "isActive": "1", "dtmfDigits": "4"}))
+    assert "0722000000" in topic.find("Say").text
+
+
+def test_voice_end_of_call_and_invalid_digit(engine):
+    app = VoiceApp(engine)
+    assert app.respond({"isActive": "0"}) == ""
+    xml = app.respond({"callerNumber": "+254711000009", "isActive": "1", "dtmfDigits": "9"})
+    assert "not a valid choice" in xml
+
+
+# ---------------------------------------------------------------- WhatsApp
+
+def _wa(message):
+    return {"entry": [{"changes": [{"value": {"messages": [message]}}]}]}
+
+
+def test_whatsapp_parse_text_location_and_buttons():
+    wa = WhatsAppAdapter()
+    assert wa.parse_inbound(_wa({"from": "254711000000", "type": "text", "text": {"body": "hi"}})).text == "hi"
+    loc = wa.parse_inbound(_wa({"from": "254711000000", "type": "location",
+                                "location": {"latitude": -1.2, "longitude": 36.8}}))
+    assert loc.location.lat == -1.2
+    btn = wa.parse_inbound(_wa({"from": "254711000000", "type": "interactive",
+                                "interactive": {"button_reply": {"title": "More"}}}))
+    assert btn.text == "More"
+
+
+def test_whatsapp_render_lists_sources_once():
+    reply = Reply(text="Answer.", citations=[Citation("a", "KALRO", "sourced"), Citation("b", "KALRO", "sourced")])
+    assert WhatsAppAdapter().render(reply) == ["Answer.\n\nSources: KALRO"]
+
+
+def test_whatsapp_verification_and_signature():
+    assert verify_subscription("subscribe", "tok", "123", "tok") == "123"
+    assert verify_subscription("subscribe", "bad", "123", "tok") is None
+    body = b'{"a":1}'
+    sig = "sha256=" + hmac.new(b"secret", body, hashlib.sha256).hexdigest()
+    assert verify_signature(body, sig, "secret")
+    assert not verify_signature(body, sig, "other")
+    assert send_payload("+254711000000", "hi")["to"] == "254711000000"

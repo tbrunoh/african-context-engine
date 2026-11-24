@@ -1,0 +1,121 @@
+# Namibia emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: na-emergency-contacts
+title: Namibia emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in Namibia when a message signals danger.
+  Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: NA
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Namibia, call 10111 for the police. From a mobile phone, call 112 for all emergency services.
+  short: 'Emergency in Namibia: 112 from a mobile for all services, 10111 police.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Emergency from a mobile
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - violence
+    - gbv
+    - child_protection
+    - self_harm
+  - label: Police
+    number: '10111'
+    queues:
+    - violence
+    - gbv
+    - child_protection
+  source: Communications Regulatory Authority of Namibia, emergency numbers
+  source_url: https://cran.na/contact
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: gbv-106
+  claim: In Namibia, call 106 to report gender based violence.
+  short: 'Gender based violence in Namibia: call 106.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - violence
+  - abuse
+  - rape
+  - assault
+  - beaten
+  - gbv
+  - viol
+  - violences
+  - conjugale
+  - dhuluma
+  - ubakaji
+  - kupigwa
+  contacts:
+  - label: Gender based violence line
+    number: '106'
+    queues:
+    - gbv
+    - violence
+  source: Communications Regulatory Authority of Namibia, emergency numbers
+  source_url: https://cran.na/contact
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: childline
+  claim: LifeLine/ChildLine Namibia on 116 is the national child helpline.
+  short: 'Child at risk: call LifeLine/ChildLine Namibia on 116.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - child
+  - children
+  - childline
+  - abuse
+  - enfant
+  - enfants
+  - maltraitance
+  - mtoto
+  - watoto
+  contacts:
+  - label: LifeLine/ChildLine Namibia
+    number: '116'
+    queues:
+    - child_protection
+  source: Communications Regulatory Authority of Namibia; Child Helpline International
+  source_url: https://cran.na/contact
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

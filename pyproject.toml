@@ -1,0 +1,41 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ace-engine"
+version = "0.1.0"
+description = "The African Context Engine: one hyperlocal context engine behind every entry point"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+requires-python = ">=3.10"
+authors = [{ name = "Tom Bruno" }]
+keywords = ["africa", "context", "mcp", "ussd", "sms", "whatsapp", "voice", "agriculture", "health"]
+classifiers = [
+  "Development Status :: 2 - Pre-Alpha",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6"]
+mcp = ["mcp>=1.2"]
+dev = ["PyYAML>=6", "pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+ace-demo = "ace_engine.cli:main"
+ace-mcp = "ace_engine.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ace_engine"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py310"

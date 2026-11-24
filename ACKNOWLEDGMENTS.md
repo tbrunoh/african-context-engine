@@ -1,0 +1,119 @@
+# Acknowledgments
+
+ACE stands on work published by governments, UN agencies, research institutes, companies and journalists. This file names every organisation whose published work ACE uses today, says what ACE takes from each one, lists the sources the V2 design plans to use with the credit each requires, and sets the rules for crediting new sources.
+
+## How ACE credits a source
+
+- **The packs are the record.** Every fact in a context pack carries `source`, `source_url` and `checked_on`, and a person can see the source of any answer with the SOURCES command (VYANZO in Swahili). This file summarises those records.
+- **Facts, not copies.** ACE restates facts in its own words and links to the original. It does not copy documents, logos or long passages.
+- **Each source keeps its own rights.** The CC BY 4.0 licence on ACE's open packs covers ACE's own wording and compilation. Every original source keeps its copyright and terms of use.
+- **A credit is not an endorsement.** Naming an organisation here records that ACE uses its published work. It does not mean that the organisation endorses, reviews or partners with ACE. All names and marks belong to their owners.
+- **Corrections come first.** If you represent an organisation listed here and want a credit corrected, a link changed or a fact removed, open an issue at [github.com/tbrunoh/african-context-engine/issues](https://github.com/tbrunoh/african-context-engine/issues). The change will be made before the next release.
+
+## Sources used in release 1.1.0
+
+### Health guidance
+
+| Organisation | What ACE uses | Pack |
+| --- | --- | --- |
+| World Health Organization | Danger signs in pregnancy and after birth, from [Counselling for maternal and newborn health care](https://www.ncbi.nlm.nih.gov/books/NBK304178/) and the [World Health Day 2025 key messages](https://www.who.int/campaigns/world-health-day/2025/key-messages) | `africa/maternal-danger-signs` |
+
+### Agriculture and weather
+
+| Organisation | What ACE uses | Pack |
+| --- | --- | --- |
+| Food and Agriculture Organization of the United Nations (FAO) | [Fall armyworm management guidance for smallholders](https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content) and [Fall Armyworm Guidance Notes 2 and 4](https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf) | `africa/maize-fall-armyworm` |
+| International Centre of Insect Physiology and Ecology (ICIPE) | [Fall armyworm identification, management and control](https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf) and [push-pull guidance](https://technologytransfer.icipe.org/wp-content/uploads/2021/04/FAW-Comic.pdf) | `africa/maize-fall-armyworm` |
+| CIFOR-ICRAF | Fall armyworm guide | `africa/maize-fall-armyworm` |
+| Oklahoma State University Extension and Texas A&M AgriLife Extension | [Fall armyworm pest alert](https://extension.okstate.edu/e-pest-alerts/2024/fall-armyworms-aug-28-2024.html) | `africa/maize-fall-armyworm` |
+| Pacific Pests, Pathogens and Weeds | Fall armyworm fact sheet | `africa/maize-fall-armyworm` |
+| Kenya Agricultural and Livestock Research Organization (KALRO) | [Maize post harvest guidance](https://www.kalro.org/maize/maize-post-harvest) | `ke/maize-post-harvest` |
+| USAID AflaSTOP, and Nganga, Mutungi and Imathiu (2016), Journal of Stored Products Research | [Evidence on hermetic storage](https://pdf.usaid.gov/pdf_docs/PA00MV4J.pdf) | `ke/maize-post-harvest` |
+| Kenya Meteorological Department | [March to May 2025 and 2026 seasonal forecasts](https://meteo.go.ke/documents/2537/March-April-May_MAM_2026_Seasonal_Weather_Forecast.pdf) | `ke/rainfall-seasons` |
+
+### Emergency and helpline numbers
+
+Every number was checked against the sources below on 23 November 2026. Each country's pack is `context_packs/<country code>/emergency-contacts.yaml`.
+
+| Country | Sources |
+| --- | --- |
+| Kenya | [State Department for Gender and Affirmative Action](https://migecah.go.ke/index.php/gbv-prevention-and-response); [NASCOP](https://nascop.or.ke/wp-content/uploads/2025/08/NASCOP_FAQ_GBV_PRINT-COPY-1-2-compressed.pdf); UN Women Kenya; UNHCR Kenya; [The Standard](https://www.standardmedia.co.ke/business/amp/national/article/2001432592/emergency-numbers-you-should-have-over-the-holiday) |
+| Tanzania | [UK Foreign, Commonwealth and Development Office (FCDO)](https://www.gov.uk/foreign-travel-advice/tanzania/getting-help); Government of Canada; [Child Helpline International](https://childhelplineinternational.org/helplines/) |
+| Uganda | [UK FCDO](https://www.gov.uk/foreign-travel-advice/uganda/getting-help); Australian Government Smartraveller; Uganda Police Force, Child and Family Protection Department, reported by [Nile Post](https://nilepost.co.ug/news/109883/police-ask-gender-based-violence-victims-to-always-speak-out); UN Women Uganda; [UNICEF Uganda](https://www.unicef.org/uganda/stories/sauti-116-bolsters-government-response-violence-and-abuse-homes-and-communities-uganda) |
+| Rwanda | [Government of Rwanda](https://www.gov.rw/emergency) |
+| South Africa | [UK FCDO](https://www.gov.uk/foreign-travel-advice/south-africa/getting-help); Western Cape Government; Government of Canada; [Department of Justice and Constitutional Development](https://www.justice.gov.za/vg/GBV.html); Child Helpline International |
+| Botswana | [Botswana Police Service](https://www.police.gov.bw/images/Magazines/Issue_12025.pdf); Child Helpline International |
+| Namibia | [Communications Regulatory Authority of Namibia](https://cran.na/contact); Child Helpline International |
+| Zimbabwe | [UK FCDO](https://www.gov.uk/foreign-travel-advice/zimbabwe/getting-help); Government of Canada; Government of Zimbabwe; Child Helpline International |
+| Nigeria | [UK FCDO](https://www.gov.uk/foreign-travel-advice/nigeria/getting-help); Nigerian Communications Commission; Government of Canada; Child Helpline International |
+| Ghana | [Government of Canada](https://travel.gc.ca/assistance/embassies-consulates/ghana); Australian Government Smartraveller; UK FCDO; [Ministry of Gender, Children and Social Protection](https://www.mogcsp.gov.gh/market-sensitization/); UNFPA Ghana |
+| Senegal | [UK FCDO](https://www.gov.uk/foreign-travel-advice/senegal/getting-help); Government of Canada; [Ministère de la Santé et de l'Action sociale](https://sante.gouv.sn/documentations-generales); Child Helpline International |
+| Côte d'Ivoire | [UK FCDO](https://www.gov.uk/foreign-travel-advice/cote-d-ivoire/getting-help); Government of Canada; Australian Government Smartraveller; [Ministère de la Femme, de la Famille et de l'Enfant](https://famille.gouv.ci/vbg_app/public/storage/vbg/V1_Kit_Media_Engagement_National_VBG.pdf); Child Helpline International |
+| Togo | [UK FCDO](https://www.gov.uk/foreign-travel-advice/togo/getting-help); Government of Canada; Child Helpline International |
+
+### Mobile money safety
+
+| Organisation | What ACE uses | Where |
+| --- | --- | --- |
+| Safaricom | Fraud awareness guidance: [tips for staying safe](https://safaricom.co.ke/fraud-awareness/tips-tricks), [types of fraud](https://safaricom.co.ke/fraud-awareness), [fake or old M-PESA messages](https://safaricom.co.ke/fraud-awareness/m-pesa-fraud/fake-old-m-pesa-message), [Secure M-PESA](https://safaricom.co.ke/main-mpesa/m-pesa-for-you/m-pesa-tips/secure-m-pesa), [device security](https://safaricom.co.ke/personal/value-added-services/other-services/securing-your-mobile-phone-device) and [fake branded links](https://safaricom.co.ke/fraud-awareness/impersonation/fake-safaricom-branded-online-links-websites) | `ke/mobile-money-safety` and the Scam Shield signals in `src/ace_engine/scam.py`, shown only to callers in Kenya |
+
+### News reporting used to confirm facts
+
+ACE prefers primary sources. Where a fact was confirmed through reporting, the outlet is credited: [The Standard](https://www.standardmedia.co.ke/business/amp/national/article/2001432592/emergency-numbers-you-should-have-over-the-holiday), [The Star](https://the-star.co.ke/news/2023-08-03-dry-and-store-maize-well-to-avoid-aflatoxin-farmers-told), [Daily Nation, Seeds of Gold](https://nation.africa/kenya/business/seeds-of-gold/keep-in-control-maize-losses-this-rainy-season-474984), [Nile Post](https://nilepost.co.ug/news/109883/police-ask-gender-based-violence-victims-to-always-speak-out) and [K24 Digital](https://k24.digital/lifestyle/money/safaricom-lists-fake-fuliza-limit-messages-among-top-scams-targeting-m-pesa-users).
+
+## Software, services and standards
+
+| Project or service | How ACE uses it | Licence or terms |
+| --- | --- | --- |
+| [PyYAML](https://github.com/yaml/pyyaml) | Loads context packs; the only required dependency | MIT |
+| [MCP Python SDK](https://github.com/modelcontextprotocol/python-sdk) | Optional `mcp` extra for the MCP server | MIT |
+| [pytest](https://github.com/pytest-dev/pytest) and [Ruff](https://docs.astral.sh/ruff/) | Tests and linting, development only | MIT |
+| [Model Context Protocol](https://modelcontextprotocol.io/) | The protocol ACE's MCP server speaks | Open specification under the Linux Foundation's Agentic AI Foundation |
+| Africa's Talking | SMS sending over its HTTP API, when a deployment configures it | Provider terms |
+| WhatsApp Cloud API (Meta) | WhatsApp channel, when a deployment configures it | Provider terms |
+| Any OpenAI compatible model server | Optional wording of answers, behind ACE's citation check | Provider or model terms |
+
+## Planned for V2: sources and the credit each requires
+
+None of these sources is in the code yet. The [V2 design](docs/v2/README.md) plans to use them. Before a connector fetches anything, it must record the licence and the credit line in `docs/connectors/<name>.md`, and every answer built on it must show the source and its date. The [V2 data and model catalog](docs/v2/data-catalog.md) gives the details of each.
+
+| Source | Owner | Licence or terms | Credit ACE will show |
+| --- | --- | --- | --- |
+| [Flood Forecasting API](https://developers.google.com/flood-forecasting) and flood datasets | Google | CC BY 4.0 | Google Flood Forecasting, CC BY 4.0 |
+| [WAXAL speech dataset](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/) | Google Research with African academic and community partners | CC BY 4.0 | WAXAL, CC BY 4.0, with the citation given in its paper |
+| [iSDAsoil](https://registry.opendata.aws/isdasoil/) | Innovative Solutions for Decision Agriculture (iSDA) | CC BY 4.0 | iSDAsoil, with Miller and others (2021), PLoS Biology 19(11): e3001441 |
+| [WeatherNext 2 and 3](https://developers.google.com/weathernext/guides/models-wn2) | Google DeepMind and Google Research | Terms accepted with the data request | As those terms require |
+| [Agricultural Understanding API](https://developers.google.com/agricultural-understanding/api) | Google | Google Cloud terms; allowlist | As those terms require |
+| [AlphaEarth Foundations embeddings](https://arxiv.org/abs/2507.22291) | Google DeepMind | Open licence stated by the authors | As the dataset page requires |
+| [NeuralGCM](https://blog.google/technology/research/indian-farmers-monsoon-prediction/) | Google Research | Open source | As the repository licence requires |
+| [TomorrowNow Global Access Platform](https://kartoza.github.io/tomorrownow_gap_documentation/developer/api/guide/measurements/overview), with TAHMO and Arable station data | TomorrowNow, TAHMO, Arable | Account terms | Each underlying data provider by name |
+| [CHIRPS](https://www.chc.ucsb.edu/data/chirps) | Climate Hazards Center, UC Santa Barbara | Public domain | CHIRPS, with the 2015 Scientific Data paper, doi:10.1038/sdata.2015.66 |
+| [Digital Earth Africa](https://www.digitalearthafrica.org) | Digital Earth Africa | Free use | Digital Earth Africa and the underlying product |
+| [WMO Register of Alerting Authorities](https://alertingauthority.wmo.int), national CAP feeds and the [IFRC Alert Hub](https://preparecenter.org/?p=26279) | WMO, national alerting authorities, IFRC | Public | The issuing authority, named on every warning |
+| [FAO FAMEWS](https://www.fao.org/fall-armyworm/monitoring-tools/en) | FAO | Free; FAO states the data is freely available | FAO FAMEWS |
+| [PlantVillage Nuru](https://pmc.ncbi.nlm.nih.gov/articles/PMC7775399) and [kilimoAI datasets](https://icml.cc/virtual/2026/78313) | PlantVillage (Penn State) with FAO, IITA and CIMMYT; the kilimoAI team | Confirm before use | As their terms require |
+| [CABI PlantwisePlus Knowledge Bank](https://blog.plantwise.org/2022/11/29/plantwiseplus-knowledge-bank-joins-the-cabi-digital-library/) | CABI | Free to read; reuse terms vary by item | Linked, not copied, unless CABI grants reuse |
+| [WFP food prices on HDX HAPI](https://data.humdata.org/hapi) | World Food Programme, via OCHA's Humanitarian Data Exchange | HDX HAPI terms of use | WFP, via HDX |
+| [FEWS NET Data Warehouse](https://help.fews.net/fde/fews-net-api) | FEWS NET | FEWS NET data use and attribution policy | As that policy requires |
+| [WHO SMART Guidelines, antenatal care kit](https://www.who.int/publications/i/item/9789240020306) | World Health Organization | WHO publication terms | WHO, with the title of the kit |
+| [Kenya Master Health Facility List](https://mfl-api-docs.readthedocs.io/) | Ministry of Health, Kenya | Ministry API terms | Kenya Ministry of Health, Master Facility List |
+| [healthsites.io](https://www.digitalpublicgoods.net/r/global-healthsites-mapping-project) and OpenStreetMap | Global Healthsites Mapping Project and OpenStreetMap contributors | ODbL 1.0, kept in its own store | © OpenStreetMap contributors, healthsites.io, ODbL |
+| [Public health facilities in sub-Saharan Africa](https://pmc.ncbi.nlm.nih.gov/articles/PMC6658526) | KEMRI-Wellcome Trust Research Programme | Dataset terms on figshare | The 2019 Scientific Data paper, doi:10.1038/s41597-019-0142-2 |
+| [Community Health Toolkit](https://medic.org/wp-content/uploads/2025/04/Medic_2024_Annual_Report-Final.pdf) | Medic and contributors | AGPL 3.0; ACE integrates over its API and copies no code | Community Health Toolkit |
+| [MedGemma](https://developers.google.com/health-ai-developer-foundations/medgemma) | Google | Health AI Developer Foundations terms of use | As those terms require |
+| [Sunbird AI models](https://huggingface.co/sunbird) | Sunbird AI | Licence of each model | Sunbird AI and the model name |
+| [N-ATLaS](https://techcabal.com/2025/09/25/nigerian-government-awarri-launch-n-atlas/) | Awarri with the Government of Nigeria | Licence of the model | As that licence requires |
+| [Intron Sahara](https://techcabal.com/2026/03/05/intron-expands-sahara-to-57-languages/) | Intron | Provider terms | As those terms require |
+| [Gemma 3n](https://developers.googleblog.com/introducing-gemma-3n-developer-guide/) | Google | Gemma terms of use | As those terms require |
+| [GSMA Open Gateway SIM Swap](https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma-open-gateway-api-descriptions/) and [Scam Signal](https://www.gsma.com/newsroom/?p=25403) | GSMA and participating operators | Operator or aggregator contracts | As those contracts require |
+
+## Research and programmes that shaped the V2 design
+
+The V2 design learned from the published work of the University of Chicago's Human-Centered Weather Forecasts Initiative, AIM for Scale, the Gates Foundation, Google Research Africa, Google DeepMind, TomorrowNow and KALRO, Medic, Jacaranda Health, Digital Green and Viamo. Each is cited where its work is used in [docs/v2](docs/v2/README.md). None of them has endorsed ACE.
+
+## Adding a source
+
+1. Give every new fact a `source`, a `source_url` and a `checked_on` date.
+2. If the source comes from an organisation not listed here, add it to this file in the same pull request.
+3. For a V2 connector, add `docs/connectors/<name>.md` with access, licence, refresh and fallback, and add or update its row in the table above.
+4. Never add content whose terms forbid reuse. Link to it instead.

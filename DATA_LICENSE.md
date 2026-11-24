@@ -17,6 +17,10 @@ ACE separates code from knowledge. The code is open. The knowledge comes in two 
 - **No personal data in packs.** Context facts describe places, seasons, crops, conditions and rules, never individuals.
 - **Attribution travels with the fact.** Every fact carries its source and, once reviewed, its reviewer.
 
+## Third party sources
+
+The CC BY 4.0 licence on open packs covers ACE's own wording and compilation. The organisations whose published facts ACE restates keep their own rights and terms, and each one is credited in [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md). From V2 on, data that ACE fetches from public sources keeps the licence its owner set: CC BY 4.0 sources are credited in every answer that uses them, ODbL data such as healthsites.io and OpenStreetMap stays in its own store, and sources under terms of use are used only as those terms allow. The [V2 data and model catalog](docs/v2/data-catalog.md) records the licence of each.
+
 ## Engine enforcement
 
 The loader rejects open tier packs that do not declare `CC-BY-4.0`, and the store never returns verified tier facts unless the deployment sets `include_verified=True`, which licensed operators enable.

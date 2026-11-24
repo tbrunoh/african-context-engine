@@ -78,6 +78,19 @@ Kenya also has packs on maize drying and aflatoxin (7 facts, KALRO, USAID AflaST
 
 Where a public source does not publish a number, ACE does not invent one. Togo has no sourced national ambulance number, so a medical emergency there gets the instruction to call the local emergency number or go to the nearest health facility. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. Swahili and French renderings await review by fluent speakers.
 
+## V2: decision services on public data
+
+<img src="docs/v2/hero.svg" alt="ACE V2 in one picture: public data and open models go in; ACE fetches them into dated snapshots, runs the safety rail first and applies a published decision rule; people get a short, cited answer on any phone" width="100%">
+
+V2 is designed and published; work starts in December 2026. It turns the best public data and open models into decisions people can act on today, on any phone: AI weather and flood forecasts, soil maps, health facility registries, WHO guidance and open speech data in African languages, each turned into a short, cited answer.
+
+- **Twelve decision services**, from rain this week and a planting window to the nearest clinic with maternity care and Scam Shield 2 with SIM swap checks.
+- **A voice line** in Swahili, Hausa, Yoruba, French and English, built on open speech data such as WAXAL.
+- **Knowledge that stays true**: signed packs, a weekly number watcher, and dated snapshots from public data connectors.
+- **A shared layer**: every service one API or MCP call away for health, farming and assistant services.
+
+Read the [product spec](docs/v2/product-spec.md), the [data and model catalog](docs/v2/data-catalog.md) and the [build plan](docs/v2/build-plan.md). AI coding agents follow [AGENTS.md](AGENTS.md).
+
 ## Quickstart
 
 ```bash
@@ -134,6 +147,10 @@ Everything else is in [CONTRIBUTING.md](CONTRIBUTING.md). The plan is in [ROADMA
 ## Safety and responsibility
 
 ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every Swahili and French rendering need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
+
+## Acknowledgments
+
+ACE uses guidance and data published by the World Health Organization, FAO, ICIPE, KALRO, the Kenya Meteorological Department, Safaricom, national governments and regulators in all 13 countries, Child Helpline International, UN agencies and others. Every fact names its source, and [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) credits each organisation and the sources planned for V2. A credit does not mean the organisation endorses ACE.
 
 ## License
 

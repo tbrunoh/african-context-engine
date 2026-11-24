@@ -4,6 +4,8 @@ Thank you for helping build the African Context Engine. ACE is only as good as t
 
 New here? Pick a task from [docs/good-first-issues.md](docs/good-first-issues.md).
 
+Using an AI coding agent? It must follow [AGENTS.md](AGENTS.md). The V2 plan is in [docs/v2](docs/v2/README.md).
+
 ## Set up
 
 ```bash
@@ -24,6 +26,7 @@ Packs are YAML files under `context_packs/<country>/`. You can contribute throug
 - Mark facts that could cause harm if wrong as `safety_critical: true` and list the numbers to call.
 - Translations start as `reviewed: false`. Fluent speakers can review and set `reviewed: true`.
 - Do not include personal data about anyone.
+- If your source comes from an organisation not yet listed in [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md), add it there in the same pull request.
 
 ## 2. Code
 

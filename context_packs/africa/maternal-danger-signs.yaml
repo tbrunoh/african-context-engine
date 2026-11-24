@@ -1,0 +1,276 @@
+# Danger signs in pregnancy and after birth, from WHO guidance. Applies in every covered country.
+# Every fact is safety critical. ACE adds the caller's own national numbers through refer_queue.
+# Next step: review by a midwife or obstetrician in each country, and review of the French text.
+spec_version: '1.0'
+id: africa-maternal-danger-signs
+title: Danger signs in pregnancy and after birth
+description: The signs that mean a pregnant woman or new mother needs care now. ACE does not diagnose. It tells people
+  when to go to a facility and how to get there.
+version: 1.1.0
+order: 3
+labels:
+  en: Pregnancy danger signs
+  sw: Dalili hatari ujauzitoni
+  fr: Danger grossesse
+license: CC-BY-4.0
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: go-now
+  claim: 'Take a pregnant woman to a hospital or health centre immediately if she has any of these signs: vaginal bleeding,
+    convulsions or fits, severe headache with blurred vision, fever and too weak to get out of bed, severe abdominal
+    pain, or fast or difficult breathing.'
+  short: 'Go to a facility NOW for: bleeding, fits, severe headache with blurred vision, fever and very weak, severe
+    belly pain.'
+  topic: danger_signs
+  vertical: health
+  kind: action
+  subjects:
+  - pregnancy
+  keywords:
+  - pregnant
+  - pregnancy
+  - danger
+  - signs
+  - bleeding
+  - fits
+  - headache
+  - blurred
+  - fever
+  - weak
+  - belly
+  - pain
+  - breathing
+  - mjamzito
+  - ujauzito
+  - mimba
+  - hatari
+  - dalili
+  - damu
+  - degedege
+  - kichwa
+  - homa
+  - tumbo
+  - enceinte
+  - grossesse
+  - signes
+  - saignement
+  - saignements
+  - convulsions
+  - maux de tete
+  - vision
+  - fievre
+  - faiblesse
+  - ventre
+  - respiration
+  translations:
+    sw:
+      claim: 'Mpeleke mama mjamzito hospitalini au kituo cha afya mara moja akiwa na dalili yoyote kati ya hizi: kutokwa
+        na damu ukeni, degedege, maumivu makali ya kichwa pamoja na kutoona vizuri, homa na udhaifu wa kushindwa kuamka
+        kitandani, maumivu makali ya tumbo, au kupumua kwa haraka au kwa shida.'
+      short: 'Nenda kituo cha afya SASA kwa: damu, degedege, kichwa kikali na kutoona vizuri, homa na udhaifu, tumbo
+        kuuma sana.'
+    fr:
+      claim: 'Emmenez immédiatement une femme enceinte à l''hôpital ou au centre de santé si elle présente l''un de ces
+        signes : saignements vaginaux, convulsions, maux de tête sévères avec vision trouble, fièvre avec une faiblesse
+        qui l''empêche de se lever, douleurs abdominales sévères, ou respiration rapide ou difficile.'
+      short: 'Centre de santé MAINTENANT si : saignements, convulsions, maux de tête et vision trouble, fièvre et grande
+        faiblesse, fortes douleurs au ventre.'
+  source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
+  source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
+  checked_on: 2026-11-23
+  review_status: sourced
+  safety_critical: true
+  refer_queue: maternal
+- id: go-soon
+  claim: A pregnant woman should go to a health centre as soon as possible if she has fever, abdominal pain, feels ill,
+    or has swelling of the fingers, face and legs.
+  short: 'See a health worker soon for: fever, belly pain, feeling ill, or swollen fingers, face and legs.'
+  topic: danger_signs
+  vertical: health
+  kind: action
+  subjects:
+  - pregnancy
+  keywords:
+  - pregnant
+  - swelling
+  - swollen
+  - face
+  - legs
+  - fingers
+  - fever
+  - ill
+  - mjamzito
+  - kuvimba
+  - uso
+  - miguu
+  - homa
+  - mgonjwa
+  - enceinte
+  - gonflement
+  - gonfle
+  - visage
+  - jambes
+  - doigts
+  - fievre
+  - malade
+  translations:
+    sw:
+      claim: Mama mjamzito anapaswa kwenda kituo cha afya haraka iwezekanavyo akiwa na homa, maumivu ya tumbo, akijisikia
+        mgonjwa, au akivimba vidole, uso na miguu.
+      short: 'Muone mhudumu wa afya haraka kwa: homa, maumivu ya tumbo, kujisikia mgonjwa, au kuvimba vidole, uso na
+        miguu.'
+    fr:
+      claim: Une femme enceinte doit aller au centre de santé dès que possible si elle a de la fièvre, des douleurs abdominales,
+        se sent malade, ou si ses doigts, son visage et ses jambes sont gonflés.
+      short: 'Consultez vite un agent de santé si : fièvre, douleurs au ventre, malaise, ou doigts, visage et jambes
+        gonflés.'
+  source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
+  source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
+  checked_on: 2026-11-23
+  review_status: sourced
+  safety_critical: true
+  refer_queue: maternal
+- id: bleeding-urgent
+  claim: Bleeding in pregnancy needs immediate transport to a health facility. A woman, particularly one with anaemia,
+    can die within hours.
+  short: 'Bleeding in pregnancy: get to a facility immediately. It can kill within hours.'
+  topic: danger_signs
+  vertical: health
+  kind: action
+  subjects:
+  - pregnancy
+  keywords:
+  - bleeding
+  - blood
+  - haemorrhage
+  - hemorrhage
+  - anaemia
+  - damu
+  - kutokwa na damu
+  - upungufu wa damu
+  - saignement
+  - sang
+  - hemorragie
+  - anemie
+  translations:
+    sw:
+      claim: Kutokwa na damu wakati wa ujauzito kunahitaji usafiri wa haraka hadi kituo cha afya. Mwanamke, hasa mwenye
+        upungufu wa damu, anaweza kufariki ndani ya saa chache.
+      short: 'Damu wakati wa ujauzito: nenda kituo cha afya mara moja. Inaweza kuua ndani ya saa chache.'
+    fr:
+      claim: Un saignement pendant la grossesse exige un transport immédiat vers un centre de santé. Une femme, surtout
+        si elle est anémiée, peut mourir en quelques heures.
+      short: 'Saignement pendant la grossesse : allez immédiatement au centre de santé. Il peut tuer en quelques heures.'
+  source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
+  source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
+  checked_on: 2026-11-23
+  review_status: sourced
+  safety_critical: true
+  refer_queue: maternal
+- id: baby-movements
+  claim: Seek care immediately in pregnancy if the baby's movements change, or after any injury to the abdomen.
+  short: Baby moving less or differently, or a blow to the belly? Seek care immediately.
+  topic: danger_signs
+  vertical: health
+  kind: action
+  subjects:
+  - pregnancy
+  keywords:
+  - baby
+  - movement
+  - moving
+  - kicking
+  - kicks
+  - not moving
+  - injury
+  - fall
+  - mtoto
+  - kucheza
+  - tumboni
+  - kuanguka
+  - bebe
+  - mouvements
+  - bouge
+  - choc
+  - chute
+  - ventre
+  translations:
+    sw:
+      claim: Tafuta huduma mara moja wakati wa ujauzito ikiwa mtoto atabadilisha jinsi anavyocheza tumboni, au baada
+        ya jeraha lolote tumboni.
+      short: Mtoto anacheza kidogo au tofauti, au umeumia tumboni? Tafuta huduma mara moja.
+    fr:
+      claim: Pendant la grossesse, consultez immédiatement si les mouvements du bébé changent, ou après tout choc au
+        ventre.
+      short: Le bébé bouge moins ou autrement, ou un choc au ventre ? Consultez immédiatement.
+  source: WHO, World Health Day 2025 key messages
+  source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
+  checked_on: 2026-11-23
+  review_status: sourced
+  safety_critical: true
+  refer_queue: maternal
+- id: after-birth
+  claim: After giving birth, seek help immediately for heavy bleeding or large clots, red or swollen legs, a headache
+    that will not go away, high fever or vomiting, chest pain, difficulty breathing, or seizures.
+  short: 'After birth, get help NOW for: heavy bleeding or clots, swollen legs, lasting headache, high fever, chest pain,
+    fits.'
+  topic: danger_signs
+  vertical: health
+  kind: action
+  subjects:
+  - postpartum
+  keywords:
+  - after birth
+  - delivered
+  - delivery
+  - postpartum
+  - clots
+  - swollen legs
+  - chest pain
+  - kujifungua
+  - baada ya
+  - mabonge
+  - kifua
+  - degedege
+  - damu nyingi
+  - accouchement
+  - apres
+  - caillots
+  - jambes
+  - poitrine
+  - convulsions
+  - saignement abondant
+  translations:
+    sw:
+      claim: Baada ya kujifungua, tafuta msaada mara moja kwa kutokwa na damu nyingi au mabonge makubwa, miguu myekundu
+        au iliyovimba, maumivu ya kichwa yasiyoisha, homa kali au kutapika, maumivu ya kifua, kupumua kwa shida, au degedege.
+      short: 'Baada ya kujifungua, pata msaada SASA kwa: damu nyingi, miguu kuvimba, kichwa kisichoisha, homa kali, kifua,
+        degedege.'
+    fr:
+      claim: Après l'accouchement, demandez de l'aide immédiatement en cas de saignement abondant ou de gros caillots,
+        de jambes rouges ou gonflées, de maux de tête qui ne passent pas, de forte fièvre ou de vomissements, de douleur
+        à la poitrine, de difficulté à respirer ou de convulsions.
+      short: 'Après l''accouchement, aide IMMÉDIATE si : saignement abondant, jambes gonflées, maux de tête persistants,
+        forte fièvre, douleur thoracique, convulsions.'
+  source: WHO, World Health Day 2025 key messages
+  source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
+  checked_on: 2026-11-23
+  review_status: sourced
+  safety_critical: true
+  refer_queue: maternal
+countries:
+- KE
+- ZA
+- BW
+- NA
+- ZW
+- NG
+- GH
+- RW
+- TZ
+- UG
+- TG
+- SN
+- CI

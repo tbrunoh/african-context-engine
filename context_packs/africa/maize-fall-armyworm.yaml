@@ -1,0 +1,409 @@
+# Fall armyworm in maize: identification, scouting and low cost control. Applies in every covered country.
+# Sources are FAO guidance notes, ICIPE and CIFOR-ICRAF field guides. Push-pull is scoped to the
+# countries where ICIPE has disseminated it. Next step: review by national extension services.
+spec_version: '1.0'
+id: africa-maize-fall-armyworm
+title: Fall armyworm in maize
+description: How smallholder maize farmers can recognise fall armyworm, scout for it and manage it with low cost methods.
+  Pesticide advice is deliberately excluded until a licensed reviewer adds it for each county.
+version: 1.1.0
+order: 1
+labels:
+  en: Maize armyworm
+  sw: Viwavijeshi mahindini
+  fr: Chenille du maïs
+license: CC-BY-4.0
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: damage-signs
+  claim: Young fall armyworm larvae scrape maize leaves and leave thin windowpane patches. Older larvae hide in the whorl,
+    shred the young leaves and leave moist, sawdust like droppings called frass.
+  short: 'Armyworm signs: windowpane patches on leaves, shredded whorl, wet sawdust like droppings in the whorl.'
+  topic: pest
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - maize
+  keywords:
+  - armyworm
+  - fall armyworm
+  - faw
+  - worm
+  - caterpillar
+  - holes
+  - leaves
+  - eating
+  - damage
+  - viwavijeshi
+  - viwavi
+  - kiwavi
+  - funza
+  - wadudu
+  - mahindi
+  - majani
+  - mashimo
+  - sawdust
+  - frass
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - feuilles
+  - trous
+  - degats
+  - sciure
+  - cornet
+  translations:
+    sw:
+      claim: Viwavi wachanga wa viwavijeshi vamizi hukwangua majani ya mahindi na kuacha madoa membamba kama madirisha.
+        Viwavi wakubwa hujificha katikati ya kilele cha mmea, hula majani machanga na kuacha kinyesi kibichi kama unga
+        wa mbao.
+      short: 'Dalili: madoa kama madirisha kwenye majani, kilele kilicholiwa, kinyesi kibichi kama unga wa mbao.'
+    fr:
+      claim: Les jeunes larves de la chenille légionnaire d'automne grattent les feuilles de maïs et laissent de fines
+        plages transparentes, comme des fenêtres. Les larves plus âgées se cachent dans le cornet, déchiquettent les
+        jeunes feuilles et laissent des excréments humides qui ressemblent à de la sciure.
+      short: 'Signes : plages transparentes sur les feuilles, cornet déchiqueté, excréments humides comme de la sciure.'
+  source: ICIPE, Fall armyworm identification, management and control; CIFOR-ICRAF, Fall Armyworm guide
+  source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
+  checked_on: 2026-11-23
+  review_status: sourced
+- id: identify-larva
+  claim: A fall armyworm larva has an upside down Y mark on its head and four dark spots arranged in a square on the
+    second last segment of its body.
+  short: 'Armyworm larva: upside down Y on the head, four dark spots in a square near the tail.'
+  topic: pest
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - maize
+  keywords:
+  - armyworm
+  - identify
+  - larva
+  - caterpillar
+  - y
+  - spots
+  - kiwavi
+  - viwavijeshi
+  - kutambua
+  - madoa
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - larve
+  - identifier
+  - reconnaitre
+  - points
+  translations:
+    sw:
+      claim: Kiwavi wa viwavijeshi vamizi ana alama ya Y iliyopinduka kichwani na madoa manne meusi yaliyopangwa kama
+        mraba kwenye pingili ya pili kutoka mwisho wa mwili.
+      short: 'Kiwavi: alama ya Y iliyopinduka kichwani, madoa manne meusi kama mraba karibu na mkia.'
+    fr:
+      claim: La larve de la chenille légionnaire d'automne porte un Y inversé sur la tête et quatre points sombres disposés
+        en carré sur l'avant-dernier segment du corps.
+      short: 'Larve : Y inversé sur la tête, quatre points sombres en carré près de la queue.'
+  source: Oklahoma State University Extension; Texas A&M AgriLife Extension
+  source_url: https://extension.okstate.edu/e-pest-alerts/2024/fall-armyworms-aug-28-2024.html
+  checked_on: 2026-11-23
+  review_status: sourced
+- id: scouting-w-pattern
+  claim: Visit your maize often to scout. Check 50 plants by walking a W shape across the field, stopping at five points
+    and looking into the whorls of ten plants at each point.
+  short: 'Scout often: walk a W across the field, stop at 5 points, check the whorl of 10 plants at each.'
+  topic: pest
+  vertical: agriculture
+  kind: action
+  subjects:
+  - maize
+  keywords:
+  - scout
+  - scouting
+  - check
+  - inspect
+  - monitor
+  - how many
+  - kagua
+  - kukagua
+  - ukaguzi
+  - armyworm
+  - viwavijeshi
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - surveiller
+  - surveillance
+  - inspecter
+  - verifier
+  - combien
+  translations:
+    sw:
+      claim: Tembelea mahindi yako mara kwa mara kuyakagua. Kagua mimea 50 kwa kutembea kwa umbo la W shambani, ukisimama
+        sehemu tano na kuangalia katikati ya kilele cha mimea kumi katika kila sehemu.
+      short: 'Kagua mara kwa mara: tembea kwa umbo la W, simama sehemu 5, angalia kilele cha mimea 10 kila sehemu.'
+    fr:
+      claim: 'Visitez souvent votre champ de maïs pour le surveiller. Examinez 50 plants en traversant le champ en forme
+        de W : arrêtez-vous en cinq points et regardez dans le cornet de dix plants à chaque point.'
+      short: 'Surveillez souvent : traversez le champ en W, arrêtez-vous en 5 points, examinez le cornet de 10 plants
+        à chacun.'
+  source: FAO Fall Armyworm Guidance Notes 2 and 4
+  source_url: https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf
+  checked_on: 2026-11-23
+  review_status: sourced
+- id: squash-eggs-larvae
+  claim: Squashing egg masses and young larvae by hand is a very effective tactic for smallholder maize farmers.
+  short: Squash armyworm egg masses and young larvae by hand. It works well on small farms.
+  topic: pest
+  vertical: agriculture
+  kind: action
+  subjects:
+  - maize
+  keywords:
+  - control
+  - kill
+  - get rid
+  - manage
+  - stop
+  - solution
+  - cheap
+  - free
+  - without chemicals
+  - hand
+  - eggs
+  - kuua
+  - kudhibiti
+  - mayai
+  - nifanye
+  - suluhisho
+  - dawa
+  - armyworm
+  - viwavijeshi
+  - viwavi
+  - organic
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - lutter
+  - tuer
+  - eliminer
+  - ecraser
+  - main
+  - oeufs
+  - sans produits
+  - que faire
+  translations:
+    sw:
+      claim: Kuponda makundi ya mayai na viwavi wachanga kwa mkono ni mbinu bora sana kwa wakulima wadogo wa mahindi.
+      short: Ponda mayai na viwavi wachanga kwa mkono. Inafaa sana kwa mashamba madogo.
+    fr:
+      claim: Écraser à la main les masses d'œufs et les jeunes larves est une méthode très efficace pour les petits producteurs
+        de maïs.
+      short: Écrasez à la main les œufs et les jeunes chenilles. C'est très efficace sur les petites parcelles.
+  source: FAO, Fall armyworm management guidance for smallholders
+  source_url: https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content
+  checked_on: 2026-11-23
+  review_status: sourced
+- id: egg-masses
+  claim: Fall armyworm eggs are laid in batches covered by whitish scales, often on the underside of the lower leaves.
+  short: 'Armyworm eggs: batches covered in whitish scales, often under the lower leaves.'
+  topic: pest
+  vertical: agriculture
+  kind: sign
+  subjects:
+  - maize
+  keywords:
+  - eggs
+  - egg
+  - mayai
+  - white
+  - scales
+  - underside
+  - armyworm
+  - viwavijeshi
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - oeufs
+  - oeuf
+  - ecailles
+  - blanches
+  translations:
+    sw:
+      claim: Mayai ya viwavijeshi vamizi hutagwa kwa makundi yaliyofunikwa na magamba meupe, mara nyingi upande wa chini
+        wa majani ya chini.
+      short: 'Mayai: makundi yaliyofunikwa na magamba meupe, mara nyingi chini ya majani ya chini.'
+    fr:
+      claim: Les œufs de la chenille légionnaire d'automne sont pondus en amas recouverts d'écailles blanchâtres, souvent
+        sous les feuilles basses.
+      short: 'Œufs : amas couverts d''écailles blanchâtres, souvent sous les feuilles basses.'
+  source: ICIPE, Fall armyworm identification, management and control; Pacific Pests, Pathogens and Weeds fact sheet
+  source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
+  checked_on: 2026-11-23
+  review_status: sourced
+- id: push-pull
+  claim: Push-pull reduces fall armyworm. Plant Desmodium between maize rows to repel the moths, and Napier or Brachiaria
+    grass around the field border to attract them away. Desmodium also controls Striga weed, and both plants are good
+    fodder.
+  short: 'Push-pull: Desmodium between maize rows, Napier or Brachiaria grass around the edge. Cuts armyworm.'
+  topic: pest
+  vertical: agriculture
+  kind: action
+  subjects:
+  - maize
+  keywords:
+  - push pull
+  - push-pull
+  - desmodium
+  - brachiaria
+  - napier
+  - intercrop
+  - striga
+  - kiduha
+  - prevent
+  - prevention
+  - zuia
+  - kuzuia
+  - armyworm
+  - viwavijeshi
+  - long term
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - prevenir
+  translations:
+    sw:
+      claim: Mbinu ya push-pull hupunguza viwavijeshi vamizi. Panda Desmodium kati ya mistari ya mahindi ili kuwafukuza
+        nondo, na majani ya Napier au Brachiaria kuzunguka mpaka wa shamba ili kuwavuta mbali. Desmodium pia hudhibiti
+        gugu la Striga, na mimea yote miwili ni lishe nzuri ya mifugo.
+      short: 'Push-pull: Desmodium kati ya mistari ya mahindi, Napier au Brachiaria mpakani. Hupunguza viwavijeshi.'
+    fr:
+      claim: La technique push-pull réduit la chenille légionnaire d'automne. Semez du Desmodium entre les rangs de maïs
+        pour repousser les papillons, et de l'herbe à éléphant (Napier) ou du Brachiaria autour du champ pour les attirer
+        ailleurs. Le Desmodium combat aussi le Striga, et les deux plantes sont un bon fourrage.
+      short: 'Push-pull : Desmodium entre les rangs de maïs, Napier ou Brachiaria en bordure. Réduit la chenille légionnaire.'
+  source: ICIPE, Managing the fall armyworm threat using push-pull technology; CIFOR-ICRAF, Fall Armyworm guide
+  source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/FAW-Comic.pdf
+  checked_on: 2026-11-23
+  review_status: sourced
+  scope:
+    countries:
+    - KE
+    - UG
+    - TZ
+    - RW
+- id: life-cycle
+  claim: The fall armyworm life cycle takes about four weeks, so one maize season can be hit by three generations. Keep
+    scouting through the season.
+  short: Armyworm life cycle is about 4 weeks, so one season can bring 3 generations. Keep scouting.
+  topic: pest
+  vertical: agriculture
+  subjects:
+  - maize
+  keywords:
+  - life cycle
+  - generations
+  - come back
+  - again
+  - season
+  - msimu
+  - kurudi
+  - tena
+  - armyworm
+  - viwavijeshi
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - cycle
+  - saison
+  - revient
+  translations:
+    sw:
+      claim: Mzunguko wa maisha wa viwavijeshi vamizi huchukua takriban wiki nne, hivyo msimu mmoja wa mahindi unaweza
+        kuvamiwa na vizazi vitatu. Endelea kukagua msimu wote.
+      short: Mzunguko wa maisha ni takriban wiki 4, hivyo msimu mmoja unaweza kuwa na vizazi 3. Endelea kukagua.
+    fr:
+      claim: Le cycle de vie de la chenille légionnaire d'automne dure environ quatre semaines, donc une saison de maïs
+        peut subir trois générations. Continuez à surveiller toute la saison.
+      short: 'Cycle de vie d''environ 4 semaines : une saison peut connaître 3 générations. Continuez à surveiller.'
+  source: ICIPE, Fall armyworm identification, management and control
+  source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
+  checked_on: 2026-11-23
+  review_status: sourced
+- id: natural-enemies
+  claim: Natural enemies living in and around your fields attack fall armyworm. Keeping a variety of plants on the farm
+    keeps those natural enemies close to your maize.
+  short: Natural enemies eat armyworm. A variety of plants on the farm keeps them near your maize.
+  topic: pest
+  vertical: agriculture
+  subjects:
+  - maize
+  keywords:
+  - natural enemies
+  - predators
+  - birds
+  - ants
+  - biodiversity
+  - maadui wa asili
+  - armyworm
+  - viwavijeshi
+  - chenille
+  - chenilles
+  - legionnaire
+  - chenille legionnaire
+  - mais
+  - ravageur
+  - ennemis naturels
+  - predateurs
+  - oiseaux
+  - fourmis
+  - biodiversite
+  translations:
+    sw:
+      claim: Maadui wa asili wanaoishi shambani na karibu nalo huwashambulia viwavijeshi vamizi. Kuwa na mimea ya aina
+        mbalimbali shambani huwaweka maadui hao karibu na mahindi yako.
+      short: Maadui wa asili hula viwavijeshi. Mimea mbalimbali shambani huwaweka karibu na mahindi.
+    fr:
+      claim: Des ennemis naturels qui vivent dans vos champs et autour attaquent la chenille légionnaire d'automne. Garder
+        une diversité de plantes sur l'exploitation maintient ces ennemis naturels près de votre maïs.
+      short: Des ennemis naturels mangent la chenille. Une diversité de plantes les garde près de votre maïs.
+  source: FAO Fall Armyworm Guidance Note 4
+  source_url: https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf
+  checked_on: 2026-11-23
+  review_status: sourced
+countries:
+- KE
+- ZA
+- BW
+- NA
+- ZW
+- NG
+- GH
+- RW
+- TZ
+- UG
+- TG
+- SN
+- CI

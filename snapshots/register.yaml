@@ -1,0 +1,45 @@
+# The licence register: every source a connector may use, with the credit and terms it requires.
+# A snapshot whose source_id is not listed here fails the tests. ODbL snapshots live in snapshots/odbl/.
+# Checked on 24 November 2026.
+sources:
+  - id: geoboundaries
+    name: geoBoundaries gbOpen, first level administrative areas
+    publisher: William & Mary geoLab, with the national and open sources named in each snapshot
+    url: https://www.geoboundaries.org/
+    licence: Varies by country, recorded in each places snapshot (public domain, CC BY 4.0, CC BY 3.0 IGO, CC BY-SA 2.0 or ODbL 1.0)
+    attribution: Boundaries from geoBoundaries (Runfola et al. 2020), with the source named in each snapshot.
+    share_alike: true
+    terms: Tanzania and Togo come from OpenStreetMap under ODbL 1.0 and are kept in snapshots/odbl. Botswana and Ghana are CC BY-SA 2.0.
+  - id: ocha_cod_ab
+    name: OCHA Common Operational Datasets, administrative boundaries (COD-AB)
+    publisher: UN OCHA, with the Uganda Bureau of Statistics and the Namibia Statistics Agency
+    url: https://data.humdata.org/dataset/cod-ab-uga
+    licence: CC BY-IGO
+    attribution: Administrative boundaries from OCHA COD-AB on HDX, sourced from the national statistics office.
+  - id: open_meteo
+    name: ECMWF IFS ensemble forecast, open data, served by the Open-Meteo Ensemble API
+    publisher: ECMWF (forecast data); Open-Meteo (API)
+    url: https://open-meteo.com/en/docs/ensemble-api
+    licence: CC BY 4.0
+    attribution: Weather data by Open-Meteo.com, from ECMWF open data.
+    terms: The free Open-Meteo API is for non-commercial use, under 10,000 calls a day. A commercial deployment needs an Open-Meteo subscription or its own ECMWF open data pipeline.
+  - id: cap
+    name: Official CAP warnings from national alerting authorities listed in the WMO Register of Alerting Authorities
+    publisher: The national meteorological service of each country, named in each warnings snapshot
+    url: https://alertingauthority.wmo.int/
+    licence: Official public warnings; terms set by each authority
+    attribution: Each warning is credited to the authority that issued it, in the authority's own words.
+    terms: Public warnings are published for redistribution to the public. ACE passes them on unchanged and never rewrites the authority's text.
+  - id: wfp_prices
+    name: WFP Price Database, food prices by market, per country
+    publisher: World Food Programme, published on the Humanitarian Data Exchange
+    url: https://data.humdata.org/organization/wfp
+    licence: CC BY-IGO
+    attribution: Food prices from the World Food Programme, via HDX.
+  - id: public_health_facilities
+    name: A spatial database of health facilities managed by the public health sector in sub Saharan Africa
+    publisher: Maina J, Ouma PO, Macharia PM et al., KEMRI-Wellcome Trust Research Programme (Scientific Data 6, 134, 2019)
+    url: https://data.humdata.org/dataset/health-facilities-in-sub-saharan-africa
+    licence: CC BY 4.0
+    attribution: Public health facilities from Maina et al. (2019), Scientific Data 6, 134, via HDX.
+    terms: The list names public facilities only and dates from 2019. It has no phone numbers, hours or services.

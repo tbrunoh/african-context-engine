@@ -76,7 +76,9 @@ def test_engine_with_model(packs_dir):
 
 def test_mcp_tools(engine):
     tools = build_tools(engine)
-    assert set(tools) == {"ask_ace", "search_context", "check_message", "emergency_contacts", "list_packs"}
+    assert {"ask_ace", "search_context", "check_message", "emergency_contacts", "list_packs"} <= set(tools)
+    assert {"rain_this_week", "official_warnings", "nearest_facility", "market_prices", "pregnancy_companion",
+            "pest_check", "service_coverage"} <= set(tools)
     assert tools["ask_ace"]("how do I store maize")["citations"]
     assert tools["search_context"]("armyworm")[0]["review_status"] == "sourced"
     assert tools["check_message"]("send your PIN")["verdict"] == "likely_scam"

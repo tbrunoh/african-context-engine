@@ -35,7 +35,7 @@ def test_questions_find_the_right_fact(engine, question, expected):
 
 
 def test_off_topic_question_returns_nothing(engine):
-    assert engine.store.query(ContextQuery(text="price of tomatoes in Nairobi", country="KE")) == []
+    assert engine.store.query(ContextQuery(text="football league results in Nairobi", country="KE")) == []
 
 
 def test_action_questions_prefer_action_facts(engine):
@@ -92,7 +92,8 @@ def test_season_filter():
 
 def test_country_filter(engine):
     # Post harvest storage is a Kenya pack; fall armyworm is continental.
-    assert engine.store.query(ContextQuery(text="aflatoxin storage drying", country="NG")) == []
+    found = engine.store.query(ContextQuery(text="aflatoxin storage drying", country="NG"))
+    assert not any(s.fact.pack_id == "ke-maize-post-harvest" for s in found)
     assert engine.store.query(ContextQuery(text="armyworm", country="NG"))
     push_pull = [s.fact.id for s in engine.store.query(ContextQuery(text="push pull desmodium", country="NG"))]
     assert not any(i.endswith("/push-pull") for i in push_pull)

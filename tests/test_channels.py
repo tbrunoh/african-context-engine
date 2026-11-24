@@ -56,34 +56,35 @@ def test_ussd_adapter():
 
 def test_ussd_main_menu(engine):
     screen = UssdApp(engine).respond("0711000001", "")
-    assert screen.startswith("CON ACE\n1 Maize armyworm")
-    assert "Ask a question" in screen and len(screen) <= 182
+    assert screen.startswith("CON ACE\n1 Rain this week")
+    assert "7 Topics" in screen and "Ask a question" in screen and len(screen) <= 182
 
 
 def test_ussd_browse_a_pack(engine):
     app = UssdApp(engine)
-    first = app.respond("0711000002", "1")
-    second = app.respond("0711000002", "1*1")
+    first = app.respond("0711000002", "7*1")
+    second = app.respond("0711000002", "7*1*1")
     assert first != second and "1 Next" in first and "0 Back" in first
-    assert app.respond("0711000002", "1*1*0").startswith("CON ACE")
+    assert app.respond("0711000002", "7*1*1*0").startswith("CON ACE")
 
 
 def test_ussd_ask_and_scam(engine):
     app = UssdApp(engine)
-    answer = app.respond("0711000003", "7*how do I store maize")
+    answer = app.respond("0711000003", "8*how do I store maize")
     assert "13" in answer and answer.endswith("0 Menu")
-    verdict = app.respond("0711000003", "8*Send your M-PESA PIN now")
+    verdict = app.respond("0711000003", "9*Send your M-PESA PIN now")
     assert "LIKELY SCAM" in verdict
 
 
 def test_ussd_emergency_ends_the_session(engine):
-    assert UssdApp(engine).respond("0711000004", "7*mtoto amekunywa sumu").startswith("END ")
+    assert UssdApp(engine).respond("0711000004", "8*mtoto amekunywa sumu").startswith("END ")
 
 
 def test_ussd_language_switch(engine):
     app = UssdApp(engine)
-    screen = app.respond("0711000005", "9*2")
-    assert "Viwavijeshi" in screen and "Uliza swali" in screen
+    screen = app.respond("0711000005", "98*10*2")
+    assert "Mvua wiki hii" in screen and "Uliza swali" in screen
+    assert "Viwavijeshi" in app.respond("0711000005", "98*10*2*7")
 
 
 def test_ussd_invalid_choice(engine):
@@ -94,7 +95,7 @@ def test_every_ussd_screen_fits(engine):
     """Walk every short path through the menu in both languages; no screen may exceed 182 characters."""
     app = UssdApp(engine)
     tokens = ["1", "2", "3", "4", "5", "6", "0", "98", "00"]
-    for lang_prefix in ([], ["9", "2"]):
+    for lang_prefix in ([], ["98", "10", "2"]):
         for depth in (1, 2, 3):
             for combo in itertools.product(tokens, repeat=depth):
                 screen = app.respond("0711000007", "*".join([*lang_prefix, *combo]))

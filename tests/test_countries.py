@@ -133,8 +133,10 @@ def test_french_scam_message_is_caught(engine):
 def test_ussd_menu_is_local_and_in_french_in_togo(engine):
     app = UssdApp(engine)
     screen = app.respond(PHONES["TG"], "")
-    assert screen.startswith("CON ") and "Numéros d'urgence" in screen and "Poser une question" in screen
-    assert "M-PESA" not in screen
+    assert screen.startswith("CON ") and "Pluie cette semaine" in screen
+    assert "Poser une question" in app.respond(PHONES["TG"], "98")
+    topics = app.respond(PHONES["TG"], "7")
+    assert "Numéros d'urgence" in topics and "M-PESA" not in topics
     assert all(len(app.respond(PHONES[cc], "")) <= 182 for cc in PHONES)
 
 

@@ -22,7 +22,7 @@ def test_swahili_question_gets_swahili_answer(engine):
 
 
 def test_unknown_topic_is_admitted_not_invented(engine):
-    reply = engine.ask("what is the price of tomatoes in Nairobi")
+    reply = engine.ask("which football team plays best in the league")
     assert reply.kind is ReplyKind.CLARIFY and not reply.citations
     assert "no checked guidance" in reply.text
 

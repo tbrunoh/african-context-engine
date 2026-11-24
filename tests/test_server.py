@@ -69,8 +69,12 @@ def test_scam_endpoint(app):
 
 
 def test_emergency_endpoint(app):
-    _, _, body = call(app, "GET", "/v1/emergency", query="queue=gbv")
-    assert "1195" in {c["number"] for c in json.loads(body)["contacts"]}
+    status, _, body = call(app, "GET", "/v1/emergency", query="queue=gbv&country=KE")
+    assert status == 200 and "1195" in {c["number"] for c in json.loads(body)["contacts"]}
+    _, _, body = call(app, "GET", "/v1/emergency", query="queue=gbv&country=za")
+    assert "0800 428 428" in {c["number"] for c in json.loads(body)["contacts"]}
+    status, _, _ = call(app, "GET", "/v1/emergency", query="queue=gbv")
+    assert status == 400  # numbers from different countries are never mixed
 
 
 def test_ussd_webhook(app):

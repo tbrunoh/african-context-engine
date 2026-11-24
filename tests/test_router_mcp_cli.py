@@ -80,7 +80,11 @@ def test_mcp_tools(engine):
     assert tools["ask_ace"]("how do I store maize")["citations"]
     assert tools["search_context"]("armyworm")[0]["review_status"] == "sourced"
     assert tools["check_message"]("send your PIN")["verdict"] == "likely_scam"
-    assert "1195" in {c["number"] for c in tools["emergency_contacts"]("gbv")}
+    assert "1195" in {c["number"] for c in tools["emergency_contacts"]("KE", "gbv")}
+    assert "1308" in {c["number"] for c in tools["emergency_contacts"]("CI", "gbv")}
+    assert "193" in tools["ask_ace"]("he is not breathing", country="GH")["text"]
+    with pytest.raises(ValueError):
+        tools["emergency_contacts"]("XX")
     assert len(tools["list_packs"]()) >= 6
 
 

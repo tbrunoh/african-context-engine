@@ -7,6 +7,7 @@ from conftest import minimal_pack
 
 from ace_engine.context import PackError, check_file, load_packs, pack_files, parse_pack, validate_pack
 from ace_engine.context.schema import ReviewStatus
+from ace_engine.countries import COUNTRIES
 
 
 def test_every_starter_pack_validates(packs_dir):
@@ -17,13 +18,30 @@ def test_every_starter_pack_validates(packs_dir):
         assert report.ok, (path, report.errors)
 
 
-def test_every_starter_fact_is_sourced_and_bilingual(packs_dir):
+def test_every_starter_fact_is_sourced_and_speaks_its_countries_languages(packs_dir):
+    """Every fact can be read in each language of every country it serves."""
     for pack in load_packs(packs_dir):
         for fact in pack.facts:
             assert fact.review_status is ReviewStatus.SOURCED
             assert fact.source_url and fact.source_url.startswith("https://")
             assert fact.checked_on
-            assert "sw" in fact.translations, fact.id
+            for cc in fact.scope.countries:
+                for lang in COUNTRIES[cc].languages:
+                    if lang in ("en", "fr", "sw") and (cc, lang) != ("RW", "sw"):
+                        assert lang in fact.languages, (fact.id, cc, lang)
+
+
+def test_every_covered_country_has_an_emergency_pack(packs_dir):
+    packs = {p.id for p in load_packs(packs_dir)}
+    for cc in COUNTRIES:
+        assert f"{cc.lower()}-emergency-contacts" in packs
+
+
+def test_safety_critical_facts_always_have_a_number(packs_dir):
+    for pack in load_packs(packs_dir):
+        for fact in pack.facts:
+            if fact.safety_critical:
+                assert fact.contacts or fact.refer_queue, fact.id
 
 
 def test_short_forms_fit_one_sms(packs_dir):

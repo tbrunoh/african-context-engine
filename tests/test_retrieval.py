@@ -91,7 +91,11 @@ def test_season_filter():
 
 
 def test_country_filter(engine):
-    assert engine.store.query(ContextQuery(text="armyworm", country="NG")) == []
+    # Post harvest storage is a Kenya pack; fall armyworm is continental.
+    assert engine.store.query(ContextQuery(text="aflatoxin storage drying", country="NG")) == []
+    assert engine.store.query(ContextQuery(text="armyworm", country="NG"))
+    push_pull = [s.fact.id for s in engine.store.query(ContextQuery(text="push pull desmodium", country="NG"))]
+    assert not any(i.endswith("/push-pull") for i in push_pull)
 
 
 def test_text_helpers():

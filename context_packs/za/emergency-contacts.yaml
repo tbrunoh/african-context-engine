@@ -1,0 +1,134 @@
+# South Africa emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: za-emergency-contacts
+title: South Africa emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in South Africa when a message signals
+  danger. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: ZA
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In South Africa, call 112 from a mobile phone for any emergency. From any phone, call 10111 for the police and
+    10177 for an ambulance.
+  short: 'Emergency in South Africa: 112 from a mobile, 10111 police, 10177 ambulance.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Emergency from a mobile
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - violence
+    - gbv
+    - child_protection
+    - self_harm
+    free: true
+  - label: Police
+    number: '10111'
+    queues:
+    - violence
+    - gbv
+    - child_protection
+    free: true
+  - label: Ambulance
+    number: '10177'
+    queues:
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    free: true
+  source: UK FCDO, South Africa travel advice, getting help; Western Cape Government; Government of Canada
+  source_url: https://www.gov.uk/foreign-travel-advice/south-africa/getting-help
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: gbv-command-centre
+  claim: South Africa's Gender Based Violence Command Centre runs an emergency line on 0800 428 428, open day and night.
+  short: 'Gender based violence: call 0800 428 428, day and night.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - violence
+  - abuse
+  - rape
+  - assault
+  - beaten
+  - gbv
+  - viol
+  - violences
+  - conjugale
+  - dhuluma
+  - ubakaji
+  - kupigwa
+  contacts:
+  - label: GBV Command Centre
+    number: 0800 428 428
+    queues:
+    - gbv
+    - violence
+    free: true
+    hours: 24 hours
+  source: Department of Justice and Constitutional Development, Gender Based Violence Command Centre
+  source_url: https://www.justice.gov.za/vg/GBV.html
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: childline
+  claim: Childline South Africa on 116 is the national child helpline.
+  short: 'Child at risk: call Childline South Africa on 116.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - child
+  - children
+  - childline
+  - abuse
+  - enfant
+  - enfants
+  - maltraitance
+  - mtoto
+  - watoto
+  contacts:
+  - label: Childline South Africa
+    number: '116'
+    queues:
+    - child_protection
+  source: Child Helpline International, helpline directory
+  source_url: https://childhelplineinternational.org/helplines/
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

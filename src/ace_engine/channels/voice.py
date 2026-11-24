@@ -58,6 +58,9 @@ PROMPTS = {
            "bye": "We did not get your choice. Goodbye.", "invalid": "That is not a valid choice."},
     "sw": {"welcome": "Karibu ACE.", "press": "Kwa {label}, bonyeza {n}.", "repeat": "Kusikia menyu tena, bonyeza 0.",
            "bye": "Hatukupata chaguo lako. Kwaheri.", "invalid": "Chaguo hilo si sahihi."},
+    "fr": {"welcome": "Bienvenue sur ACE.", "press": "Pour {label}, tapez {n}.",
+           "repeat": "Pour réécouter le menu, tapez 0.", "bye": "Nous n'avons pas reçu votre choix. Au revoir.",
+           "invalid": "Ce choix n'est pas valide."},
 }
 
 
@@ -73,11 +76,11 @@ class VoiceApp:
         if str(payload.get("isActive", "1")) == "0":
             return ""  # end of call notification; nothing to say
         caller = str(payload.get("callerNumber", ""))
-        profile = self.engine.profiles.peek(caller) if caller else None
-        lang = (profile.language if profile else None) or self.engine.config.default_language
+        lang = self.engine.language_for(caller) if caller else self.engine.config.default_language
         lang = lang if lang in PROMPTS else "en"
+        country = self.engine.country_for(caller) if caller else None
         digits = str(payload.get("dtmfDigits") or "").strip()
-        packs = self.engine.packs[:9]
+        packs = self.engine.packs_for(country)[:9]
         if not digits or digits == "0":
             return self._menu(lang, packs)
         if not digits.isdigit() or not 1 <= int(digits) <= len(packs):
@@ -86,7 +89,7 @@ class VoiceApp:
         budget = Budget(max_chars=400, short=True, max_facts=1)
         spoken = []
         for i in range(self.facts_per_topic):
-            text, more = self.engine.browse(pack.id, i, lang, budget)
+            text, more = self.engine.browse(pack.id, i, lang, budget, country)
             if text:
                 spoken.append(text)
             if not more:

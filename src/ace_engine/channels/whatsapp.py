@@ -56,7 +56,7 @@ class WhatsAppAdapter(ChannelAdapter):
         text = reply.text.strip()
         if reply.citations:
             sources = "; ".join(dict.fromkeys(c.source for c in reply.citations))
-            label = "Vyanzo" if reply.language == "sw" else "Sources"
+            label = {"sw": "Vyanzo"}.get(reply.language, "Sources")
             text = f"{text}\n\n{label}: {sources}"
         return [text[i:i + WHATSAPP_MAX_TEXT] for i in range(0, len(text), WHATSAPP_MAX_TEXT)] or [""]
 

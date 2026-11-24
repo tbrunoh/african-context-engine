@@ -30,17 +30,23 @@ if TYPE_CHECKING:
 USSD_MAX_CHARS = 182
 
 UI = {
-    "en": {"ask": "Ask a question", "scam": "Check a message", "lang": "Language/Lugha",
+    "en": {"ask": "Ask a question", "scam": "Check a message", "lang": "Language",
            "more": "98 More", "next": "1 Next", "back": "0 Back", "menu": "0 Menu",
            "ask_prompt": "Type your question:", "scam_prompt": "Type or paste the message:",
            "invalid": "Invalid choice.", "end_pack": "That is all for this topic.",
-           "lang_prompt": "1 English\n2 Kiswahili"},
+           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais"},
     "sw": {"ask": "Uliza swali", "scam": "Kagua ujumbe", "lang": "Lugha/Language",
            "more": "98 Zaidi", "next": "1 Endelea", "back": "0 Rudi", "menu": "0 Menyu",
            "ask_prompt": "Andika swali lako:", "scam_prompt": "Andika au bandika ujumbe:",
            "invalid": "Chaguo si sahihi.", "end_pack": "Hayo ndiyo yote kwa mada hii.",
-           "lang_prompt": "1 English\n2 Kiswahili"},
+           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais"},
+    "fr": {"ask": "Poser une question", "scam": "Verifier un message", "lang": "Langue/Language",
+           "more": "98 Suite", "next": "1 Suivant", "back": "0 Retour", "menu": "0 Menu",
+           "ask_prompt": "Tapez votre question :", "scam_prompt": "Tapez ou collez le message :",
+           "invalid": "Choix invalide.", "end_pack": "C'est tout pour ce sujet.",
+           "lang_prompt": "1 English\n2 Kiswahili\n3 Francais"},
 }
+_LANG_CHOICES = {"1": "en", "2": "sw", "3": "fr"}
 
 
 class UssdAdapter(ChannelAdapter):
@@ -105,17 +111,19 @@ class UssdApp:
     # -- helpers --------------------------------------------------------------
 
     def _lang(self, phone: str) -> str:
-        profile = self.engine.profiles.peek(phone)
-        lang = (profile.language if profile else None) or self.engine.config.default_language
+        lang = self.engine.language_for(phone)
         return lang if lang in UI else "en"
 
-    def _items(self, lang: str) -> list[tuple[str, str]]:
-        items = [("pack:" + p.id, p.label(lang)) for p in self.engine.packs]
+    def _packs(self, phone: str):
+        return self.engine.packs_for(self.engine.country_for(phone))
+
+    def _items(self, lang: str, phone: str) -> list[tuple[str, str]]:
+        items = [("pack:" + p.id, p.label(lang)) for p in self._packs(phone)]
         return items + [("ask", UI[lang]["ask"]), ("scam", UI[lang]["scam"]), ("lang", UI[lang]["lang"])]
 
-    def _pages(self, lang: str) -> list[list[tuple[int, str, str]]]:
+    def _pages(self, lang: str, phone: str) -> list[list[tuple[int, str, str]]]:
         """Split the numbered menu into screens that fit, leaving room for the More line."""
-        numbered = [(n, key, label) for n, (key, label) in enumerate(self._items(lang), start=1)]
+        numbered = [(n, key, label) for n, (key, label) in enumerate(self._items(lang, phone), start=1)]
         budget = self.max_chars - 4 - len(self.title) - 1 - len(UI[lang]["more"]) - 1
         pages: list[list[tuple[int, str, str]]] = [[]]
         used = 0
@@ -142,7 +150,7 @@ class UssdApp:
             s.screen, s.page = "main", 0
             return
         if s.screen == "main":
-            pages = self._pages(lang)
+            pages = self._pages(lang, phone)
             if token == "98" and s.page + 1 < len(pages):
                 s.page += 1
                 return
@@ -150,7 +158,7 @@ class UssdApp:
             if choice is None:
                 s.error = True
             elif choice.startswith("pack:"):
-                s.screen, s.pack_index, s.fact_index = "pack", [p.id for p in self.engine.packs].index(
+                s.screen, s.pack_index, s.fact_index = "pack", [p.id for p in self._packs(phone)].index(
                     choice[5:]), 0
             else:
                 s.screen = choice
@@ -172,9 +180,9 @@ class UssdApp:
                 s.end = reply.kind is ReplyKind.EMERGENCY or reply.end_session
             s.screen = "answer"
         elif s.screen == "lang":
-            if token in ("1", "2"):
+            if token in _LANG_CHOICES:
                 profile = self.engine.profiles.get_or_create(phone)
-                profile.language = "en" if token == "1" else "sw"
+                profile.language = _LANG_CHOICES[token]
                 s.screen, s.page = "main", 0
             else:
                 s.error = True
@@ -186,17 +194,18 @@ class UssdApp:
         if s.error:
             prefix = ui["invalid"] + "\n"
         if s.screen == "main":
-            pages = self._pages(lang)
+            pages = self._pages(lang, phone)
             page = pages[min(s.page, len(pages) - 1)]
             lines = [ui["invalid"] if s.error else self.title] + [f"{n} {label}" for n, _, label in page]
             if s.page + 1 < len(pages):
                 lines.append(ui["more"])
             return self._con("\n".join(lines))
         if s.screen == "pack":
-            pack = self.engine.packs[s.pack_index]
+            pack = self._packs(phone)[s.pack_index]
             footer_full = f"\n{ui['next']}  {ui['back']}"
             budget = Budget(self.max_chars - 4 - len(prefix) - len(footer_full), short=True, max_facts=1)
-            text, has_more = self.engine.browse(pack.id, s.fact_index, lang, budget)
+            text, has_more = self.engine.browse(pack.id, s.fact_index, lang, budget,
+                                                self.engine.country_for(phone))
             if not text:
                 return self._con(f"{prefix}{ui['end_pack']}\n{ui['back']}")
             footer = footer_full if has_more else f"\n{ui['back']}"

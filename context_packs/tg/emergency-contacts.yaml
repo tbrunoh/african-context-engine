@@ -1,0 +1,91 @@
+# Togo emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: tg-emergency-contacts
+title: Togo emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in Togo when a message signals danger.
+  Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: TG
+language: fr
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: Au Togo, appelez le 117 pour la police et le 118 pour les sapeurs-pompiers.
+  short: 'Urgence au Togo : police 117, sapeurs-pompiers 118.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Police
+    number: '117'
+    queues:
+    - violence
+    - gbv
+    - child_protection
+  - label: Sapeurs-pompiers
+    number: '118'
+    queues:
+    - fire
+  translations:
+    en:
+      claim: In Togo, call 117 for the police and 118 for the fire service.
+      short: 'Emergency in Togo: police 117, fire 118.'
+  source: UK FCDO, Togo travel advice, getting help; Government of Canada, Togo
+  source_url: https://www.gov.uk/foreign-travel-advice/togo/getting-help
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: allo-1011
+  claim: Allo 1011 est la ligne d'assistance pour les enfants au Togo.
+  short: 'Enfant en danger au Togo : appelez Allo 1011.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - child
+  - children
+  - childline
+  - abuse
+  - enfant
+  - enfants
+  - maltraitance
+  - mtoto
+  - watoto
+  contacts:
+  - label: Allo 1011
+    number: '1011'
+    queues:
+    - child_protection
+  translations:
+    en:
+      claim: Allo 1011 is the child helpline in Togo.
+      short: 'Child at risk in Togo: call Allo 1011.'
+  source: Child Helpline International, helpline directory
+  source_url: https://childhelplineinternational.org/helplines/
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

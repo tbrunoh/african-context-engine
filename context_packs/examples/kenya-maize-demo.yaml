@@ -1,0 +1,64 @@
+# EXAMPLE PACK FOR DEVELOPMENT ONLY.
+# Nothing here is reviewed agronomic advice. Every fact is a draft so the
+# engine never presents it as verified. Replace with expert reviewed content
+# before any real deployment.
+spec_version: "0.1"
+id: ke-maize-demo
+title: Kenya maize demo pack
+description: Shows geographic, altitude and seasonal scoping for the engine and tests.
+license: CC-BY-4.0
+tier: open
+maintainers:
+  - ACE maintainers
+facts:
+  - id: faw-scouting
+    claim: >-
+      Scout maize fields at least once a week for fall armyworm, checking the leaf
+      whorls for feeding damage and frass.
+    topic: pest
+    vertical: agriculture
+    subjects: [maize]
+    scope:
+      countries: [KE]
+    source: Draft summary of general fall armyworm scouting practice (needs expert review)
+    review_status: draft
+
+  - id: faw-highland-placeholder
+    claim: >-
+      EXAMPLE ONLY. Placeholder for highland guidance on fall armyworm control in maize
+      grown between 1,800m and 2,400m. Replace with expert reviewed content.
+    topic: pest
+    vertical: agriculture
+    subjects: [maize]
+    scope:
+      countries: [KE]
+      altitude_min_m: 1800
+      altitude_max_m: 2400
+    source: Placeholder for development
+    review_status: draft
+
+  - id: faw-coastal-placeholder
+    claim: >-
+      EXAMPLE ONLY. Placeholder for coastal lowland guidance on fall armyworm control in
+      maize grown below 1,000m. Replace with expert reviewed content.
+    topic: pest
+    vertical: agriculture
+    subjects: [maize]
+    scope:
+      countries: [KE]
+      altitude_max_m: 1000
+    source: Placeholder for development
+    review_status: draft
+
+  - id: long-rains-placeholder
+    claim: >-
+      EXAMPLE ONLY. Placeholder for planting guidance during the long rains season.
+      Replace with county specific, expert reviewed content.
+    topic: planting
+    vertical: agriculture
+    subjects: [maize]
+    months: [3, 4, 5]
+    scope:
+      countries: [KE]
+    source: Placeholder for development
+    review_status: draft

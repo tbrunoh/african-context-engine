@@ -4,7 +4,7 @@ ACE talks to people about their crops, their pregnancies and their money. A wron
 
 ## What the code guarantees
 
-1. **The safety rail runs first.** Before commands, retrieval or any model, `EscalationPolicy` checks every message against phrase rules for self harm, maternal danger, poisoning, child protection, gender based violence and other urgent health cases, in English and Swahili. A match returns verified numbers for that queue from the emergency pack and raises a handoff. Nothing else runs.
+1. **The safety rail runs first.** Before commands, retrieval or any model, `EscalationPolicy` checks every message against phrase rules for self harm, maternal danger, poisoning, child protection, gender based violence and other urgent health cases, in English, Swahili and French. A match returns verified numbers for that queue from the emergency pack of the caller's own country, picked from the dialling code, and raises a handoff. Nothing else runs. ACE never gives a number from another country; where a country publishes no number for a queue, it says to call the local emergency number or go to the nearest health facility.
 2. **Only checked facts are served.** Facts below `sourced`, expired facts and verified tier facts without a licence are filtered out before ranking.
 3. **No invention.** The default composer only renders facts. A language model, if added, must cite a given fact in every sentence and may not introduce phone numbers; otherwise ACE falls back.
 4. **Safety critical answers carry numbers.** Any answer built on a `safety_critical` fact ends with the numbers to call.

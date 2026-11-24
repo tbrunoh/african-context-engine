@@ -32,11 +32,12 @@ Every stage is a small class with its own tests. The order is the design: nothin
 | Module | Responsibility |
 |:--|:--|
 | `models.py` | `Message`, `Reply`, `ReplyKind`, `Citation`, `Channel`, `GeoPoint` |
-| `text.py` | Folding, tokenising, light stemming, English and Swahili stopwords, language guess, phrase matching |
+| `countries.py` | The 13 covered countries, their dialling codes and default languages |
+| `text.py` | Folding, tokenising, light stemming, English, Swahili and French stopwords, language guess, phrase matching |
 | `context/schema.py` | `ContextFact`, `GeoScope`, `Rendering`, `Contact`, `ReviewStatus` |
 | `context/packs.py` | Loading and strict validation of pack files |
 | `context/store.py` | Filters plus BM25 ranking over each fact's text, keywords and translations |
-| `safety.py` | Phrase rules per queue, contact lookup, emergency wording in English and Swahili |
+| `safety.py` | Phrase rules per queue in English, Swahili and French, contact lookup by country, emergency wording |
 | `scam.py` | Scam Shield signals, scoring and verdicts |
 | `commands.py` | Keyword commands and fixed system texts |
 | `router.py` | Channel budgets, extractive composer, grounded generator, OpenAI compatible provider |

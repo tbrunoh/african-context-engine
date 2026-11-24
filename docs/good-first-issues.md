@@ -4,13 +4,13 @@ Scoped tasks for a first contribution. Each one is useful on its own and comes w
 
 ## Knowledge (no code needed)
 
-1. **Review the Swahili translations in one pack.** Read each `translations.sw` claim and short form, fix anything unnatural, and set `reviewed: true`. Fluent speakers only. Check: `ace packs validate --strict` shows fewer warnings.
+1. **Review the Swahili or French translations in one pack.** Read each `translations.sw` or `translations.fr` claim and short form, fix anything unnatural, and set `reviewed: true`. Fluent speakers only. Check: `ace packs validate --strict` shows fewer warnings.
 2. **Add Sheng and regional keywords.** Add the words people in your area actually use for armyworm, aflatoxin, M-PESA scams or danger signs to `keywords`. Check: `ace ask "<your phrasing>"` finds the right fact.
 3. **County rain onset facts.** Add facts to `ke/rainfall-seasons.yaml` scoped with `admin_areas`, citing the Kenya Meteorological Department county forecast.
 4. **A beans or sorghum pest pack.** Fall armyworm also attacks sorghum and millet. Start a pack from FAO or KALRO material, as `draft` if unchecked.
 5. **Newborn danger signs.** A WHO sourced, safety critical pack on danger signs in newborns, with the same structure as `maternal-danger-signs.yaml`.
 6. **Airtel Money safety.** Mirror the M-PESA pack for Airtel Money, using Airtel Kenya's published guidance.
-7. **A first pack for another country.** Emergency numbers and mobile money safety for Uganda, Tanzania, Rwanda, Nigeria or Ghana, each number cited.
+7. **Mobile money safety for another country.** Every covered country has emergency numbers; none outside Kenya has a mobile money pack yet. Mirror the M-PESA pack for MTN MoMo, Airtel Money, Orange Money or Wave from the operator's own published guidance, so Scam Shield can cite it. Two numbers also need a source: a national ambulance line for Togo, and which of Botswana Police's two published GBV toll free numbers is current.
 8. **Expert review.** If you are an agronomist, midwife or clinician, review a pack, add your name to `reviewed_by` on facts you have checked, and raise them to `expert_reviewed`.
 
 ## Code

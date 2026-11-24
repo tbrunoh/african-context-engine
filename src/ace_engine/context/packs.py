@@ -26,7 +26,7 @@ _REQUIRED_PACK = ("spec_version", "id", "title", "license", "maintainers", "fact
 _REQUIRED_FACT = ("id", "claim", "topic", "vertical", "source")
 _ID = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 _LANG = re.compile(r"^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$")
-_NUMBER = re.compile(r"^\+?[0-9]{3,15}$")
+_NUMBER = re.compile(r"^\+?[0-9]{2,15}$")  # Senegal uses two digit codes (15, 17, 18)
 KINDS = ("action", "sign", "info")
 VERTICALS = ("agriculture", "health", "finance", "safety", "legal", "education", "climate")
 
@@ -97,10 +97,11 @@ def _valid_date(value: str | None) -> bool:
         return False
 
 
-def _scope(raw: dict[str, Any] | None, default_country: str | None) -> GeoScope:
+def _scope(raw: dict[str, Any] | None, default_country: str | None,
+           default_countries: list[str] | None = None) -> GeoScope:
     raw = raw or {}
     center = raw.get("center")
-    countries = raw.get("countries") or ([default_country] if default_country else [])
+    countries = raw.get("countries") or default_countries or ([default_country] if default_country else [])
     return GeoScope(
         countries=tuple(str(c).upper() for c in countries),
         admin_areas=tuple(raw.get("admin_areas", [])),
@@ -136,6 +137,7 @@ def validate_pack(raw: dict[str, Any], path: str = "<memory>", today: date | Non
     if not raw["maintainers"]:
         err("a pack needs at least one maintainer")
     country = raw.get("country")
+    pack_countries = raw.get("countries")  # continental packs list every country they apply to
     pack_lang = raw.get("language", "en")
     if not isinstance(raw["facts"], list) or not raw["facts"]:
         err("facts must be a non empty list")
@@ -207,14 +209,14 @@ def validate_pack(raw: dict[str, Any], path: str = "<memory>", today: date | Non
 
         contacts: list[Contact] = []
         for c in f.get("contacts") or []:
-            number = str(c.get("number", "")).replace(" ", "")
-            if not _NUMBER.match(number):
+            number = " ".join(str(c.get("number", "")).split())  # keep the spacing people read and dial
+            if not _NUMBER.match(number.replace(" ", "")):
                 err(f"{where}: contact number {c.get('number')!r} must be digits, optionally with a leading +")
                 continue
             contacts.append(Contact(label=c.get("label", number), number=number,
                                     queues=tuple(c.get("queues", [])), free=c.get("free"),
                                     hours=c.get("hours")))
-        if f.get("safety_critical") and not (contacts or f.get("refer_to")):
+        if f.get("safety_critical") and not (contacts or f.get("refer_queue")):
             warn(f"{where}: safety critical facts should list contacts people can reach")
 
         facts.append(ContextFact(
@@ -223,7 +225,7 @@ def validate_pack(raw: dict[str, Any], path: str = "<memory>", today: date | Non
             topic=str(f["topic"]),
             vertical=str(f["vertical"]),
             kind=str(f.get("kind", "info")),
-            scope=_scope(f.get("scope"), country),
+            scope=_scope(f.get("scope"), country, pack_countries),
             subjects=tuple(str(s).lower() for s in f.get("subjects", [])),
             keywords=tuple(str(k).lower() for k in f.get("keywords", [])),
             months=months,
@@ -239,6 +241,7 @@ def validate_pack(raw: dict[str, Any], path: str = "<memory>", today: date | Non
             tier=tier,
             expires=expires,
             safety_critical=bool(f.get("safety_critical", False)),
+            refer_queue=f.get("refer_queue"),
             pack_id=pack_id,
         ))
 

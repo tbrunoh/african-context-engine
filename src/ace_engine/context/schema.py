@@ -124,6 +124,7 @@ class ContextFact:
     tier: Tier = Tier.OPEN
     expires: str | None = None             # ISO date after which the fact is withheld until re-reviewed
     safety_critical: bool = False          # answers using this fact always point to human help
+    refer_queue: str | None = None         # safety queue whose national numbers accompany this fact
     pack_id: str = ""
 
     def applies_in_month(self, month: int | None) -> bool:

@@ -17,7 +17,7 @@ V2 makes ACE the open layer that closes that gap. It keeps everything V1 proved 
 - **Knowledge that stays true.** Packs signed by the institutions that publish them, automatic rechecks of every number, and WHO and FAO guidance imported in machine readable form.
 - **A shared layer for everyone else.** Every service is one API or MCP call away, so health, farming and assistant services ground themselves in ACE instead of rebuilding it.
 
-The result is a product people use every week, not only in an emergency, and a layer that funded programmes such as the Gates Foundation and Google farmer initiative and Horizon1000 can build on instead of duplicating. Every source sits in the [data and model catalog](data-catalog.md), and the work plan for agents sits in the [build plan](build-plan.md).
+The aim is a product people use every week, not only in an emergency, and a layer that funded programmes such as the Gates Foundation and Google farmer initiative and Horizon1000 can build on instead of duplicating. Every source sits in the [data and model catalog](data-catalog.md), and the work plan for agents sits in the [build plan](build-plan.md).
 
 ## The big picture: the data now exists, the last mile does not
 
@@ -160,7 +160,7 @@ The targets below are proposed for the end of V2 and would be confirmed once the
 | Weather services that beat the season average | A forecast no better than the season average wastes trust | Every weather service, in every country, before launch |
 | Scam detection on a labelled set of real reported messages | Fraud is the most common online harm | Recall and false alarm rate published per country |
 | People who come back within 30 days | Usefulness shows up as return use, not one emergency call | Baseline in phase 2, target set then |
-| Services grounding on ACE in production | The leverage thesis | At least one health and one farming service |
+| Services grounding on ACE in production | The shared layer thesis | At least one health and one farming service |
 | Reviewers active per language | Quality depends on fluent humans | At least two per supported language |
 
 ## Risks and safeguards: the biggest risk is a confident voice giving a wrong instruction

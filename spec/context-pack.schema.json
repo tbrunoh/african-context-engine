@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ace:context-pack:0.1",
+  "title": "ACE context pack",
+  "type": "object",
+  "required": ["spec_version", "id", "title", "license", "maintainers", "facts"],
+  "properties": {
+    "spec_version": { "const": "0.1" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{1,63}$" },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string" },
+    "license": { "type": "string" },
+    "tier": { "enum": ["open", "verified"], "default": "open" },
+    "maintainers": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "facts": { "type": "array", "items": { "$ref": "#/$defs/fact" } }
+  },
+  "if": { "properties": { "tier": { "const": "open" } } },
+  "then": { "properties": { "license": { "const": "CC-BY-4.0" } } },
+  "$defs": {
+    "fact": {
+      "type": "object",
+      "required": ["id", "claim", "topic", "vertical", "source"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "claim": { "type": "string", "minLength": 1 },
+        "topic": { "type": "string" },
+        "vertical": { "enum": ["agriculture", "health", "legal", "finance"] },
+        "source": { "type": "string", "minLength": 1 },
+        "subjects": { "type": "array", "items": { "type": "string" } },
+        "months": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 12 } },
+        "languages": { "type": "array", "items": { "type": "string" } },
+        "review_status": { "enum": ["draft", "expert_reviewed", "outcome_verified"], "default": "draft" },
+        "reviewed_by": { "type": "string" },
+        "expires": { "type": "string", "format": "date" },
+        "safety_critical": { "type": "boolean", "default": false },
+        "scope": {
+          "type": "object",
+          "properties": {
+            "countries": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z]{2}$" } },
+            "admin_areas": { "type": "array", "items": { "type": "string" } },
+            "center": {
+              "type": "object",
+              "required": ["lat", "lon"],
+              "properties": { "lat": { "type": "number" }, "lon": { "type": "number" } }
+            },
+            "radius_km": { "type": "number", "exclusiveMinimum": 0 },
+            "altitude_min_m": { "type": "number" },
+            "altitude_max_m": { "type": "number" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "if": { "properties": { "review_status": { "enum": ["expert_reviewed", "outcome_verified"] } }, "required": ["review_status"] },
+      "then": { "required": ["reviewed_by"] },
+      "additionalProperties": false
+    }
+  }
+}

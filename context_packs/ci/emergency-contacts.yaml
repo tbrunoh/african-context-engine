@@ -1,0 +1,136 @@
+# Côte d'Ivoire emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: ci-emergency-contacts
+title: Côte d'Ivoire emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in Côte d'Ivoire when a message signals
+  danger. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: CI
+language: fr
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: En Côte d'Ivoire, appelez le 170, le 110 ou le 111 pour la police, le 185 pour le SAMU et le 180 pour les sapeurs-pompiers.
+  short: 'Urgence en Côte d''Ivoire : police 170, SAMU 185, sapeurs-pompiers 180.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Police
+    number: '170'
+    queues:
+    - violence
+    - gbv
+    - child_protection
+  - label: SAMU
+    number: '185'
+    queues:
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Sapeurs-pompiers
+    number: '180'
+    queues:
+    - fire
+  translations:
+    en:
+      claim: In Côte d'Ivoire, call 170, 110 or 111 for the police, 185 for the SAMU ambulance service and 180 for the
+        fire service.
+      short: 'Emergency in Côte d''Ivoire: police 170, ambulance 185, fire 180.'
+  source: UK FCDO, Côte d'Ivoire travel advice, getting help; Government of Canada; Australian Government Smartraveller
+  source_url: https://www.gov.uk/foreign-travel-advice/cote-d-ivoire/getting-help
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: vbg-1308
+  claim: En Côte d'Ivoire, le 1308 est le numéro vert national contre les violences basées sur le genre. L'appel est
+    gratuit et confidentiel.
+  short: 'Violence basée sur le genre en Côte d''Ivoire : appelez le 1308, gratuit.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - violence
+  - abuse
+  - rape
+  - assault
+  - beaten
+  - gbv
+  - viol
+  - violences
+  - conjugale
+  - dhuluma
+  - ubakaji
+  - kupigwa
+  contacts:
+  - label: Numéro vert VBG
+    number: '1308'
+    queues:
+    - gbv
+    - violence
+    free: true
+  translations:
+    en:
+      claim: In Côte d'Ivoire, 1308 is the free and confidential national line for gender based violence.
+      short: 'Gender based violence in Côte d''Ivoire: call 1308, free.'
+  source: Ministère de la Femme, de la Famille et de l'Enfant, kit média Engagement national contre les VBG, 2026
+  source_url: https://famille.gouv.ci/vbg_app/public/storage/vbg/V1_Kit_Media_Engagement_National_VBG.pdf
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: allo-116
+  claim: Allo 116 Enfant en Détresse est la ligne d'assistance pour les enfants en Côte d'Ivoire.
+  short: 'Enfant en danger en Côte d''Ivoire : appelez Allo 116.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - child
+  - children
+  - childline
+  - abuse
+  - enfant
+  - enfants
+  - maltraitance
+  - mtoto
+  - watoto
+  contacts:
+  - label: Allo 116
+    number: '116'
+    queues:
+    - child_protection
+  translations:
+    en:
+      claim: Allo 116 Enfant en Détresse is the child helpline in Côte d'Ivoire.
+      short: 'Child at risk in Côte d''Ivoire: call Allo 116.'
+  source: Child Helpline International, helpline directory
+  source_url: https://childhelplineinternational.org/helplines/
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

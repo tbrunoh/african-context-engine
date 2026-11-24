@@ -1,0 +1,134 @@
+# Rwanda emergency and helpline numbers.
+# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: rw-emergency-contacts
+title: Rwanda emergency and helpline numbers
+description: National emergency numbers and helplines that ACE gives to callers in Rwanda when a message signals danger.
+  Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+license: CC-BY-4.0
+country: RW
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Rwanda, call 112 for emergencies and 912 for an ambulance.
+  short: 'Emergency in Rwanda: call 112. Ambulance: 912.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - ambulensi
+  - msaada
+  contacts:
+  - label: Emergency
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - violence
+    - gbv
+    - child_protection
+    - self_harm
+  - label: Ambulance
+    number: '912'
+    queues:
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  translations:
+    fr:
+      claim: Au Rwanda, appelez le 112 pour les urgences et le 912 pour une ambulance.
+      short: 'Urgence au Rwanda : appelez le 112. Ambulance : 912.'
+  source: Government of Rwanda, emergency numbers
+  source_url: https://www.gov.rw/emergency
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: gbv-3512
+  claim: In Rwanda, call 3512 to report gender based violence.
+  short: 'Gender based violence in Rwanda: call 3512.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - violence
+  - abuse
+  - rape
+  - assault
+  - beaten
+  - gbv
+  - viol
+  - violences
+  - conjugale
+  - dhuluma
+  - ubakaji
+  - kupigwa
+  contacts:
+  - label: Gender based violence line
+    number: '3512'
+    queues:
+    - gbv
+    - violence
+  translations:
+    fr:
+      claim: Au Rwanda, appelez le 3512 pour signaler une violence basée sur le genre.
+      short: 'Violence basée sur le genre au Rwanda : appelez le 3512.'
+  source: Government of Rwanda, emergency numbers
+  source_url: https://www.gov.rw/emergency
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true
+- id: child-helpline
+  claim: Rwanda's child helpline is 116.
+  short: 'Child at risk in Rwanda: call 116.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - child
+  - children
+  - childline
+  - abuse
+  - enfant
+  - enfants
+  - maltraitance
+  - mtoto
+  - watoto
+  contacts:
+  - label: Child helpline
+    number: '116'
+    queues:
+    - child_protection
+  translations:
+    fr:
+      claim: Au Rwanda, la ligne d'assistance pour les enfants est le 116.
+      short: 'Enfant en danger au Rwanda : appelez le 116.'
+  source: Government of Rwanda, emergency numbers
+  source_url: https://www.gov.rw/emergency
+  checked_on: '2026-11-23'
+  expires: '2027-11-23'
+  review_status: sourced
+  safety_critical: true

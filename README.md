@@ -8,7 +8,7 @@
 
 **Checked, local, citable knowledge for Africa, on any phone.**
 
-ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong. It answers on USSD, SMS, voice, WhatsApp and the web, in English and Swahili, and every answer points to the published source it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong. It answers on USSD, SMS, voice, WhatsApp and the web, in English, Swahili and French, across 13 African countries, and every answer points to the published source it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
 
 ```
 $ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms
@@ -34,30 +34,49 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 
 | Capability | What it means for a person | Where |
 |:--|:--|:--|
-| **Grounded answers** | Short, practical answers in English or Swahili, each traced to a published source | `engine.py`, `context/` |
-| **Safety rail** | Emergency language in English and Swahili gets verified numbers at once (999, 112, 1195, 116, 1199, 1190) and a human handoff, before retrieval or any model | `safety.py` |
-| **Scam Shield** | Forward a suspicious M-PESA message and get an explained verdict built on Safaricom's own guidance. It never calls a message safe | `scam.py` |
+| **13 countries, one engine** | The caller's dialling code picks the country, so the numbers, topics and default language are always right for that person | `countries.py`, `engine.py` |
+| **Grounded answers** | Short, practical answers in English, Swahili or French, each traced to a published source | `engine.py`, `context/` |
+| **Safety rail** | Emergency language in English, Swahili or French gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
+| **Scam Shield** | Forward a suspicious mobile money message in English, Swahili or French and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
 | **USSD app** | A full menu on any phone: browse topics, ask in your own words, check a message, switch language. Every screen fits 182 characters | `channels/ussd.py` |
 | **SMS** | GSM-7 aware replies within three segments, keyword commands, Africa's Talking sending | `channels/sms.py` |
 | **Voice IVR** | Keypad menu over the same knowledge, plus a hook for any speech recognition model | `channels/voice.py` |
 | **WhatsApp** | Cloud API webhook with signature checks, sources listed under every answer | `channels/whatsapp.py` |
 | **MCP server** | Any AI assistant can ask ACE for cited African context, scam checks and emergency numbers | `mcp_server.py` |
-| **Privacy by design** | Phone numbers stored only as salted hashes; FORGET or FUTA deletes everything | `identity.py` |
-| **Community loop** | Text TIP or DOKEZO with your advice; it waits for expert review and is never served until checked | `tips.py` |
+| **Privacy by design** | Phone numbers stored only as salted hashes; FORGET, FUTA or OUBLIER deletes everything | `identity.py` |
+| **Community loop** | Text TIP, DOKEZO or ASTUCE with your advice; it waits for expert review and is never served until checked | `tips.py` |
 | **Playground** | A phone simulator in the browser for USSD and SMS, with the sources behind every reply | `ace serve` |
 
-### Starter knowledge for Kenya
+### Coverage: 13 countries
 
-37 facts across six packs, each checked against a public source and translated into Swahili. Swahili renderings are marked for review by fluent speakers.
+67 facts across 18 packs. Every fact was checked against a published public source on 2026-11-23, and every emergency number expires after a year so it is checked again before it is served.
+
+| Country | Calling code | Default language | Emergency and helpline numbers | Sources for the numbers |
+|:--|:-:|:-:|:--|:--|
+| Kenya | +254 | English, Swahili | 999, 112, 1199, 1195, 116, 1190 | State Department for Gender, NASCOP |
+| Tanzania | +255 | Swahili | 112, 116 | UK FCDO, Government of Canada, Child Helpline International |
+| Uganda | +256 | English, Swahili | 999, 112, 0800 199 195, Sauti 116 | Uganda Police via Nile Post, UNICEF Uganda, UK FCDO |
+| Rwanda | +250 | English, French | 112, 912, 3512, 116 | Government of Rwanda |
+| South Africa | +27 | English | 112, 10111, 10177, 0800 428 428, 116 | Department of Justice, UK FCDO |
+| Botswana | +267 | English | 999, 997, 998, 11611 | Botswana Police Service, Child Helpline International |
+| Namibia | +264 | English | 112, 10111, 106, 116 | Communications Regulatory Authority of Namibia |
+| Zimbabwe | +263 | English | 999, 112, 116 | UK FCDO, Government of Canada |
+| Nigeria | +234 | English | 112, 0800 800 8001, 0808 0551 376 | UK FCDO, NCC, Child Helpline International |
+| Ghana | +233 | English | 112, 191, 18555, 192, 193, 0800 111 222 | Government of Canada, Ministry of Gender, Children and Social Protection |
+| Senegal | +221 | French | 17, 15, 18, 1515, 116 | UK FCDO, Ministère de la Santé |
+| Côte d'Ivoire | +225 | French | 170, 110, 111, 185, 180, 1308, 116 | UK FCDO, Ministère de la Femme, de la Famille et de l'Enfant |
+| Togo | +228 | French | 117, 118, 1011 | UK FCDO, Government of Canada, Child Helpline International |
+
+Two packs apply in every covered country, with English, Swahili and French text:
 
 | Pack | Facts | Sources |
 |:--|:-:|:--|
-| Fall armyworm in maize | 8 | FAO guidance notes, ICIPE, CIFOR-ICRAF |
-| Maize drying, storage and aflatoxin | 7 | KALRO, USAID AflaSTOP, CGIAR research |
-| Danger signs in pregnancy and after birth | 5 | WHO |
-| Mobile money safety | 10 | Safaricom fraud awareness pages |
-| Emergency and helpline numbers | 5 | State Department for Gender, NASCOP |
-| Rainfall seasons | 2 | Kenya Meteorological Department |
+| Danger signs in pregnancy and after birth | 5 | WHO. ACE adds the caller's own national numbers |
+| Fall armyworm in maize | 8 | FAO guidance notes, ICIPE, CIFOR-ICRAF. Push-pull is offered only where ICIPE has disseminated it |
+
+Kenya also has packs on maize drying and aflatoxin (7 facts, KALRO, USAID AflaSTOP, CGIAR), mobile money safety (10 facts, Safaricom) and rainfall seasons (2 facts, Kenya Meteorological Department).
+
+Where a public source does not publish a number, ACE does not invent one. Togo has no sourced national ambulance number, so a medical emergency there gets the instruction to call the local emergency number or go to the nearest health facility. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. Swahili and French renderings await review by fluent speakers.
 
 ## Quickstart
 
@@ -67,7 +86,7 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 220+ tests, a few seconds
+pytest                                   # 270+ tests, a few seconds
 ace demo                                 # one person, four channels, one memory
 ace chat --channel ussd                  # a USSD session in your terminal
 ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
@@ -107,14 +126,14 @@ Design choices that matter:
 
 ACE grows through two kinds of contributors, and both matter equally.
 
-- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators. Add facts to a pack, review a Swahili translation, or start a pack for your county or country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
+- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators. Add facts to a pack, review a Swahili or French translation, or start a pack for your county or country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
 - **Developers**: new channels, languages, retrieval, evaluation. See [docs/good-first-issues.md](docs/good-first-issues.md) for scoped starter tasks.
 
 Everything else is in [CONTRIBUTING.md](CONTRIBUTING.md). The plan is in [ROADMAP.md](ROADMAP.md).
 
 ## Safety and responsibility
 
-ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every Swahili rendering need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
+ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every Swahili and French rendering need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
 ## License
 

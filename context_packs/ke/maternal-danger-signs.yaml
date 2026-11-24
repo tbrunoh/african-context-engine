@@ -1,0 +1,147 @@
+# Danger signs in pregnancy and after birth, from WHO guidance.
+# Every fact is safety critical: ACE always pairs it with numbers to call.
+# Next step for this pack: review by a Kenyan midwife or obstetrician.
+spec_version: "1.0"
+id: ke-maternal-danger-signs
+title: Danger signs in pregnancy and after birth
+description: >-
+  The signs that mean a pregnant woman or new mother needs care now. ACE does
+  not diagnose. It tells people when to go to a facility and how to get there.
+version: 1.0.0
+order: 3
+labels:
+  en: Pregnancy danger signs
+  sw: Dalili hatari ujauzitoni
+license: CC-BY-4.0
+country: KE
+language: en
+maintainers:
+  - ACE maintainers
+facts:
+  - id: go-now
+    claim: >-
+      Take a pregnant woman to a hospital or health centre immediately if she has any of these signs: vaginal
+      bleeding, convulsions or fits, severe headache with blurred vision, fever and too weak to get out of bed,
+      severe abdominal pain, or fast or difficult breathing.
+    short: "Go to a facility NOW for: bleeding, fits, severe headache with blurred vision, fever and very weak, severe belly pain."
+    topic: danger_signs
+    vertical: health
+    kind: action
+    subjects: [pregnancy]
+    keywords: [pregnant, pregnancy, danger, signs, bleeding, fits, headache, blurred, fever, weak, belly, pain,
+               breathing, mjamzito, ujauzito, mimba, hatari, dalili, damu, degedege, kichwa, homa, tumbo]
+    contacts:
+      - {label: Emergency, number: "999", queues: [maternal, health_urgent], free: true}
+      - {label: Kenya Red Cross ambulance, number: "1199", queues: [maternal, health_urgent]}
+    translations:
+      sw:
+        claim: >-
+          Mpeleke mama mjamzito hospitalini au kituo cha afya mara moja akiwa na dalili yoyote kati ya hizi:
+          kutokwa na damu ukeni, degedege, maumivu makali ya kichwa pamoja na kutoona vizuri, homa na udhaifu wa
+          kushindwa kuamka kitandani, maumivu makali ya tumbo, au kupumua kwa haraka au kwa shida.
+        short: "Nenda kituo cha afya SASA kwa: damu, degedege, kichwa kikali na kutoona vizuri, homa na udhaifu, tumbo kuuma sana."
+    source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
+    source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
+    checked_on: 2026-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: go-soon
+    claim: >-
+      A pregnant woman should go to a health centre as soon as possible if she has fever, abdominal pain, feels
+      ill, or has swelling of the fingers, face and legs.
+    short: "See a health worker soon for: fever, belly pain, feeling ill, or swollen fingers, face and legs."
+    topic: danger_signs
+    vertical: health
+    kind: action
+    subjects: [pregnancy]
+    keywords: [pregnant, swelling, swollen, face, legs, fingers, fever, ill, mjamzito, kuvimba, uso, miguu, homa,
+               mgonjwa]
+    contacts:
+      - {label: Emergency, number: "999", queues: [maternal], free: true}
+    translations:
+      sw:
+        claim: >-
+          Mama mjamzito anapaswa kwenda kituo cha afya haraka iwezekanavyo akiwa na homa, maumivu ya tumbo,
+          akijisikia mgonjwa, au akivimba vidole, uso na miguu.
+        short: "Muone mhudumu wa afya haraka kwa: homa, maumivu ya tumbo, kujisikia mgonjwa, au kuvimba vidole, uso na miguu."
+    source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
+    source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
+    checked_on: 2026-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: bleeding-urgent
+    claim: >-
+      Bleeding in pregnancy needs immediate transport to a health facility. A woman, particularly one with
+      anaemia, can die within hours.
+    short: "Bleeding in pregnancy: get to a facility immediately. It can kill within hours."
+    topic: danger_signs
+    vertical: health
+    kind: action
+    subjects: [pregnancy]
+    keywords: [bleeding, blood, haemorrhage, hemorrhage, anaemia, damu, kutokwa na damu, upungufu wa damu]
+    contacts:
+      - {label: Emergency, number: "999", queues: [maternal, health_urgent], free: true}
+      - {label: Kenya Red Cross ambulance, number: "1199", queues: [maternal, health_urgent]}
+    translations:
+      sw:
+        claim: >-
+          Kutokwa na damu wakati wa ujauzito kunahitaji usafiri wa haraka hadi kituo cha afya. Mwanamke, hasa
+          mwenye upungufu wa damu, anaweza kufariki ndani ya saa chache.
+        short: "Damu wakati wa ujauzito: nenda kituo cha afya mara moja. Inaweza kuua ndani ya saa chache."
+    source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
+    source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
+    checked_on: 2026-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: baby-movements
+    claim: >-
+      Seek care immediately in pregnancy if the baby's movements change, or after any injury to the abdomen.
+    short: "Baby moving less or differently, or a blow to the belly? Seek care immediately."
+    topic: danger_signs
+    vertical: health
+    kind: action
+    subjects: [pregnancy]
+    keywords: [baby, movement, moving, kicking, kicks, not moving, injury, fall, mtoto, kucheza, tumboni, kuanguka]
+    contacts:
+      - {label: Emergency, number: "999", queues: [maternal], free: true}
+    translations:
+      sw:
+        claim: >-
+          Tafuta huduma mara moja wakati wa ujauzito ikiwa mtoto atabadilisha jinsi anavyocheza tumboni, au baada
+          ya jeraha lolote tumboni.
+        short: "Mtoto anacheza kidogo au tofauti, au umeumia tumboni? Tafuta huduma mara moja."
+    source: WHO, World Health Day 2025 key messages
+    source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
+    checked_on: 2026-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: after-birth
+    claim: >-
+      After giving birth, seek help immediately for heavy bleeding or large clots, red or swollen legs, a
+      headache that will not go away, high fever or vomiting, chest pain, difficulty breathing, or seizures.
+    short: "After birth, get help NOW for: heavy bleeding or clots, swollen legs, lasting headache, high fever, chest pain, fits."
+    topic: danger_signs
+    vertical: health
+    kind: action
+    subjects: [postpartum]
+    keywords: [after birth, delivered, delivery, postpartum, clots, swollen legs, chest pain, kujifungua, baada ya,
+               mabonge, kifua, degedege, damu nyingi]
+    contacts:
+      - {label: Emergency, number: "999", queues: [maternal, health_urgent], free: true}
+      - {label: Kenya Red Cross ambulance, number: "1199", queues: [maternal, health_urgent]}
+    translations:
+      sw:
+        claim: >-
+          Baada ya kujifungua, tafuta msaada mara moja kwa kutokwa na damu nyingi au mabonge makubwa, miguu myekundu
+          au iliyovimba, maumivu ya kichwa yasiyoisha, homa kali au kutapika, maumivu ya kifua, kupumua kwa shida,
+          au degedege.
+        short: "Baada ya kujifungua, pata msaada SASA kwa: damu nyingi, miguu kuvimba, kichwa kisichoisha, homa kali, kifua, degedege."
+    source: WHO, World Health Day 2025 key messages
+    source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
+    checked_on: 2026-11-23
+    review_status: sourced
+    safety_critical: true

@@ -1,0 +1,220 @@
+# M-PESA fraud safety, grounded in Safaricom's own published guidance.
+# Scam Shield cites these facts when it explains a verdict.
+spec_version: "1.0"
+id: ke-mobile-money-safety
+title: Kenya mobile money safety
+description: >-
+  How to spot and report M-PESA fraud, from Safaricom's fraud awareness pages.
+  Powers the Scam Shield and answers questions about suspicious calls and messages.
+version: 1.0.0
+order: 4
+labels:
+  en: M-PESA safety
+  sw: Usalama wa M-PESA
+license: CC-BY-4.0
+country: KE
+language: en
+maintainers:
+  - ACE maintainers
+facts:
+  - id: never-share-pin
+    claim: >-
+      Never share your M-PESA PIN, SIM passcode or password with anyone. Safaricom staff will never ask for them.
+    short: "Never share your M-PESA PIN or passwords. Safaricom staff never ask for them."
+    topic: fraud
+    vertical: finance
+    kind: action
+    subjects: [mpesa]
+    keywords: [pin, password, passcode, siri, nenosiri, scam, fraud, utapeli, tapeli, conman]
+    translations:
+      sw:
+        claim: >-
+          Usimpe mtu yeyote PIN yako ya M-PESA, nambari ya siri ya SIM au nenosiri. Wafanyakazi wa Safaricom
+          hawatawahi kuziomba.
+        short: "Usimpe mtu PIN yako ya M-PESA. Wafanyakazi wa Safaricom hawaiombi kamwe."
+    source: Safaricom, Tips for staying safe
+    source_url: https://safaricom.co.ke/fraud-awareness/tips-tricks
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: official-number
+    claim: >-
+      Safaricom only calls customers from 0722000000. A caller on any other number who claims to be Safaricom
+      is not genuine.
+    short: "Safaricom only calls from 0722000000. Any other number claiming to be Safaricom is fake."
+    topic: fraud
+    vertical: finance
+    kind: sign
+    subjects: [mpesa]
+    keywords: [call, caller, customer care, safaricom, simu, mpigaji, impersonation, staff]
+    translations:
+      sw:
+        claim: >-
+          Safaricom hupiga simu kutoka 0722000000 pekee. Mpigaji wa nambari nyingine yoyote anayedai kuwa
+          Safaricom si halali.
+        short: "Safaricom hupiga kutoka 0722000000 pekee. Nambari nyingine ikidai ni Safaricom ni bandia."
+    source: Safaricom, Types of fraud and tips to protect yourself
+    source_url: https://safaricom.co.ke/fraud-awareness
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: genuine-sender
+    claim: Genuine M-PESA messages are sent from M-PESA, not from a personal phone number.
+    short: "Real M-PESA messages come from M-PESA, never from a personal phone number."
+    topic: fraud
+    vertical: finance
+    kind: sign
+    subjects: [mpesa]
+    keywords: [message, sms, ujumbe, fake, bandia, confirmed, imethibitishwa, received, umepokea]
+    translations:
+      sw:
+        claim: Ujumbe halali wa M-PESA hutumwa na M-PESA, si kutoka nambari ya simu ya mtu binafsi.
+        short: "Ujumbe halali wa M-PESA hutoka M-PESA, si nambari ya mtu binafsi."
+    source: Safaricom, Fake or old M-PESA message
+    source_url: https://safaricom.co.ke/fraud-awareness/m-pesa-fraud/fake-old-m-pesa-message
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: sent-by-mistake
+    claim: >-
+      If someone says they sent you money by mistake, check your M-PESA balance first. Do not send money back
+      yourself; ask them to forward the message to 456 or to call Safaricom.
+    short: "Money sent by mistake? Check your balance first. Do not refund; ask them to forward it to 456."
+    topic: fraud
+    vertical: finance
+    kind: action
+    subjects: [mpesa]
+    keywords: [mistake, wrong, wrongly, refund, reverse, rudisha, kimakosa, makosa, reversal, balance, salio]
+    translations:
+      sw:
+        claim: >-
+          Mtu akisema amekutumia pesa kimakosa, angalia salio lako la M-PESA kwanza. Usirudishe pesa mwenyewe;
+          mwambie atume ujumbe huo kwa 456 au apigie Safaricom.
+        short: "Pesa zimetumwa kimakosa? Angalia salio kwanza. Usirudishe; mwambie atume ujumbe kwa 456."
+    source: Safaricom, Secure M-PESA; Safaricom, Fake or old M-PESA message
+    source_url: https://safaricom.co.ke/main-mpesa/m-pesa-for-you/m-pesa-tips/secure-m-pesa
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: report-333
+    claim: >-
+      Forward fake messages and fraudsters' numbers by SMS to 333. The message is free and helps block the
+      numbers so others are not defrauded.
+    short: "Forward fake messages and fraud numbers to 333. It is free."
+    topic: fraud
+    vertical: finance
+    kind: action
+    subjects: [mpesa]
+    keywords: [report, ripoti, 333, block, zuia, forward, tuma]
+    contacts:
+      - {label: Safaricom fraud reporting (SMS), number: "333", queues: [fraud], free: true}
+    translations:
+      sw:
+        claim: >-
+          Tuma ujumbe bandia na nambari za matapeli kwa SMS kwenda 333. Ni bure na husaidia kuzuia nambari hizo
+          ili wengine wasitapeliwe.
+        short: "Tuma ujumbe bandia na nambari za matapeli kwa 333. Ni bure."
+    source: Safaricom, Securing your mobile phone device
+    source_url: https://safaricom.co.ke/personal/value-added-services/other-services/securing-your-mobile-phone-device
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: double-registration
+    claim: >-
+      A common scam claims your SIM card has been registered twice and asks for your M-PESA PIN to confirm your
+      details. Never share your PIN under any circumstances.
+    short: "Told your SIM is registered twice and asked for your PIN? It is a scam."
+    topic: fraud
+    vertical: finance
+    kind: sign
+    subjects: [mpesa]
+    keywords: [registered, twice, double, sim, swap, imesajiliwa, mara mbili, details, confirm, thibitisha]
+    translations:
+      sw:
+        claim: >-
+          Utapeli wa kawaida hudai kuwa SIM yako imesajiliwa mara mbili kisha huomba PIN yako ya M-PESA ili
+          kuthibitisha maelezo yako. Usitoe PIN yako kwa hali yoyote.
+        short: "Umeambiwa SIM imesajiliwa mara mbili na kuombwa PIN? Huo ni utapeli."
+    source: K24 Digital, reporting Safaricom's list of top scams
+    source_url: https://k24.digital/lifestyle/money/safaricom-lists-fake-fuliza-limit-messages-among-top-scams-targeting-m-pesa-users
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: unknown-callers
+    claim: Do not follow or key in instructions from unknown callers, such as dialling codes on your phone.
+    short: "Never dial codes or follow instructions from unknown callers."
+    topic: fraud
+    vertical: finance
+    kind: action
+    subjects: [mpesa]
+    keywords: [dial, code, instructions, maagizo, bonyeza, caller, unknown]
+    translations:
+      sw:
+        claim: Usifuate wala kubonyeza maagizo ya wapigaji usiowajua, kama kupiga misimbo kwenye simu yako.
+        short: "Usibonyeze misimbo wala kufuata maagizo ya wapigaji usiowajua."
+    source: Safaricom, Types of fraud and tips to protect yourself
+    source_url: https://safaricom.co.ke/fraud-awareness
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: prize-messages
+    claim: >-
+      Be wary of messages from unknown senders saying you have won something, or offering you cash or help.
+    short: "Be wary of messages saying you have won, or offering cash or help."
+    topic: fraud
+    vertical: finance
+    kind: sign
+    subjects: [mpesa]
+    keywords: [won, winner, prize, promotion, umeshinda, zawadi, bonus, offer, loan, mkopo]
+    translations:
+      sw:
+        claim: >-
+          Kuwa mwangalifu na jumbe kutoka kwa watu usiowajua zinazosema umeshinda kitu, au zinazokuahidi pesa
+          au msaada.
+        short: "Kuwa makini na jumbe zinazosema umeshinda au zinazoahidi pesa."
+    source: Safaricom, Tips for staying safe
+    source_url: https://safaricom.co.ke/fraud-awareness/tips-tricks
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: line-registration-707
+    claim: >-
+      If someone tries to register a new line using your ID, you receive an SMS from 707 asking you to confirm.
+      If you did not ask for a new line, do not confirm it.
+    short: "SMS from 707 about a new line on your ID you did not request? Do not confirm it."
+    topic: fraud
+    vertical: finance
+    kind: action
+    subjects: [mpesa]
+    keywords: [707, id, kitambulisho, new line, laini, register, sajili]
+    translations:
+      sw:
+        claim: >-
+          Mtu akijaribu kusajili laini mpya kwa kitambulisho chako, utapokea SMS kutoka 707 ikikuomba
+          uthibitishe. Kama hukuomba laini mpya, usithibitishe.
+        short: "SMS ya 707 kuhusu laini mpya kwa kitambulisho chako hukuomba? Usithibitishe."
+    source: Safaricom, Tips for staying safe
+    source_url: https://safaricom.co.ke/fraud-awareness/tips-tricks
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: fake-links
+    claim: >-
+      Fraudsters create fake Safaricom branded links, websites and social media pages. Report suspicious links
+      and pages to Safaricom, and use only its verified accounts.
+    short: "Fake Safaricom links and pages exist. Report them, and trust only verified Safaricom accounts."
+    topic: fraud
+    vertical: finance
+    kind: sign
+    subjects: [mpesa]
+    keywords: [link, links, website, click, page, facebook, fake, kiungo, tovuti, bofya]
+    translations:
+      sw:
+        claim: >-
+          Matapeli hutengeneza viungo, tovuti na kurasa bandia za mitandao ya kijamii zenye chapa ya Safaricom.
+          Ripoti viungo na kurasa zinazotiliwa shaka kwa Safaricom, na tumia akaunti zake zilizothibitishwa pekee.
+        short: "Kuna viungo na kurasa bandia za Safaricom. Ziripoti, na amini akaunti zilizothibitishwa pekee."
+    source: Safaricom, Fake Safaricom branded links and websites; Safaricom, Fake social media handles
+    source_url: https://safaricom.co.ke/fraud-awareness/impersonation/fake-safaricom-branded-online-links-websites
+    checked_on: 2026-11-23
+    review_status: sourced

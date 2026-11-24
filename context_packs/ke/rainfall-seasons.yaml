@@ -1,0 +1,57 @@
+# Kenya's rainfall seasons, from the Kenya Meteorological Department.
+spec_version: "1.0"
+id: ke-rainfall-seasons
+title: Kenya rainfall seasons
+description: >-
+  The two main rainy seasons and where to get the official seasonal forecast.
+  County level onset dates are a good first issue for contributors.
+version: 1.0.0
+order: 6
+labels:
+  en: Rain seasons
+  sw: Misimu ya mvua
+license: CC-BY-4.0
+country: KE
+language: en
+maintainers:
+  - ACE maintainers
+facts:
+  - id: two-seasons
+    claim: >-
+      Most of Kenya has two rainy seasons: the long rains from March to May, which are the main rainfall season
+      for most of the country, and the short rains from October to December.
+    short: "Kenya has two rainy seasons: long rains March to May, short rains October to December."
+    topic: seasons
+    vertical: climate
+    keywords: [rain, rains, season, seasons, long rains, short rains, when to plant, planting, mvua, msimu, masika,
+               vuli, kupanda, lini]
+    translations:
+      sw:
+        claim: >-
+          Sehemu nyingi za Kenya zina misimu miwili ya mvua: masika kuanzia Machi hadi Mei, ambayo ndiyo msimu
+          mkuu wa mvua kwa sehemu kubwa ya nchi, na vuli kuanzia Oktoba hadi Desemba.
+        short: "Kenya ina misimu miwili ya mvua: masika Machi hadi Mei, vuli Oktoba hadi Desemba."
+    source: Kenya Meteorological Department, MAM 2025 and MAM 2026 seasonal forecasts
+    source_url: https://meteo.go.ke/documents/2537/March-April-May_MAM_2026_Seasonal_Weather_Forecast.pdf
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: follow-forecast
+    claim: >-
+      Rain onset and amounts vary by place and by year. Check the Kenya Meteorological Department seasonal
+      forecast for your county before planting.
+    short: "Rain timing varies by place and year. Check the KMD seasonal forecast for your county before planting."
+    topic: seasons
+    vertical: climate
+    kind: action
+    keywords: [forecast, weather, kmd, meteorological, utabiri, hali ya hewa, planting, kupanda]
+    translations:
+      sw:
+        claim: >-
+          Mwanzo na kiasi cha mvua hutofautiana kwa eneo na kwa mwaka. Angalia utabiri wa msimu wa Idara ya Hali
+          ya Hewa ya Kenya kwa kaunti yako kabla ya kupanda.
+        short: "Mvua hutofautiana kwa eneo na mwaka. Angalia utabiri wa msimu wa KMD kwa kaunti yako kabla ya kupanda."
+    source: Kenya Meteorological Department, seasonal forecasts
+    source_url: https://meteo.go.ke/documents/2537/March-April-May_MAM_2026_Seasonal_Weather_Forecast.pdf
+    checked_on: 2026-11-23
+    review_status: sourced

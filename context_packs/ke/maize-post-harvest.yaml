@@ -1,0 +1,164 @@
+# Maize drying and storage to prevent losses and aflatoxin.
+# Sources are KALRO, CGIAR and USAID AflaSTOP research.
+spec_version: "1.0"
+id: ke-maize-post-harvest
+title: Maize drying, storage and aflatoxin
+description: >-
+  Practical guidance on drying and storing maize so it stays safe to eat and
+  sell. Aflatoxin is a poison made by moulds on badly dried or stored grain.
+version: 1.0.0
+order: 2
+labels:
+  en: Maize storage
+  sw: Kuhifadhi mahindi
+license: CC-BY-4.0
+country: KE
+language: en
+maintainers:
+  - ACE maintainers
+facts:
+  - id: drying-moisture
+    claim: >-
+      Dry maize to about 13 percent moisture before storing it. KALRO advises that maize for food and animal feed
+      should be at 13 to 13.5 percent moisture.
+    short: "Dry maize to about 13% moisture before storage. KALRO advises 13 to 13.5% for food and feed."
+    topic: storage
+    vertical: agriculture
+    kind: action
+    subjects: [maize]
+    keywords: [dry, drying, moisture, store, storage, harvest, aflatoxin, kausha, kukausha, unyevu, hifadhi,
+               kuhifadhi, mavuno, sumukuvu]
+    translations:
+      sw:
+        claim: >-
+          Kausha mahindi hadi unyevu wa takriban asilimia 13 kabla ya kuyahifadhi. KALRO inashauri mahindi ya
+          chakula na lishe ya mifugo yawe na unyevu wa asilimia 13 hadi 13.5.
+        short: "Kausha mahindi hadi unyevu wa asilimia 13 kabla ya kuhifadhi. KALRO inashauri asilimia 13 hadi 13.5."
+    source: KALRO, Maize post harvest; KALRO maize breeder quoted in The Star, August 2023
+    source_url: https://www.kalro.org/maize/maize-post-harvest
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: drying-surface
+    claim: >-
+      Dry maize cobs on mats or a tarpaulin, not on bare ground, and cover them before rain and at night to keep
+      off dew.
+    short: "Dry cobs on mats or a tarpaulin. Cover them before rain and at night."
+    topic: storage
+    vertical: agriculture
+    kind: action
+    subjects: [maize]
+    keywords: [dry, drying, tarpaulin, mat, rain, dew, turubai, mkeka, mvua, umande, kausha]
+    translations:
+      sw:
+        claim: >-
+          Kausha mahindi juu ya mkeka au turubai, si ardhini moja kwa moja, na uyafunike kabla ya mvua na usiku
+          ili kuzuia umande.
+        short: "Kausha mahindi juu ya mkeka au turubai. Yafunike kabla ya mvua na usiku."
+    source: KALRO, Maize post harvest
+    source_url: https://www.kalro.org/maize/maize-post-harvest
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: gentle-handling
+    claim: >-
+      Harvest and thresh maize in ways that do not bruise, crack or break the grain. Damaged grain is more
+      easily attacked by pests and moulds.
+    short: "Thresh gently. Cracked or broken grain invites pests and moulds."
+    topic: storage
+    vertical: agriculture
+    kind: action
+    subjects: [maize]
+    keywords: [thresh, threshing, shelling, broken, cracked, pura, kupura, kupukuchua, nafaka]
+    translations:
+      sw:
+        claim: >-
+          Vuna na upure mahindi kwa njia isiyochubua, kupasua wala kuvunja nafaka. Nafaka iliyoharibika
+          hushambuliwa kwa urahisi na wadudu na ukungu.
+        short: "Pura kwa uangalifu. Nafaka iliyopasuka huvutia wadudu na ukungu."
+    source: KALRO, Maize post harvest
+    source_url: https://www.kalro.org/maize/maize-post-harvest
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: hermetic-storage
+    claim: >-
+      Hermetic, airtight bags or silos keep oxygen out. This kills storage pests such as weevils and stops
+      aflatoxin from building up during storage, where ordinary woven bags let it rise.
+    short: "Airtight hermetic bags or silos kill weevils and stop aflatoxin rising in storage."
+    topic: storage
+    vertical: agriculture
+    kind: action
+    subjects: [maize]
+    keywords: [hermetic, airtight, pics, bag, bags, silo, weevil, weevils, storage pests, mfuko, mifuko, ghala,
+               vidomozi, dumuzi, wadudu, store, hifadhi]
+    translations:
+      sw:
+        claim: >-
+          Mifuko au maghala yasiyopitisha hewa huzuia oksijeni. Hii huua wadudu waharibifu wa hifadhi kama vidomozi
+          na huzuia sumukuvu kuongezeka wakati wa kuhifadhi, ambapo mifuko ya kawaida huiruhusu kuongezeka.
+        short: "Mifuko au maghala yasiyopitisha hewa huua vidomozi na huzuia sumukuvu kuongezeka."
+    source: USAID AflaSTOP, hermetic storage evidence; Nganga, Mutungi and Imathiu (2016), Journal of Stored Products Research
+    source_url: https://pdf.usaid.gov/pdf_docs/PA00MV4J.pdf
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: aflatoxin-risk-factors
+    claim: >-
+      Poor drying, broken grain and damp storage without enough air all raise the risk of aflatoxin
+      contamination in maize.
+    short: "Poor drying, broken grain and damp storage raise the aflatoxin risk."
+    topic: storage
+    vertical: agriculture
+    subjects: [maize]
+    keywords: [aflatoxin, mould, mold, mouldy, poison, sumukuvu, ukungu, kuvu, sumu, damp, unyevu]
+    translations:
+      sw:
+        claim: >-
+          Kukausha vibaya, nafaka iliyovunjika na hifadhi yenye unyevu isiyo na hewa ya kutosha vyote huongeza
+          hatari ya sumukuvu kwenye mahindi.
+        short: "Kukausha vibaya, nafaka iliyovunjika na hifadhi yenye unyevu huongeza hatari ya sumukuvu."
+    source: Daily Nation, Seeds of Gold, Keep in control maize losses this rainy season
+    source_url: https://nation.africa/kenya/business/seeds-of-gold/keep-in-control-maize-losses-this-rainy-season-474984
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: aflatoxin-hotspots
+    claim: >-
+      KALRO reports aflatoxin hotspots in semi arid areas and anywhere temperatures are above 25 degrees
+      Celsius. Take extra care with drying and storage there.
+    short: "Aflatoxin hotspots: semi arid areas and places above 25 C. Dry and store with extra care."
+    topic: storage
+    vertical: agriculture
+    subjects: [maize]
+    keywords: [aflatoxin, hotspot, where, hot, semi arid, sumukuvu, joto, kame]
+    translations:
+      sw:
+        claim: >-
+          KALRO inaripoti maeneo hatari ya sumukuvu katika sehemu kame na popote joto huzidi nyuzi 25 za
+          Selsiasi. Kuwa mwangalifu zaidi kukausha na kuhifadhi huko.
+        short: "Maeneo hatari ya sumukuvu: sehemu kame na zenye joto zaidi ya nyuzi 25. Kausha na hifadhi kwa makini."
+    source: The Star, Dry and store maize well to avoid aflatoxin, farmers told (August 2023)
+    source_url: https://the-star.co.ke/news/2023-08-03-dry-and-store-maize-well-to-avoid-aflatoxin-farmers-told
+    checked_on: 2026-11-23
+    review_status: sourced
+
+  - id: aflasafe
+    claim: >-
+      Aflasafe KE01, developed by KALRO with partners, is a biological control product that suppresses aflatoxin
+      producing fungi in the soil.
+    short: "Aflasafe KE01 from KALRO is a biological control that suppresses aflatoxin fungi in the soil."
+    topic: storage
+    vertical: agriculture
+    subjects: [maize]
+    keywords: [aflasafe, prevent aflatoxin, biological, field, soil, sumukuvu, udongo, kuzuia]
+    translations:
+      sw:
+        claim: >-
+          Aflasafe KE01, iliyotengenezwa na KALRO pamoja na washirika, ni bidhaa ya udhibiti wa kibiolojia
+          inayodhibiti kuvu wanaotoa sumukuvu udongoni.
+        short: "Aflasafe KE01 ya KALRO ni udhibiti wa kibiolojia unaodhibiti kuvu wa sumukuvu udongoni."
+    source: The Star, Dry and store maize well to avoid aflatoxin, farmers told (August 2023)
+    source_url: https://the-star.co.ke/news/2023-08-03-dry-and-store-maize-well-to-avoid-aflatoxin-farmers-told
+    checked_on: 2026-11-23
+    review_status: sourced

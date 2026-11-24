@@ -1,0 +1,121 @@
+# Kenya emergency and helpline numbers.
+# Every number is checked against a published source. Numbers change, so each
+# fact expires after a year and must be re-checked before it is served again.
+spec_version: "1.0"
+id: ke-emergency-contacts
+title: Kenya emergency and helpline numbers
+description: >-
+  National emergency numbers and free helplines that ACE gives out when a
+  message signals danger. Used by the safety rail before anything else runs.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+license: CC-BY-4.0
+country: KE
+language: en
+maintainers:
+  - ACE maintainers
+facts:
+  - id: national-emergency
+    claim: >-
+      In Kenya, call 999 or 112 for police, fire and ambulance emergencies. 911 also reaches the police.
+    short: "Emergency in Kenya: call 999 or 112 for police, fire or ambulance."
+    topic: emergency_contacts
+    vertical: safety
+    kind: action
+    keywords: [emergency, police, ambulance, fire, dharura, polisi, ambulensi, zimamoto, help, msaada]
+    contacts:
+      - {label: Emergency, number: "999", queues: [emergency, health_urgent, maternal, poisoning, violence, gbv, child_protection, self_harm], free: true}
+      - {label: Emergency, number: "112", queues: [emergency, health_urgent, maternal, poisoning, violence, gbv, child_protection, self_harm], free: true}
+    translations:
+      sw:
+        claim: >-
+          Kwa dharura nchini Kenya, piga 999 au 112 kupata polisi, zimamoto au ambulensi. 911 pia hufika kwa polisi.
+        short: "Dharura Kenya: piga 999 au 112 kupata polisi, zimamoto au ambulensi."
+    source: The Standard, Emergency numbers you should have over the holiday
+    source_url: https://www.standardmedia.co.ke/business/amp/national/article/2001432592/emergency-numbers-you-should-have-over-the-holiday
+    checked_on: 2026-11-23
+    expires: 2027-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: red-cross-ambulance
+    claim: For a Kenya Red Cross ambulance, call 1199.
+    topic: emergency_contacts
+    vertical: safety
+    kind: action
+    keywords: [ambulance, red cross, ambulensi, msalaba mwekundu, hospital, hospitali]
+    contacts:
+      - {label: Kenya Red Cross ambulance, number: "1199", queues: [health_urgent, maternal]}
+    translations:
+      sw:
+        claim: Kupata ambulensi ya Kenya Red Cross, piga 1199.
+    source: The Standard, Emergency numbers you should have over the holiday; NASCOP GBV FAQ
+    source_url: https://www.standardmedia.co.ke/business/amp/national/article/2001432592/emergency-numbers-you-should-have-over-the-holiday
+    checked_on: 2026-11-23
+    expires: 2027-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: gbv-helpline
+    claim: >-
+      Kenya's national gender based violence helpline is 1195. It is free and open day and night, offering
+      counselling and referral to medical, legal and rescue services.
+    short: "Gender based violence helpline: call 1195. Free, day and night."
+    topic: emergency_contacts
+    vertical: safety
+    kind: action
+    keywords: [violence, abuse, rape, assault, beaten, gbv, dhuluma, ubakaji, kupigwa, unyanyasaji]
+    contacts:
+      - {label: National GBV helpline, number: "1195", queues: [gbv, violence], free: true, hours: 24 hours}
+    translations:
+      sw:
+        claim: >-
+          Simu ya msaada ya kitaifa kuhusu dhuluma za kijinsia ni 1195. Ni bure na iko wazi mchana na usiku,
+          ikitoa ushauri nasaha na rufaa kwa huduma za matibabu, sheria na uokoaji.
+        short: "Dhuluma za kijinsia: piga 1195. Bure, mchana na usiku."
+    source: State Department for Gender and Affirmative Action, GBV prevention and response; UN Women Kenya
+    source_url: https://migecah.go.ke/index.php/gbv-prevention-and-response
+    checked_on: 2026-11-23
+    expires: 2027-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: childline
+    claim: Childline Kenya on 116 is the national child helpline. Call it if a child is at risk of harm.
+    short: "Child at risk: call Childline Kenya on 116."
+    topic: emergency_contacts
+    vertical: safety
+    kind: action
+    keywords: [child, children, childline, abuse, mtoto, watoto, defilement]
+    contacts:
+      - {label: Childline Kenya, number: "116", queues: [child_protection, gbv]}
+    translations:
+      sw:
+        claim: Childline Kenya kupitia 116 ni simu ya msaada ya kitaifa kwa watoto. Piga ikiwa mtoto yuko hatarini kudhurika.
+        short: "Mtoto yuko hatarini: piga Childline Kenya kwa 116."
+    source: NASCOP, Gender based violence frequently asked questions; UNHCR Kenya, Child protection services
+    source_url: https://nascop.or.ke/wp-content/uploads/2025/08/NASCOP_FAQ_GBV_PRINT-COPY-1-2-compressed.pdf
+    checked_on: 2026-11-23
+    expires: 2027-11-23
+    review_status: sourced
+    safety_critical: true
+
+  - id: counselling-1190
+    claim: For general counselling, call 1190, run by LVCT Health.
+    topic: emergency_contacts
+    vertical: safety
+    kind: action
+    keywords: [counselling, counseling, stress, depressed, ushauri, nasaha, mental]
+    contacts:
+      - {label: LVCT Health counselling, number: "1190", queues: [counselling, self_harm]}
+    translations:
+      sw:
+        claim: Kwa ushauri nasaha wa jumla, piga 1190, inayoendeshwa na LVCT Health.
+    source: NASCOP, Gender based violence frequently asked questions
+    source_url: https://nascop.or.ke/wp-content/uploads/2025/08/NASCOP_FAQ_GBV_PRINT-COPY-1-2-compressed.pdf
+    checked_on: 2026-11-23
+    expires: 2027-11-23
+    review_status: sourced

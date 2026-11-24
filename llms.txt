@@ -1,6 +1,6 @@
 # ACE: the African Context Engine
 
-> ACE gives checked, local, citable knowledge for Africa on any phone, over USSD, SMS, voice, WhatsApp, the web and MCP. Release 1.1.0 serves 13 countries in English, Swahili and French. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
+> ACE gives checked, local, citable knowledge for Africa on any phone, over USSD, SMS, voice, WhatsApp, the web and MCP. Release 1.1.0 covers 13 countries in English, Swahili and French. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
 
 ## Start here
 

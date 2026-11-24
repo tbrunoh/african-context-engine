@@ -24,7 +24,7 @@ Sources:
 
 ## Why ACE exists
 
-- About 1 billion Africans live inside mobile broadband coverage but do not use mobile internet (GSMA, Mobile Economy Africa 2026). USSD, SMS and voice still reach them.
+- Almost 1 billion Africans, 63% of the population, live inside mobile broadband coverage but do not use mobile internet (GSMA, Mobile Economy Africa 2026). USSD, SMS and voice still reach them.
 - AI advisory services are proving demand: Digital Green's FarmerChat reaches nearly 3 million farmers, Jacaranda Health's PROMPTS has reached more than 3.8 million mothers in Kenya, and MTN Rwanda's voice AI, Miss Baza, has reached more than 500,000 users on a basic phone call. Each one rebuilds its own knowledge base, channel stack and safety layer, and the knowledge stays locked inside.
 - African language models are arriving (InkubaLM, Sunflower), but a model does not know which hotline handles gender based violence in Kenya or what moisture level keeps maize free of aflatoxin. Models need grounding.
 

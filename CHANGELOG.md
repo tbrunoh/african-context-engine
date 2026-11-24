@@ -14,6 +14,7 @@
 - `NOTICE`, `DATA_LICENSE.md` and `CONTRIBUTING.md` now explain that third party sources keep their own rights, that a credit is not an endorsement, and that each new source must be credited in the same pull request.
 - `ROADMAP.md` now follows the four V2 phases.
 - The README, `docs/landscape.md` and the V2 product spec carry the latest public figures for FarmerChat, PROMPTS and Miss Baza, checked on 24 November 2026.
+- The README gives GSMA's exact usage gap figure, `llms.txt` says the release covers 13 countries rather than serving them, and the V2 spec states its outcomes as aims.
 
 ## 1.1.0 (2026-11-23)
 

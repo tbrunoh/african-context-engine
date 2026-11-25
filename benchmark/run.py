@@ -9,6 +9,10 @@ Measures, per language and per country:
   * false alarm rate: share of ordinary messages that trigger the safety rail
   * service checks (V2): every covered service answers a sample question in every covered country,
     with a citation, inside the USSD screen, and gives no phone number the country's packs do not publish
+
+Service checks run at the time of the newest committed snapshot, so a result depends on the code and the
+data, never on the day the benchmark runs. Official warnings are valid for six hours; keeping them fresh is
+the job of `ace refresh` on a schedule, not of this gate.
 """
 from __future__ import annotations
 
@@ -31,6 +35,7 @@ from ace_engine.models import Channel, Message, ReplyKind  # noqa: E402
 from ace_engine.router import Budget  # noqa: E402
 from ace_engine.services import facility  # noqa: E402
 from ace_engine.services.base import EXAMPLE_PLACE  # noqa: E402
+from ace_engine.snapshots import parse_time  # noqa: E402
 from ace_engine.text import SUPPORTED_LANGUAGES  # noqa: E402
 
 SETS = Path(__file__).parent / "sets"
@@ -49,6 +54,19 @@ SERVICE_SAMPLES = {
 
 def phone(country: str, n: int) -> str:
     return f"+{COUNTRIES[country].dial}7{n:08d}"
+
+
+def snapshot_time(root: Path):
+    """The newest retrieved_at across the committed snapshots: the moment the data describes."""
+    times = []
+    for path in root.rglob("*.json"):
+        try:
+            stamp = json.loads(path.read_text(encoding="utf-8")).get("retrieved_at")
+        except (ValueError, AttributeError):
+            continue
+        if stamp:
+            times.append(parse_time(stamp))
+    return max(t for t in times if t is not None)
 
 
 def emergency(engine: Engine) -> dict:
@@ -152,6 +170,9 @@ def services(engine: Engine) -> dict:
 
 def run() -> dict:
     engine = Engine.from_packs(ROOT / "context_packs", snapshots=ROOT / "snapshots")
+    if engine.services is not None:
+        pinned = snapshot_time(ROOT / "snapshots")
+        engine.services.clock = lambda: pinned
     return {"emergency": emergency(engine), "ordinary": ordinary(engine), "services": services(engine)}
 
 

@@ -62,3 +62,11 @@ Every graphic, page and badge uses the Coast to Dunes palette on a clean white g
 
 Lead with Lamu Tide on white. Use gold as an accent, not a second primary. Headings use a serif (Newsreader, then ui-serif and Georgia); text uses Inter or the system sans. Keep text at WCAG AA contrast or better. Emergency states may keep a clear danger red, because a safety signal must never read as decoration.
 
+Diagrams follow the same rules:
+
+- Draw at 1000 units wide. GitHub shows a README image at about 840 pixels, so body text is at least 14 units and small capital labels at least 11 units.
+- Set every word as outlines in Inter or Newsreader. GitHub cannot load web fonts inside an image, so live text falls back to whatever the reader has installed.
+- Use solid Lamu Tide for the one panel that matters, white cards with a warm hairline for everything else, and a pale tide wash to highlight. No gradients.
+- Keep monospace for code only. Labels, numbers and tags use Inter.
+- Give every image an alt text, and a title inside the SVG, that says what it shows.
+

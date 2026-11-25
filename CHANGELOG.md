@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Changed
-- **Coast to Dunes identity.** The README badges, the seven diagrams in `docs/` and the web playground move to a clean white ground in the Coast to Dunes palette: Lamu Tide, Congo Canopy, Mara Gold, Sahara Sand and Rift Basalt. AGENTS.md records the palette and its rules. The SMS box in the playground now invites any of the eight languages.
+- **Coast to Dunes identity.** The README badges, the seven diagrams in `docs/` and the web playground move to a clean white ground in the Coast to Dunes palette: Lamu Tide, Congo Canopy, Mara Gold, Sahara Sand and Rift Basalt. The diagrams are redrawn at 1000 units wide with every word set as outlines in Inter and Newsreader, so they render the same on GitHub, in any browser and in print, and no label falls below a readable size. AGENTS.md records the palette and its rules. The SMS box in the playground now invites any of the eight languages.
 
 ## 2.2.0b2 (2026-11-25): Amharic and Somali on the voice line
 

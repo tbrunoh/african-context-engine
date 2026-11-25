@@ -39,6 +39,8 @@ Real sentences from [WAXAL](https://huggingface.co/datasets/google/WaxalNLP) (da
 | Sidama | 600 | 8.7% | so 18, om 14, sw 12, fr 7, pt 1 | 0 | 0 |
 | Shona | 600 | 4.5% | so 15, om 4, fr 4, sw 4 | 0 | 0 |
 
+Average claimed rate: 45.8% across 23 languages, each language counted once. Tigrinya is listed but not averaged, because it shares Ge'ez script with Amharic.
+
 Across 12,333 sentences in 27 sets, the safety rail fired 3 times (0.02%). Each firing is listed in waxal.json by queue for review.
 
 Not measured: Ewe, Baoule. The dataset viewer could not serve their text on this run; load them with the datasets library instead.

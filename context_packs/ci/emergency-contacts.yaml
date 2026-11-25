@@ -55,6 +55,10 @@ facts:
     number: '180'
     queues:
     - fire
+  - label: Police
+    number: '110'
+  - label: Police
+    number: '111'
   translations:
     en:
       claim: In Côte d'Ivoire, call 170, 110 or 111 for the police, 185 for the SAMU ambulance service and 180 for the

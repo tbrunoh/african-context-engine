@@ -41,7 +41,7 @@ Gemini 3.8 Flash TTS closes the speaking gap for Amharic and Somali. Afaan Oromo
 
 ## WAXAL
 
-[WAXAL](https://huggingface.co/datasets/google/WaxalNLP) is an open speech corpus for African languages from Google Research and six African partners: Makerere University, the University of Ghana, Digital Umuganda, Media Trust, Loud and Clear and AIMS Senegal. The [Google Research announcement](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/) and the [paper](https://arxiv.org/abs/2602.02734) describe it. Sources give different counts because the dataset has grown since February 2026, so ACE quotes the dataset card itself (revision 5f4d8ca, updated 1 September 2026):
+[WAXAL](https://huggingface.co/datasets/google/WaxalNLP) is an open speech corpus for African languages from Google Research and seven African partners: Makerere University, the University of Ghana, Digital Umuganda, Addis Ababa University, Media Trust, Loud n Clear and AIMS Senegal. The [Google Research announcement](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/) and the [paper](https://arxiv.org/abs/2602.02734) describe it. Sources give different counts because the dataset has grown since February 2026, so ACE quotes the dataset card itself (revision 5f4d8ca, updated 1 September 2026):
 
 - **Transcribed speech for 19 languages**: 438,230 utterances and 2,242 hours across the speaker disjoint splits. Acholi, Luganda, Masaaba, Runyankole and Lusoga from Makerere; Akan, Ewe, Dagbani, Dagaare and Ikposo from the University of Ghana; Fula, Lingala, Shona, Malagasy, Amharic, Afaan Oromo, Sidama, Tigrinya and Wolaytta from Digital Umuganda.
 - **Voice scripts**: 15 loadable sets of single speaker studio recordings, among them Swahili, Hausa, Yoruba, Igbo, Nigerian Pidgin, Kikuyu, Dholuo, Luganda and Fula, with Bambara, Pular and Wolof from AIMS Senegal in the repository as well.
@@ -60,7 +60,7 @@ The next step is a language guess trained on the WAXAL train splits and evaluate
 
 ### How ACE can use it next
 
-| Use | WAXAL sets | What it unlocks | Licence note |
+| Use | WAXAL sets | What it enables | Licence note |
 | --- | --- | --- | --- |
 | Tune speech recognition for Amharic and Afaan Oromo | amh_asr, orm_asr | Spoken questions in Ethiopia, where Afaan Oromo has no cloud model | Derived models CC BY-SA 4.0 |
 | An Afaan Oromo voice | orm_asr, with a voice recorded for the purpose | The one ACE language no Google model speaks | CC BY-SA 4.0 |

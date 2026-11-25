@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Changed
+- **Coast to Dunes identity.** The README badges, the seven diagrams in `docs/` and the web playground move to a clean white ground in the Coast to Dunes palette: Lamu Tide, Congo Canopy, Mara Gold, Sahara Sand and Rift Basalt. AGENTS.md records the palette and its rules. The SMS box in the playground now invites any of the eight languages.
+
 ## 2.2.0b2 (2026-11-25): Amharic and Somali on the voice line
 
 The newest developer models change the voice picture. Gemini 3.8 Flash TTS lists Amharic and Somali, which no Google Cloud Text-to-Speech voice covers, so the voice line can now speak both. Afaan Oromo is still not listed by any Google speech model.

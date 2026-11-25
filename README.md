@@ -1,10 +1,10 @@
 # ACE: the African Context Engine
 
 [![CI](https://github.com/tbrunoh/african-context-engine/actions/workflows/ci.yml/badge.svg)](https://github.com/tbrunoh/african-context-engine/actions/workflows/ci.yml)
-[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-0E7490)](LICENSE)
-[![Python 3.10 to 3.13](https://img.shields.io/badge/python-3.10%20to%203.13-1E40AF)](pyproject.toml)
-[![Packs: CC BY 4.0](https://img.shields.io/badge/packs-CC%20BY%204.0-B45309)](DATA_LICENSE.md)
-[![MCP server](https://img.shields.io/badge/MCP-server-2DD4BF)](docs/architecture.md#mcp)
+[![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202.0-006B69)](LICENSE)
+[![Python 3.10 to 3.13](https://img.shields.io/badge/python-3.10%20to%203.13-364E3C)](pyproject.toml)
+[![Packs: CC BY 4.0](https://img.shields.io/badge/packs-CC%20BY%204.0-BE823C)](DATA_LICENSE.md)
+[![MCP server](https://img.shields.io/badge/MCP-server-253239)](docs/architecture.md#mcp)
 
 **Checked, local, citable knowledge for Africa, on any phone.**
 

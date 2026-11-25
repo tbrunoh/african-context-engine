@@ -47,3 +47,18 @@ Speech providers sit in the channel layer, like an SMS gateway: they turn audio 
 ## Writing style for docs and user facing text
 
 Plain words a reader understands at first glance. Headlines state the point. No em dashes, no contractions, and no double quotes in prose. Never start a sentence with And.
+
+## Visual identity: Coast to Dunes
+
+Every graphic, page and badge uses the Coast to Dunes palette on a clean white ground.
+
+| Name | Hex | Use |
+| --- | --- | --- |
+| Lamu Tide | `#006B69` | The mark, links, buttons and the main accent |
+| Congo Canopy | `#364E3C` | Secondary accent and depth |
+| Mara Gold | `#BE823C` | Warm accent for shapes, rules and large display only; use `#8F5E24` when gold must be small text |
+| Sahara Sand | `#E8C69F` | Soft surfaces; `#FAF4EC` for warm panels |
+| Rift Basalt | `#253239` | Text and contrast; `#56636A` for secondary text |
+
+Lead with Lamu Tide on white. Use gold as an accent, not a second primary. Headings use a serif (Newsreader, then ui-serif and Georgia); text uses Inter or the system sans. Keep text at WCAG AA contrast or better. Emergency states may keep a clear danger red, because a safety signal must never read as decoration.
+

@@ -1,0 +1,104 @@
+# Somalia emergency numbers, from the UK FCDO travel advice page for Somalia, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: so-emergency-contacts
+title: Somalia emergency numbers
+description: National emergency numbers that ACE gives to callers in Somalia when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: SO
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: 'In Somalia, the Somali Red Crescent runs a free number for all emergency services: 446. You can also call 999 for
+    an ambulance, 888 for the police and 555 for the fire service, but these lines can be unreliable.'
+  short: 'Emergency in Somalia: call 446, free. Ambulance 999, police 888, fire 555.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Somali Red Crescent
+    number: '446'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - violence
+    - gbv
+    - child_protection
+    - fire
+  - label: Ambulance
+    number: '999'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Police
+    number: '888'
+    queues:
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Fire
+    number: '555'
+    queues:
+    - fire
+  translations:
+    so:
+      claim: 'Soomaaliya, Bisha Cas ee Soomaaliyeed waxay leedahay lambar bilaash ah oo adeegyada degdegga oo dhan ah: 446.
+        Waxaad sidoo kale wici kartaa 999 ambalaas, 888 booliis iyo 555 dab demis, laakiin khadadkan mararka qaar ma shaqeeyaan.'
+      short: 'Degdeg Soomaaliya: wac 446, waa bilaash. Ambalaas 999, booliis 888, dab demis 555.'
+    ar:
+      claim: 'في الصومال، يدير الهلال الأحمر الصومالي رقما مجانيا لكل خدمات الطوارئ: 446. يمكنك أيضا الاتصال بالرقم 999 للإسعاف
+        و888 للشرطة و555 للإطفاء، لكن هذه الخطوط قد لا تعمل دائما.'
+      short: 'الطوارئ في الصومال: اتصل بالرقم 446 مجانا. الإسعاف 999، الشرطة 888، الإطفاء 555.'
+  source: UK FCDO, Somalia travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/somalia/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

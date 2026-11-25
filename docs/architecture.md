@@ -17,15 +17,25 @@ Engine.handle
    3 safety rail       EscalationPolicy.check -> verified numbers + HandoffSink, then stop
    4 commands          HELP, LANG, TIP, SCAM, SOURCES, MORE, STOP, FORGET
    5 Scam Shield       auto checks forwarded money messages with strong warning signs
-   6 retrieval         ContextStore.query: hard filters, then ranking, then topic coherence
-   7 compose           ExtractiveComposer or GroundedGenerator, inside the channel budget
-   8 safety numbers    safety critical facts always carry the numbers to call
+   6 V2 services       ServiceHub: detect the decision, resolve the place, answer from snapshots
+   7 retrieval         ContextStore.query: hard filters, then ranking, then topic coherence
+   8 compose           ExtractiveComposer or GroundedGenerator, inside the channel budget
+   9 safety numbers    safety critical facts always carry the numbers to call
    |
    v
 Reply (text, kind, language, citations, escalation)  -> channel adapter render -> provider
 ```
 
-Every stage is a small class with its own tests. The order is the design: nothing can delay or override an emergency, and nothing reaches a person unless it is grounded in a checked fact or is a fixed system message.
+Every stage is a small class with its own tests. The order is the design: nothing can delay or override an emergency, and nothing reaches a person unless it is grounded in a checked fact, a dated snapshot or is a fixed system message.
+
+## V2 services, connectors and snapshots
+
+```
+connectors (ace refresh, scheduled)  ->  snapshots/<dataset>/<COUNTRY>.json  ->  services  ->  Reply
+   the only network access               dated, checksummed, licence registered     read only
+```
+
+Services sit after Scam Shield and before retrieval. `detect()` recognises the decision from words in English, Swahili and French; the gazetteer resolves the place from a name, a position or the place named last time; the service answers from snapshots and packs inside the channel budget, or refuses and says who to ask. A service waiting for a place or details is remembered on the profile, so the next message completes it. Menus call `Engine.run_service`, which still runs the safety rail first and gives it the screen's context, so bleeding typed on the pregnancy screen is treated as a pregnancy emergency. The [services guide](services.md) has the decision rules and coverage, and [docs/connectors](connectors/README.md) has every source.
 
 ## Modules
 
@@ -88,7 +98,7 @@ The model sees only the retrieved facts, numbered, and must end every sentence w
 
 ## MCP
 
-`ace-mcp --packs context_packs` starts a stdio MCP server with five tools: `ask_ace`, `search_context`, `check_message`, `emergency_contacts` and `list_packs`. The tools are plain functions built by `build_tools(engine)`, so they are tested without the MCP SDK. Install the SDK with `pip install "ace-engine[mcp]"`.
+`ace-mcp --packs context_packs` starts a stdio MCP server with five core tools, `ask_ace`, `search_context`, `check_message`, `emergency_contacts` and `list_packs`, and, when snapshots are present, seven V2 tools: `rain_this_week`, `official_warnings`, `nearest_facility`, `market_prices`, `pregnancy_companion`, `pest_check` and `service_coverage`. The tools are plain functions built by `build_tools(engine)`, so they are tested without the MCP SDK. Install the SDK with `pip install "ace-engine[mcp]"`.
 
 ## Scaling and storage
 

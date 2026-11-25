@@ -23,6 +23,8 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
+from .. import encoding, i18n
+from ..countries import COUNTRIES
 from ..models import Channel, Message, Reply, ReplyKind
 from ..router import Budget
 from .base import ChannelAdapter, truncate_words
@@ -59,7 +61,16 @@ SERVICE_ORDER = ("rain_this_week", "official_warnings", "nearest_facility", "mar
                  "pest_check")
 PROMPT_KEY = {"rain_this_week": "place_prompt", "official_warnings": "place_prompt", "nearest_facility": "place_prompt",
               "market_prices": "food_prompt", "pregnancy_companion": "weeks_prompt", "pest_check": "crop_prompt"}
-_LANG_CHOICES = {"1": "en", "2": "sw", "3": "fr"}
+i18n.localize("channels.ussd", globals(), ("UI",))
+MENU_LANGUAGES = 4
+
+
+def language_options(country: str | None) -> list[str]:
+    """The languages the USSD menu offers, at most four: the caller's country languages first, then English, French
+    and Swahili. Every other language is one message away (LANG + code), so the menu fits one screen in any
+    alphabet."""
+    langs = list(COUNTRIES[country].languages) if country in COUNTRIES else []
+    return list(dict.fromkeys([*langs, "en", "fr", "sw", "pt"]))[:MENU_LANGUAGES]
 
 
 class UssdAdapter(ChannelAdapter):
@@ -128,6 +139,13 @@ class UssdApp:
         lang = self.engine.language_for(phone)
         return lang if lang in UI else "en"
 
+    def _limit(self, lang: str) -> int:
+        """Characters one screen carries in this language's alphabet."""
+        return encoding.ussd_limit(lang, self.max_chars)
+
+    def _lang_menu(self, phone: str) -> list[str]:
+        return language_options(self.engine.country_for(phone))
+
     def _packs(self, phone: str):
         return self.engine.packs_for(self.engine.country_for(phone))
 
@@ -148,7 +166,7 @@ class UssdApp:
         items = self._topic_items(lang, phone) if topics else self._items(lang, phone)
         numbered = [(n, key, label) for n, (key, label) in enumerate(items, start=1)]
         head = max(len(self.title), len(UI[lang]["invalid"]), len(UI[lang]["topics"]))  # room for any title line
-        budget = self.max_chars - 4 - head - 1 - len(UI[lang]["more"]) - 1 - (len(UI[lang]["back"]) + 1 if topics else 0)
+        budget = self._limit(lang) - 4 - head - 1 - len(UI[lang]["more"]) - 1 - (len(UI[lang]["back"]) + 1 if topics else 0)
         pages: list[list[tuple[int, str, str]]] = [[]]
         used = 0
         for item in numbered:
@@ -161,7 +179,7 @@ class UssdApp:
         return pages
 
     def _answer_budget(self, lang: str) -> Budget:
-        return Budget(max_chars=self.max_chars - 4 - len(UI[lang]["menu"]) - 1, short=True, max_facts=1)
+        return Budget(max_chars=self._limit(lang) - 4 - len(UI[lang]["menu"]) - 1, short=True, max_facts=1)
 
     def _ask(self, phone: str, text: str, session_id: str | None) -> Reply:
         message = Message(channel=Channel.USSD, sender=phone, text=text, session_id=session_id)
@@ -216,9 +234,10 @@ class UssdApp:
                 s.end = reply.kind is ReplyKind.EMERGENCY or reply.end_session
             s.screen = "answer"
         elif s.screen == "lang":
-            if token in _LANG_CHOICES:
+            choices = {str(n): code for n, code in enumerate(self._lang_menu(phone), 1)}
+            if token in choices:
                 profile = self.engine.profiles.get_or_create(phone)
-                profile.language = _LANG_CHOICES[token]
+                profile.language = choices[token]
                 s.screen, s.page = "main", 0
             else:
                 s.error = True
@@ -226,6 +245,7 @@ class UssdApp:
     def _render(self, s: _State, phone: str) -> str:
         lang = self._lang(phone)
         ui = UI[lang]
+        self._screen = self._limit(lang)
         prefix = ""
         if s.error:
             prefix = ui["invalid"] + "\n"
@@ -250,7 +270,7 @@ class UssdApp:
         if s.screen == "pack":
             pack = self._packs(phone)[s.pack_index]
             footer_full = f"\n{ui['next']}  {ui['back']}"
-            budget = Budget(self.max_chars - 4 - len(prefix) - len(footer_full), short=True, max_facts=1)
+            budget = Budget(self._limit(lang) - 4 - len(prefix) - len(footer_full), short=True, max_facts=1)
             text, has_more = self.engine.browse(pack.id, s.fact_index, lang, budget,
                                                 self.engine.country_for(phone))
             if not text:
@@ -262,7 +282,8 @@ class UssdApp:
         if s.screen == "scam":
             return self._con(prefix + ui["scam_prompt"])
         if s.screen == "lang":
-            return self._con(prefix + ui["lang_prompt"])
+            menu = "\n".join(f"{n} {i18n.native_name(code)}" for n, code in enumerate(self._lang_menu(phone), 1))
+            return self._con(prefix + menu)
         if s.screen == "answer":
             if s.end:
                 return self._end(s.answer)
@@ -270,10 +291,10 @@ class UssdApp:
         return self._con(self.title)
 
     def _con(self, body: str) -> str:
-        return "CON " + _fit(body, self.max_chars - 4)
+        return "CON " + _fit(encoding.gsm_fold(body), getattr(self, "_screen", self.max_chars) - 4)
 
     def _end(self, body: str) -> str:
-        return "END " + _fit(body, self.max_chars - 4)
+        return "END " + _fit(encoding.gsm_fold(body), getattr(self, "_screen", self.max_chars) - 4)
 
 
 def _fit(body: str, limit: int) -> str:

@@ -13,26 +13,15 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
+from ..encoding import GSM7_EXT as _GSM7_EXT
+from ..encoding import gsm_fold, is_gsm7
 from ..models import Channel, Message, Reply
 from .base import ChannelAdapter
 
-# GSM 03.38 basic character set. Text outside it is sent as UCS-2.
-_GSM7 = set(
-    "@£$¥èéùìòÇ\nØø\rÅåΔ_ΦΓΛΩΠΨΣΘΞÆæßÉ !\"#¤%&'()*+,-./0123456789:;<=>?"
-    "¡ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÑÜ§¿abcdefghijklmnopqrstuvwxyzäöñüà"
-)
-_GSM7_EXT = set("^{}\\[~]|€")  # each costs two septets
-_REPLACEMENTS = {"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-",
-                 "…": "...", " ": " "}
-
-
-def is_gsm7(text: str) -> bool:
-    return all(c in _GSM7 or c in _GSM7_EXT for c in text)
-
 
 def to_gsm7(text: str) -> str:
-    """Replace typographic characters that would force UCS-2 encoding."""
-    return "".join(_REPLACEMENTS.get(c, c) for c in text)
+    """Fold characters that would force UCS-2 encoding, for Latin script text."""
+    return gsm_fold(text)
 
 
 def segment(text: str) -> list[str]:

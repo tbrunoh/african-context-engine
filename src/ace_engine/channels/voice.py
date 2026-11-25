@@ -16,6 +16,7 @@ import re
 from typing import TYPE_CHECKING, Any, Protocol
 from xml.sax.saxutils import escape
 
+from .. import i18n
 from ..models import Channel, Message, Reply
 from ..router import Budget
 from .base import ChannelAdapter
@@ -62,6 +63,7 @@ PROMPTS = {
            "repeat": "Pour réécouter le menu, tapez 0.", "bye": "Nous n'avons pas reçu votre choix. Au revoir.",
            "invalid": "Ce choix n'est pas valide."},
 }
+i18n.localize("channels.voice", globals(), ("PROMPTS",))
 
 
 class VoiceApp:

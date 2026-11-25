@@ -1,13 +1,13 @@
 # Speech and translation
 
-ACE 2.2 adds an optional speech and translation layer, measures ACE's language tools on real African speech text from WAXAL, and makes the voice line speak only languages a voice exists for. Nothing here is needed to run ACE: the keypad voice line, USSD, SMS and WhatsApp work with no provider at all.
+ACE 2.2 adds an optional speech and translation layer, measures ACE's language tools on real African speech text from WAXAL, and makes the voice line speak only languages a voice exists for. The second build, 2.2.0b2, adds Gemini TTS, which gives the voice line Amharic and Somali. Nothing here is needed to run ACE: the keypad voice line, USSD, SMS and WhatsApp work with no provider at all.
 
 ## What the layer does
 
 | Job | Interface | Ready provider | When it runs |
 | --- | --- | --- | --- |
 | Hear a spoken question | `SpeechToText` | Google Cloud Speech-to-Text V2, Chirp 3 where it exists | On the voice line, before the safety rail reads the transcript |
-| Speak a reply | `TextToSpeech` | Google Cloud Text-to-Speech | On the voice line, for languages with a voice |
+| Speak a reply | `TextToSpeech` | Google Cloud Text-to-Speech, read by the Africa's Talking Say action; Gemini 3.8 Flash TTS, played with the Play action | On the voice line, for languages with a voice |
 | Translate | `Translator` | Google Cloud Translation Advanced (v3) | Only in `ace locales backcheck`, a review tool. Never while answering a person |
 
 Three rules hold the design together:
@@ -16,22 +16,28 @@ Three rules hold the design together:
 2. **Every word ACE sends still comes from a locale file or a sourced pack.** Machine translation helps people review those files; it is never served. This keeps rule 2 of [AGENTS.md](../AGENTS.md), no answer without a citation.
 3. **Speak only what a voice can say.** A voice reading a script it was not built for produces noise. The voice line speaks a language only where `src/ace_engine/speech/support.yaml` records a voice, or where the operator lists the language in `ACE_VOICE_LANGUAGES` after checking their own provider. Otherwise it moves to the next language of the caller's country that has a voice, then English.
 
+### Two ways to speak
+
+The Africa's Talking Say action reads text aloud with [Google Cloud Text-to-Speech voices](https://developers.africastalking.com/docs/voice/actions/say), so it can only speak the languages those voices cover: English, Swahili, French, Portuguese and Arabic. For the rest, ACE synthesises the audio itself with [Gemini 3.8 Flash TTS](https://ai.google.dev/gemini-api/docs/speech-generation), stores each file once, and the call plays it with the Play action. That gives the voice line Amharic and Somali. The voice line uses Say wherever Say can speak the language, because it is quicker and costs nothing extra, and uses Play only where Say cannot. If synthesis fails during a call, the line answers anyway with Say in a language it can read.
+
+Only fixed prompts and public pack text are ever synthesised, never a caller's words or number, so the audio files hold nothing personal and the server can serve them without a key.
+
 ## What exists for each ACE language
 
-Checked on 25 November 2026 against Google Cloud's published language lists and the WAXAL dataset card. `ace voice languages` prints the same table from `support.yaml`. Preview means Google has not made the model generally available.
+Checked on 25 November 2026 against the published language lists of Google Cloud and the Gemini API, and the WAXAL dataset card. `ace voice languages` prints the same table from `support.yaml`. Preview means Google has not made the model generally available.
 
-| Language | Speech to text | Text to speech | Translation | WAXAL |
-| --- | --- | --- | --- | --- |
-| English | Chirp 3, en-US, GA | Chirp 3 HD, Neural2, WaveNet, Standard | NMT and Translation LLM | Not included |
-| Swahili | Chirp 3, sw-KE, Preview | Chirp 3 HD, sw-KE | NMT and Translation LLM | 1,778 voice script lines; no transcribed speech |
-| French | Chirp 3, fr-FR, GA; no African French locale | Chirp 3 HD, Neural2, WaveNet, Standard, fr-FR | NMT and Translation LLM | Not included |
-| Portuguese | Chirp 3, pt-PT, GA; no Mozambican or Angolan locale | WaveNet and Standard, pt-PT | NMT and Translation LLM | Not included |
-| Arabic | Chirp 3 for Algeria, Egypt, Morocco and Tunisia, Preview; none for Libya, Sudan or Chad | Chirp 3 HD, WaveNet, Standard, Modern Standard Arabic | NMT and Translation LLM | Not included |
-| Amharic | Chirp 3, am-ET, Preview | None found | NMT; Translation LLM experimental | 219.9 hours transcribed |
-| Afaan Oromo | None found | None found | NMT | 222.7 hours transcribed |
-| Somali | First generation Chirp, so-SO | None found | NMT; Translation LLM experimental | Not included |
+| Language | Speech to text | Say: Cloud Text-to-Speech | Play: Gemini 3.8 Flash TTS | Translation | WAXAL |
+| --- | --- | --- | --- | --- | --- |
+| English | Chirp 3, en-US, GA | Chirp 3 HD, Neural2, WaveNet, Standard | Yes | NMT and Translation LLM | Not included |
+| Swahili | Chirp 3, sw-KE, Preview; Gemini 3.5 Transcribe | Chirp 3 HD, sw-KE | Yes; not in Flash-Lite | NMT and Translation LLM | 1,778 voice script lines; no transcribed speech |
+| French | Chirp 3, fr-FR, GA; no African French locale | Chirp 3 HD, Neural2, WaveNet, Standard, fr-FR | Yes | NMT and Translation LLM | Not included |
+| Portuguese | Chirp 3, pt-PT, GA; no Mozambican or Angolan locale | WaveNet and Standard, pt-PT | Yes | NMT and Translation LLM | Not included |
+| Arabic | Chirp 3 for Algeria, Egypt, Morocco and Tunisia, Preview; none for Libya, Sudan or Chad | Chirp 3 HD, WaveNet, Standard, Modern Standard Arabic | Standard and Egyptian Arabic | NMT and Translation LLM | Not included |
+| Amharic | Chirp 3, am-ET, Preview; Gemini 3.5 Transcribe | None | Yes | NMT; Translation LLM experimental | 219.9 hours transcribed |
+| Afaan Oromo | None found | None | Not listed | NMT | 222.7 hours transcribed |
+| Somali | First generation Chirp, so-SO | None | Yes; not in Flash-Lite | NMT; Translation LLM experimental | Not included |
 
-The gap is in speaking. No published Google Cloud voice speaks Amharic, Afaan Oromo or Somali, and WAXAL has no voice scripts in them, so for now the Ethiopian and Somali voice lines speak English or Arabic and the full replies stay on SMS and USSD in the caller's language. Closing that gap needs a voice trained on recordings in those languages, or recorded human prompts.
+Gemini 3.8 Flash TTS closes the speaking gap for Amharic and Somali. Afaan Oromo remains the gap: no Google model lists it for speech in or out, neither Cloud Text-to-Speech, Gemini TTS, Chirp 3 nor [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe). Oromo callers hear the next language of their country with a voice and get the full reply on SMS and USSD in Afaan Oromo. WAXAL's 222.7 transcribed hours of Afaan Oromo are the way to close it.
 
 ## WAXAL
 
@@ -57,7 +63,8 @@ The next step is a language guess trained on the WAXAL train splits and evaluate
 | Use | WAXAL sets | What it unlocks | Licence note |
 | --- | --- | --- | --- |
 | Tune speech recognition for Amharic and Afaan Oromo | amh_asr, orm_asr | Spoken questions in Ethiopia, where Afaan Oromo has no cloud model | Derived models CC BY-SA 4.0 |
-| A Swahili voice | swa_tts | A second Swahili voice beside Chirp 3 HD | CC BY-SA 4.0 |
+| An Afaan Oromo voice | orm_asr, with a voice recorded for the purpose | The one ACE language no Google model speaks | CC BY-SA 4.0 |
+| A Swahili voice | swa_tts | A third Swahili voice beside Chirp 3 HD and Gemini TTS | CC BY-SA 4.0 |
 | Keyword spotting for danger words | All ASR sets | The 99% voice emergency recall gate in the [build plan](v2/build-plan.md) | Per set |
 | Next languages | Hausa, Yoruba, Igbo, Lingala, Shona, Luganda, Akan and others | Voice and text for Nigeria, Ghana, DR Congo, Zimbabwe and Uganda | Per set |
 
@@ -73,14 +80,24 @@ ace locales backcheck am --out am-backcheck.md  # back translation report for Am
 
 Enable the Cloud Translation, Speech-to-Text and Text-to-Speech APIs in that project. ACE reads credentials through Application Default Credentials and never stores, logs or prints a key. To accept spoken questions, pass `GoogleSpeechToText()` to `VoiceAdapter`. To tell the voice line which languages your own provider speaks, set `ACE_VOICE_LANGUAGES`, for example `en,sw,fr`.
 
+To give the voice line Amharic and Somali, set two more variables on the server that receives the voice callback:
+
+```bash
+export GEMINI_API_KEY=...                              # a Gemini API key, kept outside the repository
+export ACE_VOICE_AUDIO_URL=https://your-host           # the public address of this server
+export ACE_VOICE_AUDIO_DIR=/var/lib/ace/voice-audio    # optional cache folder
+```
+
+The server then serves the synthesised files at `/voice/audio/<file>.wav`. The first call to use a new prompt waits for synthesis; every later call plays the stored file.
+
 ### The back translation report
 
 `ace locales backcheck` translates every string of a locale file back into English and lines it up with the English ACE wrote, lowest word overlap first, with safety strings marked. A low overlap points a reviewer to where meaning may have drifted. It is a pointer, never a verdict: only a fluent speaker may set `reviewed: true`, and safety phrases also need a clinician. The report writes nothing to the locale file.
 
 ## Gaps
 
-- No voice in Amharic, Afaan Oromo or Somali from Google Cloud or WAXAL.
-- No speech recognition model for Afaan Oromo in Google Cloud; WAXAL has the data to build one.
+- No voice and no speech recognition for Afaan Oromo from any Google model; WAXAL has the data to build both.
+- Somali has a voice through Gemini 3.8 Flash TTS but not through Cloud Text-to-Speech, and only first generation Chirp hears it.
 - No African locale of French or Portuguese for speech recognition.
 - Arabic speech recognition has no locale for Libya, Sudan or Chad.
 - The language guess still reads many neighbour languages as Swahili and Tigrinya as Amharic.

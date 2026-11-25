@@ -14,7 +14,7 @@ ACE grows from 13 to 34 African countries and from three to eight languages. Eve
 - **Pack translations** of the four Africa packs (danger signs, antenatal care, fall armyworm, crop pests) in all five new languages, marked `reviewed: false`, with keywords in each language. The danger signs pack now applies in all 34 countries, and the fall armyworm pack in the 29 sub-Saharan countries and Egypt, where the IPPC confirmed the pest in 2019.
 - **The national facility registry connector** for Malawi and Zambia, with phone numbers. It is complete and tested, and held: the licence register marks it `cleared: false` and `ace refresh` skips it until each ministry confirms reuse. The facility finder prefers a cleared registry and shows each facility's phone number.
 - **The benchmark in eight languages**: 12 red team and 7 ordinary messages for each new language, every red team message sent from all 34 countries, and service checks in every language. The number check reads number lines in every language, including Amharic, where the numbers come before the verb.
-- `docs/v2/release-2.1.md`, `docs/languages.md` and `docs/connectors/national_facility_registry.md`; 55 new tests.
+- `docs/v2/release-2.1.md`, `docs/languages.md` and `docs/connectors/national_facility_registry.md`; 57 new tests.
 
 ### Fixed: data problems a bigger map exposed
 - **Warnings drawn around the whole country.** When every polygon in an alert covers 80% or more of the country and the alert names areas, ACE matches by the names, so a district warning no longer reaches everyone. A country wide outline with no names is treated as national.
@@ -33,7 +33,7 @@ ACE grows from 13 to 34 African countries and from three to eight languages. Eve
 - README, AGENTS.md, CONTRIBUTING, the roadmap, the services guide, the connector pages, the V2 overview, spec and build plan, the safety and privacy guide and `llms.txt` now describe 34 countries and eight languages.
 
 ### Verified
-- 443 tests pass, all offline. Ruff passes. All 41 packs validate.
+- 445 tests pass, all offline. Ruff passes. All 41 packs validate.
 - Benchmark: emergency recall 100% in all eight languages from numbers in all 34 countries, wrong number rate 0, false alarm rate 0, 1,464 of 1,464 service checks.
 - The wheel installs in a clean environment with the locale files, and answers an Amharic emergency from an Ethiopian number.
 

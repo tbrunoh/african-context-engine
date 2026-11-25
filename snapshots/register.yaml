@@ -61,9 +61,9 @@ sources:
     share_alike: true
     terms: Used only by benchmark/waxal.py, which fetches the text at run time and commits counts, never sentences or audio. Partners keep ownership of their recordings. Any model or file derived from a CC BY-SA set must carry the same licence.
   - id: google_cloud_speech
-    name: Google Cloud Speech-to-Text V2, Text-to-Speech and Cloud Translation
+    name: Google Cloud Speech-to-Text V2, Text-to-Speech and Cloud Translation, and Gemini TTS
     publisher: Google Cloud
     url: https://cloud.google.com/speech-to-text
     licence: Commercial service under the Google Cloud terms of the operator's own account
     attribution: Speech recognition, voices and back translations by Google Cloud.
-    terms: Optional and off by default. The operator brings a Google Cloud project and credentials; ACE stores no key. Translation drafts help reviewers and are never served to people. Preview models carry no service level agreement.
+    terms: Optional and off by default. The operator brings a Google Cloud project and credentials, and a Gemini API key for Gemini TTS; ACE stores no key. Translation drafts help reviewers and are never served to people. Preview models carry no service level agreement.

@@ -6,17 +6,24 @@ and GetDigits to collect a key press. Callers browse the same context packs
 as USSD, hearing the short form of each fact.
 
 VoiceAdapter handles the other path: a transcript from any speech to text
-engine, open or hosted, that plugs in behind the SpeechToText interface.
-Whether a given text to speech voice can speak Swahili or another language
-depends on the provider; check before launching a non English line.
+engine, open or hosted, that plugs in behind the SpeechToText interface in
+ace_engine.speech (Google Cloud Speech-to-Text is one ready option).
+
+The line speaks a language only where a text to speech voice is known to
+exist for it (see ace_engine/speech/support.yaml) or where the operator has
+checked their provider and listed it in ACE_VOICE_LANGUAGES. No voice was
+found for Amharic, Afaan Oromo or Somali on 25 November 2026, so callers who
+use those languages hear the next language of their country that has one,
+then English, rather than a voice reading a script it cannot pronounce.
 """
 from __future__ import annotations
 
 import re
-from typing import TYPE_CHECKING, Any, Protocol
+from typing import TYPE_CHECKING, Any
 from xml.sax.saxutils import escape
 
-from .. import i18n
+from .. import i18n, speech
+from ..countries import COUNTRIES
 from ..models import Channel, Message, Reply
 from ..router import Budget
 from .base import ChannelAdapter
@@ -25,9 +32,7 @@ if TYPE_CHECKING:
     from ..engine import Engine
 
 
-class SpeechToText(Protocol):
-    def transcribe(self, audio_uri: str, language_hint: str | None = None) -> tuple[str, str | None]:
-        """Return (transcript, detected_language)."""
+SpeechToText = speech.SpeechToText  # kept here so existing imports keep working
 
 
 class VoiceAdapter(ChannelAdapter):
@@ -78,9 +83,8 @@ class VoiceApp:
         if str(payload.get("isActive", "1")) == "0":
             return ""  # end of call notification; nothing to say
         caller = str(payload.get("callerNumber", ""))
-        lang = self.engine.language_for(caller) if caller else self.engine.config.default_language
-        lang = lang if lang in PROMPTS else "en"
         country = self.engine.country_for(caller) if caller else None
+        lang = self.spoken_language(caller, country)
         digits = str(payload.get("dtmfDigits") or "").strip()
         packs = self.engine.packs_for(country)[:9]
         if not digits or digits == "0":
@@ -97,6 +101,13 @@ class VoiceApp:
             if not more:
                 break
         return self._xml([("Say", " ".join(spoken))], gather=PROMPTS[lang]["repeat"], lang=lang)
+
+    def spoken_language(self, caller: str, country: str | None) -> str:
+        """The caller's language if the line can speak it, else the next spoken language of their country."""
+        first = self.engine.language_for(caller) if caller else self.engine.config.default_language
+        local = list(COUNTRIES[country].languages) if country in COUNTRIES else []
+        preferred = [c for c in dict.fromkeys([first, *local, "en"]) if c in PROMPTS]
+        return speech.spoken_language(preferred)
 
     def _menu(self, lang: str, packs: list, prefix: str = "") -> str:
         p = PROMPTS[lang]

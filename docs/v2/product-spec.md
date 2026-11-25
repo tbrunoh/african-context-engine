@@ -110,7 +110,7 @@ Each service is a small module with the same contract: it takes a place, a langu
 | 11. Health worker assist | Refer today: this is a danger sign; here is the referral facility and how to explain it | ACE called from Community Health Toolkit apps, which power Kenya's national eCHIS | 4 |
 | 12. Scam Shield 2 | This sender's SIM changed an hour ago; do not send money; call your brother on another line | GSMA Open Gateway SIM Swap through operators and aggregators; Scam Signal where live; community reports | 3 |
 
-Every service is reachable four ways: the voice line, USSD and SMS, WhatsApp and the web for scoped uses, and the grounding API and MCP for partners. A service that cannot answer safely says so and names a person to contact: the helpline, the extension officer or the health worker. Opt in alerts reuse the same services, so a farmer who asks once for flood warnings keeps getting them for her ward until she stops them.
+Every service is reachable four ways: the voice line, USSD and SMS, WhatsApp, RCS and apps built on the API for scoped uses (RCS falls back to SMS), and the grounding API and MCP for partners. A service that cannot answer safely says so and names a person to contact: the helpline, the extension officer or the health worker. Opt in alerts reuse the same services, so a farmer who asks once for flood warnings keeps getting them for her ward until she stops them.
 
 ## Three journeys show what usable means
 

@@ -5,39 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ACE playground</title>
 <style>
-  :root { --bg:#0f1412; --panel:#161d1a; --line:#24302b; --ink:#e8efe9; --muted:#93a39a; --accent:#e0a33a;
-          --lcd:#b9d4a1; --lcd-ink:#1d2a17; --ok:#5fb07a; --warn:#e0a33a; --bad:#e2665a; }
+  /* Coast to Dunes: Lamu Tide leads, Rift Basalt carries text, Mara Gold on Sahara Sand for warmth. */
+  :root { --bg:#FFFFFF; --panel:#FFFFFF; --wash:#FAF4EC; --line:#E8E2D9; --ink:#253239; --muted:#56636A;
+          --tide:#006B69; --tide-deep:#00524F; --gold:#BE823C; --gold-ink:#8F5E24; --sand:#E8C69F; --canopy:#364E3C;
+          --lcd:#E8C69F; --lcd-ink:#253239; --danger:#B42318; }
   * { box-sizing:border-box; }
-  body { margin:0; font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:var(--bg); color:var(--ink); }
-  header { padding:28px 32px 8px; max-width:1180px; margin:0 auto; }
-  header h1 { margin:0; font-size:22px; letter-spacing:.2px; }
-  header p { margin:6px 0 0; color:var(--muted); max-width:760px; }
-  main { display:grid; grid-template-columns: 380px 1fr; gap:28px; padding:20px 32px 40px; max-width:1180px; margin:0 auto; }
+  body { margin:0; font:15px/1.55 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased; }
+  header { padding:36px 32px 8px; max-width:1180px; margin:0 auto; }
+  header h1 { margin:0; font:500 30px/1.15 Newsreader,ui-serif,"New York",Georgia,serif; letter-spacing:-.02em; }
+  header p { margin:8px 0 0; color:var(--muted); max-width:760px; }
+  main { display:grid; grid-template-columns: 380px 1fr; gap:32px; padding:24px 32px 48px; max-width:1180px; margin:0 auto; }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
-  .phone { background:#0a0d0c; border:1px solid var(--line); border-radius:36px; padding:22px 18px 26px; box-shadow:0 30px 60px rgba(0,0,0,.45); }
+  .phone { background:#253239; border-radius:40px; padding:24px 18px 28px; box-shadow:0 2px 4px rgba(37,50,57,.06), 0 24px 48px rgba(37,50,57,.18); }
   .tabs { display:flex; gap:6px; margin-bottom:14px; }
-  .tabs button { flex:1; background:var(--panel); color:var(--muted); border:1px solid var(--line); border-radius:10px; padding:8px 0; cursor:pointer; font-weight:600; }
-  .tabs button.on { color:var(--ink); border-color:var(--accent); }
-  .screen { background:var(--lcd); color:var(--lcd-ink); border-radius:14px; min-height:300px; padding:16px; font:15px/1.45 ui-monospace,Menlo,Consolas,monospace; white-space:pre-wrap; }
-  .chat { background:#101614; border-radius:14px; height:360px; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; }
-  .msg { max-width:85%; padding:8px 11px; border-radius:14px; white-space:pre-wrap; }
-  .me { align-self:flex-end; background:#2b4a3a; }
-  .ace { align-self:flex-start; background:#1e2723; border:1px solid var(--line); }
+  .tabs button { flex:1; background:rgba(255,255,255,.06); color:#C9D3D6; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:8px 0; cursor:pointer; font-weight:600; }
+  .tabs button.on { color:#FFFFFF; background:var(--tide); border-color:var(--tide); }
+  .screen { background:var(--lcd); color:var(--lcd-ink); border-radius:14px; min-height:300px; padding:16px; font:15px/1.45 ui-monospace,"SF Mono",Menlo,Consolas,monospace; white-space:pre-wrap; box-shadow: inset 0 0 0 1px rgba(37,50,57,.08); }
+  .chat { background:#FFFFFF; border-radius:14px; height:360px; padding:12px; overflow-y:auto; display:flex; flex-direction:column; gap:8px; }
+  .msg { max-width:85%; padding:8px 12px; border-radius:16px; white-space:pre-wrap; }
+  .me { align-self:flex-end; background:var(--tide); color:#FFFFFF; border-bottom-right-radius:6px; }
+  .ace { align-self:flex-start; background:var(--wash); border:1px solid var(--line); border-bottom-left-radius:6px; }
   .seg { display:block; font-size:11px; color:var(--muted); margin-top:4px; }
+  .me .seg { color:#D7ECEA; }
   .row { display:flex; gap:8px; margin-top:12px; }
-  .row input { flex:1; background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:10px 12px; font-size:15px; }
-  .row button, .dial { background:var(--accent); color:#1a1205; border:0; border-radius:10px; padding:10px 14px; font-weight:700; cursor:pointer; }
+  .row input { flex:1; background:#FFFFFF; border:1px solid var(--line); color:var(--ink); border-radius:10px; padding:10px 12px; font-size:15px; }
+  .row input:focus { outline:2px solid var(--tide); outline-offset:1px; }
+  .row button, .dial { background:var(--tide); color:#FFFFFF; border:0; border-radius:10px; padding:10px 14px; font-weight:600; cursor:pointer; transition:background-color .2s; }
+  .row button:hover, .dial:hover { background:var(--tide-deep); }
   .dial { width:100%; margin-top:12px; }
-  .panel { background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:20px 22px; }
-  .panel h2 { margin:0 0 4px; font-size:16px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:20px; padding:22px 24px; }
+  .panel h2 { margin:0 0 4px; font:500 20px/1.25 Newsreader,ui-serif,"New York",Georgia,serif; letter-spacing:-.01em; }
   .panel .sub { color:var(--muted); margin:0 0 14px; }
-  .kind { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; background:#22302a; }
-  .kind.emergency { background:var(--bad); color:#fff; } .kind.scam { background:var(--warn); color:#1a1205; } .kind.answer { background:var(--ok); color:#06210f; }
+  .kind { display:inline-block; padding:2px 10px; border-radius:999px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.4px; background:var(--wash); color:var(--ink); }
+  /* State colours: emergency keeps a clear danger red so it is never mistaken for decoration */
+  .kind.emergency { background:var(--danger); color:#fff; } .kind.scam { background:var(--sand); color:var(--ink); } .kind.answer { background:var(--tide); color:#fff; }
   .cite { border-top:1px solid var(--line); padding:10px 0; }
-  .cite b { font-weight:600; } .cite a { color:var(--accent); word-break:break-all; }
+  .cite b { font-weight:600; } .cite a { color:var(--tide); word-break:break-all; }
   .cite small { color:var(--muted); display:block; }
   .tries { display:flex; flex-wrap:wrap; gap:8px; margin-top:6px; }
-  .tries button { background:#1e2723; color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:6px 12px; cursor:pointer; font-size:13px; }
+  .tries button { background:#FFFFFF; color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:6px 12px; cursor:pointer; font-size:13px; transition:border-color .2s, color .2s; }
+  .tries button:hover { border-color:var(--tide); color:var(--tide); }
   .note { color:var(--muted); font-size:13px; margin-top:16px; }
 </style>
 </head>
@@ -56,7 +63,7 @@
     </div>
     <div id="sms" hidden>
       <div class="chat" id="chat"></div>
-      <div class="row"><input id="sms-in" placeholder="Type an SMS in English, Swahili or French" autocomplete="off"><button id="sms-send">Send</button></div>
+      <div class="row"><input id="sms-in" placeholder="Type an SMS in any of ACE's eight languages" autocomplete="off"><button id="sms-send">Send</button></div>
     </div>
   </section>
   <section class="panel">

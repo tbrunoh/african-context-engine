@@ -1,0 +1,86 @@
+# Malawi emergency numbers, from the UK FCDO travel advice page for Malawi, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: mw-emergency-contacts
+title: Malawi emergency numbers
+description: National emergency numbers that ACE gives to callers in Malawi when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: MW
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Malawi, call 998 for an ambulance, 990 or 997 for the police and 999 for the fire service. Emergency lines can
+    be unreliable, so if a call does not connect, go straight to the nearest health facility.
+  short: 'Emergency in Malawi: ambulance 998, police 990 or 997, fire 999. If no answer, go to the nearest facility.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance
+    number: '998'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Police
+    number: '990'
+    queues: &id001
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Police
+    number: '997'
+    queues: *id001
+  - label: Fire
+    number: '999'
+    queues:
+    - fire
+  source: UK FCDO, Malawi travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/malawi/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

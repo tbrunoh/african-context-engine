@@ -53,6 +53,10 @@ facts:
   - label: Emergency
     number: '112'
     queues: *id001
+  - label: Emergency, NetOne mobile
+    number: '114'
+  - label: Emergency, landline
+    number: 0800 3222 911
   source: UK FCDO, Zimbabwe travel advice, getting help (112, 114, 0800 3222 911); Government of Canada and Government
     of Zimbabwe portal (999)
   source_url: https://www.gov.uk/foreign-travel-advice/zimbabwe/getting-help

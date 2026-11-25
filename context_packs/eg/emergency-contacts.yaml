@@ -1,0 +1,86 @@
+# Egypt emergency numbers, from the UK FCDO travel advice page for Egypt, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: eg-emergency-contacts
+title: Egypt emergency numbers
+description: National emergency numbers that ACE gives to callers in Egypt when a message signals danger, and what to do where
+  no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: EG
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Egypt, call 123 for an ambulance, 122 for the police and 180 for the fire service.
+  short: 'Emergency in Egypt: ambulance 123, police 122, fire 180.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance
+    number: '123'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Police
+    number: '122'
+    queues:
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Fire
+    number: '180'
+    queues:
+    - fire
+  translations:
+    ar:
+      claim: في مصر، اتصل بالرقم 123 للإسعاف، و122 للشرطة، و180 للمطافئ.
+      short: 'الطوارئ في مصر: الإسعاف 123، الشرطة 122، المطافئ 180.'
+  source: UK FCDO, Egypt travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/egypt/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

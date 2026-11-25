@@ -5,7 +5,7 @@ ACE is one pipeline behind many entry points. Channels and models will keep chan
 ## Request flow
 
 ```
-inbound payload (USSD, SMS, voice, WhatsApp, API, MCP)
+inbound payload (USSD, SMS, RCS, voice, WhatsApp, API, MCP)
    |
    v
 channel adapter        parse_inbound -> Message
@@ -56,7 +56,7 @@ Services sit after Scam Shield and before retrieval. `detect()` recognises the d
 | `identity.py` | Phone normalisation, pseudonymisation, profiles, deletion |
 | `tips.py` | Community tip queue |
 | `engine.py` | The pipeline |
-| `channels/` | USSD app, SMS, voice IVR, WhatsApp |
+| `channels/` | USSD app, SMS, RCS with SMS fallback, voice IVR, WhatsApp |
 | `server.py` | WSGI server for every webhook, the JSON API and the playground |
 | `mcp_server.py` | MCP tools for AI assistants |
 | `cli.py` | The `ace` command |
@@ -76,11 +76,12 @@ Two guards keep answers on point: results far weaker than the best match are dro
 |:--|--:|:--|--:|
 | USSD | 150 | short | 1 |
 | SMS | 450 (three GSM-7 segments) | short | 3 |
+| RCS | 450, the SMS budget, so a fallback to SMS never cuts the reply | short | 3 |
 | Voice, radio | 320 | short | 2 |
 | WhatsApp | 1,200 | full | 3 |
 | App, API, agent | 1,500 | full | 4 |
 
-Budgets live in `EngineConfig.budgets` and can be changed per deployment. On USSD and SMS, Arabic and Amharic replies travel as UCS-2, which carries fewer characters, so ACE scales their budget (80 characters a USSD screen, 67 per SMS segment in a long message) and composes the reply to fit. Latin script replies are folded into GSM-7 before they leave, so one stray accent does not switch a message to UCS-2.
+Budgets live in `EngineConfig.budgets` and can be changed per deployment. On USSD, SMS and RCS, Arabic and Amharic replies are budgeted for UCS-2, which carries fewer characters, so ACE scales their budget (80 characters a USSD screen, 67 per SMS segment in a long message) and composes the reply to fit. Latin script replies are folded into GSM-7 before they leave, so one stray accent does not switch a message to UCS-2.
 
 ## Language models
 

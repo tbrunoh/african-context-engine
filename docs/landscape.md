@@ -36,7 +36,7 @@ AI for African users is arriving through three kinds of players. Each solves par
 ## Where ACE is different
 
 1. **A commons, not an app.** Knowledge lives in open, versioned context packs with sources, geography, season, expiry and review status. Any service can load the same packs.
-2. **Feature phone first.** USSD, SMS and voice are first class. Answers are composed to each channel's limits. A smartphone and data plan are optional.
+2. **Reach by default, richer by choice.** USSD, SMS and voice are first class: every answer, service and safety feature works on them, with no smartphone or data plan. WhatsApp, RCS and apps built on the API are optional layers for people who have both, and RCS falls back to SMS. Answers are composed to each channel's limits.
 3. **Works with no model and no API key.** The default answerer is extractive and deterministic: cheap, fast and auditable. A language model can be plugged in, and ACE falls back to extractive answers whenever the model is slow or strays from the facts.
 4. **Safety before anything else.** Emergency language in eight languages routes straight to the caller's own national hotlines, verified for 34 countries, before retrieval or generation runs.
 5. **Scam Shield.** People forward a suspicious mobile money message and get an explained verdict grounded in the operator's own published guidance.
@@ -45,7 +45,7 @@ AI for African users is arriving through three kinds of players. Each solves par
 
 ## Who ACE is for
 
-* **Programmes and NGOs** that want USSD, SMS, voice and WhatsApp advisory without building a stack.
+* **Programmes and NGOs** that want USSD, SMS, RCS, voice and WhatsApp advisory without building a stack.
 * **County and national governments** that want to publish extension, health and safety guidance once and serve it everywhere.
 * **AI assistants and model builders** that need grounded, cited African context through MCP.
 * **Contributors** who know their place and field: extension officers, clinicians, agronomists, translators and developers.

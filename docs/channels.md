@@ -45,6 +45,26 @@ Set the voice callback to `https://your-host/voice?key=<ACE_WEBHOOK_SECRET>`. Ca
 
 Since 15 January 2026 the WhatsApp Business API bars general purpose AI assistants. Run ACE on WhatsApp only as a scoped service operated by or for a named organisation, answering from its own packs.
 
+## RCS with SMS fallback
+
+RCS gives people with a capable phone suggested replies (More, Sources, Help, in their language) and the sources under every answer, in the messaging app they already have. It runs over mobile data or Wi-Fi and only where a carrier has launched it, so ACE treats it as a richer layer over SMS, never a replacement. Every RCS reply is composed to the SMS budget, so a fallback never cuts an answer or an emergency number.
+
+1. Register an RCS for Business agent and have it launched on each carrier you plan to use. Agents need approval before they can message people outside a test list.
+2. Set `RBM_CLIENT_TOKEN` to the webhook client token, then register `https://your-host/rcs` as the webhook. ACE answers the verification request and rejects messages without a valid `X-Goog-Signature`. Until the token is set, `/rcs` answers 503, so an unsigned message can never trigger a text.
+3. Switch RCS on country by country with `ACE_RCS_COUNTRIES`, for example `NG,ZA`. Left empty, the default, RCS stays off and every reply goes by SMS.
+4. To send, set `RBM_AGENT_ID` and give an OAuth access token for a service account with RBM access. A static `RBM_ACCESS_TOKEN` expires within about an hour, after which every reply falls back to SMS, so in production pass a callable that returns a fresh token, for example from google-auth. Pass an `RbmSender` and an SMS sender to the server. Set `RBM_REGION=europe` for African numbers: Google's best practices route numbers that start with +2 or +3 to the europe endpoint. `RBM_TRAFFIC_TYPE` sets `messageTrafficType` where a carrier bills by traffic type.
+
+```python
+from ace_engine import Engine
+from ace_engine.channels import AfricasTalkingSms, RbmSender
+from ace_engine.server import serve
+
+serve(Engine.from_packs("context_packs"), host="0.0.0.0",
+      sms_sender=AfricasTalkingSms(), rcs_sender=RbmSender())
+```
+
+Before each reply ACE asks the RBM API whether the person can receive RCS. A 404 means they cannot: their phone lacks RCS or has it switched off, or the agent is not launched on their network. The reply then goes by SMS, and so does any reply that RCS refuses or cannot start. A send that times out after Google may have accepted it is not repeated by SMS, so nobody gets the same reply twice. Every reply ends with suggested reply chips except an emergency reply, which keeps the numbers as the only focus. Opt in alerts can use the same `RcsWithSmsFallback` delivery.
+
 ## JSON API
 
 ```bash

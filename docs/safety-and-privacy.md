@@ -21,7 +21,8 @@ ACE talks to people about their crops, their pregnancies and their money. A wron
 - **Re-check numbers.** Emergency contact facts expire after a year and are withheld until re-checked.
 - **A human on the other end.** Connect `HandoffSink` to people who can act, and publish the hours they cover.
 - **Data protection.** Kenya's Data Protection Act 2019 requires consent that is express, unequivocal, free, specific and informed, and limits collection to what is necessary ([ODPC](https://www.odpc.go.ke/wp-content/uploads/2024/02/TheDataProtectionAct__No24of2019.pdf)). ACE's design supports this, but the operator remains the data controller: give a clear notice on first contact, register with the Office of the Data Protection Commissioner where required, and set retention periods. Other countries have their own laws.
-- **Channel policies.** Follow each provider's terms, including the WhatsApp Business API restriction on general purpose AI assistants.
+- **Channel policies.** Follow each provider's terms, including the WhatsApp Business API restriction on general purpose AI assistants and the approval each carrier gives an RCS agent before it can message people.
+- **RCS webhook token.** Set `RBM_CLIENT_TOKEN` before exposing `/rcs`. Without it the route answers 503, so nobody can make ACE send texts by posting unsigned messages.
 
 ## Reporting a safety problem
 

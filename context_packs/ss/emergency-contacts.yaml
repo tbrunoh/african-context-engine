@@ -1,0 +1,66 @@
+# South Sudan emergency numbers, from the UK FCDO travel advice page for South Sudan, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: ss-emergency-contacts
+title: South Sudan emergency numbers
+description: National emergency numbers that ACE gives to callers in South Sudan when a message signals danger, and what to
+  do where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: SS
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: South Sudan has no national emergency number. For a medical emergency, go straight to the nearest health facility.
+  short: 'South Sudan has no national emergency number: go straight to the nearest health facility.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  translations:
+    ar:
+      claim: لا يوجد في جنوب السودان رقم وطني للطوارئ. في حالة الطوارئ الطبية، اذهب مباشرة إلى أقرب مرفق صحي.
+      short: 'لا يوجد رقم وطني للطوارئ في جنوب السودان: اذهب مباشرة إلى أقرب مرفق صحي.'
+  source: UK FCDO, South Sudan travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/south-sudan/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

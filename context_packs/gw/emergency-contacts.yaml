@@ -1,0 +1,86 @@
+# Guinea-Bissau emergency numbers, from the UK FCDO travel advice page for Guinea-Bissau, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: gw-emergency-contacts
+title: Guinea-Bissau emergency numbers
+description: National emergency numbers that ACE gives to callers in Guinea-Bissau when a message signals danger, and what
+  to do where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: GW
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Guinea-Bissau, call 1313 for an ambulance or the fire service and 117 for the police.
+  short: 'Emergency in Guinea-Bissau: ambulance and fire 1313, police 117.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulância e bombeiros
+    number: '1313'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - fire
+  - label: Polícia
+    number: '117'
+    queues:
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  translations:
+    pt:
+      claim: Na Guiné-Bissau, ligue 1313 para ambulância ou bombeiros e 117 para a polícia.
+      short: 'Emergência na Guiné-Bissau: ambulância e bombeiros 1313, polícia 117.'
+    fr:
+      claim: En Guinée-Bissau, appelez le 1313 pour une ambulance ou les pompiers et le 117 pour la police.
+      short: 'Urgence en Guinée-Bissau : ambulance et pompiers 1313, police 117.'
+  source: UK FCDO, Guinea-Bissau travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/guinea-bissau/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

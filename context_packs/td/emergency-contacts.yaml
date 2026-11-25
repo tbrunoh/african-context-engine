@@ -1,0 +1,98 @@
+# Chad emergency numbers, from the UK FCDO travel advice page for Chad, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: td-emergency-contacts
+title: Chad emergency numbers
+description: National emergency numbers that ACE gives to callers in Chad when a message signals danger, and what to do where
+  no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: TD
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Chad, call 112 or 18 for an ambulance or the fire service, and 117 or 2020 for the police.
+  short: 'Emergency in Chad: ambulance and fire 112 or 18, police 117 or 2020.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance et pompiers
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - fire
+  - label: Ambulance et pompiers
+    number: '18'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - fire
+  - label: Police
+    number: '117'
+    queues: &id001
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Police
+    number: '2020'
+    queues: *id001
+  translations:
+    fr:
+      claim: Au Tchad, appelez le 112 ou le 18 pour une ambulance ou les pompiers, et le 117 ou le 2020 pour la police.
+      short: 'Urgence au Tchad : ambulance et pompiers 112 ou 18, police 117 ou 2020.'
+    ar:
+      claim: في تشاد، اتصل بالرقم 112 أو 18 للإسعاف أو الإطفاء، وبالرقم 117 أو 2020 للشرطة.
+      short: 'الطوارئ في تشاد: الإسعاف والإطفاء 112 أو 18، الشرطة 117 أو 2020.'
+  source: UK FCDO, Chad travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/chad/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

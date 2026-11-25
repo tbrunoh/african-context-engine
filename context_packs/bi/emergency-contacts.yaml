@@ -1,0 +1,91 @@
+# Burundi emergency numbers, from the UK FCDO travel advice page for Burundi, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: bi-emergency-contacts
+title: Burundi emergency numbers
+description: National emergency numbers that ACE gives to callers in Burundi when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: BI
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Burundi, call 112 for an ambulance, the fire service or the police. You can also call the Red Cross on 109.
+  short: 'Emergency in Burundi: call 112. Red Cross: 109.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Urgence
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - violence
+    - gbv
+    - child_protection
+    - fire
+  - label: Croix-Rouge
+    number: '109'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  translations:
+    fr:
+      claim: Au Burundi, appelez le 112 pour une ambulance, les pompiers ou la police. Vous pouvez aussi appeler la Croix-Rouge
+        au 109.
+      short: 'Urgence au Burundi : appelez le 112. Croix-Rouge : 109.'
+    sw:
+      claim: Nchini Burundi, piga 112 kwa ambulensi, zimamoto au polisi. Unaweza pia kupiga Msalaba Mwekundu kwa 109.
+      short: 'Dharura Burundi: piga 112. Msalaba Mwekundu: 109.'
+  source: UK FCDO, Burundi travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/burundi/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

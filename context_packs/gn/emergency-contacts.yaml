@@ -1,0 +1,67 @@
+# Guinea emergency numbers, from the UK FCDO travel advice page for Guinea, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: gn-emergency-contacts
+title: Guinea emergency numbers
+description: National emergency numbers that ACE gives to callers in Guinea when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: GN
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: Guinea has no national emergency service. For a medical emergency, go straight to the nearest health centre or hospital.
+  short: 'Guinea has no national emergency number: go straight to the nearest health centre or hospital.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  translations:
+    fr:
+      claim: La Guinée n'a pas de service national d'urgence. En cas d'urgence médicale, allez directement au centre de santé
+        ou à l'hôpital le plus proche.
+      short: 'Pas de numéro national d''urgence en Guinée : allez directement au centre de santé ou à l''hôpital le plus proche.'
+  source: UK FCDO, Guinea travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/guinea/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

@@ -6,7 +6,7 @@ labels: safety, bug
 
 Never include anyone's phone number or personal details.
 
-**Channel** (USSD, SMS, voice, WhatsApp, API, MCP):
+**Channel** (USSD, SMS, RCS, voice, WhatsApp, API, MCP):
 
 **Message sent**:
 

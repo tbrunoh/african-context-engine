@@ -22,7 +22,17 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
-### 2.1 preview (current release, 24 November 2026): 34 countries, eight languages
+### 2.2 preview (current release, 25 November 2026): speech and translation
+
+- [x] Language check on 12,333 sentences of real speech text from WAXAL, with counts published and no text stored
+- [x] Colliding marker words removed, cutting how often ACE claims a language it does not speak from 54.0% to 45.8%
+- [x] Speech to text, text to speech and translation interfaces, with Google Cloud providers behind an optional extra
+- [x] The voice line speaks only languages with a known voice; operators declare more in `ACE_VOICE_LANGUAGES`
+- [x] Back translation reports for fluent reviewers, `ace locales backcheck`
+- [ ] A language guess trained on the WAXAL train splits that says it does not know instead of guessing a neighbour language
+- [ ] Back translation reports for all five new languages, once a Google Cloud project is connected
+
+### 2.1 preview (24 November 2026): 34 countries, eight languages
 
 - [x] 21 countries: DR Congo, Malawi, Burundi, Cameroon, Benin, Zambia, Chad, Guinea, Burkina Faso, South Sudan, Ethiopia, Mozambique, Guinea-Bissau, Angola, Somalia, Sudan, Algeria, Egypt, Libya, Morocco and Tunisia, each with an emergency pack and all six services
 - [x] Portuguese, Arabic, Amharic, Afaan Oromo and Somali, one locale file each, across the safety rail, commands, Scam Shield, services, USSD and voice prompts
@@ -60,7 +70,8 @@ Gate: every served number checked against its source within 30 days.
 - [ ] Rain this week out of preview in every country where it beats the season average
 - [ ] Flood warnings, with opt in alerts for flood and official warnings
 - [ ] Nearest health facility with services and phone numbers from open national registries
-- [ ] Voice pilot with keyword spotting for danger words, starting in Swahili and French
+- [ ] Voice pilot with keyword spotting for danger words, starting in Swahili and French on Chirp 3
+- [ ] Amharic and Afaan Oromo speech recognition tuned on WAXAL, and recorded or trained voices for Amharic, Afaan Oromo and Somali
 - [ ] Pilot with one programme on a live shortcode, with a human helpdesk behind the safety rail
 
 Gate: 99% recall on voice emergencies.

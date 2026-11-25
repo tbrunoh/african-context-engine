@@ -36,12 +36,13 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 | `src/ace_engine/snapshots/` | The snapshot store and the licence register loader |
 | `src/ace_engine/services/` | V2 decision services, one module each, and the hub that routes to them |
 | `src/ace_engine/places.py`, `watch.py` | Places by name or position; the number watcher |
+| `src/ace_engine/speech/` | Speech and translation interfaces, the support table per language, optional Google Cloud providers and the back translation report |
 | `context_packs/` | Sourced YAML packs, CC BY 4.0 |
 | `snapshots/` | Dated snapshots and `register.yaml`; ODbL data in `snapshots/odbl/` |
-| `benchmark/` | Red team and false alarm sets, the runner and the CI baseline |
+| `benchmark/` | Red team and false alarm sets, the runner, the CI baseline and the WAXAL language check |
 | `docs/v2/`, `docs/services.md`, `docs/connectors/` | The V2 design, the services guide and one page per connector |
 
-`speech/` comes with the voice epic, in the shape the build plan sets out.
+Speech providers sit in the channel layer, like an SMS gateway: they turn audio into text before the safety rail and text into audio after the reply. Machine translation runs only in review tools, never while answering a person. See [docs/speech.md](docs/speech.md).
 
 ## Writing style for docs and user facing text
 

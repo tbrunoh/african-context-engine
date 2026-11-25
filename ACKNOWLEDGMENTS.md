@@ -138,6 +138,13 @@ Every number was checked on 24 November 2026 against the getting help page the U
 | Malawi Ministry of Health | The [Malawi Health Facility Registry](https://zipatala.health.gov.mw/): facilities, positions and contact numbers | No licence stated. The connector is built and held until the ministry confirms reuse in writing |
 | Zambia Ministry of Health | The [Zambia Health Facility Registry](https://zhfr.moh.gov.zm/): facilities, positions and phone numbers | No licence stated. The connector is built and held until the ministry confirms reuse in writing |
 
+## Sources added in release 2.2 preview
+
+| Organisation | What ACE uses | Licence | Where |
+| --- | --- | --- | --- |
+| Google Research, with Makerere University, the University of Ghana, Digital Umuganda, Media Trust, Loud and Clear and AIMS Senegal | The [WAXAL speech corpus](https://huggingface.co/datasets/google/WaxalNLP) ([paper](https://arxiv.org/abs/2602.02734)): transcriptions and voice scripts in 29 sets, read at run time to measure ACE's language guess, safety rail and service router. No WAXAL text or audio is stored in ACE | CC BY 4.0 for the University of Ghana sets; CC BY-SA 4.0 for the others. Partners keep ownership | `benchmark/waxal.py`, [docs/speech.md](docs/speech.md) |
+| Google Cloud | Published language lists for [Speech-to-Text](https://docs.cloud.google.com/speech-to-text/docs/models/chirp-3), [Text-to-Speech](https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd) and [Cloud Translation](https://docs.cloud.google.com/translate/docs/languages), checked on 25 November 2026 | Public documentation | `src/ace_engine/speech/support.yaml` |
+
 ## Software, services and standards
 
 | Project or service | How ACE uses it | Licence or terms |
@@ -149,6 +156,8 @@ Every number was checked on 24 November 2026 against the getting help page the U
 | Africa's Talking | SMS sending over its HTTP API, when a deployment configures it | Provider terms |
 | WhatsApp Cloud API (Meta) | WhatsApp channel, when a deployment configures it | Provider terms |
 | Any OpenAI compatible model server | Optional wording of answers, behind ACE's citation check | Provider or model terms |
+| [Google Cloud Speech-to-Text, Text-to-Speech and Cloud Translation](https://cloud.google.com/speech-to-text) | Optional `google` extra: spoken questions and replies on the voice line, and back translation reports for locale reviewers | Google Cloud terms of the operator's own account |
+| [google-auth](https://github.com/googleapis/google-auth-library-python) | Application Default Credentials for the optional `google` extra | Apache 2.0 |
 
 ## Planned for later V2 releases: sources and the credit each requires
 
@@ -157,7 +166,7 @@ None of these sources is in the code yet. The [V2 design](docs/v2/README.md) pla
 | Source | Owner | Licence or terms | Credit ACE will show |
 | --- | --- | --- | --- |
 | [Flood Forecasting API](https://developers.google.com/flood-forecasting) and flood datasets | Google | CC BY 4.0 | Google Flood Forecasting, CC BY 4.0 |
-| [WAXAL speech dataset](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/) | Google Research with African academic and community partners | CC BY 4.0 | WAXAL, CC BY 4.0, with the citation given in its paper |
+| [WAXAL speech dataset](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/), for training voice models | Google Research with African academic and community partners | CC BY 4.0 for the University of Ghana sets; CC BY-SA 4.0 for the others | WAXAL with the citation given in its paper; a model trained on a CC BY-SA set carries that licence |
 | [iSDAsoil](https://registry.opendata.aws/isdasoil/) | Innovative Solutions for Decision Agriculture (iSDA) | CC BY 4.0 | iSDAsoil, with Miller and others (2021), PLoS Biology 19(11): e3001441 |
 | [WeatherNext 2 and 3](https://developers.google.com/weathernext/guides/models-wn2) | Google DeepMind and Google Research | Terms accepted with the data request | As those terms require |
 | [Agricultural Understanding API](https://developers.google.com/agricultural-understanding/api) | Google | Google Cloud terms; allowlist | As those terms require |

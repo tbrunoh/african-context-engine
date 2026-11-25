@@ -10,7 +10,9 @@
 
 ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on USSD, SMS, voice, WhatsApp and the web, in eight languages across 34 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
 
-**Release 2.1 preview (2.1.0b1, 24 November 2026)** takes ACE from 13 to 34 countries and from three to eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Every new country gets all six decision services at once (rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check), and wherever open data does not reach, ACE names the gap in the person's language. Arabic and Amharic replies are budgeted for the smaller UCS-2 alphabet, so they still fit one USSD screen. The services and the five new languages are a preview: they pass ACE's own tests and benchmark, but no fluent speaker has reviewed the new translations yet, and the expert review and forecast skill gates in the [build plan](docs/v2/build-plan.md) are still open. The design is in [docs/v2/release-2.1.md](docs/v2/release-2.1.md).
+**Release 2.2 preview (2.2.0b1, 25 November 2026)** adds speech and translation. ACE now measures its language tools on real African speech text from Google's open WAXAL corpus, the voice line speaks only languages a voice exists for, and optional Google Cloud providers hear spoken questions, speak replies and give fluent reviewers back translations of every string. The design and the gaps are in [docs/speech.md](docs/speech.md).
+
+**Release 2.1 preview (2.1.0b1, 24 November 2026)** took ACE from 13 to 34 countries and from three to eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Every new country gets all six decision services at once (rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check), and wherever open data does not reach, ACE names the gap in the person's language. Arabic and Amharic replies are budgeted for the smaller UCS-2 alphabet, so they still fit one USSD screen. The services and the five new languages are a preview: they pass ACE's own tests and benchmark, but no fluent speaker has reviewed the new translations yet, and the expert review and forecast skill gates in the [build plan](docs/v2/build-plan.md) are still open. The design is in [docs/v2/release-2.1.md](docs/v2/release-2.1.md).
 
 ```
 $ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms
@@ -58,7 +60,7 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | **Scam Shield** | Forward a suspicious mobile money message in any of the eight languages and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
 | **USSD app** | A full menu on any phone: browse topics, ask in your own words, check a message, switch language. Every screen fits 182 characters | `channels/ussd.py` |
 | **SMS** | Replies within three segments, folded into GSM-7 for Latin script and budgeted for UCS-2 in Arabic and Amharic, keyword commands, Africa's Talking sending | `channels/sms.py`, `encoding.py` |
-| **Voice IVR** | Keypad menu over the same knowledge, plus a hook for any speech recognition model | `channels/voice.py` |
+| **Voice IVR** | Keypad menu over the same knowledge, spoken only in languages with a known voice, plus speech recognition through any provider; Google Cloud is ready to plug in | `channels/voice.py`, `speech/` |
 | **WhatsApp** | Cloud API webhook with signature checks, sources listed under every answer | `channels/whatsapp.py` |
 | **MCP server** | Any AI assistant can ask ACE for cited African context, scam checks and emergency numbers | `mcp_server.py` |
 | **Privacy by design** | Phone numbers stored only as salted hashes; FORGET, FUTA or OUBLIER deletes everything | `identity.py` |
@@ -142,7 +144,14 @@ Public hospitals in Gulu: Gulu Regional Referral Hospital (regional referral hos
 Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities; check it is open before you travel.
 ```
 
-**What 2.1 adds**
+**What 2.2 adds**
+
+- **A language check on real speech**: `python -m benchmark.waxal` runs ACE's language guess, safety rail and service router on 12,333 sentences from 27 WAXAL sets. ACE recognises Amharic, Swahili and Afaan Oromo in 93% to 100% of sentences, and the safety rail fired on 3 ordinary sentences in 12,333. ACE still reads many languages it does not speak as Swahili, now in 45.8% of sentences, down from 54.0%. No WAXAL text is stored in the repository.
+- **A voice line that only speaks what it can say**: no published voice speaks Amharic, Afaan Oromo or Somali yet, so callers who use them hear the next language of their country that has one, and get the full reply on SMS and USSD in their own language. Operators with more voices list them in `ACE_VOICE_LANGUAGES`.
+- **Speech and translation providers**: `SpeechToText`, `TextToSpeech` and `Translator` interfaces, with Google Cloud Speech-to-Text (Chirp 3), Text-to-Speech and Cloud Translation behind the optional `google` extra. `ace voice languages` shows what exists for each language, with sources.
+- **Help for reviewers**: `ace locales backcheck am` lines up every Amharic string with a machine back translation, the strings most likely to have drifted first. Translation never runs while answering a person.
+
+**What 2.1 added**
 
 - **21 countries**: DR Congo, Malawi, Burundi, Cameroon, Benin, Zambia, Chad, Guinea, Burkina Faso, South Sudan, Ethiopia, Mozambique, Guinea-Bissau, Angola, Somalia, Sudan, Algeria, Egypt, Libya, Morocco and Tunisia, each with an emergency pack and all six services.
 - **Five languages**: Portuguese, Arabic, Amharic, Afaan Oromo and Somali, in one locale file each, with Arabic normalisation, Ge'ez letter folding, script based language detection and the call verb where each language puts it. The guide is [docs/languages.md](docs/languages.md).
@@ -159,7 +168,7 @@ Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities;
 - **USSD menu.** The six services come first on the menu, with topics, questions, Scam Shield and language behind them. Every screen still fits 182 characters.
 - **New packs.** Antenatal care (WHO) and four crop pests and diseases (maize lethal necrosis, cassava mosaic disease, banana Xanthomonas wilt, tomato leaf miner), in English, Swahili and French.
 
-**Not in this preview.** The voice line in African languages, the planting window, soil advice, flood forecasts, Scam Shield 2 with SIM swap checks, opt in alerts and health worker assist are still on the [roadmap](ROADMAP.md). Each needs data access, partners or expert review that a code release cannot supply. Read the [product spec](docs/v2/product-spec.md), the [services guide](docs/services.md), the [data and model catalog](docs/v2/data-catalog.md) and the [build plan](docs/v2/build-plan.md). AI coding agents follow [AGENTS.md](AGENTS.md).
+**Not in this preview.** Spoken replies in Amharic, Afaan Oromo and Somali, speech recognition tuned on WAXAL, the planting window, soil advice, flood forecasts, Scam Shield 2 with SIM swap checks, opt in alerts and health worker assist are still on the [roadmap](ROADMAP.md). Each needs data access, partners or expert review that a code release cannot supply. Read the [product spec](docs/v2/product-spec.md), the [services guide](docs/services.md), the [data and model catalog](docs/v2/data-catalog.md) and the [build plan](docs/v2/build-plan.md). AI coding agents follow [AGENTS.md](AGENTS.md).
 
 ## Quickstart
 
@@ -179,7 +188,7 @@ ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```
 
-The preview wheel is attached to the [v2.1.0b1 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.2.0b1 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 

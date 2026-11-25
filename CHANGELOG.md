@@ -1,5 +1,34 @@
 # Changelog
 
+## 2.2.0b1 (2026-11-25): speech and translation
+
+ACE measures its language tools on real African speech, makes the voice line speak only languages a voice exists for, and gains optional speech and translation providers. The design and the gaps are in [docs/speech.md](docs/speech.md).
+
+### Added
+- **The WAXAL language check**: `python -m benchmark.waxal` reads up to 600 sentences from each test split of 27 WAXAL sets (Google Research with Makerere University, the University of Ghana, Digital Umuganda, Media Trust, Loud and Clear and AIMS Senegal) at run time and runs ACE's language guess, safety rail and service router on them. Results are in `benchmark/results/waxal.md`, as counts only. No WAXAL text or audio is stored in the repository.
+- **`ace_engine.speech`**: `SpeechToText`, `TextToSpeech` and `Translator` interfaces; `support.yaml`, which records for each ACE language the speech recognition model, the voice, the translation model and the WAXAL data that exist, with sources, checked on 25 November 2026; and `speakable()`, the rule the voice line follows.
+- **Google Cloud providers** behind the optional `google` extra: Speech-to-Text V2 with Chirp 3 (first generation Chirp for Somali), Text-to-Speech and Cloud Translation Advanced. Credentials come from Application Default Credentials; ACE stores no key.
+- **`ace voice languages`**, **`ace locales status`** and **`ace locales backcheck`**. The backcheck lines up every string of a locale file with a machine back translation, lowest word overlap first and safety strings marked, for fluent reviewers. It writes nothing to the locale file.
+- `i18n.english_sources()`, the English rendering of every localised string.
+- `docs/speech.md`; licence register entries for WAXAL and Google Cloud; 22 new tests.
+
+### Fixed
+- **The voice line read scripts no voice could say.** It now speaks a language only where a voice is known to exist (English, Swahili, French, Portuguese and Arabic) or the operator lists it in `ACE_VOICE_LANGUAGES`. A caller who uses Amharic, Afaan Oromo or Somali hears the next language of their country with a voice, then English.
+- **ACE claimed languages it does not speak.** On WAXAL, 54.0% of sentences in 23 languages ACE does not speak were read as one of its eight. The Somali markers ka, ku and ay and the French marker ma, which are common in Dagbani, Luganda, Acholi and other languages, are no longer markers, and Swahili and French gained longer marker words. The figure is now 45.8%; Amharic, Swahili and Afaan Oromo are still recognised in 100%, 97.0% and 93.2% of sentences. The rest is a named gap.
+- **The benchmark failed when official warnings aged past six hours.** Service checks now run at the time of the newest committed snapshot, so the gate depends on the code and the data, not on the hour it runs.
+- **WAXAL licence.** The docs called all of WAXAL CC BY 4.0. Only the University of Ghana sets are; the others are CC BY-SA 4.0. The data catalog, product spec, build plan and acknowledgments are corrected, and the build plan no longer plans Swahili speech recognition on WAXAL, which has no transcribed Swahili.
+
+- **The source archive carried a local file.** The 2.1.0b1 source archive on the release page included `PUBLISH.sh`, a maintainer script with no credentials in it. The source archive now leaves out local files.
+
+### Changed
+- `pyproject.toml`: version 2.2.0b1, the `google` extra, and a source archive that leaves out local files.
+- README, AGENTS.md, the roadmap, the languages and channels guides, the data catalog and `llms.txt` describe the speech layer.
+
+### Verified
+- 467 tests pass, all offline. Ruff passes. All 41 packs validate.
+- Benchmark: emergency recall 100% in all eight languages from numbers in all 34 countries, wrong number rate 0, false alarm rate 0, 1,464 of 1,464 service checks.
+- WAXAL check: the safety rail fired on 3 of 12,333 ordinary sentences (0.02%): an Amharic sentence about female genital cutting, a Swahili story with a snake bite, and a Fula sentence containing bofti, the Afaan Oromo word for snake.
+
 ## 2.1.0b1 (2026-11-24): 34 countries, eight languages
 
 ACE grows from 13 to 34 African countries and from three to eight languages. Every new country gets all six services at once, the safety rail works in every language, and wherever open data does not reach, ACE names the gap. The design record is [docs/v2/release-2.1.md](docs/v2/release-2.1.md). This is a preview: no fluent speaker has reviewed the five new languages yet.

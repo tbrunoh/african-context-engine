@@ -278,10 +278,12 @@ def cmd_voice(args: argparse.Namespace) -> int:
         print(json.dumps({"checked_on": speech.support()["checked_on"], "languages": rows}, indent=2))
         return 0
     print(f"Checked {speech.support()['checked_on']}. Sources: ace_engine/speech/support.yaml\n")
-    print(f"{'lang':5} {'speech to text':26} {'text to speech':48} {'WAXAL'}")
+    print(f"{'lang':5} {'speech to text':26} {'text to speech':76} {'WAXAL'}")
     for r in rows:
-        spoken = "spoken" if speech.speakable(r["language"]) else "not spoken"
-        print(f"{r['language']:5} {r['hear']:26} {r['speak'][:47]:48} {r['waxal']}  [{spoken}]")
+        code = r["language"]
+        line = ("Say" if speech.speakable(code) else
+                "Play, with Gemini TTS" if speech.play_voice(code) else "keypad and SMS only")
+        print(f"{code:5} {r['hear']:26} {r['speak'][:75]:76} {r['waxal']}  [{line}]")
     return 0
 
 

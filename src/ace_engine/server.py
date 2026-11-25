@@ -12,6 +12,7 @@ Routes
     POST /ussd                Africa's Talking USSD callback (form)  -> text/plain CON or END
     POST /sms                 Africa's Talking inbound SMS (form)     -> JSON, and sends replies if configured
     POST /voice               Africa's Talking voice callback (form)  -> XML actions
+    GET  /voice/audio/<file>  synthesised prompts the voice call plays (only with a PlayedVoice)
     GET  /whatsapp            Meta webhook verification
     POST /whatsapp            WhatsApp Cloud API webhook (JSON)      -> sends replies if configured
 
@@ -19,6 +20,12 @@ Security
     ACE_API_TOKEN         when set, /v1/* requires "Authorization: Bearer <token>"
     ACE_WEBHOOK_SECRET    when set, /ussd, /sms and /voice require ?key=<secret> in the callback URL
     WHATSAPP_APP_SECRET   when set, POST /whatsapp requires a valid X-Hub-Signature-256
+
+Voice audio
+    ACE_VOICE_AUDIO_URL   public base URL of this server; with GEMINI_API_KEY set, the voice line plays Gemini
+                          TTS audio for languages the Say action cannot read, such as Amharic and Somali
+    ACE_VOICE_AUDIO_DIR   where synthesised audio is cached (default .ace_voice_audio). The files hold only
+                          fixed prompts and public pack text, so /voice/audio needs no key
 """
 from __future__ import annotations
 
@@ -43,6 +50,16 @@ MAX_BODY = 64 * 1024
 StartResponse = Callable[[str, list[tuple[str, str]]], Any]
 
 
+def played_voice_from_env() -> Any:
+    """A PlayedVoice backed by Gemini TTS when ACE_VOICE_AUDIO_URL and GEMINI_API_KEY are both set, else None."""
+    base = os.environ.get("ACE_VOICE_AUDIO_URL", "")
+    if not base or not os.environ.get("GEMINI_API_KEY"):
+        return None
+    from .speech import PlayedVoice
+    from .speech.google import GeminiTextToSpeech
+    return PlayedVoice(GeminiTextToSpeech(), os.environ.get("ACE_VOICE_AUDIO_DIR", ".ace_voice_audio"), base)
+
+
 class AceApp:
     """A WSGI application. Run it with ace serve, or under any WSGI server such as gunicorn."""
 
@@ -51,7 +68,7 @@ class AceApp:
                  whatsapp_verify_token: str | None = None, whatsapp_app_secret: str | None = None) -> None:
         self.engine = engine
         self.ussd = UssdApp(engine)
-        self.voice = VoiceApp(engine)
+        self.voice = VoiceApp(engine, voice=played_voice_from_env())
         self.sms = SmsAdapter()
         self.wa = WhatsAppAdapter()
         self.sms_sender = sms_sender
@@ -90,6 +107,12 @@ class AceApp:
             if self.api_token and not _bearer_ok(environ, self.api_token):
                 return _json(401, {"error": "missing or invalid bearer token"})
             return self._api(method, path, query, body)
+
+        if path.startswith("/voice/audio/") and method == "GET" and self.voice.voice is not None:
+            audio = self.voice.voice.audio(path.rsplit("/", 1)[-1])
+            if audio is None:
+                return _json(404, {"error": "not found"})
+            return "200 OK", [("Content-Type", "audio/wav"), ("Cache-Control", "public, max-age=86400")], audio
 
         if path in ("/ussd", "/sms", "/voice"):
             if self.webhook_secret and not hmac.compare_digest(query.get("key", ""), self.webhook_secret):

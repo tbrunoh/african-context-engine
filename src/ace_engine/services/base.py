@@ -1,6 +1,6 @@
 """The service contract. A decision service answers one named decision from snapshots and packs.
 
-Services never touch the network. Each one returns an Answer, with text in English, Swahili and French that
+Services never touch the network. Each one returns an Answer, with text in every language ACE serves that
 fits the channel, a citation for every fact, the date of its data and one next step; or a Refusal that says
 why it cannot answer safely and who to ask instead. Every V2 service is a preview until it passes the launch
 gate in docs/v2/build-plan.md, and every answer says so in its metadata.
@@ -12,16 +12,17 @@ from dataclasses import dataclass, field
 from datetime import date, datetime
 from typing import TYPE_CHECKING, Any, Literal, Protocol
 
+from .. import i18n
 from ..models import Citation, GeoPoint
 from ..places import Gazetteer, Place
 from ..snapshots import Snapshot, SnapshotStore, parse_time, utcnow
-from ..text import truncate_words
+from ..text import SUPPORTED_LANGUAGES, truncate_words
 
 if TYPE_CHECKING:
     from ..context.store import ContextStore
     from ..safety import Contact
 
-LANGS = ("en", "sw", "fr")
+LANGS = SUPPORTED_LANGUAGES
 Text = dict[str, str]
 
 DAYS: dict[str, tuple[str, ...]] = {
@@ -50,7 +51,8 @@ def month_year(ym: str, lang: str) -> str:
 
 
 def say(templates: dict[str, str], lang: str, **values: Any) -> str:
-    return (templates.get(lang) or templates["en"]).format(**values)
+    text = (templates.get(lang) or templates["en"]).format(**values)
+    return french(text) if lang == "fr" else text
 
 
 def all_langs(templates: dict[str, str], **values: Any) -> Text:
@@ -150,18 +152,33 @@ NEEDS_PLACE = {
 AREA_WORD = {
     "en": {"KE": "county", "NG": "state", "UG": "district", "TZ": "region", "GH": "region", "SN": "region",
            "CI": "district", "TG": "region", "RW": "province", "ZA": "province", "BW": "district", "NA": "region",
-           "ZW": "province"},
-    "sw": {"KE": "kaunti", "UG": "wilaya", "TZ": "mkoa"},
-    "fr": {"SN": "région", "CI": "district", "TG": "région", "RW": "province"},
+           "ZW": "province", "CD": "province", "MW": "district", "BI": "province", "CM": "region",
+           "BJ": "department", "ZM": "province", "TD": "province", "GN": "region", "BF": "region", "SS": "state",
+           "ET": "region", "MZ": "province", "GW": "region", "AO": "province", "SO": "region", "SD": "state",
+           "DZ": "province", "EG": "governorate", "LY": "district", "MA": "region", "TN": "governorate"},
+    "sw": {"KE": "kaunti", "UG": "wilaya", "TZ": "mkoa", "CD": "jimbo", "BI": "mkoa"},
+    "fr": {"SN": "région", "CI": "district", "TG": "région", "RW": "province", "CD": "province", "BI": "province",
+           "CM": "région", "BJ": "département", "TD": "province", "GN": "région", "BF": "région", "DZ": "wilaya",
+           "MA": "région", "TN": "gouvernorat"},
 }
+AREA_DEFAULT = {"en": "area", "sw": "eneo", "fr": "région"}
 # Country names as a sentence says them: Swahili, and French with its article (pour la Namibie, pour le Ghana).
-COUNTRY_SAID = {
+COUNTRY_SAID: dict[str, dict[str, str]] = {
+    "en": {},  # English says the country's own name, from countries.py
     "sw": {"KE": "Kenya", "TZ": "Tanzania", "UG": "Uganda", "RW": "Rwanda", "ZA": "Afrika Kusini", "BW": "Botswana",
            "NA": "Namibia", "ZW": "Zimbabwe", "NG": "Nigeria", "GH": "Ghana", "SN": "Senegal", "CI": "Côte d'Ivoire",
-           "TG": "Togo"},
+           "TG": "Togo", "CD": "Kongo DR", "MW": "Malawi", "BI": "Burundi", "CM": "Kameruni", "BJ": "Benin",
+           "ZM": "Zambia", "TD": "Chad", "GN": "Guinea", "BF": "Burkina Faso", "SS": "Sudan Kusini",
+           "ET": "Ethiopia", "MZ": "Msumbiji", "GW": "Guinea-Bissau", "AO": "Angola", "SO": "Somalia",
+           "SD": "Sudan", "DZ": "Algeria", "EG": "Misri", "LY": "Libya", "MA": "Morocco", "TN": "Tunisia"},
     "fr": {"KE": "le Kenya", "TZ": "la Tanzanie", "UG": "l'Ouganda", "RW": "le Rwanda", "ZA": "l'Afrique du Sud",
            "BW": "le Botswana", "NA": "la Namibie", "ZW": "le Zimbabwe", "NG": "le Nigeria", "GH": "le Ghana",
-           "SN": "le Sénégal", "CI": "la Côte d'Ivoire", "TG": "le Togo"},
+           "SN": "le Sénégal", "CI": "la Côte d'Ivoire", "TG": "le Togo", "CD": "la République démocratique du Congo",
+           "MW": "le Malawi", "BI": "le Burundi", "CM": "le Cameroun", "BJ": "le Bénin", "ZM": "la Zambie",
+           "TD": "le Tchad", "GN": "la Guinée", "BF": "le Burkina Faso", "SS": "le Soudan du Sud",
+           "ET": "l'Éthiopie", "MZ": "le Mozambique", "GW": "la Guinée-Bissau", "AO": "l'Angola",
+           "SO": "la Somalie", "SD": "le Soudan", "DZ": "l'Algérie", "EG": "l'Égypte", "LY": "la Libye",
+           "MA": "le Maroc", "TN": "la Tunisie"},
 }
 
 
@@ -177,11 +194,14 @@ def french(text: str) -> str:
 
 EXAMPLE_PLACE = {"KE": "Embu", "TZ": "Mwanza", "UG": "Gulu", "RW": "Kigali", "ZA": "Gauteng", "BW": "Central District",
                  "NA": "Khomas", "ZW": "Masvingo", "NG": "Kano", "GH": "Ashanti", "SN": "Thiès", "CI": "Abidjan",
-                 "TG": "Kara"}
+                 "TG": "Kara", "CD": "Kinshasa", "MW": "Lilongwe", "BI": "Gitega", "CM": "Littoral", "BJ": "Borgou",
+                 "ZM": "Lusaka", "TD": "Logone Oriental", "GN": "Kankan", "BF": "Kadiogo", "SS": "Central Equatoria",
+                 "ET": "Amhara", "MZ": "Nampula", "GW": "Bafatá", "AO": "Huíla", "SO": "Banadir", "SD": "Khartoum",
+                 "DZ": "Alger", "EG": "Assiut", "LY": "Tripoli", "MA": "Fez Meknes", "TN": "Sfax"}
 
 
 def area_word(country: str | None, lang: str) -> str:
-    default = {"en": "area", "sw": "eneo", "fr": "région"}[lang if lang in LANGS else "en"]
+    default = AREA_DEFAULT.get(lang) or AREA_DEFAULT["en"]
     return AREA_WORD.get(lang, {}).get(country or "", AREA_WORD["en"].get(country or "", default) if lang == "en"
                                         else default)
 
@@ -190,3 +210,6 @@ def needs_place(service: str, country: str | None) -> Refusal:
     return Refusal(service, "needs_place", {
         lang: say(NEEDS_PLACE, lang, area=area_word(country, lang), example=EXAMPLE_PLACE.get(country or "", "Kano"))
         for lang in LANGS})
+
+
+i18n.localize("services.base", globals(), ("DAYS", "MONTHS", "NEEDS_PLACE", "AREA_WORD", "AREA_DEFAULT", "COUNTRY_SAID"))

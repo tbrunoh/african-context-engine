@@ -8,13 +8,25 @@ from __future__ import annotations
 
 import re
 
+from .. import i18n
 from ..countries import COUNTRIES
 from ..text import fold
 from .base import LANGS, Answer, Context, Query, Refusal, Result, cite_fact, fit, say
 
 CONTACTS = (12, 20, 26, 30, 34, 36, 38, 40)
-_WEEKS = re.compile(r"(\d{1,2})\s*(?:weeks?|wks?|semaines?|sem\b|wiki)|(?:week|wiki|semaine)\s*(?:ya\s*|de\s*)?(\d{1,2})")
-_MONTHS = re.compile(r"(\d)\s*(?:months?|mois|miezi)|(?:mwezi|miezi)\s*(?:wa\s*)?(\d)")
+WEEK_WORDS = i18n.phrases("services.pregnancy.WEEK_WORDS", ("weeks", "week", "wks", "wk", "semaines", "semaine", "sem",
+                                                           "wiki"))
+MONTH_WORDS = i18n.phrases("services.pregnancy.MONTH_WORDS", ("months", "month", "mois", "miezi", "mwezi"))
+
+
+def _pattern(words: tuple[str, ...], digits: str) -> re.Pattern:
+    """A number then the word (22 weeks, 22 ሳምንት), or the word then the number (wiki ya 22, torban 22)."""
+    alt = "|".join(sorted({re.escape(fold(w)) for w in words}, key=len, reverse=True))
+    return re.compile(rf"({digits})\s*(?:{alt})\b|(?<!\w)(?:{alt})\s*(?:\w{{1,3}}\s+)?({digits})(?!\d)")
+
+
+_WEEKS = _pattern(WEEK_WORDS, r"\d{1,2}")
+_MONTHS = _pattern(MONTH_WORDS, r"\d")
 
 FIRST = {"en": "At {w} weeks, go for your first antenatal check now, before 12 weeks.",
          "sw": "Ukiwa na wiki {w}, nenda kliniki ya kwanza ya ujauzito sasa, kabla ya wiki 12.",
@@ -49,7 +61,9 @@ def weeks_from(text: str) -> int | None:
 
 class PregnancyService:
     id = "pregnancy_companion"
-    title = {"en": "Pregnancy companion", "sw": "Mwongozo wa ujauzito", "fr": "Suivi de grossesse"}
+    title = {"en": "Pregnancy companion", "sw": "Mwongozo wa ujauzito", "fr": "Suivi de grossesse",
+             "pt": "Acompanhamento da gravidez", "ar": "متابعة الحمل", "am": "የእርግዝና ክትትል",
+             "om": "Hordoffii ulfaa", "so": "Daryeelka uurka"}
     countries = frozenset(COUNTRIES)
     connectors = ()
 
@@ -93,3 +107,6 @@ class PregnancyService:
         return Answer(self.id, text, cites, confidence="high", data_date="2016-11-07",
                       data={"weeks": weeks, "next_check_week": nxt, "schedule_weeks": list(CONTACTS),
                             "numbers": numbers.split(", ") if numbers else []})
+
+
+i18n.localize("services.pregnancy", globals(), ("FIRST", "DUE_NOW", "NEXT", "LATE", "ASK", "CALL"))

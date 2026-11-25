@@ -7,10 +7,10 @@ from __future__ import annotations
 
 from datetime import date
 
+from .. import i18n
 from ..connectors.hdx_prices import SLUGS
-from ..countries import COUNTRIES
 from ..geo import haversine_km
-from ..text import fold, tokens
+from ..text import contains_phrase, fold, tokens, word_forms
 from .base import (
     LANGS,
     Answer,
@@ -18,7 +18,6 @@ from .base import (
     Query,
     Refusal,
     Result,
-    all_langs,
     cite_snapshot,
     country_said,
     fit,
@@ -46,21 +45,32 @@ FOODS = {
     "bananas": "bananas", "ndizi": "bananas", "wheat": "wheat", "ngano": "wheat", "ble": "wheat", "bread": "bread",
     "mkate": "bread", "pain": "bread", "eggs": "eggs", "mayai": "eggs", "oeufs": "eggs", "meat": "meat",
     "nyama": "meat", "viande": "meat", "fish": "fish", "samaki": "fish", "poisson": "fish",
+    "teff": "teff", "barley": "barley", "lentils": "lentils", "pasta": "pasta",
 }
+FOODS = {fold(k): v for k, v in i18n.phrase_map("services.prices.FOODS", FOODS).items()}
+FOOD_PHRASES = sorted((k for k in FOODS if " " in k), key=len, reverse=True)
 
 # WFP names commodities in English. The common ones are said in the person's language; the rest stay as WFP wrote them.
-LOCAL_FOOD = {
-    "maize": ("Mahindi", "Maïs"), "maize flour": ("Unga wa mahindi", "Farine de maïs"),
-    "maize meal": ("Unga wa mahindi", "Farine de maïs"), "beans": ("Maharagwe", "Haricots"),
-    "rice": ("Mchele", "Riz"), "sorghum": ("Mtama", "Sorgho"), "millet": ("Uwele", "Mil"),
-    "cassava": ("Muhogo", "Manioc"), "cassava flour": ("Unga wa muhogo", "Farine de manioc"),
-    "sugar": ("Sukari", "Sucre"), "oil": ("Mafuta", "Huile"), "wheat flour": ("Unga wa ngano", "Farine de blé"),
-    "groundnuts": ("Karanga", "Arachides"), "cowpeas": ("Kunde", "Niébé"), "potatoes": ("Viazi", "Pommes de terre"),
-    "tomatoes": ("Nyanya", "Tomates"), "onions": ("Vitunguu", "Oignons"), "salt": ("Chumvi", "Sel"),
-    "milk": ("Maziwa", "Lait"), "eggs": ("Mayai", "Œufs"), "bread": ("Mkate", "Pain"),
+LOCAL_FOOD: dict[str, dict[str, str]] = {
+    "en": {},
+    "sw": {"maize": "Mahindi", "maize flour": "Unga wa mahindi", "maize meal": "Unga wa mahindi", "beans": "Maharagwe",
+           "rice": "Mchele", "sorghum": "Mtama", "millet": "Uwele", "cassava": "Muhogo",
+           "cassava flour": "Unga wa muhogo", "sugar": "Sukari", "oil": "Mafuta", "wheat flour": "Unga wa ngano",
+           "groundnuts": "Karanga", "cowpeas": "Kunde", "potatoes": "Viazi", "tomatoes": "Nyanya",
+           "onions": "Vitunguu", "salt": "Chumvi", "milk": "Maziwa", "eggs": "Mayai", "bread": "Mkate",
+           "wheat": "Ngano"},
+    "fr": {"maize": "Maïs", "maize flour": "Farine de maïs", "maize meal": "Farine de maïs", "beans": "Haricots",
+           "rice": "Riz", "sorghum": "Sorgho", "millet": "Mil", "cassava": "Manioc", "cassava flour": "Farine de manioc",
+           "sugar": "Sucre", "oil": "Huile", "wheat flour": "Farine de blé", "groundnuts": "Arachides",
+           "cowpeas": "Niébé", "potatoes": "Pommes de terre", "tomatoes": "Tomates", "onions": "Oignons",
+           "salt": "Sel", "milk": "Lait", "eggs": "Œufs", "bread": "Pain", "wheat": "Blé", "lentils": "Lentilles"},
 }
-LOCAL_DETAIL = {"white": ("nyeupe", "blanc"), "yellow": ("njano", "jaune"), "imported": ("kutoka nje", "importé"),
-                "local": ("ya ndani", "local"), "dry": ("kavu", "sec"), "red": ("nyekundu", "rouge")}
+LOCAL_DETAIL: dict[str, dict[str, str]] = {
+    "en": {},
+    "sw": {"white": "nyeupe", "yellow": "njano", "imported": "kutoka nje", "local": "ya ndani", "dry": "kavu",
+           "red": "nyekundu"},
+    "fr": {"white": "blanc", "yellow": "jaune", "imported": "importé", "local": "local", "dry": "sec", "red": "rouge"},
+}
 
 
 def food_name(commodity: str, lang: str) -> str:
@@ -68,36 +78,39 @@ def food_name(commodity: str, lang: str) -> str:
     if lang == "en":
         return commodity
     base, _, rest = commodity.partition(" (")
-    local = LOCAL_FOOD.get(fold(base).strip())
+    local = (LOCAL_FOOD.get(lang) or {}).get(fold(base).strip())
     if local is None:
         return commodity
-    i = 0 if lang == "sw" else 1
+    detail = LOCAL_DETAIL.get(lang) or {}
     details = [d.strip() for d in rest.rstrip(")").split(",") if d.strip()]
-    said = [LOCAL_DETAIL[fold(d)][i] if fold(d) in LOCAL_DETAIL else d for d in details]
-    return local[i] + (f" ({', '.join(said)})" if said else "")
+    said = [detail.get(fold(d), d) for d in details]
+    return local + (f" ({', '.join(said)})" if said else "")
+
+
+UNIT = {"en": "per {unit}", "sw": "kwa {unit}", "fr": "le {unit}"}
+UNIT_MANY = {"en": "per {unit}", "sw": "kwa {unit}", "fr": "les {unit}"}
 
 
 def unit_name(unit: str, lang: str) -> str:
-    """French counts several units in the plural: les 90 kg, but le kg."""
-    if lang == "fr" and unit[:1].isdigit() and unit.split()[0] not in ("1", "1.0"):
-        return f"les {unit}"
-    return f"le {unit}" if lang == "fr" else unit
+    """How a language says the unit: per KG; French counts several units in the plural, les 90 kg but le kg."""
+    many = unit[:1].isdigit() and unit.split()[0] not in ("1", "1.0")
+    return say(UNIT_MANY if many else UNIT, lang, unit=unit)
 
 
-LINE = {"en": "{food} at {market}: {currency} {price} per {unit} in {month}",
-        "sw": "{food} soko la {market}: {currency} {price} kwa {unit} mwezi {month}",
+LINE = {"en": "{food} at {market}: {currency} {price} {unit} in {month}",
+        "sw": "{food} soko la {market}: {currency} {price} {unit} mwezi {month}",
         "fr": "{food} au marché de {market} : {currency} {price} {unit} en {month}"}
 CHANGE = {"up": {"en": "up {pct}% on {prev}", "sw": "juu kwa {pct}% kuliko {prev}", "fr": "en hausse de {pct} % sur {prev}"},
           "down": {"en": "down {pct}% on {prev}", "sw": "chini kwa {pct}% kuliko {prev}",
                    "fr": "en baisse de {pct} % sur {prev}"},
           "same": {"en": "the same as {prev}", "sw": "sawa na {prev}", "fr": "comme en {prev}"}}
-ITEM = {"en": "{food} {currency} {price} per {unit} ({month})", "sw": "{food} {currency} {price} kwa {unit} ({month})",
+ITEM = {"en": "{food} {currency} {price} {unit} ({month})", "sw": "{food} {currency} {price} {unit} ({month})",
         "fr": "{food} {currency} {price} {unit} ({month})"}
 FAR = {"en": "({km} km from {place})", "sw": "(km {km} kutoka {place})", "fr": "(à {km} km de {place})"}
 FOOT = {"en": "WFP prices.", "sw": "Bei za WFP.", "fr": "Prix du PAM."}
 TOP = {"en": "Latest WFP prices at {market}{far}:", "sw": "Bei za karibuni za WFP soko la {market}{far}:",
        "fr": "Derniers prix du PAM au marché de {market}{far} :"}
-STAPLES = ("maize", "beans", "rice", "sorghum", "millet", "cassava", "wheat", "flour", "yam", "gari", "plantain",
+STAPLES = ("maize", "beans", "rice", "sorghum", "millet", "cassava", "wheat", "flour", "yam", "gari", "plantain", "teff",
            "groundnut", "cowpea", "potato", "sugar", "oil")
 OLD = {"en": "The latest WFP price ACE holds for {country} is from {month}, too old to use. Ask traders or your "
              "agriculture office.",
@@ -111,16 +124,38 @@ GAP = {"en": "WFP publishes no market prices for {country}, so ACE cannot give p
              "ofisi ya kilimo.",
        "fr": "Le PAM ne publie pas de prix de marché pour {country}, donc ACE ne peut pas donner de prix. Demandez aux "
              "commerçants ou au service agricole."}
+THIN = {"en": "Recent WFP prices for {country} cover too few staple foods to be useful. Ask traders or your "
+              "agriculture office.",
+        "sw": "Bei za karibuni za WFP kwa {country} zinahusu vyakula vikuu vichache mno. Waulize wafanyabiashara au "
+              "ofisi ya kilimo.",
+        "fr": "Les prix récents du PAM pour {country} couvrent trop peu d'aliments de base pour être utiles. Demandez "
+              "aux commerçants ou au service agricole."}
+MIN_STAPLES = 2  # distinct staple foods with a recent price, below which a country's prices are a stated gap
 NO_FOOD = {"en": "ACE has no recent WFP price for {food} near {place}.",
            "sw": "ACE haina bei ya karibuni ya WFP ya {food} karibu na {place}.",
            "fr": "ACE n'a pas de prix récent du PAM pour {food} près de {place}."}
 
 
 def wanted_food(text: str) -> str | None:
+    for phrase in FOOD_PHRASES:
+        if contains_phrase(text, phrase):
+            return FOODS[phrase]
     for tok in tokens(text):
-        if tok in FOODS:
-            return FOODS[tok]
+        for form in word_forms(tok):
+            if form in FOODS:
+                return FOODS[form]
     return None
+
+
+def staple_count(records: list[dict], today: date) -> int:
+    """Distinct staple foods with a price recent enough to quote, across every market of a country."""
+    found = set()
+    for m in records:
+        for item in m["items"]:
+            if age_days(item["series"][-1][0], today) <= MAX_AGE_DAYS:
+                name = fold(item["commodity"])
+                found.update(word for word in STAPLES if word in name)
+    return len(found)
 
 
 def fmt_price(value: float) -> str:
@@ -134,7 +169,8 @@ def age_days(month: str, today: date) -> int:
 
 class PricesService:
     id = "market_prices"
-    title = {"en": "Market prices", "sw": "Bei za soko", "fr": "Prix du marché"}
+    title = {"en": "Market prices", "sw": "Bei za soko", "fr": "Prix du marché", "pt": "Preços no mercado",
+             "ar": "أسعار السوق", "am": "የገበያ ዋጋ", "om": "Gatii gabaa", "so": "Qiimaha suuqa"}
     countries = frozenset(SLUGS)
     connectors = ("wfp_prices",)
 
@@ -146,6 +182,8 @@ class PricesService:
             return False, "no price snapshot yet"
         if snap.data_date and age_days(snap.data_date, date.today()) > MAX_AGE_DAYS:
             return False, f"latest WFP prices are from {month_year(snap.data_date, 'en')}, too old to quote"
+        if staple_count(snap.records, date.today()) < MIN_STAPLES:
+            return False, f"recent WFP prices cover fewer than {MIN_STAPLES} staple foods"
         return True, f"{len(snap.records)} markets, latest {month_year(snap.data_date, 'en')}"
 
     def answer(self, q: Query, ctx: Context) -> Result:
@@ -156,11 +194,15 @@ class PricesService:
             return needs_place(self.id, q.country)
         snap = ctx.snapshots.get("prices", country)
         if snap is None:
-            return Refusal(self.id, "gap", all_langs(GAP, country=COUNTRIES.get(country).name if country else ""))
+            return Refusal(self.id, "gap", {lang: say(GAP, lang, country=country_said(country, lang) if country else "")
+                                            for lang in LANGS})
         today = q.now.date()
         if snap.data_date and age_days(snap.data_date, today) > MAX_AGE_DAYS:
             return Refusal(self.id, "stale", {lang: say(OLD, lang, country=country_said(country, lang),
                                                         month=month_year(snap.data_date, lang)) for lang in LANGS},
+                           [cite_snapshot(snap)])
+        if staple_count(snap.records, today) < MIN_STAPLES:
+            return Refusal(self.id, "gap", {lang: say(THIN, lang, country=country_said(country, lang)) for lang in LANGS},
                            [cite_snapshot(snap)])
         origin = (q.location.lat, q.location.lon) if q.location else q.place.point
         food = q.params.get("food") or wanted_food(q.text)
@@ -180,9 +222,9 @@ class PricesService:
                 fresh = [t for t in fresh if t[2]]
         place_name = q.place.name if q.place else ""
         if not fresh:
-            name = food or ""
-            return Refusal(self.id, "no_match", all_langs(NO_FOOD, food=name, place=place_name or country),
-                           [cite_snapshot(snap)])
+            where = place_name or country
+            return Refusal(self.id, "no_match", {lang: say(NO_FOOD, lang, food=food_name(food or "", lang).lower(),
+                                                           place=where) for lang in LANGS}, [cite_snapshot(snap)])
         km, market, items = min(fresh, key=lambda t: t[0])
         def staple_rank(item: dict) -> int:
             name = fold(item["commodity"])
@@ -214,3 +256,7 @@ class PricesService:
             self.id, text, [cite_snapshot(snap)], confidence="high", data_date=snap.data_date,
             data={"country": country, "market": {k: market[k] for k in ("market", "admin1", "lat", "lon")},
                   "distance_km": round(km, 1), "items": shown})
+
+
+i18n.localize("services.prices", globals(), ("LINE", "CHANGE", "ITEM", "FAR", "FOOT", "TOP", "OLD", "GAP", "THIN",
+                                             "NO_FOOD", "UNIT", "UNIT_MANY", "LOCAL_FOOD", "LOCAL_DETAIL"))

@@ -6,12 +6,13 @@ no pack publishes one (Togo today), it tells the person to call the local emerge
 """
 from __future__ import annotations
 
+from .. import i18n
 from ..countries import COUNTRIES
 from ..geo import haversine_km, in_bbox, in_polygons
 from ..text import fold
 from .base import LANGS, Answer, Context, Query, Refusal, Result, cite_snapshot, fit, needs_place, say
 
-HOSPITAL_WORDS = ("hospital", "hopital", "chu ", "chr ", "chd ", "chu", "chr", "referral")
+HOSPITAL_WORDS = ("hospital", "hopital", "chu ", "chr ", "chd ", "chu", "chr", "referral", "mustashfa")
 MAX_KM = 60.0
 
 NEAR = {"en": "Nearest public facilities:", "sw": "Vituo vya afya vya umma vilivyo karibu:",
@@ -24,6 +25,14 @@ EMERGENCY = {"en": "Emergency: {numbers}.", "sw": "Dharura: {numbers}.", "fr": "
 NO_NUMBER = {"en": "In an emergency, call your local emergency number.",
              "sw": "Ikiwa ni dharura, piga nambari ya dharura ya eneo lako.",
              "fr": "En cas d'urgence, appelez le numéro d'urgence local."}
+REGISTRY_CAVEAT = {"en": "From the Ministry of Health facility registry; call ahead if you can.",
+                   "sw": "Kutoka sajili ya vituo ya Wizara ya Afya; piga simu kwanza ukiweza.",
+                   "fr": "D'après le registre des établissements du ministère de la Santé ; appelez avant si possible.",
+                   "pt": "Do registo de unidades do Ministério da Saúde; ligue antes, se puder.",
+                   "ar": "من سجل المرافق في وزارة الصحة؛ اتصل قبل الذهاب إن أمكن.",
+                   "am": "ከጤና ሚኒስቴር የተቋማት መዝገብ፤ ከቻሉ አስቀድመው ይደውሉ።",
+                   "om": "Galmee dhaabbilee Ministeera Fayyaa irraa; yoo dandeesse dursii bilbili.",
+                   "so": "Waxaa laga soo qaatay diiwaanka xarumaha Wasaaradda Caafimaadka; hore u wac haddii aad awoodo."}
 NONE = {"en": "ACE found no public facility within {km} km in its 2019 list.",
         "sw": "ACE haikupata kituo cha umma ndani ya km {km} katika orodha yake ya 2019.",
         "fr": "ACE n'a trouvé aucun établissement public à moins de {km} km dans sa liste de 2019."}
@@ -49,9 +58,9 @@ def with_numbers(template: dict[str, str], numbers: list[str], **kw) -> dict[str
 
 
 # Larger hospitals first when ACE lists hospitals in an area: referral and teaching, then regional, then district.
-TIERS = (("national", "universit", "teaching", "referral", "chu"),
-         ("regional", "provincial", "central", "intermediate", "chr", "level 5"),
-         ("general", "county", "district", "prefectoral", "chd", "level 4"))
+TIERS = (("national", "universit", "teaching", "referral", "referencia", "chu", "specialized", "specialised"),
+         ("regional", "provincial", "central", "intermediate", "chr", "level 5", "zonal", "state"),
+         ("general", "geral", "county", "district", "distrital", "prefectoral", "chd", "level 4", "rural"))
 
 
 def tier(kind: str) -> int:
@@ -66,23 +75,37 @@ def is_hospital(kind: str) -> bool:
 
 def label(f: list, km: float | None, lang: str) -> str:
     dist = "" if km is None else f", {say(KM, lang, km=f'{km:.0f}' if km >= 2 else f'{km:.1f}')}"
-    return f"{f[0]} ({f[1].lower()}{dist})"
+    phone = f", {f[6]}" if len(f) > 6 and f[6] else ""
+    kind = f[1].lower() if f[1] and not f[1].isdigit() else ""
+    inner = ", ".join(p for p in (kind, dist.lstrip(", "), phone.lstrip(", ")) if p)
+    return f"{f[0]} ({inner})" if inner else f[0]
 
 
 class FacilityService:
     id = "nearest_facility"
-    title = {"en": "Nearest health facility", "sw": "Kituo cha afya kilicho karibu", "fr": "Centre de santé proche"}
+    title = {"en": "Nearest health facility", "sw": "Kituo cha afya kilicho karibu", "fr": "Centre de santé proche",
+             "pt": "Unidade de saúde próxima", "ar": "أقرب مرفق صحي", "am": "ቅርብ ጤና ተቋም",
+             "om": "Dhaabbata fayyaa dhiyoo", "so": "Xarunta caafimaadka ee ugu dhow"}
     countries = frozenset(COUNTRIES)
-    connectors = ("public_health_facilities",)
+    connectors = ("national_facility_registry", "public_health_facilities")
+
+    @staticmethod
+    def source(ctx: Context, country: str):
+        """A cleared national registry when there is one, else the 2019 list of public facilities."""
+        return ctx.snapshots.get("facilities_registry", country) or ctx.snapshots.get("facilities", country)
 
     def coverage(self, country: str, ctx: Context) -> tuple[bool, str]:
-        snap = ctx.snapshots.get("facilities", country)
-        return (True, f"{len(snap.records)} public facilities, 2019 list") if snap else (False, "no facility list")
+        snap = self.source(ctx, country)
+        if snap is None:
+            return False, "no facility list (the 2019 list covers sub-Saharan Africa only)"
+        if snap.dataset == "facilities_registry":
+            return True, f"{len(snap.records)} facilities, national registry"
+        return True, f"{len(snap.records)} public facilities, 2019 list"
 
     def answer(self, q: Query, ctx: Context) -> Result:
         country = (q.place.country if q.place else q.country) or ""
         numbers = emergency_numbers(ctx, country) if country else []
-        snap = ctx.snapshots.get("facilities", country) if country else None
+        snap = self.source(ctx, country) if country else None
         if q.location is None and q.place is None:
             return needs_place(self.id, q.country)
         if snap is None:
@@ -117,11 +140,16 @@ class FacilityService:
         for lang in LANGS:
             listing = "; ".join(label(f, km, lang) for f, km in items)
             place = q.place.name if q.place else ""
-            text[lang] = fit([f"{say(head, lang, place=place)} {listing}.", emergency_line(numbers, lang),
-                              say(CAVEAT, lang)], q.max_chars)
+            caveat = say(REGISTRY_CAVEAT if snap.dataset == "facilities_registry" else CAVEAT, lang)
+            text[lang] = fit([f"{say(head, lang, place=place)} {listing}.", emergency_line(numbers, lang), caveat],
+                             q.max_chars)
         return Answer(
             self.id, text, [cite_snapshot(snap)], confidence="medium", data_date=snap.data_date,
             data={"country": country, "facilities": [
                 {"name": f[0], "type": f[1], "ownership": f[2], "admin1": f[3], "lat": f[4], "lon": f[5],
+                 "phone": f[6] if len(f) > 6 else None,
                  "distance_km": None if km is None else round(km, 1)} for f, km in items],
                 "emergency_numbers": numbers})
+
+
+i18n.localize("services.facility", globals(), ("NEAR", "IN_AREA", "CAVEAT", "EMERGENCY", "NO_NUMBER", "NONE", "GAP", "KM"))

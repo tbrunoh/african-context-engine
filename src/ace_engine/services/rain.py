@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from datetime import date
 
+from .. import i18n
 from ..countries import COUNTRIES
 from .base import (
     LANGS,
@@ -52,7 +53,17 @@ MET_SERVICE = {"KE": "Kenya Meteorological Department", "TZ": "Tanzania Meteorol
                "ZA": "South African Weather Service", "BW": "Botswana Meteorological Services",
                "NA": "Namibia Meteorological Service", "ZW": "Zimbabwe Meteorological Services Department",
                "NG": "Nigerian Meteorological Agency", "GH": "Ghana Meteorological Agency", "SN": "ANACIM",
-               "CI": "SODEXAM", "TG": "Météo Togo"}
+               "CI": "SODEXAM", "TG": "Météo Togo", "CD": "METTELSAT",
+               "MW": "Department of Climate Change and Meteorological Services", "BI": "IGEBU",
+               "CM": "Direction de la Météorologie Nationale", "BJ": "Météo-Bénin",
+               "ZM": "Zambia Meteorological Department", "TD": "Agence Nationale de la Météorologie du Tchad",
+               "GN": "Agence Nationale de la Météorologie de Guinée", "BF": "ANAM Burkina Faso",
+               "SS": "South Sudan Meteorological Service", "ET": "Ethiopian Meteorological Institute",
+               "MZ": "INAM", "GW": "Instituto Nacional de Meteorologia da Guiné-Bissau", "AO": "INAMET",
+               "SO": "Somalia National Meteorological Agency", "SD": "Sudan Meteorological Authority",
+               "DZ": "Office National de la Météorologie", "EG": "Egyptian Meteorological Authority",
+               "LY": "Libyan National Meteorological Centre", "MA": "Direction Générale de la Météorologie",
+               "TN": "Institut National de la Météorologie"}
 
 
 def classify(p_wet: float) -> str:
@@ -81,7 +92,8 @@ def join_days(days: list[date], lang: str) -> str:
 
 class RainService:
     id = "rain_this_week"
-    title = {"en": "Rain this week", "sw": "Mvua wiki hii", "fr": "Pluie cette semaine"}
+    title = {"en": "Rain this week", "sw": "Mvua wiki hii", "fr": "Pluie cette semaine", "pt": "Chuva esta semana",
+             "ar": "المطر هذا الأسبوع", "am": "የዚህ ሳምንት ዝናብ", "om": "Rooba torban kanaa", "so": "Roobka toddobaadkan"}
     countries = frozenset(COUNTRIES)
     connectors = ("open_meteo", "boundaries")
 
@@ -125,3 +137,6 @@ class RainService:
                             "chance_of_heavy_rain": row[3], "outlook": classify(row[1])} for d, row in days],
                   "forecast_retrieved": snap.retrieved_at, "valid_until": snap.valid_until,
                   "model": snap.meta.get("model")})
+
+
+i18n.localize("services.rain", globals(), ("WORDS", "HEAD", "HEAVY_LINE", "FOOT", "SPAN", "AND", "STALE", "NEXT"))

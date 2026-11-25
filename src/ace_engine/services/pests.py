@@ -8,8 +8,9 @@ from __future__ import annotations
 
 import re
 
+from .. import i18n
 from ..countries import COUNTRIES
-from ..text import fold, tokens
+from ..text import fold, token_forms
 from .base import LANGS, Answer, Context, Query, Refusal, Result, all_langs, cite_fact, fit, say
 
 CROPS = {
@@ -39,6 +40,20 @@ PROBLEMS = {
         ("tomato_leaf_miner", "africa-crop-pests-diseases/tuta-signs", "africa-crop-pests-diseases/tuta-action", set()),
     ],
 }
+
+def _widen() -> None:
+    """Add every locale's crop and symptom words. Matching is on folded tokens, so the words are folded too."""
+    from ..text import tokens as _tokens
+    for crop in CROPS:
+        CROPS[crop] |= {t for w in i18n.phrases(f"services.pests.CROPS.{crop}", ()) for t in _tokens(w)}
+    for crop, options in PROBLEMS.items():
+        PROBLEMS[crop] = [(pid, signs, action, set(words) | {t for w in i18n.phrases(f"services.pests.PROBLEMS.{pid}", ())
+                                                           for t in _tokens(w)})
+                          for pid, signs, action, words in options]
+
+
+_widen()
+
 
 def signs_only(text: str) -> str:
     """The pack's short sign text starts with its own label (Armyworm signs:), which the lead-in already says."""
@@ -72,13 +87,15 @@ UNKNOWN = {"en": "ACE can check maize, cassava, banana and tomato so far. For ot
 
 
 def crop_in(text: str) -> str | None:
-    words = set(tokens(text))
+    words = token_forms(text)
     return next((crop for crop, names in CROPS.items() if words & names), None)
 
 
 class PestService:
     id = "pest_check"
-    title = {"en": "Crop problem check", "sw": "Kagua tatizo la zao", "fr": "Problème de culture"}
+    title = {"en": "Crop problem check", "sw": "Kagua tatizo la zao", "fr": "Problème de culture",
+             "pt": "Problema na cultura", "ar": "مشكلة في المحصول", "am": "የሰብል ችግር", "om": "Rakkoo midhaanii",
+             "so": "Dhibaatada dalagga"}
     countries = frozenset(COUNTRIES)
     connectors = ()
 
@@ -92,7 +109,7 @@ class PestService:
             return Refusal(self.id, "no_match" if asked_other else "needs_crop",
                            all_langs(UNKNOWN if asked_other else ASK))
         options = PROBLEMS[crop]
-        words = set(tokens(q.text))
+        words = token_forms(q.text)
         scored = sorted(options, key=lambda p: -len(words & p[3]))
         problem, signs_id, action_id, _ = scored[0]
         signs = ctx.store.get(signs_id) if ctx.store is not None else None
@@ -108,7 +125,8 @@ class PestService:
             if q.max_chars < 300:  # USSD and short SMS: the likely problem and the first step come first
                 pieces = [f"{say(MAYBE, lang, problem=NAMES[problem][lang])} {act}", refer]
             else:
-                lead = say(LIKELY, lang, problem=NAMES[problem][lang]).replace(" de le ", " du ")
+                lead = say(LIKELY, lang, problem=NAMES[problem][lang])
+                lead = lead.replace(" de le ", " du ") if lang == "fr" else lead
                 pieces = [lead, signs_only(signs.render(lang, short=True)[0]),
                           act, refer]
             text[lang] = fit(pieces, q.max_chars)
@@ -116,3 +134,6 @@ class PestService:
         return Answer(self.id, text, [cite_fact(signs), cite_fact(action)],
                       confidence="low" if ambiguous else "medium", next_step=all_langs(REFER),
                       data={"crop": crop, "problem": problem, "alternatives": [p[0] for p in scored[1:]]})
+
+
+i18n.localize("services.pests", globals(), ("LIKELY", "MAYBE", "REFER", "NAMES", "ASK", "UNKNOWN"))

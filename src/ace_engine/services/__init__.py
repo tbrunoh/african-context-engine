@@ -9,6 +9,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
+from .. import i18n
 from ..countries import COUNTRIES
 from ..models import GeoPoint
 from ..places import Gazetteer, Place
@@ -25,7 +26,8 @@ from .warnings import WarningsService
 SERVICES: dict[str, Service] = {s.id: s for s in (
     RainService(), WarningsService(), FacilityService(), PricesService(), PregnancyService(), PestService())}
 
-# Words that show what a person is deciding, in English, Swahili and French. Phrases match whole words.
+# Words that show what a person is deciding, in English, Swahili and French here and every added language through
+# its locale file. Phrases match whole words.
 CUES: dict[str, tuple[str, ...]] = {
     "pregnancy_companion": ("antenatal", "anc", "prenatal", "prénatal", "prenatale", "kliniki ya ujauzito",
                             "clinic visit", "next check", "visite prenatale", "consultation prenatale"),
@@ -44,6 +46,10 @@ CUES: dict[str, tuple[str, ...]] = {
 SEASONAL = ("long rains", "short rains", "rainy season", "rain season", "seasons", "season", "masika", "vuli",
             "msimu", "saison des pluies", "saison")
 PREGNANT = ("pregnant", "pregnancy", "mjamzito", "ujauzito", "mimba", "enceinte", "grossesse")
+CUES = {sid: i18n.phrases(f"services.CUES.{sid}", words) for sid, words in CUES.items()}
+SEASONAL = i18n.phrases("services.SEASONAL", SEASONAL)
+PREGNANT = i18n.phrases("services.PREGNANT", PREGNANT)
+HOW_MUCH = i18n.phrases("services.HOW_MUCH", ("how much", "bei gani", "combien"))
 PLACE_SERVICES = {"rain_this_week", "official_warnings", "nearest_facility", "market_prices"}
 
 
@@ -59,7 +65,7 @@ def detect(text: str) -> str | None:
             if sid == "rain_this_week" and any(contains_phrase(text, c) for c in SEASONAL):
                 continue  # a question about the rainy seasons, which the season packs answer
             return sid
-    if wanted_food(text) and any(contains_phrase(text, c) for c in ("how much", "bei gani", "combien")):
+    if wanted_food(text) and any(contains_phrase(text, c) for c in HOW_MUCH):
         return "market_prices"
     if crop_in(text) and any(contains_phrase(text, c) for c in CUES["pest_check"]):
         return "pest_check"

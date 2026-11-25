@@ -38,10 +38,14 @@ def test_every_covered_country_has_an_emergency_pack(packs_dir):
 
 
 def test_safety_critical_facts_always_have_a_number(packs_dir):
+    """A safety critical fact carries a number or a referral queue. The one exception is a country with no national
+    emergency number at all (Guinea, South Sudan): its fact must say so and send people to a facility instead."""
     for pack in load_packs(packs_dir):
+        no_numbers = not any(f.contacts for f in pack.facts)
         for fact in pack.facts:
-            if fact.safety_critical:
-                assert fact.contacts or fact.refer_queue, fact.id
+            if fact.safety_critical and not (fact.contacts or fact.refer_queue):
+                assert no_numbers and "no national emergency" in fact.claim.lower(), fact.id
+                assert any(w in fact.claim for w in ("health centre", "health facility", "hospital")), fact.id
 
 
 def test_short_forms_fit_one_sms(packs_dir):

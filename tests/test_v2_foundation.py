@@ -48,11 +48,15 @@ def test_odbl_snapshots_live_in_their_own_store():
         assert Snapshot.from_dict(json.loads(path.read_text(encoding="utf-8"))).odbl
 
 
-def test_places_and_facilities_cover_all_13_countries(store):
+# The 2019 facility list covers sub-Saharan Africa only; North Africa is a documented gap.
+NO_FACILITY_LIST = {"DZ", "EG", "LY", "MA", "TN"}
+
+
+def test_places_weather_and_facilities_cover_every_country(store):
     for code in COUNTRIES:
         assert store.get("places", code), f"no places for {code}"
-        assert store.get("facilities", code), f"no facilities for {code}"
         assert store.get("weather", code), f"no weather for {code}"
+        assert bool(store.get("facilities", code)) is (code not in NO_FACILITY_LIST), code
 
 
 def test_snapshot_round_trip_and_validity(tmp_path):

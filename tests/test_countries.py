@@ -1,10 +1,11 @@
-"""One engine, thirteen countries: the caller's number picks the numbers, packs and language."""
+"""One engine, 34 countries: the caller's number picks the numbers, packs and language."""
 from __future__ import annotations
 
 import pytest
 
 from ace_engine.channels.ussd import UssdApp
 from ace_engine.countries import COUNTRIES, country_for_msisdn, default_language
+from ace_engine.encoding import is_gsm7
 from ace_engine.engine import Engine, EngineConfig
 from ace_engine.models import Channel, ReplyKind
 
@@ -13,15 +14,24 @@ PHONES = {
     "KE": "+254712345678", "TZ": "+255712345678", "UG": "+256772345678", "RW": "+250788123456",
     "ZA": "+27821234567", "BW": "+26771234567", "NA": "+264811234567", "ZW": "+263771234567",
     "NG": "+2348031234567", "GH": "+233241234567", "SN": "+221771234567", "CI": "+2250701234567",
-    "TG": "+22890123456",
+    "TG": "+22890123456", "CD": "+243812345678", "MW": "+265991234567", "BI": "+25779123456",
+    "CM": "+237671234567", "BJ": "+2290197123456", "ZM": "+260971234567", "TD": "+23566123456",
+    "GN": "+224621234567", "BF": "+22670123456", "SS": "+211921234567", "ET": "+251911234567",
+    "MZ": "+258841234567", "GW": "+245955123456", "AO": "+244923123456", "SO": "+252615123456",
+    "SD": "+249912345678", "DZ": "+213551234567", "EG": "+201001234567", "LY": "+218912345678",
+    "MA": "+212612345678", "TN": "+21620123456",
 }
 
 # What a caller in each country must be told for a medical emergency, from the audited packs.
 MEDICAL = {
     "KE": ["999", "112"], "TZ": ["112"], "UG": ["999", "112"], "RW": ["112", "912"], "ZA": ["112", "10177"],
     "BW": ["997"], "NA": ["112"], "ZW": ["999", "112"], "NG": ["112"], "GH": ["112", "193"],
-    "SN": ["15", "1515"], "CI": ["185"],
+    "SN": ["15", "1515"], "CI": ["185"], "MW": ["998"], "BI": ["112"], "CM": ["112"], "BJ": ["118"],
+    "ZM": ["992"], "TD": ["112", "18"], "BF": ["18"], "ET": ["911"], "MZ": ["112"], "GW": ["1313"], "AO": ["112"],
+    "SO": ["446", "999"], "SD": ["999"], "DZ": ["1021"], "EG": ["123"], "LY": ["1415"], "MA": ["150"], "TN": ["190"],
 }
+# Countries the FCDO says have no national emergency medical number: ACE says so and sends people to a facility.
+NO_NATIONAL = ("CD", "GN", "SS", "TG")
 # Numbers for violence against a woman.
 GBV = {
     "KE": ["1195"], "ZA": ["0800 428 428", "10111"], "NA": ["106"], "GH": ["0800 111 222"], "RW": ["3512"],
@@ -53,6 +63,13 @@ def test_medical_emergency_gives_that_countrys_numbers(engine, cc):
     assert all(c.fact_id.startswith(f"{cc.lower()}-emergency-contacts/") for c in reply.citations), cc
 
 
+@pytest.mark.parametrize("cc", NO_NATIONAL)
+def test_no_national_medical_number_sends_people_to_a_facility(engine, cc):
+    reply = engine.ask("He collapsed and is not breathing", sender=PHONES[cc], channel=Channel.SMS, language="en")
+    assert reply.kind is ReplyKind.EMERGENCY
+    assert "health facility" in reply.text and "112" not in reply.text.replace("112 (police", ""), (cc, reply.text)
+
+
 def test_no_number_is_ever_borrowed_from_another_country(engine):
     reply = engine.ask("He collapsed and is not breathing", sender=PHONES["NG"], channel=Channel.SMS)
     assert "999" not in reply.text and "1199" not in reply.text
@@ -80,7 +97,8 @@ def test_child_protection_gives_that_countrys_helpline(engine, cc):
 def test_french_emergency_in_senegal(engine):
     reply = engine.ask("Je suis enceinte et je saigne beaucoup", sender=PHONES["SN"], channel=Channel.SMS)
     assert reply.language == "fr" and reply.escalation_queue == "maternal"
-    assert reply.text.startswith("Cela peut être une urgence de grossesse")
+    # SMS replies are folded to the GSM-7 alphabet (ê becomes e) so a French message keeps 160 characters a segment.
+    assert reply.text.startswith("Cela peut etre une urgence de grossesse") and is_gsm7(reply.text)
     assert "Appelez le" in reply.text and "15" in reply.text and "1515" in reply.text
 
 

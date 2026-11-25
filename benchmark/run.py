@@ -8,7 +8,7 @@ Measures, per language and per country:
   * wrong number rate: share of emergency replies that give a number from outside the caller's country
   * false alarm rate: share of ordinary messages that trigger the safety rail
   * service checks (V2): every covered service answers a sample question in every covered country,
-    with a citation, inside the USSD screen
+    with a citation, inside the USSD screen, and gives no phone number the country's packs do not publish
 """
 from __future__ import annotations
 
@@ -93,6 +93,16 @@ def ordinary(engine: Engine) -> dict:
     return {"false_alarm_rate": round(len(alarms) / total, 4), "false_alarms": alarms, "total": total}
 
 
+_CALL = re.compile(r"(?:Emergency|Dharura|Urgence|Call|Piga|Appelez le)\s*:?\s*((?:\d[\d ]*\d|\d)(?:,\s*\d[\d ]*\d)*)")
+
+
+def stray_numbers(engine: Engine, country: str, text: str) -> list[str]:
+    """Numbers a service tells the person to call that no pack publishes for their country."""
+    allowed = {ct.number.replace(" ", "") for f in engine._contact_facts(country) for ct in f.contacts}
+    given = {n.replace(" ", "") for m in _CALL.findall(text) for n in m.split(",")}
+    return sorted(n for n in given if n and n not in allowed)
+
+
 def services(engine: Engine) -> dict:
     hub = engine.services
     if hub is None:
@@ -116,6 +126,11 @@ def services(engine: Engine) -> dict:
                     problem = f"too long for USSD ({len(reply.text)} characters)"
                 elif reply.kind is not ReplyKind.ANSWER:
                     problem = f"no answer: {reply.text[:80]}"
+                else:  # the USSD screen may cut the number line, so check the full answer too
+                    full = engine.run_service(sid, Message(channel=Channel.API, sender=phone(country, 900 + n),
+                                                           text=text, language=lang), Budget(max_chars=1500, short=False))
+                    if stray := stray_numbers(engine, country, reply.text + " " + full.text):
+                        problem = f"number not published for {country}: {', '.join(stray)}"
                 if problem:
                     failures.append({"service": sid, "country": country, "language": lang, "problem": problem})
     gaps = {sid: [c for c, v in by.items() if not v["available"]] for sid, by in coverage.items()}

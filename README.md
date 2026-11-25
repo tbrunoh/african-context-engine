@@ -8,9 +8,9 @@
 
 **Checked, local, citable knowledge for Africa, on any phone.**
 
-ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on USSD, SMS, voice, WhatsApp and the web, in English, Swahili and French, across 13 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on USSD, SMS, voice, WhatsApp and the web, in eight languages across 34 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
 
-**Release 2.0 preview (2.0.0b2, 24 November 2026)** adds six decision services built on public data: rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check. Each one covers all 13 countries wherever open data exists, and names the gap wherever it does not. The services are a preview: they pass ACE's own tests and benchmark, but they have not yet passed the expert review and forecast skill gates set in the [build plan](docs/v2/build-plan.md).
+**Release 2.1 preview (2.1.0b1, 24 November 2026)** takes ACE from 13 to 34 countries and from three to eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Every new country gets all six decision services at once (rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check), and wherever open data does not reach, ACE names the gap in the person's language. Arabic and Amharic replies are budgeted for the smaller UCS-2 alphabet, so they still fit one USSD screen. The services and the five new languages are a preview: they pass ACE's own tests and benchmark, but no fluent speaker has reviewed the new translations yet, and the expert review and forecast skill gates in the [build plan](docs/v2/build-plan.md) are still open. The design is in [docs/v2/release-2.1.md](docs/v2/release-2.1.md).
 
 ```
 $ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms
@@ -30,6 +30,13 @@ Rain near Kano: mostly dry Wed to Tue. Chances from the ECMWF forecast of 24 Nov
 Sources:
   [preview] ECMWF IFS ensemble forecast (open data), via Open-Meteo
       https://open-meteo.com/
+
+$ ace ask "ባለቤቴ እርጉዝ ናት ብዙ ደም እየፈሰሳት ነው" --phone +251911234567
+ይህ የእርግዝና ድንገተኛ ሁኔታ ሊሆን ይችላል። አሁኑኑ ወደ ቅርብ ጤና ተቋም ይሂዱ። 911 ወይም 907 (ድንገተኛ) ይደውሉ።
+
+Sources:
+  [sourced] UK FCDO, Ethiopia travel advice, getting help
+      https://www.gov.uk/foreign-travel-advice/ethiopia/getting-help
 ```
 
 ## Why ACE exists
@@ -44,12 +51,13 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 
 | Capability | What it means for a person | Where |
 |:--|:--|:--|
-| **13 countries, one engine** | The caller's dialling code picks the country, so the numbers, topics and default language are always right for that person | `countries.py`, `engine.py` |
-| **Grounded answers** | Short, practical answers in English, Swahili or French, each traced to a published source | `engine.py`, `context/` |
-| **Safety rail** | Emergency language in English, Swahili or French gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
-| **Scam Shield** | Forward a suspicious mobile money message in English, Swahili or French and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
+| **34 countries, one engine** | The caller's dialling code picks the country, so the numbers, topics and default language are always right for that person | `countries.py`, `engine.py` |
+| **Eight languages** | English, Swahili and French in the code; Portuguese, Arabic, Amharic, Afaan Oromo and Somali in one file each, so a new language needs no code change | `i18n.py`, `locales/` |
+| **Grounded answers** | Short, practical answers in the person's language, each traced to a published source | `engine.py`, `context/` |
+| **Safety rail** | Emergency language in any of the eight languages gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
+| **Scam Shield** | Forward a suspicious mobile money message in any of the eight languages and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
 | **USSD app** | A full menu on any phone: browse topics, ask in your own words, check a message, switch language. Every screen fits 182 characters | `channels/ussd.py` |
-| **SMS** | GSM-7 aware replies within three segments, keyword commands, Africa's Talking sending | `channels/sms.py` |
+| **SMS** | Replies within three segments, folded into GSM-7 for Latin script and budgeted for UCS-2 in Arabic and Amharic, keyword commands, Africa's Talking sending | `channels/sms.py`, `encoding.py` |
 | **Voice IVR** | Keypad menu over the same knowledge, plus a hook for any speech recognition model | `channels/voice.py` |
 | **WhatsApp** | Cloud API webhook with signature checks, sources listed under every answer | `channels/whatsapp.py` |
 | **MCP server** | Any AI assistant can ask ACE for cited African context, scam checks and emergency numbers | `mcp_server.py` |
@@ -57,14 +65,14 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | **Community loop** | Text TIP, DOKEZO or ASTUCE with your advice; it waits for expert review and is never served until checked | `tips.py` |
 | **Playground** | A phone simulator in the browser for USSD and SMS, with the sources behind every reply | `ace serve` |
 
-### Coverage: 13 countries
+### Coverage: 34 countries
 
-77 facts across 20 packs. Every fact was checked against a published public source in November 2026, every emergency number expires after a year so it is checked again before it is served, and from 2.0 the number watcher rechecks each one weekly.
+98 facts across 41 packs, with 105 emergency and helpline numbers. Every fact was checked against a published public source in November 2026, every emergency number expires after a year so it is checked again before it is served, and the number watcher rechecks each one weekly. The first 13 countries joined in 1.1; the other 21 joined in 2.1.
 
-| Country | Calling code | Default language | Emergency and helpline numbers | Sources for the numbers |
-|:--|:-:|:-:|:--|:--|
+| Country | Calling code | Languages offered | Emergency and helpline numbers | Sources for the numbers |
+|:--|:-:|:--|:--|:--|
 | Kenya | +254 | English, Swahili | 999, 112, 1199, 1195, 116, 1190 | State Department for Gender, NASCOP |
-| Tanzania | +255 | Swahili | 112, 116 | UK FCDO, Government of Canada, Child Helpline International |
+| Tanzania | +255 | Swahili, English | 112, 116 | UK FCDO, Government of Canada, Child Helpline International |
 | Uganda | +256 | English, Swahili | 999, 112, 0800 199 195, Sauti 116 | Uganda Police via Nile Post, UNICEF Uganda, UK FCDO |
 | Rwanda | +250 | English, French | 112, 912, 3512, 116 | Government of Rwanda |
 | South Africa | +27 | English | 112, 10111, 10177, 0800 428 428, 116 | Department of Justice, UK FCDO |
@@ -76,46 +84,75 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | Senegal | +221 | French | 17, 15, 18, 1515, 116 | UK FCDO, Ministère de la Santé |
 | Côte d'Ivoire | +225 | French | 170, 110, 111, 185, 180, 1308, 116 | UK FCDO, Ministère de la Femme, de la Famille et de l'Enfant |
 | Togo | +228 | French | 117, 118, 1011 | UK FCDO, Government of Canada, Child Helpline International |
+| DR Congo | +243 | French, Swahili | 112, 118 (Kinshasa) | UK FCDO |
+| Malawi | +265 | English | 998, 990, 997, 999 | UK FCDO |
+| Burundi | +257 | French, Swahili | 112, 109 | UK FCDO |
+| Cameroon | +237 | French, English | 112, 117, 119 | UK FCDO |
+| Benin | +229 | French | 118, 117 | UK FCDO |
+| Zambia | +260 | English | 992, 991, 993 | UK FCDO |
+| Chad | +235 | French, Arabic | 112, 18, 117, 2020 | UK FCDO |
+| Guinea | +224 | French | None national: go to the nearest health facility | UK FCDO |
+| Burkina Faso | +226 | French | 18, 17 | UK FCDO |
+| South Sudan | +211 | English, Arabic | None national: go to the nearest health facility | UK FCDO |
+| Ethiopia | +251 | Amharic, Afaan Oromo, Somali, English | 911, 907 | UK FCDO |
+| Mozambique | +258 | Portuguese | 112, 198 | UK FCDO |
+| Guinea-Bissau | +245 | Portuguese, French | 1313, 117 | UK FCDO |
+| Angola | +244 | Portuguese | 112, 110, 118 | UK FCDO |
+| Somalia | +252 | Somali, Arabic, English | 446, 999, 888, 555 | UK FCDO |
+| Sudan | +249 | Arabic, English | 999 | UK FCDO |
+| Algeria | +213 | Arabic, French | 1021, 14, 17, 1548 | UK FCDO |
+| Egypt | +20 | Arabic, English | 123, 122, 180 | UK FCDO |
+| Libya | +218 | Arabic, English | 1415 | UK FCDO |
+| Morocco | +212 | Arabic, French | 150, 190, 177 | UK FCDO |
+| Tunisia | +216 | Arabic, French | 190, 198, 197, 193 | UK FCDO |
 
-Four packs apply in every covered country, with English, Swahili and French text:
+Four packs apply in every covered country, in all eight languages:
 
 | Pack | Facts | Sources |
 |:--|:-:|:--|
 | Danger signs in pregnancy and after birth | 5 | WHO. ACE adds the caller's own national numbers |
 | Antenatal care schedule | 2 | WHO 2016 recommendations |
-| Fall armyworm in maize | 8 | FAO guidance notes, ICIPE, CIFOR-ICRAF. Push-pull is offered only where ICIPE has disseminated it |
+| Fall armyworm in maize | 8 | FAO guidance notes, ICIPE, CIFOR-ICRAF. Offered in the 29 sub-Saharan countries and Egypt, where the pest is confirmed. Push-pull is offered only where ICIPE has disseminated it |
 | Crop pests and diseases | 8 | CIMMYT, CABI Plantwise, Bioversity International, IITA, World Vegetable Center |
 
-Three packs so far are for one country, Kenya: maize drying and aflatoxin (7 facts, KALRO, USAID AflaSTOP, CGIAR), mobile money safety (10 facts, Safaricom) and rainfall seasons (2 facts, Kenya Meteorological Department). Equivalent packs for the other 12 countries are the most valuable contribution a local expert can make.
+Three packs so far are for one country, Kenya: maize drying and aflatoxin (7 facts, KALRO, USAID AflaSTOP, CGIAR), mobile money safety (10 facts, Safaricom) and rainfall seasons (2 facts, Kenya Meteorological Department). Equivalent packs for the other 33 countries are the most valuable contribution a local expert can make.
 
-Where a public source does not publish a number, ACE does not invent one. Togo has no sourced national ambulance number, so a medical emergency there gets the instruction to call the local emergency number or go to the nearest health facility. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. Swahili and French renderings await review by fluent speakers.
+Where a public source does not publish a number, ACE does not invent one. Guinea and South Sudan have no national emergency number, and Togo and DR Congo no national ambulance number, so a medical emergency there gets the instruction to go to the nearest health facility. DR Congo's police and fire numbers serve Kinshasa, and the FCDO warns that Malawi's lines are unreliable and Sudan's services are disrupted; the packs say so. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. The Swahili and French renderings, and everything in the five new languages, await review by fluent speakers.
 
-## Release 2.0 preview: decision services on public data
+## Decision services on public data, in all 34 countries
 
 <img src="docs/v2/hero.svg" alt="ACE V2 in one picture: public data and open models go in; ACE fetches them into dated snapshots, runs the safety rail first and applies a published decision rule; people get a short, cited answer on any phone" width="100%">
 
 Each service answers one decision in one or two sentences, cites a dated snapshot or a sourced pack fact, and returns a refusal that names who to ask when it cannot answer safely. The safety rail still runs before every service, and services never touch the network: connectors fetch public data on a schedule and write dated, checksummed snapshots that services read.
 
-| Service | What a person hears | Built on | Coverage of the 13 countries |
+| Service | What a person hears | Built on | Coverage of the 34 countries |
 |:--|:--|:--|:--|
-| **Rain this week** | The chance of rain each day for their area, in plain words, with the forecast date | ECMWF IFS ensemble (51 runs), open data, via Open-Meteo | All 13 |
-| **Official warnings** | Any warning in force from the national alerting authority, in the authority's own words | CAP feeds listed in the WMO Register of Alerting Authorities | 11 publish a feed ACE reads. Rwanda and Namibia list none. `ace services` shows which feeds answered at the last refresh |
-| **Nearest health facility** | The nearest public facilities with type and distance, then the country's emergency number | Public health facility database for sub-Saharan Africa (Maina et al. 2019, KEMRI-Wellcome) | All 13 (public facilities, 2019 list, no phone numbers) |
-| **Market prices** | What a food cost in the nearest market, and the change on the month before | WFP Price Database, via HDX | 8 with current prices. Botswana has no WFP data; South Africa, Namibia, Zimbabwe and Ghana have none recent enough to quote |
-| **Pregnancy companion** | When the next antenatal check is due, the signs that mean go now, and the country's numbers | WHO 2016 antenatal care schedule; WHO danger signs | All 13 |
-| **Crop problem check** | The likely problem for maize, cassava, banana or tomato, the first step, and a referral before any spraying | FAO, CIMMYT, CABI Plantwise, Bioversity International, IITA, World Vegetable Center | All 13 |
+| **Rain this week** | The chance of rain each day for their area, in plain words, with the forecast date | ECMWF IFS ensemble (51 runs), open data, via Open-Meteo | All 34 |
+| **Official warnings** | Any warning in force from the national alerting authority, in the authority's own words | CAP feeds listed in the WMO Register of Alerting Authorities | 30 publish a feed ACE reads. Rwanda, Namibia, Angola and Morocco list none. `ace services` shows which feeds answered at the last refresh |
+| **Nearest health facility** | The nearest public facilities with type and distance, then the country's emergency number | Public health facility database for sub-Saharan Africa (Maina et al. 2019, KEMRI-Wellcome) | 29 sub-Saharan countries (84,060 public facilities, 2019 list, no phone numbers). Algeria, Egypt, Libya, Morocco and Tunisia have no open list yet |
+| **Market prices** | What a food cost in the nearest market, and the change on the month before | WFP Price Database, via HDX | 23 with current prices. Botswana, Morocco and Tunisia have no WFP data; South Africa, Namibia, Zimbabwe, Ghana, Mozambique, Angola and Somalia have none recent enough to quote; Zambia's cover too few staple foods |
+| **Pregnancy companion** | When the next antenatal check is due, the signs that mean go now, and the country's numbers | WHO 2016 antenatal care schedule; WHO danger signs | All 34 |
+| **Crop problem check** | The likely problem for maize, cassava, banana or tomato, the first step, and a referral before any spraying | FAO, CIMMYT, CABI Plantwise, Bioversity International, IITA, World Vegetable Center | All 34 |
 
-Places come from official and open boundaries for every country: 346 areas, so a person can name their county, state, region or district instead of sharing a GPS position. Run `ace services` for the live coverage table, with the reason for every gap.
+Places come from official and open boundaries for every country: 719 areas, so a person can name their county, state, region or district instead of sharing a GPS position. Run `ace services` for the live coverage table, with the reason for every gap.
 
 ```
 $ ace ask "nearest hospital in Gulu" --phone +256771000001
-Public hospitals in Gulu: Gulu Regional Referral Hospital (regional referral hospital); St. Mary'S Lacor
+Public hospitals in Gulu: Gulu Regional Referral Hospital (regional referral hospital); St. Mary's Lacor
 Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities; check it is open before you travel.
 ```
 
+**What 2.1 adds**
+
+- **21 countries**: DR Congo, Malawi, Burundi, Cameroon, Benin, Zambia, Chad, Guinea, Burkina Faso, South Sudan, Ethiopia, Mozambique, Guinea-Bissau, Angola, Somalia, Sudan, Algeria, Egypt, Libya, Morocco and Tunisia, each with an emergency pack and all six services.
+- **Five languages**: Portuguese, Arabic, Amharic, Afaan Oromo and Somali, in one locale file each, with Arabic normalisation, Ge'ez letter folding, script based language detection and the call verb where each language puts it. The guide is [docs/languages.md](docs/languages.md).
+- **The right alphabet for every reply**: Latin script folded into GSM-7 on SMS and USSD, and Arabic and Amharic composed for UCS-2 budgets (80 characters a USSD screen).
+- **Five data problems designed around**: warnings drawn around a whole country, broken warning polygons, 2,611 facilities in the wrong place, price lists too thin to quote, and national registries with no stated licence, held until cleared.
+- **A benchmark in eight languages**: recall 100% in every language from numbers in all 34 countries, and 1,464 of 1,464 service checks.
+
 **What else ships in 2.0**
 
-- **Connectors and snapshots.** Five connectors (`ace refresh`), a licence register (`snapshots/register.yaml`) and dated, checksummed snapshots. ODbL data lives in its own store. A deployment runs `ace refresh` on its own schedule: warnings hourly, weather twice a day, prices weekly. The repository refreshes its demo set daily.
+- **Connectors and snapshots.** Six connectors (`ace refresh`), one held until its licence is cleared, a licence register (`snapshots/register.yaml`) and dated, checksummed snapshots. ODbL data lives in its own store. A deployment runs `ace refresh` on its own schedule: warnings hourly, weather twice a day, prices weekly. The repository refreshes its demo set daily.
 - **The number watcher.** `ace watch` rechecks every served phone number against its source page every week and opens an issue for a person when one is not found. It never edits a pack on its own.
 - **A public benchmark.** `python -m benchmark.run` reports emergency recall per language, the wrong number rate, the false alarm rate and service checks for every covered country. CI fails on any regression. The red team set is small and written by maintainers, so field messages are the most useful contribution.
 - **Grounding for every assistant.** `POST /v1/services/<id>` on the web server, and seven new MCP tools: `rain_this_week`, `official_warnings`, `nearest_facility`, `market_prices`, `pregnancy_companion`, `pest_check` and `service_coverage`.
@@ -132,16 +169,17 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 350+ tests, under a minute
+pytest                                   # 440+ tests, about a minute
 ace demo                                 # one person, four channels, one memory
 ace services                             # the V2 services and their coverage in each country
 ace ask "bei ya mahindi Mwanza" --phone +255711000001
+ace ask "vai chover em Nampula esta semana" --phone +258841000001
 ace chat --channel ussd                  # a USSD session in your terminal
 ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```
 
-The preview wheel is attached to the [v2.0.0b2 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.1.0b1 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 
@@ -156,6 +194,7 @@ The preview wheel is attached to the [v2.0.0b2 release](https://github.com/tbrun
     | commands    HELP  LANG SW  TIP  SCAM  SOURCES  MORE  FORGET
     | scam        Scam Shield on forwarded money messages
     | services    V2: rain, warnings, facilities, prices, pregnancy, crops
+    | i18n        eight languages, GSM-7 or UCS-2 budgets per language
     | retrieve    filters (review, expiry, place, season) then BM25 ranking
     | compose     extractive by default, or a model with a grounding check
     +----------------------------------------+
@@ -177,18 +216,18 @@ Design choices that matter:
 
 ACE grows through two kinds of contributors, and both matter equally.
 
-- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators and meteorologists in any of the 13 countries or beyond. Add facts to a pack, review a Swahili or French translation, add red team messages people actually send, or start a pack for your country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
+- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators and meteorologists in any of the 34 countries or beyond. Add facts to a pack, review a translation in Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo or Somali, add red team messages people actually send, or start a pack for your country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
 - **Developers**: new connectors that close a gap in the coverage table, new channels, languages, retrieval and evaluation. See [docs/good-first-issues.md](docs/good-first-issues.md) for scoped starter tasks.
 
 Everything else is in [CONTRIBUTING.md](CONTRIBUTING.md). The plan is in [ROADMAP.md](ROADMAP.md).
 
 ## Safety and responsibility
 
-ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every Swahili and French rendering need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
+ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every translation, in all seven languages after English, need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
 ## Acknowledgments
 
-ACE uses guidance and data published by the World Health Organization, FAO, ECMWF, WFP, OCHA, the national meteorological services that publish CAP warnings, the KEMRI-Wellcome Trust Research Programme, CIMMYT, CABI, IITA, Bioversity International, the World Vegetable Center, ICIPE, KALRO, Safaricom, national governments and regulators in all 13 countries, Child Helpline International, geoBoundaries, Open-Meteo, UN agencies and others. Every fact names its source, and [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) credits each organisation, and `snapshots/register.yaml` records the licence of every dataset. A credit does not mean the organisation endorses ACE.
+ACE uses guidance and data published by the World Health Organization, FAO, ECMWF, WFP, OCHA, the national meteorological services that publish CAP warnings, the KEMRI-Wellcome Trust Research Programme, CIMMYT, CABI, IITA, Bioversity International, the World Vegetable Center, ICIPE, KALRO, Safaricom, the UK Foreign, Commonwealth and Development Office, national governments and regulators in all 34 countries, Child Helpline International, geoBoundaries, Open-Meteo, UN agencies and others. Every fact names its source, and [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) credits each organisation, and `snapshots/register.yaml` records the licence of every dataset. A credit does not mean the organisation endorses ACE.
 
 ## License
 

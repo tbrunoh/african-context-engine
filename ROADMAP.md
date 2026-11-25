@@ -20,21 +20,33 @@
 
 ## V2: decision services on public data
 
-The design is published in [docs/v2](docs/v2/README.md). Every service covers all 13 countries by default and names the gap wherever open data does not exist.
+The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
-### 2.0 preview (current release, 24 November 2026)
+### 2.1 preview (current release, 24 November 2026): 34 countries, eight languages
+
+- [x] 21 countries: DR Congo, Malawi, Burundi, Cameroon, Benin, Zambia, Chad, Guinea, Burkina Faso, South Sudan, Ethiopia, Mozambique, Guinea-Bissau, Angola, Somalia, Sudan, Algeria, Egypt, Libya, Morocco and Tunisia, each with an emergency pack and all six services
+- [x] Portuguese, Arabic, Amharic, Afaan Oromo and Somali, one locale file each, across the safety rail, commands, Scam Shield, services, USSD and voice prompts
+- [x] GSM-7 folding for Latin script and UCS-2 budgets for Arabic and Amharic
+- [x] Five data problems designed around: country wide warning outlines, broken polygons, misplaced facilities, thin price lists and unlicensed registries
+- [x] Malawi and Zambia facility registry connector, held until each ministry confirms reuse
+- [x] Red team and false alarm sets in all eight languages
+
+### 2.0 preview (24 November 2026)
 
 - [x] Connector framework, dated and checksummed snapshots, a licence register and credits in [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md)
 - [x] Weekly number watcher
 - [x] Public benchmark per country and language, tracked in CI
-- [x] Places for all 13 countries
+- [x] Places for the first 13 countries
 - [x] Rain this week, official warnings, nearest health facility, market prices, pregnancy companion and crop problem check, as a preview
 - [x] Grounding API routes and MCP tools for every service
 
 ### Phase 1, foundations: December 2026 to February 2027
 
 - [ ] Signed packs
-- [ ] Fluent speaker review of every Swahili and French rendering and every safety phrase
+- [ ] Fluent speaker review of every Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali rendering and every safety phrase
+- [ ] Written confirmation from the Malawi and Zambia ministries of health to reuse their facility registries
+- [ ] A facility list for Algeria, Egypt, Libya, Morocco and Tunisia from an open source with a clear licence
+- [ ] Mali and Niger, with the same data as their neighbours
 - [ ] Clinical review of the maternal and antenatal packs and agronomist review of the crop packs, raising them to expert reviewed
 - [ ] Forecast skill benchmark for rain this week against the season average, in every country
 - [ ] Persistent profile, tip and handoff stores

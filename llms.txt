@@ -1,19 +1,21 @@
 # ACE: the African Context Engine
 
-> ACE gives checked, local, citable knowledge for Africa on any phone, over USSD, SMS, voice, WhatsApp, the web and MCP. It covers 13 countries in English, Swahili and French. Release 2.0 preview (2.0.0b1) adds six decision services built on dated public data: rain this week, official warnings, nearest health facility, market prices, a pregnancy companion and a crop problem check, each covering all 13 countries wherever open data exists and naming the gap where it does not. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
+> ACE gives checked, local, citable knowledge for Africa on any phone, over USSD, SMS, voice, WhatsApp, the web and MCP. It covers 34 countries in eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Six decision services built on dated public data (rain this week, official warnings, nearest health facility, market prices, a pregnancy companion and a crop problem check) cover every country wherever open data exists and name the gap where it does not. Release 2.1 preview (2.1.0b1, 24 November 2026) added 21 countries and five languages, with replies budgeted for the GSM-7 or UCS-2 alphabet each language needs. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
 
 ## Start here
 
 - [Project page](https://tbrunoh.github.io/ace/): the problems ACE solves, how it works, coverage, V2 and answers to common questions
 - Essays by the creator: [AI for Africa has to work on the phone people already own](https://tbrunoh.github.io/writing/ai-for-africa-basic-phones/) and [Africa's farm data is open. The last mile to farmers is the work left to do](https://tbrunoh.github.io/writing/africa-farm-data-last-mile/)
-- [README](https://github.com/tbrunoh/african-context-engine/blob/main/README.md): what ACE does, coverage for all 13 countries and a quickstart
+- [README](https://github.com/tbrunoh/african-context-engine/blob/main/README.md): what ACE does, coverage for all 34 countries and a quickstart
 - [Architecture](https://github.com/tbrunoh/african-context-engine/blob/main/docs/architecture.md): the request flow, modules, retrieval, channel budgets, language models and the MCP server
 - [Context packs](https://github.com/tbrunoh/african-context-engine/blob/main/docs/context-packs.md): how sourced facts are written, reviewed and validated
 - [Safety and privacy](https://github.com/tbrunoh/african-context-engine/blob/main/docs/safety-and-privacy.md): what the code guarantees, what every deployment must do and how to report a safety problem
 
 ## V2: design published and preview released, 24 November 2026
 
-- [Services guide](https://github.com/tbrunoh/african-context-engine/blob/main/docs/services.md): the six services in the 2.0 preview, their decision rules, coverage and gaps, and how to call them over the API and MCP
+- [Release 2.1 design](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/release-2.1.md): the 21 new countries, the five new languages, the alphabet each reply travels in, the five data problems ACE designs around, decisions and gaps
+- [Languages](https://github.com/tbrunoh/african-context-engine/blob/main/docs/languages.md): the eight languages, how a person picks one, and how to add a ninth in one file
+- [Services guide](https://github.com/tbrunoh/african-context-engine/blob/main/docs/services.md): the six services, their decision rules, coverage and gaps in all 34 countries, and how to call them over the API and MCP
 - [Connectors](https://github.com/tbrunoh/african-context-engine/blob/main/docs/connectors/README.md): the public data sources, licences and refresh schedule behind the services
 - [V2 overview](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/README.md): twelve decision services built on public data, a voice line in African languages, signed knowledge and a shared grounding layer
 - [Product spec](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/product-spec.md): who V2 serves, the services, journeys, architecture, roadmap, measures and risks
@@ -25,7 +27,7 @@
 - [AGENTS.md](https://github.com/tbrunoh/african-context-engine/blob/main/AGENTS.md): rules every AI coding agent follows in this repository
 - [CONTRIBUTING.md](https://github.com/tbrunoh/african-context-engine/blob/main/CONTRIBUTING.md): how to add knowledge or code
 - [ACKNOWLEDGMENTS.md](https://github.com/tbrunoh/african-context-engine/blob/main/ACKNOWLEDGMENTS.md): every organisation whose published work ACE uses, and the credit each requires
-- [ROADMAP.md](https://github.com/tbrunoh/african-context-engine/blob/main/ROADMAP.md): the 2.0 preview and the four V2 phases
+- [ROADMAP.md](https://github.com/tbrunoh/african-context-engine/blob/main/ROADMAP.md): the 2.1 and 2.0 previews and the four V2 phases
 - [CHANGELOG.md](https://github.com/tbrunoh/african-context-engine/blob/main/CHANGELOG.md): what changed in each release
 
 ## Licences

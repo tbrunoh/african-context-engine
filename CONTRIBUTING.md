@@ -49,7 +49,7 @@ Implement `ChannelAdapter.parse_inbound` and `ChannelAdapter.render` in `channel
 
 ### Adding a language
 
-Add stopwords and marker words in `text.py`, system texts in `commands.py`, safety wording in `safety.py`, USSD and voice prompts in `channels/`, and translations to packs. Safety phrases must be reviewed by a clinician who speaks the language before they are merged.
+Since 2.1 a language is one file: copy a locale in `src/ace_engine/locales/`, translate every template, rewrite every phrase group in the words people use, and add the code to the countries that should offer it. Add pack translations with `reviewed: false` and red team messages to `benchmark/sets/`. The step by step guide is [docs/languages.md](docs/languages.md). Safety phrases must be reviewed by a clinician who speaks the language before `reviewed` is set to true.
 
 ## 3. Review
 

@@ -89,6 +89,55 @@ Every dataset below is fetched by a connector into a dated snapshot, and its lic
 | International Institute of Tropical Agriculture (IITA) | [Single diseased stem removal to control banana Xanthomonas wilt](https://www.iita.org/news-item/novel-and-effective-technique-to-control-banana-xanthomonas-wilt-is-suitable-for-rwandan-agroecology/) (2020) | `africa/crop-pests-diseases` |
 | World Vegetable Center, with TAHA and icipe | [Tuta absoluta flyer](https://worldveg.tind.io/record/66511/files/Tuta-revised-flyer.pdf) (2016) | `africa/crop-pests-diseases` |
 
+## Sources added in release 2.1 preview
+
+Release 2.1 adds 21 countries and five languages. Every dataset below is fetched by a connector into a dated snapshot and recorded in [`snapshots/register.yaml`](snapshots/register.yaml).
+
+### Emergency and helpline numbers for the 21 new countries
+
+Every number was checked on 24 November 2026 against the getting help page the UK Foreign, Commonwealth and Development Office publishes for the country, under the Open Government Licence. Each fact expires after a year, and the number watcher rechecks each page weekly.
+
+| Country | Source |
+| --- | --- |
+| DR Congo | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/democratic-republic-of-the-congo/getting-help) |
+| Malawi | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/malawi/getting-help) |
+| Burundi | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/burundi/getting-help) |
+| Cameroon | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/cameroon/getting-help) |
+| Benin | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/benin/getting-help) |
+| Zambia | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/zambia/getting-help) |
+| Chad | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/chad/getting-help) |
+| Guinea | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/guinea/getting-help) |
+| Burkina Faso | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/burkina-faso/getting-help) |
+| South Sudan | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/south-sudan/getting-help) |
+| Ethiopia | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/ethiopia/getting-help) |
+| Mozambique | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/mozambique/getting-help) |
+| Guinea-Bissau | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/guinea-bissau/getting-help) |
+| Angola | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/angola/getting-help) |
+| Somalia | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/somalia/getting-help) |
+| Sudan | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/sudan/getting-help) |
+| Algeria | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/algeria/getting-help) |
+| Egypt | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/egypt/getting-help) |
+| Libya | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/libya/getting-help) |
+| Morocco | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/morocco/getting-help) |
+| Tunisia | [UK FCDO, getting help](https://www.gov.uk/foreign-travel-advice/tunisia/getting-help) |
+
+### Data behind the services in the new countries
+
+| Organisation | What ACE uses | Licence and credit |
+| --- | --- | --- |
+| National meteorological services of 19 new countries: METTELSAT, Météo RD Congo; Department of Climate Change and Meteorological Services; Institut Géographique du Burundi (IGEBU); Direction de la Météorologie Nationale du Cameroun; Météo-Bénin; Zambia Meteorological Department; Agence Nationale de la Météorologie du Tchad; Agence Nationale de la Météorologie de Guinée; Agence Nationale de la Météorologie du Burkina Faso; South Sudan Meteorological Service; Ethiopian Meteorological Institute; Instituto Nacional de Meteorologia de Moçambique; Instituto Nacional de Meteorologia da Guiné-Bissau; Somalia National Meteorological Agency; Sudan Meteorological Authority; Office National de la Météorologie; Egyptian Meteorological Authority; Libyan National Meteorological Centre; Institut National de la Météorologie | Official CAP warnings listed in the WMO Register of Alerting Authorities, passed on in the authority's own words | Public warnings; each credited to its authority |
+| World Food Programme | Price datasets for 19 more countries, 31 in all | CC BY-IGO |
+| KEMRI-Wellcome Trust Research Programme | The 2019 public facility list for 16 more sub-Saharan countries | CC BY 4.0 |
+| UN OCHA and the national offices that endorse each layer | COD-AB boundaries on HDX for the 21 new countries, each linked in its places snapshot, with the national source named in each places snapshot: Référentiel Géographique Commun (DR Congo), National Statistics Office (Malawi), Bureau de Centralisation de Géomatique (Burundi), Institut National de Cartographie (Cameroon), SALB (Benin, Guinea-Bissau), DMMU (Zambia), INSEED (Chad), WFP (Guinea), Institut Géographique du Burkina, South Sudan IMWG and National Bureau of Statistics, Central Statistics Agency and regional bureaus (Ethiopia), INE (Mozambique), INE and GADM (Angola), OCHA Somalia, Sudan IMWG, UNHCR from GAUL (Algeria), CAPMAS (Egypt), UNITAR-UNOSAT and the Libyan Bureau of Statistics (Libya), Haut Commissariat au Plan (Morocco) and Institut National de la Statistique (Tunisia) | CC BY-IGO |
+| International Plant Protection Convention | Egypt's [first report of fall armyworm](https://ippc.int/en/countries/egypt/pestreports/2019/06/report-of-first-detection-of-spodoptera-frugiperda-fall-armyworm-faw-in-egypt) (2019), the basis for offering the fall armyworm pack there | Official pest report |
+
+### Sources held until their licence is cleared
+
+| Organisation | What ACE would use | Status |
+| --- | --- | --- |
+| Malawi Ministry of Health | The [Malawi Health Facility Registry](https://zipatala.health.gov.mw/): facilities, positions and contact numbers | No licence stated. The connector is built and held until the ministry confirms reuse in writing |
+| Zambia Ministry of Health | The [Zambia Health Facility Registry](https://zhfr.moh.gov.zm/): facilities, positions and phone numbers | No licence stated. The connector is built and held until the ministry confirms reuse in writing |
+
 ## Software, services and standards
 
 | Project or service | How ACE uses it | Licence or terms |

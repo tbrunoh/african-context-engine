@@ -1,5 +1,42 @@
 # Changelog
 
+## 2.1.0b1 (2026-11-24): 34 countries, eight languages
+
+ACE grows from 13 to 34 African countries and from three to eight languages. Every new country gets all six services at once, the safety rail works in every language, and wherever open data does not reach, ACE names the gap. The design record is [docs/v2/release-2.1.md](docs/v2/release-2.1.md). This is a preview: no fluent speaker has reviewed the five new languages yet.
+
+### Added
+- **21 countries**: DR Congo, Malawi, Burundi, Cameroon, Benin, Zambia, Chad, Guinea, Burkina Faso, South Sudan, Ethiopia, Mozambique, Guinea-Bissau, Angola, Somalia, Sudan, Algeria, Egypt, Libya, Morocco and Tunisia. Each has dialling codes and languages in `countries.py`, an emergency pack checked against the UK FCDO on 24 November 2026, places from OCHA COD-AB, the ECMWF forecast, and CAP warnings, WFP prices and the 2019 facility list wherever they exist.
+- **Five languages**: Portuguese, Arabic, Amharic, Afaan Oromo and Somali, each in one file in `src/ace_engine/locales/` with 101 templates, 46 phrase groups, stopwords and marker words, marked `reviewed: false`. `i18n.py` fills them into the code at start up and `i18n.missing()` checks that nothing is left untranslated. English, Swahili and French stay in the code.
+- **Reading the new languages**: Arabic normalisation and prefix stripping, Ge'ez letter folding, language detection by script and marker words, language commands in every language (LANG PT, العربية, አማርኛ), and food and crop matching that sees past an Amharic prefix or a Somali definite ending.
+- **The right alphabet for every reply**: `encoding.py` folds Latin script into GSM-7 on SMS and USSD, and scales budgets for Arabic and Amharic, which travel as UCS-2 (80 characters a USSD screen, 67 per SMS segment in a long message).
+- **The call verb where the language puts it**: Call 112 in English, 112 ይደውሉ in Amharic.
+- **The USSD language menu** offers up to four languages, the caller's country languages first, each in its own name.
+- **Pack translations** of the four Africa packs (danger signs, antenatal care, fall armyworm, crop pests) in all five new languages, marked `reviewed: false`, with keywords in each language. The danger signs pack now applies in all 34 countries, and the fall armyworm pack in the 29 sub-Saharan countries and Egypt, where the IPPC confirmed the pest in 2019.
+- **The national facility registry connector** for Malawi and Zambia, with phone numbers. It is complete and tested, and held: the licence register marks it `cleared: false` and `ace refresh` skips it until each ministry confirms reuse. The facility finder prefers a cleared registry and shows each facility's phone number.
+- **The benchmark in eight languages**: 12 red team and 7 ordinary messages for each new language, every red team message sent from all 34 countries, and service checks in every language. The number check reads number lines in every language, including Amharic, where the numbers come before the verb.
+- `docs/v2/release-2.1.md`, `docs/languages.md` and `docs/connectors/national_facility_registry.md`; 55 new tests.
+
+### Fixed: data problems a bigger map exposed
+- **Warnings drawn around the whole country.** When every polygon in an alert covers 80% or more of the country and the alert names areas, ACE matches by the names, so a district warning no longer reaches everyone. A country wide outline with no names is treated as national.
+- **Broken warning polygons.** Rings that are one point repeated, a line, or have no area are dropped.
+- **Facilities in the wrong place.** 2,611 facilities sit far from where they are, 2,217 at latitude 0, longitude 0. Any facility more than 25 km outside its country, or more than 25 km from the area its own record names, is left out and listed in its snapshot.
+- **Too few prices to quote.** A country needs recent prices for at least two staple foods; below that, ACE names the gap. Coverage reports it too.
+- **Contested areas and capital letters.** Areas a boundary layer labels contested are skipped, names in capitals are title cased, and each layer's alternative names become aliases.
+
+### Changed
+- Facility snapshots for all 29 sub-Saharan countries were rebuilt with the position check: 84,060 facilities.
+- An answer that names no food lists the nearest market's staples, so every country's diet counts; the benchmark asks that way.
+- A food the market does not sell is named in the person's language. French elides de before a vowel in every service.
+- Warning text from an authority drops dashes, which read badly as one SMS line.
+- SMS replies in Latin script are GSM-7, so a French maternal reply reads Cela peut etre on a phone that cannot show ê.
+- `pyproject.toml`: version 2.1.0b1, the 34 countries and eight languages in the description, and Portuguese and Arabic language classifiers.
+- README, AGENTS.md, CONTRIBUTING, the roadmap, the services guide, the connector pages, the V2 overview, spec and build plan, the safety and privacy guide and `llms.txt` now describe 34 countries and eight languages.
+
+### Verified
+- 443 tests pass, all offline. Ruff passes. All 41 packs validate.
+- Benchmark: emergency recall 100% in all eight languages from numbers in all 34 countries, wrong number rate 0, false alarm rate 0, 1,464 of 1,464 service checks.
+- The wheel installs in a clean environment with the locale files, and answers an Amharic emergency from an Ethiopian number.
+
 ## 2.0.0b2 (2026-11-24): audit fixes
 
 A full audit of the preview against live sources, every service in every country and language, and every link in the repository, the website and the profile.

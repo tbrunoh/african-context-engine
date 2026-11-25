@@ -1,0 +1,30 @@
+name: watch
+# The number watcher: every week, recheck every served phone number against its source page.
+# When a number is not found, it opens an issue for a person to review. It never edits a pack.
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - name: Recheck numbers
+        id: watch
+        run: |
+          set +e
+          ace watch --report watch-report.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+      - name: Open an issue when a number is not found
+        if: steps.watch.outputs.code == '2'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue create --title "Number watcher: numbers to review ($(date -u +%F))" --body-file watch-report.md

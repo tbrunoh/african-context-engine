@@ -1,0 +1,46 @@
+name: refresh
+# Runs the connectors and commits fresh snapshots, so the repository always ships a recent demo set.
+# A deployment runs ace refresh on its own schedule: warnings hourly, weather twice a day, prices weekly.
+on:
+  schedule:
+    - cron: "17 9 * * *"       # daily: weather and warnings
+    - cron: "41 10 * * 1"      # Mondays: market prices too
+  workflow_dispatch:
+    inputs:
+      sources:
+        description: "Connectors to run, space separated (default: open_meteo cap wfp_prices)"
+        required: false
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -e .
+      - name: Run connectors
+        env:
+          SOURCES: ${{ github.event.inputs.sources }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          if [ -n "$SOURCES" ]; then list="$SOURCES";
+          elif [ "$SCHEDULE" = "41 10 * * 1" ]; then list="open_meteo cap wfp_prices";
+          else list="open_meteo cap"; fi
+          args=""; for s in $list; do args="$args --source $s"; done
+          ace refresh $args --out snapshots | tee refresh.log
+      - name: Check snapshots
+        run: pip install pytest && pytest -q tests/test_v2_foundation.py
+      - name: Commit
+        run: |
+          git config user.name "ace-refresh[bot]"
+          git config user.email "ace-refresh@users.noreply.github.com"
+          git add snapshots
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Refresh snapshots [skip ci]" -m "$(grep -c '^wrote' refresh.log) written, $(grep -c '^FAILED' refresh.log) failed"
+          git push

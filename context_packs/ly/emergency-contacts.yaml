@@ -1,0 +1,79 @@
+# Libya emergency numbers, from the UK FCDO travel advice page for Libya, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: ly-emergency-contacts
+title: Libya emergency numbers
+description: National emergency numbers that ACE gives to callers in Libya when a message signals danger, and what to do where
+  no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: LY
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Libya, call 1415 for an ambulance, the fire service or the police.
+  short: 'Emergency in Libya: call 1415.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Emergency
+    number: '1415'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - violence
+    - gbv
+    - child_protection
+    - fire
+  translations:
+    ar:
+      claim: في ليبيا، اتصل بالرقم 1415 للإسعاف أو المطافئ أو الشرطة.
+      short: 'الطوارئ في ليبيا: اتصل بالرقم 1415.'
+  source: UK FCDO, Libya travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/libya/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

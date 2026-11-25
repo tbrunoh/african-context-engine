@@ -4,8 +4,8 @@ Open packs live here under CC BY 4.0, one folder per country, plus `africa/` for
 
 | Pack | Facts | Topic |
 |:--|:-:|:--|
-| [africa/maize-fall-armyworm.yaml](africa/maize-fall-armyworm.yaml) | 8 | Fall armyworm in maize, for all 13 countries (push-pull for KE, UG, TZ, RW) |
-| [africa/maternal-danger-signs.yaml](africa/maternal-danger-signs.yaml) | 5 | Danger signs in pregnancy and after birth, for all 13 countries (safety critical) |
+| [africa/maize-fall-armyworm.yaml](africa/maize-fall-armyworm.yaml) | 8 | Fall armyworm in maize, for the 29 sub-Saharan countries and Egypt (push-pull for KE, UG, TZ, RW) |
+| [africa/maternal-danger-signs.yaml](africa/maternal-danger-signs.yaml) | 5 | Danger signs in pregnancy and after birth, for all 34 countries (safety critical) |
 | [ke/maize-post-harvest.yaml](ke/maize-post-harvest.yaml) | 7 | Drying, storage and aflatoxin |
 | [ke/mobile-money-safety.yaml](ke/mobile-money-safety.yaml) | 10 | Spotting and reporting M-PESA fraud |
 | [ke/rainfall-seasons.yaml](ke/rainfall-seasons.yaml) | 2 | Long and short rains |
@@ -23,7 +23,7 @@ Open packs live here under CC BY 4.0, one folder per country, plus `africa/` for
 | [ci/emergency-contacts.yaml](ci/emergency-contacts.yaml) | 3 | Côte d'Ivoire emergency and helpline numbers used by the safety rail |
 | [tg/emergency-contacts.yaml](tg/emergency-contacts.yaml) | 2 | Togo emergency and helpline numbers used by the safety rail |
 
-Every fact is `sourced`: a maintainer compared it with the cited public source on the `checked_on` date. None is expert reviewed yet, and every Swahili and French rendering awaits review by a fluent speaker. Both are open invitations: see [docs/good-first-issues.md](../docs/good-first-issues.md).
+Every fact is `sourced`: a maintainer compared it with the cited public source on the `checked_on` date. None is expert reviewed yet, and every Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali rendering awaits review by a fluent speaker. Both are open invitations: see [docs/good-first-issues.md](../docs/good-first-issues.md).
 
 To add a pack, copy [_template.yaml](_template.yaml), follow [docs/context-packs.md](../docs/context-packs.md), run `ace packs validate`, and open a pull request with the context pack template.
 

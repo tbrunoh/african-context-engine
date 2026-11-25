@@ -1,6 +1,6 @@
-# The licence register: every source a connector may use, with the credit and terms it requires.
+# The licence register: every outside source ACE uses (connectors, the benchmark and optional providers), with the credit and terms it requires.
 # A snapshot whose source_id is not listed here fails the tests. ODbL snapshots live in snapshots/odbl/.
-# Checked on 24 November 2026; the 2.1 sources on 25 November 2026.
+# Checked on 24 November 2026; the 2.1 sources, WAXAL and Google Cloud speech on 25 November 2026.
 sources:
   - id: geoboundaries
     name: geoBoundaries gbOpen, first level administrative areas
@@ -52,3 +52,18 @@ sources:
     attribution: Health facilities from the national facility registry of the Ministry of Health.
     cleared: false
     terms: Both registries publish positions and phone numbers openly but state no licence. ACE holds its connector until each ministry confirms reuse in writing, and serves the 2019 list in the meantime.
+  - id: waxal
+    name: WAXAL, a multilingual African speech corpus (ASR and TTS)
+    publisher: Google Research, with Makerere University, the University of Ghana, Digital Umuganda, Media Trust, Loud and Clear and AIMS Senegal
+    url: https://huggingface.co/datasets/google/WaxalNLP
+    licence: CC BY 4.0 for the University of Ghana sets; CC BY-SA 4.0 for every other set
+    attribution: Speech text from WAXAL (Google Research and partners, arXiv 2602.02734), dataset card revision 5f4d8ca.
+    share_alike: true
+    terms: Used only by benchmark/waxal.py, which fetches the text at run time and commits counts, never sentences or audio. Partners keep ownership of their recordings. Any model or file derived from a CC BY-SA set must carry the same licence.
+  - id: google_cloud_speech
+    name: Google Cloud Speech-to-Text V2, Text-to-Speech and Cloud Translation
+    publisher: Google Cloud
+    url: https://cloud.google.com/speech-to-text
+    licence: Commercial service under the Google Cloud terms of the operator's own account
+    attribution: Speech recognition, voices and back translations by Google Cloud.
+    terms: Optional and off by default. The operator brings a Google Cloud project and credentials; ACE stores no key. Translation drafts help reviewers and are never served to people. Preview models carry no service level agreement.

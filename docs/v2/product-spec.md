@@ -97,7 +97,7 @@ Each service is a small module with the same contract: it takes a place, a langu
 
 | Service | What the person hears | Built on | Phase |
 | --- | --- | --- | --- |
-| 1. Emergency and helplines (V1) | The right national number for this caller, before anything else | 34 country packs with 105 verified numbers, rechecked weekly by the number watcher | Live, hardened in 1 |
+| 1. Emergency and helplines (V1) | The right national number for this caller, before anything else | 34 country packs with 110 verified numbers, rechecked weekly by the number watcher | Live, hardened in 1 |
 | 2. Rain this week | Rain is likely on Thursday and Friday; dry from Saturday | WeatherNext 2 and 3 ensembles; TomorrowNow GAP with TAHMO station data; national met service forecasts | 2 |
 | 3. Planting window | The rains are likely to start in your area within two weeks; plant after the first soaking rain | CHIRPS rainfall history; open AI weather models chosen by a decision oriented benchmark, as in India's monsoon onset programme | 3 |
 | 4. Flood warning | The river near you may flood in the next three days; move animals and food stores to higher ground | Google Flood Forecasting API, riverine, up to 7 days ahead; official CAP alerts | 2 |

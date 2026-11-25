@@ -1,21 +1,26 @@
-"""Google Cloud providers for hearing, speaking and translating: Speech-to-Text V2, Text-to-Speech and Translation.
+"""Google providers for hearing, speaking and translating: Cloud Speech-to-Text V2, Cloud Text-to-Speech, Cloud
+Translation, and Gemini TTS for languages Cloud Text-to-Speech has no voice for, such as Amharic and Somali.
 
 Optional. Install with `pip install "ace-engine[google]"` and give ACE a Google Cloud project with the APIs you
 need enabled. Credentials come from Application Default Credentials (a service account attached to the host, or
 GOOGLE_APPLICATION_CREDENTIALS pointing at a key file outside the repository). ACE never reads, stores or logs a
 key itself, and no key belongs in this repository. Usage is billed to the operator's project.
 
+Gemini TTS uses a Gemini API key from GEMINI_API_KEY, sent only in the request header.
+
 Each class takes a `post` callable so tests and other transports can stand in for the network.
 """
 from __future__ import annotations
 
 import base64
+import json
 import os
+import urllib.error
 import urllib.request
 from collections.abc import Callable
 from typing import Any
 
-from . import capability
+from . import capability, play_voice, say_voice
 
 Post = Callable[[str, dict[str, Any]], dict[str, Any]]
 SCOPE = "https://www.googleapis.com/auth/cloud-platform"
@@ -107,12 +112,65 @@ class GoogleTextToSpeech:
         return self._post
 
     def synthesize(self, text: str, language: str) -> bytes:
-        speak = capability(language, "speak")
+        speak = say_voice(language)
         if speak is None:
-            raise ValueError(f"No voice is recorded for {language!r}")
+            raise ValueError(f"No Cloud Text-to-Speech voice is recorded for {language!r}; try GeminiTextToSpeech")
         body = {"input": {"text": text}, "voice": {"languageCode": speak["locale"]},
                 "audioConfig": {"audioEncoding": self.encoding}}
         return base64.b64decode(self.post(self.URL, body)["audioContent"])
+
+
+def keyed_post(env: str = "GEMINI_API_KEY") -> Post:
+    """A POST function that sends the Gemini API key from the environment in the x-goog-api-key header."""
+    key = os.environ.get(env, "")
+    if not key:
+        raise RuntimeError(f"Set {env} to a Gemini API key; ACE never stores it")
+
+    def post(url: str, body: dict[str, Any]) -> dict[str, Any]:
+        request = urllib.request.Request(url, data=json.dumps(body).encode(), method="POST",
+                                         headers={"Content-Type": "application/json", "x-goog-api-key": key})
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                return json.load(response)
+        except urllib.error.HTTPError as exc:
+            raise RuntimeError(f"Gemini API returned {exc.code}") from None
+
+    return post
+
+
+class GeminiTextToSpeech:
+    """Gemini TTS through the Gemini API. The model reads the language from the text; unary calls return WAV.
+
+    support.yaml lists which ACE languages the model speaks (speak.play). Amharic and Somali are the reason this
+    exists: Cloud Text-to-Speech has no voice for them, Gemini 3.8 Flash TTS lists both.
+    """
+
+    URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+
+    def __init__(self, model: str = "gemini-3.8-flash-tts", voice: str = "Kore", post: Post | None = None) -> None:
+        self.model = model
+        self.voice = voice
+        self._post = post
+
+    @property
+    def post(self) -> Post:
+        if self._post is None:
+            self._post = keyed_post()
+        return self._post
+
+    def synthesize(self, text: str, language: str) -> bytes:
+        play = play_voice(language)
+        if play is None:
+            raise ValueError(f"No Gemini TTS voice is recorded for {language!r}")
+        body = {"contents": [{"role": "user", "parts": [{"text": text}]}],
+                "generationConfig": {"responseModalities": ["AUDIO"],
+                                     "speechConfig": {"voiceConfig": {"voice": self.voice}}}}
+        result = self.post(self.URL.format(model=play.get("model", self.model)), body)
+        try:
+            data = result["candidates"][0]["content"]["parts"][0]["inlineData"]["data"]
+        except (KeyError, IndexError, TypeError):
+            raise RuntimeError("Gemini TTS returned no audio") from None
+        return base64.b64decode(data)
 
 
 class GoogleTranslator:

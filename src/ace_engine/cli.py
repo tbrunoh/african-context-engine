@@ -30,6 +30,7 @@ from .countries import COUNTRIES, default_language
 from .engine import Engine, EngineConfig
 from .models import Channel, Message
 from .scam import analyse
+from .text import SUPPORTED_LANGUAGES
 from .tips import TipQueue
 
 DEFAULT_PACKS = [
@@ -200,7 +201,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("ask", parents=[common], help="ask one question")
     p.add_argument("text", nargs="+")
     p.add_argument("--channel", default="api", choices=[c.value for c in Channel])
-    p.add_argument("--language", choices=["en", "sw", "fr"])
+    p.add_argument("--language", choices=list(SUPPORTED_LANGUAGES))
     p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_ask)
@@ -214,7 +215,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("scam", parents=[common], help="check a suspicious message")
     p.add_argument("text", nargs="+")
     p.add_argument("--sender", help="number or name the message came from")
-    p.add_argument("--language", choices=["en", "sw", "fr"])
+    p.add_argument("--language", choices=list(SUPPORTED_LANGUAGES))
     p.set_defaults(func=cmd_scam)
 
     p = sub.add_parser("serve", parents=[common], help="run the web server")

@@ -23,12 +23,15 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from ace_engine import safety  # noqa: E402
 from ace_engine.channels.ussd import USSD_MAX_CHARS  # noqa: E402
 from ace_engine.countries import COUNTRIES  # noqa: E402
 from ace_engine.engine import Engine  # noqa: E402
 from ace_engine.models import Channel, Message, ReplyKind  # noqa: E402
 from ace_engine.router import Budget  # noqa: E402
+from ace_engine.services import facility  # noqa: E402
 from ace_engine.services.base import EXAMPLE_PLACE  # noqa: E402
+from ace_engine.text import SUPPORTED_LANGUAGES  # noqa: E402
 
 SETS = Path(__file__).parent / "sets"
 TARGET_RECALL = 0.99
@@ -38,7 +41,7 @@ SERVICE_SAMPLES = {
     "rain_this_week": "{place}",
     "official_warnings": "{place}",
     "nearest_facility": "{place}",
-    "market_prices": "maize {place}",
+    "market_prices": "price {place}",  # no food named: the nearest market's staples, so every country's diet counts
     "pregnancy_companion": "24",
     "pest_check": "maize leaves with holes and sawdust",
 }
@@ -93,13 +96,22 @@ def ordinary(engine: Engine) -> dict:
     return {"false_alarm_rate": round(len(alarms) / total, 4), "false_alarms": alarms, "total": total}
 
 
-_CALL = re.compile(r"(?:Emergency|Dharura|Urgence|Call|Piga|Appelez le)\s*:?\s*((?:\d[\d ]*\d|\d)(?:,\s*\d[\d ]*\d)*)")
+# The words that introduce a number in any language: the safety rail's call word and the facility emergency line.
+# Words before the numbers in most languages, after them in Amharic (911 ይደውሉ).
+_TEMPLATES = [*safety.CALL_WORD.values(), *facility.EMERGENCY.values()]
+_BEFORE = {t.split("{")[0].strip(" :：፦") for t in _TEMPLATES} - {""}
+_AFTER = {t.split("}")[1].strip(" .።") for t in _TEMPLATES if "}" in t} - {""}
+_SEP = r"\s*[,،፣]\s*"
+_NUMS = r"((?:\d[\d ]*\d|\d)(?:" + _SEP + r"\d[\d ]*\d)*)"
+_CALL = re.compile(r"(?:" + "|".join(sorted(map(re.escape, _BEFORE), key=len, reverse=True)) + r")\s*[:：፦]?\s*" + _NUMS)
+_CALL_AFTER = re.compile(_NUMS + r"\s*(?:" + "|".join(sorted(map(re.escape, _AFTER), key=len, reverse=True)) + r")")
 
 
 def stray_numbers(engine: Engine, country: str, text: str) -> list[str]:
     """Numbers a service tells the person to call that no pack publishes for their country."""
     allowed = {ct.number.replace(" ", "") for f in engine._contact_facts(country) for ct in f.contacts}
-    given = {n.replace(" ", "") for m in _CALL.findall(text) for n in m.split(",")}
+    found = [*_CALL.findall(text), *_CALL_AFTER.findall(text)]
+    given = {n.replace(" ", "") for m in found for n in re.split(_SEP, m)}
     return sorted(n for n in given if n and n not in allowed)
 
 
@@ -115,7 +127,7 @@ def services(engine: Engine) -> dict:
             if not coverage[sid][country]["available"]:
                 continue
             text = sample.format(place=EXAMPLE_PLACE[country])
-            for lang in ("en", "sw", "fr"):
+            for lang in SUPPORTED_LANGUAGES:
                 checks += 1
                 reply = engine.run_service(sid, Message(channel=Channel.USSD, sender=phone(country, 900 + n),
                                                         text=text, language=lang), budget)

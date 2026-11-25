@@ -198,4 +198,4 @@ phrases:
 
 words:
   stopwords: ["iyo", "ama", "laakiin", "waa", "waxa", "waxaa", "kan", "kaas", "tan", "taas", "aniga", "adiga", "isaga", "iyada", "annaga", "iyaga", "maxay", "sidee", "goorma", "xaggee", "maxaa", "yaa", "jira", "ma", "haa", "maya", "aad", "salaan", "fadlan", "mahadsanid", "ku", "ka", "la", "u", "oo", "in"]
-  markers: ["iyo", "waa", "waxaa", "sidee", "maxaan", "fadlan", "mahadsanid", "galley", "roob", "uur", "ilmo", "dhiig", "lacag"]
+  markers: ["iyo", "waa", "waxaa", "sidee", "maxaan", "fadlan", "mahadsanid", "galley", "roob", "uur", "ilmo", "dhiig", "lacag", "waxaan", "waan", "ayaa", "inaan", "ayuu", "ayay", "wuxuu", "waxay", "hadda", "haddii", "sida", "rabaa", "doonayo", "ka", "ku", "uu", "ay", "iga", "ninkeyga", "xaaskeyga", "wiilkeyga", "gabadhayda", "aabahay", "hooyadey", "shalay", "xalay", "maalin", "qandho", "isbitaal"]

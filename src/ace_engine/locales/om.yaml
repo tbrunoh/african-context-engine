@@ -198,4 +198,4 @@ phrases:
 
 words:
   stopwords: ["fi", "ykn", "garuu", "kun", "sun", "ani", "ati", "inni", "isheen", "nuyi", "isaan", "maal", "akkamitti", "yoom", "eessa", "maaliif", "eenyu", "jira", "hin", "ni", "eeyyee", "lakki", "baay'ee", "nagaa", "maaloo", "galatoomi", "irratti", "keessa", "waliin", "irraa", "kan", "akka", "jedhu", "dha", "ti"]
-  markers: ["fi", "kan", "akka", "maal", "akkamitti", "eessa", "jira", "hin", "maaloo", "galatoomi", "boqqolloo", "rooba", "ulfa", "daa'ima", "dhiiga"]
+  markers: ["fi", "kan", "akka", "maal", "akkamitti", "eessa", "jira", "hin", "maaloo", "galatoomi", "boqqolloo", "rooba", "ulfa", "daa'ima", "dhiiga", "koo", "keessan", "ishee", "isaa", "ani", "inni", "isheen", "amma", "kaleessa", "edana", "barbaada", "qaba", "qabdi", "jedhe", "irraa", "keessatti", "mucaa", "mucaan", "abbaan", "haadha", "dubartii", "hospitaala"]

@@ -1,0 +1,93 @@
+# Algeria emergency numbers, from the UK FCDO travel advice page for Algeria, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: dz-emergency-contacts
+title: Algeria emergency numbers
+description: National emergency numbers that ACE gives to callers in Algeria when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: DZ
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Algeria, call 1021 for an ambulance, 14 for the fire service and 17 or 1548 for the police.
+  short: 'Emergency in Algeria: ambulance 1021, fire 14, police 17 or 1548.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance
+    number: '1021'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Fire and civil protection
+    number: '14'
+    queues:
+    - fire
+    - emergency
+  - label: Police
+    number: '17'
+    queues: &id001
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Police
+    number: '1548'
+    queues: *id001
+  translations:
+    ar:
+      claim: في الجزائر، اتصل بالرقم 1021 للإسعاف، و14 للحماية المدنية، و17 أو 1548 للشرطة.
+      short: 'الطوارئ في الجزائر: الإسعاف 1021، الحماية المدنية 14، الشرطة 17 أو 1548.'
+    fr:
+      claim: En Algérie, appelez le 1021 pour une ambulance, le 14 pour les pompiers et le 17 ou le 1548 pour la police.
+      short: 'Urgence en Algérie : ambulance 1021, pompiers 14, police 17 ou 1548.'
+  source: UK FCDO, Algeria travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/algeria/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

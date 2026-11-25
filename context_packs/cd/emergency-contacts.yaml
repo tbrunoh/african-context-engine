@@ -1,0 +1,86 @@
+# DR Congo emergency numbers, from the UK FCDO travel advice page for DR Congo, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: cd-emergency-contacts
+title: DR Congo emergency numbers
+description: National emergency numbers that ACE gives to callers in DR Congo when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: CD
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: 'There is no national emergency medical number in DR Congo: for a medical emergency, go to the nearest hospital.
+    In Kinshasa, call 112 for the police and 118 for the fire service.'
+  short: 'DR Congo has no national ambulance number: go to the nearest hospital. Kinshasa: police 112, fire 118.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Police (Kinshasa)
+    number: '112'
+    queues:
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Sapeurs-pompiers (Kinshasa)
+    number: '118'
+    queues:
+    - fire
+  translations:
+    fr:
+      claim: 'Il n''existe pas de numéro national d''urgence médicale en RDC : en cas d''urgence médicale, allez à l''hôpital
+        le plus proche. À Kinshasa, appelez le 112 pour la police et le 118 pour les pompiers.'
+      short: 'Pas de numéro national d''ambulance en RDC : allez à l''hôpital le plus proche. Kinshasa : police 112, pompiers
+        118.'
+    sw:
+      claim: 'Hakuna nambari ya kitaifa ya dharura ya matibabu nchini Kongo DR: kwa dharura ya matibabu, nenda hospitali iliyo
+        karibu. Kinshasa, piga 112 kwa polisi na 118 kwa zimamoto.'
+      short: 'Kongo DR haina nambari ya kitaifa ya ambulensi: nenda hospitali iliyo karibu. Kinshasa: polisi 112, zimamoto
+        118.'
+  source: UK FCDO, DR Congo travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/democratic-republic-of-the-congo/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

@@ -144,6 +144,8 @@ Every number was checked on 24 November 2026 against the getting help page the U
 | --- | --- | --- | --- |
 | Google Research, with Makerere University, the University of Ghana, Digital Umuganda, Media Trust, Loud and Clear and AIMS Senegal | The [WAXAL speech corpus](https://huggingface.co/datasets/google/WaxalNLP) ([paper](https://arxiv.org/abs/2602.02734)): transcriptions and voice scripts in 29 sets, read at run time to measure ACE's language guess, safety rail and service router. No WAXAL text or audio is stored in ACE | CC BY 4.0 for the University of Ghana sets; CC BY-SA 4.0 for the others. Partners keep ownership | `benchmark/waxal.py`, [docs/speech.md](docs/speech.md) |
 | Google Cloud | Published language lists for [Speech-to-Text](https://docs.cloud.google.com/speech-to-text/docs/models/chirp-3), [Text-to-Speech](https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd) and [Cloud Translation](https://docs.cloud.google.com/translate/docs/languages), checked on 25 November 2026 | Public documentation | `src/ace_engine/speech/support.yaml` |
+| Google AI for Developers | Published language lists for [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation) and [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe), checked on 25 November 2026 | Public documentation | `src/ace_engine/speech/support.yaml` |
+| Africa's Talking | The [Say action](https://developers.africastalking.com/docs/voice/actions/say) reads text with Google Cloud Text-to-Speech voices, which sets which languages the keypad line can speak without synthesis | Public documentation | `src/ace_engine/channels/voice.py` |
 
 ## Software, services and standards
 
@@ -157,6 +159,7 @@ Every number was checked on 24 November 2026 against the getting help page the U
 | WhatsApp Cloud API (Meta) | WhatsApp channel, when a deployment configures it | Provider terms |
 | Any OpenAI compatible model server | Optional wording of answers, behind ACE's citation check | Provider or model terms |
 | [Google Cloud Speech-to-Text, Text-to-Speech and Cloud Translation](https://cloud.google.com/speech-to-text) | Optional `google` extra: spoken questions and replies on the voice line, and back translation reports for locale reviewers | Google Cloud terms of the operator's own account |
+| [Gemini API](https://ai.google.dev/gemini-api/docs/speech-generation) | Optional Gemini 3.8 Flash TTS voices for Amharic and Somali on the voice line, with a key from `GEMINI_API_KEY` | Gemini API terms of the operator's own account |
 | [google-auth](https://github.com/googleapis/google-auth-library-python) | Application Default Credentials for the optional `google` extra | Apache 2.0 |
 
 ## Planned for later V2 releases: sources and the credit each requires

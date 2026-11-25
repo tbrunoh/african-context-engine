@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.2.0b2 (2026-11-25): Amharic and Somali on the voice line
+
+The newest developer models change the voice picture. Gemini 3.8 Flash TTS lists Amharic and Somali, which no Google Cloud Text-to-Speech voice covers, so the voice line can now speak both. Afaan Oromo is still not listed by any Google speech model.
+
+### Added
+- **`GeminiTextToSpeech`**: Gemini 3.8 Flash TTS through the Gemini API, with the key read from `GEMINI_API_KEY` and sent only in the request header.
+- **`PlayedVoice`**: synthesises each prompt or fact once, caches it as a WAV file and gives the call a URL to play. Only fixed prompts and public pack text are synthesised, never a caller's words or number.
+- **`GET /voice/audio/<file>.wav`** on the server, which serves only cache file names. It is on when `ACE_VOICE_AUDIO_URL` and `GEMINI_API_KEY` are both set.
+- `support.yaml` now records two ways to speak each language: `say`, a Google Cloud Text-to-Speech voice that the Africa's Talking Say action reads with, and `play`, a Gemini TTS model. It also notes where Gemini 3.5 Transcribe can hear a language. 9 new tests.
+
+### Changed
+- The voice line uses the Say action wherever it can speak the language and plays Gemini audio only where it cannot. If synthesis fails during a call, it answers with Say in a language Say can read.
+- `ace voice languages` shows for each language whether the line uses Say, plays Gemini audio, or falls back to the keypad and SMS.
+
+### Verified
+- 476 tests pass, all offline. Ruff passes. All 41 packs validate. The quick benchmark shows no regression.
+
 ## 2.2.0b1 (2026-11-25): speech and translation
 
 ACE measures its language tools on real African speech, makes the voice line speak only languages a voice exists for, and gains optional speech and translation providers. The design and the gaps are in [docs/speech.md](docs/speech.md).

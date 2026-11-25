@@ -29,6 +29,7 @@ The design is published in [docs/v2](docs/v2/README.md). Every service covers ev
 - [x] Speech to text, text to speech and translation interfaces, with Google Cloud providers behind an optional extra
 - [x] The voice line speaks only languages with a known voice; operators declare more in `ACE_VOICE_LANGUAGES`
 - [x] Back translation reports for fluent reviewers, `ace locales backcheck`
+- [x] Amharic and Somali on the voice line through Gemini 3.8 Flash TTS, played from a cache (2.2.0b2)
 - [ ] A language guess trained on the WAXAL train splits that says it does not know instead of guessing a neighbour language
 - [ ] Back translation reports for all five new languages, once a Google Cloud project is connected
 
@@ -71,7 +72,7 @@ Gate: every served number checked against its source within 30 days.
 - [ ] Flood warnings, with opt in alerts for flood and official warnings
 - [ ] Nearest health facility with services and phone numbers from open national registries
 - [ ] Voice pilot with keyword spotting for danger words, starting in Swahili and French on Chirp 3
-- [ ] Amharic and Afaan Oromo speech recognition tuned on WAXAL, and recorded or trained voices for Amharic, Afaan Oromo and Somali
+- [ ] Amharic and Afaan Oromo speech recognition tuned on WAXAL, and a voice for Afaan Oromo, the one ACE language no Google model speaks
 - [ ] Pilot with one programme on a live shortcode, with a human helpdesk behind the safety rail
 
 Gate: 99% recall on voice emergencies.

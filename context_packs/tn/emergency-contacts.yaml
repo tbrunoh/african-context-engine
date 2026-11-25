@@ -1,0 +1,94 @@
+# Tunisia emergency numbers, from the UK FCDO travel advice page for Tunisia, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: tn-emergency-contacts
+title: Tunisia emergency numbers
+description: National emergency numbers that ACE gives to callers in Tunisia when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: TN
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Tunisia, call 190 for an ambulance, 198 for the fire service, 197 for the police in towns and 193 for the National
+    Guard in rural areas.
+  short: 'Emergency in Tunisia: ambulance 190, fire 198, police 197, National Guard 193.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance (SAMU)
+    number: '190'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Fire
+    number: '198'
+    queues:
+    - fire
+  - label: Police (towns)
+    number: '197'
+    queues: &id001
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: National Guard (rural areas)
+    number: '193'
+    queues: *id001
+  translations:
+    ar:
+      claim: في تونس، اتصل بالرقم 190 للإسعاف، و198 للحماية المدنية، و197 للشرطة في المدن، و193 للحرس الوطني في الأرياف.
+      short: 'الطوارئ في تونس: الإسعاف 190، الحماية المدنية 198، الشرطة 197، الحرس الوطني 193.'
+    fr:
+      claim: En Tunisie, appelez le 190 pour une ambulance, le 198 pour la protection civile, le 197 pour la police en ville
+        et le 193 pour la Garde nationale en zone rurale.
+      short: 'Urgence en Tunisie : ambulance 190, protection civile 198, police 197, Garde nationale 193.'
+  source: UK FCDO, Tunisia travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/tunisia/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

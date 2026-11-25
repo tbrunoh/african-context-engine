@@ -11,10 +11,13 @@
     ace services                                    V2 services and their coverage in each country
     ace refresh [--source cap] [--country KE]       run connectors and write dated snapshots
     ace watch                                       recheck every served phone number against its source
+    ace voice languages                             which languages the voice line can hear and speak, with sources
+    ace locales status                              every language, its size and whether a fluent speaker reviewed it
+    ace locales backcheck am [--out am.md]          machine back translation report for reviewers (Google Cloud)
 
 Packs load from ./context_packs, or from the folders given with --packs. V2 services read
 ./snapshots, or the folder given with --snapshots. Everything a person sees runs offline with no
-model and no API key; only ace refresh and ace watch touch the network.
+model and no API key; only ace refresh, ace watch and ace locales backcheck touch the network.
 """
 from __future__ import annotations
 
@@ -253,7 +256,57 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--json", action="store_true")
     p.add_argument("--report", help="also write the Markdown report to this file")
     p.set_defaults(func=cmd_watch)
+
+    p = sub.add_parser("voice", help="speech support for each language")
+    p.add_argument("action", choices=["languages"])
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_voice)
+
+    p = sub.add_parser("locales", help="language files: status, and back translation reports for reviewers")
+    p.add_argument("action", choices=["status", "backcheck"])
+    p.add_argument("language", nargs="?", help="language code, for backcheck")
+    p.add_argument("--out", help="write the backcheck report to this file")
+    p.set_defaults(func=cmd_locales)
     return parser
+
+
+def cmd_voice(args: argparse.Namespace) -> int:
+    from . import speech
+
+    rows = speech.table()
+    if args.json:
+        print(json.dumps({"checked_on": speech.support()["checked_on"], "languages": rows}, indent=2))
+        return 0
+    print(f"Checked {speech.support()['checked_on']}. Sources: ace_engine/speech/support.yaml\n")
+    print(f"{'lang':5} {'speech to text':26} {'text to speech':48} {'WAXAL'}")
+    for r in rows:
+        spoken = "spoken" if speech.speakable(r["language"]) else "not spoken"
+        print(f"{r['language']:5} {r['hear']:26} {r['speak'][:47]:48} {r['waxal']}  [{spoken}]")
+    return 0
+
+
+def cmd_locales(args: argparse.Namespace) -> int:
+    from . import i18n
+
+    if args.action == "status":
+        missing = i18n.missing()
+        for code, loc in i18n.locales().items():
+            size = len(loc.templates) + len(loc.phrases)
+            state = "reviewed" if loc.reviewed else "awaiting fluent review"
+            print(f"{code:3} {loc.name:12} {size:4} entries  {state:24} missing {len(missing.get(code, []))}")
+        return 0
+    if not args.language or args.language not in i18n.locales():
+        sys.exit(f"Give a language with a locale file: {', '.join(i18n.locales())}")
+    from .speech.google import GoogleTranslator
+    from .speech.review import backcheck, markdown
+
+    report = markdown(args.language, backcheck(args.language, GoogleTranslator()))
+    if args.out:
+        Path(args.out).write_text(report, encoding="utf-8")
+        print(f"wrote {args.out}")
+    else:
+        print(report)
+    return 0
 
 
 def cmd_services(args: argparse.Namespace) -> int:

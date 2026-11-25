@@ -167,6 +167,20 @@ def missing() -> dict[str, list[str]]:
     return {code: sorted(p for p, d in found.items() if code not in d) for code in locales()}
 
 
+def english_sources() -> dict[str, Any]:
+    """Every localised path and its English rendering, for review tools such as ``ace locales backcheck``."""
+    from importlib import import_module
+    found: dict[str, dict] = {}
+    for module in TEMPLATE_MODULES:
+        mod = import_module(f"ace_engine.{module}")
+        for name, value in vars(mod).items():
+            if isinstance(value, dict):
+                _paths(value, f"{module}.{name}", found)
+    from .scam import SIGNALS  # Scam Shield explanations live on Signal objects, not module level dicts
+    found.update({f"scam.SIGNAL.{s.id}": s.explain for s in SIGNALS.values()})
+    return {path: d["en"] for path, d in sorted(found.items())}
+
+
 def _paths(d: dict, path: str, out: dict[str, dict]) -> None:
     if "en" in d and all(isinstance(k, str) for k in d) and ("sw" in d or "fr" in d):
         out[path] = d

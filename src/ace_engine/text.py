@@ -45,11 +45,13 @@ for _code, _words in i18n.words("stopwords").items():
 _SW_MARKERS = frozenset(
     "na ya wa kwa ni za katika kwenye hii yangu yako yake nini gani vipi lini wapi je sana pia "
     "habari jambo tafadhali naomba nina kuna mtoto mama shamba mahindi pesa mgonjwa damu "
-    "msaada asante sijui nifanye nisaidie".split()
+    "msaada asante sijui nifanye nisaidie nataka ninataka mimi wewe yeye sisi leo jana kesho hapa "
+    "mke mume mwanangu mjamzito hospitali mvua bei soko homa anaumwa naumwa".split()
 )
 _FR_MARKERS = frozenset(
-    "le les des du est sont je mon ma mes vous nous que qui quoi comment pourquoi avec pour dans "
-    "pas bonjour merci enceinte enfant argent malade sang aide maïs mais champ chenille".split()
+    "le les des du est sont je mon mes vous nous que qui quoi comment pourquoi avec pour dans "
+    "pas bonjour merci enceinte enfant argent malade sang aide maïs mais champ chenille "
+    "fille fils femme mari bebe mere pere aidez hier maintenant veux suis besoin tres".split()
 )
 _EN_MARKERS = frozenset(
     "the and is are my what how when where why please help with have this that your "

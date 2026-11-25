@@ -181,6 +181,16 @@ def markdown(report: dict) -> str:
         claimed = ", ".join(f"{k} {v}" for k, v in r["guesses"].items() if k != NO_CLAIM) or "none"
         lines.append(f"| {r['language']} | {r['sentences']} | {r['claimed_as_ace_language']:.1%} | {claimed} | "
                      f"{r['false_alarms']} | {r['service_routes']} |")
+    rates = {}
+    for r in other:
+        if r["language"] == "Tigrinya":  # shares Ge'ez script with Amharic, so it is reported but not averaged
+            continue
+        n, claimed_n = rates.get(r["language"], (0, 0.0))
+        rates[r["language"]] = (n + r["sentences"], claimed_n + r["claimed_as_ace_language"] * r["sentences"])
+    if rates:
+        average = sum(c / n for n, c in rates.values()) / len(rates)
+        lines += ["", f"Average claimed rate: {average:.1%} across {len(rates)} languages, each language counted once. "
+                      "Tigrinya is listed but not averaged, because it shares Ge'ez script with Amharic."]
     total = sum(r["sentences"] for r in rows)
     alarms = sum(r["false_alarms"] for r in rows)
     lines += ["", f"Across {total:,} sentences in {len(rows)} sets, the safety rail fired {alarms} times "

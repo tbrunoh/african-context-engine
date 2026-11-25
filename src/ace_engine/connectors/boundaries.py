@@ -32,13 +32,35 @@ COD_AB = {"UG": "ADM2", "NA": "ADM1"}
 ALIASES: dict[str, dict[str, list[str]]] = {
     "NG": {"Abuja Federal Capital Territory": ["Abuja", "FCT"]},
     "GH": {"Greater Accra Region": ["Accra"], "Ashanti Region": ["Kumasi"]},
-    "ZA": {"Gauteng": ["Johannesburg", "Pretoria"], "Western Cape": ["Cape Town"], "KwaZulu-Natal": ["Durban"],
-           "Nothern Cape": ["Northern Cape"]},
+    "ZA": {"Gauteng": ["Johannesburg", "Pretoria"], "Western Cape": ["Cape Town"], "KwaZulu-Natal": ["Durban"]},
     "RW": {"City of Kigali": ["Kigali"]},
     "CI": {"District Autonome D'Abidjan": ["Abidjan"], "District Autonome De Yamoussoukro": ["Yamoussoukro"]},
-    "KE": {"Tharaka": ["Tharaka Nithi", "Tharaka-Nithi"], "Elgeyo-Marakwet": ["Elgeyo Marakwet", "Keiyo"]},
+    "KE": {"Tharaka": ["Tharaka Nithi"], "Elgeyo-Marakwet": ["Elgeyo Marakwet", "Keiyo"]},
     "TZ": {"Pwani": ["Coast"]},
 }
+
+# The official spelling where the source drops accents, misspells or title cases a name. People see this name;
+# the source's own spelling stays as an alias, so a message typed either way still matches.
+DISPLAY: dict[str, dict[str, str]] = {
+    "KE": {"Tharaka": "Tharaka-Nithi"},
+    "ZA": {"Nothern Cape": "Northern Cape"},
+    "SN": {"Thies": "Thiès", "Kedougou": "Kédougou", "Sedhiou": "Sédhiou", "Saint Louis": "Saint-Louis"},
+    "CI": {"Comoe": "Comoé", "Denguele": "Denguélé", "District Autonome D'Abidjan": "District Autonome d'Abidjan",
+           "District Autonome De Yamoussoukro": "District Autonome de Yamoussoukro", "Goh-Djiboua": "Gôh-Djiboua",
+           "Sassandra-Marahoue": "Sassandra-Marahoué", "Valle Du Bandama": "Vallée du Bandama"},
+    "TG": {"Centrale Region": "Centrale", "Kara Region": "Kara", "Maritime Region": "Maritime",
+           "Plateaux Region": "Plateaux", "Savanes Region": "Savanes"},
+}
+
+
+def named(country: str, source_name: str) -> tuple[str, list[str]]:
+    """The name people see and its aliases, from the name the source uses."""
+    display = DISPLAY.get(country, {}).get(source_name, source_name)
+    aliases = list(ALIASES.get(country, {}).get(source_name, []))
+    if display != source_name:
+        aliases.append(source_name)
+    return display, aliases
+
 
 TOLERANCE = 0.003  # degrees, about 330 m
 
@@ -86,7 +108,6 @@ class BoundariesConnector:
         base = f"{GB_MEDIA}/{iso3}/ADM1/geoBoundaries-{iso3}-ADM1"
         meta = json.loads(http_get(base + "-metaData.json"))
         geo = json.loads(http_get(base + "_simplified.geojson"))
-        aliases = ALIASES.get(country, {})
         seen: set[str] = set()
         records = []
         for f in geo["features"]:
@@ -95,8 +116,8 @@ class BoundariesConnector:
             if name in seen:
                 continue
             seen.add(name)
-            records.append(_record(p.get("shapeISO") or p["shapeID"], name, "ADM1", f["geometry"],
-                                   aliases.get(name, [])))
+            display, also = named(country, name)
+            records.append(_record(p.get("shapeISO") or p["shapeID"], display, "ADM1", f["geometry"], also))
         records.sort(key=lambda r: r["name"])
         return Snapshot(
             dataset="places", country=country, source_id="geoboundaries",
@@ -115,12 +136,12 @@ class BoundariesConnector:
         with zipfile.ZipFile(io.BytesIO(http_get(res["url"], timeout=300))) as z:
             member = next(m for m in z.namelist() if m.endswith(f"admin{n}.geojson"))
             geo = json.loads(z.read(member))
-        aliases = ALIASES.get(country, {})
         records = []
         for f in geo["features"]:
             p = f["properties"]
             name = p[f"adm{n}_name"]
-            records.append(_record(p[f"adm{n}_pcode"], name, level, f["geometry"], aliases.get(name, [])))
+            display, also = named(country, name)
+            records.append(_record(p[f"adm{n}_pcode"], display, level, f["geometry"], also))
         records.sort(key=lambda r: r["name"])
         return Snapshot(
             dataset="places", country=country, source_id="ocha_cod_ab",

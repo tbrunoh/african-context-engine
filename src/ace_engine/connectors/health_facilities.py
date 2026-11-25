@@ -60,6 +60,21 @@ def read_xlsx(data: bytes) -> list[list[str]]:
         return rows
 
 
+MOJIBAKE = re.compile("[\u251c\u252c\u2502\u2557\u255d\u255a\u2554\u2550\u2551\u0393\u2310]")
+
+
+def clean_text(value: str) -> str:
+    """Repair the source's two artefacts. Accented letters were saved as UTF-8 read in code page 437, so
+    Sant\u00e9 reads Sant\u251c\u2310; and title casing turned St. Mary's into St. Mary'S."""
+    value = " ".join(value.split())
+    if MOJIBAKE.search(value):
+        try:
+            value = value.encode("cp437").decode("utf-8")
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            pass
+    return re.sub(r"(?<=[a-z])'S\b", "'s", value)
+
+
 def facility_records(rows: list[list[str]], country_name: str) -> list[list]:
     """[name, type, ownership, admin1, lat, lon] for one country, from the database's rows."""
     head = [h.strip() for h in rows[0]]
@@ -73,8 +88,8 @@ def facility_records(rows: list[list[str]], country_name: str) -> list[list]:
             lat, lon = round(float(r[idx["Lat"]]), 4), round(float(r[idx["Long"]]), 4)
         except ValueError:
             continue
-        out.append([r[idx["Facility_n"]].strip(), r[idx["Facility_t"]].strip(), r[idx["Ownership"]].strip(),
-                    r[idx["Admin1"]].strip(), lat, lon])
+        out.append([clean_text(r[idx["Facility_n"]]), clean_text(r[idx["Facility_t"]]),
+                    clean_text(r[idx["Ownership"]]), clean_text(r[idx["Admin1"]]), lat, lon])
     out.sort(key=lambda f: (f[3], f[0]))
     return out
 

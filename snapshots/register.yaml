@@ -1,6 +1,6 @@
 # The licence register: every source a connector may use, with the credit and terms it requires.
 # A snapshot whose source_id is not listed here fails the tests. ODbL snapshots live in snapshots/odbl/.
-# Checked on 24 November 2026.
+# Checked on 24 November 2026; the 2.1 sources on 25 November 2026.
 sources:
   - id: geoboundaries
     name: geoBoundaries gbOpen, first level administrative areas
@@ -12,10 +12,11 @@ sources:
     terms: Tanzania and Togo come from OpenStreetMap under ODbL 1.0 and are kept in snapshots/odbl. Botswana and Ghana are CC BY-SA 2.0.
   - id: ocha_cod_ab
     name: OCHA Common Operational Datasets, administrative boundaries (COD-AB)
-    publisher: UN OCHA, with the Uganda Bureau of Statistics and the Namibia Statistics Agency
+    publisher: UN OCHA, with the national statistics or mapping office of each country, named in each places snapshot
     url: https://data.humdata.org/dataset/cod-ab-uga
     licence: CC BY-IGO
     attribution: Administrative boundaries from OCHA COD-AB on HDX, sourced from the national statistics office.
+    terms: Used for Uganda, Namibia and the 21 countries added in 2.1. Each layer is the newest the national office has endorsed, so recent reforms (the five provinces of Burundi in 2025, the 17 regions of Burkina Faso) are in; Algeria, Angola and Morocco still show their earlier divisions, and Morocco's layer leaves out the territory of Western Sahara. Angola's layer is published by OCHA under CC BY-IGO and, as its metadata states, draws on GADM and INE Angola.
   - id: open_meteo
     name: ECMWF IFS ensemble forecast, open data, served by the Open-Meteo Ensemble API
     publisher: ECMWF (forecast data); Open-Meteo (API)
@@ -42,4 +43,12 @@ sources:
     url: https://data.humdata.org/dataset/health-facilities-in-sub-saharan-africa
     licence: CC BY 4.0
     attribution: Public health facilities from Maina et al. (2019), Scientific Data 6, 134, via HDX.
-    terms: The list names public facilities only and dates from 2019. It has no phone numbers, hours or services.
+    terms: The list names public facilities only and dates from 2019. It has no phone numbers, hours or services. It covers sub-Saharan Africa, so North Africa is a stated gap. ACE leaves out the 2,611 facilities whose position is wrong (2,217 sit at latitude 0, longitude 0) and lists them in each snapshot.
+  - id: national_facility_registry
+    name: National health facility registries of Malawi and Zambia
+    publisher: Malawi Ministry of Health (Malawi Health Facility Registry); Zambia Ministry of Health (Zambia Health Facility Registry)
+    url: https://zipatala.health.gov.mw/
+    licence: Not stated; held until each ministry confirms reuse in writing
+    attribution: Health facilities from the national facility registry of the Ministry of Health.
+    cleared: false
+    terms: Both registries publish positions and phone numbers openly but state no licence. ACE holds its connector until each ministry confirms reuse in writing, and serves the 2019 list in the meantime.

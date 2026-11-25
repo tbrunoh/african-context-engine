@@ -14,6 +14,8 @@ ACE answers the questions that matter to people who will never install an app: a
 
 **Release 2.2 preview (2.2.0b2, 25 November 2026)** adds speech and translation. ACE now measures its language tools on real African speech text from Google's open WAXAL corpus, the voice line speaks only languages a voice exists for, and optional Google Cloud providers hear spoken questions, speak replies and give fluent reviewers back translations of every string. The design and the gaps are in [docs/speech.md](docs/speech.md).
 
+**On main, in the next release:** RCS with SMS fallback, switched on country by country. See [docs/channels.md](docs/channels.md#rcs-with-sms-fallback).
+
 **Release 2.1 preview (2.1.0b1, 24 November 2026)** took ACE from 13 to 34 countries and from three to eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Every new country gets all six decision services at once (rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check), and wherever open data does not reach, ACE names the gap in the person's language. Arabic and Amharic replies are budgeted for the smaller UCS-2 alphabet, so they still fit one USSD screen. The services and the five new languages are a preview: they pass ACE's own tests and benchmark, but no fluent speaker has reviewed the new translations yet, and the expert review and forecast skill gates in the [build plan](docs/v2/build-plan.md) are still open. The design is in [docs/v2/release-2.1.md](docs/v2/release-2.1.md).
 
 ```
@@ -45,7 +47,7 @@ Sources:
 
 ## Why ACE exists
 
-- Almost 1 billion Africans, 64% of the population, live within reach of mobile broadband but do not use mobile internet (GSMA, Digital Africa Index 2026). USSD, SMS and voice still reach them.
+- 64% of Africans live within reach of mobile broadband but do not use mobile internet (GSMA, Digital Africa Index 2026), almost a billion people by UN population estimates. USSD, SMS and voice still reach them.
 - AI advisory services are proving demand: Digital Green's FarmerChat reaches nearly 3 million farmers, Jacaranda Health's PROMPTS has reached more than 3.8 million mothers in Kenya, and MTN Rwanda's voice AI, Miss Baza, has reached more than 500,000 users on a basic phone call. Each one rebuilds its own knowledge base, channel stack and safety layer, and the knowledge stays locked inside.
 - African language models are arriving (InkubaLM, Sunflower), but a model does not know which hotline handles gender based violence in Kenya or what moisture level keeps maize free of aflatoxin. Models need grounding.
 
@@ -72,18 +74,18 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 
 ### Coverage: 34 countries
 
-98 facts across 41 packs, with 105 emergency and helpline numbers. Every fact was checked against a published public source in November 2026, every emergency number expires after a year so it is checked again before it is served, and the number watcher rechecks each one weekly. The first 13 countries joined in 1.1; the other 21 joined in 2.1.
+98 facts across 41 packs, with 110 emergency and helpline numbers. Every fact was checked against a published public source in November 2026, every emergency number expires after a year so it is checked again before it is served, and the number watcher rechecks each one weekly. The first 13 countries joined in 1.1; the other 21 joined in 2.1.
 
 | Country | Calling code | Languages offered | Emergency and helpline numbers | Sources for the numbers |
 |:--|:-:|:--|:--|:--|
-| Kenya | +254 | English, Swahili | 999, 112, 1199, 1195, 116, 1190 | State Department for Gender, NASCOP |
+| Kenya | +254 | English, Swahili | 999, 112, 911, 1199, 1195, 116, 1190 | State Department for Gender, NASCOP |
 | Tanzania | +255 | Swahili, English | 112, 116 | UK FCDO, Government of Canada, Child Helpline International |
 | Uganda | +256 | English, Swahili | 999, 112, 0800 199 195, Sauti 116 | Uganda Police via Nile Post, UNICEF Uganda, UK FCDO |
 | Rwanda | +250 | English, French | 112, 912, 3512, 116 | Government of Rwanda |
 | South Africa | +27 | English | 112, 10111, 10177, 0800 428 428, 116 | Department of Justice, UK FCDO |
 | Botswana | +267 | English | 999, 997, 998, 11611 | Botswana Police Service, Child Helpline International |
 | Namibia | +264 | English | 10111, 112, 106, 116 | UK FCDO, LifeLine/ChildLine Namibia |
-| Zimbabwe | +263 | English | 999, 112, 116 | UK FCDO, Government of Canada |
+| Zimbabwe | +263 | English | 999, 112, 114, 0800 3222 911, 116 | UK FCDO, Government of Canada |
 | Nigeria | +234 | English | 112, 0800 800 8001, 0808 0551 376 | UK FCDO, NCC, Child Helpline International |
 | Ghana | +233 | English | 112, 191, 18555, 192, 193, 0800 111 222 | Government of Canada, Ministry of Gender, Children and Social Protection |
 | Senegal | +221 | French | 17, 15, 18, 1515, 116 | UK FCDO, Ministère de la Santé |
@@ -133,7 +135,7 @@ Each service answers one decision in one or two sentences, cites a dated snapsho
 | Service | What a person hears | Built on | Coverage of the 34 countries |
 |:--|:--|:--|:--|
 | **Rain this week** | The chance of rain each day for their area, in plain words, with the forecast date | ECMWF IFS ensemble (51 runs), open data, via Open-Meteo | All 34 |
-| **Official warnings** | Any warning in force from the national alerting authority, in the authority's own words | CAP feeds listed in the WMO Register of Alerting Authorities | 30 publish a feed ACE reads. Rwanda, Namibia, Angola and Morocco list none. `ace services` shows which feeds answered at the last refresh |
+| **Official warnings** | Any warning in force from the national alerting authority, in the authority's own words | CAP feeds listed in the WMO Register of Alerting Authorities | 30 publish a feed; 29 answered at the last refresh, because South Africa's was down. Rwanda, Namibia, Angola and Morocco list none. `ace services` shows which feeds answered |
 | **Nearest health facility** | The nearest public facilities with type and distance, then the country's emergency number | Public health facility database for sub-Saharan Africa (Maina et al. 2019, KEMRI-Wellcome) | 29 sub-Saharan countries (84,060 public facilities, 2019 list, no phone numbers). Algeria, Egypt, Libya, Morocco and Tunisia have no open list yet |
 | **Market prices** | What a food cost in the nearest market, and the change on the month before | WFP Price Database, via HDX | 23 with current prices. Botswana, Morocco and Tunisia have no WFP data; South Africa, Namibia, Zimbabwe, Ghana, Mozambique, Angola and Somalia have none recent enough to quote; Zambia's cover too few staple foods |
 | **Pregnancy companion** | When the next antenatal check is due, the signs that mean go now, and the country's numbers | WHO 2016 antenatal care schedule; WHO danger signs | All 34 |
@@ -149,7 +151,7 @@ Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities;
 
 **What 2.2 adds**
 
-- **A language check on real speech**: `python -m benchmark.waxal` runs ACE's language guess, safety rail and service router on 12,333 sentences from 27 WAXAL sets. ACE recognises Amharic, Swahili and Afaan Oromo in 93% to 100% of sentences, and the safety rail fired on 3 ordinary sentences in 12,333. ACE still reads many languages it does not speak as Swahili, now in 45.8% of sentences, down from 54.0%. No WAXAL text is stored in the repository.
+- **A language check on real speech**: `python -m benchmark.waxal` runs ACE's language guess, safety rail and service router on 12,333 sentences from 27 WAXAL sets. ACE recognises Amharic, Swahili and Afaan Oromo in 93% to 100% of sentences, and the safety rail fired on 3 ordinary sentences in 12,333. Across 23 languages it does not speak, ACE still mistakes an average of 45.8% of sentences for one of its own languages, most often Swahili, down from 54.0%. No WAXAL text is stored in the repository.
 - **A voice line that only speaks what it can say**: the Africa's Talking Say action reads English, Swahili, French, Portuguese and Arabic with Google Cloud voices. With a Gemini API key, ACE synthesises Amharic and Somali with Gemini 3.8 Flash TTS and the call plays the audio. No Google model speaks Afaan Oromo yet, so Oromo callers hear the next language of their country with a voice and get the full reply on SMS and USSD in their own language.
 - **Speech and translation providers**: `SpeechToText`, `TextToSpeech` and `Translator` interfaces, with Google Cloud Speech-to-Text (Chirp 3), Text-to-Speech and Cloud Translation behind the optional `google` extra, and Gemini 3.8 Flash TTS for the languages Cloud Text-to-Speech cannot speak. `ace voice languages` shows what exists for each language, with sources.
 - **Help for reviewers**: `ace locales backcheck am` lines up every Amharic string with a machine back translation, the strings most likely to have drifted first. Translation never runs while answering a person.
@@ -181,7 +183,7 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 440+ tests, about a minute
+pytest                                   # 500+ tests, about two minutes
 ace demo                                 # one person, four channels, one memory
 ace services                             # the V2 services and their coverage in each country
 ace ask "bei ya mahindi Mwanza" --phone +255711000001
@@ -195,7 +197,7 @@ The preview wheel is attached to the [v2.2.0b2 release](https://github.com/tbrun
 
 ## How it works
 
-<img src="docs/architecture.svg" alt="ACE architecture: USSD, SMS and voice reach any phone by default, WhatsApp, RCS and apps serve smartphones, and the API and MCP serve other services, all through one pseudonymous identity and an engine that runs the safety rail, Scam Shield, checked context and cited answers over sourced context packs" width="100%">
+<img src="docs/architecture.svg" alt="ACE architecture: USSD, SMS and voice reach any phone by default, WhatsApp, RCS and apps serve smartphones, and the API and MCP serve other services, all through one pseudonymous identity and an engine that runs the safety rail, Scam Shield, the decision services, checked context and cited answers over sourced context packs" width="100%">
 
 ```
  USSD  SMS  Voice    WhatsApp  RCS  Apps   API  MCP     thin adapters, one Message type
@@ -223,7 +225,7 @@ Design choices that matter:
 - **Safety first, always.** The rail runs before commands, retrieval and generation. HELP followed by an emergency is still an emergency.
 - **Honest about gaps.** When no checked fact matches, ACE says so and lists what it can help with. When a country has no data for a service, ACE names the gap instead of guessing, and it never says there is no warning unless it checked the official feed in the last six hours.
 - **Fits the channel.** Each channel has a character budget, and answers are composed to fit rather than cut mid sentence.
-- **No vendor lock in.** Standard library plus PyYAML. Any OpenAI compatible model server works, including models you host yourself.
+- **No vendor lock-in.** Standard library plus PyYAML. Any OpenAI compatible model server works, including models you host yourself.
 
 ## Contributing
 

@@ -29,7 +29,7 @@ The design is published in [docs/v2](docs/v2/README.md). Every service covers ev
 ### 2.2 preview (current release, 25 November 2026): speech and translation
 
 - [x] Language check on 12,333 sentences of real speech text from WAXAL, with counts published and no text stored
-- [x] Colliding marker words removed, cutting how often ACE claims a language it does not speak from 54.0% to 45.8%
+- [x] Colliding marker words removed, cutting how often ACE claims a language it does not speak from an average of 54.0% to 45.8% across 23 languages
 - [x] Speech to text, text to speech and translation interfaces, with Google Cloud providers behind an optional extra
 - [x] The voice line speaks only languages with a known voice; operators declare more in `ACE_VOICE_LANGUAGES`
 - [x] Back translation reports for fluent reviewers, `ace locales backcheck`

@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: If you use ACE in research or a deployment, please cite it as below.
+title: "ACE, the African Context Engine"
+abstract: >-
+  Open source software that gives checked, local, citable knowledge for Africa on any phone
+  (USSD, SMS/RCS, voice, WhatsApp and MCP), with a safety rail, Scam Shield and six decision services
+  on dated public data, for 34 African countries in eight languages.
+type: software
+authors:
+  - given-names: Tom
+    family-names: Bruno
+repository-code: "https://github.com/tbrunoh/african-context-engine"
+url: "https://tbrunoh.github.io/ace/"
+license: Apache-2.0
+version: 2.2.0b2
+date-released: "2026-11-25"
+keywords:
+  - Africa
+  - USSD
+  - SMS
+  - RCS
+  - voice
+  - MCP
+  - context engineering
+  - emergency numbers
+  - public data

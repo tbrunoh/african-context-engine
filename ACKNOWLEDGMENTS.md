@@ -33,7 +33,7 @@ ACE stands on work published by governments, UN agencies, research institutes, c
 
 ### Emergency and helpline numbers
 
-Every number was checked against the sources below on 23 November 2026. Each country's pack is `context_packs/<country code>/emergency-contacts.yaml`.
+Every number was checked against the sources below on 23 November 2026, and Namibia's again on 24 November 2026 after its earlier source stopped showing them. Each country's pack is `context_packs/<country code>/emergency-contacts.yaml`.
 
 | Country | Sources |
 | --- | --- |
@@ -43,7 +43,7 @@ Every number was checked against the sources below on 23 November 2026. Each cou
 | Rwanda | [Government of Rwanda](https://www.gov.rw/emergency) |
 | South Africa | [UK FCDO](https://www.gov.uk/foreign-travel-advice/south-africa/getting-help); Western Cape Government; Government of Canada; [Department of Justice and Constitutional Development](https://www.justice.gov.za/vg/GBV.html); Child Helpline International |
 | Botswana | [Botswana Police Service](https://www.police.gov.bw/images/Magazines/Issue_12025.pdf); Child Helpline International |
-| Namibia | [Communications Regulatory Authority of Namibia](https://cran.na/contact); Child Helpline International |
+| Namibia | [UK FCDO](https://www.gov.uk/foreign-travel-advice/namibia/getting-help); [LifeLine/ChildLine Namibia](https://www.lifelinechildline.org.na/); Namibian Police Force |
 | Zimbabwe | [UK FCDO](https://www.gov.uk/foreign-travel-advice/zimbabwe/getting-help); Government of Canada; Government of Zimbabwe; Child Helpline International |
 | Nigeria | [UK FCDO](https://www.gov.uk/foreign-travel-advice/nigeria/getting-help); Nigerian Communications Commission; Government of Canada; Child Helpline International |
 | Ghana | [Government of Canada](https://travel.gc.ca/assistance/embassies-consulates/ghana); Australian Government Smartraveller; UK FCDO; [Ministry of Gender, Children and Social Protection](https://www.mogcsp.gov.gh/market-sensitization/); UNFPA Ghana |

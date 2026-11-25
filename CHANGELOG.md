@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.0.0b2 (2026-11-24): audit fixes
+
+A full audit of the preview against live sources, every service in every country and language, and every link in the repository, the website and the profile.
+
+### Fixed
+- **No guessed emergency numbers.** The facility finder fell back to 112 when a country's packs had no general emergency queue, so Botswana, Senegal, Côte d'Ivoire and Togo were told to call a number their packs do not publish. It now gives the medical emergency number from the packs (997, 15 and 1515, 185), and in Togo, where no source publishes one, tells the person to call the local emergency number. The benchmark now fails any service answer that gives a number the country's packs do not publish, checked on the full answer as well as the USSD screen.
+- **Namibia's sources.** The regulator page cited for 112, 10111, 106 and 116 no longer shows them. The numbers now cite the UK FCDO (10111 and 112 for police, ambulance and fire) and LifeLine/ChildLine Namibia (106 and 116), both checked on 24 November 2026. ACE now leads with 10111, the number the Namibian Police publish.
+- **Facility names.** 3,359 names read Sant├⌐ for Santé, nearly all in Côte d'Ivoire, Senegal and Togo, and 17 read St. Mary'S. The connector repairs both.
+- **Hospital order.** Hospitals in an area are listed by size, referral and teaching hospitals first, instead of alphabetically.
+- **Place names.** Thiès, Kédougou, Sédhiou, Saint-Louis, Comoé, Denguélé, Gôh-Djiboua, Sassandra-Marahoué, Vallée du Bandama, District Autonome d'Abidjan, Tharaka-Nithi and Northern Cape now carry their official spelling, and Togo's regions read Kara or Plateaux rather than Kara Region. The source spelling still matches.
+- **Swahili and French answers.** Market prices name the food and its details in the person's language (Mahindi, Maïs), French counts units correctly (les 90 kg), elides de before a vowel and names the country with its article. The crop check no longer repeats its own label, and French says du flétrissement. Warnings name the authority as a source in French and drop list dashes from authority text.
+
+### Verified
+- Every external link in the repository, the website and the profile loads; the only failures from the build machine were sites that refuse automated requests.
+- The WHO, FAO, ICIPE, USAID, KMD and ODPC sources behind the packs and the spec still load and still say what ACE cites.
+- 366 tests pass. Benchmark: emergency recall 100% in English, Swahili and French, wrong number rate 0, false alarm rate 0, 207 of 207 service checks.
+
 ## 2.0.0b1 (2026-11-24): V2 preview
 
 The first V2 release. Six decision services turn dated public data into short, cited answers, and each covers all 13 countries wherever open data exists. Where it does not, ACE names the gap. The services are a preview until they pass the launch gates in the build plan: expert panel review, forecast skill and fluent speaker review.
@@ -27,7 +44,7 @@ The first V2 release. Six decision services turn dated public data into short, c
 - Official warnings: Rwanda and Namibia list no CAP feed. South Africa's feed was down and Kenya's was reachable only through an out of date mirror at the release refresh; ACE says it cannot tell until a feed answers.
 - Market prices: Botswana has no WFP dataset, and South Africa, Ghana, Namibia and Zimbabwe have no price recent enough to quote.
 - Facilities: public facilities only, from a 2019 list, with no phone numbers.
-- The number watcher found source links to recheck: Botswana Police's magazine PDF and Senegal's health ministry page no longer load, and three Namibia numbers sit on a page that loads them with a script.
+- The number watcher could not reach Botswana Police's magazine PDF or Senegal's health ministry page from the release machine; both load in a browser and still show their numbers. Namibia's numbers sat on a page that no longer shows them, and 2.0.0b2 moves them to sources that do.
 - Swahili and French text in the new packs and services awaits review by fluent speakers.
 
 ## Design work (24 November 2026)

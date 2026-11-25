@@ -10,18 +10,19 @@
 
 ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on USSD, SMS, voice, WhatsApp and the web, in English, Swahili and French, across 13 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
 
-**Release 2.0 preview (2.0.0b1, 24 November 2026)** adds six decision services built on public data: rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check. Each one covers all 13 countries wherever open data exists, and names the gap wherever it does not. The services are a preview: they pass ACE's own tests and benchmark, but they have not yet passed the expert review and forecast skill gates set in the [build plan](docs/v2/build-plan.md).
+**Release 2.0 preview (2.0.0b2, 24 November 2026)** adds six decision services built on public data: rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check. Each one covers all 13 countries wherever open data exists, and names the gap wherever it does not. The services are a preview: they pass ACE's own tests and benchmark, but they have not yet passed the expert review and forecast skill gates set in the [build plan](docs/v2/build-plan.md).
 
 ```
 $ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms
-Ponda mayai na viwavi wachanga kwa mkono. Inafaa sana kwa mashamba madogo. Dalili: madoa kama madirisha
-kwenye majani, kilele kilicholiwa, kinyesi kibichi kama unga wa mbao.
+Huenda ni viwavijeshi vamizi. ACE haioni zao lako, hivyo kagua dalili hizi: madoa kama madirisha kwenye majani,
+kilele kilicholiwa, kinyesi kibichi kama unga wa mbao. Ponda mayai na viwavi wachanga kwa mkono. Inafaa sana kwa
+mashamba madogo. Muulize afisa ugani athibitishe kabla ya kunyunyizia dawa.
 
 Sources:
-  [sourced] FAO, Fall armyworm management guidance for smallholders
-      https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content
   [sourced] ICIPE, Fall armyworm identification, management and control; CIFOR-ICRAF, Fall Armyworm guide
       https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
+  [sourced] FAO, Fall armyworm management guidance for smallholders
+      https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content
 
 $ ace ask "will it rain in Kano this week" --phone +2348010000001
 Rain near Kano: mostly dry Wed to Tue. Chances from the ECMWF forecast of 24 Nov.
@@ -68,7 +69,7 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | Rwanda | +250 | English, French | 112, 912, 3512, 116 | Government of Rwanda |
 | South Africa | +27 | English | 112, 10111, 10177, 0800 428 428, 116 | Department of Justice, UK FCDO |
 | Botswana | +267 | English | 999, 997, 998, 11611 | Botswana Police Service, Child Helpline International |
-| Namibia | +264 | English | 112, 10111, 106, 116 | Communications Regulatory Authority of Namibia |
+| Namibia | +264 | English | 10111, 112, 106, 116 | UK FCDO, LifeLine/ChildLine Namibia |
 | Zimbabwe | +263 | English | 999, 112, 116 | UK FCDO, Government of Canada |
 | Nigeria | +234 | English | 112, 0800 800 8001, 0808 0551 376 | UK FCDO, NCC, Child Helpline International |
 | Ghana | +233 | English | 112, 191, 18555, 192, 193, 0800 111 222 | Government of Canada, Ministry of Gender, Children and Social Protection |
@@ -140,7 +141,7 @@ ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```
 
-The preview wheel is attached to the [v2.0.0b1 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.0.0b2 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 

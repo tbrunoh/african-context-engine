@@ -5,13 +5,13 @@ build-backend = "hatchling.build"
 [project]
 name = "ace-engine"
 version = "2.2.0b2"
-description = "The African Context Engine: checked, local, citable answers and decision services behind USSD, SMS, voice, WhatsApp and AI assistants, for 34 African countries in 8 languages"
+description = "The African Context Engine: checked, local, citable answers and decision services behind USSD, SMS, RCS, voice, WhatsApp and AI assistants, for 34 African countries in 8 languages"
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.10"
 authors = [{ name = "Tom Bruno" }]
-keywords = ["africa", "ussd", "sms", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "weather", "early warning", "market prices", "mpesa", "swahili", "french", "portuguese", "arabic", "amharic", "oromo", "somali", "speech", "text to speech", "waxal"]
+keywords = ["africa", "ussd", "sms", "rcs", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "weather", "early warning", "market prices", "mpesa", "swahili", "french", "portuguese", "arabic", "amharic", "oromo", "somali", "speech", "text to speech", "waxal"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",

@@ -1,6 +1,6 @@
 # ACE: the African Context Engine
 
-> ACE gives checked, local, citable knowledge for Africa on any phone, over USSD, SMS, voice, WhatsApp, the web and MCP. It covers 34 countries in eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Six decision services built on dated public data (rain this week, official warnings, nearest health facility, market prices, a pregnancy companion and a crop problem check) cover every country wherever open data exists and name the gap where it does not. Release 2.2 preview (2.2.0b1, 25 November 2026) added speech and translation: a language check on real speech text from Google's open WAXAL corpus, a voice line that speaks only languages with a known voice (Amharic and Somali through Gemini TTS), and optional Google Cloud speech and translation providers. Release 2.1 (24 November 2026) added 21 countries and five languages, with replies budgeted for the GSM-7 or UCS-2 alphabet each language needs. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
+> ACE gives checked, local, citable knowledge for Africa on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP). USSD, SMS and voice are the default, so every phone is reached; WhatsApp and RCS show the sources under every answer for people with a smartphone and data, and RCS adds suggested replies and falls back to SMS. It covers 34 countries in eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Six decision services built on dated public data (rain this week, official warnings, nearest health facility, market prices, a pregnancy companion and a crop problem check) cover every country wherever open data exists and name the gap where it does not. Release 2.2 preview (2.2.0b1, 25 November 2026) added speech and translation: a language check on real speech text from Google's open WAXAL corpus, a voice line that speaks only languages with a known voice (Amharic and Somali through Gemini TTS), and optional Google Cloud speech and translation providers. Release 2.1 (24 November 2026) added 21 countries and five languages, with replies budgeted for the GSM-7 or UCS-2 alphabet each language needs. The caller's dialling code picks the country, a safety rail answers emergencies with that country's verified numbers before anything else runs, and every answer cites its published source. It runs without an AI model. Code is Apache 2.0; open context packs are CC BY 4.0. Created by Tom Bruno.
 
 ## Start here
 
@@ -8,13 +8,13 @@
 - Essays by the creator: [AI for Africa has to work on the phone people already own](https://tbrunoh.github.io/writing/ai-for-africa-basic-phones/) and [Africa's farm data is open. The last mile to farmers is the work left to do](https://tbrunoh.github.io/writing/africa-farm-data-last-mile/)
 - [README](https://github.com/tbrunoh/african-context-engine/blob/main/README.md): what ACE does, coverage for all 34 countries and a quickstart
 - [Architecture](https://github.com/tbrunoh/african-context-engine/blob/main/docs/architecture.md): the request flow, modules, retrieval, channel budgets, language models and the MCP server
+- [Channels](https://github.com/tbrunoh/african-context-engine/blob/main/docs/channels.md): setup for USSD, SMS, RCS with SMS fallback, voice and WhatsApp
 - [Context packs](https://github.com/tbrunoh/african-context-engine/blob/main/docs/context-packs.md): how sourced facts are written, reviewed and validated
 - [Safety and privacy](https://github.com/tbrunoh/african-context-engine/blob/main/docs/safety-and-privacy.md): what the code guarantees, what every deployment must do and how to report a safety problem
 
 ## V2: design published and preview released, 24 and 25 November 2026
 
 - [Speech and translation](https://github.com/tbrunoh/african-context-engine/blob/main/docs/speech.md): what exists to hear, speak and translate each of the eight languages, how ACE uses WAXAL, the WAXAL language results, the voice line rule and the gaps
-
 - [Release 2.1 design](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/release-2.1.md): the 21 new countries, the five new languages, the alphabet each reply travels in, the five data problems ACE designs around, decisions and gaps
 - [Languages](https://github.com/tbrunoh/african-context-engine/blob/main/docs/languages.md): the eight languages, how a person picks one, and how to add a ninth in one file
 - [Services guide](https://github.com/tbrunoh/african-context-engine/blob/main/docs/services.md): the six services, their decision rules, coverage and gaps in all 34 countries, and how to call them over the API and MCP
@@ -29,7 +29,7 @@
 - [AGENTS.md](https://github.com/tbrunoh/african-context-engine/blob/main/AGENTS.md): rules every AI coding agent follows in this repository
 - [CONTRIBUTING.md](https://github.com/tbrunoh/african-context-engine/blob/main/CONTRIBUTING.md): how to add knowledge or code
 - [ACKNOWLEDGMENTS.md](https://github.com/tbrunoh/african-context-engine/blob/main/ACKNOWLEDGMENTS.md): every organisation whose published work ACE uses, and the credit each requires
-- [ROADMAP.md](https://github.com/tbrunoh/african-context-engine/blob/main/ROADMAP.md): the 2.2, 2.1 and 2.0 previews and the four V2 phases
+- [ROADMAP.md](https://github.com/tbrunoh/african-context-engine/blob/main/ROADMAP.md): the next release (RCS), the 2.2, 2.1 and 2.0 previews and the four V2 phases
 - [CHANGELOG.md](https://github.com/tbrunoh/african-context-engine/blob/main/CHANGELOG.md): what changed in each release
 
 ## Licences

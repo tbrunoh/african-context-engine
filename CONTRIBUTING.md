@@ -40,6 +40,7 @@ Principles that reviewers will hold you to:
 - **Safety first.** Nothing may run before the safety rail or weaken it. Changes to `safety.py` need tests for both new catches and things that must not trigger.
 - **Grounded or silent.** No code path may send a person text that is neither a checked fact nor a fixed system message.
 - **Fits the phone.** Respect channel budgets: 182 characters per USSD screen, three SMS segments, short spoken turns.
+- **Reach by default.** Every answer, service and safety feature works on USSD, SMS and voice. WhatsApp, RCS and apps built on the API are optional layers, and RCS always falls back to SMS.
 - **Privacy.** Never log or store phone numbers in clear. Use the profile key.
 - **Few dependencies.** The core runs on the standard library plus PyYAML. Put anything heavier behind an optional extra.
 

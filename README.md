@@ -8,7 +8,9 @@
 
 **Checked, local, citable knowledge for Africa, on any phone.**
 
-ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on USSD, SMS, voice, WhatsApp and the web, in eight languages across 34 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), in eight languages across 34 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+
+**Reach by default, richer by choice.** USSD, SMS and voice are the default, because they reach every phone with no app and no data. People with a smartphone and data can choose WhatsApp, or RCS where their carrier supports it, to see the sources under every answer, with suggested replies on RCS; RCS falls back to SMS, so a reply never depends on RCS. Other services and AI assistants connect through the API and MCP.
 
 **Release 2.2 preview (2.2.0b2, 25 November 2026)** adds speech and translation. ACE now measures its language tools on real African speech text from Google's open WAXAL corpus, the voice line speaks only languages a voice exists for, and optional Google Cloud providers hear spoken questions, speak replies and give fluent reviewers back translations of every string. The design and the gaps are in [docs/speech.md](docs/speech.md).
 
@@ -43,7 +45,7 @@ Sources:
 
 ## Why ACE exists
 
-- Almost 1 billion Africans, 63% of the population, live inside mobile broadband coverage but do not use mobile internet (GSMA, Mobile Economy Africa 2026). USSD, SMS and voice still reach them.
+- Almost 1 billion Africans, 64% of the population, live within reach of mobile broadband but do not use mobile internet (GSMA, Digital Africa Index 2026). USSD, SMS and voice still reach them.
 - AI advisory services are proving demand: Digital Green's FarmerChat reaches nearly 3 million farmers, Jacaranda Health's PROMPTS has reached more than 3.8 million mothers in Kenya, and MTN Rwanda's voice AI, Miss Baza, has reached more than 500,000 users on a basic phone call. Each one rebuilds its own knowledge base, channel stack and safety layer, and the knowledge stays locked inside.
 - African language models are arriving (InkubaLM, Sunflower), but a model does not know which hotline handles gender based violence in Kenya or what moisture level keeps maize free of aflatoxin. Models need grounding.
 
@@ -60,6 +62,7 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | **Scam Shield** | Forward a suspicious mobile money message in any of the eight languages and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
 | **USSD app** | A full menu on any phone: browse topics, ask in your own words, check a message, switch language. Every screen fits 182 characters | `channels/ussd.py` |
 | **SMS** | Replies within three segments, folded into GSM-7 for Latin script and budgeted for UCS-2 in Arabic and Amharic, keyword commands, Africa's Talking sending | `channels/sms.py`, `encoding.py` |
+| **RCS** | Suggested replies and sources in the phone's own messaging app, switched on per country. ACE checks that each person can receive RCS and falls back to SMS, and composes every reply to the SMS budget so the fallback never cuts it | `channels/rcs.py` |
 | **Voice IVR** | Keypad menu over the same knowledge, spoken only in languages with a known voice, plus speech recognition through any provider; Google Cloud is ready to plug in | `channels/voice.py`, `speech/` |
 | **WhatsApp** | Cloud API webhook with signature checks, sources listed under every answer | `channels/whatsapp.py` |
 | **MCP server** | Any AI assistant can ask ACE for cited African context, scam checks and emergency numbers | `mcp_server.py` |
@@ -192,11 +195,12 @@ The preview wheel is attached to the [v2.2.0b2 release](https://github.com/tbrun
 
 ## How it works
 
-<img src="docs/architecture.svg" alt="ACE architecture: six entry points, one pseudonymous identity, an engine that runs the safety rail, Scam Shield, checked context and cited answers over sourced context packs" width="100%">
+<img src="docs/architecture.svg" alt="ACE architecture: USSD, SMS and voice reach any phone by default, WhatsApp, RCS and apps serve smartphones, and the API and MCP serve other services, all through one pseudonymous identity and an engine that runs the safety rail, Scam Shield, checked context and cited answers over sourced context packs" width="100%">
 
 ```
- USSD   SMS   Voice   WhatsApp   Web/API   MCP        thin adapters, one Message type
-   \      \     |        |         /       /
+ USSD  SMS  Voice    WhatsApp  RCS  Apps   API  MCP     thin adapters, one Message type
+ any phone, no data  smartphone, data      services     RCS falls back to SMS
+      \    |   /         \     |   /        \   /
     +---------------- Engine ----------------+
     | identity    one pseudonymous profile across channels
     | safety      emergency phrases -> verified numbers + human handoff

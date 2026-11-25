@@ -4,7 +4,7 @@ These rules apply to every AI coding agent working in this repository, including
 
 ## What ACE is
 
-ACE is an open source safety and decision layer for people on any phone in Africa. It covers 34 countries in eight languages (English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali) over USSD, SMS, voice, WhatsApp, the web and MCP. Six decision services run on dated public data; see [docs/services.md](docs/services.md). The [V2 design](docs/v2/README.md), the [2.1 design](docs/v2/release-2.1.md) and the [build plan](docs/v2/build-plan.md) set out the rest. Every service covers all 34 countries by default and names the gap wherever data does not exist: never build for one country first.
+ACE is an open source safety and decision layer for people on any phone in Africa (USSD, SMS/RCS, voice, WhatsApp and MCP). It covers 34 countries in eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Six decision services run on dated public data; see [docs/services.md](docs/services.md). The [V2 design](docs/v2/README.md), the [2.1 design](docs/v2/release-2.1.md) and the [build plan](docs/v2/build-plan.md) set out the rest. Every service covers all 34 countries by default and names the gap wherever data does not exist: never build for one country first.
 
 ## Never break these rules
 
@@ -18,8 +18,9 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 8. **No secrets.** Keys come from the environment and are never committed, logged or printed.
 9. **Never store phone numbers in clear.** Use the pseudonymous profile key.
 10. **Keep languages in step.** Every user facing string exists in every supported language: English, Swahili and French in the code, every other language in its file in `src/ace_engine/locales/`. `i18n.missing()` must stay empty and every placeholder must survive translation. See [docs/languages.md](docs/languages.md).
-11. **Fit the phone.** 182 characters per USSD screen, three SMS segments, short spoken turns. Arabic and Amharic travel as UCS-2: about 80 characters per USSD screen and 67 per SMS segment. Latin script is folded into GSM-7 before it leaves.
-12. **Pass the checks before proposing a change.** Run `ruff check src tests benchmark`, `ace packs validate`, `pytest -q` and `python -m benchmark.run --quick`. All must pass.
+11. **Fit the phone.** 182 characters per USSD screen, three SMS segments, short spoken turns. Arabic and Amharic travel as UCS-2: about 80 characters per USSD screen and 67 per SMS segment. Latin script is folded into GSM-7 before it leaves. RCS replies use the SMS budget, so falling back to SMS never cuts them.
+12. **Reach by default, richer by choice.** Every answer, service and safety feature works on USSD, SMS and voice, which reach any phone without data. WhatsApp, RCS and apps built on the API are optional layers for people with a smartphone and data. RCS always falls back to SMS and stays off until an operator lists its countries in `ACE_RCS_COUNTRIES`.
+13. **Pass the checks before proposing a change.** Run `ruff check src tests benchmark`, `ace packs validate`, `pytest -q` and `python -m benchmark.run --quick`. All must pass.
 
 ## Where things live
 
@@ -30,7 +31,7 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 | `src/ace_engine/countries.py` | The 34 countries, their dialling codes and languages |
 | `src/ace_engine/i18n.py`, `locales/`, `encoding.py` | Added languages, one file each; GSM-7 and UCS-2 budgets |
 | `src/ace_engine/context/` | Pack loading, schema checks and retrieval |
-| `src/ace_engine/channels/` | USSD, SMS, voice and WhatsApp adapters |
+| `src/ace_engine/channels/` | USSD, SMS, RCS, voice and WhatsApp adapters; RCS with SMS fallback |
 | `src/ace_engine/server.py`, `mcp_server.py` | The web server, JSON API and MCP server |
 | `src/ace_engine/connectors/` | V2 connectors, the only code that touches the network |
 | `src/ace_engine/snapshots/` | The snapshot store and the licence register loader |

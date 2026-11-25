@@ -22,6 +22,10 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
+### Next release: RCS
+
+- [x] RCS with SMS fallback: switched on per country, a reachability check before each reply, replies composed to the SMS budget, and signed webhooks
+
 ### 2.2 preview (current release, 25 November 2026): speech and translation
 
 - [x] Language check on 12,333 sentences of real speech text from WAXAL, with counts published and no text stored

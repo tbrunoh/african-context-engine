@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+### Added
+- **RCS with SMS fallback.** A new `rcs` channel serves people whose phone and carrier support RCS, in the phone's own messaging app, with the sources under every answer and suggested reply chips (More, Sources, Help) in the person's language that send command words ACE already understands. No chip follows an emergency reply. RCS stays off until an operator lists countries in `ACE_RCS_COUNTRIES`. Before each reply ACE checks that the person can receive RCS, and any reply that RCS refuses or cannot start goes by SMS; a send that times out after Google may have accepted it is not repeated by SMS, so nobody gets a reply twice. RCS replies use the SMS budget, including the UCS-2 budget for Arabic and Amharic, so a fallback never cuts an answer or an emergency number. The `/rcs` webhook answers RCS for Business verification, checks `X-Goog-Signature`, answers 503 until `RBM_CLIENT_TOKEN` is set so unsigned messages can never trigger texts, and always answers an authenticated event with 200, so Google never retries a reply that already went out. See [docs/channels.md](docs/channels.md#rcs-with-sms-fallback).
+
 ### Changed
+- **Channel framing.** The README, AGENTS.md and the architecture diagrams now group entry points by what people have: USSD, SMS and voice reach any phone and are the default; WhatsApp, RCS and apps built on the API serve people with a smartphone and data; the API and MCP serve other services and AI assistants.
 - **Coast to Dunes identity.** The README badges, the seven diagrams in `docs/` and the web playground move to a clean white ground in the Coast to Dunes palette: Lamu Tide, Congo Canopy, Mara Gold, Sahara Sand and Rift Basalt. The diagrams are redrawn at 1000 units wide with every word set as outlines in Inter and Newsreader, so they render the same on GitHub, in any browser and in print, and no label falls below a readable size. AGENTS.md records the palette and its rules. The SMS box in the playground now invites any of the eight languages.
 
 ## 2.2.0b2 (2026-11-25): Amharic and Somali on the voice line

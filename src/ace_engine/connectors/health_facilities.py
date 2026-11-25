@@ -22,9 +22,16 @@ from .base import ConnectorError, http_get, http_json, iso
 
 HDX_SLUG = "health-facilities-in-sub-saharan-africa"
 HDX_API = "https://data.humdata.org/api/3/action/package_show?id="
-NAMES = {"KE": "Kenya", "TZ": "Tanzania", "UG": "Uganda", "RW": "Rwanda", "ZA": "South Africa", "BW": "Botswana",
-         "NA": "Namibia", "ZW": "Zimbabwe", "NG": "Nigeria", "GH": "Ghana", "SN": "Senegal", "CI": "Cote d'Ivoire",
-         "TG": "Togo"}
+# country -> the names the database uses for it. Zanzibar is listed apart from mainland Tanzania.
+NAMES: dict[str, tuple[str, ...]] = {
+    "KE": ("Kenya",), "TZ": ("Tanzania", "Zanzibar"), "UG": ("Uganda",), "RW": ("Rwanda",), "ZA": ("South Africa",),
+    "BW": ("Botswana",), "NA": ("Namibia",), "ZW": ("Zimbabwe",), "NG": ("Nigeria",), "GH": ("Ghana",),
+    "SN": ("Senegal",), "CI": ("Cote d'Ivoire",), "TG": ("Togo",), "CD": ("Democratic Republic of the Congo",),
+    "MW": ("Malawi",), "BI": ("Burundi",), "CM": ("Cameroon",), "BJ": ("Benin",), "ZM": ("Zambia",), "TD": ("Chad",),
+    "GN": ("Guinea",), "BF": ("Burkina Faso",), "SS": ("South Sudan",), "ET": ("Ethiopia",), "MZ": ("Mozambique",),
+    "GW": ("Guinea Bissau",), "AO": ("Angola",), "SO": ("Somalia",), "SD": ("Sudan",)}
+# North Africa is outside the database, which covers sub-Saharan Africa only; the facility service names the gap.
+MAX_OUTSIDE_KM = 25.0  # a facility further than this outside its country's areas has a wrong position
 _NS = {"m": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
 _COL = re.compile(r"[A-Z]+")
 
@@ -75,14 +82,15 @@ def clean_text(value: str) -> str:
     return re.sub(r"(?<=[a-z])'S\b", "'s", value)
 
 
-def facility_records(rows: list[list[str]], country_name: str) -> list[list]:
+def facility_records(rows: list[list[str]], country_name: str | tuple[str, ...]) -> list[list]:
     """[name, type, ownership, admin1, lat, lon] for one country, from the database's rows."""
     head = [h.strip() for h in rows[0]]
     idx = {h: head.index(h) for h in ("Country", "Admin1", "Facility_n", "Facility_t", "Ownership", "Lat", "Long")}
     out = []
     for r in rows[1:]:
         r = r + [""] * (len(head) - len(r))
-        if r[idx["Country"]].strip() != country_name:
+        names = (country_name,) if isinstance(country_name, str) else country_name
+        if r[idx["Country"]].strip() not in names:
             continue
         try:
             lat, lon = round(float(r[idx["Lat"]]), 4), round(float(r[idx["Long"]]), 4)
@@ -92,6 +100,42 @@ def facility_records(rows: list[list[str]], country_name: str) -> list[list]:
                     clean_text(r[idx["Ownership"]]), clean_text(r[idx["Admin1"]]), lat, lon])
     out.sort(key=lambda f: (f[3], f[0]))
     return out
+
+
+def check_positions(records: list[list], country: str, store: SnapshotStore | None) -> tuple[list[list], list[str]]:
+    """Drop facilities whose position is wrong: outside the country, or far from the area their record names.
+
+    A facility more than 25 km outside every area of its country, or more than 25 km from the first level area
+    its own record names (when that name matches an area ACE knows), is left out, because sending someone there
+    could send them the wrong way. The names of dropped facilities go in the snapshot's meta for review.
+    """
+    if store is None:
+        return records, []
+    from ..geo import distance_to_rings_km, in_bbox, in_polygons
+    from ..places import Gazetteer, same_name
+
+    def away(point: tuple[float, float], rings: list) -> float:
+        return 0.0 if in_polygons(point, rings) else distance_to_rings_km(point, rings)
+    places = Gazetteer(store)
+    areas = places.areas(country)
+    if not areas:
+        return records, []
+    kept, dropped = [], []
+    for rec in records:
+        point = (rec[4], rec[5])
+        inside = [a for a in areas if in_bbox(point, a["bbox"], pad=0.25)]
+        nearest = min((away(point, a["rings"]) for a in inside), default=float("inf"))
+        if nearest > MAX_OUTSIDE_KM:
+            dropped.append(f"{rec[0]} ({rec[3]}): outside {COUNTRIES[country].name}")
+            continue
+        # An old area name can map to several new areas (a region split in two), so check all of them.
+        named = [a for a in areas if same_name(a["name"], rec[3])
+                 or any(same_name(alias, rec[3]) for alias in a.get("aliases", ()))]
+        if named and min(away(point, a["rings"]) for a in named) > MAX_OUTSIDE_KM:
+            dropped.append(f"{rec[0]} ({rec[3]}): far from {named[0]['name']}")
+            continue
+        kept.append(rec)
+    return kept, dropped
 
 
 class HealthFacilitiesConnector:
@@ -119,10 +163,12 @@ class HealthFacilitiesConnector:
         records = facility_records(self._all_rows(), NAMES[country])
         if not records:
             raise ConnectorError(f"no facilities for {COUNTRIES[country].name}")
+        records, dropped = check_positions(records, country, store)
         return Snapshot(
             dataset="facilities", country=country, source_id="public_health_facilities",
             source="Maina et al. 2019, public health facilities in sub-Saharan Africa (KEMRI-Wellcome), via HDX",
             source_url=f"https://data.humdata.org/dataset/{HDX_SLUG}", licence=self.licence, retrieved_at=iso(),
             records=records, data_date="2019-07-25",
-            meta={"facilities": len(records), "paper": "https://doi.org/10.1038/s41597-019-0142-2",
+            meta={"facilities": len(records), "dropped_positions": dropped,
+                  "paper": "https://doi.org/10.1038/s41597-019-0142-2",
                   "fields": ["name", "type", "ownership", "admin1", "lat", "lon"]})

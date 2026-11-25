@@ -1,11 +1,13 @@
 """Administrative boundaries for the places gazetteer.
 
 Sources, chosen per country for the level people actually name:
-* geoBoundaries (gbOpen), first level areas, for 11 countries. Each country keeps the licence
+* geoBoundaries (gbOpen), first level areas, for 11 of the first 13 countries. Each country keeps the licence
   geoBoundaries records for it: public domain, CC BY, CC BY-SA or ODbL.
 * OCHA Common Operational Datasets (COD-AB) on HDX, CC BY-IGO, for Uganda (its 135 districts, from the
-  Uganda Bureau of Statistics) and Namibia (its regions, from the Namibia Statistics Agency), where the
-  geoBoundaries layers are either too coarse or out of date.
+  Uganda Bureau of Statistics), Namibia (its regions, from the Namibia Statistics Agency) and all 21
+  countries added in 2.1, where national statistics offices endorse the layer and it is newer than
+  geoBoundaries. Malawi uses its 28 districts, the level people name; the others their first level.
+  The alternative names a COD layer carries (Arabic, French or Portuguese spellings) become aliases.
 
 Shapes are simplified to about 300 metres, which is plenty to tell which area a point is in.
 """
@@ -26,7 +28,11 @@ GB_PAGE = "https://www.geoboundaries.org/countryDownloads.html"
 HDX_API = "https://data.humdata.org/api/3/action/package_show?id="
 
 # country -> (source, level). Everything else uses geoBoundaries ADM1.
-COD_AB = {"UG": "ADM2", "NA": "ADM1"}
+COD_AB = {"UG": "ADM2", "NA": "ADM1", "MW": "ADM2", "LY": "ADM2", "TN": "ADM2",
+          **{c: "ADM1" for c in ("CD", "BI", "CM", "BJ", "ZM", "TD", "GN", "BF", "SS", "ET", "MZ", "GW", "AO",
+                                 "SO", "SD", "DZ", "EG", "MA")}}
+# Placeholder areas a layer carries that no one lives in or names (a contested strip), left out of the gazetteer.
+SKIP = {"contested", "disputed"}
 
 # Common names people use for an area whose official name differs. Capitals and spelling fixes only.
 ALIASES: dict[str, dict[str, list[str]]] = {
@@ -37,6 +43,25 @@ ALIASES: dict[str, dict[str, list[str]]] = {
     "CI": {"District Autonome D'Abidjan": ["Abidjan"], "District Autonome De Yamoussoukro": ["Yamoussoukro"]},
     "KE": {"Tharaka": ["Tharaka Nithi"], "Elgeyo-Marakwet": ["Elgeyo Marakwet", "Keiyo"]},
     "TZ": {"Pwani": ["Coast"]},
+    "CD": {"Kongo-Central": ["Kongo Central", "Muanda", "Moanda", "Matadi", "Boma"], "Haut-Katanga": ["Lubumbashi"],
+           "Nord-Kivu": ["Goma", "North Kivu"], "Sud-Kivu": ["Bukavu", "South Kivu"], "Tshopo": ["Kisangani"],
+           "Kasaï-Oriental": ["Mbuji-Mayi"], "Kasaï-Central": ["Kananga"], "Ituri": ["Bunia"]},
+    "CM": {"Littoral": ["Douala"], "Centre": ["Yaoundé", "Yaounde"], "West": ["Bafoussam"], "North-West": ["Bamenda"]},
+    "BJ": {"Littoral": ["Cotonou"], "Oueme": ["Porto-Novo", "Porto Novo"], "Borgou": ["Parakou"]},
+    "ZM": {"Copperbelt": ["Ndola", "Kitwe"], "Southern": ["Livingstone", "Choma"], "Eastern": ["Chipata"]},
+    "TD": {"N'DJAMENA": ["Ndjamena", "N'Djamena"]},
+    "BF": {"Kadiogo": ["Ouagadougou"], "Guiriko": ["Bobo-Dioulasso", "Bobo Dioulasso"]},
+    "SS": {"Central Equatoria": ["Juba"], "Western Bahr el Ghazal": ["Wau"], "Upper Nile": ["Malakal"]},
+    "ET": {"Oromia": ["Oromiyaa", "Adama", "Jimma"], "Amhara": ["Bahir Dar", "Gondar"], "Tigray": ["Mekelle"],
+           "Sidama": ["Hawassa"], "Addis Ababa": ["Addis Abeba", "Finfinne", "አዲስ አበባ"], "Dire Dawa": ["ድሬዳዋ"]},
+    "MZ": {"Cidade de Maputo": ["Maputo City"], "Sofala": ["Beira"], "Zambézia": ["Quelimane"]},
+    "AO": {"Luanda": ["Luanda city"], "Huíla": ["Lubango"], "Benguela": ["Lobito"]},
+    "SO": {"Banadir": ["Mogadishu", "Muqdisho", "مقديشو"], "Woqooyi Galbeed": ["Hargeisa", "Hargeysa"],
+           "Bari": ["Bosaso", "Boosaaso"], "Nugaal": ["Garowe"], "Bay": ["Baidoa", "Baydhabo"]},
+    "SD": {"Khartoum": ["Omdurman", "Bahri"], "Red Sea": ["Port Sudan", "بورتسودان"], "Aj Jazirah": ["Gezira", "Wad Madani"]},
+    "MA": {"Casablanca Settat": ["Casablanca"], "Rabat Sale Kenitra": ["Rabat", "Kenitra"], "Marrakech Safi": ["Marrakech"],
+           "Fez Meknes": ["Fès", "Fes", "Meknès", "Fès-Meknès"], "Tangier Tetouan Al Hoceima": ["Tanger", "Tangier"],
+           "Souss Massa": ["Agadir"], "Oriental": ["Oujda"]},
 }
 
 # The official spelling where the source drops accents, misspells or title cases a name. People see this name;
@@ -50,12 +75,26 @@ DISPLAY: dict[str, dict[str, str]] = {
            "Sassandra-Marahoue": "Sassandra-Marahoué", "Valle Du Bandama": "Vallée du Bandama"},
     "TG": {"Centrale Region": "Centrale", "Kara Region": "Kara", "Maritime Region": "Maritime",
            "Plateaux Region": "Plateaux", "Savanes Region": "Savanes"},
+    "GN": {"Boke": "Boké", "Labe": "Labé", "Nzerekore": "Nzérékoré"},
+    "BJ": {"Oueme": "Ouémé"},
+    "GW": {"Bafata": "Bafatá", "Gabu": "Gabú", "Bolama/Bijagos": "Bolama-Bijagós"},
+    "CD": {"Equateur": "Équateur"},
+    "MW": {"Nkhatabay": "Nkhata Bay"},
+    "ET": {"Addis Ababa": "Addis Ababa"},
 }
+
+
+def tidy_case(name: str) -> str:
+    """Some layers write names in capitals (BARH EL GAZEL). People see them in title case: Barh El Gazel."""
+    if not name.isupper():
+        return name
+    return " ".join(w if "'" in w and len(w) <= 3 else "-".join(p.capitalize() for p in w.split("-"))
+                    for w in name.lower().split()).replace("N'djamena", "N'Djamena")
 
 
 def named(country: str, source_name: str) -> tuple[str, list[str]]:
     """The name people see and its aliases, from the name the source uses."""
-    display = DISPLAY.get(country, {}).get(source_name, source_name)
+    display = DISPLAY.get(country, {}).get(source_name) or tidy_case(source_name)
     aliases = list(ALIASES.get(country, {}).get(source_name, []))
     if display != source_name:
         aliases.append(source_name)
@@ -140,7 +179,12 @@ class BoundariesConnector:
         for f in geo["features"]:
             p = f["properties"]
             name = p[f"adm{n}_name"]
+            if any(w in name.lower() for w in SKIP):
+                continue
             display, also = named(country, name)
+            others = [str(v).strip() for k, v in p.items()
+                      if k.startswith((f"adm{n}_name", f"adm{n}_ref_name", f"adm{n}_alt")) and v and str(v).strip() != name]
+            also = list(dict.fromkeys([*also, *(o for o in others if o != display)]))
             records.append(_record(p[f"adm{n}_pcode"], display, level, f["geometry"], also))
         records.sort(key=lambda r: r["name"])
         return Snapshot(

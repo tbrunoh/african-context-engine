@@ -20,7 +20,11 @@ from .base import ConnectorError, http_get, http_json, iso
 HDX_API = "https://data.humdata.org/api/3/action/package_show?id="
 SLUGS = {"KE": "kenya", "TZ": "united-republic-of-tanzania", "UG": "uganda", "RW": "rwanda", "ZA": "south-africa",
          "NA": "namibia", "ZW": "zimbabwe", "NG": "nigeria", "GH": "ghana", "SN": "senegal", "CI": "cote-d-ivoire",
-         "TG": "togo"}
+         "TG": "togo", "CD": "democratic-republic-of-the-congo", "MW": "malawi", "BI": "burundi", "CM": "cameroon",
+         "BJ": "benin", "ZM": "zambia", "TD": "chad", "GN": "guinea", "BF": "burkina-faso", "SS": "south-sudan",
+         "ET": "ethiopia", "MZ": "mozambique", "GW": "guinea-bissau", "AO": "angola", "SO": "somalia", "SD": "sudan",
+         "DZ": "algeria", "EG": "egypt", "LY": "libya"}
+# Morocco and Tunisia: WFP publishes no market prices for either, so the price service names the gap.
 KEEP_MONTHS = 6
 
 

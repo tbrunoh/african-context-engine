@@ -31,8 +31,34 @@ FEEDS: dict[str, tuple[str, tuple[str, ...]]] = {
     "SN": ("Agence Nationale de l'Aviation Civile et de la Météorologie (ANACIM)", ("https://cap-sources.s3.amazonaws.com/sn-anacim-fr/rss.xml",)),
     "CI": ("Direction de la Météorologie Nationale (SODEXAM)", ("https://cap-sources.s3.amazonaws.com/ci-sodexam-fr/rss.xml",)),
     "TG": ("Agence Nationale de la Météorologie du Togo", ("https://meteotogo.tg/api/cap/rss.xml",)),
+    # Added in 2.1, each from the feed URL the WMO Register of Alerting Authorities lists for the country
+    "CD": ("METTELSAT, Météo RD Congo", ("https://meteordcongo.cd/api/cap/rss.xml",
+                                         "https://cap-sources.s3.amazonaws.com/cd-mettelsat-fr/rss.xml")),
+    "MW": ("Department of Climate Change and Meteorological Services", ("https://www.metmalawi.gov.mw/api/cap/rss.xml",)),
+    "BI": ("Institut Géographique du Burundi (IGEBU)", ("https://www.igebu.bi/api/cap/rss.xml",)),
+    "CM": ("Direction de la Météorologie Nationale du Cameroun", ("https://cap-sources.s3.amazonaws.com/cm-meteo-fr/rss.xml",
+                                                                   "https://cap-sources.s3.amazonaws.com/cm-meteo-en/rss.xml")),
+    "BJ": ("Météo-Bénin", ("https://www.meteobenin.bj/api/cap/rss.xml",)),
+    "ZM": ("Zambia Meteorological Department", ("https://zmd.gov.zm/api/cap/rss.xml",)),
+    "TD": ("Agence Nationale de la Météorologie du Tchad", ("https://www.meteotchad.org/api/cap/rss.xml",)),
+    "GN": ("Agence Nationale de la Météorologie de Guinée", ("https://anmeteo.gov.gn/api/cap/rss.xml",)),
+    "BF": ("Agence Nationale de la Météorologie du Burkina Faso", ("https://www.meteoburkina.bf/api/cap/rss.xml",)),
+    "SS": ("South Sudan Meteorological Service", ("https://meteosouthsudan.com.ss/api/cap/rss.xml",)),
+    "ET": ("Ethiopian Meteorological Institute", ("https://www.ethiomet.gov.et/api/cap/rss.xml",)),
+    "MZ": ("Instituto Nacional de Meteorologia de Moçambique", ("https://cap-sources.s3.amazonaws.com/mz-inam-pt/rss.xml",)),
+    "GW": ("Instituto Nacional de Meteorologia da Guiné-Bissau", ("https://meteoguinebissau.gw/api/cap/rss.xml",)),
+    "SO": ("Somalia National Meteorological Agency", ("https://meteosomalia.so/api/cap/rss.xml",)),
+    "SD": ("Sudan Meteorological Authority", ("https://meteosudan.sd/api/cap/rss.xml",)),
+    "DZ": ("Office National de la Météorologie", ("https://ametvigilance.meteo.dz/rss/rss_meteo_dz.xml",)),
+    "EG": ("Egyptian Meteorological Authority", ("https://cap-sources.s3.amazonaws.com/eg-ema-en/rss.xml",
+                                                 "https://cap-sources.s3.amazonaws.com/eg-ema-ar/rss.xml")),
+    "LY": ("Libyan National Meteorological Centre", ("https://cap-sources.s3.amazonaws.com/ly-nmc-ar/rss.xml",
+                                                     "https://cap-sources.s3.amazonaws.com/ly-nmc-en/rss.xml")),
+    "TN": ("Institut National de la Météorologie", ("https://cap-sources.s3.amazonaws.com/tn-meteo-fr/rss.xml",)),
 }
-NO_FEED = {"RW": "Rwanda Meteorology Agency", "NA": "Namibia Meteorological Service"}
+NO_FEED = {"RW": "Rwanda Meteorology Agency", "NA": "Namibia Meteorological Service",
+           "AO": "Instituto Nacional de Meteorologia e Geofísica (INAMET)",
+           "MA": "Direction Générale de la Météorologie"}
 
 MAX_ITEMS = 40
 LOOKBACK = timedelta(days=10)
@@ -98,7 +124,7 @@ def _polygon(raw: str) -> list[list[float]]:
     return simplify(pts, 0.01) if len(pts) >= 4 else []
 
 
-def parse_alert(xml: bytes, url: str, prefer: tuple[str, ...] = ("en", "fr")) -> dict | None:
+def parse_alert(xml: bytes, url: str, prefer: tuple[str, ...] = ("en", "fr", "pt", "ar")) -> dict | None:
     """One CAP message as a compact record, or None when it is not an actual, public alert or update."""
     root = ET.fromstring(xml)
     if _local(root.tag) != "alert":

@@ -11,12 +11,22 @@ from .boundaries import BoundariesConnector
 from .cap import CapConnector
 from .hdx_prices import WfpPricesConnector
 from .health_facilities import HealthFacilitiesConnector
+from .national_registries import NationalRegistryConnector
 from .open_meteo import OpenMeteoEnsembleConnector
 
 # Order matters: weather reads the places snapshot that boundaries writes.
 CONNECTORS: dict[str, Connector] = {c.name: c for c in (
     BoundariesConnector(), OpenMeteoEnsembleConnector(), CapConnector(), WfpPricesConnector(),
-    HealthFacilitiesConnector())}
+    HealthFacilitiesConnector(), NationalRegistryConnector())}
+
+
+def held(root: Path) -> set[str]:
+    """Connectors whose source the licence register has not cleared: they never write a public snapshot."""
+    from ..snapshots.licence import load_register
+    path = root / "register.yaml"
+    if not path.exists():
+        return set()
+    return {sid for sid, entry in load_register(path).items() if not entry.cleared}
 
 
 @dataclass
@@ -30,8 +40,13 @@ def refresh(root: str | Path, names: list[str] | None = None, countries: list[st
     """Run connectors and write snapshots. A failure leaves the last good snapshot in place."""
     report = RefreshReport()
     root = Path(root)
+    holding = held(root)
     for name in names or list(CONNECTORS):
         connector = CONNECTORS[name]
+        if name in holding:
+            report.skipped.extend(ConnectorHealth(name, c, False, "held: licence not yet cleared in register.yaml")
+                                  for c in sorted(connector.countries))
+            continue
         for country in [c.upper() for c in (countries or COUNTRIES)]:
             if country not in connector.countries:
                 report.skipped.append(ConnectorHealth(name, country, False, "source does not cover this country"))

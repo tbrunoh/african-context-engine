@@ -1,0 +1,81 @@
+# Sudan emergency numbers, from the UK FCDO travel advice page for Sudan, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: sd-emergency-contacts
+title: Sudan emergency numbers
+description: National emergency numbers that ACE gives to callers in Sudan when a message signals danger, and what to do where
+  no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: SD
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Sudan, call 999 for an ambulance, the fire service or the police. The conflict has badly affected these services
+    and they often do not respond, so also head for the nearest health facility.
+  short: 'Emergency in Sudan: call 999. If no answer, go to the nearest health facility.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Emergency
+    number: '999'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - violence
+    - gbv
+    - child_protection
+    - fire
+  translations:
+    ar:
+      claim: في السودان، اتصل بالرقم 999 للإسعاف أو الإطفاء أو الشرطة. تأثرت هذه الخدمات كثيرا بالنزاع وكثيرا ما لا تستجيب،
+        فاتجه أيضا إلى أقرب مرفق صحي.
+      short: 'الطوارئ في السودان: اتصل بالرقم 999. إن لم يرد أحد فاذهب إلى أقرب مرفق صحي.'
+  source: UK FCDO, Sudan travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/sudan/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

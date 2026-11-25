@@ -1,0 +1,486 @@
+{
+  "dataset": "google/WaxalNLP",
+  "source": "dataset card revision 5f4d8ca, updated 1 September 2026",
+  "limit": 600,
+  "sets": {
+    "amh_asr": {
+      "language": "Amharic",
+      "ace_language": "am",
+      "sentences": 600,
+      "guesses": {
+        "am": 600
+      },
+      "false_alarms": 1,
+      "false_alarm_queues": {
+        "child_protection": 1
+      },
+      "service_routes": 28,
+      "service_route_ids": {
+        "market_prices": 22,
+        "rain_this_week": 3,
+        "nearest_facility": 2,
+        "official_warnings": 1
+      },
+      "recognised": 1.0
+    },
+    "orm_asr": {
+      "language": "Afaan Oromo",
+      "ace_language": "om",
+      "sentences": 600,
+      "guesses": {
+        "om": 559,
+        "none": 32,
+        "sw": 5,
+        "so": 4
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 136,
+      "service_route_ids": {
+        "market_prices": 132,
+        "pest_check": 2,
+        "nearest_facility": 1,
+        "rain_this_week": 1
+      },
+      "recognised": 0.9316666666666666
+    },
+    "swa_tts": {
+      "language": "Swahili",
+      "ace_language": "sw",
+      "sentences": 199,
+      "guesses": {
+        "sw": 193,
+        "none": 6
+      },
+      "false_alarms": 1,
+      "false_alarm_queues": {
+        "health_urgent": 1
+      },
+      "service_routes": 18,
+      "service_route_ids": {
+        "rain_this_week": 12,
+        "market_prices": 3,
+        "nearest_facility": 3
+      },
+      "recognised": 0.9698492462311558
+    },
+    "tir_asr": {
+      "language": "Tigrinya",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "am": 600
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 10,
+      "service_route_ids": {
+        "market_prices": 9,
+        "nearest_facility": 1
+      },
+      "claimed_as_ace_language": 1.0
+    },
+    "sid_asr": {
+      "language": "Sidama",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 548,
+        "so": 18,
+        "om": 14,
+        "sw": 12,
+        "fr": 7,
+        "pt": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.08666666666666667
+    },
+    "wal_asr": {
+      "language": "Wolaytta",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 511,
+        "sw": 49,
+        "so": 31,
+        "fr": 6,
+        "om": 3
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.14833333333333334
+    },
+    "kik_tts": {
+      "language": "Kikuyu",
+      "ace_language": null,
+      "sentences": 214,
+      "guesses": {
+        "sw": 192,
+        "none": 22
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 1,
+      "service_route_ids": {
+        "nearest_facility": 1
+      },
+      "claimed_as_ace_language": 0.897196261682243
+    },
+    "luo_tts": {
+      "language": "Dholuo",
+      "ace_language": null,
+      "sentences": 209,
+      "guesses": {
+        "none": 150,
+        "sw": 46,
+        "fr": 7,
+        "so": 5,
+        "en": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 2,
+      "service_route_ids": {
+        "nearest_facility": 1,
+        "market_prices": 1
+      },
+      "claimed_as_ace_language": 0.2822966507177033
+    },
+    "lug_asr": {
+      "language": "Luganda",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 515,
+        "sw": 83,
+        "en": 2
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.14166666666666666
+    },
+    "ach_asr": {
+      "language": "Acholi",
+      "ace_language": null,
+      "sentences": 528,
+      "guesses": {
+        "none": 388,
+        "sw": 110,
+        "fr": 20,
+        "so": 6,
+        "en": 2,
+        "om": 2
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 19,
+      "service_route_ids": {
+        "official_warnings": 19
+      },
+      "claimed_as_ace_language": 0.26515151515151514
+    },
+    "nyn_asr": {
+      "language": "Runyankole",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 406,
+        "sw": 194
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.3233333333333333
+    },
+    "sog_asr": {
+      "language": "Lusoga",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 444,
+        "sw": 120,
+        "pt": 35,
+        "om": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.26
+    },
+    "mas_asr": {
+      "language": "Masaaba",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "sw": 323,
+        "none": 250,
+        "pt": 25,
+        "en": 2
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.5833333333333334
+    },
+    "lin_asr": {
+      "language": "Lingala",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "sw": 583,
+        "none": 17
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 3,
+      "service_route_ids": {
+        "nearest_facility": 1,
+        "market_prices": 1,
+        "rain_this_week": 1
+      },
+      "claimed_as_ace_language": 0.9716666666666667
+    },
+    "sna_asr": {
+      "language": "Shona",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 573,
+        "so": 15,
+        "om": 4,
+        "fr": 4,
+        "sw": 4
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.045
+    },
+    "mlg_asr": {
+      "language": "Malagasy",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 529,
+        "sw": 69,
+        "fr": 1,
+        "pt": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.11833333333333333
+    },
+    "ful_asr": {
+      "language": "Fula",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 404,
+        "fr": 89,
+        "sw": 86,
+        "om": 19,
+        "en": 1,
+        "pt": 1
+      },
+      "false_alarms": 1,
+      "false_alarm_queues": {
+        "health_urgent": 1
+      },
+      "service_routes": 2,
+      "service_route_ids": {
+        "market_prices": 2
+      },
+      "claimed_as_ace_language": 0.32666666666666666
+    },
+    "hau_tts": {
+      "language": "Hausa",
+      "ace_language": null,
+      "sentences": 197,
+      "guesses": {
+        "sw": 100,
+        "none": 87,
+        "om": 10
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.5583756345177665
+    },
+    "yor_tts": {
+      "language": "Yoruba",
+      "ace_language": null,
+      "sentences": 177,
+      "guesses": {
+        "sw": 113,
+        "none": 54,
+        "om": 8,
+        "fr": 2
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.6949152542372882
+    },
+    "ibo_tts": {
+      "language": "Igbo",
+      "ace_language": null,
+      "sentences": 200,
+      "guesses": {
+        "sw": 155,
+        "none": 45
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 1,
+      "service_route_ids": {
+        "market_prices": 1
+      },
+      "claimed_as_ace_language": 0.775
+    },
+    "pcm_tts": {
+      "language": "Nigerian Pidgin",
+      "ace_language": null,
+      "sentences": 204,
+      "guesses": {
+        "en": 111,
+        "none": 61,
+        "sw": 32
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 17,
+      "service_route_ids": {
+        "rain_this_week": 14,
+        "market_prices": 3
+      },
+      "claimed_as_ace_language": 0.7009803921568627
+    },
+    "aka_asr": {
+      "language": "Akan",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "sw": 341,
+        "none": 239,
+        "om": 17,
+        "fr": 2,
+        "en": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.6016666666666667
+    },
+    "twi_tts": {
+      "language": "Twi",
+      "ace_language": null,
+      "sentences": 104,
+      "guesses": {
+        "none": 49,
+        "sw": 42,
+        "fr": 7,
+        "om": 6
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.5288461538461539
+    },
+    "fat_tts": {
+      "language": "Fante",
+      "ace_language": null,
+      "sentences": 101,
+      "guesses": {
+        "sw": 55,
+        "none": 40,
+        "om": 5,
+        "fr": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.6039603960396039
+    },
+    "ewe_asr": {
+      "language": "Ewe",
+      "error": "no text fetched"
+    },
+    "dag_asr": {
+      "language": "Dagbani",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "sw": 343,
+        "none": 247,
+        "om": 4,
+        "fr": 4,
+        "so": 1,
+        "pt": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.5883333333333334
+    },
+    "dga_asr": {
+      "language": "Dagaare",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 251,
+        "en": 246,
+        "so": 37,
+        "sw": 34,
+        "om": 21,
+        "fr": 10,
+        "pt": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.5816666666666667
+    },
+    "kpo_asr": {
+      "language": "Ikposo",
+      "ace_language": null,
+      "sentences": 600,
+      "guesses": {
+        "none": 331,
+        "sw": 231,
+        "fr": 34,
+        "pt": 2,
+        "om": 1,
+        "so": 1
+      },
+      "false_alarms": 0,
+      "false_alarm_queues": {},
+      "service_routes": 0,
+      "service_route_ids": {},
+      "claimed_as_ace_language": 0.4483333333333333
+    },
+    "bau_tts": {
+      "language": "Baoule",
+      "error": "no text fetched"
+    }
+  }
+}

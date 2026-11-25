@@ -6,6 +6,8 @@ the last six hours. When the feed is old or unreachable, it says it cannot tell,
 """
 from __future__ import annotations
 
+import re
+
 from ..connectors.cap import FEEDS, NO_FEED
 from ..geo import in_bbox, in_polygons
 from ..snapshots import parse_time, utcnow
@@ -18,23 +20,29 @@ NATIONWIDE = ("countrywide", "nationwide", "whole country", "entire country", "a
 
 FOUND = {"en": "Official warning for {place} from {authority}, until {until}:",
          "sw": "Tahadhari rasmi kwa {place} kutoka {authority}, hadi {until}:",
-         "fr": "Alerte officielle pour {place} de {authority}, jusqu'au {until} :"}
+         "fr": "Alerte officielle pour {place}, jusqu'au {until} (source : {authority}) :"}
 MORE = {"en": "{n} more in force.", "sw": "Nyingine {n} zinaendelea.", "fr": "{n} autre(s) en vigueur."}
 NONE = {"en": "No official warning from {authority} covers {place} right now (checked {checked}).",
         "sw": "Hakuna tahadhari rasmi kutoka {authority} kwa {place} kwa sasa (imekaguliwa {checked}).",
-        "fr": "Aucune alerte officielle de {authority} ne couvre {place} en ce moment (vérifié le {checked})."}
+        "fr": "Aucune alerte officielle ne couvre {place} en ce moment (source : {authority}, vérifié le {checked})."}
 STALE = {"en": "ACE could not check the {authority} warning feed recently, so it cannot tell if a warning is in force. "
-               "Listen to {authority}.",
+               "Listen to official bulletins from {authority}.",
          "sw": "ACE haikuweza kukagua tahadhari za {authority} hivi karibuni, hivyo haiwezi kujua kama kuna tahadhari. "
                "Sikiliza {authority}.",
-         "fr": "ACE n'a pas pu consulter récemment les alertes de {authority} et ne peut pas dire si une alerte est en "
-               "vigueur. Écoutez {authority}."}
+         "fr": "ACE n'a pas pu consulter récemment le flux d'alertes officiel (source : {authority}) et ne peut pas "
+               "dire si une alerte est en vigueur. Écoutez les bulletins officiels à la radio."}
 GAP = {"en": "{authority} does not publish an official warning feed that ACE can read, so ACE cannot check warnings "
-             "there. Listen to {authority} on radio and TV.",
+             "there. Listen to official bulletins from {authority} on radio and TV.",
        "sw": "{authority} haichapishi tahadhari rasmi ambazo ACE inaweza kusoma, hivyo ACE haiwezi kukagua tahadhari "
              "huko. Sikiliza {authority} redioni na kwenye TV.",
        "fr": "{authority} ne publie pas de flux d'alertes officiel lisible par ACE, donc ACE ne peut pas vérifier les "
-             "alertes. Écoutez {authority} à la radio et à la télévision."}
+             "alertes. Écoutez les bulletins officiels à la radio et à la télévision."}
+
+
+def tidy(text: str) -> str:
+    """Keep the authority's words and drop only list dashes, which read badly as one SMS line."""
+    text = re.sub(r"([:.])\s*-\s*(?=\w)", r"\1 ", " ".join(text.split()))
+    return re.sub(r"\s+-(?=\w)", "; ", text)
 
 
 def applies(alert: dict, place) -> bool:
@@ -114,7 +122,7 @@ class WarningsService:
         mine.sort(key=lambda a: {"Extreme": 0, "Severe": 1, "Moderate": 2, "Minor": 3}.get(a.get("severity"), 4))
         top = mine[0]
         words = top.get("headline") or top.get("event")
-        action = top.get("instruction") or top.get("description") or ""
+        action = tidy(top.get("instruction") or top.get("description") or "")
         text = {}
         for lang in LANGS:
             pieces = [f"{say(FOUND, lang, place=q.place.name, authority=authority, until=when(top['expires'], lang))} "

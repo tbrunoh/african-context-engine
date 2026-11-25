@@ -6,6 +6,8 @@ the signs to check and the first step, and refers to an extension officer before
 """
 from __future__ import annotations
 
+import re
+
 from ..countries import COUNTRIES
 from ..text import fold, tokens
 from .base import LANGS, Answer, Context, Query, Refusal, Result, all_langs, cite_fact, fit, say
@@ -37,6 +39,12 @@ PROBLEMS = {
         ("tomato_leaf_miner", "africa-crop-pests-diseases/tuta-signs", "africa-crop-pests-diseases/tuta-action", set()),
     ],
 }
+
+def signs_only(text: str) -> str:
+    """The pack's short sign text starts with its own label (Armyworm signs:), which the lead-in already says."""
+    body = re.sub(r"^[^:.]{1,45}\s?:\s+", "", text, count=1)
+    return body[:1].lower() + body[1:] if body[:2] != body[:2].upper() else body
+
 
 LIKELY = {"en": "This may be {problem}. ACE cannot see your crop, so check these signs:",
           "sw": "Huenda ni {problem}. ACE haioni zao lako, hivyo kagua dalili hizi:",
@@ -100,7 +108,9 @@ class PestService:
             if q.max_chars < 300:  # USSD and short SMS: the likely problem and the first step come first
                 pieces = [f"{say(MAYBE, lang, problem=NAMES[problem][lang])} {act}", refer]
             else:
-                pieces = [say(LIKELY, lang, problem=NAMES[problem][lang]), signs.render(lang, short=True)[0], act, refer]
+                lead = say(LIKELY, lang, problem=NAMES[problem][lang]).replace(" de le ", " du ")
+                pieces = [lead, signs_only(signs.render(lang, short=True)[0]),
+                          act, refer]
             text[lang] = fit(pieces, q.max_chars)
         ambiguous = len(options) > 1 and len(words & scored[0][3]) == len(words & scored[1][3])
         return Answer(self.id, text, [cite_fact(signs), cite_fact(action)],

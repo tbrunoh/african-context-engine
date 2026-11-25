@@ -7,6 +7,7 @@ gate in docs/v2/build-plan.md, and every answer says so in its metadata.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from typing import TYPE_CHECKING, Any, Literal, Protocol
@@ -153,6 +154,27 @@ AREA_WORD = {
     "sw": {"KE": "kaunti", "UG": "wilaya", "TZ": "mkoa"},
     "fr": {"SN": "région", "CI": "district", "TG": "région", "RW": "province"},
 }
+# Country names as a sentence says them: Swahili, and French with its article (pour la Namibie, pour le Ghana).
+COUNTRY_SAID = {
+    "sw": {"KE": "Kenya", "TZ": "Tanzania", "UG": "Uganda", "RW": "Rwanda", "ZA": "Afrika Kusini", "BW": "Botswana",
+           "NA": "Namibia", "ZW": "Zimbabwe", "NG": "Nigeria", "GH": "Ghana", "SN": "Senegal", "CI": "Côte d'Ivoire",
+           "TG": "Togo"},
+    "fr": {"KE": "le Kenya", "TZ": "la Tanzanie", "UG": "l'Ouganda", "RW": "le Rwanda", "ZA": "l'Afrique du Sud",
+           "BW": "le Botswana", "NA": "la Namibie", "ZW": "le Zimbabwe", "NG": "le Nigeria", "GH": "le Ghana",
+           "SN": "le Sénégal", "CI": "la Côte d'Ivoire", "TG": "le Togo"},
+}
+
+
+def country_said(code: str, lang: str) -> str:
+    from ..countries import COUNTRIES
+    return COUNTRY_SAID.get(lang, {}).get(code) or COUNTRIES[code].name
+
+
+def french(text: str) -> str:
+    """French elides de before a vowel: à 123 km d'Embu, not de Embu."""
+    return re.sub(r"\bde (?=[AEIOUYÉÈÊÂÎaeiouyéèêâî])", "d'", text)
+
+
 EXAMPLE_PLACE = {"KE": "Embu", "TZ": "Mwanza", "UG": "Gulu", "RW": "Kigali", "ZA": "Gauteng", "BW": "Central District",
                  "NA": "Khomas", "ZW": "Masvingo", "NG": "Kano", "GH": "Ashanti", "SN": "Thiès", "CI": "Abidjan",
                  "TG": "Kara"}

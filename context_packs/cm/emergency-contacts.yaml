@@ -1,0 +1,86 @@
+# Cameroon emergency numbers, from the UK FCDO travel advice page for Cameroon, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: cm-emergency-contacts
+title: Cameroon emergency numbers
+description: National emergency numbers that ACE gives to callers in Cameroon when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: CM
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Cameroon, call 112 for an ambulance, 117 for the police and 119 for the fire service.
+  short: 'Emergency in Cameroon: ambulance 112, police 117, fire 119.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance
+    number: '112'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+  - label: Police
+    number: '117'
+    queues:
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Sapeurs-pompiers
+    number: '119'
+    queues:
+    - fire
+  translations:
+    fr:
+      claim: Au Cameroun, appelez le 112 pour une ambulance, le 117 pour la police et le 119 pour les sapeurs-pompiers.
+      short: 'Urgence au Cameroun : ambulance 112, police 117, pompiers 119.'
+  source: UK FCDO, Cameroon travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/cameroon/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

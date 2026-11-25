@@ -25,9 +25,15 @@ def test_support_table_covers_every_language_with_dated_sources():
     assert set(data["languages"]) == set(SUPPORTED_LANGUAGES)
     assert all(url.startswith("https://") for url in data["sources"].values())
     for code in SUPPORTED_LANGUAGES:
-        for kind in ("hear", "speak", "translate"):
-            entry = speech.capability(code, kind)
-            assert entry is None or entry["provider"] in data["sources"]
+        entries = [speech.capability(code, "hear"), speech.capability(code, "translate"),
+                   speech.say_voice(code), speech.play_voice(code)]
+        assert all(e is None or e["provider"] in data["sources"] for e in entries)
+
+
+def test_gemini_tts_closes_the_voice_gap_for_amharic_and_somali_but_not_oromo():
+    assert speech.play_voice("am") and speech.play_voice("so")
+    assert speech.say_voice("am") is None and speech.say_voice("so") is None
+    assert speech.play_voice("om") is None and speech.say_voice("om") is None
 
 
 def test_only_languages_with_a_known_voice_are_spoken():
@@ -177,6 +183,95 @@ def test_short_words_shared_with_other_languages_no_longer_claim_somali():
 def test_cli_voice_and_locales_status(capsys):
     assert main(["voice", "languages"]) == 0
     out = capsys.readouterr().out
-    assert "am-ET" in out and "not spoken" in out
+    assert "am-ET" in out and "Play, with Gemini TTS" in out and "keypad and SMS only" in out
     assert main(["locales", "status"]) == 0
     assert "awaiting fluent review" in capsys.readouterr().out
+
+
+def test_gemini_tts_request_and_audio():
+    wav = b"RIFF....WAVEfmt "
+    post = FakePost({"candidates": [{"content": {"parts": [{"inlineData": {
+        "mimeType": "audio/wav", "data": base64.b64encode(wav).decode()}}]}}]})
+    tts = google.GeminiTextToSpeech(post=post)
+    assert tts.synthesize("Baga nagaan dhuftan", "so") == wav
+    url, body = post.calls[0]
+    assert url.endswith("/models/gemini-3.8-flash-tts:generateContent")
+    assert body["generationConfig"]["responseModalities"] == ["AUDIO"]
+    assert body["generationConfig"]["speechConfig"]["voiceConfig"]["voice"] == "Kore"
+    with pytest.raises(ValueError):
+        tts.synthesize("Akkam jirtu", "om")
+    with pytest.raises(RuntimeError, match="no audio"):
+        google.GeminiTextToSpeech(post=FakePost({"candidates": []})).synthesize("x", "am")
+
+
+def test_gemini_key_must_come_from_the_environment(monkeypatch):
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    with pytest.raises(RuntimeError, match="GEMINI_API_KEY"):
+        google.keyed_post()
+
+
+class FakeTTS:
+    def __init__(self, fail: bool = False):
+        self.calls, self.fail = [], fail
+
+    def synthesize(self, text, language):
+        if self.fail:
+            raise RuntimeError("down")
+        self.calls.append((text, language))
+        return b"RIFF" + text.encode()
+
+
+def test_played_voice_caches_audio_and_serves_only_cache_names(tmp_path):
+    tts = FakeTTS()
+    voice = speech.PlayedVoice(tts, tmp_path, "https://ace.example.org/")
+    url = voice.url("Baga nagaan dhuftan", "so")
+    assert url.startswith("https://ace.example.org/voice/audio/") and url.endswith(".wav")
+    assert voice.url("Baga nagaan dhuftan", "so") == url and len(tts.calls) == 1
+    name = url.rsplit("/", 1)[-1]
+    assert voice.audio(name) == b"RIFFBaga nagaan dhuftan"
+    assert voice.audio("../secret.wav") is None and voice.audio("x.wav") is None
+    assert voice.speaks("am") and voice.speaks("so") and not voice.speaks("om")
+
+
+def test_voice_line_plays_amharic_for_an_ethiopian_caller(engine, tmp_path):
+    app = VoiceApp(engine, voice=speech.PlayedVoice(FakeTTS(), tmp_path, "https://ace.example.org"))
+    assert app.spoken_language("+251911000003", "ET") == "am"
+    xml = app.respond({"callerNumber": "+251911000003", "isActive": "1"})
+    root = ET.fromstring(xml)
+    assert root.find("GetDigits/Play").get("url").startswith("https://ace.example.org/voice/audio/")
+    assert root.find("GetDigits/Say") is None
+
+
+def test_voice_line_keeps_say_where_a_cloud_voice_exists(engine, tmp_path):
+    tts = FakeTTS()
+    app = VoiceApp(engine, voice=speech.PlayedVoice(tts, tmp_path, "https://ace.example.org"))
+    root = ET.fromstring(app.respond({"callerNumber": "+254711000011", "isActive": "1"}))
+    assert root.find("GetDigits/Say") is not None and tts.calls == []
+
+
+def test_voice_line_falls_back_to_say_when_synthesis_fails(engine, tmp_path):
+    app = VoiceApp(engine, voice=speech.PlayedVoice(FakeTTS(fail=True), tmp_path, "https://ace.example.org"))
+    root = ET.fromstring(app.respond({"callerNumber": "+251911000004", "isActive": "1"}))
+    assert root.find("GetDigits/Say").text.startswith("Welcome to ACE.")
+
+
+def test_server_serves_played_audio_without_a_webhook_key(engine, tmp_path, monkeypatch):
+    from ace_engine.server import AceApp
+
+    monkeypatch.delenv("ACE_VOICE_AUDIO_URL", raising=False)
+    app = AceApp(engine, webhook_secret="s3cret")
+    app.voice.voice = speech.PlayedVoice(FakeTTS(), tmp_path, "https://ace.example.org")
+    name = app.voice.voice.url("Akkam", "am").rsplit("/", 1)[-1]
+    status, headers, body = app.route("GET", f"/voice/audio/{name}", {}, b"", {})
+    assert status.startswith("200") and ("Content-Type", "audio/wav") in headers and body == b"RIFFAkkam"
+    assert app.route("GET", "/voice/audio/../../etc.wav", {}, b"", {})[0].startswith("404")
+
+
+def test_played_voice_is_off_unless_both_settings_exist(monkeypatch):
+    from ace_engine.server import played_voice_from_env
+
+    monkeypatch.setenv("ACE_VOICE_AUDIO_URL", "https://ace.example.org")
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
+    assert played_voice_from_env() is None
+    monkeypatch.setenv("GEMINI_API_KEY", "test-key-not-real")
+    assert played_voice_from_env() is not None

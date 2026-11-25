@@ -1,0 +1,91 @@
+# Morocco emergency numbers, from the UK FCDO travel advice page for Morocco, checked on 2026-11-24.
+# Numbers change, so the fact expires after a year and must be checked again before it is served.
+spec_version: '1.0'
+id: ma-emergency-contacts
+title: Morocco emergency numbers
+description: National emergency numbers that ACE gives to callers in Morocco when a message signals danger, and what to do
+  where no national number exists. Every number is checked against a published source.
+version: 1.0.0
+order: 5
+labels:
+  en: Emergency numbers
+  sw: Nambari za dharura
+  fr: Numéros d'urgence
+  pt: Números de emergência
+  ar: أرقام الطوارئ
+  am: የድንገተኛ ቁጥሮች
+  om: Lakkoofsa hatattamaa
+  so: Lambarrada degdegga
+license: CC-BY-4.0
+country: MA
+language: en
+maintainers:
+- ACE maintainers
+facts:
+- id: national-emergency
+  claim: In Morocco, call 150 for an ambulance or the fire service, 190 for the police, and 177 for the gendarmerie outside
+    towns.
+  short: 'Emergency in Morocco: ambulance and fire 150, police 190, gendarmerie 177.'
+  topic: emergency_contacts
+  vertical: safety
+  kind: action
+  keywords:
+  - emergency
+  - police
+  - ambulance
+  - fire
+  - help
+  - urgence
+  - pompiers
+  - secours
+  - dharura
+  - polisi
+  - emergencia
+  - emergência
+  - bombeiros
+  - socorro
+  - طوارئ
+  - اسعاف
+  - شرطة
+  - ድንገተኛ
+  - ፖሊስ
+  - አምቡላንስ
+  - hatattamaa
+  - poolisii
+  - degdeg
+  - booliis
+  - gargaar
+  contacts:
+  - label: Ambulance and fire
+    number: '150'
+    queues:
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+    - self_harm
+    - fire
+  - label: Police
+    number: '190'
+    queues: &id001
+    - emergency
+    - violence
+    - gbv
+    - child_protection
+  - label: Gendarmerie
+    number: '177'
+    queues: *id001
+  translations:
+    ar:
+      claim: في المغرب، اتصل بالرقم 150 للإسعاف أو الإطفاء، و190 للشرطة، و177 للدرك خارج المدن.
+      short: 'الطوارئ في المغرب: الإسعاف والإطفاء 150، الشرطة 190، الدرك 177.'
+    fr:
+      claim: Au Maroc, appelez le 150 pour une ambulance ou les pompiers, le 190 pour la police et le 177 pour la gendarmerie
+        hors des villes.
+      short: 'Urgence au Maroc : ambulance et pompiers 150, police 190, gendarmerie 177.'
+  source: UK FCDO, Morocco travel advice, getting help
+  source_url: https://www.gov.uk/foreign-travel-advice/morocco/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
+  review_status: sourced
+  safety_critical: true

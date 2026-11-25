@@ -9,15 +9,19 @@ VoiceAdapter handles the other path: a transcript from any speech to text
 engine, open or hosted, that plugs in behind the SpeechToText interface in
 ace_engine.speech (Google Cloud Speech-to-Text is one ready option).
 
-The line speaks a language only where a text to speech voice is known to
-exist for it (see ace_engine/speech/support.yaml) or where the operator has
-checked their provider and listed it in ACE_VOICE_LANGUAGES. No voice was
-found for Amharic, Afaan Oromo or Somali on 25 November 2026, so callers who
-use those languages hear the next language of their country that has one,
-then English, rather than a voice reading a script it cannot pronounce.
+Two ways to speak. The Say action reads text with a Google Cloud
+Text-to-Speech voice, so it covers only languages with such a voice (see
+ace_engine/speech/support.yaml) or languages the operator lists in
+ACE_VOICE_LANGUAGES. With a PlayedVoice, ACE synthesises the audio with Gemini
+TTS and the call plays it, which adds Amharic and Somali. Afaan Oromo has no
+voice in either as of 25 November 2026, so Oromo callers hear the next
+language of their country with a voice, then English, rather than a voice
+reading a script it cannot pronounce.
 """
 from __future__ import annotations
 
+import copy
+import logging
 import re
 from typing import TYPE_CHECKING, Any
 from xml.sax.saxutils import escape
@@ -33,6 +37,9 @@ if TYPE_CHECKING:
 
 
 SpeechToText = speech.SpeechToText  # kept here so existing imports keep working
+
+
+log = logging.getLogger("ace.voice")
 
 
 class VoiceAdapter(ChannelAdapter):
@@ -74,12 +81,26 @@ i18n.localize("channels.voice", globals(), ("PROMPTS",))
 class VoiceApp:
     """Keypad IVR over the context packs. Returns the XML body for each callback."""
 
-    def __init__(self, engine: Engine, facts_per_topic: int = 3, timeout_s: int = 20) -> None:
+    def __init__(self, engine: Engine, facts_per_topic: int = 3, timeout_s: int = 20,
+                 voice: speech.PlayedVoice | None = None) -> None:
         self.engine = engine
         self.facts_per_topic = facts_per_topic
         self.timeout_s = timeout_s
+        self.voice = voice
 
     def respond(self, payload: dict[str, Any]) -> str:
+        try:
+            return self._respond(payload)
+        except (RuntimeError, OSError, ValueError):
+            if self.voice is None:
+                raise
+            # Synthesis failed: answer anyway with the Say action in a language it can read.
+            log.warning("voice synthesis failed; falling back to the Say action", exc_info=True)
+            fallback = copy.copy(self)
+            fallback.voice = None
+            return fallback._respond(payload)
+
+    def _respond(self, payload: dict[str, Any]) -> str:
         if str(payload.get("isActive", "1")) == "0":
             return ""  # end of call notification; nothing to say
         caller = str(payload.get("callerNumber", ""))
@@ -100,23 +121,30 @@ class VoiceApp:
                 spoken.append(text)
             if not more:
                 break
-        return self._xml([("Say", " ".join(spoken))], gather=PROMPTS[lang]["repeat"], lang=lang)
+        return self._xml([" ".join(spoken)], gather=PROMPTS[lang]["repeat"], lang=lang)
 
     def spoken_language(self, caller: str, country: str | None) -> str:
         """The caller's language if the line can speak it, else the next spoken language of their country."""
         first = self.engine.language_for(caller) if caller else self.engine.config.default_language
         local = list(COUNTRIES[country].languages) if country in COUNTRIES else []
         preferred = [c for c in dict.fromkeys([first, *local, "en"]) if c in PROMPTS]
-        return speech.spoken_language(preferred)
+        extra = self.voice.languages if self.voice else frozenset()
+        return speech.spoken_language(preferred, extra)
 
     def _menu(self, lang: str, packs: list, prefix: str = "") -> str:
         p = PROMPTS[lang]
         options = " ".join(p["press"].format(label=pk.label(lang), n=i) for i, pk in enumerate(packs, start=1))
         return self._xml([], gather=" ".join(x for x in (prefix, p["welcome"], options) if x), lang=lang)
 
-    def _xml(self, actions: list[tuple[str, str]], gather: str, lang: str) -> str:
-        body = "".join(f"<{tag}>{escape(text)}</{tag}>" for tag, text in actions if text)
+    def _speak(self, text: str, lang: str) -> str:
+        """Play synthesised audio where the PlayedVoice speaks the language, else let the Say action read it."""
+        if self.voice and self.voice.speaks(lang) and not speech.speakable(lang):
+            return f'<Play url="{escape(self.voice.url(text, lang), {chr(34): "&quot;"})}"/>'
+        return f"<Say>{escape(text)}</Say>"
+
+    def _xml(self, spoken: list[str], gather: str, lang: str) -> str:
+        body = "".join(self._speak(text, lang) for text in spoken if text)
         get = (f'<GetDigits timeout="{self.timeout_s}" numDigits="1">'
-               f"<Say>{escape(gather)}</Say></GetDigits>")
-        bye = f"<Say>{escape(PROMPTS[lang]['bye'])}</Say>"
+               f"{self._speak(gather, lang)}</GetDigits>")
+        bye = self._speak(PROMPTS[lang]["bye"], lang)
         return f'<?xml version="1.0" encoding="UTF-8"?><Response>{body}{get}{bye}</Response>'

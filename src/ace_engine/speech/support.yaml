@@ -1,0 +1,54 @@
+# What exists today to hear and speak each ACE language, and to translate it.
+# Every line was checked against the source named in `sources` on 25 November 2026. Preview means the provider
+# has not made the model generally available. Re-check before launching a voice line; providers add languages
+# without notice. `ace voice languages` prints this table.
+checked_on: "2026-11-25"
+sources:
+  google_stt: https://docs.cloud.google.com/speech-to-text/docs/models/chirp-3
+  google_stt_languages: https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages
+  google_tts: https://docs.cloud.google.com/text-to-speech/docs/chirp3-hd
+  google_tts_voices: https://docs.cloud.google.com/text-to-speech/docs/voices
+  google_translate: https://docs.cloud.google.com/translate/docs/languages
+  waxal: https://huggingface.co/datasets/google/WaxalNLP
+
+languages:
+  en:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "en-US", stage: "GA"}
+    speak: {provider: "google_tts", locale: "en-US", voices: "Chirp 3 HD, Neural2, WaveNet, Standard"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: null
+  sw:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "sw-KE", stage: "Preview"}
+    speak: {provider: "google_tts", locale: "sw-KE", voices: "Chirp 3 HD"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: {tts_utterances: 1778, note: "Voice scripts from Makerere University and Loud and Clear; no transcribed speech"}
+  fr:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "fr-FR", stage: "GA", note: "No African French locale"}
+    speak: {provider: "google_tts", locale: "fr-FR", voices: "Chirp 3 HD, Neural2, WaveNet, Standard", note: "No African French voice"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: null
+  pt:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "pt-PT", stage: "GA", note: "No Mozambican or Angolan locale"}
+    speak: {provider: "google_tts", locale: "pt-PT", voices: "WaveNet, Standard"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: null
+  ar:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "ar-EG", stage: "Preview", note: "Algeria, Egypt, Morocco and Tunisia locales; none for Libya, Sudan or Chad"}
+    speak: {provider: "google_tts", locale: "ar-XA", voices: "Chirp 3 HD, WaveNet, Standard", note: "Modern Standard Arabic"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: null
+  am:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "am-ET", stage: "Preview"}
+    speak: null
+    translate: {provider: "google_translate", model: "NMT; Translation LLM experimental"}
+    waxal: {asr_hours: 219.9, asr_utterances: 44354, note: "Transcribed speech from Digital Umuganda; no voice scripts"}
+  om:
+    hear: null
+    speak: null
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: {asr_hours: 222.7, asr_utterances: 45045, note: "Transcribed speech from Digital Umuganda; no voice scripts"}
+  so:
+    hear: {provider: "google_stt", model: "chirp", locale: "so-SO", stage: "Listed", note: "First generation Chirp model, region asia-southeast1"}
+    speak: null
+    translate: {provider: "google_translate", model: "NMT; Translation LLM experimental"}
+    waxal: null

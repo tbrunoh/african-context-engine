@@ -3,84 +3,214 @@
     "by_language": {
       "en": {
         "recall": 1.0,
-        "hit": 195,
-        "total": 195
+        "hit": 510,
+        "total": 510
       },
       "sw": {
         "recall": 1.0,
-        "hit": 156,
-        "total": 156
+        "hit": 408,
+        "total": 408
       },
       "fr": {
         "recall": 1.0,
-        "hit": 156,
-        "total": 156
+        "hit": 408,
+        "total": 408
+      },
+      "pt": {
+        "recall": 1.0,
+        "hit": 408,
+        "total": 408
+      },
+      "ar": {
+        "recall": 1.0,
+        "hit": 408,
+        "total": 408
+      },
+      "am": {
+        "recall": 1.0,
+        "hit": 408,
+        "total": 408
+      },
+      "om": {
+        "recall": 1.0,
+        "hit": 408,
+        "total": 408
+      },
+      "so": {
+        "recall": 1.0,
+        "hit": 408,
+        "total": 408
       }
     },
     "by_country": {
       "KE": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "TZ": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "UG": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "RW": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "ZA": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "BW": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "NA": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "ZW": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "NG": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "GH": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "SN": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "CI": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       },
       "TG": {
-        "hit": 39,
-        "total": 39,
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "CD": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "MW": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "BI": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "CM": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "BJ": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "ZM": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "TD": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "GN": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "BF": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "SS": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "ET": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "MZ": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "GW": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "AO": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "SO": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "SD": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "DZ": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "EG": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "LY": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "MA": {
+        "hit": 99,
+        "total": 99,
+        "wrong": 0
+      },
+      "TN": {
+        "hit": 99,
+        "total": 99,
         "wrong": 0
       }
     },
@@ -92,27 +222,40 @@
   "ordinary": {
     "false_alarm_rate": 0.0,
     "false_alarms": [],
-    "total": 17
+    "total": 52
   },
   "services": {
-    "checks": 207,
+    "checks": 1464,
     "failures": [],
     "pass_rate": 1.0,
     "gaps": {
       "rain_this_week": [],
       "official_warnings": [
-        "KE",
         "RW",
         "ZA",
-        "NA"
+        "NA",
+        "AO",
+        "MA"
       ],
-      "nearest_facility": [],
+      "nearest_facility": [
+        "DZ",
+        "EG",
+        "LY",
+        "MA",
+        "TN"
+      ],
       "market_prices": [
         "ZA",
         "BW",
         "NA",
         "ZW",
-        "GH"
+        "GH",
+        "ZM",
+        "MZ",
+        "AO",
+        "SO",
+        "MA",
+        "TN"
       ],
       "pregnancy_companion": [],
       "pest_check": []

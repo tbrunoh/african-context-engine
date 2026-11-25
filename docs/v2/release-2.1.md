@@ -176,6 +176,6 @@ Algeria's prices come from the Sahrawi refugee camps near Tindouf, the only Alge
 
 ## Checks at release
 
-- 443 tests pass, all offline.
+- 445 tests pass, all offline.
 - Benchmark: emergency recall 100% in all eight languages, wrong number rate 0, false alarm rate 0, and 1,464 of 1,464 service checks across 34 countries and eight languages.
 - `ace packs validate`: 41 packs pass, with a warning for each translation that awaits review.

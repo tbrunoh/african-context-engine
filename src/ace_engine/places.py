@@ -106,6 +106,24 @@ class Gazetteer:
     def names(self, country: str) -> list[str]:
         return sorted(rec["name"] for rec in self.areas(country))
 
+    def country_box(self, country: str) -> tuple[float, float, float, float] | None:
+        """The bounding box of every area in a country: south, west, north, east."""
+        boxes = [rec["bbox"] for rec in self.areas(country) if rec.get("bbox")]
+        if not boxes:
+            return None
+        return (min(b[0] for b in boxes), min(b[1] for b in boxes), max(b[2] for b in boxes), max(b[3] for b in boxes))
+
+    def named_in(self, text: str, country: str) -> set[str]:
+        """Codes of the areas a text names, by official name or alias, as whole words."""
+        from .text import contains_phrase
+        found: set[str] = set()
+        for rec in self.areas(country):
+            for name in (rec["name"], *rec.get("aliases", ())):
+                if len(fold(name)) > 2 and contains_phrase(text, name):
+                    found.add(rec["code"])
+                    break
+        return found
+
 
 def same_name(a: str, b: str) -> bool:
     return _key(a) == _key(b) or fold(a) == fold(b)

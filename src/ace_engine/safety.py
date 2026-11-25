@@ -10,7 +10,8 @@ when every one of its groups has at least one phrase present, so "pregnant"
 plus "bleeding" fires the maternal rule while "bleeding" alone fires the
 general urgent rule.
 
-IMPORTANT: the starter rules cover English, Swahili and French and were written
+IMPORTANT: the starter rules cover English, Swahili and French in this file and every added language through
+its locale file (ace_engine/locales), and were written
 from WHO guidance and national helpline guidance. Every deployment must have them reviewed by
 clinicians and fluent speakers for each language it serves, and should add a
 classifier on top. Keyword rules are a floor, not a ceiling.
@@ -21,6 +22,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass, field
 from typing import Protocol
 
+from . import i18n
 from .context.schema import Contact, ContextFact
 from .text import contains_phrase
 
@@ -69,6 +71,19 @@ SELF_HARM = ("kill myself", "end my life", "suicide", "suicidal", "want to die",
              "hurt myself", "harm myself", "kujiua", "nataka kufa", "kujitoa uhai", "kujiumiza",
              "sitaki kuishi", "me suicider", "je vais me tuer", "je veux mourir", "mettre fin a mes jours",
              "en finir avec la vie", "me faire du mal", "je ne veux plus vivre")
+
+# Every added language widens these groups through its locale file. Widening only adds phrases.
+PREGNANCY = i18n.phrases("safety.PREGNANCY", PREGNANCY)
+POSTPARTUM = i18n.phrases("safety.POSTPARTUM", POSTPARTUM)
+MATERNAL_DANGER = i18n.phrases("safety.MATERNAL_DANGER", MATERNAL_DANGER)
+URGENT = i18n.phrases("safety.URGENT", URGENT)
+POISON_ACT = i18n.phrases("safety.POISON_ACT", POISON_ACT)
+POISON_WHAT = i18n.phrases("safety.POISON_WHAT", POISON_WHAT)
+POISONED = i18n.phrases("safety.POISONED", POISONED)
+GBV = i18n.phrases("safety.GBV", GBV)
+CHILD = i18n.phrases("safety.CHILD", CHILD)
+CHILD_HARM = i18n.phrases("safety.CHILD_HARM", CHILD_HARM)
+SELF_HARM = i18n.phrases("safety.SELF_HARM", SELF_HARM)
 
 DEFAULT_RULES: dict[str, tuple[tuple[str, ...], ...]] = {
     # Order matters: the first queue whose rule fires wins.
@@ -156,7 +171,8 @@ OPENERS: dict[str, dict[str, str]] = {
         "fr": "Cela semble urgent. Obtenez une aide médicale maintenant. {numbers}",
     },
 }
-CALL_WORD = {"en": "Call", "sw": "Piga", "fr": "Appelez le"}
+# The verb goes where the language puts it: before the numbers here, after them in Amharic.
+CALL_WORD = {"en": "Call {numbers}", "sw": "Piga {numbers}", "fr": "Appelez le {numbers}"}
 OR_WORD = {"en": "or", "sw": "au", "fr": "ou"}
 EMERGENCY_WORD = {"en": "emergency", "sw": "dharura", "fr": "urgence"}
 FALLBACK_NUMBERS = {
@@ -164,6 +180,9 @@ FALLBACK_NUMBERS = {
     "sw": "Piga nambari ya dharura ya eneo lako au nenda kituo cha afya kilicho karibu.",
     "fr": "Appelez le numéro d'urgence local ou allez au centre de santé le plus proche.",
 }
+
+
+i18n.localize("safety", globals(), ("OPENERS", "CALL_WORD", "OR_WORD", "EMERGENCY_WORD", "FALLBACK_NUMBERS"))
 
 
 def contacts_for(queue: str, facts: Iterable[ContextFact], country: str | None = None) -> list[Contact]:
@@ -188,7 +207,16 @@ def format_numbers(contacts: list[Contact], language: str) -> str:
     if emergency:
         parts.append(f" {OR_WORD[lang]} ".join(emergency) + f" ({EMERGENCY_WORD[lang]})")
     parts.extend(f"{c.number} ({c.label})" for c in others)
-    return f"{CALL_WORD[lang]} " + ", ".join(parts) + "."
+    return call_line(", ".join(parts), lang)
+
+
+SENTENCE_END = {"am": "።"}
+
+
+def call_line(numbers: str, language: str) -> str:
+    """Call 112, 999. in the person's language, with the verb where that language puts it (Amharic: last)."""
+    lang = language if language in CALL_WORD else "en"
+    return CALL_WORD[lang].format(numbers=numbers) + SENTENCE_END.get(lang, ".")
 
 
 def emergency_text(queue: str, contacts: list[Contact], language: str) -> str:

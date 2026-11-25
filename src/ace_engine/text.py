@@ -1,4 +1,4 @@
-"""Text utilities for short, noisy, code switched messages in English, Swahili and French.
+"""Text utilities for short, noisy, code switched messages in every language ACE serves.
 
 Messages to ACE are typed on feature phones, spoken into voice lines and
 forwarded from mobile money inboxes. They mix languages, drop vowels and
@@ -10,8 +10,11 @@ from __future__ import annotations
 import re
 import unicodedata
 
-_TOKEN = re.compile(r"[a-z0-9]+")
-SUPPORTED_LANGUAGES = ("en", "sw", "fr")
+from . import i18n
+
+# Letters and digits in any script, so Arabic, Ge'ez and Latin text all tokenise.
+_TOKEN = re.compile(r"[^\W_]+")
+SUPPORTED_LANGUAGES = i18n.all_languages()
 
 STOPWORDS: dict[str, frozenset[str]] = {
     "en": frozenset(
@@ -34,6 +37,9 @@ STOPWORDS: dict[str, frozenset[str]] = {
     ),
 }
 
+for _code, _words in i18n.words("stopwords").items():
+    STOPWORDS[_code] = _words
+
 # Words that are frequent in Swahili text and rare in English text. Used only
 # for a light language guess when the channel does not tell us the language.
 _SW_MARKERS = frozenset(
@@ -51,7 +57,7 @@ _EN_MARKERS = frozenset(
 )
 
 
-ACTION_CUES = (
+ACTION_CUES_BUILT_IN = (
     "what do i do", "what should i do", "what can i do", "how do i stop", "how to stop", "how do i control",
     "how to control", "how to kill", "get rid", "how do i prevent", "how to prevent", "how do i store",
     "how to store", "what to do", "help me", "nifanye", "nifanye nini", "nini kifanyike", "jinsi ya kuzuia",
@@ -61,19 +67,43 @@ ACTION_CUES = (
 )
 
 
+ACTION_CUES = i18n.phrases("text.ACTION_CUES", ACTION_CUES_BUILT_IN)
+
+
 def wants_action(text: str) -> bool:
     """True when a message asks what to do rather than what something is."""
     return any(contains_phrase(text, cue) for cue in ACTION_CUES)
 
 
+# Arabic letters people type interchangeably, folded to one form: alef with hamza or madda to bare alef, alef
+# maqsura to ya, ta marbuta to ha. Tatweel (the stretching stroke) is dropped.
+_ARABIC = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ى": "ي", "ة": "ه", "ـ": None, "ؤ": "و", "ئ": "ي",
+                         **{chr(0x0660 + i): str(i) for i in range(10)}, **{chr(0x06F0 + i): str(i) for i in range(10)}})
+# Ge'ez letter families that sound the same in Amharic and are typed interchangeably, folded to one family:
+# ሐ and ኀ to ሀ, ሠ to ሰ, ዐ to አ, ፀ to ጸ. Each family is eight code points, one per vowel order.
+_ETHIOPIC = {0x1210: 0x1200, 0x1280: 0x1200, 0x1220: 0x1230, 0x12D0: 0x12A0, 0x1340: 0x1338}
+_ETHIOPIC_MAP = {base + i: target + i for base, target in _ETHIOPIC.items() for i in range(8)}
+# Clitics Arabic writes joined to the next word: wa (and), the article al and its forms with bi, li, fa, ka.
+_AR_PREFIX = re.compile(r"^(?:و)?(?:بال|لل|فال|كال|وال|ال)(?=\w{2,})|^و(?=\w{3,})")
+
+
 def fold(text: str) -> str:
-    """Lowercase and strip accents so that typing differences do not matter."""
+    """Lowercase, strip accents and harmonise letter forms so typing differences do not matter."""
     text = unicodedata.normalize("NFKD", text)
-    return "".join(c for c in text if not unicodedata.combining(c)).lower()
+    text = "".join(c for c in text if not unicodedata.combining(c)).lower()
+    if any("\u0600" <= c <= "\u06ff" for c in text):
+        text = text.translate(_ARABIC)
+    if any("\u1200" <= c <= "\u137f" for c in text):
+        text = text.translate(_ETHIOPIC_MAP)
+    return text
+
+
+def _arabic_stem(token: str) -> str:
+    return _AR_PREFIX.sub("", token) if "\u0600" <= token[:1] <= "\u06ff" else token
 
 
 def tokens(text: str) -> list[str]:
-    return _TOKEN.findall(fold(text))
+    return [_arabic_stem(t) for t in _TOKEN.findall(fold(text))]
 
 
 def stem(token: str) -> str:
@@ -89,20 +119,44 @@ def stem(token: str) -> str:
     return token
 
 
+_ALL_STOP = frozenset().union(*({fold(w) for w in ws} for ws in STOPWORDS.values()))
+
+
 def terms(text: str, drop_stopwords: bool = True) -> list[str]:
     """Index and query terms: folded tokens, stopwords removed, lightly stemmed."""
-    stop = STOPWORDS["en"] | STOPWORDS["sw"] | STOPWORDS["fr"] if drop_stopwords else frozenset()
+    stop = _ALL_STOP if drop_stopwords else frozenset()
     return [stem(t) for t in tokens(text) if t not in stop and len(t) > 1]
 
 
+_ADDED_MARKERS = {code: frozenset(tokens(" ".join(ws))) for code, ws in i18n.words("markers").items()}
+_SCRIPT_LANGUAGE = (("\u0600", "\u06ff", "ar"), ("\u1200", "\u137f", "am"))
+
+
+def script_language(text: str) -> str | None:
+    """The language a non Latin script points to: Arabic script to Arabic, Ge'ez to Amharic."""
+    letters = [c for c in text if c.isalpha()]
+    if not letters:
+        return None
+    for lo, hi, code in _SCRIPT_LANGUAGE:
+        if code in SUPPORTED_LANGUAGES and sum(lo <= c <= hi for c in letters) * 2 >= len(letters):
+            return code
+    return None
+
+
 def guess_language(text: str, default: str = "en") -> str:
-    """Return "en", "sw" or "fr" from marker word counts. Ties go to the default."""
+    """The language of a message: its script first, then marker word counts. Ties go to the default."""
+    by_script = script_language(text)
+    if by_script:
+        return by_script
     toks = tokens(text)
     counts = {
         "sw": sum(t in _SW_MARKERS for t in toks),
         "en": sum(t in _EN_MARKERS for t in toks),
         "fr": sum(fold(t) in {fold(m) for m in _FR_MARKERS} for t in toks),
     }
+    for code, markers in _ADDED_MARKERS.items():
+        if code not in ("ar", "am"):
+            counts[code] = sum(t in markers for t in toks)
     best = max(counts.values())
     if best == 0:
         return default
@@ -126,3 +180,24 @@ def truncate_words(text: str, limit: int, suffix: str = "...") -> str:
     if " " in cut:
         cut = cut[: cut.rfind(" ")]
     return cut.rstrip(" ,;:") + suffix
+
+
+ETHIOPIC_PREFIXES = "የበለከ"  # of, in, for, from: የበቆሎ ዋጋ is the price of maize
+SOMALI_ENDINGS = ("da", "ta", "ka", "ga", "ha")  # the definite article: galleyda is the maize
+
+
+def word_forms(tok: str) -> list[str]:
+    """A word and the bare forms people attach to it: an Amharic preposition prefix or a Somali definite ending.
+
+    Used where a service looks for a named thing (a food, a crop), so the price of maize finds maize in every
+    language. Retrieval does not use it, because a stripped form can collide with another word."""
+    out = [tok]
+    if len(tok) > 2 and tok[0] in ETHIOPIC_PREFIXES:
+        out.append(tok[1:])
+    out += [tok[:-2] for end in SOMALI_ENDINGS if tok.endswith(end) and len(tok) > 4]
+    return out
+
+
+def token_forms(text: str) -> set[str]:
+    return {form for tok in tokens(text) for form in word_forms(tok)}
+

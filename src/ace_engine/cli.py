@@ -243,7 +243,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     p = sub.add_parser("refresh", help="run connectors and write dated snapshots (uses the network)")
     p.add_argument("--source", action="append", help="connector name (repeatable; default: all)")
-    p.add_argument("--country", action="append", help="ISO country code (repeatable; default: all 13)")
+    p.add_argument("--country", action="append", help="ISO country code (repeatable; default: all 34)")
     p.add_argument("--out", default="snapshots", help="snapshots folder")
     p.set_defaults(func=cmd_refresh)
 

@@ -1,7 +1,7 @@
 """Keyword commands that work the same on SMS, WhatsApp, USSD free text and the API.
 
-Commands are recognised only by their first word, in English, Swahili or
-French, so ordinary questions are never mistaken for commands. The safety
+Commands are recognised only by their first word, in every language ACE
+serves, so ordinary questions are never mistaken for commands. The safety
 rail always runs before commands: HELP followed by an emergency is still an
 emergency.
 """
@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from . import i18n
 from .text import fold
 
 COMMANDS: dict[str, tuple[str, ...]] = {
@@ -25,10 +26,25 @@ COMMANDS: dict[str, tuple[str, ...]] = {
     "more": ("more", "zaidi", "next", "endelea", "plus", "suite"),
 }
 LANGUAGE_COMMANDS = {"english": "en", "swahili": "sw", "french": "fr"}
-_LOOKUP = {word: name for name, words in COMMANDS.items() for word in words}
+for _name in list(COMMANDS):
+    COMMANDS[_name] = i18n.phrases(f"commands.COMMANDS.{_name}", COMMANDS[_name])
+for _code, _loc in i18n.locales().items():
+    _cmd = _loc.name.lower()
+    COMMANDS[_cmd] = tuple(fold(n) for n in _loc.names if len(n) > 2)  # the bare name works, as ENGLISH does
+    LANGUAGE_COMMANDS[_cmd] = _code
+# Every name a language goes by, to read LANG PT, LUGHA KIARABU or LANGUE ARABE.
+LANGUAGE_NAMES: dict[str, str] = {"en": "en", "english": "en", "kiingereza": "en", "anglais": "en", "an": "en",
+                                  "sw": "sw", "swahili": "sw", "kiswahili": "sw", "ki": "sw",
+                                  "fr": "fr", "francais": "fr", "french": "fr", "kifaransa": "fr"}
+for _code, _loc in i18n.locales().items():
+    for _n in _loc.names:
+        LANGUAGE_NAMES[fold(_n)] = _code
+    for _n in (_code, _loc.name, _loc.native):
+        LANGUAGE_NAMES[fold(_n)] = _code
+_LOOKUP = {fold(word): name for name, words in COMMANDS.items() for word in words}
 # Commands that must be the whole message, so a question that starts with the
 # word is still treated as a question ("stop armyworm", "plus de pluie ?").
-_BARE_ONLY = {"help", "forget", "stop", "english", "swahili", "french", "sources", "more"}
+_BARE_ONLY = {"help", "forget", "stop", "sources", "more", *LANGUAGE_COMMANDS}
 
 
 @dataclass(frozen=True)
@@ -49,34 +65,46 @@ def parse_command(text: str) -> Command | None:
     if name in _BARE_ONLY and rest:
         return None
     if name == "language":
-        target = fold(rest)
-        if target.startswith(("sw", "ki")):
-            return Command("swahili")
-        if target.startswith(("en", "an")):
-            return Command("english")
-        if target.startswith("fr"):
-            return Command("french")
+        code = language_code(rest)
+        if code:
+            return Command(next(n for n, c in LANGUAGE_COMMANDS.items() if c == code))
         return Command("language")
     if name in ("scam", "tip") and not rest:
         return Command(name)
     return Command(name, rest)
 
 
+def language_code(text: str) -> str | None:
+    """The language a LANG argument names, by code or by any of its names, or None."""
+    target = fold(text).strip(" .!")
+    if not target:
+        return None
+    if target in LANGUAGE_NAMES:
+        return LANGUAGE_NAMES[target]
+    first = target.split()[0]
+    if first in LANGUAGE_NAMES:
+        return LANGUAGE_NAMES[first]
+    for prefix, code in (("sw", "sw"), ("ki", "sw"), ("en", "en"), ("an", "en"), ("fr", "fr")):
+        if first.startswith(prefix):
+            return code
+    return None
+
+
 TEXTS: dict[str, dict[str, str]] = {
     "help": {
-        "en": ("ACE gives checked local guidance. Ask a question in English, Swahili or French. Commands: "
+        "en": ("ACE gives checked local guidance. Ask a question in your language. Commands: "
                "SCAM + message to check a message, TIP + your advice to share knowledge, SOURCES, "
-               "MORE, LANG SW or LANG FR, FORGET to delete your data."),
-        "sw": ("ACE hutoa ushauri wa eneo lako uliokaguliwa. Uliza swali kwa Kiswahili, Kiingereza au Kifaransa. "
-               "Amri: UTAPELI + ujumbe kuukagua, DOKEZO + ushauri wako, VYANZO, ZAIDI, LUGHA EN, "
-               "FUTA kufuta data yako."),
-        "fr": ("ACE donne des conseils locaux vérifiés. Posez votre question en français, en anglais ou en swahili. "
+               "MORE, LANG + code (for example LANG FR), FORGET to delete your data."),
+        "sw": ("ACE hutoa ushauri wa eneo lako uliokaguliwa. Uliza swali kwa lugha yako. "
+               "Amri: UTAPELI + ujumbe kuukagua, DOKEZO + ushauri wako, VYANZO, ZAIDI, LUGHA + msimbo "
+               "(kwa mfano LUGHA EN), FUTA kufuta data yako."),
+        "fr": ("ACE donne des conseils locaux vérifiés. Posez votre question dans votre langue. "
                "Commandes : ARNAQUE + message pour le vérifier, ASTUCE + votre conseil, SOURCES, SUITE, "
-               "LANGUE EN, OUBLIER pour effacer vos données."),
+               "LANGUE + code (par exemple LANGUE EN), OUBLIER pour effacer vos données."),
     },
     "help_short": {
-        "en": "Ask ACE a question in English, Swahili or French. SCAM + message checks it. FORGET deletes your data.",
-        "sw": "Uliza ACE swali kwa Kiswahili au Kiingereza. UTAPELI + ujumbe huukagua. FUTA hufuta data.",
+        "en": "Ask ACE a question in your language. SCAM + message checks it. FORGET deletes your data.",
+        "sw": "Uliza ACE swali kwa lugha yako. UTAPELI + ujumbe huukagua. FUTA hufuta data.",
         "fr": "Posez votre question à ACE. ARNAQUE + message pour le vérifier. OUBLIER efface vos données.",
     },
     "forgotten": {
@@ -91,9 +119,9 @@ TEXTS: dict[str, dict[str, str]] = {
                "Envoyez OUBLIER pour effacer vos données."),
     },
     "language": {
-        "en": "Reply LANG SW for Kiswahili, LANG FR for French or LANG EN for English.",
-        "sw": "Jibu LUGHA SW kwa Kiswahili, LUGHA FR kwa Kifaransa au LUGHA EN kwa Kiingereza.",
-        "fr": "Répondez LANGUE FR pour le français, LANGUE EN pour l'anglais ou LANGUE SW pour le swahili.",
+        "en": "Reply LANG and a code:",
+        "sw": "Jibu LUGHA na msimbo:",
+        "fr": "Répondez LANGUE et un code :",
     },
     "english": {"en": "ACE will reply in English.", "sw": "ACE will reply in English.", "fr": "ACE will reply in English."},
     "swahili": {"en": "ACE itajibu kwa Kiswahili.", "sw": "ACE itajibu kwa Kiswahili.", "fr": "ACE itajibu kwa Kiswahili."},
@@ -131,6 +159,20 @@ TEXTS: dict[str, dict[str, str]] = {
 }
 
 
+# Each added language confirms the switch in its own words, whatever language the request came in.
+for _code, _loc in i18n.locales().items():
+    TEXTS[_loc.name.lower()] = {lang: _loc.confirm for lang in i18n.all_languages()}
+for _key in ("english", "swahili", "french"):
+    TEXTS[_key].update({lang: TEXTS[_key]["en"] for lang in i18n.added_languages()})
+i18n.localize("commands", globals(), ("TEXTS",))
+
+
+def language_menu() -> str:
+    """Every language ACE serves, as LANG codes with each language's own name."""
+    return ", ".join(f"{code.upper()} {i18n.native_name(code)}" for code in i18n.all_languages())
+
+
 def say(key: str, language: str, **kwargs: str) -> str:
-    lang = language if language in ("en", "sw", "fr") else "en"
-    return TEXTS[key][lang].format(**kwargs)
+    lang = language if language in i18n.all_languages() else "en"
+    text = (TEXTS[key].get(lang) or TEXTS[key]["en"]).format(**kwargs)
+    return f"{text} {language_menu()}." if key == "language" else text

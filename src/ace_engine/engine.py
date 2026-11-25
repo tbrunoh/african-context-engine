@@ -12,10 +12,11 @@ always the ones for that caller.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime
 from pathlib import Path
 
+from . import encoding
 from .commands import LANGUAGE_COMMANDS, Command, parse_command, say
 from .context.packs import ContextPack, load_packs
 from .context.schema import Contact, ContextFact, ReviewStatus
@@ -25,10 +26,10 @@ from .identity import Profile, ProfileStore, normalize_msisdn
 from .models import Channel, Citation, Message, Reply, ReplyKind
 from .router import Budget, ExtractiveComposer, GroundedGenerator
 from .safety import (
-    CALL_WORD,
     EscalationPolicy,
     HandoffSink,
     InMemoryHandoffs,
+    call_line,
     contacts_for,
     emergency_text,
     format_numbers,
@@ -141,6 +142,7 @@ class Engine:
         budget = budget or self.config.budgets.get(message.channel, CHANNEL_BUDGETS[Channel.API])
         text = " ".join(message.text.split())
         lang = self.language_for(message.sender, text, message.language)
+        budget = self._fit_alphabet(budget, message.channel, lang)
         profile = self.profiles.record_inbound(message)
         country = self.country_for(message.sender)
 
@@ -151,8 +153,20 @@ class Engine:
                  or self._answer(text, lang, profile, message, budget, country))
         if reply.kind is not ReplyKind.EMERGENCY and len(reply.text) > budget.max_chars:
             reply.text = truncate_words(reply.text, budget.max_chars)  # last line of defence
+        reply.text = self._for_network(reply.text, message.channel, lang)
         self.profiles.record_reply(profile, message.channel, reply.text)
         return reply
+
+    @staticmethod
+    def _fit_alphabet(budget: Budget, channel: Channel, lang: str) -> Budget:
+        """Shrink SMS and USSD budgets for languages whose script needs UCS-2 (Arabic, Amharic)."""
+        scaled = encoding.scale(budget.max_chars, channel.value, lang)
+        return budget if scaled == budget.max_chars else replace(budget, max_chars=scaled)
+
+    @staticmethod
+    def _for_network(text: str, channel: Channel, lang: str) -> str:
+        """Keep Latin script SMS and USSD replies in the GSM alphabet, so they keep their full length."""
+        return encoding.gsm_fold(text) if channel in (Channel.SMS, Channel.USSD) else text
 
     def ask(self, text: str, sender: str = "+254700000000", channel: Channel = Channel.API,
             language: str | None = None) -> Reply:
@@ -260,6 +274,7 @@ class Engine:
         budget = budget or self.config.budgets.get(message.channel, CHANNEL_BUDGETS[Channel.API])
         text = " ".join(message.text.split())
         lang = self.language_for(message.sender, text, message.language)
+        budget = self._fit_alphabet(budget, message.channel, lang)
         profile = self.profiles.record_inbound(message)
         country = self.country_for(message.sender)
         # A menu screen sets the context a message would otherwise carry: "bleeding" typed on the
@@ -268,6 +283,7 @@ class Engine:
         reply = (self._safety(f"{context} {text}".strip(), lang, profile, message, country)
                  or self._service_reply(service_id, text, lang, profile, message, budget, country,
                                         pending=service_id, params=params))
+        reply.text = self._for_network(reply.text, message.channel, lang)
         self.profiles.record_reply(profile, message.channel, reply.text)
         return reply
 
@@ -395,7 +411,7 @@ class Engine:
         if fact.safety_critical:
             missing = [c.number for c in self.contacts_for_facts([fact], country) if c.number not in text]
             if missing:
-                call = f"{CALL_WORD.get(lang, CALL_WORD['en'])} {', '.join(dict.fromkeys(missing))}."
+                call = call_line(", ".join(dict.fromkeys(missing)), lang)
                 text = f"{truncate_words(text, budget.max_chars - len(call) - 1)} {call}"
         return truncate_words(text, budget.max_chars), index + 1 < len(facts)
 

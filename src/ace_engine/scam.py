@@ -16,6 +16,7 @@ import re
 from dataclasses import dataclass, field
 from enum import Enum
 
+from . import i18n
 from .text import contains_phrase, fold
 
 
@@ -67,7 +68,18 @@ _URGENT = ("urgent", "immediately", "within 24 hours", "will be blocked", "will 
            "sera bloque", "sera bloquee", "sera suspendu", "sera suspendue", "dernier avertissement", "dans 24 heures")
 _CLAIMS_OPERATOR = ("safaricom", "m-pesa", "mpesa", "customer care", "customer service", "fuliza", "huduma kwa wateja")
 _DIAL = ("dial", "press", "key in", "bonyeza", "piga", "ingiza", "composez", "tapez")
-_TLDS = r"com|net|org|info|xyz|ke|co\.ke|za|co\.za|ng|com\.ng|gh|com\.gh|tz|co\.tz|ug|co\.ug|rw|bw|zw|co\.zw|sn|ci|tg"
+# Every added language widens these groups through its locale file. Widening only adds phrases.
+_PIN = i18n.phrases("scam.PIN", _PIN)
+_ASK = i18n.phrases("scam.ASK", _ASK)
+_MISTAKE = i18n.phrases("scam.MISTAKE", _MISTAKE)
+_DOUBLE = i18n.phrases("scam.DOUBLE", _DOUBLE)
+_PRIZE = i18n.phrases("scam.PRIZE", _PRIZE)
+_URGENT = i18n.phrases("scam.URGENT", _URGENT)
+_CLAIMS_OPERATOR = i18n.phrases("scam.CLAIMS_OPERATOR", _CLAIMS_OPERATOR)
+_DIAL = i18n.phrases("scam.DIAL", _DIAL)
+
+_TLDS = (r"com|net|org|info|xyz|ke|co\.ke|za|co\.za|ng|com\.ng|gh|com\.gh|tz|co\.tz|ug|co\.ug|rw|bw|zw|co\.zw|sn|ci|tg|"
+         r"cd|mw|bi|cm|bj|zm|td|gn|bf|ss|et|mz|co\.mz|gw|ao|co\.ao|so|sd|dz|eg|com\.eg|ly|ma|tn|top|online|site")
 _LINK = re.compile(rf"(https?://|www\.|bit\.ly|tinyurl|\b[a-z0-9-]+\.({_TLDS})\b)", re.I)
 _USSD_CODE = re.compile(r"\*\d{2,4}(\*\d+)*#")
 _PHONE = re.compile(r"(?<!\d)(?:\+?254|0)(?:7|1)\d{8}(?!\d)")
@@ -185,3 +197,8 @@ NEUTRAL_ADVICE = {
     "sw": "Usitoe PIN yako, na angalia salio lako la pesa kwa simu kabla ya kufuata ujumbe wowote.",
     "fr": "Ne partagez jamais votre code secret et vérifiez votre solde mobile money avant de suivre un message.",
 }
+
+
+i18n.localize("scam", globals(), ("HEADLINES", "SIGNS_LABEL", "REPORT_LINE", "GENERIC_REPORT_LINE", "NEUTRAL_ADVICE"))
+for _signal in SIGNALS.values():
+    i18n._fill(_signal.explain, f"scam.SIGNAL.{_signal.id}")

@@ -32,7 +32,7 @@ from ace_engine.server import serve
 serve(Engine.from_packs("context_packs"), host="0.0.0.0", sms_sender=AfricasTalkingSms())
 ```
 
-Replies are converted to the GSM-7 alphabet where possible and limited to three segments. The username `sandbox` targets the sandbox API.
+Replies in Latin script are folded into the GSM-7 alphabet (typographic marks to plain ones, accents GSM-7 lacks dropped) and limited to three segments. Arabic and Amharic replies travel as UCS-2 and are composed for its smaller segments. The username `sandbox` targets the sandbox API.
 
 ## Voice (Africa's Talking)
 

@@ -7,7 +7,7 @@ All six are a preview. They pass ACE's tests and benchmark, but none has yet pas
 ## How a question reaches a service
 
 1. The safety rail, commands and Scam Shield run first, exactly as in V1.
-2. The hub recognises the decision from words in English, Swahili or French: rain, warnings, a facility, prices, a pregnancy check or a crop problem. A question about the rainy seasons goes to the season packs instead.
+2. The hub recognises the decision from words in any of the eight languages: rain, warnings, a facility, prices, a pregnancy check or a crop problem. A question about the rainy seasons goes to the season packs instead.
 3. The hub works out the place: an area named in the message, the position a channel shares, or the area the person named last time. When it needs a place and has none, it asks in the local word (county, state, region, district, kaunti, mkoa, wilaya) and remembers the question.
 4. The service reads snapshots and packs, never the network, and answers inside the channel's character budget.
 
@@ -26,14 +26,18 @@ On USSD the services are items 1 to 6 of the main menu. Each asks one question (
 
 ## Coverage and gaps
 
-Every service covers all 13 countries by default. Where open data does not exist, the service says so in the person's language and names who to ask. `ace services` prints the live table with the reason for every gap. At release:
+Every service covers all 34 countries by default. Where open data does not exist, the service says so in the person's language and names who to ask. `ace services` prints the live table with the reason for every gap. At the 2.1 release:
 
-| Service | Gaps |
-|:--|:--|
-| Official warnings | Rwanda and Namibia list no CAP feed in the WMO register. A feed that is down at a refresh is reported as a gap until it answers again |
-| Market prices | Botswana has no WFP price dataset. South Africa (June 2022), Ghana (July 2023), Namibia (June 2026) and Zimbabwe (May 2026) have no price recent enough to quote |
-| Nearest health facility | Public facilities only, from a 2019 list, with no phone numbers, hours or services |
-| Crop problem check | Four crops so far |
+| Service | Countries with an answer | Gaps |
+|:--|:-:|:--|
+| Rain this week | 34 | None |
+| Official warnings | 29 | Rwanda, Namibia, Angola and Morocco list no CAP feed in the WMO register. South Africa's feed was down at the last refresh; a feed that is down is reported as a gap until it answers again |
+| Nearest health facility | 29 | Algeria, Egypt, Libya, Morocco and Tunisia: the 2019 list covers sub-Saharan Africa only. Everywhere it covers, it lists public facilities only, with no phone numbers, hours or services. Guinea-Bissau has 8 facilities in it |
+| Market prices | 23 | Botswana, Morocco and Tunisia have no WFP price dataset. South Africa (June 2022), Ghana (July 2023), Angola (December 2020), Somalia (November 2021), Namibia, Zimbabwe and Mozambique have no price recent enough to quote. Zambia's recent prices cover fewer than two staple foods |
+| Pregnancy companion | 34 | None |
+| Crop problem check | 34 | Four crops so far |
+
+The full country by country table, and the design behind each gap, is in [docs/v2/release-2.1.md](v2/release-2.1.md).
 
 ## Calling a service
 
@@ -57,4 +61,4 @@ print(engine.services.call("rain_this_week", "TZ", "Mwanza", language="sw")["tex
 
 ## Adding a service
 
-Follow the definition of done in the [build plan](v2/build-plan.md#definition-of-done-for-any-new-service): one named decision, a citation for every fact, an open fallback and a refusal path, tests in English, Swahili and French, a benchmark check, and exposure on USSD, SMS, the API and MCP. Services live in `src/ace_engine/services/`, one module each, and register in `services/__init__.py`.
+Follow the definition of done in the [build plan](v2/build-plan.md#definition-of-done-for-any-new-service): one named decision, a citation for every fact, an open fallback and a refusal path, tests in every supported language, a benchmark check, and exposure on USSD, SMS, the API and MCP. Services live in `src/ace_engine/services/`, one module each, and register in `services/__init__.py`.

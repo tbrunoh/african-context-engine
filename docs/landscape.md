@@ -38,7 +38,7 @@ AI for African users is arriving through three kinds of players. Each solves par
 1. **A commons, not an app.** Knowledge lives in open, versioned context packs with sources, geography, season, expiry and review status. Any service can load the same packs.
 2. **Feature phone first.** USSD, SMS and voice are first class. Answers are composed to each channel's limits. A smartphone and data plan are optional.
 3. **Works with no model and no API key.** The default answerer is extractive and deterministic: cheap, fast and auditable. A language model can be plugged in, and ACE falls back to extractive answers whenever the model is slow or strays from the facts.
-4. **Safety before anything else.** Emergency language in English, Swahili and French routes straight to the caller's own national hotlines, verified for 13 countries, before retrieval or generation runs.
+4. **Safety before anything else.** Emergency language in eight languages routes straight to the caller's own national hotlines, verified for 34 countries, before retrieval or generation runs.
 5. **Scam Shield.** People forward a suspicious mobile money message and get an explained verdict grounded in the operator's own published guidance.
 6. **Privacy by design.** Phone numbers are pseudonymised, conversation history is optional, and one word deletes a person's data, in line with the principles of Kenya's Data Protection Act 2019 ([ODPC](https://www.odpc.go.ke/wp-content/uploads/2024/02/TheDataProtectionAct__No24of2019.pdf)).
 7. **A community knowledge loop.** Anyone can text a tip. It lands in a review queue, never in answers, until a reviewer approves it into a pack.

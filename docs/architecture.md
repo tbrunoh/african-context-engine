@@ -35,19 +35,21 @@ connectors (ace refresh, scheduled)  ->  snapshots/<dataset>/<COUNTRY>.json  -> 
    the only network access               dated, checksummed, licence registered     read only
 ```
 
-Services sit after Scam Shield and before retrieval. `detect()` recognises the decision from words in English, Swahili and French; the gazetteer resolves the place from a name, a position or the place named last time; the service answers from snapshots and packs inside the channel budget, or refuses and says who to ask. A service waiting for a place or details is remembered on the profile, so the next message completes it. Menus call `Engine.run_service`, which still runs the safety rail first and gives it the screen's context, so bleeding typed on the pregnancy screen is treated as a pregnancy emergency. The [services guide](services.md) has the decision rules and coverage, and [docs/connectors](connectors/README.md) has every source.
+Services sit after Scam Shield and before retrieval. `detect()` recognises the decision from words in all eight languages; the gazetteer resolves the place from a name, a position or the place named last time; the service answers from snapshots and packs inside the channel budget, or refuses and says who to ask. A service waiting for a place or details is remembered on the profile, so the next message completes it. Menus call `Engine.run_service`, which still runs the safety rail first and gives it the screen's context, so bleeding typed on the pregnancy screen is treated as a pregnancy emergency. The [services guide](services.md) has the decision rules and coverage, and [docs/connectors](connectors/README.md) has every source.
 
 ## Modules
 
 | Module | Responsibility |
 |:--|:--|
 | `models.py` | `Message`, `Reply`, `ReplyKind`, `Citation`, `Channel`, `GeoPoint` |
-| `countries.py` | The 13 covered countries, their dialling codes and default languages |
-| `text.py` | Folding, tokenising, light stemming, English, Swahili and French stopwords, language guess, phrase matching |
+| `countries.py` | The 34 covered countries, their dialling codes and languages |
+| `i18n.py`, `locales/` | Languages added in files: templates, phrases and words per language, filled into the code at start up and checked for completeness |
+| `encoding.py` | GSM-7 folding for Latin script and UCS-2 budgets for Arabic and Amharic |
+| `text.py` | Folding (including Arabic normalisation and Ge'ez letter folding), tokenising, light stemming, stopwords, script and marker word language guess, phrase matching |
 | `context/schema.py` | `ContextFact`, `GeoScope`, `Rendering`, `Contact`, `ReviewStatus` |
 | `context/packs.py` | Loading and strict validation of pack files |
 | `context/store.py` | Filters plus BM25 ranking over each fact's text, keywords and translations |
-| `safety.py` | Phrase rules per queue in English, Swahili and French, contact lookup by country, emergency wording |
+| `safety.py` | Phrase rules per queue in all eight languages, contact lookup by country, emergency wording with the call verb where each language puts it |
 | `scam.py` | Scam Shield signals, scoring and verdicts |
 | `commands.py` | Keyword commands and fixed system texts |
 | `router.py` | Channel budgets, extractive composer, grounded generator, OpenAI compatible provider |
@@ -78,7 +80,7 @@ Two guards keep answers on point: results far weaker than the best match are dro
 | WhatsApp | 1,200 | full | 3 |
 | App, API, agent | 1,500 | full | 4 |
 
-Budgets live in `EngineConfig.budgets` and can be changed per deployment.
+Budgets live in `EngineConfig.budgets` and can be changed per deployment. On USSD and SMS, Arabic and Amharic replies travel as UCS-2, which carries fewer characters, so ACE scales their budget (80 characters a USSD screen, 67 per SMS segment in a long message) and composes the reply to fit. Latin script replies are folded into GSM-7 before they leave, so one stray accent does not switch a message to UCS-2.
 
 ## Language models
 

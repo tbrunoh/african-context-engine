@@ -116,7 +116,8 @@ def test_script_decides_the_language():
 
 
 @pytest.mark.parametrize("text,lang", [("Estou grávida e o bebé não mexe", "pt"), ("Haadha manaa koo ulfa qabdi", "om"),
-                                       ("Xaaskeyga waa uur leedahay", "so")])
+                                       ("Xaaskeyga waa uur leedahay", "so"), ("Waxaan rabaa inaan is dilo", "so"),
+                                       ("Intalti koo ollaa keenyaan gudeedamte", "om")])
 def test_latin_script_languages_are_recognised(text, lang):
     assert guess_language(text) == lang
 

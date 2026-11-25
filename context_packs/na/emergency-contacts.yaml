@@ -1,5 +1,5 @@
 # Namibia emergency and helpline numbers.
-# Each number was checked against the source on the fact on 2026-11-23. Numbers change, so each
+# Each number was checked against the source on the fact on 2026-11-24. Numbers change, so each
 # fact expires after a year and must be checked again before it is served.
 spec_version: '1.0'
 id: na-emergency-contacts
@@ -19,8 +19,8 @@ maintainers:
 - ACE maintainers
 facts:
 - id: national-emergency
-  claim: In Namibia, call 10111 for the police. From a mobile phone, call 112 for all emergency services.
-  short: 'Emergency in Namibia: 112 from a mobile for all services, 10111 police.'
+  claim: In Namibia, call 10111 for police, ambulance or fire. From a mobile phone, 112 also reaches emergency services.
+  short: 'Emergency in Namibia: call 10111. From a mobile, 112 also works.'
   topic: emergency_contacts
   vertical: safety
   kind: action
@@ -38,8 +38,8 @@ facts:
   - ambulensi
   - msaada
   contacts:
-  - label: Emergency from a mobile
-    number: '112'
+  - label: Emergency
+    number: '10111'
     queues:
     - emergency
     - health_urgent
@@ -49,16 +49,17 @@ facts:
     - gbv
     - child_protection
     - self_harm
-  - label: Police
-    number: '10111'
+  - label: Emergency from a mobile
+    number: '112'
     queues:
-    - violence
-    - gbv
-    - child_protection
-  source: Communications Regulatory Authority of Namibia, emergency numbers
-  source_url: https://cran.na/contact
-  checked_on: '2026-11-23'
-  expires: '2027-11-23'
+    - emergency
+    - health_urgent
+    - maternal
+    - poisoning
+  source: UK FCDO travel advice for Namibia, emergency services
+  source_url: https://www.gov.uk/foreign-travel-advice/namibia/getting-help
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
   review_status: sourced
   safety_critical: true
 - id: gbv-106
@@ -86,10 +87,10 @@ facts:
     queues:
     - gbv
     - violence
-  source: Communications Regulatory Authority of Namibia, emergency numbers
-  source_url: https://cran.na/contact
-  checked_on: '2026-11-23'
-  expires: '2027-11-23'
+  source: LifeLine/ChildLine Namibia, toll free numbers
+  source_url: https://www.lifelinechildline.org.na/
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
   review_status: sourced
   safety_critical: true
 - id: childline
@@ -113,9 +114,9 @@ facts:
     number: '116'
     queues:
     - child_protection
-  source: Communications Regulatory Authority of Namibia; Child Helpline International
-  source_url: https://cran.na/contact
-  checked_on: '2026-11-23'
-  expires: '2027-11-23'
+  source: LifeLine/ChildLine Namibia, toll free numbers
+  source_url: https://www.lifelinechildline.org.na/
+  checked_on: '2026-11-24'
+  expires: '2027-11-24'
   review_status: sourced
   safety_critical: true

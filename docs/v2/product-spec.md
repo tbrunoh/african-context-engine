@@ -2,7 +2,7 @@
 
 24 November 2026 · Tom Bruno
 
-**Status.** Release 2.0 preview, published the same day, ships six of the twelve services for all 13 countries: rain this week, official warnings, nearest health facility, market prices, the pregnancy companion and the pest check. Each is labelled a preview until it passes its gate. The [services guide](../services.md) has the decision rules, coverage and gaps.
+**Status.** Release 2.1 preview (24 November 2026) ships six of the twelve services in 34 countries and eight languages, after release 2.0 preview shipped them for the first 13 countries the same day: rain this week, official warnings, nearest health facility, market prices, the pregnancy companion and the pest check. Each is labelled a preview until it passes its gate. The [services guide](../services.md) has the decision rules, coverage and gaps.
 
 <img src="hero.svg" alt="ACE V2 in one picture: public data and open models go in; ACE fetches them into dated snapshots, runs the safety rail first and applies a published decision rule; people get a short, cited answer on any phone" width="100%">
 
@@ -97,7 +97,7 @@ Each service is a small module with the same contract: it takes a place, a langu
 
 | Service | What the person hears | Built on | Phase |
 | --- | --- | --- | --- |
-| 1. Emergency and helplines (V1) | The right national number for this caller, before anything else | 13 country packs with 54 verified numbers, rechecked weekly by the number watcher | Live, hardened in 1 |
+| 1. Emergency and helplines (V1) | The right national number for this caller, before anything else | 34 country packs with 105 verified numbers, rechecked weekly by the number watcher | Live, hardened in 1 |
 | 2. Rain this week | Rain is likely on Thursday and Friday; dry from Saturday | WeatherNext 2 and 3 ensembles; TomorrowNow GAP with TAHMO station data; national met service forecasts | 2 |
 | 3. Planting window | The rains are likely to start in your area within two weeks; plant after the first soaking rain | CHIRPS rainfall history; open AI weather models chosen by a decision oriented benchmark, as in India's monsoon onset programme | 3 |
 | 4. Flood warning | The river near you may flood in the next three days; move animals and food stores to higher ground | Google Flood Forecasting API, riverine, up to 7 days ahead; official CAP alerts | 2 |
@@ -183,7 +183,7 @@ The targets below are proposed for the end of V2 and would be confirmed once the
 ## Decisions needed before phase 1
 
 1. **First voice languages.** Swahili reaches East Africa and French reaches Senegal, Côte d'Ivoire, Togo and Rwanda. Recommendation: pilot Swahili and French together, so the first voice release proves the multilingual claim in East and West Africa at once; Hausa, Yoruba and English follow.
-2. **First service bundle.** Decided: the 2.0 preview shipped rain this week, official warnings, the facility finder, market prices, the pregnancy companion and the pest check for all 13 countries, each labelled a preview until it passes its gate.
+2. **First service bundle.** Decided: the 2.0 preview shipped rain this week, official warnings, the facility finder, market prices, the pregnancy companion and the pest check for the first 13 countries, and the 2.1 preview took them to 34 countries in eight languages, each labelled a preview until it passes its gate.
 3. **Data access to request in December.** The Flood Forecasting API waitlist, the WeatherNext data request, the Agricultural Understanding API allowlist and a TomorrowNow GAP account. MetNet nowcasts appear only in Search today, with no public data access found, so ask Google Research Africa whether partner access is possible. Recommendation: file all four in week one of phase 1.
 4. **Partner programmes to approach first.** TomorrowNow and KALRO, grantees of the Gates Foundation and Google farmer initiative, Horizon1000 in Rwanda, and the national met services whose CAP warnings ACE already reads. Recommendation: approach one programme in East Africa and one in West Africa in parallel, so no region waits on the other: TomorrowNow, whose GAP platform is open source, and a francophone met service such as ANACIM in Senegal.
 5. **Who ACE serves first.** Partners first (grounding API) or people first (voice line). Recommendation: build both, but count a partner integration as the main success measure, because it multiplies reach.

@@ -17,6 +17,7 @@ class LicenceEntry:
     attribution: str
     share_alike: bool = False
     terms: str = ""
+    cleared: bool = True    # False holds a connector: it may fetch for review but never writes a public snapshot
 
 
 def load_register(path: str | Path) -> dict[str, LicenceEntry]:
@@ -26,5 +27,5 @@ def load_register(path: str | Path) -> dict[str, LicenceEntry]:
         out[item["id"]] = LicenceEntry(
             id=item["id"], name=item["name"], publisher=item["publisher"], url=item["url"],
             licence=item["licence"], attribution=item["attribution"], share_alike=bool(item.get("share_alike")),
-            terms=item.get("terms", ""))
+            terms=item.get("terms", ""), cleared=bool(item.get("cleared", True)))
     return out

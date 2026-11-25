@@ -8,12 +8,17 @@ id: africa-crop-pests-diseases
 title: Crop pests and diseases
 description: How farmers can recognise four serious crop problems and what to do first, with a referral to an extension
   officer before any spraying. Fall armyworm has its own pack.
-version: 1.0.0
+version: 1.1.0
 order: 7
 labels:
   en: Crop pests and diseases
   sw: Wadudu na magonjwa
   fr: Ravageurs et maladies
+  pt: 'Pragas e doenças'
+  ar: 'الآفات والأمراض'
+  am: 'ተባዮችና በሽታዎች'
+  om: 'Ilbiisaa fi dhukkuba'
+  so: 'Cayayaan iyo cudurro'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -29,7 +34,8 @@ facts:
   kind: sign
   subjects:
   - maize
-  keywords: [maize, mln, lethal, necrosis, mottling, yellow, dead heart, husks, mahindi, njano, mahindi kufa, mais, jaunissement, necrose]
+  keywords: [maize, mln, lethal, necrosis, mottling, yellow, dead, heart, husks, mahindi, njano, kufa, mais,
+             jaunissement, necrose, milho, ذرة, نخر, በቆሎ, ኒክሮሲስ, boqqolloo, galley, galleyda]
   translations:
     sw:
       claim: Ugonjwa wa mahindi wa MLN huanza kama madoa ya njano kwenye majani. Kisha majani hukauka kuanzia kingoni
@@ -41,6 +47,26 @@ facts:
         depuis les bords, le cœur de la plante meurt, les spathes sèchent tôt et les épis se remplissent peu ou pas du tout.
       short: 'Nécrose létale du maïs : feuilles marbrées de jaune qui meurent depuis les bords, cœur mort, spathes sèches tôt,
         épis peu remplis.'
+    pt:
+      claim: 'A necrose letal do milho começa com manchas amarelas nas folhas. Depois as folhas morrem das bordas para dentro, o centro jovem da planta morre (coração morto), as palhas secam cedo e as maçarocas enchem com pouco ou nenhum grão.'
+      short: 'Sinais de MLN: folhas com manchas amarelas que morrem das bordas, centro morto, palhas a secar cedo, maçarocas com pouco ou nenhum grão.'
+      reviewed: false
+    ar:
+      claim: 'يبدأ مرض النخر المميت للذرة ببقع صفراء متفرقة على الأوراق. ثم تموت الأوراق من الحواف نحو الداخل، ويموت قلب النبتة الصغير (القلب الميت)، وتجف أغلفة الكيزان مبكرًا، وتمتلئ الكيزان بقليل من الحبوب أو بلا حبوب.'
+      short: 'علامات النخر المميت للذرة: أوراق مبقعة بالأصفر تموت من الحواف، قلب ميت، أغلفة تجف مبكرًا، كيزان بلا حبوب تقريبًا.'
+      reviewed: false
+    am:
+      claim: 'የበቆሎ ገዳይ ኒክሮሲስ በቅጠሎች ላይ በቢጫ ዥንጉርጉር ይጀምራል። ከዚያም ቅጠሎቹ ከጠርዝ ወደ ውስጥ ይደርቃሉ፣ የተክሉ ለጋ መሃል ይሞታል (የሞተ ልብ)፣ ገለባው ቀድሞ ይደርቃል፣ እሸቱም ጥቂት ወይም ምንም ፍሬ አይይዝም።'
+      short: 'የMLN ምልክቶች፡ ቢጫ ዥንጉርጉር ቅጠሎች ከጠርዝ መድረቅ፣ የሞተ መሃል፣ ገለባ ቀድሞ መድረቅ፣ ጥቂት ወይም ምንም ፍሬ የሌለው እሸት።'
+      reviewed: false
+    om:
+      claim: 'Dhukkubni MLN boqqolloo baala irratti tuqaalee keelloo ta''ee jalqaba. Achiis baalli qarqara irraa gara keessaatti du''a, giddu galeessi biqiltuu haaraan ni du''a (onnee du''e), qolli dafee goga, boqqolloonis ija xiqqaa ykn homaa hin qabatu.'
+      short: 'Mallattoo MLN: baala tuqaa keelloo qarqara irraa du''u, giddu galeessa du''e, qola dafee gogu, ija xiqqaa ykn homaa.'
+      reviewed: false
+    so:
+      claim: 'Cudurka dila galleyda (MLN) wuxuu ku bilaabmaa dhibco huruud ah oo caleemaha ku firirsan. Kadib caleemaha ayaa ka dhinta cidhifyada xagga gudaha, bartamaha yar ee geedka ayaa dhinta (wadne dhintay), qolofta sabuulka ayaa goor hore engegta, sabuulkuna wuxuu buuxsamaa iniin yar ama midna.'
+      short: 'Calaamadaha MLN: caleemo dhibco huruud leh oo cidhifyada ka dhinta, bartame dhintay, qolof goor hore engegta, sabuul iniin yar ama aan lahayn.'
+      reviewed: false
   source: CIMMYT, Disease symptoms of maize lethal necrosis (MLN), farmer flyer
   source_url: https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf
   checked_on: 2026-11-24
@@ -57,7 +83,8 @@ facts:
   kind: action
   subjects:
   - maize
-  keywords: [maize, mln, lethal, necrosis, control, certified seed, rotate, mahindi, kudhibiti, mbegu, mais, lutte, semences]
+  keywords: [maize, mln, lethal, necrosis, control, certified, seed, rotate, mahindi, kudhibiti, mbegu, mais, lutte,
+             semences, milho, necrose, ذرة, نخر, በቆሎ, ኒክሮሲስ, boqqolloo, galley, galleyda]
   translations:
     sw:
       claim: Ng'oa na uchome mimea ya mahindi yenye ugonjwa wa MLN. Usiwalishe mifugo na usihifadhi mbegu zake. Panda mbegu
@@ -72,6 +99,26 @@ facts:
         avant de traiter contre les insectes qui la transmettent.
       short: 'Nécrose du maïs : arrachez et brûlez les plants malades, ni fourrage ni semences. Semences certifiées,
         rotation, demandez au service agricole.'
+    pt:
+      claim: 'Arranque e queime as plantas de milho com necrose letal. Não as dê aos animais e não guarde a sua semente. Semeie semente certificada, faça rotação do milho com feijão ou outra cultura que não seja milho, deixe dois meses sem milho, limpe as ferramentas e tire as ervas daninhas. Pergunte aos serviços de agricultura antes de pulverizar os insetos que a transmitem.'
+      short: 'MLN: arranque e queime as plantas doentes; não as dê aos animais nem guarde a semente. Use semente certificada, rode com feijão, pergunte à agricultura.'
+      reviewed: false
+    ar:
+      claim: 'اقلع نباتات الذرة المصابة بالنخر المميت واحرقها. لا تطعمها للحيوانات ولا تحتفظ ببذورها. ازرع بذورًا معتمدة، وازرع بعد الذرة الفاصوليا أو محصولًا آخر غير الذرة، واترك شهرين بلا ذرة، ونظف أدواتك وأزل الأعشاب. اسأل مكتب الزراعة قبل رش الحشرات التي تنقله.'
+      short: 'النخر المميت: اقلع النباتات المريضة واحرقها، ولا تطعمها للحيوانات ولا تحفظ بذورها. ازرع بذورًا معتمدة، وناوب مع الفاصوليا، واسأل مكتب الزراعة.'
+      reviewed: false
+    am:
+      claim: 'በበቆሎ ገዳይ ኒክሮሲስ የተያዙ የበቆሎ ተክሎችን ነቅለው ያቃጥሉ። ለእንስሳት አይመግቡ፣ ዘራቸውንም አያስቀምጡ። የተረጋገጠ ዘር ይዝሩ፣ ከበቆሎ በኋላ ባቄላ ወይም ሌላ በቆሎ ያልሆነ ሰብል ይዝሩ፣ ለሁለት ወራት በቆሎ ሳይዘሩ ይቆዩ፣ መሣሪያዎችዎን ያጽዱ እና አረሞችን ያስወግዱ። በሽታውን የሚያስተላልፉትን ነፍሳት ከመርጨትዎ በፊት የግብርና ቢሮዎን ይጠይቁ።'
+      short: 'MLN፡ የታመሙ ተክሎችን ነቅለው ያቃጥሉ፤ ለእንስሳት አይመግቡ፣ ዘራቸውንም አያስቀምጡ። የተረጋገጠ ዘር ይጠቀሙ፣ ከባቄላ ጋር ያፈራርቁ፣ የግብርና ቢሮን ይጠይቁ።'
+      reviewed: false
+    om:
+      claim: 'Biqiltuu boqqolloo dhukkuba MLN qaban buqqisaa gubaa. Horiif hin kenninaa, sanyii isaanii hin kuusinaa. Sanyii mirkanaa''e facaasaa, boqqolloo booda baaqelaa ykn midhaan biraa boqqolloo hin taane facaasaa, ji''a lama boqqolloo malee turaa, meeshaalee keessan qulqulleessaa aramas balleessaa. Ilbiisota dhukkuba kana daddabarsan biifuu dura waajjira qonnaa gaafadhaa.'
+      short: 'MLN: biqiltuu dhukkubsate buqqisaa gubaa; horiif hin kenninaa, sanyii hin kuusinaa. Sanyii mirkanaa''e fayyadamaa, baaqelaan jijjiiraa, qonna gaafadhaa.'
+      reviewed: false
+    so:
+      claim: 'Ka saar oo gub geedaha galleyda ee qaba cudurka dila galleyda. Ha siin xoolaha, hana kaydsan iniintooda. Beer abuur shahaado leh, galleyda kadib beer digir ama dalag kale oo aan galley ahayn, ka tag laba bilood oo aan galley lahayn, nadiifi qalabkaaga oo saar haramaha. Weydii xafiiska beeraha ka hor intaadan buufin cayayaanka faafiya.'
+      short: 'MLN: ka saar oo gub geedaha jiran; ha siin xoolaha, hana kaydsan iniintooda. Isticmaal abuur shahaado leh, ku beddel digir, weydii xafiiska beeraha.'
+      reviewed: false
   source: CIMMYT, Best practices to avoid maize lethal necrosis, farmer flyer
   source_url: https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf
   checked_on: 2026-11-24
@@ -87,7 +134,8 @@ facts:
   kind: sign
   subjects:
   - cassava
-  keywords: [cassava, mosaic, curled, patches, twisted, whitefly, muhogo, mihogo, majani, manioc, mosaique, feuilles]
+  keywords: [cassava, mosaic, curled, patches, twisted, whitefly, muhogo, mihogo, majani, manioc, mosaique, feuilles,
+             mandioca, mosaico, كسافا, فسيفساء, ካሳቫ, ሞዛይክ, kaasaavaa, mosaayikii, kasaafo, kasaafada, moosayg]
   translations:
     sw:
       claim: Ugonjwa wa batobato wa muhogo huonekana kama majani yaliyojikunja yenye mabaka ya njano na kijani au meupe na
@@ -101,6 +149,26 @@ facts:
         jaunes ou brunes signalent un autre problème. Les aleurodes (mouches blanches) propagent la maladie.
       short: 'Mosaïque du manioc : feuilles enroulées avec taches jaune vert, jeunes feuilles petites et déformées, plante
         chétive.'
+    pt:
+      claim: 'A doença do mosaico da mandioca aparece como folhas enroladas com manchas verde-amareladas ou verde-esbranquiçadas. Nos casos graves as folhas novas são pequenas e torcidas e a planta fica raquítica. Folhas uniformemente amarelas ou castanhas indicam outro problema. A mosca-branca espalha a doença de planta para planta.'
+      short: 'Sinais do mosaico da mandioca: folhas enroladas com manchas verde-amareladas; folhas novas pequenas e torcidas; plantas raquíticas. A mosca-branca espalha-o.'
+      reviewed: false
+    ar:
+      claim: 'يظهر مرض فسيفساء الكسافا على شكل أوراق ملتفة فيها بقع خضراء مصفرة أو خضراء مبيضة. في الحالات الشديدة تكون الأوراق الجديدة صغيرة وملتوية ويتقزم النبات. أما الأوراق الصفراء أو البنية بالتساوي فتدل على مشكلة أخرى. ينشر الذباب الأبيض المرض من نبتة إلى أخرى.'
+      short: 'علامات فسيفساء الكسافا: أوراق ملتفة ببقع خضراء مصفرة، أوراق جديدة صغيرة ملتوية، نباتات متقزمة. ينشره الذباب الأبيض.'
+      reviewed: false
+    am:
+      claim: 'የካሳቫ ሞዛይክ በሽታ ቢጫ አረንጓዴ ወይም ነጭ አረንጓዴ ነጠብጣብ ያላቸው የተጠቀለሉ ቅጠሎች ሆኖ ይታያል። በከፋ ሁኔታ አዲስ ቅጠሎች ትንሽ እና የተጣመሙ ይሆናሉ፣ ተክሉም ይቀነጭራል። ሙሉ በሙሉ ቢጫ ወይም ቡናማ የሆኑ ቅጠሎች ሌላ ችግርን ያመለክታሉ። ነጭ ዝንቦች በሽታውን ከተክል ወደ ተክል ያስተላልፋሉ።'
+      short: 'የካሳቫ ሞዛይክ ምልክቶች፡ ቢጫ አረንጓዴ ነጠብጣብ ያላቸው የተጠቀለሉ ቅጠሎች፤ ትንሽ የተጣመሙ አዲስ ቅጠሎች፤ የቀነጨረ ተክል። ነጭ ዝንቦች ያስተላልፉታል።'
+      reviewed: false
+    om:
+      claim: 'Dhukkubni mosaayikii kaasaavaa baala maramaa tuqaa magariisa keelloo ykn magariisa adii qabu ta''ee mul''ata. Yeroo hamaa baalli haaraan xiqqaa fi micciirama, biqiltuunis ni gabaabbata. Baalli guutuun isaa keelloo ykn magaala ta''e rakkoo biraa agarsiisa. Titiisni adiin dhukkuba kana biqiltuu tokko irraa gara biraatti daddabarsa.'
+      short: 'Mallattoo mosaayikii kaasaavaa: baala maramaa tuqaa magariisa keelloo qabu; baala haaraa xiqqaa micciirame; biqiltuu gabaabbate. Titiisni adiin ni daddabarsa.'
+      reviewed: false
+    so:
+      claim: 'Cudurka moosaygga kasaafada wuxuu u muuqdaa caleemo duuban oo leh dhibco cagaar huruud ah ama cagaar caddaan ah. Xaaladaha daran caleemaha cusub waa yar yihiin oo qalloocan, geedkuna wuu gaabnaadaa. Caleemaha si siman u huruud ah ama u bunni ah waxay tilmaamaan dhibaato kale. Duqsiga cad ayaa cudurka ka gudbiya geed ilaa geed.'
+      short: 'Calaamadaha moosaygga kasaafada: caleemo duuban oo dhibco cagaar huruud leh; caleemo cusub oo yar oo qalloocan; geed gaaban. Duqsiga cad ayaa faafiya.'
+      reviewed: false
   source: CABI Plantwise, Control of cassava mosaic disease by uprooting, factsheet for farmers (Tanzania, 2014)
   source_url: https://farmknowledge.info/sites/default/files/resource/20157800492.pdf
   checked_on: 2026-11-24
@@ -116,7 +184,9 @@ facts:
   kind: action
   subjects:
   - cassava
-  keywords: [cassava, mosaic, uproot, cuttings, control, muhogo, mihogo, vipandikizi, kung'oa, manioc, boutures, arracher]
+  keywords: [cassava, mosaic, uproot, cuttings, control, muhogo, mihogo, vipandikizi, kung'oa, manioc, boutures,
+             arracher, mandioca, mosaico, كسافا, فسيفساء, ካሳቫ, ሞዛይክ, kaasaavaa, mosaayikii, kasaafo, kasaafada,
+             moosayg]
   translations:
     sw:
       claim: Hakuna dawa inayotibu batobato ya muhogo. Kagua mimea kila wiki kwa miezi miwili hadi mitatu ya kwanza.
@@ -131,6 +201,26 @@ facts:
         champ atteint.
       short: 'Mosaïque du manioc : aucun produit ne la traite. Arrachez et brûlez les plants malades, replantez des boutures
         saines, inspectez chaque semaine.'
+    pt:
+      claim: 'Nenhum produto químico controla a doença do mosaico da mandioca. Verifique as plantas todas as semanas nos primeiros dois a três meses. Arranque as plantas doentes, leve-as para fora do campo, seque-as ao sol e queime-as, e substitua-as por estacas saudáveis de 15 a 20 cm de plantas sem sinais. Não plante mandioca junto a um campo com a doença.'
+      short: 'Mosaico da mandioca: nenhum químico o cura. Arranque, seque e queime as plantas doentes; replante com estacas de plantas sãs; verifique todas as semanas.'
+      reviewed: false
+    ar:
+      claim: 'لا توجد مادة كيميائية تكافح مرض فسيفساء الكسافا. افحص النباتات كل أسبوع خلال الشهرين أو الثلاثة الأولى. اقلع النباتات المريضة وأخرجها من الحقل وجففها في الشمس واحرقها، واستبدلها بعقل سليمة طولها 15 إلى 20 سم من نباتات لا تظهر عليها علامات. لا تزرع الكسافا بجوار حقل مصاب.'
+      short: 'فسيفساء الكسافا: لا يعالجها أي مبيد. اقلع النباتات المريضة وجففها واحرقها، وأعد الزراعة بعقل من نباتات سليمة، وافحص كل أسبوع.'
+      reviewed: false
+    am:
+      claim: 'የካሳቫ ሞዛይክ በሽታን የሚቆጣጠር ኬሚካል የለም። በመጀመሪያዎቹ ሁለት እስከ ሶስት ወራት ተክሎችን በየሳምንቱ ይፈትሹ። የታመሙ ተክሎችን ነቅለው ከማሳው ያውጡ፣ በፀሐይ አድርቀው ያቃጥሉ፣ ምልክት ከሌላቸው ተክሎች በተወሰዱ ከ15 እስከ 20 ሴ.ሜ በሚረዝሙ ጤናማ ቁርጥራጮች ይተኩ። በሽታው ካለበት ማሳ አጠገብ ካሳቫ አይትከሉ።'
+      short: 'የካሳቫ ሞዛይክ፡ የሚያድነው ኬሚካል የለም። የታመሙ ተክሎችን ነቅለው አድርቀው ያቃጥሉ፤ ከጤናማ ተክሎች ቁርጥራጭ ይትከሉ፤ በየሳምንቱ ይፈትሹ።'
+      reviewed: false
+    om:
+      claim: 'Keemikaalli dhukkuba mosaayikii kaasaavaa to''atu hin jiru. Ji''oota lamaa hanga sadii jalqabaa keessatti torban torbaniin biqiltuu ilaalaa. Biqiltuu dhukkubsate buqqisaa, maasii keessaa baasaa, aduutti gogsaa gubaa, kutaa fayyaa dheerinni isaa sentimeetira 15 hanga 20 ta''e biqiltuu mallattoo hin qabne irraa fudhattanii bakka buusaa. Maasii dhukkubni keessa jiru bira kaasaavaa hin dhaabinaa.'
+      short: 'Mosaayikii kaasaavaa: keemikaalli fayyisu hin jiru. Biqiltuu dhukkubsate buqqisaa, gogsaa, gubaa; kutaa biqiltuu fayyaa dhaabaa; torbanitti ilaalaa.'
+      reviewed: false
+    so:
+      claim: 'Ma jiro kiimiko xakameeya cudurka moosaygga kasaafada. Hubi geedaha toddobaad kasta labada ilaa saddexda bilood ee ugu horreeya. Rid geedaha jiran, ka saar beerta, qorraxda ku qallaji oo gub, kuna beddel jarar caafimaad qaba oo dhererkoodu yahay 15 ilaa 20 sm oo laga soo jaray geedo aan calaamado lahayn. Ha ku beerin kasaafada meel u dhow beer cudurka qabta.'
+      short: 'Moosaygga kasaafada: kiimiko ma daaweeyo. Rid, qallaji oo gub geedaha jiran; dib u beer jarar geedo caafimaad qaba; hubi toddobaad kasta.'
+      reviewed: false
   source: CABI Plantwise, Control of cassava mosaic disease by uprooting, factsheet for farmers (Tanzania, 2014)
   source_url: https://farmknowledge.info/sites/default/files/resource/20157800492.pdf
   checked_on: 2026-11-24
@@ -144,7 +234,8 @@ facts:
   kind: sign
   subjects:
   - banana
-  keywords: [banana, bxw, xanthomonas, wilt, yellow, bunch, ndizi, mnyauko, migomba, banane, fletrissement, regime]
+  keywords: [banana, bxw, xanthomonas, wilt, yellow, bunch, ndizi, mnyauko, migomba, banane, fletrissement, regime,
+             bananeira, murchidão, موز, ذبول, ሙዝ, ጠውልግ, muuzii, goggogsaa, muus, muuska, engeg]
   translations:
     sw:
       claim: Ugonjwa wa mnyauko bakteria wa migomba hufanya majani kugeuka njano na kunyauka, mikungu kuiva mapema na
@@ -155,6 +246,26 @@ facts:
         régimes trop tôt, puis mourir la plante. La maladie est présente en Afrique de l'Est et centrale.
       short: 'Flétrissement du bananier : feuilles qui jaunissent et fanent, régimes qui mûrissent trop tôt et pourrissent,
         plantes qui meurent.'
+    pt:
+      claim: 'A murchidão bacteriana da bananeira faz as folhas amarelecer e murchar, os cachos amadurecem cedo demais e apodrecem, e a planta morre. A doença existe na África Oriental e Central.'
+      short: 'Sinais da murchidão da bananeira: folhas a amarelecer e murchar, cachos a amadurecer cedo demais e a apodrecer, plantas a morrer.'
+      reviewed: false
+    ar:
+      claim: 'يجعل ذبول الموز البكتيري (زانثوموناس) الأوراق تصفر وتذبل، وتنضج العناقيد قبل أوانها وتتعفن، ثم يموت النبات. يوجد المرض في شرق أفريقيا ووسطها.'
+      short: 'علامات ذبول الموز: أوراق تصفر وتذبل، عناقيد تنضج مبكرًا وتتعفن، نباتات تموت.'
+      reviewed: false
+    am:
+      claim: 'የሙዝ ዛንቶሞናስ ጠውልግ ቅጠሎች ቢጫ እንዲሆኑና እንዲጠወልጉ፣ ዘለላዎች ያለጊዜያቸው እንዲበስሉና እንዲበሰብሱ ያደርጋል፣ ተክሉም ይሞታል። በሽታው በምሥራቅ እና በመካከለኛው አፍሪካ ይገኛል።'
+      short: 'የሙዝ ጠውልግ ምልክቶች፡ ቅጠሎች ቢጫ መሆንና መጠውለግ፣ ዘለላዎች ቀድመው መብሰልና መበስበስ፣ ተክሎች መሞት።'
+      reviewed: false
+    om:
+      claim: 'Dhukkubni goggogsaa muuzii Xaanttoomoonaas baalli akka keelloo ta''uu fi goggogu, firiin muuzii yeroo isaa dura bilchaatee akka tortoru, biqiltuunis akka du''u godha. Dhukkubni kun Afrikaa Bahaa fi Giddu Galeessaa keessa jira.'
+      short: 'Mallattoo goggogsaa muuzii: baala keelloo ta''ee goggogu, firii yeroo dura bilchaatee tortoru, biqiltuu du''u.'
+      reviewed: false
+    so:
+      claim: 'Cudurka engegga muuska ee Xanthomonas wuxuu ka dhigaa caleemaha inay huruud noqdaan oo engegaan, xidhmooyinka muuska ayaa bisla goor hore oo qudhma, geedkuna wuu dhintaa. Cudurka waxaa laga helaa Bariga iyo Bartamaha Afrika.'
+      short: 'Calaamadaha engegga muuska: caleemo huruud noqda oo engega, xidhmooyin goor hore bisla oo qudhma, geedo dhinta.'
+      reviewed: false
   source: Bioversity International, Single diseased stem removal for Xanthomonas wilt of banana, brief
   source_url: https://core.ac.uk/download/211048384.pdf
   checked_on: 2026-11-24
@@ -171,7 +282,8 @@ facts:
   kind: action
   subjects:
   - banana
-  keywords: [banana, bxw, wilt, cut, male bud, tools, ndizi, mnyauko, migomba, kukata, banane, couper, bourgeon]
+  keywords: [banana, bxw, wilt, cut, male, bud, tools, ndizi, mnyauko, migomba, kukata, banane, couper, bourgeon,
+             bananeira, murchidão, موز, ذبول, ሙዝ, ጠውልግ, muuzii, goggogsaa, muus, muuska, engeg]
   translations:
     sw:
       claim: Hakuna tiba ya mnyauko bakteria wa migomba. Mara mgomba unapoonyesha dalili, ukate usawa wa ardhi na uache
@@ -187,6 +299,26 @@ facts:
         formée, enlevez le bourgeon mâle avec un bâton fourchu, et surveillez souvent.
       short: 'Flétrissement du bananier : pas de traitement. Coupez chaque plant malade au ras du sol, nettoyez l''outil au
         feu ou au savon, enlevez le bourgeon mâle.'
+    pt:
+      claim: 'Não há cura para a murchidão bacteriana da bananeira. Logo que uma planta mostre sinais, corte-a ao nível do solo e deixe as plantas saudáveis da touceira. Limpe a ferramenta depois de cada corte, segurando-a no fogo até um minuto ou lavando-a com água e sabão ou lixívia. Depois de formada a última penca, retire o coração (botão masculino) com um pau bifurcado, e verifique as plantas com frequência.'
+      short: 'Murchidão da bananeira: sem cura. Corte a planta doente rente ao solo, limpe a ferramenta no fogo ou com sabão após cada corte, tire o coração.'
+      reviewed: false
+    ar:
+      claim: 'لا علاج لذبول الموز البكتيري. بمجرد ظهور العلامات على نبتة، اقطعها عند مستوى التربة واترك النباتات السليمة في الجورة. نظف الأداة بعد كل قطع بوضعها في النار مدة تصل إلى دقيقة أو بغسلها بالماء والصابون أو بالكلور. بعد تكوّن آخر كف، أزل البرعم الذكري بعصا متشعبة، وافحص النباتات كثيرًا.'
+      short: 'ذبول الموز: لا علاج. اقطع كل نبتة مريضة عند التربة، ونظف الأداة بالنار أو بالصابون بعد كل قطع، وأزل البرعم الذكري بعصا متشعبة.'
+      reviewed: false
+    am:
+      claim: 'የሙዝ ዛንቶሞናስ ጠውልግ መድኃኒት የለውም። አንድ ተክል ምልክት እንዳሳየ ያንን ተክል ከአፈር ጋር እኩል ቆርጠው ጤናማዎቹን ተክሎች በጉቶው ላይ ይተዉ። ከእያንዳንዱ ቁርጥ በኋላ መሣሪያውን እስከ አንድ ደቂቃ በእሳት ላይ በመያዝ ወይም በሳሙናና በውሃ ወይም በክሎሪን በማጠብ ያጽዱ። የመጨረሻው እጅ ከተፈጠረ በኋላ የወንድ እምቡጡን ባለ ሹካ እንጨት ያስወግዱ፣ ተክሎችንም በተደጋጋሚ ይፈትሹ።'
+      short: 'የሙዝ ጠውልግ፡ መድኃኒት የለውም። የታመመውን ተክል ከአፈር ጋር እኩል ይቁረጡ፣ ከእያንዳንዱ ቁርጥ በኋላ መሣሪያውን በእሳት ወይም በሳሙና ያጽዱ፣ የወንድ እምቡጡን በሹካ እንጨት ያስወግዱ።'
+      reviewed: false
+    om:
+      claim: 'Dhukkubni goggogsaa muuzii Xaanttoomoonaas qoricha hin qabu. Akkuma biqiltuun tokko mallattoo agarsiiseen, biqiltuu sana lafa irraa kutaatii biqiltuuwwan fayyaa ta''an iddoo isaanii dhiisaa. Kutaa hundaan booda meeshaa sana ibidda irratti hanga daqiiqaa tokkootti qabachuun ykn saamunaa fi bishaaniin ykn kiloriiniin dhiquun qulqulleessaa. Erga harki dhumaa uumamee booda, ababa dhiiraa muka damee lama qabuun buqqisaa, biqiltuuwwanis yeroo baay''ee ilaalaa.'
+      short: 'Goggogsaa muuzii: qoricha hin qabu. Biqiltuu dhukkubsate lafa irraa kutaa, booda meeshaa ibiddaan ykn saamunaan qulqulleessaa, ababa dhiiraa buqqisaa.'
+      reviewed: false
+    so:
+      claim: 'Ma jiro daawo engegga muuska ee Xanthomonas. Isla marka geed calaamado muujiyo, ka jar geedkaas heerka ciidda oo ka tag geedaha caafimaadka qaba ee agtiisa ah. Nadiifi qalabka jar kasta kadib adigoo dabka ku haynaya ilaa hal daqiiqo ama ku dhaqaya saabuun iyo biyo ama koloriin. Marka gacantii ugu dambaysay samaysanto, ka saar ubaxa labka ah ul laan leh, oo inta badan hubi geedaha.'
+      short: 'Engegga muuska: daawo ma leh. Ka jar geed kasta oo jiran heerka ciidda, nadiifi qalabka dab ama saabuun jar kasta kadib, ka saar ubaxa labka ul laan leh.'
+      reviewed: false
   source: IITA, Novel and effective technique to control banana Xanthomonas wilt (single diseased stem removal), 2020
   source_url: https://www.iita.org/news-item/novel-and-effective-technique-to-control-banana-xanthomonas-wilt-is-suitable-for-rwandan-agroecology/
   checked_on: 2026-11-24
@@ -202,7 +334,8 @@ facts:
   kind: sign
   subjects:
   - tomato
-  keywords: [tomato, tuta, leaf miner, leafminer, tunnels, mines, holes, nyanya, kantangaze, tomate, mineuse, galeries]
+  keywords: [tomato, tuta, leaf, miner, leafminer, tunnels, mines, holes, nyanya, kantangaze, tomate, mineuse,
+             galeries, traça, طماطم, حافرة, ቲማቲም, ቆፋሪ, timaatimii, yaanyo, yaanyada]
   translations:
     sw:
       claim: Viwavi wa Tuta absoluta huchimba mifereji mipana inayong'aa kama fedha ndani ya majani ya nyanya, nayo hubadilika
@@ -217,6 +350,26 @@ facts:
         aussi être attaqués.
       short: 'Mineuse de la tomate : galeries argentées dans les feuilles qui brunissent, trous dans les fruits, petites
         chenilles vertes à roses.'
+    pt:
+      claim: 'As larvas da traça-do-tomateiro abrem galerias largas e prateadas nas folhas do tomate, que ficam castanhas e secam. Também furam caules e frutos, deixando orifícios de saída nos frutos. As lagartas são verdes a rosadas, com até 9 mm, e têm uma faixa preta atrás da cabeça. A beringela, o pimento e a batata também podem ser atacados.'
+      short: 'Sinais da traça-do-tomateiro: galerias prateadas nas folhas que ficam castanhas, furos nos frutos, pequenas lagartas verdes a rosadas com faixa preta.'
+      reviewed: false
+    ar:
+      claim: 'تحفر يرقات حافرة أوراق الطماطم أنفاقًا واسعة فضية في أوراق الطماطم فتتحول إلى البني وتجف. كما تثقب السيقان والثمار وتترك فيها ثقوب خروج. اليرقات خضراء إلى وردية، طولها حتى 9 مم، وخلف رأسها شريط أسود. قد تصيب أيضًا الباذنجان والفلفل والبطاطس.'
+      short: 'علامات حافرة أوراق الطماطم: أنفاق فضية في الأوراق تصير بنية، ثقوب في الثمار، يرقات صغيرة خضراء إلى وردية بشريط أسود.'
+      reviewed: false
+    am:
+      claim: 'የቲማቲም ቅጠል ቆፋሪ እጮች በቲማቲም ቅጠሎች ውስጥ ሰፊ፣ ብርማ ዋሻዎችን ይቆፍራሉ፤ ቅጠሎቹም ቡናማ ሆነው ይደርቃሉ። ግንዶችንና ፍሬዎችንም ይበሳሉ፣ በፍሬው ላይ መውጫ ቀዳዳዎችን ይተዋሉ። አባጨጓሬዎቹ ከአረንጓዴ እስከ ሮዝ ቀለም ያላቸው፣ እስከ 9 ሚ.ሜ የሚረዝሙ፣ ከራሳቸው ጀርባ ጥቁር መስመር ያላቸው ናቸው። ቃሪያ፣ ድንች እና ኤግፕላንትም ሊጠቁ ይችላሉ።'
+      short: 'የቲማቲም ቅጠል ቆፋሪ ምልክቶች፡ ቡናማ የሚሆኑ ብርማ ዋሻዎች በቅጠል፣ በፍሬ ላይ ቀዳዳ፣ ጥቁር መስመር ያላቸው ትናንሽ አረንጓዴ እስከ ሮዝ አባጨጓሬዎች።'
+      reviewed: false
+    om:
+      claim: 'Ilmaan ilbiisa baala timaatimii qotu baala timaatimii keessatti daandii bal''aa bifa meetii qabu qotu; baalli sun magaala ta''ee goga. Akkasumas qaama fi firii timaatimii uru, firii irrattis boolla bahiinsaa dhiisu. Raammoleen sun magariisa hanga roozii, dheerinni isaanii hanga mm 9, mataa isaanii duubaan sarara gurraacha qabu. Baadingaanaan, barbareen fi dinnichis miidhamuu danda''u.'
+      short: 'Mallattoo ilbiisa baala timaatimii: daandii meetii fakkaatu baala keessa, boolla firii irra, raammolee xiqqaa magariisa hanga roozii sarara gurraacha qaban.'
+      reviewed: false
+    so:
+      claim: 'Dirxiga duqsiga caleenta yaanyada wuxuu caleemaha yaanyada ka qodaa tuunelo ballaaran oo lacag u eg, caleemahaas oo bunni noqda oo engega. Wuxuu sidoo kale daloolaa jirridda iyo midhaha, isagoo midhaha uga taga godad laga baxo. Dirxigu waa cagaar ilaa casaan khafiif ah, dhererkiisuna waa ilaa 9 mm, madaxa gadaashiisana waxaa ku yaal xariiq madow. Bidinjaanka, basbaaska iyo baradhada ayaa sidoo kale la weerari karaa.'
+      short: 'Calaamadaha duqsiga caleenta yaanyada: tuunelo lacag u eg oo caleemaha bunni ka dhiga, godad midhaha ku yaal, dirxi yar oo cagaar ilaa casaan leh xariiq madow.'
+      reviewed: false
   source: CABI Plantwise, Life cycle of the tomato leaf miner, factsheet for farmers (Ghana, 2018)
   source_url: https://factsheetadmin.plantwise.org/Uploads/PDFs/20187800458.pdf
   checked_on: 2026-11-24
@@ -232,7 +385,8 @@ facts:
   kind: action
   subjects:
   - tomato
-  keywords: [tomato, tuta, leaf miner, control, trap, pheromone, neem, nyanya, mtego, dawa, tomate, piege, lutte]
+  keywords: [tomato, tuta, leaf, miner, control, trap, pheromone, neem, nyanya, mtego, dawa, tomate, piege, lutte,
+             traça, طماطم, حافرة, ቲማቲም, ቆፋሪ, timaatimii, yaanyo, yaanyada]
   translations:
     sw:
       claim: Ondoa na uharibu haraka matunda ya nyanya yaliyoshambuliwa na safisha mimea mingine inayowahifadhi wadudu hawa
@@ -249,6 +403,26 @@ facts:
         résistant, alors demandez à un agent de vulgarisation avant de traiter.
       short: 'Mineuse de la tomate : détruisez les fruits infestés, pièges à phéromones, neem ou Bt ; demandez à un agent
         agricole avant de traiter.'
+    pt:
+      claim: 'Retire e destrua rapidamente os frutos de tomate infestados e elimine outras plantas hospedeiras à volta do campo. As armadilhas de feromonas apanham as traças, e produtos à base de nim ou Bacillus thuringiensis podem ajudar. As pulverizações comuns falham muitas vezes porque as larvas se alimentam dentro da folha, e a praga ganha depressa resistência aos pesticidas, por isso pergunte a um extensionista antes de pulverizar.'
+      short: 'Traça-do-tomateiro: destrua os frutos infestados, use armadilhas de feromonas, produtos de nim ou Bt; pergunte a um extensionista antes de pulverizar.'
+      reviewed: false
+    ar:
+      claim: 'أزل ثمار الطماطم المصابة وأتلفها بسرعة، وأزل النباتات العائلة الأخرى حول الحقل. تصطاد مصائد الفيرومون الفراشات، وقد تساعد منتجات النيم أو باسيلس ثورينجينسيس. كثيرًا ما تفشل المبيدات العادية لأن اليرقات تتغذى داخل الورقة، وسرعان ما تقاوم الآفة المبيدات، لذا اسأل المرشد الزراعي قبل الرش.'
+      short: 'حافرة أوراق الطماطم: أتلف الثمار المصابة، واستخدم مصائد الفيرومون ومنتجات النيم أو Bt، واسأل المرشد الزراعي قبل الرش.'
+      reviewed: false
+    am:
+      claim: 'የተጠቁ የቲማቲም ፍሬዎችን በፍጥነት አስወግደው ያጥፉ፣ በማሳው ዙሪያ ያሉ ሌሎች አስተናጋጅ ተክሎችንም ያጽዱ። የፌሮሞን ወጥመዶች የእሳት እራቶችን ይይዛሉ፣ በኒም ወይም በባሲለስ ቱሪንጂየንሲስ ላይ የተመሠረቱ ምርቶችም ሊረዱ ይችላሉ። እጮቹ በቅጠሉ ውስጥ ስለሚመገቡ የተለመዱ ርጭቶች ብዙ ጊዜ አይሠሩም፤ ተባዩም ፀረ ተባይን በፍጥነት ይቋቋማል፤ ስለዚህ ከመርጨትዎ በፊት የግብርና ኤክስቴንሽን ባለሙያን ይጠይቁ።'
+      short: 'የቲማቲም ቅጠል ቆፋሪ፡ የተጠቁ ፍሬዎችን ያጥፉ፣ የፌሮሞን ወጥመድ፣ የኒም ወይም የBt ምርቶችን ይጠቀሙ፤ ከመርጨትዎ በፊት የኤክስቴንሽን ባለሙያን ይጠይቁ።'
+      reviewed: false
+    om:
+      claim: 'Firii timaatimii miidhame dafaatii buqqisaa balleessaa, biqiltuuwwan biroo ilbiisa kana keessummeessan naannoo maasii jiranis qulqulleessaa. Kiyyoon feeroomoonii ilbiisota kana qabata, oomishaaleen niimii ykn Bacillus thuringiensis irratti hundaa''anis gargaaruu danda''u. Biifamni idilee yeroo baay''ee hin hojjetu, sababni isaas ilmaan sun baala keessa nyaatu; ilbiisichis dafee qoricha ni dandamata; kanaaf biifuu dura ogeessa misooma qonnaa gaafadhaa.'
+      short: 'Ilbiisa baala timaatimii: firii miidhame balleessaa, kiyyoo feeroomoonii, oomisha niimii ykn Bt fayyadamaa; biifuu dura ogeessa qonnaa gaafadhaa.'
+      reviewed: false
+    so:
+      claim: 'Si dhakhso ah uga saar oo burburi midhaha yaanyada ee ay ku dhaceen, oo nadiifi dhirta kale ee martigelisa ee ku wareegsan beerta. Dabinnada feroomoonka ayaa qabta balanbaalisyada, alaabooyinka ku salaysan niimka ama Bacillus thuringiensis ayaa caawin kara. Buufinta caadiga ah inta badan way fashilantaa sababtoo ah dirxigu wuxuu wax ku cunaa caleenta gudaheeda, cayayaankuna dhakhso ayuu u adkaystaa sunta, sidaas darteed weydii sarkaalka kordhinta beeraha ka hor intaadan buufin.'
+      short: 'Duqsiga caleenta yaanyada: burburi midhaha ay ku dhaceen, isticmaal dabinno feroomoon, niim ama Bt; weydii sarkaalka beeraha ka hor buufinta.'
+      reviewed: false
   source: World Vegetable Center, with TAHA and icipe, Tuta absoluta flyer (2016)
   source_url: https://worldveg.tind.io/record/66511/files/Tuta-revised-flyer.pdf
   checked_on: 2026-11-24

@@ -6,12 +6,17 @@ spec_version: '1.0'
 id: africa-antenatal-care
 title: Antenatal care schedule
 description: The eight antenatal care contacts WHO recommends, so a pregnant woman knows when her next check is due.
-version: 1.0.0
+version: 1.1.0
 order: 8
 labels:
   en: Antenatal checks
   sw: Kliniki ya ujauzito
   fr: Visites prénatales
+  pt: 'Consultas pré-natais'
+  ar: 'زيارات الحمل'
+  am: 'የቅድመ ወሊድ ክትትል'
+  om: 'Hordoffii ulfaa'
+  so: 'Booqashada uurka'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -27,7 +32,9 @@ facts:
   subjects:
   - pregnancy
   keywords: [antenatal, clinic, checkup, check, visit, weeks, pregnant, pregnancy, kliniki, ujauzito, mjamzito, wiki,
-             prenatale, consultation, visite, semaines, enceinte, grossesse]
+             prenatale, consultation, visite, semaines, enceinte, grossesse, pré-natal, consulta, consultas, grávida,
+             gravidez, semanas, حامل, الحمل, زيارة, زيارات, متابعة, أسابيع, እርጉዝ, ነፍሰ, ጡር, እርግዝና, ክትትል, ሳምንት, ulfaa,
+             hordoffii, torban, uur, uurka, booqasho, toddobaad]
   translations:
     sw:
       claim: WHO inapendekeza angalau mara nane za kliniki ya ujauzito na mhudumu wa afya katika kila ujauzito. Ya kwanza
@@ -37,6 +44,26 @@ facts:
       claim: L'OMS recommande au moins huit contacts prénatals avec un agent de santé à chaque grossesse. Le premier au cours
         des 12 premières semaines, puis à 20, 26, 30, 34, 36, 38 et 40 semaines.
       short: 'L''OMS conseille 8 visites prénatales : avant 12 semaines, puis à 20, 26, 30, 34, 36, 38 et 40 semaines.'
+    pt:
+      claim: 'A OMS recomenda pelo menos oito contactos de cuidados pré-natais com um profissional de saúde em cada gravidez. O primeiro deve ser nas primeiras 12 semanas, depois às 20, 26, 30, 34, 36, 38 e 40 semanas.'
+      short: 'A OMS aconselha 8 consultas pré-natais: até às 12 semanas, depois às 20, 26, 30, 34, 36, 38 e 40 semanas.'
+      reviewed: false
+    ar:
+      claim: 'توصي منظمة الصحة العالمية بثماني زيارات على الأقل للرعاية السابقة للولادة مع عامل صحي في كل حمل. تكون الأولى خلال أول 12 أسبوعًا، ثم في الأسابيع 20 و26 و30 و34 و36 و38 و40.'
+      short: 'توصي منظمة الصحة العالمية بـ8 زيارات حمل: قبل الأسبوع 12، ثم في الأسابيع 20 و26 و30 و34 و36 و38 و40.'
+      reviewed: false
+    am:
+      claim: 'የዓለም ጤና ድርጅት በእያንዳንዱ እርግዝና ከጤና ባለሙያ ጋር ቢያንስ ስምንት የቅድመ ወሊድ ክትትሎችን ይመክራል። የመጀመሪያው በመጀመሪያዎቹ 12 ሳምንታት ውስጥ፣ ከዚያም በ20፣ 26፣ 30፣ 34፣ 36፣ 38 እና 40 ሳምንታት።'
+      short: 'የዓለም ጤና ድርጅት 8 የቅድመ ወሊድ ክትትሎችን ይመክራል፡ እስከ 12 ሳምንት፣ ከዚያም በ20፣ 26፣ 30፣ 34፣ 36፣ 38 እና 40 ሳምንት።'
+      reviewed: false
+    om:
+      claim: 'Dhaabbanni Fayyaa Addunyaa (WHO) ulfa hunda keessatti yoo xiqqaate al saddeet hordoffii da''umsa duraa ogeessa fayyaa wajjin akka taasifamu gorsa. Inni jalqabaa torbanoota 12 jalqabaa keessatti, achiis torban 20, 26, 30, 34, 36, 38 fi 40tti.'
+      short: 'WHO hordoffii da''umsa duraa al 8 gorsa: torban 12 dura, achiis torban 20, 26, 30, 34, 36, 38 fi 40tti.'
+      reviewed: false
+    so:
+      claim: 'Ururka Caafimaadka Adduunka (WHO) wuxuu ku talinayaa ugu yaraan siddeed booqasho oo daryeel dhalmo ka hor ah oo lala yeesho shaqaale caafimaad uur kasta. Midda koowaad waa inay ahaato 12-ka toddobaad ee ugu horreeya, kadibna toddobaadyada 20, 26, 30, 34, 36, 38 iyo 40.'
+      short: 'WHO waxay ku talisaa 8 booqasho uur: ka hor toddobaadka 12, kadib toddobaadyada 20, 26, 30, 34, 36, 38 iyo 40.'
+      reviewed: false
   source: WHO, New guidelines on antenatal care for a positive pregnancy experience (7 November 2016)
   source_url: https://www.who.int/news/item/07-11-2016-new-guidelines-on-antenatal-care-for-a-positive-pregnancy-experience
   checked_on: 2026-11-24
@@ -50,7 +77,9 @@ facts:
   kind: info
   subjects:
   - pregnancy
-  keywords: [antenatal, eight, visits, why, kliniki, ujauzito, prenatale, visites]
+  keywords: [antenatal, eight, visits, why, kliniki, ujauzito, prenatale, visites, pré-natal, consulta, consultas,
+             grávida, gravidez, semanas, حامل, الحمل, زيارة, زيارات, متابعة, أسابيع, እርጉዝ, ነፍሰ, ጡር, እርግዝና, ክትትል,
+             ሳምንት, ulfaa, hordoffii, torban, uur, uurka, booqasho, toddobaad]
   translations:
     sw:
       claim: Kliniki ya ujauzito mara nane au zaidi inaweza kupunguza vifo vya watoto wakati wa kuzaliwa kwa hadi 8 kwa kila
@@ -60,6 +89,26 @@ facts:
       claim: Huit contacts prénatals ou plus peuvent réduire les décès de bébés autour de la naissance de jusqu'à 8 pour 1 000
         naissances, par rapport à 4 visites, car les problèmes sont détectés et traités plus tôt.
       short: Huit visites prénatales ou plus peuvent éviter jusqu'à 8 décès de bébés pour 1 000 naissances, par rapport à 4.
+    pt:
+      claim: 'Oito ou mais contactos pré-natais podem reduzir as mortes de bebés à volta do parto em até 8 por cada 1000 nascimentos, em comparação com 4 consultas, porque os problemas são detetados e tratados mais cedo.'
+      short: 'Oito ou mais consultas pré-natais podem evitar até 8 mortes de bebés por 1000 nascimentos, em comparação com 4 consultas.'
+      reviewed: false
+    ar:
+      claim: 'ثماني زيارات أو أكثر للرعاية السابقة للولادة يمكن أن تخفض وفيات المواليد حول الولادة بما يصل إلى 8 لكل 1000 ولادة، مقارنة بأربع زيارات، لأن المشكلات تُكتشف وتُعالج مبكرًا.'
+      short: 'ثماني زيارات حمل أو أكثر قد تمنع حتى 8 وفيات مواليد لكل 1000 ولادة، مقارنة بأربع زيارات.'
+      reviewed: false
+    am:
+      claim: 'ስምንት ወይም ከዚያ በላይ የቅድመ ወሊድ ክትትሎች ከ4 ጉብኝቶች ጋር ሲነጻጸሩ በወሊድ አካባቢ የሚሞቱ ሕፃናትን በ1,000 ወሊዶች እስከ 8 ሊቀንሱ ይችላሉ፤ ምክንያቱም ችግሮች ቀድመው ተገኝተው ይታከማሉ።'
+      short: 'ስምንት ወይም ከዚያ በላይ ክትትሎች ከ4 ጉብኝቶች ጋር ሲነጻጸሩ በ1,000 ወሊዶች እስከ 8 የሕፃናት ሞትን ሊከላከሉ ይችላሉ።'
+      reviewed: false
+    om:
+      claim: 'Hordoffiin da''umsa duraa al saddeet ykn isaa ol, al 4 wajjin yoo wal bira qabamu, du''a daa''immanii yeroo da''umsaa da''umsa 1,000 keessaa hanga 8 hir''isuu danda''a, sababni isaas rakkoowwan dafanii argamanii yaalamu.'
+      short: 'Hordoffiin al saddeet ykn isaa ol, al 4 wajjin yoo wal bira qabamu, da''umsa 1,000 keessaa du''a daa''immanii hanga 8 ittisuu danda''a.'
+      reviewed: false
+    so:
+      claim: 'Siddeed booqasho ama ka badan oo daryeel dhalmo ka hor ah waxay hoos u dhigi karaan dhimashada ilmaha agagaarka dhalmada ilaa 8 dhalmo kasta oo 1,000 ah, marka la barbar dhigo 4 booqasho, sababtoo ah dhibaatooyinka goor hore ayaa la ogaadaa oo la daaweeyaa.'
+      short: 'Siddeed booqasho uur ama ka badan waxay ka hortagi karaan ilaa 8 dhimasho ilmo 1,000 dhalmo kasta, marka loo eego 4 booqasho.'
+      reviewed: false
   source: WHO, Pregnant women must be able to access the right care at the right time (7 November 2016)
   source_url: https://www.who.int/reproductivehealth/news/antenatal-care/en/
   checked_on: 2026-11-24

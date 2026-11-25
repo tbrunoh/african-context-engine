@@ -6,12 +6,17 @@ id: africa-maize-fall-armyworm
 title: Fall armyworm in maize
 description: How smallholder maize farmers can recognise fall armyworm, scout for it and manage it with low cost methods.
   Pesticide advice is deliberately excluded until a licensed reviewer adds it for each country.
-version: 1.1.0
+version: 1.2.0
 order: 1
 labels:
   en: Maize armyworm
   sw: Viwavijeshi mahindini
   fr: Chenille du maïs
+  pt: 'Lagarta do milho'
+  ar: 'دودة الذرة'
+  am: 'የበቆሎ ተምች'
+  om: 'Raammoo boqqolloo'
+  so: 'Dirxiga galleyda'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -57,6 +62,30 @@ facts:
   - degats
   - sciure
   - cornet
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Viwavi wachanga wa viwavijeshi vamizi hukwangua majani ya mahindi na kuacha madoa membamba kama madirisha.
@@ -68,6 +97,26 @@ facts:
         plages transparentes, comme des fenêtres. Les larves plus âgées se cachent dans le cornet, déchiquettent les
         jeunes feuilles et laissent des excréments humides qui ressemblent à de la sciure.
       short: 'Signes : plages transparentes sur les feuilles, cornet déchiqueté, excréments humides comme de la sciure.'
+    pt:
+      claim: 'As larvas jovens da lagarta-do-funil raspam as folhas do milho e deixam manchas finas e transparentes, como janelas. As larvas mais velhas escondem-se no cartucho, rasgam as folhas novas e deixam excrementos húmidos parecidos com serradura.'
+      short: 'Sinais da lagarta-do-funil: manchas transparentes nas folhas, cartucho rasgado, excrementos húmidos como serradura no cartucho.'
+      reviewed: false
+    ar:
+      claim: 'تكشط يرقات دودة الحشد الخريفية الصغيرة أوراق الذرة وتترك بقعًا رقيقة شفافة كالنوافذ. أما اليرقات الأكبر فتختبئ في قلب النبتة، وتمزق الأوراق الصغيرة، وتترك فضلات رطبة تشبه نشارة الخشب.'
+      short: 'علامات دودة الحشد الخريفية: بقع شفافة على الأوراق، قلب ممزق، فضلات رطبة تشبه نشارة الخشب في قلب النبتة.'
+      reviewed: false
+    am:
+      claim: 'ለጋ የፎል አርሚዎርም (የአሜሪካ መጤ ተምች) እጮች የበቆሎ ቅጠሎችን ፍቀው እንደ መስኮት የሚያሳዩ ስስ ምልክቶችን ይተዋሉ። ትላልቆቹ እጮች በተክሉ እንብርት ውስጥ ይደበቃሉ፣ ለጋ ቅጠሎችን ይቦጫጭቃሉ፣ እርጥብና ሰጋቱራ የሚመስል ኩስ ይተዋሉ።'
+      short: 'የተምቹ ምልክቶች፡ በቅጠል ላይ እንደ መስኮት ያሉ ስስ ምልክቶች፣ የተቦጫጨቀ እንብርት፣ በእንብርቱ ውስጥ እርጥብ ሰጋቱራ የሚመስል ኩስ።'
+      reviewed: false
+    om:
+      claim: 'Ilmaan raammoo loltuu (fall armyworm) xixiqqoon baala boqqolloo haxaa''anii mallattoo qal''aa foddaa fakkaatu dhiisu. Ilmaan guddatan handhuura biqiltuu keessa dhokatu, baala haaraa ciccitu, udaan jiidhaa daakuu mukaa fakkaatu dhiisu.'
+      short: 'Mallattoo raammoo loltuu: mallattoo foddaa fakkaatu baala irratti, handhuura cicciitame, udaan jiidhaa daakuu mukaa fakkaatu handhuura keessatti.'
+      reviewed: false
+    so:
+      claim: 'Dirxiga yar ee fall armyworm wuxuu xoqaa caleemaha galleyda wuxuuna uga tagaa dhibco khafiif ah oo daaqad u eg. Dirxiga waaweyn waxay ku dhuuntaan bartamaha geedka, waxay jeexjeexaan caleemaha cusub, waxayna ka tagaan saxaro qoyan oo budo alwaax u eg.'
+      short: 'Calaamadaha fall armyworm: dhibco daaqad u eg oo caleemaha ku yaal, bartame jeexjeexan, saxaro qoyan oo budo alwaax u eg bartamaha.'
+      reviewed: false
   source: ICIPE, Fall armyworm identification, management and control; CIFOR-ICRAF, Fall Armyworm guide
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
   checked_on: 2026-11-23
@@ -102,6 +151,30 @@ facts:
   - identifier
   - reconnaitre
   - points
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Kiwavi wa viwavijeshi vamizi ana alama ya Y iliyopinduka kichwani na madoa manne meusi yaliyopangwa kama
@@ -111,6 +184,26 @@ facts:
       claim: La larve de la chenille légionnaire d'automne porte un Y inversé sur la tête et quatre points sombres disposés
         en carré sur l'avant-dernier segment du corps.
       short: 'Larve : Y inversé sur la tête, quatre points sombres en carré près de la queue.'
+    pt:
+      claim: 'A lagarta-do-funil tem na cabeça uma marca em forma de Y invertido e quatro pontos escuros dispostos em quadrado no penúltimo segmento do corpo.'
+      short: 'Lagarta-do-funil: Y invertido na cabeça, quatro pontos escuros em quadrado perto da cauda.'
+      reviewed: false
+    ar:
+      claim: 'ليرقة دودة الحشد الخريفية علامة على شكل حرف Y مقلوب على رأسها، وأربع بقع داكنة مرتبة في مربع على ما قبل الحلقة الأخيرة من جسمها.'
+      short: 'يرقة دودة الحشد: حرف Y مقلوب على الرأس، وأربع بقع داكنة في مربع قرب الذيل.'
+      reviewed: false
+    am:
+      claim: 'የፎል አርሚዎርም እጭ በራሱ ላይ የተገለበጠ Y ምልክት፣ ከመጨረሻው በፊት ባለው የሰውነቱ ክፍል ላይ ደግሞ በካሬ ቅርጽ የተደረደሩ አራት ጥቁር ነጥቦች አሉት።'
+      short: 'የተምቹ እጭ፡ በራሱ ላይ የተገለበጠ Y፣ ከጭራው አጠገብ በካሬ ቅርጽ አራት ጥቁር ነጥቦች።'
+      reviewed: false
+    om:
+      claim: 'Ilmaan raammoo loltuu mataa isaa irratti mallattoo Y garagalfame, kutaa qaamaa isaa isa dhumaa duraa irratti immoo tuqaalee dukkanaa''oo afur bifa roga afurii qindaa''an qaba.'
+      short: 'Ilmaan raammoo loltuu: Y garagalfame mataa irratti, tuqaa dukkanaa''aa afur bifa roga afurii eegee bira.'
+      reviewed: false
+    so:
+      claim: 'Dirxiga fall armyworm wuxuu madaxa ku leeyahay calaamad Y ah oo rogan, iyo afar dhibcood oo madow oo afargeesle ahaan u habaysan qaybta jirkiisa ee ka horreysa tan ugu dambaysa.'
+      short: 'Dirxiga fall armyworm: Y rogan oo madaxa ku yaal, afar dhibcood oo madow oo afargeesle ah dabada agteeda.'
+      reviewed: false
   source: Oklahoma State University Extension; Texas A&M AgriLife Extension
   source_url: https://extension.okstate.edu/e-pest-alerts/2024/fall-armyworms-aug-28-2024.html
   checked_on: 2026-11-23
@@ -147,6 +240,30 @@ facts:
   - inspecter
   - verifier
   - combien
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Tembelea mahindi yako mara kwa mara kuyakagua. Kagua mimea 50 kwa kutembea kwa umbo la W shambani, ukisimama
@@ -157,6 +274,26 @@ facts:
         de W : arrêtez-vous en cinq points et regardez dans le cornet de dix plants à chaque point.'
       short: 'Surveillez souvent : traversez le champ en W, arrêtez-vous en 5 points, examinez le cornet de 10 plants
         à chacun.'
+    pt:
+      claim: 'Visite o seu milho com frequência para vigiar. Verifique 50 plantas, percorrendo o campo em forma de W, parando em cinco pontos e olhando para o cartucho de dez plantas em cada ponto.'
+      short: 'Vigie com frequência: percorra o campo em W, pare em 5 pontos e veja o cartucho de 10 plantas em cada um.'
+      reviewed: false
+    ar:
+      claim: 'زر حقل الذرة كثيرًا للاستكشاف. افحص 50 نبتة بالمشي على شكل حرف W عبر الحقل، والتوقف عند خمس نقاط، والنظر في قلوب عشر نباتات عند كل نقطة.'
+      short: 'استكشف كثيرًا: امشِ على شكل W عبر الحقل، وتوقف عند 5 نقاط، وافحص قلب 10 نباتات عند كل نقطة.'
+      reviewed: false
+    am:
+      claim: 'ለመቃኘት የበቆሎ ማሳዎን በተደጋጋሚ ይጎብኙ። በማሳው ላይ W ቅርጽ እየተጓዙ፣ በአምስት ቦታዎች ቆመው በእያንዳንዱ ቦታ የአሥር ተክሎችን እንብርት በማየት 50 ተክሎችን ይፈትሹ።'
+      short: 'በተደጋጋሚ ይቃኙ፡ በማሳው ላይ W ቅርጽ ይጓዙ፣ በ5 ቦታዎች ቆመው በእያንዳንዱ የ10 ተክሎችን እንብርት ይፈትሹ።'
+      reviewed: false
+    om:
+      claim: 'Sakatta''uuf maasii boqqolloo keessanii yeroo baay''ee daawwadhaa. Maasii keessa bifa W deemuun, bakka shanitti dhaabbachuun, bakka tokkoon tokkoon isaatti handhuura biqiltuu kudhanii ilaaluun biqiltuu 50 sakatta''aa.'
+      short: 'Yeroo baay''ee sakatta''aa: maasii keessa bifa W deemaa, bakka 5tti dhaabbadhaa, bakka hundatti handhuura biqiltuu 10 ilaalaa.'
+      reviewed: false
+    so:
+      claim: 'Booqo galleydaada marar badan si aad u baadho. Hubi 50 geed adigoo beerta u maraya qaab W ah, ku istaagaya shan meelood, meel kastana eegaya bartamaha toban geed.'
+      short: 'Baadh marar badan: beerta u mar qaab W, ku istaag 5 meelood, meel kasta hubi bartamaha 10 geed.'
+      reviewed: false
   source: FAO Fall Armyworm Guidance Notes 2 and 4
   source_url: https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf
   checked_on: 2026-11-23
@@ -205,6 +342,30 @@ facts:
   - oeufs
   - sans produits
   - que faire
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Kuponda makundi ya mayai na viwavi wachanga kwa mkono ni mbinu bora sana kwa wakulima wadogo wa mahindi.
@@ -213,6 +374,26 @@ facts:
       claim: Écraser à la main les masses d'œufs et les jeunes larves est une méthode très efficace pour les petits producteurs
         de maïs.
       short: Écrasez à la main les œufs et les jeunes chenilles. C'est très efficace sur les petites parcelles.
+    pt:
+      claim: 'Esmagar à mão as posturas de ovos e as lagartas jovens é uma tática muito eficaz para os pequenos produtores de milho.'
+      short: 'Esmague à mão as posturas de ovos e as lagartas jovens. Resulta bem em pequenas explorações.'
+      reviewed: false
+    ar:
+      claim: 'سحق كتل البيض واليرقات الصغيرة باليد طريقة فعالة جدًا لصغار مزارعي الذرة.'
+      short: 'اسحق كتل بيض دودة الحشد واليرقات الصغيرة باليد. هذه الطريقة تنجح جيدًا في المزارع الصغيرة.'
+      reviewed: false
+    am:
+      claim: 'የእንቁላል ክምችቶችንና ለጋ እጮችን በእጅ መጨፍለቅ ለአነስተኛ የበቆሎ አርሶ አደሮች በጣም ውጤታማ ዘዴ ነው።'
+      short: 'የተምቹን እንቁላሎችና ለጋ እጮች በእጅ ይጨፍልቁ። በአነስተኛ ማሳዎች ላይ በደንብ ይሠራል።'
+      reviewed: false
+    om:
+      claim: 'Hanqaaquu walitti qabamee fi ilmaan xixiqqoo harkaan cuunfuun qonnaan bultoota boqqolloo xixiqqaaf mala baay''ee bu''a qabeessa dha.'
+      short: 'Hanqaaquu fi ilmaan raammoo loltuu xixiqqoo harkaan cuunfaa. Maasii xixiqqaa irratti gaarii hojjeta.'
+      reviewed: false
+    so:
+      claim: 'Ku burburinta gacanta ukunta isku urursan iyo dirxiga yar waa xeelad aad waxtar u leh oo loogu talagalay beeralayda yaryar ee galleyda.'
+      short: 'Gacanta ku burburi ukunta isku urursan iyo dirxiga yar ee fall armyworm. Si fiican ayay ugu shaqeysaa beeraha yaryar.'
+      reviewed: false
   source: FAO, Fall armyworm management guidance for smallholders
   source_url: https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content
   checked_on: 2026-11-23
@@ -244,6 +425,30 @@ facts:
   - oeuf
   - ecailles
   - blanches
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Mayai ya viwavijeshi vamizi hutagwa kwa makundi yaliyofunikwa na magamba meupe, mara nyingi upande wa chini
@@ -253,6 +458,26 @@ facts:
       claim: Les œufs de la chenille légionnaire d'automne sont pondus en amas recouverts d'écailles blanchâtres, souvent
         sous les feuilles basses.
       short: 'Œufs : amas couverts d''écailles blanchâtres, souvent sous les feuilles basses.'
+    pt:
+      claim: 'Os ovos da lagarta-do-funil são postos em grupos cobertos por escamas esbranquiçadas, muitas vezes na face inferior das folhas de baixo.'
+      short: 'Ovos da lagarta-do-funil: grupos cobertos de escamas esbranquiçadas, muitas vezes debaixo das folhas de baixo.'
+      reviewed: false
+    ar:
+      claim: 'تضع دودة الحشد الخريفية بيضها في مجموعات مغطاة بقشور بيضاء، غالبًا على السطح السفلي للأوراق السفلى.'
+      short: 'بيض دودة الحشد: مجموعات مغطاة بقشور بيضاء، غالبًا تحت الأوراق السفلى.'
+      reviewed: false
+    am:
+      claim: 'የፎል አርሚዎርም እንቁላሎች ነጣ ያሉ ቅርፊቶች በሸፈኗቸው ክምችቶች ይጣላሉ፤ ብዙውን ጊዜ በታችኛዎቹ ቅጠሎች ሥር።'
+      short: 'የተምቹ እንቁላሎች፡ ነጣ ባሉ ቅርፊቶች የተሸፈኑ ክምችቶች፣ ብዙ ጊዜ በታችኛዎቹ ቅጠሎች ሥር።'
+      reviewed: false
+    om:
+      claim: 'Hanqaaquun raammoo loltuu garee garee ta''ee qola xixiqqaa adii''aan haguugamee, yeroo baay''ee baala gadii jalatti buufama.'
+      short: 'Hanqaaquu raammoo loltuu: garee qola adii''aan haguugame, yeroo baay''ee baala gadii jalatti.'
+      reviewed: false
+    so:
+      claim: 'Ukunta fall armyworm waxaa loo dhigaa kooxo ay dabooleen qolof caddaan u dhow, inta badan dhinaca hoose ee caleemaha hoose.'
+      short: 'Ukunta fall armyworm: kooxo qolof caddaan ah ku daboolan, inta badan caleemaha hoose hoostooda.'
+      reviewed: false
   source: ICIPE, Fall armyworm identification, management and control; Pacific Pests, Pathogens and Weeds fact sheet
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
   checked_on: 2026-11-23
@@ -290,6 +515,30 @@ facts:
   - mais
   - ravageur
   - prevenir
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Mbinu ya push-pull hupunguza viwavijeshi vamizi. Panda Desmodium kati ya mistari ya mahindi ili kuwafukuza
@@ -301,6 +550,26 @@ facts:
         pour repousser les papillons, et de l'herbe à éléphant (Napier) ou du Brachiaria autour du champ pour les attirer
         ailleurs. Le Desmodium combat aussi le Striga, et les deux plantes sont un bon fourrage.
       short: 'Push-pull : Desmodium entre les rangs de maïs, Napier ou Brachiaria en bordure. Réduit la chenille légionnaire.'
+    pt:
+      claim: 'O sistema push-pull reduz a lagarta-do-funil. Semeie Desmodium entre as linhas de milho para repelir as borboletas, e capim Napier ou Brachiaria à volta do campo para as atrair para longe. O Desmodium também controla a erva Striga, e ambas as plantas são boa forragem.'
+      short: 'Push-pull: Desmodium entre as linhas de milho, capim Napier ou Brachiaria à volta. Reduz a lagarta-do-funil.'
+      reviewed: false
+    ar:
+      claim: 'تقنية الدفع والجذب تقلل دودة الحشد الخريفية. ازرع الديسموديوم بين صفوف الذرة لطرد الفراشات، وعشب نابيير أو البراكياريا حول حدود الحقل لجذبها بعيدًا. يكافح الديسموديوم أيضًا عشبة الستريغا، والنباتان علف جيد.'
+      short: 'الدفع والجذب: ديسموديوم بين صفوف الذرة، وعشب نابيير أو براكياريا حول الحقل. يقلل دودة الحشد.'
+      reviewed: false
+    am:
+      claim: 'የፑሽ ፑል ዘዴ ፎል አርሚዎርምን ይቀንሳል። የእሳት እራቶቹን ለማባረር ዴስሞዲየምን በበቆሎ መስመሮች መካከል፣ ወደ ውጭ ለመሳብ ደግሞ ናፒየር ወይም ብራኪያሪያ ሣርን በማሳው ዳርቻ ዙሪያ ይትከሉ። ዴስሞዲየም አረም የሆነውን ስትሪጋንም ይቆጣጠራል፣ ሁለቱም ተክሎች ጥሩ መኖ ናቸው።'
+      short: 'ፑሽ ፑል፡ ዴስሞዲየም በበቆሎ መስመሮች መካከል፣ ናፒየር ወይም ብራኪያሪያ ሣር በዳርቻው። ተምቹን ይቀንሳል።'
+      reviewed: false
+    om:
+      claim: 'Malli puush puul (push-pull) raammoo loltuu ni hir''isa. Ilbiisota ari''uuf Desmodium sarara boqqolloo gidduu, fagaatti harkisuuf immoo marga Naapiyerii ykn Biraakiyaariyaa daangaa maasii naannoo dhaabaa. Desmodium aramaa Istiriigaas ni to''ata, biqiltuuwwan lamaanuu nyaata horii gaarii dha.'
+      short: 'Puush puul: Desmodium sarara boqqolloo gidduu, marga Naapiyerii ykn Biraakiyaariyaa daangaa irra. Raammoo loltuu hir''isa.'
+      reviewed: false
+    so:
+      claim: 'Habka riix iyo jiid (push-pull) wuxuu yareeyaa fall armyworm. Ku beer Desmodium safafka galleyda dhexdooda si uu u eryo balanbaalisyada, cawska Napier ama Brachiaria-na ku beer xudduudda beerta si uu meel kale ugu jiido. Desmodium wuxuu sidoo kale xakameeyaa haramaha Striga, labada geedba waa calaf wanaagsan.'
+      short: 'Riix iyo jiid: Desmodium safafka galleyda dhexdooda, cawska Napier ama Brachiaria hareeraha beerta. Wuxuu yareeyaa fall armyworm.'
+      reviewed: false
   source: ICIPE, Managing the fall armyworm threat using push-pull technology; CIFOR-ICRAF, Fall Armyworm guide
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/FAW-Comic.pdf
   checked_on: 2026-11-23
@@ -339,6 +608,30 @@ facts:
   - cycle
   - saison
   - revient
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Mzunguko wa maisha wa viwavijeshi vamizi huchukua takriban wiki nne, hivyo msimu mmoja wa mahindi unaweza
@@ -348,6 +641,26 @@ facts:
       claim: Le cycle de vie de la chenille légionnaire d'automne dure environ quatre semaines, donc une saison de maïs
         peut subir trois générations. Continuez à surveiller toute la saison.
       short: 'Cycle de vie d''environ 4 semaines : une saison peut connaître 3 générations. Continuez à surveiller.'
+    pt:
+      claim: 'O ciclo de vida da lagarta-do-funil dura cerca de quatro semanas, por isso uma só campanha de milho pode sofrer três gerações. Continue a vigiar durante toda a campanha.'
+      short: 'O ciclo da lagarta-do-funil dura cerca de 4 semanas, por isso uma campanha pode ter 3 gerações. Continue a vigiar.'
+      reviewed: false
+    ar:
+      claim: 'تستغرق دورة حياة دودة الحشد الخريفية نحو أربعة أسابيع، لذلك قد يتعرض موسم ذرة واحد لثلاثة أجيال. واصل الاستكشاف طوال الموسم.'
+      short: 'دورة حياة دودة الحشد نحو 4 أسابيع، فقد يشهد موسم واحد 3 أجيال. واصل الاستكشاف.'
+      reviewed: false
+    am:
+      claim: 'የፎል አርሚዎርም የሕይወት ዑደት አራት ሳምንት ያህል ይወስዳል፤ ስለዚህ አንድ የበቆሎ ወቅት በሶስት ትውልዶች ሊጠቃ ይችላል። በወቅቱ ሙሉ መቃኘትዎን ይቀጥሉ።'
+      short: 'የተምቹ የሕይወት ዑደት 4 ሳምንት ያህል ነው፤ አንድ ወቅት 3 ትውልዶችን ሊያመጣ ይችላል። መቃኘትዎን ይቀጥሉ።'
+      reviewed: false
+    om:
+      claim: 'Marsaan jireenya raammoo loltuu torban afur naannoo fudhata, kanaaf waqtiin boqqolloo tokko dhaloota sadiin miidhamuu danda''a. Waqtii guutuu sakatta''uu itti fufaa.'
+      short: 'Marsaan jireenya raammoo loltuu torban 4 naannoo, kanaaf waqtiin tokko dhaloota 3 fiduu danda''a. Sakatta''uu itti fufaa.'
+      reviewed: false
+    so:
+      claim: 'Wareegga nolosha fall armyworm wuxuu qaataa qiyaastii afar toddobaad, sidaas darteed hal xilli galley ah waxaa weerari kara saddex jiil. Sii wad baadhista xilliga oo dhan.'
+      short: 'Wareegga nolosha fall armyworm waa qiyaastii 4 toddobaad, markaa hal xilli wuxuu keeni karaa 3 jiil. Sii wad baadhista.'
+      reviewed: false
   source: ICIPE, Fall armyworm identification, management and control
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
   checked_on: 2026-11-23
@@ -380,6 +693,30 @@ facts:
   - oiseaux
   - fourmis
   - biodiversite
+  - lagarta
+  - milho
+  - funil
+  - cartucho
+  - ovos
+  - دودة
+  - الحشد
+  - ذرة
+  - يرقة
+  - بيض
+  - ተምች
+  - አርሚዎርም
+  - በቆሎ
+  - እጭ
+  - እንቁላል
+  - raammoo
+  - loltuu
+  - boqqolloo
+  - hanqaaquu
+  - dirxi
+  - dirxiga
+  - galley
+  - galleyda
+  - ukun
   translations:
     sw:
       claim: Maadui wa asili wanaoishi shambani na karibu nalo huwashambulia viwavijeshi vamizi. Kuwa na mimea ya aina
@@ -389,21 +726,28 @@ facts:
       claim: Des ennemis naturels qui vivent dans vos champs et autour attaquent la chenille légionnaire d'automne. Garder
         une diversité de plantes sur l'exploitation maintient ces ennemis naturels près de votre maïs.
       short: Des ennemis naturels mangent la chenille. Une diversité de plantes les garde près de votre maïs.
+    pt:
+      claim: 'Os inimigos naturais que vivem nos seus campos e à volta deles atacam a lagarta-do-funil. Manter uma variedade de plantas na exploração mantém esses inimigos naturais perto do seu milho.'
+      short: 'Os inimigos naturais comem a lagarta-do-funil. Uma variedade de plantas na exploração mantém-nos perto do seu milho.'
+      reviewed: false
+    ar:
+      claim: 'تهاجم الأعداء الطبيعية التي تعيش في حقولك وحولها دودة الحشد الخريفية. وجود تنوع من النباتات في المزرعة يبقي هذه الأعداء الطبيعية قريبة من ذرتك.'
+      short: 'الأعداء الطبيعية تأكل دودة الحشد. تنوع النباتات في المزرعة يبقيها قرب ذرتك.'
+      reviewed: false
+    am:
+      claim: 'በማሳዎ ውስጥና በዙሪያው የሚኖሩ የተፈጥሮ ጠላቶች ፎል አርሚዎርምን ያጠቃሉ። በእርሻው ላይ የተለያዩ ተክሎችን ማቆየት እነዚህን የተፈጥሮ ጠላቶች ከበቆሎዎ አጠገብ ያቆያቸዋል።'
+      short: 'የተፈጥሮ ጠላቶች ተምቹን ይበላሉ። በእርሻው ላይ የተለያዩ ተክሎች መኖራቸው ከበቆሎዎ አጠገብ ያቆያቸዋል።'
+      reviewed: false
+    om:
+      claim: 'Diinonni uumamaa maasii keessanii fi naannoo isaa jiraatan raammoo loltuu ni haleelu. Biqiltuuwwan gosa adda addaa qonna irratti qabaachuun diinota uumamaa kana boqqolloo keessan bira tursiisa.'
+      short: 'Diinonni uumamaa raammoo loltuu nyaatu. Biqiltuun gosa adda addaa qonna irratti boqqolloo keessan bira isaan tursiisa.'
+      reviewed: false
+    so:
+      claim: 'Cadowyada dabiiciga ah ee ku nool beerahaaga iyo hareerahooda ayaa weerara fall armyworm. Haynta dhir kala duwan oo beerta ku taal waxay cadowyadaas dabiiciga ah ku haysaa galleydaada agteeda.'
+      short: 'Cadowyada dabiiciga ah ayaa cuna fall armyworm. Dhir kala duwan oo beerta ku taal ayaa galleydaada agteeda ku haysa.'
+      reviewed: false
   source: FAO Fall Armyworm Guidance Note 4
   source_url: https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf
   checked_on: 2026-11-23
   review_status: sourced
-countries:
-- KE
-- ZA
-- BW
-- NA
-- ZW
-- NG
-- GH
-- RW
-- TZ
-- UG
-- TG
-- SN
-- CI
+countries: [KE, ZA, BW, NA, ZW, NG, GH, RW, TZ, UG, TG, SN, CI, CD, MW, BI, CM, BJ, ZM, TD, GN, BF, SS, ET, MZ, GW, AO, SO, SD, EG]

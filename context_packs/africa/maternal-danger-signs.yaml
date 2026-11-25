@@ -6,12 +6,17 @@ id: africa-maternal-danger-signs
 title: Danger signs in pregnancy and after birth
 description: The signs that mean a pregnant woman or new mother needs care now. ACE does not diagnose. It tells people
   when to go to a facility and how to get there.
-version: 1.1.0
+version: 1.2.0
 order: 3
 labels:
   en: Pregnancy danger signs
   sw: Dalili hatari ujauzitoni
   fr: Danger grossesse
+  pt: 'Perigo na gravidez'
+  ar: 'خطر في الحمل'
+  am: 'የእርግዝና አደጋ ምልክቶች'
+  om: 'Mallattoo balaa ulfaa'
+  so: 'Khatarta uurka'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -64,6 +69,55 @@ facts:
   - faiblesse
   - ventre
   - respiration
+  - grávida
+  - gravidez
+  - sangramento
+  - sangue
+  - convulsões
+  - febre
+  - parto
+  - bebé
+  - حامل
+  - حمل
+  - نزيف
+  - دم
+  - تشنج
+  - حمى
+  - صداع
+  - ولادة
+  - جنين
+  - ነፍሰ
+  - ጡር
+  - እርጉዝ
+  - ደም
+  - ትኩሳት
+  - ወሊድ
+  - ሕፃን
+  - ulfaa
+  - dhiiga
+  - raafama
+  - deessee
+  - daa'ima
+  - uur
+  - dhiig
+  - qandho
+  - gariir
+  - dhalmo
+  - ilmo
+  - sinais
+  - perigo
+  - علامات
+  - خطر
+  - الخطر
+  - አደገኛ
+  - ምልክቶች
+  - አደጋ
+  - mallattoo
+  - balaa
+  - calaamad
+  - calaamadaha
+  - khatar
+  - khatarta
   translations:
     sw:
       claim: 'Mpeleke mama mjamzito hospitalini au kituo cha afya mara moja akiwa na dalili yoyote kati ya hizi: kutokwa
@@ -77,6 +131,26 @@ facts:
         qui l''empêche de se lever, douleurs abdominales sévères, ou respiration rapide ou difficile.'
       short: 'Centre de santé MAINTENANT si : saignements, convulsions, maux de tête et vision trouble, fièvre et grande
         faiblesse, fortes douleurs au ventre.'
+    pt:
+      claim: 'Leve imediatamente uma mulher grávida a um hospital ou centro de saúde se tiver algum destes sinais: sangramento vaginal, convulsões ou ataques, dor de cabeça forte com visão turva, febre e fraqueza que a impede de sair da cama, dor forte na barriga, ou respiração rápida ou difícil.'
+      short: 'Vá a uma unidade de saúde JÁ se houver: sangramento, convulsões, dor de cabeça forte com visão turva, febre e muita fraqueza, dor forte na barriga.'
+      reviewed: false
+    ar:
+      claim: 'خذ المرأة الحامل إلى مستشفى أو مركز صحي فورًا إذا ظهرت عليها أي من هذه العلامات: نزيف مهبلي، أو تشنجات ونوبات، أو صداع شديد مع تشوش الرؤية، أو حمى مع ضعف شديد يمنعها من النهوض من السرير، أو ألم شديد في البطن، أو تنفس سريع أو صعب.'
+      short: 'اذهبي إلى مرفق صحي الآن عند: النزيف، أو التشنجات، أو صداع شديد مع تشوش الرؤية، أو حمى وضعف شديد، أو ألم شديد في البطن.'
+      reviewed: false
+    am:
+      claim: 'ነፍሰ ጡር ሴት ከሚከተሉት ምልክቶች አንዱ ካለባት ወዲያውኑ ወደ ሆስፒታል ወይም ጤና ጣቢያ ይውሰዷት፡ ከብልት የሚፈስ ደም፣ መንቀጥቀጥ ወይም የሚጥል፣ ከደብዛዛ እይታ ጋር ከባድ ራስ ምታት፣ ትኩሳትና ከአልጋ መነሳት የማያስችል ድካም፣ ከባድ የሆድ ሕመም፣ ወይም ፈጣን ወይም አስቸጋሪ አተነፋፈስ።'
+      short: 'አሁኑኑ ወደ ጤና ተቋም ይሂዱ፡ ደም መፍሰስ፣ መንቀጥቀጥ፣ ከደብዛዛ እይታ ጋር ከባድ ራስ ምታት፣ ትኩሳትና ከፍተኛ ድካም፣ ከባድ የሆድ ሕመም።'
+      reviewed: false
+    om:
+      claim: 'Dubartii ulfaa mallattoolee kanneen keessaa tokko illee yoo qabaatte battaluma sanatti hospitaala ykn buufata fayyaatti geessaa: dhiiga qaama saalaa irraa dhangala''u, qaamni raafamuu ykn kufuu, mataa dhukkubbii cimaa ijji ifa dhabuu wajjin, ho''a qaamaa fi dadhabbii siree irraa ka''uu dhabsiisu, garaa dhukkubbii cimaa, ykn hafuura saffisaa ykn rakkisaa.'
+      short: 'AMMA dhaabbata fayyaa deemaa: dhiiga dhangala''u, raafama qaamaa, mataa dhukkubbii cimaa ija ifa dhabuu wajjin, ho''a fi dadhabbii cimaa, garaa dhukkubbii cimaa.'
+      reviewed: false
+    so:
+      claim: 'Haweeneyda uurka leh isla markiiba geey isbitaal ama xarun caafimaad haddii ay leedahay mid ka mid ah calaamadahan: dhiig ka imanaya xubinta taranka, gariir ama suuxdin, madax xanuun daran oo ay la socoto aragti cakiran, qandho iyo daciifnimo aysan sariirta uga kici karin, calool xanuun daran, ama neefsasho degdeg ah ama adag.'
+      short: 'HADDA aad xarun caafimaad: dhiig bax, gariir ama suuxdin, madax xanuun daran oo aragti cakiran leh, qandho iyo daciifnimo daran, calool xanuun daran.'
+      reviewed: false
   source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
   source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
   checked_on: 2026-11-23
@@ -115,6 +189,55 @@ facts:
   - doigts
   - fievre
   - malade
+  - grávida
+  - gravidez
+  - sangramento
+  - sangue
+  - convulsões
+  - febre
+  - parto
+  - bebé
+  - حامل
+  - حمل
+  - نزيف
+  - دم
+  - تشنج
+  - حمى
+  - صداع
+  - ولادة
+  - جنين
+  - ነፍሰ
+  - ጡር
+  - እርጉዝ
+  - ደም
+  - ትኩሳት
+  - ወሊድ
+  - ሕፃን
+  - ulfaa
+  - dhiiga
+  - raafama
+  - deessee
+  - daa'ima
+  - uur
+  - dhiig
+  - qandho
+  - gariir
+  - dhalmo
+  - ilmo
+  - sinais
+  - perigo
+  - علامات
+  - خطر
+  - الخطر
+  - አደገኛ
+  - ምልክቶች
+  - አደጋ
+  - mallattoo
+  - balaa
+  - calaamad
+  - calaamadaha
+  - khatar
+  - khatarta
   translations:
     sw:
       claim: Mama mjamzito anapaswa kwenda kituo cha afya haraka iwezekanavyo akiwa na homa, maumivu ya tumbo, akijisikia
@@ -126,6 +249,26 @@ facts:
         se sent malade, ou si ses doigts, son visage et ses jambes sont gonflés.
       short: 'Consultez vite un agent de santé si : fièvre, douleurs au ventre, malaise, ou doigts, visage et jambes
         gonflés.'
+    pt:
+      claim: 'Uma mulher grávida deve ir a um centro de saúde o mais depressa possível se tiver febre, dor de barriga, se sentir doente, ou tiver inchaço dos dedos, da cara e das pernas.'
+      short: 'Consulte um profissional de saúde em breve se houver: febre, dor de barriga, mal-estar, ou dedos, cara e pernas inchados.'
+      reviewed: false
+    ar:
+      claim: 'يجب أن تذهب المرأة الحامل إلى مركز صحي في أقرب وقت ممكن إذا أصيبت بالحمى أو ألم البطن أو شعرت بالمرض أو تورمت أصابعها ووجهها وساقاها.'
+      short: 'راجعي عاملًا صحيًا قريبًا عند: الحمى، أو ألم البطن، أو الشعور بالمرض، أو تورم الأصابع والوجه والساقين.'
+      reviewed: false
+    am:
+      claim: 'ነፍሰ ጡር ሴት ትኩሳት፣ የሆድ ሕመም፣ የሕመም ስሜት፣ ወይም የጣቶች፣ የፊትና የእግሮች እብጠት ካለባት በተቻለ ፍጥነት ወደ ጤና ጣቢያ መሄድ አለባት።'
+      short: 'በቅርቡ የጤና ባለሙያ ያግኙ፡ ትኩሳት፣ የሆድ ሕመም፣ የሕመም ስሜት፣ ወይም ያበጡ ጣቶች፣ ፊትና እግሮች።'
+      reviewed: false
+    om:
+      claim: 'Dubartiin ulfaa ho''a qaamaa, garaa dhukkubbii, dhukkubsachuu yoo itti dhaga''ame, ykn quba, fuulaa fi miila dhiitessuu yoo qabaatte hanga danda''ametti dafee buufata fayyaa deemuu qabdi.'
+      short: 'Dafaatii ogeessa fayyaa argaa: ho''a qaamaa, garaa dhukkubbii, dhukkubsachuu, ykn quba, fuula fi miila dhiite.'
+      reviewed: false
+    so:
+      claim: 'Haweeneyda uurka leh waa inay sida ugu dhakhsaha badan u tagto xarun caafimaad haddii ay qabto qandho, calool xanuun, ay dareento jirro, ama ay bararaan farahu, wejigu iyo lugahu.'
+      short: 'Dhakhso u tag shaqaale caafimaad haddii ay jiraan: qandho, calool xanuun, jirro, ama faro, weji iyo lugo bararay.'
+      reviewed: false
   source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
   source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
   checked_on: 2026-11-23
@@ -154,6 +297,55 @@ facts:
   - sang
   - hemorragie
   - anemie
+  - grávida
+  - gravidez
+  - sangramento
+  - sangue
+  - convulsões
+  - febre
+  - parto
+  - bebé
+  - حامل
+  - حمل
+  - نزيف
+  - دم
+  - تشنج
+  - حمى
+  - صداع
+  - ولادة
+  - جنين
+  - ነፍሰ
+  - ጡር
+  - እርጉዝ
+  - ደም
+  - ትኩሳት
+  - ወሊድ
+  - ሕፃን
+  - ulfaa
+  - dhiiga
+  - raafama
+  - deessee
+  - daa'ima
+  - uur
+  - dhiig
+  - qandho
+  - gariir
+  - dhalmo
+  - ilmo
+  - sinais
+  - perigo
+  - علامات
+  - خطر
+  - الخطر
+  - አደገኛ
+  - ምልክቶች
+  - አደጋ
+  - mallattoo
+  - balaa
+  - calaamad
+  - calaamadaha
+  - khatar
+  - khatarta
   translations:
     sw:
       claim: Kutokwa na damu wakati wa ujauzito kunahitaji usafiri wa haraka hadi kituo cha afya. Mwanamke, hasa mwenye
@@ -163,6 +355,26 @@ facts:
       claim: Un saignement pendant la grossesse exige un transport immédiat vers un centre de santé. Une femme, surtout
         si elle est anémiée, peut mourir en quelques heures.
       short: 'Saignement pendant la grossesse : allez immédiatement au centre de santé. Il peut tuer en quelques heures.'
+    pt:
+      claim: 'Um sangramento na gravidez exige transporte imediato para uma unidade de saúde. Uma mulher, sobretudo com anemia, pode morrer em poucas horas.'
+      short: 'Sangramento na gravidez: vá já para uma unidade de saúde. Pode matar em poucas horas.'
+      reviewed: false
+    ar:
+      claim: 'النزيف أثناء الحمل يتطلب نقلًا فوريًا إلى مرفق صحي. قد تموت المرأة خلال ساعات، خاصة إذا كانت مصابة بفقر الدم.'
+      short: 'النزيف في الحمل: اذهبي إلى مرفق صحي فورًا. قد يقتل خلال ساعات.'
+      reviewed: false
+    am:
+      claim: 'በእርግዝና ወቅት የሚፈስ ደም ወዲያውኑ ወደ ጤና ተቋም መጓጓዝን ይጠይቃል። አንዲት ሴት፣ በተለይም የደም ማነስ ያለባት፣ በሰዓታት ውስጥ ልትሞት ትችላለች።'
+      short: 'በእርግዝና ደም መፍሰስ፡ ወዲያውኑ ወደ ጤና ተቋም ይሂዱ። በሰዓታት ውስጥ ሊገድል ይችላል።'
+      reviewed: false
+    om:
+      claim: 'Dhiigni yeroo ulfaa dhangala''u battaluma sanatti gara dhaabbata fayyaatti geessuu barbaachisa. Dubartiin, keessumaa ishee dhiigni itti hir''ate, sa''aatii muraasa keessatti du''uu dandeessi.'
+      short: 'Dhiiga yeroo ulfaa: battaluma dhaabbata fayyaa deemaa. Sa''aatii muraasa keessatti ajjeesuu danda''a.'
+      reviewed: false
+    so:
+      claim: 'Dhiig baxa uurka wuxuu u baahan yahay in isla markiiba la geeyo xarun caafimaad. Haweeney, gaar ahaan mid dhiig yaraan qabta, waxay ku dhiman kartaa saacado gudahood.'
+      short: 'Dhiig bax uurka: isla markiiba aad xarun caafimaad. Wuxuu dili karaa saacado gudahood.'
+      reviewed: false
   source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
   source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
   checked_on: 2026-11-23
@@ -196,6 +408,55 @@ facts:
   - choc
   - chute
   - ventre
+  - grávida
+  - gravidez
+  - sangramento
+  - sangue
+  - convulsões
+  - febre
+  - parto
+  - bebé
+  - حامل
+  - حمل
+  - نزيف
+  - دم
+  - تشنج
+  - حمى
+  - صداع
+  - ولادة
+  - جنين
+  - ነፍሰ
+  - ጡር
+  - እርጉዝ
+  - ደም
+  - ትኩሳት
+  - ወሊድ
+  - ሕፃን
+  - ulfaa
+  - dhiiga
+  - raafama
+  - deessee
+  - daa'ima
+  - uur
+  - dhiig
+  - qandho
+  - gariir
+  - dhalmo
+  - ilmo
+  - sinais
+  - perigo
+  - علامات
+  - خطر
+  - الخطر
+  - አደገኛ
+  - ምልክቶች
+  - አደጋ
+  - mallattoo
+  - balaa
+  - calaamad
+  - calaamadaha
+  - khatar
+  - khatarta
   translations:
     sw:
       claim: Tafuta huduma mara moja wakati wa ujauzito ikiwa mtoto atabadilisha jinsi anavyocheza tumboni, au baada
@@ -205,6 +466,26 @@ facts:
       claim: Pendant la grossesse, consultez immédiatement si les mouvements du bébé changent, ou après tout choc au
         ventre.
       short: Le bébé bouge moins ou autrement, ou un choc au ventre ? Consultez immédiatement.
+    pt:
+      claim: 'Procure cuidados imediatamente na gravidez se os movimentos do bebé mudarem, ou depois de qualquer pancada na barriga.'
+      short: 'O bebé mexe menos ou de outra forma, ou houve uma pancada na barriga? Procure cuidados já.'
+      reviewed: false
+    ar:
+      claim: 'اطلبي الرعاية فورًا أثناء الحمل إذا تغيرت حركات الجنين، أو بعد أي إصابة في البطن.'
+      short: 'الجنين يتحرك أقل أو بشكل مختلف، أو ضربة على البطن؟ اطلبي الرعاية فورًا.'
+      reviewed: false
+    am:
+      claim: 'በእርግዝና ወቅት የሕፃኑ እንቅስቃሴ ከተለወጠ ወይም በሆድ ላይ ማንኛውም ጉዳት ከደረሰ ወዲያውኑ ሕክምና ይፈልጉ።'
+      short: 'ሕፃኑ ያነሰ ወይም በተለየ መንገድ ይንቀሳቀሳል፣ ወይም ሆድ ተመታ? ወዲያውኑ ሕክምና ይፈልጉ።'
+      reviewed: false
+    om:
+      claim: 'Yeroo ulfaa sochiin daa''imaa yoo jijjiirame, ykn garaa irratti miidhaan kamiyyuu erga gahee booda battaluma yaala barbaadaa.'
+      short: 'Daa''imni xiqqaa ykn haala adda ta''een sochoo''aa, ykn garaan rukutamee? Battaluma yaala barbaadaa.'
+      reviewed: false
+    so:
+      claim: 'Uurka inta lagu jiro isla markiiba raadso daryeel haddii dhaqdhaqaaqa ilmuhu isbeddelo, ama kadib dhaawac kasta oo calooshu gaadho.'
+      short: 'Ilmuhu ma ka yar yahay dhaqdhaqaaqiisa ama si kale ayuu u dhaqaaqaa, ama calool baa la garaacay? Isla markiiba raadso daryeel.'
+      reviewed: false
   source: WHO, World Health Day 2025 key messages
   source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
   checked_on: 2026-11-23
@@ -242,6 +523,55 @@ facts:
   - poitrine
   - convulsions
   - saignement abondant
+  - grávida
+  - gravidez
+  - sangramento
+  - sangue
+  - convulsões
+  - febre
+  - parto
+  - bebé
+  - حامل
+  - حمل
+  - نزيف
+  - دم
+  - تشنج
+  - حمى
+  - صداع
+  - ولادة
+  - جنين
+  - ነፍሰ
+  - ጡር
+  - እርጉዝ
+  - ደም
+  - ትኩሳት
+  - ወሊድ
+  - ሕፃን
+  - ulfaa
+  - dhiiga
+  - raafama
+  - deessee
+  - daa'ima
+  - uur
+  - dhiig
+  - qandho
+  - gariir
+  - dhalmo
+  - ilmo
+  - sinais
+  - perigo
+  - علامات
+  - خطر
+  - الخطر
+  - አደገኛ
+  - ምልክቶች
+  - አደጋ
+  - mallattoo
+  - balaa
+  - calaamad
+  - calaamadaha
+  - khatar
+  - khatarta
   translations:
     sw:
       claim: Baada ya kujifungua, tafuta msaada mara moja kwa kutokwa na damu nyingi au mabonge makubwa, miguu myekundu
@@ -254,23 +584,30 @@ facts:
         à la poitrine, de difficulté à respirer ou de convulsions.
       short: 'Après l''accouchement, aide IMMÉDIATE si : saignement abondant, jambes gonflées, maux de tête persistants,
         forte fièvre, douleur thoracique, convulsions.'
+    pt:
+      claim: 'Depois do parto, procure ajuda imediatamente se houver sangramento forte ou coágulos grandes, pernas vermelhas ou inchadas, dor de cabeça que não passa, febre alta ou vómitos, dor no peito, dificuldade em respirar, ou convulsões.'
+      short: 'Depois do parto, peça ajuda JÁ se houver: sangramento forte ou coágulos, pernas inchadas, dor de cabeça persistente, febre alta, dor no peito, convulsões.'
+      reviewed: false
+    ar:
+      claim: 'بعد الولادة، اطلبي المساعدة فورًا عند النزيف الغزير أو الجلطات الكبيرة، أو احمرار الساقين أو تورمهما، أو صداع لا يزول، أو حمى شديدة أو قيء، أو ألم في الصدر، أو صعوبة في التنفس، أو تشنجات.'
+      short: 'بعد الولادة اطلبي المساعدة الآن عند: نزيف غزير أو جلطات، تورم الساقين، صداع مستمر، حمى شديدة، ألم في الصدر، تشنجات.'
+      reviewed: false
+    am:
+      claim: 'ከወለዱ በኋላ ለከባድ ደም መፍሰስ ወይም ትላልቅ የደም ርጋታዎች፣ ለቀሉ ወይም ላበጡ እግሮች፣ ለማይለቅ ራስ ምታት፣ ለከፍተኛ ትኩሳት ወይም ማስመለስ፣ ለደረት ሕመም፣ ለመተንፈስ ችግር፣ ወይም ለመንቀጥቀጥ ወዲያውኑ እርዳታ ይፈልጉ።'
+      short: 'ከወሊድ በኋላ አሁኑኑ እርዳታ ያግኙ፡ ከባድ ደም መፍሰስ ወይም ርጋታ፣ ያበጡ እግሮች፣ የማይለቅ ራስ ምታት፣ ከፍተኛ ትኩሳት፣ የደረት ሕመም፣ መንቀጥቀጥ።'
+      reviewed: false
+    om:
+      claim: 'Erga deessee booda, dhiiga baay''ee dhangala''u ykn dhiiga ititaa guddaa, miila diimate ykn dhiite, mataa dhukkubbii hin dhaabbanne, ho''a qaamaa cimaa ykn diddiigsuu, qoma dhukkubbii, hafuura baafachuu dadhabuu, ykn raafama qaamaa yoo qabaatte battaluma gargaarsa barbaadaa.'
+      short: 'Erga deessee booda AMMA gargaarsa argadhaa: dhiiga baay''ee ykn ititaa, miila dhiite, mataa dhukkubbii itti fufu, ho''a cimaa, qoma dhukkubbii, raafama.'
+      reviewed: false
+    so:
+      claim: 'Dhalmada kadib, isla markiiba raadso caawimaad haddii ay jiraan dhiig bax badan ama xinjiro waaweyn, lugo casaan ah ama bararay, madax xanuun aan tagin, qandho daran ama matag, laab xanuun, neefsasho dhib ah, ama gariir.'
+      short: 'Dhalmada kadib HADDA raadso caawimaad: dhiig bax badan ama xinjiro, lugo bararay, madax xanuun joogto ah, qandho daran, laab xanuun, gariir.'
+      reviewed: false
   source: WHO, World Health Day 2025 key messages
   source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
   checked_on: 2026-11-23
   review_status: sourced
   safety_critical: true
   refer_queue: maternal
-countries:
-- KE
-- ZA
-- BW
-- NA
-- ZW
-- NG
-- GH
-- RW
-- TZ
-- UG
-- TG
-- SN
-- CI
+countries: [KE, ZA, BW, NA, ZW, NG, GH, RW, TZ, UG, TG, SN, CI, CD, MW, BI, CM, BJ, ZM, TD, GN, BF, SS, ET, MZ, GW, AO, SO, SD, DZ, EG, LY, MA, TN]

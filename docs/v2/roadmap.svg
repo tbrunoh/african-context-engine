@@ -1,88 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" role="img" aria-label="V2 roadmap: four quarterly phases from December 2026 to November 2027, each closed by a measurable gate.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#050B1C"/><stop offset="100%" stop-color="#0B2A3F"/></linearGradient>
-    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
-    <linearGradient id="enginev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
-    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2DD4BF"/></marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
+    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#006B69"/><stop offset="100%" stop-color="#364E3C"/></linearGradient>
+    <linearGradient id="enginev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#006B69"/><stop offset="100%" stop-color="#364E3C"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#006B69"/></marker>
     <style>
-      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+      .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
       .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
       .flow { stroke-dasharray: 5 6; animation: f 10s linear infinite; }
       @keyframes f { to { stroke-dashoffset: -110; } }
       @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+      .serif { font-family: Newsreader, ui-serif, 'New York', 'Iowan Old Style', Georgia, serif; }
     </style>
   </defs>
-  <rect width="1200" height="520" rx="18" fill="url(#bg)"/>
-  <text x="48" y="54" class="mono" font-size="12" fill="#2DD4BF" letter-spacing="3">V2 ROADMAP</text>
-  <text x="48" y="84" class="sans" font-size="22" fill="#FFFFFF" font-weight="700">Four quarterly phases, each closed by a measurable gate.</text>
-  <text x="48" y="108" class="sans" font-size="13.5" fill="#94A3B8">Proposed plan, December 2026 to November 2027. No phase starts until the previous gate is met.</text>
-  <rect x="48.0" y="132" width="264.0" height="272" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="70.0" y="162" class="mono" font-size="12" fill="#2DD4BF" font-weight="700" letter-spacing="2">PHASE 1</text>
-  <text x="70.0" y="190" class="sans" font-size="19" fill="#FFFFFF" font-weight="700">Foundations</text>
-  <text x="70.0" y="212" class="sans" font-size="13" fill="#94A3B8">Dec 2026 to Feb 2027</text>
-  <circle cx="74.0" cy="239.5" r="3" fill="#2DD4BF"/>
-  <text x="86.0" y="244" class="sans" font-size="13.5" fill="#CBD5E1">Connector framework</text>
-  <circle cx="74.0" cy="263.5" r="3" fill="#2DD4BF"/>
-  <text x="86.0" y="268" class="sans" font-size="13.5" fill="#CBD5E1">Signed packs, watcher</text>
-  <circle cx="74.0" cy="287.5" r="3" fill="#2DD4BF"/>
-  <text x="86.0" y="292" class="sans" font-size="13.5" fill="#CBD5E1">Public benchmark</text>
-  <circle cx="74.0" cy="311.5" r="3" fill="#2DD4BF"/>
-  <text x="86.0" y="316" class="sans" font-size="13.5" fill="#CBD5E1">Kenya facility data</text>
-  <line x1="70.0" y1="342" x2="290.0" y2="342" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="70.0" y="366" class="sans" font-size="13.5" fill="#FFFFFF" font-weight="700">Gate: every number checked</text>
-  <text x="70.0" y="386" class="sans" font-size="13" fill="#94A3B8">within 30 days</text>
-  <rect x="328.0" y="132" width="264.0" height="272" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="350.0" y="162" class="mono" font-size="12" fill="#38BDF8" font-weight="700" letter-spacing="2">PHASE 2</text>
-  <text x="350.0" y="190" class="sans" font-size="19" fill="#FFFFFF" font-weight="700">Weather and voice</text>
-  <text x="350.0" y="212" class="sans" font-size="13" fill="#94A3B8">Mar to May 2027</text>
-  <circle cx="354.0" cy="239.5" r="3" fill="#38BDF8"/>
-  <text x="366.0" y="244" class="sans" font-size="13.5" fill="#CBD5E1">Rain this week, Kenya</text>
-  <circle cx="354.0" cy="263.5" r="3" fill="#38BDF8"/>
-  <text x="366.0" y="268" class="sans" font-size="13.5" fill="#CBD5E1">Flood, official alerts</text>
-  <circle cx="354.0" cy="287.5" r="3" fill="#38BDF8"/>
-  <text x="366.0" y="292" class="sans" font-size="13.5" fill="#CBD5E1">Facility finder</text>
-  <circle cx="354.0" cy="311.5" r="3" fill="#38BDF8"/>
-  <text x="366.0" y="316" class="sans" font-size="13.5" fill="#CBD5E1">Swahili voice pilot</text>
-  <line x1="350.0" y1="342" x2="570.0" y2="342" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="350.0" y="366" class="sans" font-size="13.5" fill="#FFFFFF" font-weight="700">Gate: 99% recall on</text>
-  <text x="350.0" y="386" class="sans" font-size="13" fill="#94A3B8">voice emergencies</text>
-  <rect x="608.0" y="132" width="264.0" height="272" rx="14" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="630.0" y="162" class="mono" font-size="12" fill="#818CF8" font-weight="700" letter-spacing="2">PHASE 3</text>
-  <text x="630.0" y="190" class="sans" font-size="19" fill="#FFFFFF" font-weight="700">Farm and health</text>
-  <text x="630.0" y="212" class="sans" font-size="13" fill="#94A3B8">Jun to Aug 2027</text>
-  <circle cx="634.0" cy="239.5" r="3" fill="#818CF8"/>
-  <text x="646.0" y="244" class="sans" font-size="13.5" fill="#CBD5E1">Planting, soil, pests</text>
-  <circle cx="634.0" cy="263.5" r="3" fill="#818CF8"/>
-  <text x="646.0" y="268" class="sans" font-size="13.5" fill="#CBD5E1">Prices, pregnancy care</text>
-  <circle cx="634.0" cy="287.5" r="3" fill="#818CF8"/>
-  <text x="646.0" y="292" class="sans" font-size="13.5" fill="#CBD5E1">SIM swap, scam waves</text>
-  <circle cx="634.0" cy="311.5" r="3" fill="#818CF8"/>
-  <text x="646.0" y="316" class="sans" font-size="13.5" fill="#CBD5E1">Grounding API, partner</text>
-  <line x1="630.0" y1="342" x2="850.0" y2="342" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="630.0" y="366" class="sans" font-size="13.5" fill="#FFFFFF" font-weight="700">Gate: services beat the</text>
-  <text x="630.0" y="386" class="sans" font-size="13" fill="#94A3B8">decision benchmark</text>
-  <rect x="888.0" y="132" width="264.0" height="272" rx="14" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
-  <text x="910.0" y="162" class="mono" font-size="12" fill="#C084FC" font-weight="700" letter-spacing="2">PHASE 4</text>
-  <text x="910.0" y="190" class="sans" font-size="19" fill="#FFFFFF" font-weight="700">Reach</text>
-  <text x="910.0" y="212" class="sans" font-size="13" fill="#94A3B8">Sep to Nov 2027</text>
-  <circle cx="914.0" cy="239.5" r="3" fill="#C084FC"/>
-  <text x="926.0" y="244" class="sans" font-size="13.5" fill="#CBD5E1">French, Hausa, Yoruba</text>
-  <circle cx="914.0" cy="263.5" r="3" fill="#C084FC"/>
-  <text x="926.0" y="268" class="sans" font-size="13.5" fill="#CBD5E1">Opt in alerts</text>
-  <circle cx="914.0" cy="287.5" r="3" fill="#C084FC"/>
-  <text x="926.0" y="292" class="sans" font-size="13.5" fill="#CBD5E1">Health worker assist</text>
-  <circle cx="914.0" cy="311.5" r="3" fill="#C084FC"/>
-  <text x="926.0" y="316" class="sans" font-size="13.5" fill="#CBD5E1">Partners live</text>
-  <line x1="910.0" y1="342" x2="1130.0" y2="342" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="910.0" y="366" class="sans" font-size="13.5" fill="#FFFFFF" font-weight="700">Gate: V2 targets met</text>
-  <text x="910.0" y="386" class="sans" font-size="13" fill="#CCFBF1">V2.0 release</text>
-  <line x1="48" y1="446" x2="1152" y2="446" stroke="#2DD4BF" stroke-opacity="0.35" stroke-width="2"/>
-  <path d="M312.0 436 l10 10 l-10 10 l-10 -10 z" fill="#2DD4BF"/>
-  <text x="312.0" y="484" class="sans" font-size="13" fill="#94A3B8" text-anchor="middle">end Feb</text>
-  <path d="M592.0 436 l10 10 l-10 10 l-10 -10 z" fill="#38BDF8"/>
-  <text x="592.0" y="484" class="sans" font-size="13" fill="#94A3B8" text-anchor="middle">end May</text>
-  <path d="M872.0 436 l10 10 l-10 10 l-10 -10 z" fill="#818CF8"/>
-  <text x="872.0" y="484" class="sans" font-size="13" fill="#94A3B8" text-anchor="middle">end Aug</text>
-  <path d="M1142.0 436 l10 10 l-10 10 l-10 -10 z" fill="#C084FC"/>
-  <text x="1152" y="484" class="sans" font-size="13" fill="#FFFFFF" font-weight="700" text-anchor="end">V2.0, Nov</text>
+  <rect width="1199" height="519" rx="18" fill="#FFFFFF" x="0.5" y="0.5" stroke="#E8E2D9" stroke-width="1"/>
+  <text x="48" y="54" class="mono" font-size="12" fill="#006B69" letter-spacing="3">V2 ROADMAP</text>
+  <text x="48" y="84" class="serif" font-size="26" fill="#253239" font-weight="500" letter-spacing="-0.4">Four quarterly phases, each closed by a measurable gate.</text>
+  <text x="48" y="108" class="sans" font-size="13.5" fill="#56636A">Proposed plan, December 2026 to November 2027. No phase starts until the previous gate is met.</text>
+  <rect x="48.0" y="132" width="264.0" height="272" rx="14" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="70.0" y="162" class="mono" font-size="12" fill="#006B69" font-weight="700" letter-spacing="2">PHASE 1</text>
+  <text x="70.0" y="190" class="sans" font-size="19" fill="#253239" font-weight="700">Foundations</text>
+  <text x="70.0" y="212" class="sans" font-size="13" fill="#56636A">Dec 2026 to Feb 2027</text>
+  <circle cx="74.0" cy="239.5" r="3" fill="#006B69"/>
+  <text x="86.0" y="244" class="sans" font-size="13.5" fill="#3E4B52">Connector framework</text>
+  <circle cx="74.0" cy="263.5" r="3" fill="#006B69"/>
+  <text x="86.0" y="268" class="sans" font-size="13.5" fill="#3E4B52">Signed packs, watcher</text>
+  <circle cx="74.0" cy="287.5" r="3" fill="#006B69"/>
+  <text x="86.0" y="292" class="sans" font-size="13.5" fill="#3E4B52">Public benchmark</text>
+  <circle cx="74.0" cy="311.5" r="3" fill="#006B69"/>
+  <text x="86.0" y="316" class="sans" font-size="13.5" fill="#3E4B52">Kenya facility data</text>
+  <line x1="70.0" y1="342" x2="290.0" y2="342" stroke="#E8E2D9"/>
+  <text x="70.0" y="366" class="sans" font-size="13.5" fill="#253239" font-weight="700">Gate: every number checked</text>
+  <text x="70.0" y="386" class="sans" font-size="13" fill="#56636A">within 30 days</text>
+  <rect x="328.0" y="132" width="264.0" height="272" rx="14" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="350.0" y="162" class="mono" font-size="12" fill="#006B69" font-weight="700" letter-spacing="2">PHASE 2</text>
+  <text x="350.0" y="190" class="sans" font-size="19" fill="#253239" font-weight="700">Weather and voice</text>
+  <text x="350.0" y="212" class="sans" font-size="13" fill="#56636A">Mar to May 2027</text>
+  <circle cx="354.0" cy="239.5" r="3" fill="#006B69"/>
+  <text x="366.0" y="244" class="sans" font-size="13.5" fill="#3E4B52">Rain this week, Kenya</text>
+  <circle cx="354.0" cy="263.5" r="3" fill="#006B69"/>
+  <text x="366.0" y="268" class="sans" font-size="13.5" fill="#3E4B52">Flood, official alerts</text>
+  <circle cx="354.0" cy="287.5" r="3" fill="#006B69"/>
+  <text x="366.0" y="292" class="sans" font-size="13.5" fill="#3E4B52">Facility finder</text>
+  <circle cx="354.0" cy="311.5" r="3" fill="#006B69"/>
+  <text x="366.0" y="316" class="sans" font-size="13.5" fill="#3E4B52">Swahili voice pilot</text>
+  <line x1="350.0" y1="342" x2="570.0" y2="342" stroke="#E8E2D9"/>
+  <text x="350.0" y="366" class="sans" font-size="13.5" fill="#253239" font-weight="700">Gate: 99% recall on</text>
+  <text x="350.0" y="386" class="sans" font-size="13" fill="#56636A">voice emergencies</text>
+  <rect x="608.0" y="132" width="264.0" height="272" rx="14" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="630.0" y="162" class="mono" font-size="12" fill="#364E3C" font-weight="700" letter-spacing="2">PHASE 3</text>
+  <text x="630.0" y="190" class="sans" font-size="19" fill="#253239" font-weight="700">Farm and health</text>
+  <text x="630.0" y="212" class="sans" font-size="13" fill="#56636A">Jun to Aug 2027</text>
+  <circle cx="634.0" cy="239.5" r="3" fill="#364E3C"/>
+  <text x="646.0" y="244" class="sans" font-size="13.5" fill="#3E4B52">Planting, soil, pests</text>
+  <circle cx="634.0" cy="263.5" r="3" fill="#364E3C"/>
+  <text x="646.0" y="268" class="sans" font-size="13.5" fill="#3E4B52">Prices, pregnancy care</text>
+  <circle cx="634.0" cy="287.5" r="3" fill="#364E3C"/>
+  <text x="646.0" y="292" class="sans" font-size="13.5" fill="#3E4B52">SIM swap, scam waves</text>
+  <circle cx="634.0" cy="311.5" r="3" fill="#364E3C"/>
+  <text x="646.0" y="316" class="sans" font-size="13.5" fill="#3E4B52">Grounding API, partner</text>
+  <line x1="630.0" y1="342" x2="850.0" y2="342" stroke="#E8E2D9"/>
+  <text x="630.0" y="366" class="sans" font-size="13.5" fill="#253239" font-weight="700">Gate: services beat the</text>
+  <text x="630.0" y="386" class="sans" font-size="13" fill="#56636A">decision benchmark</text>
+  <rect x="888.0" y="132" width="264.0" height="272" rx="14" fill="#EDF5F4" stroke="#006B69" stroke-opacity="0.8"/>
+  <text x="910.0" y="162" class="mono" font-size="12" fill="#8F5E24" font-weight="700" letter-spacing="2">PHASE 4</text>
+  <text x="910.0" y="190" class="sans" font-size="19" fill="#253239" font-weight="700">Reach</text>
+  <text x="910.0" y="212" class="sans" font-size="13" fill="#56636A">Sep to Nov 2027</text>
+  <circle cx="914.0" cy="239.5" r="3" fill="#BE823C"/>
+  <text x="926.0" y="244" class="sans" font-size="13.5" fill="#3E4B52">French, Hausa, Yoruba</text>
+  <circle cx="914.0" cy="263.5" r="3" fill="#BE823C"/>
+  <text x="926.0" y="268" class="sans" font-size="13.5" fill="#3E4B52">Opt in alerts</text>
+  <circle cx="914.0" cy="287.5" r="3" fill="#BE823C"/>
+  <text x="926.0" y="292" class="sans" font-size="13.5" fill="#3E4B52">Health worker assist</text>
+  <circle cx="914.0" cy="311.5" r="3" fill="#BE823C"/>
+  <text x="926.0" y="316" class="sans" font-size="13.5" fill="#3E4B52">Partners live</text>
+  <line x1="910.0" y1="342" x2="1130.0" y2="342" stroke="#E8E2D9"/>
+  <text x="910.0" y="366" class="sans" font-size="13.5" fill="#253239" font-weight="700">Gate: V2 targets met</text>
+  <text x="910.0" y="386" class="sans" font-size="13" fill="#56636A">V2.0 release</text>
+  <line x1="48" y1="446" x2="1152" y2="446" stroke="#006B69" stroke-opacity="0.35" stroke-width="2"/>
+  <path d="M312.0 436 l10 10 l-10 10 l-10 -10 z" fill="#006B69"/>
+  <text x="312.0" y="484" class="sans" font-size="13" fill="#56636A" text-anchor="middle">end Feb</text>
+  <path d="M592.0 436 l10 10 l-10 10 l-10 -10 z" fill="#006B69"/>
+  <text x="592.0" y="484" class="sans" font-size="13" fill="#56636A" text-anchor="middle">end May</text>
+  <path d="M872.0 436 l10 10 l-10 10 l-10 -10 z" fill="#364E3C"/>
+  <text x="872.0" y="484" class="sans" font-size="13" fill="#56636A" text-anchor="middle">end Aug</text>
+  <path d="M1142.0 436 l10 10 l-10 10 l-10 -10 z" fill="#BE823C"/>
+  <text x="1152" y="484" class="sans" font-size="13" fill="#253239" font-weight="700" text-anchor="end">V2.0, Nov</text>
 </svg>

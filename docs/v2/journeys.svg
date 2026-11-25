@@ -1,88 +1,89 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" role="img" aria-label="Three illustrative journeys: a farmer near Kaolack in Senegal, an expectant mother in Kano in Nigeria and a community health worker in Kakamega in Kenya, each getting one decision with a short, cited answer.">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#050B1C"/><stop offset="100%" stop-color="#0B2A3F"/></linearGradient>
-    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
-    <linearGradient id="enginev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0E7490"/><stop offset="100%" stop-color="#1E40AF"/></linearGradient>
-    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#2DD4BF"/></marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#FFFFFF"/></linearGradient>
+    <linearGradient id="engine" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#006B69"/><stop offset="100%" stop-color="#364E3C"/></linearGradient>
+    <linearGradient id="enginev" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#006B69"/><stop offset="100%" stop-color="#364E3C"/></linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#006B69"/></marker>
     <style>
-      .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+      .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
       .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
       .flow { stroke-dasharray: 5 6; animation: f 10s linear infinite; }
       @keyframes f { to { stroke-dashoffset: -110; } }
       @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+      .serif { font-family: Newsreader, ui-serif, 'New York', 'Iowan Old Style', Georgia, serif; }
     </style>
   </defs>
-  <rect width="1200" height="500" rx="18" fill="url(#bg)"/>
-  <text x="48" y="54" class="mono" font-size="12" fill="#2DD4BF" letter-spacing="3">THREE JOURNEYS, ILLUSTRATIVE</text>
-  <text x="48" y="84" class="sans" font-size="22" fill="#FFFFFF" font-weight="700">What usable means: one decision, one short answer, one next step.</text>
+  <rect width="1199" height="499" rx="18" fill="#FFFFFF" x="0.5" y="0.5" stroke="#E8E2D9" stroke-width="1"/>
+  <text x="48" y="54" class="mono" font-size="12" fill="#006B69" letter-spacing="3">THREE JOURNEYS, ILLUSTRATIVE</text>
+  <text x="48" y="84" class="serif" font-size="26" fill="#253239" font-weight="500" letter-spacing="-0.4">What usable means: one decision, one short answer, one next step.</text>
   <rect x="48" y="116" width="228" height="96" rx="12" fill="url(#engine)"/>
   <text x="68" y="150" class="sans" font-size="18" fill="#FFFFFF" font-weight="700">Fatou</text>
   <text x="68" y="174" class="sans" font-size="13" fill="#FFFFFF">Farmer, Kaolack</text>
-  <text x="68" y="194" class="sans" font-size="12" fill="#CCFBF1">Basic phone, French</text>
-  <rect x="292.0" y="116" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="310.0" y="142" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 1</text>
-  <text x="310.0" y="168" class="sans" font-size="13.5" fill="#FFFFFF">Dials the short code,</text>
-  <text x="310.0" y="188" class="sans" font-size="13.5" fill="#FFFFFF">picks Farm, Planting</text>
-  <path class="flow" d="M490.0 164.0 L508.0 164.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="514.0" y="116" width="194.0" height="96" rx="12" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
-  <text x="532.0" y="142" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 2</text>
-  <text x="532.0" y="168" class="sans" font-size="13.5" fill="#FFFFFF">SMS: rains likely to</text>
-  <text x="532.0" y="188" class="sans" font-size="13.5" fill="#FFFFFF">start within two weeks</text>
-  <path class="flow" d="M712.0 164.0 L730.0 164.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="736.0" y="116" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="754.0" y="142" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 3</text>
-  <text x="754.0" y="168" class="sans" font-size="13.5" fill="#FFFFFF">After planting: a fall</text>
-  <text x="754.0" y="188" class="sans" font-size="13.5" fill="#FFFFFF">armyworm reminder</text>
-  <path class="flow" d="M934.0 164.0 L952.0 164.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="958.0" y="116" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="976.0" y="142" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 4</text>
-  <text x="976.0" y="168" class="sans" font-size="13.5" fill="#FFFFFF">River may flood: a</text>
-  <text x="976.0" y="188" class="sans" font-size="13.5" fill="#FFFFFF">voice call, opted in</text>
+  <text x="68" y="194" class="sans" font-size="12" fill="#DCEDEA">Basic phone, French</text>
+  <rect x="292.0" y="116" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="310.0" y="142" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 1</text>
+  <text x="310.0" y="168" class="sans" font-size="13.5" fill="#253239">Dials the short code,</text>
+  <text x="310.0" y="188" class="sans" font-size="13.5" fill="#253239">picks Farm, Planting</text>
+  <path class="flow" d="M490.0 164.0 L508.0 164.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="514.0" y="116" width="194.0" height="96" rx="12" fill="#EDF5F4" stroke="#006B69" stroke-opacity="0.8"/>
+  <text x="532.0" y="142" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 2</text>
+  <text x="532.0" y="168" class="sans" font-size="13.5" fill="#253239">SMS: rains likely to</text>
+  <text x="532.0" y="188" class="sans" font-size="13.5" fill="#253239">start within two weeks</text>
+  <path class="flow" d="M712.0 164.0 L730.0 164.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="736.0" y="116" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="754.0" y="142" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 3</text>
+  <text x="754.0" y="168" class="sans" font-size="13.5" fill="#253239">After planting: a fall</text>
+  <text x="754.0" y="188" class="sans" font-size="13.5" fill="#253239">armyworm reminder</text>
+  <path class="flow" d="M934.0 164.0 L952.0 164.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="958.0" y="116" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="976.0" y="142" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 4</text>
+  <text x="976.0" y="168" class="sans" font-size="13.5" fill="#253239">River may flood: a</text>
+  <text x="976.0" y="188" class="sans" font-size="13.5" fill="#253239">voice call, opted in</text>
   <rect x="48" y="230" width="228" height="96" rx="12" fill="url(#engine)"/>
   <text x="68" y="264" class="sans" font-size="18" fill="#FFFFFF" font-weight="700">Amina</text>
   <text x="68" y="288" class="sans" font-size="13" fill="#FFFFFF">Expectant mother, Kano</text>
-  <text x="68" y="308" class="sans" font-size="12" fill="#CCFBF1">Voice, Hausa</text>
-  <rect x="292.0" y="230" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="310.0" y="256" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 1</text>
-  <text x="310.0" y="282" class="sans" font-size="13.5" fill="#FFFFFF">Calls the voice line</text>
-  <text x="310.0" y="302" class="sans" font-size="13.5" fill="#FFFFFF">and speaks Hausa</text>
-  <path class="flow" d="M490.0 278.0 L508.0 278.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="514.0" y="230" width="194.0" height="96" rx="12" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
-  <text x="532.0" y="256" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 2</text>
-  <text x="532.0" y="282" class="sans" font-size="13.5" fill="#FFFFFF">Danger signs: the safety</text>
-  <text x="532.0" y="302" class="sans" font-size="13.5" fill="#FFFFFF">rail answers first</text>
-  <path class="flow" d="M712.0 278.0 L730.0 278.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="736.0" y="230" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="754.0" y="256" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 3</text>
-  <text x="754.0" y="282" class="sans" font-size="13.5" fill="#FFFFFF">Nearest maternity care</text>
-  <text x="754.0" y="302" class="sans" font-size="13.5" fill="#FFFFFF">and its phone number</text>
-  <path class="flow" d="M934.0 278.0 L952.0 278.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="958.0" y="230" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="976.0" y="256" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 4</text>
-  <text x="976.0" y="282" class="sans" font-size="13.5" fill="#FFFFFF">A reminder call before</text>
-  <text x="976.0" y="302" class="sans" font-size="13.5" fill="#FFFFFF">her next visit</text>
+  <text x="68" y="308" class="sans" font-size="12" fill="#DCEDEA">Voice, Hausa</text>
+  <rect x="292.0" y="230" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="310.0" y="256" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 1</text>
+  <text x="310.0" y="282" class="sans" font-size="13.5" fill="#253239">Calls the voice line</text>
+  <text x="310.0" y="302" class="sans" font-size="13.5" fill="#253239">and speaks Hausa</text>
+  <path class="flow" d="M490.0 278.0 L508.0 278.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="514.0" y="230" width="194.0" height="96" rx="12" fill="#EDF5F4" stroke="#006B69" stroke-opacity="0.8"/>
+  <text x="532.0" y="256" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 2</text>
+  <text x="532.0" y="282" class="sans" font-size="13.5" fill="#253239">Danger signs: the safety</text>
+  <text x="532.0" y="302" class="sans" font-size="13.5" fill="#253239">rail answers first</text>
+  <path class="flow" d="M712.0 278.0 L730.0 278.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="736.0" y="230" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="754.0" y="256" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 3</text>
+  <text x="754.0" y="282" class="sans" font-size="13.5" fill="#253239">Nearest maternity care</text>
+  <text x="754.0" y="302" class="sans" font-size="13.5" fill="#253239">and its phone number</text>
+  <path class="flow" d="M934.0 278.0 L952.0 278.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="958.0" y="230" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="976.0" y="256" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 4</text>
+  <text x="976.0" y="282" class="sans" font-size="13.5" fill="#253239">A reminder call before</text>
+  <text x="976.0" y="302" class="sans" font-size="13.5" fill="#253239">her next visit</text>
   <rect x="48" y="344" width="228" height="96" rx="12" fill="url(#engine)"/>
   <text x="68" y="378" class="sans" font-size="18" fill="#FFFFFF" font-weight="700">Grace</text>
   <text x="68" y="402" class="sans" font-size="13" fill="#FFFFFF">Health worker, Kakamega</text>
-  <text x="68" y="422" class="sans" font-size="12" fill="#CCFBF1">eCHIS app, Swahili</text>
-  <rect x="292.0" y="344" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="310.0" y="370" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 1</text>
-  <text x="310.0" y="396" class="sans" font-size="13.5" fill="#FFFFFF">Records a newborn</text>
-  <text x="310.0" y="416" class="sans" font-size="13.5" fill="#FFFFFF">breathing fast</text>
-  <path class="flow" d="M490.0 392.0 L508.0 392.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="514.0" y="344" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="532.0" y="370" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 2</text>
-  <text x="532.0" y="396" class="sans" font-size="13.5" fill="#FFFFFF">eCHIS calls ACE through</text>
-  <text x="532.0" y="416" class="sans" font-size="13.5" fill="#FFFFFF">the grounding API</text>
-  <path class="flow" d="M712.0 392.0 L730.0 392.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="736.0" y="344" width="194.0" height="96" rx="12" fill="#2DD4BF" fill-opacity="0.14" stroke="#2DD4BF" stroke-opacity="0.8"/>
-  <text x="754.0" y="370" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 3</text>
-  <text x="754.0" y="396" class="sans" font-size="13.5" fill="#FFFFFF">Danger sign rule and</text>
-  <text x="754.0" y="416" class="sans" font-size="13.5" fill="#FFFFFF">the referral facility</text>
-  <path class="flow" d="M934.0 392.0 L952.0 392.0" stroke="#2DD4BF" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
-  <rect x="958.0" y="344" width="194.0" height="96" rx="12" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.14"/>
-  <text x="976.0" y="370" class="mono" font-size="11" fill="#2DD4BF" font-weight="700" letter-spacing="1">STEP 4</text>
-  <text x="976.0" y="396" class="sans" font-size="13.5" fill="#FFFFFF">A Swahili script with</text>
-  <text x="976.0" y="416" class="sans" font-size="13.5" fill="#FFFFFF">the WHO citation</text>
-  <text x="48" y="474" class="sans" font-size="13" fill="#94A3B8">Highlighted steps show where ACE decides: the safety rail, a published rule or a service built on public data.</text>
+  <text x="68" y="422" class="sans" font-size="12" fill="#DCEDEA">eCHIS app, Swahili</text>
+  <rect x="292.0" y="344" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="310.0" y="370" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 1</text>
+  <text x="310.0" y="396" class="sans" font-size="13.5" fill="#253239">Records a newborn</text>
+  <text x="310.0" y="416" class="sans" font-size="13.5" fill="#253239">breathing fast</text>
+  <path class="flow" d="M490.0 392.0 L508.0 392.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="514.0" y="344" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="532.0" y="370" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 2</text>
+  <text x="532.0" y="396" class="sans" font-size="13.5" fill="#253239">eCHIS calls ACE through</text>
+  <text x="532.0" y="416" class="sans" font-size="13.5" fill="#253239">the grounding API</text>
+  <path class="flow" d="M712.0 392.0 L730.0 392.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="736.0" y="344" width="194.0" height="96" rx="12" fill="#EDF5F4" stroke="#006B69" stroke-opacity="0.8"/>
+  <text x="754.0" y="370" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 3</text>
+  <text x="754.0" y="396" class="sans" font-size="13.5" fill="#253239">Danger sign rule and</text>
+  <text x="754.0" y="416" class="sans" font-size="13.5" fill="#253239">the referral facility</text>
+  <path class="flow" d="M934.0 392.0 L952.0 392.0" stroke="#006B69" stroke-width="1.5" fill="none" marker-end="url(#arr)"/>
+  <rect x="958.0" y="344" width="194.0" height="96" rx="12" fill="#FFFFFF" stroke="#E8E2D9"/>
+  <text x="976.0" y="370" class="mono" font-size="11" fill="#006B69" font-weight="700" letter-spacing="1">STEP 4</text>
+  <text x="976.0" y="396" class="sans" font-size="13.5" fill="#253239">A Swahili script with</text>
+  <text x="976.0" y="416" class="sans" font-size="13.5" fill="#253239">the WHO citation</text>
+  <text x="48" y="474" class="sans" font-size="13" fill="#56636A">Highlighted steps show where ACE decides: the safety rail, a published rule or a service built on public data.</text>
 </svg>

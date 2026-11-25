@@ -102,9 +102,9 @@ def test_centroid_and_distance():
 
 @pytest.mark.parametrize("country,text,expected", [
     ("KE", "will it rain in Embu", "Embu"), ("NG", "rain in kano", "Kano"), ("TZ", "mvua Mwanza", "Mwanza"),
-    ("SN", "pluie a Thies", "Thies"), ("GH", "Accra", "Greater Accra Region"),
+    ("SN", "pluie a Thies", "Thiès"), ("GH", "Accra", "Greater Accra Region"),
     ("NG", "Abuja", "Abuja Federal Capital Territory"), ("RW", "Kigali", "City of Kigali"),
-    ("CI", "Abidjan", "District Autonome D'Abidjan"), ("UG", "Gulu", "Gulu"), ("ZA", "Cape Town", "Western Cape"),
+    ("CI", "Abidjan", "District Autonome d'Abidjan"), ("UG", "Gulu", "Gulu"), ("ZA", "Cape Town", "Western Cape"),
 ])
 def test_find_place_by_name(store, country, text, expected):
     assert Gazetteer(store).find(text, country).name == expected
@@ -113,7 +113,7 @@ def test_find_place_by_name(store, country, text, expected):
 @pytest.mark.parametrize("lat,lon,country,name", [
     (-1.2864, 36.8172, "KE", "Nairobi"), (12.0, 8.52, "NG", "Kano"), (0.3476, 32.5825, "UG", "Kampala"),
     (14.7167, -17.4677, "SN", "Dakar"), (-22.56, 17.08, "NA", "Khomas"), (-17.83, 31.05, "ZW", "Harare"),
-    (6.45, 3.39, "NG", "Lagos"), (-29.86, 31.03, "ZA", "KwaZulu-Natal"), (6.1319, 1.2228, "TG", "Maritime Region"),
+    (6.45, 3.39, "NG", "Lagos"), (-29.86, 31.03, "ZA", "KwaZulu-Natal"), (6.1319, 1.2228, "TG", "Maritime"),
 ])
 def test_locate_place_by_position(store, lat, lon, country, name):
     place = Gazetteer(store).locate(lat, lon, country)

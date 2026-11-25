@@ -163,6 +163,14 @@ def test_warning_found_by_area_name_is_passed_on_in_the_authoritys_words(engine,
     assert "Heavy rainfall alert" in r.text["sw"] and "Avoid crossing flooded rivers." in r.text["en"]
 
 
+def test_warning_list_dashes_are_tidied_and_french_names_the_source(engine, snaps):
+    snaps.put(warnings(alerts=[alert(area_desc=["Embu"], instruction="Communities are advised to: - stay inside. "
+                                                                     "-avoid open areas -avoid rivers")]))
+    r = at(engine, "official_warnings")
+    assert "advised to: stay inside. avoid open areas; avoid rivers" in r.text["en"]
+    assert "(source : Kenya Meteorological Department)" in r.text["fr"]
+
+
 def test_warning_found_by_polygon_and_nationwide(engine, snaps):
     square = [[-1.0, 37.0], [-1.0, 38.0], [0.0, 38.0], [0.0, 37.0], [-1.0, 37.0]]
     snaps.put(warnings(alerts=[alert(polygons=[square])]))
@@ -198,7 +206,7 @@ def test_nearest_facility_by_position_ends_with_the_emergency_number(engine):
     r = run(engine, "nearest_facility", "nearest clinic", location=GeoPoint(-0.53, 37.45)).result
     assert isinstance(r, Answer)
     assert r.text["en"].startswith("Nearest public facilities: Kamweli Dispensary (dispensary, 0.2 km)")
-    assert "Emergency: 999, 112." in r.text["en"] and "2019" in r.text["en"]
+    assert "Emergency: 999, 112, 1199." in r.text["en"] and "2019" in r.text["en"]
     assert "Far Clinic" not in r.text["en"]
 
 
@@ -207,11 +215,45 @@ def test_facility_by_area_lists_hospitals_inside_it(engine):
     assert r.text["en"].startswith("Public hospitals in Embu: Embu Level 5 Hospital")
 
 
+@pytest.mark.parametrize("country,numbers", [("TG", None), ("SN", "15, 1515"), ("CI", "185"), ("BW", "997"),
+                                             ("NA", "10111")])
+def test_facility_never_guesses_an_emergency_number(engine, snaps, country, numbers):
+    snaps.put(facilities(country))
+    r = run(engine, "nearest_facility", "nearest clinic", country=country, location=GeoPoint(-0.53, 37.45)).result
+    text = r.text["en"]
+    if numbers is None:  # Togo publishes no medical emergency number ACE can source
+        assert "call your local emergency number" in text and "112" not in text
+    else:
+        assert numbers in text and (country == "NA" or "112" not in text)
+
+
+def test_facility_ranks_bigger_hospitals_first():
+    from ace_engine.services.facility import tier
+    kinds = ["district hospital", "hospital", "national referral hospital", "regional hospital"]
+    assert sorted(kinds, key=tier) == ["national referral hospital", "regional hospital", "district hospital", "hospital"]
+
+
+def test_facility_source_artefacts_are_repaired():
+    from ace_engine.connectors.health_facilities import clean_text
+    assert clean_text("Bafilo Centre Hospitalier Pr\u251c\u2310fectoral") == "Bafilo Centre Hospitalier Préfectoral"
+    assert clean_text("St. Mary'S  Lacor Hospital") == "St. Mary's Lacor Hospital"
+    assert clean_text("O'Brien Clinic") == "O'Brien Clinic"
+
+
 # ---------------------------------------------------------------- prices
 
 def test_price_prefers_the_food_itself_and_compares_months(engine):
     r = at(engine, "market_prices", place="maize Embu")
     assert r.text["en"] == ("Maize (white) at Embu: KES 55 per KG in Oct 2026, up 10% on Sep 2026. WFP prices.")
+
+
+def test_price_speaks_the_food_and_unit_in_the_persons_language(engine):
+    r = at(engine, "market_prices", place="maize Embu")
+    assert r.text["sw"].startswith("Mahindi (nyeupe) soko la Embu: KES 55 kwa KG")
+    assert r.text["fr"].startswith("Maïs (blanc) au marché d'Embu : KES 55 le KG")
+    from ace_engine.services.prices import food_name, unit_name
+    assert food_name("Sorghum (red)", "fr") == "Sorgho (rouge)" and food_name("Gari", "sw") == "Gari"
+    assert unit_name("90 KG", "fr") == "les 90 KG" and unit_name("KG", "fr") == "le KG"
 
 
 def test_price_without_a_food_lists_staples(engine):
@@ -224,7 +266,7 @@ def test_old_prices_are_refused_and_botswana_is_a_gap(engine, snaps):
     r = at(engine, "market_prices", place="maize Embu")
     assert isinstance(r, Refusal) and r.reason == "stale" and "Mar 2026, too old to use" in r.text["en"]
     r = run(engine, "market_prices", "maize", country="BW").result
-    assert r.reason == "gap" and "Botswana" in r.text["en"]
+    assert r.reason == "gap" and "Botswana" in r.text["en"] and "pour le Botswana" in r.text["fr"]
 
 
 # ---------------------------------------------------------------- pregnancy and pests
@@ -253,6 +295,13 @@ def test_pregnancy_asks_for_weeks_and_still_gives_danger_signs(engine):
 def test_pest_check_names_the_likely_problem(engine, text, problem):
     r = run(engine, "pest_check", text).result
     assert isinstance(r, Answer) and r.data["problem"] == problem and len(r.citations) == 2
+
+
+def test_pest_check_does_not_repeat_the_signs_label(engine):
+    r = run(engine, "pest_check", "maize leaves with holes and sawdust").result
+    assert "check these signs: windowpane" in r.text["en"] and "Armyworm signs" not in r.text["en"]
+    r = run(engine, "pest_check", "banana leaves wilting", lang="fr").result
+    assert "du flétrissement" in r.text["fr"] and "de le " not in r.text["fr"]
 
 
 def test_pest_check_never_prescribes(engine):

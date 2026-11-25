@@ -1,0 +1,201 @@
+# Portuguese for Mozambique, Angola and Guinea-Bissau. European spelling, the norm in all three.
+# Drafted for ACE 2.1. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: pt
+  name: Portuguese
+  native: "Português"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "O ACE vai responder em português."
+  names: ["portugues", "português", "portuguese", "kireno", "portugais", "pt"]
+
+templates:
+  safety.OPENERS.self_harm: "Lamento muito que se sinta assim. Merece apoio agora mesmo. {numbers}"
+  safety.OPENERS.maternal: "Isto pode ser uma emergência da gravidez. Vá já à unidade de saúde mais próxima. {numbers}"
+  safety.OPENERS.poisoning: "Isto parece um envenenamento. Procure ajuda médica agora e leve a embalagem consigo. {numbers}"
+  safety.OPENERS.child_protection: "Uma criança pode estar em perigo. Procure ajuda agora. {numbers}"
+  safety.OPENERS.gbv: "Lamento que isto lhe esteja a acontecer. Pode obter ajuda agora. {numbers}"
+  safety.OPENERS.health_urgent: "Isto parece urgente. Procure ajuda médica agora. {numbers}"
+  safety.CALL_WORD: "Ligue {numbers}"
+  safety.OR_WORD: "ou"
+  safety.EMERGENCY_WORD: "emergência"
+  safety.FALLBACK_NUMBERS: "Ligue para o número de emergência local ou vá à unidade de saúde mais próxima."
+
+  commands.TEXTS.help: "O ACE dá orientação local verificada. Faça uma pergunta. Comandos: FRAUDE + mensagem para a verificar, DICA + o seu conselho, FONTES, MAIS, LINGUA + código (por exemplo LINGUA EN), ESQUECER para apagar os seus dados."
+  commands.TEXTS.help_short: "Faça uma pergunta ao ACE. FRAUDE + mensagem verifica-a. ESQUECER apaga os seus dados."
+  commands.TEXTS.forgotten: "Feito. Tudo o que o ACE guardava sobre este número foi apagado."
+  commands.TEXTS.stopped: "Não vai receber mais mensagens do ACE, a menos que volte a escrever. Envie ESQUECER para apagar os seus dados."
+  commands.TEXTS.language: "Responda LINGUA e um código:"
+  commands.TEXTS.tip_thanks: "Obrigado. A sua dica foi guardada para revisão por um especialista. Só será partilhada depois de verificada."
+  commands.TEXTS.tip_usage: "Envie DICA seguido do seu conselho, por exemplo: DICA as folhas de nim ajudam contra a lagarta do funil."
+  commands.TEXTS.scam_usage: "Envie FRAUDE seguido da mensagem de que desconfia, e o ACE vai verificá-la."
+  commands.TEXTS.no_sources: "Ainda não há resposta para mostrar as fontes. Faça primeiro uma pergunta."
+  commands.TEXTS.no_more: "É tudo o que o ACE tem sobre este tema por agora. Faça outra pergunta ou envie AJUDA."
+  commands.TEXTS.clarify: "O ACE ainda não tem orientação verificada sobre isso. O ACE pode ajudar com: {topics}. Envie DICA para sugerir conhecimento."
+
+  scam.HEADLINES.LIKELY_SCAM: "PROVÁVEL FRAUDE."
+  scam.HEADLINES.SUSPICIOUS: "TENHA CUIDADO."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Não encontrei sinais de fraude conhecidos, mas isso não prova que seja seguro."
+  scam.SIGNS_LABEL: "Sinais de alerta:"
+  scam.REPORT_LINE: "Reencaminhe-a para o 333, é grátis."
+  scam.GENERIC_REPORT_LINE: "Não responda nem envie dinheiro. Denuncie ao seu operador pelo número do site oficial ou da embalagem do cartão SIM."
+  scam.NEUTRAL_ADVICE: "Nunca partilhe o seu PIN e confirme o saldo da sua carteira móvel antes de agir por causa de uma mensagem."
+  scam.SIGNAL.asks_for_pin: "pede o seu PIN ou palavra-passe"
+  scam.SIGNAL.double_registration: "diz que o seu cartão SIM está registado duas vezes"
+  scam.SIGNAL.refund_request: "pede que devolva dinheiro enviado por engano"
+  scam.SIGNAL.confirmation_from_personal_number: "parece uma confirmação de pagamento mas veio de um número pessoal"
+  scam.SIGNAL.unofficial_operator_number: "diz ser do operador mas dá um número que não é o oficial"
+  scam.SIGNAL.dial_code_instruction: "manda marcar um código no seu telefone"
+  scam.SIGNAL.prize_or_offer: "diz que ganhou um prémio ou oferece dinheiro"
+  scam.SIGNAL.link: "contém uma ligação"
+  scam.SIGNAL.pressure: "pressiona-o a agir depressa"
+
+  channels.ussd.UI:
+    ask: "Fazer uma pergunta"
+    scam: "Verificar mensagem"
+    lang: "Língua"
+    more: "98 Mais"
+    next: "1 Seguinte"
+    back: "0 Voltar"
+    menu: "0 Menu"
+    ask_prompt: "Escreva a sua pergunta:"
+    scam_prompt: "Escreva ou cole a mensagem:"
+    invalid: "Opção inválida."
+    end_pack: "É tudo sobre este tema."
+    lang_prompt: "1 English"
+    topics: "Temas"
+    place_prompt: "Escreva a sua {area}:"
+    food_prompt: "Escreva o alimento e a sua {area}, ex. milho {example}:"
+    weeks_prompt: "De quantas semanas está grávida?"
+    crop_prompt: "Escreva a cultura e o que vê:"
+  channels.voice.PROMPTS:
+    welcome: "Bem-vindo ao ACE."
+    press: "Para {label}, prima {n}."
+    repeat: "Para ouvir o menu outra vez, prima 0."
+    bye: "Não recebemos a sua escolha. Adeus."
+    invalid: "Essa opção não é válida."
+
+  services.base.DAYS: ["seg", "ter", "qua", "qui", "sex", "sáb", "dom"]
+  services.base.MONTHS: ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
+  services.base.NEEDS_PLACE: "Em que {area} está? Responda com o nome, por exemplo {example}."
+  services.base.AREA_DEFAULT: "zona"
+  services.base.AREA_WORD: {MZ: "província", AO: "província", GW: "região"}
+  services.base.COUNTRY_SAID: {KE: "o Quénia", TZ: "a Tanzânia", UG: "o Uganda", RW: "o Ruanda", ZA: "a África do Sul", BW: "o Botsuana", NA: "a Namíbia", ZW: "o Zimbabué", NG: "a Nigéria", GH: "o Gana", SN: "o Senegal", CI: "a Costa do Marfim", TG: "o Togo", CD: "a República Democrática do Congo", MW: "o Malawi", BI: "o Burundi", CM: "os Camarões", BJ: "o Benim", ZM: "a Zâmbia", TD: "o Chade", GN: "a Guiné", BF: "o Burkina Faso", SS: "o Sudão do Sul", ET: "a Etiópia", MZ: "Moçambique", GW: "a Guiné-Bissau", AO: "Angola", SO: "a Somália", SD: "o Sudão", DZ: "a Argélia", EG: "o Egito", LY: "a Líbia", MA: "Marrocos", TN: "a Tunísia"}
+
+  services.rain.WORDS.likely: "provável"
+  services.rain.WORDS.possible: "possível"
+  services.rain.WORDS.dry: "quase seco"
+  services.rain.HEAD: "Chuva perto de {place}:"
+  services.rain.HEAVY_LINE: "Chuva forte (20 mm ou mais) possível {days}."
+  services.rain.FOOT: "Probabilidades da previsão ECMWF de {date}."
+  services.rain.SPAN: "{a} a {b}"
+  services.rain.AND: "e"
+  services.rain.STALE: "O ACE não tem previsão atual para {place}. Consulte a previsão do {met}."
+  services.rain.NEXT: "Planeie o trabalho no campo para os dias mais secos."
+
+  services.warnings.FOUND: "Aviso oficial para {place}, até {until} (fonte: {authority}):"
+  services.warnings.NATIONAL: "Aviso oficial para todo o país, até {until} (fonte: {authority}):"
+  services.warnings.MORE: "Mais {n} em vigor."
+  services.warnings.NONE: "Nenhum aviso oficial cobre {place} neste momento (fonte: {authority}, verificado a {checked})."
+  services.warnings.STALE: "O ACE não conseguiu consultar há pouco os avisos oficiais (fonte: {authority}) e não sabe se há algum em vigor. Ouça os boletins oficiais na rádio."
+  services.warnings.GAP: "{authority} não publica avisos num formato que o ACE consiga ler, por isso o ACE não pode verificar avisos aí. Ouça os boletins oficiais na rádio e na televisão."
+
+  services.facility.NEAR: "Unidades de saúde públicas mais próximas:"
+  services.facility.IN_AREA: "Hospitais públicos em {place}:"
+  services.facility.CAVEAT: "De uma lista de 2019 de unidades públicas; confirme que está aberta antes de ir."
+  services.facility.EMERGENCY: "Emergência: {numbers}."
+  services.facility.NO_NUMBER: "Em caso de emergência, ligue para o número de emergência local."
+  services.facility.NONE: "O ACE não encontrou nenhuma unidade pública a menos de {km} km na sua lista de 2019."
+  services.facility.GAP: "O ACE ainda não tem lista de unidades de saúde para este país."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} no mercado de {market}: {currency} {price} {unit} em {month}"
+  services.prices.CHANGE.up: "mais {pct}% que em {prev}"
+  services.prices.CHANGE.down: "menos {pct}% que em {prev}"
+  services.prices.CHANGE.same: "igual a {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "(a {km} km de {place})"
+  services.prices.FOOT: "Preços do PAM."
+  services.prices.TOP: "Últimos preços do PAM em {market}{far}:"
+  services.prices.OLD: "O último preço do PAM que o ACE tem para {country} é de {month}, antigo demais. Pergunte aos comerciantes ou aos serviços de agricultura."
+  services.prices.GAP: "O PAM não publica preços de mercado para {country}, por isso o ACE não pode dar preços aí. Pergunte aos comerciantes ou aos serviços de agricultura."
+  services.prices.THIN: "Os preços recentes do PAM para {country} cobrem poucos alimentos básicos para serem úteis. Pergunte aos comerciantes ou aos serviços de agricultura."
+  services.prices.NO_FOOD: "O ACE não tem preço recente do PAM para {food} perto de {place}."
+  services.prices.UNIT: "por {unit}"
+  services.prices.UNIT_MANY: "por {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Milho", "maize flour": "Farinha de milho", "maize meal": "Farinha de milho", beans: "Feijão", rice: "Arroz", sorghum: "Mapira", millet: "Mexoeira", cassava: "Mandioca", "cassava flour": "Farinha de mandioca", sugar: "Açúcar", oil: "Óleo", "wheat flour": "Farinha de trigo", groundnuts: "Amendoim", cowpeas: "Feijão nhemba", potatoes: "Batata", tomatoes: "Tomate", onions: "Cebola", salt: "Sal", milk: "Leite", eggs: "Ovos", bread: "Pão"}
+  services.prices.LOCAL_DETAIL: {white: "branco", yellow: "amarelo", imported: "importado", local: "local", dry: "seco", red: "vermelho"}
+
+  services.pregnancy.FIRST: "Com {w} semanas, faça já a sua primeira consulta pré-natal, antes das 12 semanas."
+  services.pregnancy.DUE_NOW: "Com {w} semanas, tem uma consulta pré-natal agora. A seguinte é às {next} semanas."
+  services.pregnancy.NEXT: "Com {w} semanas, a sua próxima consulta pré-natal é às {next} semanas."
+  services.pregnancy.LATE: "Com {w} semanas já passou a última consulta prevista, às 40 semanas. Veja um profissional de saúde hoje."
+  services.pregnancy.ASK: "De quantas semanas está grávida? Responda com um número, por exemplo 22 semanas."
+  services.pregnancy.CALL: "Ligue {numbers}."
+
+  services.pests.LIKELY: "Pode ser {problem}. O ACE não vê a sua cultura, por isso confirme estes sinais:"
+  services.pests.MAYBE: "Talvez {problem}."
+  services.pests.REFER: "Peça a um extensionista que confirme antes de pulverizar."
+  services.pests.NAMES.fall_armyworm: "a lagarta do funil do milho"
+  services.pests.NAMES.maize_lethal_necrosis: "a necrose letal do milho"
+  services.pests.NAMES.cassava_mosaic: "o mosaico da mandioca"
+  services.pests.NAMES.banana_xanthomonas_wilt: "a murcha bacteriana da bananeira"
+  services.pests.NAMES.tomato_leaf_miner: "a traça do tomateiro (Tuta absoluta)"
+  services.pests.ASK: "Que cultura, e o que vê? Por exemplo: folhas de milho com buracos e serradura."
+  services.pests.UNKNOWN: "Por agora o ACE verifica milho, mandioca, banana e tomate. Para outras culturas, pergunte a um extensionista."
+
+phrases:
+  safety.PREGNANCY: ["gravida", "gravidez", "estou gravida", "esta gravida", "meses de gravidez", "semanas de gravidez", "barriga"]
+  safety.POSTPARTUM: ["deu a luz", "acabou de ter o bebe", "depois do parto", "pos parto", "teve o bebe"]
+  safety.MATERNAL_DANGER: ["sangramento", "sangra", "sangrar", "hemorragia", "sangue", "convulsoes", "convulsao", "ataques", "dor de cabeca forte", "vista turva", "nao ve bem", "o bebe nao mexe", "bebe parou de mexer", "rebentou a bolsa", "perdeu agua", "febre alta", "deixou de mexer", "nao mexe", "nao se mexe", "parou de se mexer", "mexe menos"]
+  safety.URGENT: ["nao respira", "nao consegue respirar", "dificuldade em respirar", "inconsciente", "desmaiou", "desmaio", "convulsoes", "sangramento forte", "sangra muito", "dor no peito", "mordedura de cobra", "mordido por uma cobra", "mordida por uma cobra", "cobra mordeu", "queimadura grave"]
+  safety.POISON_ACT: ["engoliu", "bebeu", "comeu", "tomou"]
+  safety.POISON_WHAT: ["veneno", "pesticida", "insecticida", "inseticida", "quimico", "produto quimico", "veneno de rato", "petroleo", "lixivia", "javel"]
+  safety.POISONED: ["envenenado", "envenenada", "envenenamento", "intoxicado", "intoxicada", "intoxicacao"]
+  safety.GBV: ["violada", "violado", "violacao", "abusada sexualmente", "agressao sexual", "o meu marido bate me", "o meu marido bate-me", "ele bate me", "ele bate-me", "bateu me", "violencia domestica", "ameacou matar me", "violencia baseada no genero"]
+  safety.CHILD: ["crianca", "a minha filha", "o meu filho", "menina", "menino", "filha", "filho"]
+  safety.CHILD_HARM: ["abusada", "abusado", "abuso sexual", "maltratada", "maltratado", "espancada", "espancado", "casamento forcado", "casada a forca", "tocaram lhe"]
+  safety.SELF_HARM: ["matar me", "suicidar me", "suicidio", "quero morrer", "acabar com a minha vida", "fazer mal a mim", "nao quero viver"]
+
+  scam.PIN: ["pin", "senha", "palavra passe", "codigo secreto"]
+  scam.ASK: ["envie", "enviar", "mande", "partilhe", "confirme", "introduza", "digite", "responda com"]
+  scam.MISTAKE: ["por engano", "enviei por engano", "devolva", "devolver o dinheiro", "reembolse"]
+  scam.DOUBLE: ["registado duas vezes", "registo duplicado"]
+  scam.PRIZE: ["ganhou", "parabens", "vencedor", "premio", "sorteio", "promocao", "bonus"]
+  scam.URGENT: ["urgente", "imediatamente", "em 24 horas", "sera bloqueado", "sera bloqueada", "sera suspenso", "sera suspensa", "ultimo aviso"]
+  scam.CLAIMS_OPERATOR: ["vodacom", "m pesa", "movitel", "tmcel", "unitel", "africell", "orange", "mtn", "e mola", "mkesh", "apoio ao cliente", "servico ao cliente"]
+  scam.DIAL: ["marque", "digite", "prima", "carregue"]
+
+  services.CUES.pregnancy_companion: ["pre natal", "pre-natal", "consulta pre natal", "consulta pre-natal", "proxima consulta"]
+  services.CUES.nearest_facility: ["hospital", "hospitais", "clinica", "centro de saude", "posto de saude", "unidade sanitaria", "unidade de saude", "medico"]
+  services.CUES.official_warnings: ["aviso", "avisos", "alerta", "alertas", "ciclone", "tempestade", "cheias"]
+  services.CUES.rain_this_week: ["chuva", "chuvas", "chover", "chove", "tempo", "previsao", "meteorologia"]
+  services.CUES.market_prices: ["preco", "precos", "mercado", "quanto custa", "custo"]
+  services.CUES.pest_check: ["praga", "pragas", "doenca", "lagarta", "lagartas", "insectos", "insetos", "folhas", "amarelo", "amarelas", "buracos", "murcha", "murchar", "a morrer"]
+  services.SEASONAL: ["epoca chuvosa", "epoca das chuvas", "estacao chuvosa", "epoca"]
+  services.PREGNANT: ["gravida", "gravidez"]
+  services.HOW_MUCH: ["quanto custa", "quanto"]
+  services.prices.FOODS: {milho: maize, farinha: flour, "farinha de milho": maize flour, xima: maize flour, feijao: beans, arroz: rice, mapira: sorghum, sorgo: sorghum, mexoeira: millet, mandioca: cassava, acucar: sugar, oleo: oil, amendoim: groundnuts, batata: potatoes, tomate: tomatoes, cebola: onions, sal: salt, leite: milk, ovos: eggs, pao: bread}
+  services.pests.CROPS.maize: ["milho"]
+  services.pests.CROPS.cassava: ["mandioca"]
+  services.pests.CROPS.banana: ["banana", "bananeira", "bananeiras"]
+  services.pests.CROPS.tomato: ["tomate", "tomates", "tomateiro"]
+  services.pests.PROBLEMS.fall_armyworm: ["lagarta", "lagartas", "buracos", "comido", "serradura", "funil", "larva", "larvas"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["amarelo", "amarelas", "amarelecimento", "seco", "secas", "morto", "necrose", "mosqueado"]
+  services.pregnancy.WEEK_WORDS: ["semanas", "semana", "sem"]
+  services.pregnancy.MONTH_WORDS: ["meses", "mes"]
+  commands.COMMANDS.help: ["ajuda", "menu", "inicio"]
+  commands.COMMANDS.forget: ["esquecer", "apagar"]
+  commands.COMMANDS.stop: ["parar", "pare"]
+  commands.COMMANDS.language: ["lingua", "idioma"]
+  commands.COMMANDS.tip: ["dica", "conselho"]
+  commands.COMMANDS.scam: ["fraude", "burla"]
+  commands.COMMANDS.sources: ["fontes", "fonte"]
+  commands.COMMANDS.more: ["mais", "seguinte"]
+  text.ACTION_CUES: ["o que faco", "o que devo fazer", "como controlar", "como combater", "como evitar", "como guardar", "como matar", "ajude me", "ajudem me"]
+
+words:
+  stopwords: ["o", "a", "os", "as", "um", "uma", "uns", "umas", "de", "do", "da", "dos", "das", "em", "no", "na", "nos", "nas", "por", "para", "com", "sem", "e", "ou", "mas", "que", "se", "eu", "tu", "ele", "ela", "nos", "vos", "eles", "elas", "meu", "minha", "seu", "sua", "este", "esta", "isto", "esse", "essa", "isso", "como", "quando", "onde", "porque", "qual", "quais", "e", "sao", "esta", "estou", "tem", "tenho", "ha", "nao", "sim", "muito", "ola", "bom", "dia", "obrigado", "obrigada", "por favor", "pode", "posso", "devo"]
+  markers: ["os", "das", "dos", "nao", "minha", "meu", "voce", "esta", "estou", "como", "onde", "quando", "porque", "obrigado", "obrigada", "ajuda", "gravida", "crianca", "dinheiro", "doente", "sangue", "milho", "chuva", "preco", "mandioca", "lagarta"]

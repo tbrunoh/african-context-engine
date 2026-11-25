@@ -1,0 +1,201 @@
+# Somali for Somalia and the Somali Region of Ethiopia, in the official Latin script.
+# Drafted for ACE 2.1. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: so
+  name: Somali
+  native: "Soomaali"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE wuxuu ku jawaabi doonaa Af Soomaali."
+  names: ["somali", "soomaali", "af soomaali", "kisomali", "so"]
+
+templates:
+  safety.OPENERS.self_harm: "Aad baan uga xumahay inaad sidan dareemayso. Waxaad mudan tahay taageero hadda. {numbers}"
+  safety.OPENERS.maternal: "Tani waxay noqon kartaa xaalad degdeg ah oo uurka ah. Hadda aad xarunta caafimaadka ee kuugu dhow. {numbers}"
+  safety.OPENERS.poisoning: "Tani waxay u egtahay sumoobid. Hadda raadi gargaar caafimaad oo qaado weelka. {numbers}"
+  safety.OPENERS.child_protection: "Ilmo ayaa khatar ku jiri kara. Fadlan hadda raadi gargaar. {numbers}"
+  safety.OPENERS.gbv: "Waan ka xumahay waxa kugu dhacaya. Hadda waad heli kartaa gargaar. {numbers}"
+  safety.OPENERS.health_urgent: "Tani waxay u egtahay degdeg. Hadda raadi gargaar caafimaad. {numbers}"
+  safety.CALL_WORD: "Wac {numbers}"
+  safety.OR_WORD: "ama"
+  safety.EMERGENCY_WORD: "degdeg"
+  safety.FALLBACK_NUMBERS: "Wac lambarka degdegga ee deegaankaaga ama aad xarunta caafimaadka ee kuugu dhow."
+
+  commands.TEXTS.help: "ACE wuxuu bixiyaa hagid maxalli ah oo la hubiyay. Su'aal weydii. Amarrada: KHIYAANO + fariin si loo hubiyo, TALO + taladaada, ILAHA, WAXBADAN, LUQAD + koodh (tusaale LUQAD EN), TIRTIR si xogtaada loo tirtiro."
+  commands.TEXTS.help_short: "ACE su'aal weydii. KHIYAANO + fariin waa la hubiyaa. TIRTIR xogtaada ayuu tirtiraa."
+  commands.TEXTS.forgotten: "Waa la dhammeeyay. Wax kasta oo ACE ka hayay lambarkan waa la tirtiray."
+  commands.TEXTS.stopped: "Fariimo kale kama heli doontid ACE ilaa aad mar kale qorto. Dir TIRTIR si xogtaada loo tirtiro."
+  commands.TEXTS.language: "Dir LUQAD iyo koodh:"
+  commands.TEXTS.tip_thanks: "Mahadsanid. Taladaada waa la kaydiyay si khabiir u eego. Lama wadaagi doono ilaa la hubiyo."
+  commands.TEXTS.tip_usage: "Dir TALO kadibna taladaada, tusaale: TALO caleenta geedka neem waxay ka hortagtaa dirxiga."
+  commands.TEXTS.scam_usage: "Dir KHIYAANO kadibna fariinta aad ka shakisan tahay, ACE ayaa hubin doona."
+  commands.TEXTS.no_sources: "Ma jiro jawaab hore oo ilaheeda la tusi karo. Marka hore su'aal weydii."
+  commands.TEXTS.no_more: "Taasi waa waxa ACE ka hayo mawduucan hadda. Su'aal kale weydii ama dir CAAWIMAAD."
+  commands.TEXTS.clarify: "ACE weli ma hayo hagid la hubiyay oo ku saabsan taas. ACE wuxuu ka caawin karaa: {topics}. Dir TALO si aad aqoon u soo jeediso."
+
+  scam.HEADLINES.LIKELY_SCAM: "WAXAY U EGTAHAY KHIYAANO."
+  scam.HEADLINES.SUSPICIOUS: "IS TAXADAR."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Ma helin calaamado khiyaano oo la yaqaan, laakiin taasi ma caddeyneyso inay ammaan tahay."
+  scam.SIGNS_LABEL: "Calaamadaha digniinta:"
+  scam.REPORT_LINE: "U gudbi 333, waa bilaash."
+  scam.GENERIC_REPORT_LINE: "Ha ka jawaabin, lacagna ha dirin. U soo gudbi shirkaddaada lambarka ku qoran bogga rasmiga ah ama baakadda SIM-ka."
+  scam.NEUTRAL_ADVICE: "Weligaa ha wadaagin PIN-kaaga, oo hubi haraaga lacagtaada moobaylka ka hor intaadan fariin ku dhaqmin."
+  scam.SIGNAL.asks_for_pin: "waxay weydiinaysaa PIN-kaaga ama furahaaga sirta ah"
+  scam.SIGNAL.double_registration: "waxay sheegaysaa in SIM-kaaga laba jeer la diiwaangeliyay"
+  scam.SIGNAL.refund_request: "waxay kaa codsanaysaa inaad celiso lacag qalad lagu soo diray"
+  scam.SIGNAL.confirmation_from_personal_number: "waxay u egtahay xaqiijin lacag bixin laakiin waxay ka timid lambar shakhsi ah"
+  scam.SIGNAL.unofficial_operator_number: "waxay sheegtaa inay ka socoto shirkadda laakiin waxay bixisaa lambar aan rasmi ahayn"
+  scam.SIGNAL.dial_code_instruction: "waxay kugu amraysaa inaad telefoonkaaga ku garaacdo koodh"
+  scam.SIGNAL.prize_or_offer: "waxay sheegaysaa inaad abaalmarin ku guuleysatay ama lacag bay ku siinaysaa"
+  scam.SIGNAL.link: "waxay leedahay link"
+  scam.SIGNAL.pressure: "waxay kugu cadaadinaysaa inaad degdeg u go'aansato"
+
+  channels.ussd.UI:
+    ask: "Su'aal weydii"
+    scam: "Hubi fariin"
+    lang: "Luqadda"
+    more: "98 Waxbadan"
+    next: "1 Xiga"
+    back: "0 Dib u noqo"
+    menu: "0 Liiska"
+    ask_prompt: "Qor su'aashaada:"
+    scam_prompt: "Qor ama dhig fariinta:"
+    invalid: "Doorasho khaldan."
+    end_pack: "Taasi waa mawduucan oo dhan."
+    lang_prompt: "1 English"
+    topics: "Mawduucyo"
+    place_prompt: "Qor {area}gaaga:"
+    food_prompt: "Qor cuntada iyo {area}gaaga, tusaale galley {example}:"
+    weeks_prompt: "Uurkaagu imisa toddobaad buu jiraa?"
+    crop_prompt: "Qor dalagga iyo waxa aad aragto:"
+  channels.voice.PROMPTS:
+    welcome: "Ku soo dhowow ACE."
+    press: "{label}, riix {n}."
+    repeat: "Si aad liiska mar kale u maqasho, riix 0."
+    bye: "Ma helin doorashadaada. Nabad gelyo."
+    invalid: "Taasi ma aha doorasho sax ah."
+
+  services.base.DAYS: ["Isn", "Tal", "Arb", "Kha", "Jim", "Sab", "Axa"]
+  services.base.MONTHS: ["Jan", "Feb", "Mar", "Abr", "May", "Jun", "Lul", "Ogo", "Sep", "Okt", "Nof", "Dis"]
+  services.base.NEEDS_PLACE: "{area} kee ayaad joogtaa? Ku jawaab magaciisa, tusaale {example}."
+  services.base.AREA_DEFAULT: "deegaan"
+  services.base.AREA_WORD: {SO: "gobol", ET: "gobol"}
+  services.base.COUNTRY_SAID: {KE: "Kenya", TZ: "Tansaaniya", UG: "Ugaandha", RW: "Ruwanda", ZA: "Koonfur Afrika", BW: "Botswaana", NA: "Namiibiya", ZW: "Simbaabwi", NG: "Nayjeeriya", GH: "Gaana", SN: "Sinigaal", CI: "Ivory Coast", TG: "Togo", CD: "Kongo Dimuqraadiga", MW: "Malaawi", BI: "Burundi", CM: "Kameruun", BJ: "Benin", ZM: "Saambiya", TD: "Jaad", GN: "Gini", BF: "Burkiina Faaso", SS: "Koonfur Suudaan", ET: "Itoobiya", MZ: "Musanbiig", GW: "Gini Bisaaw", AO: "Angoola", SO: "Soomaaliya", SD: "Suudaan", DZ: "Aljeeriya", EG: "Masar", LY: "Liibiya", MA: "Marooko", TN: "Tuunis"}
+
+  services.rain.WORDS.likely: "waa suurtogal"
+  services.rain.WORDS.possible: "laga yaabee"
+  services.rain.WORDS.dry: "inta badan qalalan"
+  services.rain.HEAD: "Roob agagaarka {place}:"
+  services.rain.HEAVY_LINE: "Roob culus (20 mm ama ka badan) ayaa suurtogal ah {days}."
+  services.rain.FOOT: "Fursadaha waxaa laga soo qaatay saadaasha ECMWF ee {date}."
+  services.rain.SPAN: "{a} ilaa {b}"
+  services.rain.AND: "iyo"
+  services.rain.STALE: "ACE ma hayo saadaal cusub oo {place} ah. Eeg saadaasha {met}."
+  services.rain.NEXT: "Shaqada beerta u qorshee maalmaha qalalan."
+
+  services.warnings.FOUND: "Digniin rasmi ah oo {place} ah, ilaa {until} (isha: {authority}):"
+  services.warnings.NATIONAL: "Digniin rasmi ah oo dalka oo dhan ah, ilaa {until} (isha: {authority}):"
+  services.warnings.MORE: "{n} kale ayaa shaqeynaya."
+  services.warnings.NONE: "Hadda ma jirto digniin rasmi ah oo {place} daboosha (isha: {authority}, la hubiyay {checked})."
+  services.warnings.STALE: "ACE dhowaan ma hubin karin digniinaha rasmiga ah (isha: {authority}), sidaa darteed ma oga in digniini jirto. Dhegeyso warbixinnada rasmiga ah ee raadiyaha."
+  services.warnings.GAP: "{authority} ma soo saarto digniino qaab ACE akhrin karo, sidaa darteed ACE halkaas kama hubin karo digniinaha. Dhegeyso warbixinnada rasmiga ah ee raadiyaha iyo telefishanka."
+
+  services.facility.NEAR: "Xarumaha caafimaadka dowladda ee ugu dhow:"
+  services.facility.IN_AREA: "Isbitaallada dowladda ee {place}:"
+  services.facility.CAVEAT: "Waxaa laga soo qaatay liiska xarumaha dowladda ee 2019; hubi inay furan tahay ka hor intaadan bixin."
+  services.facility.EMERGENCY: "Degdeg: {numbers}."
+  services.facility.NO_NUMBER: "Xaalad degdeg ah, wac lambarka degdegga ee deegaankaaga."
+  services.facility.NONE: "ACE kuma helin xarun dowladeed {km} km gudaheed liiskiisa 2019."
+  services.facility.GAP: "ACE weli ma hayo liiska xarumaha caafimaadka ee dalkan."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} suuqa {market}: {currency} {price} {unit} bisha {month}"
+  services.prices.CHANGE.up: "kor u kacay {pct}% marka loo eego {prev}"
+  services.prices.CHANGE.down: "hoos u dhacay {pct}% marka loo eego {prev}"
+  services.prices.CHANGE.same: "la mid ah {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km {place})"
+  services.prices.FOOT: "Qiimaha WFP."
+  services.prices.TOP: "Qiimaha ugu dambeeyay ee WFP ee {market}{far}:"
+  services.prices.OLD: "Qiimaha ugu dambeeyay ee WFP ee ACE u hayo {country} waa {month}, aad buu u duugoobay. Weydii ganacsatada ama xafiiska beeraha."
+  services.prices.GAP: "WFP ma soo saaro qiimaha suuqyada {country}, sidaa darteed ACE halkaas qiimo kama bixin karo. Weydii ganacsatada ama xafiiska beeraha."
+  services.prices.THIN: "Qiimaha dhowaan ee WFP ee {country} waxay daboolaan cunto aasaasi ah oo aad u yar. Weydii ganacsatada ama xafiiska beeraha."
+  services.prices.NO_FOOD: "ACE ma hayo qiime dhow oo WFP ah oo {food} ah agagaarka {place}."
+  services.prices.UNIT: "halkii {unit}"
+  services.prices.UNIT_MANY: "halkii {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Galley", "maize flour": "Daqiiq galley", "maize meal": "Daqiiq galley", beans: "Digir", rice: "Bariis", sorghum: "Masago", millet: "Haruur", sugar: "Sonkor", oil: "Saliid", "wheat flour": "Daqiiq sarreen", wheat: "Sarreen", cowpeas: "Digir", potatoes: "Baradho", tomatoes: "Yaanyo", onions: "Basal", salt: "Cusbo", milk: "Caano", eggs: "Ukun", bread: "Rooti", pasta: "Baasto"}
+  services.prices.LOCAL_DETAIL: {white: "cad", yellow: "jaalle", imported: "la soo dejiyay", local: "maxalli", dry: "qalalan", red: "cas"}
+
+  services.pregnancy.FIRST: "Toddobaadka {w}, hadda u tag baaritaankaaga uurka ee ugu horreeya, ka hor toddobaadka 12."
+  services.pregnancy.DUE_NOW: "Toddobaadka {w}, baaritaanka uurka waa hadda. Kan xiga waa toddobaadka {next}."
+  services.pregnancy.NEXT: "Toddobaadka {w}, baaritaankaaga uurka ee xiga waa toddobaadka {next}."
+  services.pregnancy.LATE: "Toddobaadka {w} waxaad dhaaftay baaritaankii ugu dambeeyay ee toddobaadka 40. Maanta la kulan shaqaale caafimaad."
+  services.pregnancy.ASK: "Uurkaagu imisa toddobaad buu jiraa? Ku jawaab lambar, tusaale 22 toddobaad."
+  services.pregnancy.CALL: "Wac {numbers}."
+
+  services.pests.LIKELY: "Tani waxay noqon kartaa {problem}. ACE ma arko dalaggaaga, sidaa darteed hubi calaamadahan:"
+  services.pests.MAYBE: "Malaha {problem}."
+  services.pests.REFER: "Ka hor intaadan buufin, weydii sarkaalka kordhinta beeraha inuu xaqiijiyo."
+  services.pests.NAMES.fall_armyworm: "dirxiga galleyda (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "cudurka dila galleyda"
+  services.pests.NAMES.cassava_mosaic: "cudurka moosaygga kasaafada"
+  services.pests.NAMES.banana_xanthomonas_wilt: "engegga bakteeriyada mooska"
+  services.pests.NAMES.tomato_leaf_miner: "dirxiga caleenta yaanyada (Tuta absoluta)"
+  services.pests.ASK: "Dalagee, maxaadse aragtaa? Tusaale: caleen galley oo leh godad iyo budo."
+  services.pests.UNKNOWN: "Hadda ACE wuxuu hubiyaa galley, kasaafo, moos iyo yaanyo. Dalagyada kale, weydii sarkaalka kordhinta beeraha."
+
+phrases:
+  safety.PREGNANCY: ["uur", "uur leh", "uurka", "uurleey", "waan uur leeyahay", "bilood uur ah", "haweeney uur leh"]
+  safety.POSTPARTUM: ["dhashay", "ummushay", "dhalmada kadib", "umulida kadib", "foolka kadib"]
+  safety.MATERNAL_DANGER: ["dhiig", "dhiig bax", "dhiig baxaya", "suuxdin", "gariir", "madax xanuun daran", "araggu wuu iga madoobaaday", "ilmaha ma dhaqdhaqaaqo", "ilmuhu ma dhaqaaqo", "biyihii ayaa jabay", "qandho daran", "joojiyay dhaqdhaqaaqa", "ma dhaqdhaqaaqayo", "dhaqdhaqaaqii wuu joojiyay", "ma dhaqaaqayo"]
+  safety.URGENT: ["ma neefsanayo", "neefsan kari waayay", "neef qabatin", "miyir beelay", "miyirka ayuu ka dhacay", "suuxay", "gariir", "dhiig badan", "laab xanuun", "abeesadu qaniintay", "mas qaniinyo", "mas ayaa qaniinay", "gubasho daran"]
+  safety.POISON_ACT: ["cabay", "liqay", "cunay"]
+  safety.POISON_WHAT: ["sun", "sunta", "sunta cayayaanka", "kiimiko", "sunta jiirka", "gaas", "baansiin", "kloriin"]
+  safety.POISONED: ["sumoobay", "la sumeeyay", "sumoobid"]
+  safety.GBV: ["la kufsaday", "kufsi", "i kufsaday", "xadgudub galmo", "ninkayga ayaa i garaaca", "i garaaca", "i garaacay", "rabshad qoys", "wuxuu igu hanjabay inuu i dilo", "xadgudub jinsi", "kufsaday", "kufsadeen", "i garaacaa", "wuu i garaacaa", "ninkeyga ayaa i garaaca"]
+  safety.CHILD: ["ilmo", "ilmaha", "gabadhayda", "wiilkayga", "gabar", "wiil", "caruur"]
+  safety.CHILD_HARM: ["la kufsaday", "la xadgudbay", "la garaacay", "guur qasab", "guur hore", "gudniin", "la faraxumeeyay", "kufsaday", "kufsadeen", "faraxumeeyay"]
+  safety.SELF_HARM: ["is dilid", "waan is dilayaa", "waxaan rabaa inaan dhinto", "noloshayda soo afjaro", "is dhaawac", "ma rabo inaan noolaado", "is dilo", "inaan is dilo", "is dili", "inaan sii noolaado", "ma doonayo inaan noolaado", "ma rabo inaan sii noolaado"]
+
+  scam.PIN: ["pin", "lambarka sirta", "furaha sirta", "erayga sirta"]
+  scam.ASK: ["soo dir", "dir", "la wadaag", "i sii", "xaqiiji", "geli", "qor"]
+  scam.MISTAKE: ["qalad", "qalad ayaa loogu diray", "ii soo celi", "celi lacagta"]
+  scam.DOUBLE: ["laba jeer la diiwaangeliyay"]
+  scam.PRIZE: ["waad ku guuleysatay", "hambalyo", "abaalmarin", "bakhtiyaanasiib", "gunno", "lacag bilaash"]
+  scam.URGENT: ["degdeg", "isla markiiba", "24 saac gudahood", "waa la xiri doonaa", "waa la joojin doonaa", "digniintii ugu dambeysay"]
+  scam.CLAIMS_OPERATOR: ["hormuud", "evc plus", "evc", "zaad", "telesom", "somtel", "edahab", "golis", "sahal", "adeegga macaamiisha"]
+  scam.DIAL: ["garaac", "riix", "geli"]
+
+  services.CUES.pregnancy_companion: ["baaritaanka uurka", "daryeelka uurka", "ballanta xigta"]
+  services.CUES.nearest_facility: ["isbitaal", "isbitaalka", "rugta caafimaadka", "xarunta caafimaadka", "xarun caafimaad", "MCH", "dhakhtar"]
+  services.CUES.official_warnings: ["digniin", "digniinta", "fatahaad", "duufaan", "daad"]
+  services.CUES.rain_this_week: ["roob", "roobka", "da'ayaa", "cimilada", "saadaal", "saadaasha"]
+  services.CUES.market_prices: ["qiime", "qiimaha", "suuq", "suuqa", "imisa"]
+  services.CUES.pest_check: ["cayayaan", "cudur", "dirxi", "dirxiga", "caleen", "caleemaha", "jaalle", "godad", "engegay", "dhimanaya"]
+  services.SEASONAL: ["gu", "deyr", "xilliga roobka", "xilli"]
+  services.PREGNANT: ["uur", "uur leh", "uurka"]
+  services.HOW_MUCH: ["imisa", "meeqa"]
+  services.prices.FOODS: {galley: maize, daqiiq: flour, digir: beans, bariis: rice, masago: sorghum, haruur: millet, sonkor: sugar, saliid: oil, sarreen: wheat, baradho: potatoes, yaanyo: tomatoes, basal: onions, cusbo: salt, caano: milk, ukun: eggs, rooti: bread, baasto: pasta}
+  services.pests.CROPS.maize: ["galley", "galleyda"]
+  services.pests.CROPS.cassava: ["kasaafo", "kasaafada"]
+  services.pests.CROPS.banana: ["moos", "mooska"]
+  services.pests.CROPS.tomato: ["yaanyo", "yaanyada"]
+  services.pests.PROBLEMS.fall_armyworm: ["dirxi", "dirxiga", "godad", "la cunay", "budo", "ukunta cayayaanka"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["jaalle", "jaallaha", "engegay", "qalalan", "dhintay"]
+  services.pregnancy.WEEK_WORDS: ["toddobaad", "toddobaadka", "todobaad"]
+  services.pregnancy.MONTH_WORDS: ["bilood", "bil", "bisha"]
+  commands.COMMANDS.help: ["caawimaad", "liiska", "bilow"]
+  commands.COMMANDS.forget: ["tirtir"]
+  commands.COMMANDS.stop: ["jooji"]
+  commands.COMMANDS.language: ["luqad", "luqadda"]
+  commands.COMMANDS.tip: ["talo"]
+  commands.COMMANDS.scam: ["khiyaano", "khayaano"]
+  commands.COMMANDS.sources: ["ilaha", "il"]
+  commands.COMMANDS.more: ["waxbadan", "xiga"]
+  text.ACTION_CUES: ["maxaan sameeyaa", "maxaan sameeyaa hadda", "sidee uga hortagaa", "sidee u dilaa", "sidee u kaydiyaa", "i caawi", "na caawiya"]
+
+words:
+  stopwords: ["iyo", "ama", "laakiin", "waa", "waxa", "waxaa", "kan", "kaas", "tan", "taas", "aniga", "adiga", "isaga", "iyada", "annaga", "iyaga", "maxay", "sidee", "goorma", "xaggee", "maxaa", "yaa", "jira", "ma", "haa", "maya", "aad", "salaan", "fadlan", "mahadsanid", "ku", "ka", "la", "u", "oo", "in"]
+  markers: ["iyo", "waa", "waxaa", "sidee", "maxaan", "fadlan", "mahadsanid", "galley", "roob", "uur", "ilmo", "dhiig", "lacag"]

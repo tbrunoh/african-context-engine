@@ -1,0 +1,201 @@
+# Amharic for Ethiopia, the federal working language.
+# Drafted for ACE 2.1. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: am
+  name: Amharic
+  native: "አማርኛ"
+  script: Ethi
+  encoding: ucs2
+  direction: ltr
+  reviewed: false
+  confirm: "ACE በአማርኛ ይመልሳል።"
+  names: ["amharic", "amarigna", "amarinya", "amharique", "kiamhari", "አማርኛ", "am"]
+
+templates:
+  safety.OPENERS.self_harm: "እንዲህ ስለተሰማዎት በጣም አዝናለሁ። አሁኑኑ ድጋፍ ይገባዎታል። {numbers}"
+  safety.OPENERS.maternal: "ይህ የእርግዝና ድንገተኛ ሁኔታ ሊሆን ይችላል። አሁኑኑ ወደ ቅርብ ጤና ተቋም ይሂዱ። {numbers}"
+  safety.OPENERS.poisoning: "ይህ መመረዝ ይመስላል። አሁኑኑ የሕክምና እርዳታ ይፈልጉ፣ ዕቃውንም ይዘው ይሂዱ። {numbers}"
+  safety.OPENERS.child_protection: "አንድ ልጅ አደጋ ላይ ሊሆን ይችላል። እባክዎ አሁኑኑ እርዳታ ይፈልጉ። {numbers}"
+  safety.OPENERS.gbv: "ይህ ስለደረሰብዎ አዝናለሁ። አሁኑኑ እርዳታ ማግኘት ይችላሉ። {numbers}"
+  safety.OPENERS.health_urgent: "ይህ አስቸኳይ ይመስላል። አሁኑኑ የሕክምና እርዳታ ይፈልጉ። {numbers}"
+  safety.CALL_WORD: "{numbers} ይደውሉ"
+  safety.OR_WORD: "ወይም"
+  safety.EMERGENCY_WORD: "ድንገተኛ"
+  safety.FALLBACK_NUMBERS: "ወደ አካባቢዎ የድንገተኛ ቁጥር ይደውሉ ወይም ወደ ቅርብ ጤና ተቋም ይሂዱ።"
+
+  commands.TEXTS.help: "ACE የተረጋገጠ የአካባቢ መረጃ ይሰጣል። ጥያቄ ይጠይቁ። ትዕዛዞች፦ ማጭበርበር + መልዕክት ለማረጋገጥ፣ ምክር + ምክርዎ፣ ምንጮች፣ ተጨማሪ፣ ቋንቋ + ኮድ (ለምሳሌ ቋንቋ EN)፣ ሰርዝ መረጃዎን ለማጥፋት።"
+  commands.TEXTS.help_short: "ACEን ጥያቄ ይጠይቁ። ማጭበርበር + መልዕክት ያረጋግጣል። ሰርዝ መረጃዎን ያጠፋል።"
+  commands.TEXTS.forgotten: "ተጠናቋል። ACE ስለዚህ ቁጥር የያዘው ሁሉ ተሰርዟል።"
+  commands.TEXTS.stopped: "እንደገና ካልጻፉ ከACE ተጨማሪ መልዕክት አይደርስዎትም። መረጃዎን ለማጥፋት ሰርዝ ይላኩ።"
+  commands.TEXTS.language: "ቋንቋ እና ኮድ ይላኩ፦"
+  commands.TEXTS.tip_thanks: "እናመሰግናለን። ምክርዎ በባለሙያ እንዲገመገም ተቀምጧል። ከመረጋገጡ በፊት አይጋራም።"
+  commands.TEXTS.tip_usage: "ምክር ብለው ከዚያ ምክርዎን ይላኩ፣ ለምሳሌ፦ ምክር የኒም ቅጠል የአሜሪካ ተምችን ይከላከላል።"
+  commands.TEXTS.scam_usage: "ማጭበርበር ብለው የሚጠራጠሩትን መልዕክት ይላኩ፣ ACE ያረጋግጠዋል።"
+  commands.TEXTS.no_sources: "ምንጩን የሚያሳይ ቀዳሚ መልስ የለም። መጀመሪያ ጥያቄ ይጠይቁ።"
+  commands.TEXTS.no_more: "ACE በዚህ ርዕስ ላይ ያለው ይህ ብቻ ነው። ሌላ ጥያቄ ይጠይቁ ወይም እርዳታ ይላኩ።"
+  commands.TEXTS.clarify: "ACE በዚህ ላይ የተረጋገጠ መረጃ እስካሁን የለውም። ACE የሚረዳው በ፦ {topics}። እውቀት ለመጠቆም ምክር ይላኩ።"
+
+  scam.HEADLINES.LIKELY_SCAM: "ማጭበርበር ሊሆን ይችላል።"
+  scam.HEADLINES.SUSPICIOUS: "ይጠንቀቁ።"
+  scam.HEADLINES.NO_KNOWN_SIGNS: "የታወቁ የማጭበርበር ምልክቶች አላገኘሁም፣ ይህ ግን ደህንነቱን አያረጋግጥም።"
+  scam.SIGNS_LABEL: "የማስጠንቀቂያ ምልክቶች፦"
+  scam.REPORT_LINE: "ወደ 333 ያስተላልፉት፣ ነፃ ነው።"
+  scam.GENERIC_REPORT_LINE: "አይመልሱ፣ ገንዘብም አይላኩ። በኦፊሴላዊ ድረ ገጹ ወይም በሲም ካርድ ፓኬጁ ላይ ባለው ቁጥር ለአቅራቢዎ ያሳውቁ።"
+  scam.NEUTRAL_ADVICE: "የሚስጥር ቁጥርዎን ለማንም አይስጡ፣ በመልዕክት ምክንያት ከመንቀሳቀስዎ በፊት የሞባይል ገንዘብ ቀሪ ሂሳብዎን ያረጋግጡ።"
+  scam.SIGNAL.asks_for_pin: "የሚስጥር ቁጥርዎን ወይም የይለፍ ቃልዎን ይጠይቃል"
+  scam.SIGNAL.double_registration: "ሲምዎ ሁለት ጊዜ ተመዝግቧል ይላል"
+  scam.SIGNAL.refund_request: "በስህተት የተላከ ገንዘብ እንዲመልሱ ይጠይቃል"
+  scam.SIGNAL.confirmation_from_personal_number: "የክፍያ ማረጋገጫ ይመስላል ግን ከግል ቁጥር መጥቷል"
+  scam.SIGNAL.unofficial_operator_number: "ከአቅራቢው ነኝ ይላል ግን ኦፊሴላዊ ያልሆነ ቁጥር ይሰጣል"
+  scam.SIGNAL.dial_code_instruction: "በስልክዎ ኮድ እንዲጫኑ ያዝዛል"
+  scam.SIGNAL.prize_or_offer: "ሽልማት አሸንፈዋል ይላል ወይም ገንዘብ ያቀርባል"
+  scam.SIGNAL.link: "ሊንክ ይዟል"
+  scam.SIGNAL.pressure: "በፍጥነት እንዲወስኑ ይገፋፋል"
+
+  channels.ussd.UI:
+    ask: "ጥያቄ ይጠይቁ"
+    scam: "መልዕክት ያረጋግጡ"
+    lang: "ቋንቋ"
+    more: "98 ተጨማሪ"
+    next: "1 ቀጣይ"
+    back: "0 ተመለስ"
+    menu: "0 ማውጫ"
+    ask_prompt: "ጥያቄዎን ይጻፉ፦"
+    scam_prompt: "መልዕክቱን ይጻፉ ወይም ይለጥፉ፦"
+    invalid: "የተሳሳተ ምርጫ።"
+    end_pack: "በዚህ ርዕስ ይህ ብቻ ነው።"
+    lang_prompt: "1 English"
+    topics: "ርዕሶች"
+    place_prompt: "{area}ዎን ይጻፉ፦"
+    food_prompt: "ምግቡን እና {area}ዎን ይጻፉ፣ ለምሳሌ በቆሎ {example}፦"
+    weeks_prompt: "የስንት ሳምንት እርጉዝ ነዎት?"
+    crop_prompt: "ሰብሉን እና የሚያዩትን ይጻፉ፦"
+  channels.voice.PROMPTS:
+    welcome: "እንኳን ወደ ACE በደህና መጡ።"
+    press: "ለ{label}፣ {n} ይጫኑ።"
+    repeat: "ማውጫውን እንደገና ለመስማት 0 ይጫኑ።"
+    bye: "ምርጫዎ አልደረሰንም። ደህና ይሁኑ።"
+    invalid: "ይህ ትክክለኛ ምርጫ አይደለም።"
+
+  services.base.DAYS: ["ሰኞ", "ማክሰኞ", "ረቡዕ", "ሐሙስ", "ዓርብ", "ቅዳሜ", "እሁድ"]
+  services.base.MONTHS: ["ጃንዩ", "ፌብሩ", "ማርች", "ኤፕሪ", "ሜይ", "ጁን", "ጁላይ", "ኦገስ", "ሴፕቴ", "ኦክቶ", "ኖቬም", "ዲሴም"]
+  services.base.NEEDS_PLACE: "በየትኛው {area} ነዎት? ስሙን ይላኩ፣ ለምሳሌ {example}።"
+  services.base.AREA_DEFAULT: "አካባቢ"
+  services.base.AREA_WORD: {ET: "ክልል"}
+  services.base.COUNTRY_SAID: {KE: "ኬንያ", TZ: "ታንዛኒያ", UG: "ኡጋንዳ", RW: "ሩዋንዳ", ZA: "ደቡብ አፍሪካ", BW: "ቦትስዋና", NA: "ናሚቢያ", ZW: "ዚምባብዌ", NG: "ናይጄሪያ", GH: "ጋና", SN: "ሴኔጋል", CI: "ኮት ዲቯር", TG: "ቶጎ", CD: "ዲሞክራቲክ ኮንጎ", MW: "ማላዊ", BI: "ብሩንዲ", CM: "ካሜሩን", BJ: "ቤኒን", ZM: "ዛምቢያ", TD: "ቻድ", GN: "ጊኒ", BF: "ቡርኪና ፋሶ", SS: "ደቡብ ሱዳን", ET: "ኢትዮጵያ", MZ: "ሞዛምቢክ", GW: "ጊኒ ቢሳው", AO: "አንጎላ", SO: "ሶማሊያ", SD: "ሱዳን", DZ: "አልጄሪያ", EG: "ግብጽ", LY: "ሊቢያ", MA: "ሞሮኮ", TN: "ቱኒዚያ"}
+
+  services.rain.WORDS.likely: "ሊዘንብ ይችላል"
+  services.rain.WORDS.possible: "ምናልባት"
+  services.rain.WORDS.dry: "በአብዛኛው ደረቅ"
+  services.rain.HEAD: "በ{place} አካባቢ ዝናብ፦"
+  services.rain.HEAVY_LINE: "ከባድ ዝናብ (20 ሚሜ ወይም ከዚያ በላይ) ሊኖር ይችላል {days}።"
+  services.rain.FOOT: "ዕድሎቹ ከECMWF የ{date} ትንበያ ናቸው።"
+  services.rain.SPAN: "ከ{a} እስከ {b}"
+  services.rain.AND: "እና"
+  services.rain.STALE: "ACE ለ{place} ወቅታዊ ትንበያ የለውም። የ{met} ትንበያን ይመልከቱ።"
+  services.rain.NEXT: "የእርሻ ሥራን ለደረቅ ቀናት ያቅዱ።"
+
+  services.warnings.FOUND: "ለ{place} ኦፊሴላዊ ማስጠንቀቂያ፣ እስከ {until} (ምንጭ፦ {authority})፦"
+  services.warnings.NATIONAL: "ለመላው አገሪቱ ኦፊሴላዊ ማስጠንቀቂያ፣ እስከ {until} (ምንጭ፦ {authority})፦"
+  services.warnings.MORE: "ሌሎች {n} በሥራ ላይ ናቸው።"
+  services.warnings.NONE: "በአሁኑ ጊዜ {place}ን የሚሸፍን ኦፊሴላዊ ማስጠንቀቂያ የለም (ምንጭ፦ {authority}፣ የተረጋገጠው {checked})።"
+  services.warnings.STALE: "ACE በቅርቡ ኦፊሴላዊ ማስጠንቀቂያዎችን (ምንጭ፦ {authority}) ማረጋገጥ ስላልቻለ ማስጠንቀቂያ መኖሩን ማወቅ አይችልም። ኦፊሴላዊ መግለጫዎችን በሬዲዮ ያዳምጡ።"
+  services.warnings.GAP: "{authority} ACE ሊያነበው በሚችል መልኩ ማስጠንቀቂያ አያወጣም፣ ስለዚህ ACE እዚያ ማስጠንቀቂያ ማረጋገጥ አይችልም። ኦፊሴላዊ መግለጫዎችን በሬዲዮና በቴሌቪዥን ያዳምጡ።"
+
+  services.facility.NEAR: "ቅርብ የሆኑ የመንግሥት ጤና ተቋማት፦"
+  services.facility.IN_AREA: "በ{place} ያሉ የመንግሥት ሆስፒታሎች፦"
+  services.facility.CAVEAT: "ከ2019 የመንግሥት ተቋማት ዝርዝር፤ ከመሄድዎ በፊት ክፍት መሆኑን ያረጋግጡ።"
+  services.facility.EMERGENCY: "ድንገተኛ፦ {numbers}።"
+  services.facility.NO_NUMBER: "ድንገተኛ ሲያጋጥም ወደ አካባቢዎ የድንገተኛ ቁጥር ይደውሉ።"
+  services.facility.NONE: "ACE በ2019 ዝርዝሩ ውስጥ በ{km} ኪሜ ርቀት የመንግሥት ተቋም አላገኘም።"
+  services.facility.GAP: "ACE ለዚህ አገር የጤና ተቋማት ዝርዝር እስካሁን የለውም።"
+  services.facility.KM: "{km} ኪሜ"
+
+  services.prices.LINE: "{food} በ{market} ገበያ፦ {currency} {price} {unit} በ{month}"
+  services.prices.CHANGE.up: "ከ{prev} {pct}% ጨምሯል"
+  services.prices.CHANGE.down: "ከ{prev} {pct}% ቀንሷል"
+  services.prices.CHANGE.same: "ከ{prev} ጋር እኩል"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "(ከ{place} {km} ኪሜ)"
+  services.prices.FOOT: "የWFP ዋጋዎች።"
+  services.prices.TOP: "በ{market}{far} የቅርብ ጊዜ የWFP ዋጋዎች፦"
+  services.prices.OLD: "ACE ለ{country} ያለው የቅርብ የWFP ዋጋ የ{month} ነው፣ ለመጠቀም በጣም ያረጀ ነው። ነጋዴዎችን ወይም የግብርና ቢሮን ይጠይቁ።"
+  services.prices.GAP: "WFP ለ{country} የገበያ ዋጋ አያወጣም፣ ስለዚህ ACE እዚያ ዋጋ መስጠት አይችልም። ነጋዴዎችን ወይም የግብርና ቢሮን ይጠይቁ።"
+  services.prices.THIN: "የ{country} የቅርብ ጊዜ የWFP ዋጋዎች በጣም ጥቂት መሠረታዊ ምግቦችን ብቻ ይሸፍናሉ። ነጋዴዎችን ወይም የግብርና ቢሮን ይጠይቁ።"
+  services.prices.NO_FOOD: "ACE በ{place} አካባቢ ለ{food} የቅርብ ጊዜ የWFP ዋጋ የለውም።"
+  services.prices.UNIT: "በ{unit}"
+  services.prices.UNIT_MANY: "በ{unit}"
+  services.prices.LOCAL_FOOD: {maize: "በቆሎ", "maize flour": "የበቆሎ ዱቄት", "maize meal": "የበቆሎ ዱቄት", beans: "ባቄላ", rice: "ሩዝ", sorghum: "ማሽላ", millet: "ዳጉሳ", cassava: "ካሳቫ", sugar: "ስኳር", oil: "ዘይት", "wheat flour": "የስንዴ ዱቄት", wheat: "ስንዴ", teff: "ጤፍ", groundnuts: "ለውዝ", potatoes: "ድንች", tomatoes: "ቲማቲም", onions: "ሽንኩርት", salt: "ጨው", milk: "ወተት", eggs: "እንቁላል", bread: "ዳቦ", barley: "ገብስ", lentils: "ምስር"}
+  services.prices.LOCAL_DETAIL: {white: "ነጭ", yellow: "ቢጫ", imported: "ከውጭ የገባ", local: "የአገር ውስጥ", dry: "ደረቅ", red: "ቀይ", mixed: "ድብልቅ"}
+
+  services.pregnancy.FIRST: "በ{w} ሳምንት፣ የመጀመሪያ የቅድመ ወሊድ ምርመራዎን አሁኑኑ ያድርጉ፣ ከ12 ሳምንት በፊት።"
+  services.pregnancy.DUE_NOW: "በ{w} ሳምንት፣ የቅድመ ወሊድ ምርመራ አሁን ነው። ቀጣዩ በ{next} ሳምንት ነው።"
+  services.pregnancy.NEXT: "በ{w} ሳምንት፣ ቀጣዩ የቅድመ ወሊድ ምርመራዎ በ{next} ሳምንት ነው።"
+  services.pregnancy.LATE: "በ{w} ሳምንት በ40ኛው ሳምንት የታቀደውን የመጨረሻ ምርመራ አልፈዋል። ዛሬውኑ የጤና ባለሙያ ያግኙ።"
+  services.pregnancy.ASK: "የስንት ሳምንት እርጉዝ ነዎት? በቁጥር ይመልሱ፣ ለምሳሌ 22 ሳምንት።"
+  services.pregnancy.CALL: "{numbers} ይደውሉ።"
+
+  services.pests.LIKELY: "ይህ {problem} ሊሆን ይችላል። ACE ሰብልዎን አያይም፣ ስለዚህ እነዚህን ምልክቶች ያረጋግጡ፦"
+  services.pests.MAYBE: "ምናልባት {problem}።"
+  services.pests.REFER: "ከመርጨትዎ በፊት የግብርና ኤክስቴንሽን ሠራተኛ እንዲያረጋግጥ ይጠይቁ።"
+  services.pests.NAMES.fall_armyworm: "የአሜሪካ መጤ ተምች"
+  services.pests.NAMES.maize_lethal_necrosis: "የበቆሎ ገዳይ ኒክሮሲስ"
+  services.pests.NAMES.cassava_mosaic: "የካሳቫ ሞዛይክ በሽታ"
+  services.pests.NAMES.banana_xanthomonas_wilt: "የሙዝ ባክቴሪያ ጠውልግ"
+  services.pests.NAMES.tomato_leaf_miner: "የቲማቲም ቅጠል ቆፋሪ (ቱታ አብሶሉታ)"
+  services.pests.ASK: "የትኛው ሰብል ነው፣ ምን ያያሉ? ለምሳሌ፦ ቀዳዳ እና እንደ ሰጋቱራ ያለ ነገር ያለበት የበቆሎ ቅጠል።"
+  services.pests.UNKNOWN: "ACE ለጊዜው በቆሎ፣ ካሳቫ፣ ሙዝ እና ቲማቲም ያረጋግጣል። ለሌሎች ሰብሎች የግብርና ኤክስቴንሽን ሠራተኛ ይጠይቁ።"
+
+phrases:
+  safety.PREGNANCY: ["እርጉዝ", "ነፍሰ ጡር", "እርግዝና", "ፀንሻለሁ", "አርግዣለሁ", "ወር እርጉዝ"]
+  safety.POSTPARTUM: ["ወለደች", "ወለድኩ", "ከወሊድ በኋላ", "አራስ"]
+  safety.MATERNAL_DANGER: ["ደም መፍሰስ", "ደም እየፈሰሰ", "ደም", "መንቀጥቀጥ", "ማንቀጥቀጥ", "የሚጥል", "ከባድ ራስ ምታት", "ብዥ ያለ እይታ", "ዓይኔ ብዥ", "ፅንሱ አይንቀሳቀስም", "ልጁ አይንቀሳቀስም", "ውሃ ፈሰሰ", "ሽርት ውሃ", "ከፍተኛ ትኩሳት", "እያንቀጠቀጣት", "እያንቀጠቀጠው", "ያንቀጠቅጣታል", "ያንዘፈዝፋታል", "መንቀሳቀስ አቁሟል", "መንቀሳቀስ አቆመ", "አይንቀሳቀስም", "እንቅስቃሴ አቆመ"]
+  safety.URGENT: ["አይተነፍስም", "መተንፈስ አቃተው", "መተንፈስ አቃታት", "የመተንፈስ ችግር", "ራሱን ሳተ", "ራሷን ሳተች", "ራሱን ስቷል", "ወደቀ", "የሚጥል በሽታ", "ብዙ ደም", "ደረቴን ያመኛል", "የደረት ሕመም", "እባብ ነደፈው", "እባብ ነደፈችው", "እባብ ነደፈኝ", "የእባብ ንድፊያ", "ከባድ ቃጠሎ", "ነደፈው", "ነደፈችው", "ነደፋት", "እባብ ነደፈ", "እያንቀጠቀጠው"]
+  safety.POISON_ACT: ["ጠጣ", "ጠጣች", "ዋጠ", "ዋጠች", "በላ", "በላች"]
+  safety.POISON_WHAT: ["መርዝ", "ፀረ ተባይ", "ኬሚካል", "የአይጥ መርዝ", "ነጭ ጋዝ", "ቤንዚን", "በረኪና"]
+  safety.POISONED: ["ተመረዘ", "ተመረዘች", "መመረዝ", "መርዝ ጠጣ"]
+  safety.GBV: ["ተደፈርኩ", "ተደፈረች", "አስገድዶ መድፈር", "ወሲባዊ ጥቃት", "ባሌ ይደበድበኛል", "ይደበድበኛል", "ደበደበኝ", "የቤት ውስጥ ጥቃት", "ልገድልሽ ብሎ", "ጾታዊ ጥቃት"]
+  safety.CHILD: ["ልጅ", "ልጄ", "ሴት ልጄ", "ወንድ ልጄ", "ሕፃን", "ልጅቷ", "ልጁ"]
+  safety.CHILD_HARM: ["ተደፈረች", "ጥቃት", "ተበደለ", "ተበደለች", "ተደበደበ", "ተደበደበች", "ያለዕድሜ ጋብቻ", "በግድ ተዳረች", "ግርዛት"]
+  safety.SELF_HARM: ["ራሴን ማጥፋት", "ራሴን አጠፋለሁ", "መሞት እፈልጋለሁ", "ሕይወቴን ማጥፋት", "ራሴን መጉዳት", "መኖር አልፈልግም", "ራስን ማጥፋት"]
+
+  scam.PIN: ["ሚስጥር ቁጥር", "የሚስጥር ቁጥር", "ፒን", "የይለፍ ቃል"]
+  scam.ASK: ["ላክ", "ላኪ", "ይላኩ", "አጋራ", "አረጋግጥ", "ያስገቡ", "ይጻፉ"]
+  scam.MISTAKE: ["በስህተት", "በስህተት የተላከ", "መልስልኝ", "ይመልሱ"]
+  scam.DOUBLE: ["ሁለት ጊዜ ተመዝግቧል"]
+  scam.PRIZE: ["አሸንፈዋል", "አሸንፈሃል", "እንኳን ደስ አለዎት", "ሽልማት", "ዕጣ", "ቦነስ"]
+  scam.URGENT: ["አስቸኳይ", "ወዲያውኑ", "በ24 ሰዓት", "ይዘጋል", "ይታገዳል", "የመጨረሻ ማስጠንቀቂያ"]
+  scam.CLAIMS_OPERATOR: ["ኢትዮ ቴሌኮም", "ቴሌብር", "ሳፋሪኮም", "ኤም ፔሳ", "telebirr", "ethio telecom", "m pesa", "safaricom ethiopia", "የደንበኞች አገልግሎት"]
+  scam.DIAL: ["ይጫኑ", "ይደውሉ", "ያስገቡ"]
+
+  services.CUES.pregnancy_companion: ["የቅድመ ወሊድ", "ቅድመ ወሊድ ክትትል", "የእርግዝና ክትትል", "ቀጣይ ቀጠሮ"]
+  services.CUES.nearest_facility: ["ሆስፒታል", "ሆስፒታሎች", "ክሊኒክ", "ጤና ጣቢያ", "ጤና ኬላ", "ጤና ተቋም", "ሐኪም"]
+  services.CUES.official_warnings: ["ማስጠንቀቂያ", "ማንቂያ", "ጎርፍ", "ማዕበል", "አውሎ ነፋስ"]
+  services.CUES.rain_this_week: ["ዝናብ", "ይዘንባል", "ዝናቡ", "የአየር ሁኔታ", "ትንበያ", "ሜትሮሎጂ"]
+  services.CUES.market_prices: ["ዋጋ", "ዋጋው", "ገበያ", "ስንት ነው", "ስንት ብር"]
+  services.CUES.pest_check: ["ተባይ", "ተባዮች", "በሽታ", "ትል", "ተምች", "ነፍሳት", "ቅጠል", "ቅጠሎች", "ቢጫ", "ቀዳዳ", "ጠወለገ", "እየሞተ"]
+  services.SEASONAL: ["ክረምት", "በልግ", "የዝናብ ወቅት", "ወቅት"]
+  services.PREGNANT: ["እርጉዝ", "እርግዝና", "ነፍሰ ጡር"]
+  services.HOW_MUCH: ["ስንት ነው", "ስንት ብር", "ስንት"]
+  services.prices.FOODS: {በቆሎ: maize, ዱቄት: flour, ባቄላ: beans, ሩዝ: rice, ማሽላ: sorghum, ዳጉሳ: millet, ስኳር: sugar, ዘይት: oil, ስንዴ: wheat, ጤፍ: teff, ገብስ: barley, ምስር: lentils, ድንች: potatoes, ቲማቲም: tomatoes, ሽንኩርት: onions, ጨው: salt, ወተት: milk, እንቁላል: eggs, ዳቦ: bread}
+  services.pests.CROPS.maize: ["በቆሎ", "በቆሎዬ"]
+  services.pests.CROPS.cassava: ["ካሳቫ"]
+  services.pests.CROPS.banana: ["ሙዝ", "እንሰት"]
+  services.pests.CROPS.tomato: ["ቲማቲም"]
+  services.pests.PROBLEMS.fall_armyworm: ["ትል", "ትሎች", "ተምች", "ቀዳዳ", "ቀዳዳዎች", "ተበልቷል", "ሰጋቱራ", "እጭ"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["ቢጫ", "ቢጫነት", "ደረቀ", "መድረቅ", "ሞተ", "ኒክሮሲስ"]
+  services.pregnancy.WEEK_WORDS: ["ሳምንት", "ሳምንቴ"]
+  services.pregnancy.MONTH_WORDS: ["ወር", "ወሬ"]
+  commands.COMMANDS.help: ["እርዳታ", "ማውጫ", "ጀምር"]
+  commands.COMMANDS.forget: ["ሰርዝ", "አጥፋ"]
+  commands.COMMANDS.stop: ["አቁም"]
+  commands.COMMANDS.language: ["ቋንቋ"]
+  commands.COMMANDS.tip: ["ምክር"]
+  commands.COMMANDS.scam: ["ማጭበርበር"]
+  commands.COMMANDS.sources: ["ምንጮች", "ምንጭ"]
+  commands.COMMANDS.more: ["ተጨማሪ", "ቀጣይ"]
+  text.ACTION_CUES: ["ምን ላድርግ", "ምን ማድረግ አለብኝ", "እንዴት ልከላከል", "እንዴት ላጥፋ", "እንዴት ላስቀምጥ", "እርዱኝ", "እርዳኝ"]
+
+words:
+  stopwords: ["እና", "ወይም", "ግን", "ነው", "ናቸው", "ነበር", "ይህ", "ያ", "እኔ", "አንተ", "አንቺ", "እሱ", "እሷ", "እኛ", "እነሱ", "ምን", "እንዴት", "መቼ", "የት", "ለምን", "ማን", "አለ", "የለም", "አዎ", "አይ", "በጣም", "ሰላም", "እባክዎ", "እባክህ", "አመሰግናለሁ", "ላይ", "ውስጥ", "ጋር", "ከ", "ለ", "በ"]
+  markers: ["ነው", "እና", "ምን", "እንዴት", "የት", "አለ", "እባክዎ"]

@@ -1,0 +1,202 @@
+# Arabic for Sudan, Egypt, Libya, Algeria, Morocco, Tunisia, Chad and Somalia. Modern Standard Arabic replies;
+# the trigger phrases also carry common Sudanese, Egyptian and Maghrebi words.
+# Drafted for ACE 2.1. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ar
+  name: Arabic
+  native: "العربية"
+  script: Arab
+  encoding: ucs2
+  direction: rtl
+  reviewed: false
+  confirm: "سيرد ACE باللغة العربية."
+  names: ["arabic", "arabe", "kiarabu", "arabi", "عربي", "العربية", "ar"]
+
+templates:
+  safety.OPENERS.self_harm: "أنا آسف جدا لأنك تشعر بهذا. أنت تستحق الدعم الآن. {numbers}"
+  safety.OPENERS.maternal: "قد تكون هذه حالة طوارئ في الحمل. اذهبي إلى أقرب مركز صحي الآن. {numbers}"
+  safety.OPENERS.poisoning: "يبدو أن هذا تسمم. اطلب مساعدة طبية الآن وخذ العبوة معك. {numbers}"
+  safety.OPENERS.child_protection: "قد يكون طفل في خطر. اطلب المساعدة الآن. {numbers}"
+  safety.OPENERS.gbv: "أنا آسف لما يحدث لك. يمكنك الحصول على المساعدة الآن. {numbers}"
+  safety.OPENERS.health_urgent: "يبدو هذا عاجلا. اطلب مساعدة طبية الآن. {numbers}"
+  safety.CALL_WORD: "اتصل بالرقم {numbers}"
+  safety.OR_WORD: "أو"
+  safety.EMERGENCY_WORD: "طوارئ"
+  safety.FALLBACK_NUMBERS: "اتصل برقم الطوارئ المحلي أو اذهب إلى أقرب مركز صحي."
+
+  commands.TEXTS.help: "يقدم ACE إرشادات محلية موثقة. اطرح سؤالك. الأوامر: احتيال + الرسالة لفحصها، نصيحة + معلومتك، مصادر، المزيد، لغة + رمز (مثل لغة EN)، احذف لمسح بياناتك."
+  commands.TEXTS.help_short: "اطرح سؤالك على ACE. احتيال + الرسالة لفحصها. احذف لمسح بياناتك."
+  commands.TEXTS.forgotten: "تم. حذفنا كل ما كان لدى ACE عن هذا الرقم."
+  commands.TEXTS.stopped: "لن تصلك رسائل أخرى من ACE إلا إذا كتبت مرة أخرى. أرسل احذف لمسح بياناتك."
+  commands.TEXTS.language: "أرسل لغة ثم الرمز:"
+  commands.TEXTS.tip_thanks: "شكرا. حفظنا نصيحتك ليراجعها خبير. لن تنشر قبل التحقق منها."
+  commands.TEXTS.tip_usage: "أرسل نصيحة ثم معلومتك، مثلا: نصيحة أوراق النيم تساعد ضد دودة الحشد."
+  commands.TEXTS.scam_usage: "أرسل احتيال ثم الرسالة التي تشك فيها، وسيفحصها ACE."
+  commands.TEXTS.no_sources: "لا توجد إجابة سابقة لعرض مصادرها. اطرح سؤالا أولا."
+  commands.TEXTS.no_more: "هذا كل ما لدى ACE عن هذا الموضوع الآن. اطرح سؤالا آخر أو أرسل مساعدة."
+  commands.TEXTS.clarify: "ليس لدى ACE إرشاد موثق عن هذا بعد. يمكن لـ ACE المساعدة في: {topics}. أرسل نصيحة لاقتراح معلومة."
+
+  scam.HEADLINES.LIKELY_SCAM: "احتيال على الأرجح."
+  scam.HEADLINES.SUSPICIOUS: "انتبه."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "لم أجد علامات احتيال معروفة، لكن هذا لا يثبت أنها آمنة."
+  scam.SIGNS_LABEL: "علامات التحذير:"
+  scam.REPORT_LINE: "أعد إرسالها إلى 333، مجانا."
+  scam.GENERIC_REPORT_LINE: "لا ترد ولا ترسل مالا. أبلغ شركة الاتصالات عبر الرقم المنشور في موقعها الرسمي أو على غلاف الشريحة."
+  scam.NEUTRAL_ADVICE: "لا تشارك رقمك السري أبدا، وتحقق من رصيد محفظتك قبل أن تتصرف بسبب أي رسالة."
+  scam.SIGNAL.asks_for_pin: "تطلب رقمك السري أو كلمة المرور"
+  scam.SIGNAL.double_registration: "تدعي أن شريحتك مسجلة مرتين"
+  scam.SIGNAL.refund_request: "تطلب منك إعادة مال أرسل بالخطأ"
+  scam.SIGNAL.confirmation_from_personal_number: "تشبه تأكيد دفع لكنها جاءت من رقم شخصي"
+  scam.SIGNAL.unofficial_operator_number: "تدعي أنها من شركة الاتصالات لكنها تعطي رقما غير الرقم الرسمي"
+  scam.SIGNAL.dial_code_instruction: "تطلب منك طلب رمز على هاتفك"
+  scam.SIGNAL.prize_or_offer: "تقول إنك ربحت جائزة أو تعرض مالا"
+  scam.SIGNAL.link: "تحتوي على رابط"
+  scam.SIGNAL.pressure: "تضغط عليك لتتصرف بسرعة"
+
+  channels.ussd.UI:
+    ask: "اطرح سؤالا"
+    scam: "افحص رسالة"
+    lang: "اللغة"
+    more: "98 المزيد"
+    next: "1 التالي"
+    back: "0 رجوع"
+    menu: "0 القائمة"
+    ask_prompt: "اكتب سؤالك:"
+    scam_prompt: "اكتب الرسالة أو الصقها:"
+    invalid: "اختيار غير صحيح."
+    end_pack: "هذا كل شيء عن الموضوع."
+    lang_prompt: "1 English"
+    topics: "مواضيع"
+    place_prompt: "اكتب اسم {area}:"
+    food_prompt: "اكتب الغذاء و{area}، مثلا ذرة {example}:"
+    weeks_prompt: "كم أسبوعا مضى على حملك؟"
+    crop_prompt: "اكتب المحصول وما تراه:"
+  channels.voice.PROMPTS:
+    welcome: "مرحبا بك في ACE."
+    press: "لـ {label}، اضغط {n}."
+    repeat: "لسماع القائمة مرة أخرى، اضغط 0."
+    bye: "لم يصلنا اختيارك. مع السلامة."
+    invalid: "هذا اختيار غير صحيح."
+
+  services.base.DAYS: ["الاثنين", "الثلاثاء", "الأربعاء", "الخميس", "الجمعة", "السبت", "الأحد"]
+  services.base.MONTHS: ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"]
+  services.base.NEEDS_PLACE: "في أي {area} أنت؟ أرسل الاسم، مثلا {example}."
+  services.base.AREA_DEFAULT: "منطقة"
+  services.base.AREA_WORD: {SD: "ولاية", EG: "محافظة", LY: "شعبية", DZ: "ولاية", MA: "جهة", TN: "ولاية", TD: "إقليم", SO: "إقليم"}
+  services.base.COUNTRY_SAID: {KE: "كينيا", TZ: "تنزانيا", UG: "أوغندا", RW: "رواندا", ZA: "جنوب أفريقيا", BW: "بوتسوانا", NA: "ناميبيا", ZW: "زيمبابوي", NG: "نيجيريا", GH: "غانا", SN: "السنغال", CI: "كوت ديفوار", TG: "توغو", CD: "الكونغو الديمقراطية", MW: "ملاوي", BI: "بوروندي", CM: "الكاميرون", BJ: "بنين", ZM: "زامبيا", TD: "تشاد", GN: "غينيا", BF: "بوركينا فاسو", SS: "جنوب السودان", ET: "إثيوبيا", MZ: "موزمبيق", GW: "غينيا بيساو", AO: "أنغولا", SO: "الصومال", SD: "السودان", DZ: "الجزائر", EG: "مصر", LY: "ليبيا", MA: "المغرب", TN: "تونس"}
+
+  services.rain.WORDS.likely: "مرجح"
+  services.rain.WORDS.possible: "ممكن"
+  services.rain.WORDS.dry: "جاف غالبا"
+  services.rain.HEAD: "المطر قرب {place}:"
+  services.rain.HEAVY_LINE: "مطر غزير (20 مم أو أكثر) ممكن {days}."
+  services.rain.FOOT: "الاحتمالات من توقعات ECMWF بتاريخ {date}."
+  services.rain.SPAN: "من {a} إلى {b}"
+  services.rain.AND: "و"
+  services.rain.STALE: "ليس لدى ACE توقعات حالية لـ {place}. راجع توقعات {met}."
+  services.rain.NEXT: "خطط لعمل الحقل في الأيام الأكثر جفافا."
+
+  services.warnings.FOUND: "تحذير رسمي لـ {place} حتى {until} (المصدر: {authority}):"
+  services.warnings.NATIONAL: "تحذير رسمي لكل البلاد حتى {until} (المصدر: {authority}):"
+  services.warnings.MORE: "{n} تحذيرات أخرى سارية."
+  services.warnings.NONE: "لا يوجد تحذير رسمي يشمل {place} الآن (المصدر: {authority}، فحص في {checked})."
+  services.warnings.STALE: "لم يتمكن ACE من فحص التحذيرات الرسمية مؤخرا (المصدر: {authority})، فلا يعرف إن كان هناك تحذير ساري. استمع إلى النشرات الرسمية في الإذاعة."
+  services.warnings.GAP: "لا تنشر {authority} تحذيرات بصيغة يقرؤها ACE، لذلك لا يستطيع ACE فحص التحذيرات هناك. استمع إلى النشرات الرسمية في الإذاعة والتلفزيون."
+
+  services.facility.NEAR: "أقرب المرافق الصحية العامة:"
+  services.facility.IN_AREA: "المستشفيات العامة في {place}:"
+  services.facility.CAVEAT: "من قائمة المرافق العامة لعام 2019؛ تأكد أنه مفتوح قبل أن تذهب."
+  services.facility.EMERGENCY: "الطوارئ: {numbers}."
+  services.facility.NO_NUMBER: "في حالة الطوارئ، اتصل برقم الطوارئ المحلي."
+  services.facility.NONE: "لم يجد ACE مرفقا عاما في نطاق {km} كم في قائمته لعام 2019."
+  services.facility.GAP: "ليس لدى ACE قائمة مرافق صحية لهذا البلد بعد."
+  services.facility.KM: "{km} كم"
+
+  services.prices.LINE: "{food} في سوق {market}: {price} {currency} {unit} في {month}"
+  services.prices.CHANGE.up: "بزيادة {pct}% عن {prev}"
+  services.prices.CHANGE.down: "بانخفاض {pct}% عن {prev}"
+  services.prices.CHANGE.same: "مثل {prev}"
+  services.prices.ITEM: "{food} {price} {currency} {unit} ({month})"
+  services.prices.FAR: "(على بعد {km} كم من {place})"
+  services.prices.FOOT: "أسعار برنامج الأغذية العالمي."
+  services.prices.TOP: "آخر أسعار برنامج الأغذية العالمي في {market}{far}:"
+  services.prices.OLD: "آخر سعر لدى ACE من برنامج الأغذية العالمي لـ {country} يعود إلى {month}، وهو قديم جدا. اسأل التجار أو مكتب الزراعة."
+  services.prices.GAP: "لا ينشر برنامج الأغذية العالمي أسعار أسواق لـ {country}، لذلك لا يستطيع ACE إعطاء أسعار هناك. اسأل التجار أو مكتب الزراعة."
+  services.prices.THIN: "أسعار برنامج الأغذية العالمي الأخيرة لـ {country} تغطي أغذية أساسية قليلة جدا. اسأل التجار أو مكتب الزراعة."
+  services.prices.NO_FOOD: "ليس لدى ACE سعر حديث من برنامج الأغذية العالمي لصنف {food} قرب {place}."
+  services.prices.UNIT: "لكل {unit}"
+  services.prices.UNIT_MANY: "لكل {unit}"
+  services.prices.LOCAL_FOOD: {maize: "ذرة", "maize flour": "دقيق الذرة", "maize meal": "دقيق الذرة", beans: "فول", rice: "أرز", sorghum: "ذرة رفيعة", millet: "دخن", cassava: "كسافا", "cassava flour": "دقيق الكسافا", sugar: "سكر", oil: "زيت", "wheat flour": "دقيق القمح", groundnuts: "فول سوداني", cowpeas: "لوبيا", potatoes: "بطاطس", tomatoes: "طماطم", onions: "بصل", salt: "ملح", milk: "حليب", eggs: "بيض", bread: "خبز", wheat: "قمح", lentils: "عدس"}
+  services.prices.LOCAL_DETAIL: {white: "أبيض", yellow: "أصفر", imported: "مستورد", local: "محلي", dry: "جاف", red: "أحمر"}
+
+  services.pregnancy.FIRST: "في الأسبوع {w}، اذهبي الآن لأول فحص حمل، قبل الأسبوع 12."
+  services.pregnancy.DUE_NOW: "في الأسبوع {w}، موعد فحص الحمل الآن. الموعد التالي في الأسبوع {next}."
+  services.pregnancy.NEXT: "في الأسبوع {w}، موعد فحص الحمل التالي في الأسبوع {next}."
+  services.pregnancy.LATE: "في الأسبوع {w} تجاوزت آخر فحص مخطط له في الأسبوع 40. راجعي عاملا صحيا اليوم."
+  services.pregnancy.ASK: "كم أسبوعا مضى على حملك؟ أرسلي رقما، مثلا 22 أسبوعا."
+  services.pregnancy.CALL: "اتصلي بالرقم {numbers}."
+
+  services.pests.LIKELY: "قد يكون هذا {problem}. لا يرى ACE محصولك، فتحقق من هذه العلامات:"
+  services.pests.MAYBE: "ربما {problem}."
+  services.pests.REFER: "اطلب من المرشد الزراعي التأكد قبل الرش."
+  services.pests.NAMES.fall_armyworm: "دودة الحشد الخريفية"
+  services.pests.NAMES.maize_lethal_necrosis: "النخر القاتل للذرة"
+  services.pests.NAMES.cassava_mosaic: "مرض موزاييك الكسافا"
+  services.pests.NAMES.banana_xanthomonas_wilt: "الذبول البكتيري للموز"
+  services.pests.NAMES.tomato_leaf_miner: "حافرة أوراق الطماطم (توتا أبسوليوتا)"
+  services.pests.ASK: "أي محصول، وماذا ترى؟ مثلا: أوراق ذرة فيها ثقوب ونشارة."
+  services.pests.UNKNOWN: "يفحص ACE حاليا الذرة والكسافا والموز والطماطم. للمحاصيل الأخرى اسأل المرشد الزراعي."
+
+phrases:
+  safety.PREGNANCY: ["حامل", "الحامل", "حمل", "الحمل", "انا حامل", "هي حامل", "شهور حمل", "اسابيع حمل"]
+  safety.POSTPARTUM: ["ولدت", "وضعت", "بعد الولادة", "بعد الوضع", "نفاس", "النفاس"]
+  safety.MATERNAL_DANGER: ["نزيف", "تنزف", "دم", "دم كثير", "تشنج", "تشنجات", "صداع شديد", "زغللة", "رؤية ضبابية", "الجنين لا يتحرك", "الطفل لا يتحرك", "نزول الماء", "انفجار الماء", "حمى شديدة", "حرارة شديدة", "توقف عن الحركة", "الجنين توقف", "لا يتحرك", "قلت حركة الجنين"]
+  safety.URGENT: ["لا يتنفس", "لا تتنفس", "صعوبة في التنفس", "ضيق تنفس", "فاقد الوعي", "فقد الوعي", "اغمي عليه", "اغمي عليها", "مغمى عليه", "تشنجات", "نزيف شديد", "ينزف كثيرا", "الم في الصدر", "لدغة ثعبان", "لدغه ثعبان", "عضه ثعبان", "لدغة عقرب", "حرق شديد", "حروق شديدة", "لدغت", "لدغة", "لدغه", "لدغها", "لدغني", "لدغته", "عضته افعى"]
+  safety.POISON_ACT: ["شرب", "شربت", "بلع", "بلعت", "اكل", "اكلت"]
+  safety.POISON_WHAT: ["سم", "سموم", "مبيد", "مبيد حشري", "مواد كيماوية", "كيماوي", "سم الفئران", "جاز", "كيروسين", "كلور", "جافيل"]
+  safety.POISONED: ["تسمم", "مسموم", "مسمومة", "تسمم غذائي"]
+  safety.GBV: ["اغتصاب", "اغتصبني", "اغتصبت", "تحرش", "اعتداء جنسي", "زوجي يضربني", "يضربني", "ضربني", "عنف اسري", "عنف منزلي", "هددني بالقتل", "اغتصابي", "تم اغتصابي", "اغتصبوني", "اغتصبها"]
+  safety.CHILD: ["طفل", "طفلة", "ابني", "بنتي", "ابنتي", "ولد", "بنت", "الطفل"]
+  safety.CHILD_HARM: ["اعتداء", "تحرش", "اغتصاب", "يضرب", "مضروب", "زواج قسري", "زواج مبكر", "ختان", "اساءة"]
+  safety.SELF_HARM: ["انتحار", "انتحر", "اقتل نفسي", "اريد ان اموت", "اريد الموت", "انهي حياتي", "اؤذي نفسي", "لا اريد ان اعيش"]
+
+  scam.PIN: ["الرقم السري", "رقم سري", "كلمة المرور", "كلمة السر", "الرمز السري"]
+  scam.ASK: ["ارسل", "ارسلي", "شارك", "اعطني", "اكد", "ادخل", "اكتب", "رد"]
+  scam.MISTAKE: ["بالخطا", "عن طريق الخطا", "ارجع المبلغ", "اعد المبلغ", "رجع الفلوس"]
+  scam.DOUBLE: ["مسجلة مرتين", "تسجيل مزدوج"]
+  scam.PRIZE: ["ربحت", "فزت", "مبروك", "تهانينا", "جائزة", "سحب", "عرض", "مكافاة"]
+  scam.URGENT: ["عاجل", "فورا", "خلال 24 ساعة", "سيتم ايقاف", "سيتم حظر", "سيتم تعليق", "اخر تحذير"]
+  scam.CLAIMS_OPERATOR: ["زين", "سوداني", "ام تي ان", "فودافون", "اورنج", "اتصالات", "وي", "ليبيانا", "المدار", "موبيليس", "جيزي", "اوريدو", "خدمة العملاء", "بنكك", "فودافون كاش"]
+  scam.DIAL: ["اطلب", "اضغط", "ادخل الرمز"]
+
+  services.CUES.pregnancy_companion: ["متابعة الحمل", "زيارة الحمل", "فحص الحمل", "رعاية الحمل", "الموعد القادم"]
+  services.CUES.nearest_facility: ["مستشفى", "مستشفيات", "عيادة", "مركز صحي", "مستوصف", "وحدة صحية", "طبيب"]
+  services.CUES.official_warnings: ["تحذير", "تحذيرات", "انذار", "تنبيه", "عاصفة", "فيضان", "سيول"]
+  services.CUES.rain_this_week: ["مطر", "امطار", "الامطار", "المطر", "طقس", "الطقس", "توقعات", "ارصاد"]
+  services.CUES.market_prices: ["سعر", "اسعار", "الاسعار", "سوق", "السوق", "بكم", "كم سعر"]
+  services.CUES.pest_check: ["افة", "افات", "مرض", "دودة", "ديدان", "حشرات", "اوراق", "اصفر", "صفراء", "ثقوب", "ذبول"]
+  services.SEASONAL: ["موسم الامطار", "الخريف", "موسم"]
+  services.PREGNANT: ["حامل", "الحمل", "حمل"]
+  services.HOW_MUCH: ["بكم", "كم سعر", "كم"]
+  services.prices.FOODS: {ذرة: maize, دقيق: flour, فول: beans, ارز: rice, رز: rice, "ذرة رفيعة": sorghum, دخن: millet, كسافا: cassava, سكر: sugar, زيت: oil, قمح: wheat, عدس: lentils, بطاطس: potatoes, طماطم: tomatoes, بصل: onions, ملح: salt, حليب: milk, لبن: milk, بيض: eggs, خبز: bread, عيش: bread}
+  services.pests.CROPS.maize: ["ذرة", "الذرة", "ذره"]
+  services.pests.CROPS.cassava: ["كسافا", "الكسافا", "منيهوت"]
+  services.pests.CROPS.banana: ["موز", "الموز"]
+  services.pests.CROPS.tomato: ["طماطم", "الطماطم", "بندورة"]
+  services.pests.PROBLEMS.fall_armyworm: ["دودة", "ديدان", "يرقة", "يرقات", "ثقوب", "ماكول", "نشارة", "براز"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["اصفر", "اصفرار", "جاف", "جفاف", "ميت", "نخر", "تبقع"]
+  services.pregnancy.WEEK_WORDS: ["اسبوع", "اسابيع", "الاسبوع", "اسبوعا"]
+  services.pregnancy.MONTH_WORDS: ["شهر", "شهور", "اشهر", "الشهر"]
+  commands.COMMANDS.help: ["مساعدة", "قائمة", "ابدا"]
+  commands.COMMANDS.forget: ["احذف", "امسح"]
+  commands.COMMANDS.stop: ["توقف", "ايقاف"]
+  commands.COMMANDS.language: ["لغة", "اللغة"]
+  commands.COMMANDS.tip: ["نصيحة"]
+  commands.COMMANDS.scam: ["احتيال", "نصب"]
+  commands.COMMANDS.sources: ["مصادر", "المصادر", "مصدر"]
+  commands.COMMANDS.more: ["المزيد", "التالي", "اكثر"]
+  text.ACTION_CUES: ["ماذا افعل", "ماذا يجب ان افعل", "كيف اتخلص", "كيف اكافح", "كيف امنع", "كيف احفظ", "ساعدني", "ساعدوني", "اعمل ايه", "شنو اسوي"]
+
+words:
+  stopwords: ["في", "من", "على", "الى", "عن", "مع", "هذا", "هذه", "ذلك", "تلك", "هو", "هي", "انا", "انت", "نحن", "هم", "ما", "ماذا", "كيف", "متى", "اين", "لماذا", "هل", "او", "ثم", "لا", "نعم", "كان", "يكون", "عند", "لدي", "عندي", "قد", "كل", "بعض", "مرحبا", "شكرا", "من فضلك", "لو سمحت", "يا"]
+  markers: ["في", "من", "على", "الى", "هل", "كيف", "ماذا", "اين", "انا", "عندي", "شكرا", "مساعدة"]

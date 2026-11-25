@@ -1,0 +1,201 @@
+# Afaan Oromoo for Ethiopia, the most widely spoken language in the country, written in Qubee.
+# Drafted for ACE 2.1. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: om
+  name: Oromo
+  native: "Afaan Oromoo"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE Afaan Oromootiin deebisa."
+  names: ["oromo", "oromoo", "afaan oromoo", "oromiffa", "kioromo", "om"]
+
+templates:
+  safety.OPENERS.self_harm: "Akkas sitti dhagahamuu isaatti baay'ee gaddeera. Amma deeggarsa argachuu qabda. {numbers}"
+  safety.OPENERS.maternal: "Kun rakkoo hatattamaa ulfaa ta'uu danda'a. Amma dhaabbata fayyaa dhihoo jirutti deemi. {numbers}"
+  safety.OPENERS.poisoning: "Kun summaa'uu fakkaata. Amma gargaarsa yaalaa barbaadi, qodaa isaas qabadhu. {numbers}"
+  safety.OPENERS.child_protection: "Daa'immi tokko balaa keessa jiraachuu danda'a. Maaloo amma gargaarsa barbaadi. {numbers}"
+  safety.OPENERS.gbv: "Wanti kun sirra ga'uu isaatti gaddeera. Amma gargaarsa argachuu dandeessa. {numbers}"
+  safety.OPENERS.health_urgent: "Kun hatattamaa fakkaata. Amma gargaarsa yaalaa barbaadi. {numbers}"
+  safety.CALL_WORD: "Bilbili {numbers}"
+  safety.OR_WORD: "ykn"
+  safety.EMERGENCY_WORD: "hatattamaa"
+  safety.FALLBACK_NUMBERS: "Lakkoofsa hatattamaa naannoo keetti bilbili ykn dhaabbata fayyaa dhihoo jirutti deemi."
+
+  commands.TEXTS.help: "ACE qajeelfama naannoo mirkanaa'e kenna. Gaaffii gaafadhu. Ajajoota: GOWWOOMSA + ergaa mirkaneessuuf, GORSA + gorsa kee, MADDA, DABALATA, AFAAN + koodii (fkn AFAAN EN), HAQI odeeffannoo kee haquuf."
+  commands.TEXTS.help_short: "ACE gaaffii gaafadhu. GOWWOOMSA + ergaa ni mirkaneessa. HAQI odeeffannoo kee ni haqa."
+  commands.TEXTS.forgotten: "Xumurameera. Wanti ACE lakkoofsa kana irratti qabu hundi haqameera."
+  commands.TEXTS.stopped: "Yoo irra deebitee hin barreessine ACE irraa ergaan biraa sin ga'u. Odeeffannoo kee haquuf HAQI ergi."
+  commands.TEXTS.language: "AFAAN fi koodii ergi:"
+  commands.TEXTS.tip_thanks: "Galatoomi. Gorsi kee ogeessaan akka ilaalamuuf kuufameera. Hanga mirkanaa'utti hin qoodamu."
+  commands.TEXTS.tip_usage: "GORSA jedhii gorsa kee ergi, fakkeenyaaf: GORSA baalli niimii raammoo midhaanii ni ittisa."
+  commands.TEXTS.scam_usage: "GOWWOOMSA jedhii ergaa itti shakkitu ergi, ACE ni mirkaneessa."
+  commands.TEXTS.no_sources: "Deebiin dura madda isaa agarsiisu hin jiru. Jalqaba gaaffii gaafadhu."
+  commands.TEXTS.no_more: "Mata duree kana irratti kan ACE qabu kana qofa. Gaaffii biraa gaafadhu ykn GARGAARSA ergi."
+  commands.TEXTS.clarify: "ACE waa'ee kanaa qajeelfama mirkanaa'e hin qabu. ACE kana irratti gargaaruu danda'a: {topics}. Beekumsa yaaduuf GORSA ergi."
+
+  scam.HEADLINES.LIKELY_SCAM: "GOWWOOMSA TA'UU DANDA'A."
+  scam.HEADLINES.SUSPICIOUS: "OF EEGI."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Mallattoo gowwoomsaa beekamaa hin arganne, garuu kun nageenya isaa hin mirkaneessu."
+  scam.SIGNS_LABEL: "Mallattoolee akeekkachiisaa:"
+  scam.REPORT_LINE: "Gara 333 dabarsi, bilisa."
+  scam.GENERIC_REPORT_LINE: "Hin deebisin, maallaqas hin ergin. Lakkoofsa marsariitii isaa ykn paakeejii SIM irra jiruun dhiyeessaa keetti gabaasi."
+  scam.NEUTRAL_ADVICE: "Lakkoofsa iccitii kee namaaf hin kennin, ergaa tokkoon tarkaanfii fudhachuu dura haftee maallaqa moobaayilii kee mirkaneeffadhu."
+  scam.SIGNAL.asks_for_pin: "lakkoofsa iccitii ykn jecha darbii kee gaafata"
+  scam.SIGNAL.double_registration: "SIM kee si'a lama galmeeffameera jedha"
+  scam.SIGNAL.refund_request: "maallaqa dogoggoraan ergame akka deebiftu gaafata"
+  scam.SIGNAL.confirmation_from_personal_number: "mirkaneessa kaffaltii fakkaata garuu lakkoofsa dhuunfaa irraa dhufe"
+  scam.SIGNAL.unofficial_operator_number: "dhiyeessaa irraayi jedha garuu lakkoofsa seeraa hin taane kenna"
+  scam.SIGNAL.dial_code_instruction: "bilbila kee irratti koodii akka cuqaastu si ajaja"
+  scam.SIGNAL.prize_or_offer: "badhaasa moo'atte jedha ykn maallaqa dhiheessa"
+  scam.SIGNAL.link: "liinkii qaba"
+  scam.SIGNAL.pressure: "dafee akka murteessitu si dhiibba"
+
+  channels.ussd.UI:
+    ask: "Gaaffii gaafadhu"
+    scam: "Ergaa mirkaneessi"
+    lang: "Afaan"
+    more: "98 Dabalata"
+    next: "1 Itti aanu"
+    back: "0 Deebi'i"
+    menu: "0 Baafata"
+    ask_prompt: "Gaaffii kee barreessi:"
+    scam_prompt: "Ergaa barreessi ykn maxxansi:"
+    invalid: "Filannoo dogoggoraa."
+    end_pack: "Mata duree kana irratti kana qofa."
+    lang_prompt: "1 English"
+    topics: "Mata dureewwan"
+    place_prompt: "{area} kee barreessi:"
+    food_prompt: "Nyaata fi {area} kee barreessi, fkn boqqolloo {example}:"
+    weeks_prompt: "Ulfa torban meeqaati?"
+    crop_prompt: "Midhaan fi waan argitu barreessi:"
+  channels.voice.PROMPTS:
+    welcome: "Baga gara ACE dhuftan."
+    press: "{label}f, {n} tuqi."
+    repeat: "Baafata irra deebitee dhaga'uuf 0 tuqi."
+    bye: "Filannoon kee nu hin geenye. Nagaan turi."
+    invalid: "Kun filannoo sirrii miti."
+
+  services.base.DAYS: ["Wiix", "Kib", "Rob", "Kam", "Jim", "San", "Dil"]
+  services.base.MONTHS: ["Ama", "Gur", "Bit", "Elb", "Cam", "Wax", "Ado", "Hag", "Ful", "Onk", "Sad", "Mud"]
+  services.base.NEEDS_PLACE: "{area} kam keessa jirta? Maqaa isaa ergi, fakkeenyaaf {example}."
+  services.base.AREA_DEFAULT: "naannoo"
+  services.base.AREA_WORD: {ET: "naannoo"}
+  services.base.COUNTRY_SAID: {KE: "Keeniyaa", TZ: "Taanzaaniyaa", UG: "Ugaandaa", RW: "Ruwaandaa", ZA: "Afrikaa Kibbaa", BW: "Botswaanaa", NA: "Naamibiyaa", ZW: "Zimbaabuwee", NG: "Naayijeeriyaa", GH: "Gaanaa", SN: "Senegaal", CI: "Kootdiivaar", TG: "Toogoo", CD: "Kongoo Dimokraatawaa", MW: "Maalaawii", BI: "Burundii", CM: "Kaameruun", BJ: "Beeniin", ZM: "Zaambiyaa", TD: "Chaad", GN: "Giinii", BF: "Burkiinaa Faasoo", SS: "Sudaan Kibbaa", ET: "Itoophiyaa", MZ: "Moozaambiik", GW: "Giinii Bisaawu", AO: "Angoolaa", SO: "Somaaliyaa", SD: "Sudaan", DZ: "Aljeeriyaa", EG: "Gibxii", LY: "Liibiyaa", MA: "Morookoo", TN: "Tuunisiyaa"}
+
+  services.rain.WORDS.likely: "ni roobuu danda'a"
+  services.rain.WORDS.possible: "ta'uu danda'a"
+  services.rain.WORDS.dry: "baay'ee gogaa"
+  services.rain.HEAD: "Rooba naannoo {place}:"
+  services.rain.HEAVY_LINE: "Roobni cimaan (20 mm ol) ta'uu danda'a {days}."
+  services.rain.FOOT: "Carraan raaga ECMWF guyyaa {date} irraayi."
+  services.rain.SPAN: "{a} hanga {b}"
+  services.rain.AND: "fi"
+  services.rain.STALE: "ACE raaga yeroo ammaa {place}f hin qabu. Raaga {met} ilaali."
+  services.rain.NEXT: "Hojii lafaa guyyoota gogaa ta'aniif karoorfadhu."
+
+  services.warnings.FOUND: "Akeekkachiisa seeraa {place}f, hanga {until} (madda: {authority}):"
+  services.warnings.NATIONAL: "Akeekkachiisa seeraa biyya guutuuf, hanga {until} (madda: {authority}):"
+  services.warnings.MORE: "Kan biraa {n} hojii irra jira."
+  services.warnings.NONE: "Amma akeekkachiisni seeraa {place} haguugu hin jiru (madda: {authority}, kan mirkanaa'e {checked})."
+  services.warnings.STALE: "ACE dhiyeenya kana akeekkachiisa seeraa (madda: {authority}) mirkaneessuu hin dandeenye, kanaaf akeekkachiisni jiraachuu isaa hin beeku. Beeksisa seeraa raadiyoon dhaggeeffadhu."
+  services.warnings.GAP: "{authority} akeekkachiisa bifa ACE dubbisuu danda'uun hin baasu, kanaaf ACE achitti akeekkachiisa mirkaneessuu hin danda'u. Beeksisa seeraa raadiyoo fi televiizhiniin dhaggeeffadhu."
+
+  services.facility.NEAR: "Dhaabbilee fayyaa mootummaa dhiyoo jiran:"
+  services.facility.IN_AREA: "Hospitaalota mootummaa {place} keessa jiran:"
+  services.facility.CAVEAT: "Tarree dhaabbilee mootummaa bara 2019 irraayi; osoo hin deemin banaa ta'uu isaa mirkaneeffadhu."
+  services.facility.EMERGENCY: "Hatattamaa: {numbers}."
+  services.facility.NO_NUMBER: "Yeroo hatattamaa, lakkoofsa hatattamaa naannoo keetti bilbili."
+  services.facility.NONE: "ACE tarree isaa bara 2019 keessatti dhaabbata mootummaa km {km} keessatti hin argine."
+  services.facility.GAP: "ACE ammallee biyya kanaaf tarree dhaabbilee fayyaa hin qabu."
+  services.facility.KM: "km {km}"
+
+  services.prices.LINE: "{food} gabaa {market}: {currency} {price} {unit} {month}"
+  services.prices.CHANGE.up: "{prev} irra %{pct} dabale"
+  services.prices.CHANGE.down: "{prev} irra %{pct} hir'ate"
+  services.prices.CHANGE.same: "akkuma {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({place} irraa km {km})"
+  services.prices.FOOT: "Gatii WFP."
+  services.prices.TOP: "Gatii WFP dhiyoo {market}{far}:"
+  services.prices.OLD: "Gatiin WFP dhiyoo ACE {country}f qabu kan {month} ti, fayyadamuuf baay'ee dulloomeera. Daldaltoota ykn waajjira qonnaa gaafadhu."
+  services.prices.GAP: "WFP gatii gabaa {country}f hin baasu, kanaaf ACE achitti gatii kennuu hin danda'u. Daldaltoota ykn waajjira qonnaa gaafadhu."
+  services.prices.THIN: "Gatiin WFP dhiyoo {country} nyaata bu'uuraa baay'ee muraasa qofa haguuga. Daldaltoota ykn waajjira qonnaa gaafadhu."
+  services.prices.NO_FOOD: "ACE gatii WFP dhiyoo {food}f naannoo {place} hin qabu."
+  services.prices.UNIT: "{unit} tokkoof"
+  services.prices.UNIT_MANY: "{unit}f"
+  services.prices.LOCAL_FOOD: {maize: "Boqqolloo", "maize flour": "Daakuu boqqolloo", beans: "Baaqelaa", rice: "Ruuzii", sorghum: "Mishingaa", millet: "Daagujjaa", sugar: "Sukkaara", oil: "Zayita", "wheat flour": "Daakuu qamadii", wheat: "Qamadii", teff: "Xaafii", barley: "Garbuu", potatoes: "Dinnicha", tomatoes: "Timaatima", onions: "Qullubbii", salt: "Soogidda", milk: "Aannan", eggs: "Hanqaaquu", bread: "Daabboo", groundnuts: "Ocholoonii", lentils: "Misira"}
+  services.prices.LOCAL_DETAIL: {white: "adii", yellow: "keelloo", imported: "alaa galfame", local: "biyya keessaa", dry: "gogaa", red: "diimaa", mixed: "makaa"}
+
+  services.pregnancy.FIRST: "Torban {w}tti, sakatta'iinsa ulfaa jalqabaa amma godhadhu, torban 12 dura."
+  services.pregnancy.DUE_NOW: "Torban {w}tti, sakatta'iinsi ulfaa amma si eeggata. Kan itti aanu torban {next}tti."
+  services.pregnancy.NEXT: "Torban {w}tti, sakatta'iinsi ulfaa kee itti aanu torban {next}tti."
+  services.pregnancy.LATE: "Torban {w}tti sakatta'iinsa dhumaa torban 40tti karoorfame darbiteetta. Har'a hojjetaa fayyaa argi."
+  services.pregnancy.ASK: "Ulfa torban meeqaati? Lakkoofsaan deebisi, fakkeenyaaf torban 22."
+  services.pregnancy.CALL: "{numbers} bilbili."
+
+  services.pests.LIKELY: "Kun {problem} ta'uu danda'a. ACE midhaan kee hin argu, kanaaf mallattoolee kana mirkaneeffadhu:"
+  services.pests.MAYBE: "Tarii {problem}."
+  services.pests.REFER: "Osoo hin facaasin dura hojjetaa ekisteenshinii akka mirkaneessu gaafadhu."
+  services.pests.NAMES.fall_armyworm: "raammoo loltuu boqqolloo"
+  services.pests.NAMES.maize_lethal_necrosis: "dhukkuba ajjeestuu boqqolloo"
+  services.pests.NAMES.cassava_mosaic: "dhukkuba moozaayikii kaasaavaa"
+  services.pests.NAMES.banana_xanthomonas_wilt: "dhukkuba coollagina muuzii"
+  services.pests.NAMES.tomato_leaf_miner: "raammoo baala timaatimaa (Tuta absoluta)"
+  services.pests.ASK: "Midhaan kami, maal argita? Fakkeenyaaf: baala boqqolloo qaawwaa fi daakuu mukaa qabu."
+  services.pests.UNKNOWN: "Amma ACE boqqolloo, kaasaavaa, muuzii fi timaatima ni mirkaneessa. Midhaan biroof hojjetaa ekisteenshinii gaafadhu."
+
+phrases:
+  safety.PREGNANCY: ["ulfa", "ulfaa", "ulfaayi", "garaa qabdi", "ulfa qabdi", "dubartii ulfaa"]
+  safety.POSTPARTUM: ["deesse", "erga deessee", "da'umsa booda", "deessuu booda", "deessee", "deessee booda", "da'e", "ulfa baatte"]
+  safety.MATERNAL_DANGER: ["dhiigni", "dhiiga", "dhiiga ishee", "dhiigni dhangala'aa", "dhiitaa", "kufaa ka'aa", "mataa dhukkubbii cimaa", "ija hin argu", "ijji ishee hin argu", "daa'imni hin sochoofne", "daa'imni garaa keessaa hin sochoo'u", "bishaan dhangala'e", "qorra fi ho'a cimaa", "raafamaa", "raafama", "ni raafamti", "sochii dhiise", "hin sochoo'u", "sochiin dhaabate", "sochii hin godhu"]
+  safety.URGENT: ["hargansuu hin danda'u", "hin hargansu", "hargansuun itti cime", "of wallaale", "of hin beeku", "kufe", "kufaa ka'aa", "dhiiga baay'ee", "dhukkubbii qomaa", "bofti nyaate", "bofti nyaatte", "bofti na nyaate", "iddoo bofti", "gubachuu cimaa", "bofti", "bofni", "bofti ciniinte", "raafamaa jira"]
+  safety.POISON_ACT: ["dhuge", "dhugde", "liqimse", "liqimsite", "nyaate", "nyaatte"]
+  safety.POISON_WHAT: ["summii", "qoricha ilbiisotaa", "keemikaala", "summii hantuutaa", "zayita ibsaa", "beenziinii", "bilchiinaa", "zayita lampaa", "zayita", "gaazii", "naafxaa"]
+  safety.POISONED: ["summaa'e", "summaa'aa", "summaa'uu", "summii dhuge"]
+  safety.GBV: ["gudeedame", "gudeedamte", "gudeeduu", "na gudeede", "miidhaa saalaa", "abbaan manaa koo na rukuta", "na rukuta", "na rukute", "miidhaa manaa keessaa", "si ajjeesa jedhe", "na reeba", "na reebe", "na dhaha", "na dhahe"]
+  safety.CHILD: ["daa'ima", "daa'imni", "intala koo", "ilma koo", "intala", "ijoollee", "mucaa", "intalti", "intalti koo", "ilmi koo", "mucaan koo", "mucaa koo"]
+  safety.CHILD_HARM: ["gudeedame", "gudeedamte", "miidhame", "miidhamte", "rukutame", "rukutamte", "fuudhaa fi heeruma dirqamaa", "humnaan heerumsiifte", "dhaqna qabaa"]
+  safety.SELF_HARM: ["of ajjeesuu", "of ajjeesa", "du'uu barbaada", "lubbuu koo balleessuu", "of miidhuu", "jiraachuu hin barbaadu"]
+
+  scam.PIN: ["lakkoofsa iccitii", "jecha darbii", "piinii"]
+  scam.ASK: ["ergi", "erguu", "qoodi", "naaf kenni", "mirkaneessi", "galchi", "barreessi"]
+  scam.MISTAKE: ["dogoggoraan", "dogoggoraan ergame", "naaf deebisi", "deebisi"]
+  scam.DOUBLE: ["si'a lama galmeeffame"]
+  scam.PRIZE: ["moo'atte", "baga gammadde", "badhaasa", "carraa", "boonasii"]
+  scam.URGENT: ["hatattamaan", "amma amma", "sa'aatii 24 keessatti", "ni cufama", "ni dhaabbata", "akeekkachiisa dhumaa"]
+  scam.CLAIMS_OPERATOR: ["ethio telecom", "telebirr", "safaricom", "m pesa", "tajaajila maamiltootaa"]
+  scam.DIAL: ["tuqi", "bilbili", "galchi"]
+
+  services.CUES.pregnancy_companion: ["hordoffii ulfaa", "sakatta'iinsa ulfaa", "beellama itti aanu"]
+  services.CUES.nearest_facility: ["hospitaala", "hospitaalota", "kiliniika", "buufata fayyaa", "kellaa fayyaa", "dhaabbata fayyaa", "doktora"]
+  services.CUES.official_warnings: ["akeekkachiisa", "akeekkachiisni", "lolaa", "bubbee cimaa", "dahannaa"]
+  services.CUES.rain_this_week: ["rooba", "roobni", "ni rooba", "haala qilleensaa", "raaga", "meetiroolojii"]
+  services.CUES.market_prices: ["gatii", "gatiin", "gabaa", "meeqa", "meeqaan"]
+  services.CUES.pest_check: ["ilbiisa", "ilbiisota", "dhukkuba", "raammoo", "raammoon", "baala", "baalli", "keelloo", "qaawwaa", "coollage", "du'aa jira"]
+  services.SEASONAL: ["ganna", "arfaasaa", "yeroo roobaa", "waqtii"]
+  services.PREGNANT: ["ulfa", "ulfaa"]
+  services.HOW_MUCH: ["meeqa", "meeqaan"]
+  services.prices.FOODS: {boqqolloo: maize, daakuu: flour, baaqelaa: beans, ruuzii: rice, mishingaa: sorghum, daagujjaa: millet, sukkaara: sugar, zayita: oil, qamadii: wheat, xaafii: teff, garbuu: barley, dinnicha: potatoes, timaatima: tomatoes, qullubbii: onions, soogidda: salt, aannan: milk, hanqaaquu: eggs, daabboo: bread, misira: lentils}
+  services.pests.CROPS.maize: ["boqqolloo", "boqqolloon"]
+  services.pests.CROPS.cassava: ["kaasaavaa"]
+  services.pests.CROPS.banana: ["muuzii", "warqee"]
+  services.pests.CROPS.tomato: ["timaatima", "timaatimaa"]
+  services.pests.PROBLEMS.fall_armyworm: ["raammoo", "raammoon", "qaawwaa", "nyaatame", "daakuu mukaa", "ilmoo raammoo"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["keelloo", "keellooftee", "goge", "gogaa", "du'e", "dhukkuba ajjeestuu"]
+  services.pregnancy.WEEK_WORDS: ["torban", "torbaan", "torbee"]
+  services.pregnancy.MONTH_WORDS: ["ji'a", "ji'oota"]
+  commands.COMMANDS.help: ["gargaarsa", "baafata", "jalqabi"]
+  commands.COMMANDS.forget: ["haqi"]
+  commands.COMMANDS.stop: ["dhaabi"]
+  commands.COMMANDS.language: ["afaan"]
+  commands.COMMANDS.tip: ["gorsa"]
+  commands.COMMANDS.scam: ["gowwoomsa"]
+  commands.COMMANDS.sources: ["madda", "maddoota"]
+  commands.COMMANDS.more: ["dabalata", "itti aanu"]
+  text.ACTION_CUES: ["maal gochuu qaba", "maal haa godhu", "akkamittan ittisa", "akkamittan balleessa", "akkamittan kuusa", "na gargaari", "nu gargaaraa"]
+
+words:
+  stopwords: ["fi", "ykn", "garuu", "kun", "sun", "ani", "ati", "inni", "isheen", "nuyi", "isaan", "maal", "akkamitti", "yoom", "eessa", "maaliif", "eenyu", "jira", "hin", "ni", "eeyyee", "lakki", "baay'ee", "nagaa", "maaloo", "galatoomi", "irratti", "keessa", "waliin", "irraa", "kan", "akka", "jedhu", "dha", "ti"]
+  markers: ["fi", "kan", "akka", "maal", "akkamitti", "eessa", "jira", "hin", "maaloo", "galatoomi", "boqqolloo", "rooba", "ulfa", "daa'ima", "dhiiga"]

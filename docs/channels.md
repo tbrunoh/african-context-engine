@@ -36,7 +36,7 @@ Replies in Latin script are folded into the GSM-7 alphabet (typographic marks to
 
 ## Voice (Africa's Talking)
 
-Set the voice callback to `https://your-host/voice?key=<ACE_WEBHOOK_SECRET>`. Callers hear a keypad menu of the loaded packs and the short form of each fact. Check that your provider's text to speech voices support each language before launching a non English line. To accept spoken questions, plug a speech to text engine into `VoiceAdapter` through the `SpeechToText` interface.
+Set the voice callback to `https://your-host/voice?key=<ACE_WEBHOOK_SECRET>`. Callers hear a keypad menu of the loaded packs and the short form of each fact. The line speaks a language only where a voice is known to exist for it: English, Swahili, French, Portuguese and Arabic as of 25 November 2026. Callers who use Amharic, Afaan Oromo or Somali hear the next language of their country that has a voice, then English, and get the full reply in their own language on SMS and USSD. If your provider has checked voices for more languages, list them in `ACE_VOICE_LANGUAGES` (for example `en,sw,am`). To accept spoken questions, pass a speech to text engine to `VoiceAdapter`; `GoogleSpeechToText` from `ace_engine.speech.google` is ready to use. See [speech.md](speech.md).
 
 ## WhatsApp (Cloud API)
 

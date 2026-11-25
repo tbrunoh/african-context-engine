@@ -15,7 +15,7 @@ ACE answers in eight languages: English, Swahili, French, Portuguese, Arabic, Am
 
 ## How a person picks a language
 
-ACE guesses from the first message: Arabic script means Arabic, Ge'ez script means Amharic, and marker words pick out Portuguese, Afaan Oromo, Somali, Swahili and French. Otherwise it uses the first language of the caller's country. A person can switch at any time with LANG and a code (LANG PT), or with the language's own name (Português, العربية, አማርኛ). On USSD the language menu offers up to four languages, the caller's country languages first, each in its own name.
+ACE guesses from the first message: Arabic script means Arabic, Ge'ez script means Amharic, and marker words pick out Portuguese, Afaan Oromo, Somali, Swahili and French. Otherwise it uses the first language of the caller's country. On real speech text from WAXAL, ACE recognises Amharic, Swahili and Afaan Oromo in 93% to 100% of sentences, but it still reads many languages it does not speak as one of its own, most often as Swahili, and Tigrinya as Amharic; see [speech.md](speech.md) and [the results](../benchmark/results/waxal.md). Marker words must be common in their language and rare in every other African language, not only in ACE's eight: short words such as ka and ku are common across the continent and are no longer markers. A person can switch at any time with LANG and a code (LANG PT), or with the language's own name (Português, العربية, አማርኛ). On USSD the language menu offers up to four languages, the caller's country languages first, each in its own name.
 
 ## What a locale file holds
 
@@ -43,3 +43,5 @@ words:         # stopwords and marker words for language detection
 ## Review
 
 No sentence in Portuguese, Arabic, Amharic, Afaan Oromo or Somali has yet been reviewed by a fluent speaker, and the Swahili and French renderings still await review too. A reviewer checks the safety phrases and the maternal danger signs first, then the service templates, then the pack translations, and sets `reviewed: true` in the file once done. Open a pull request with your name and the language; no coding is needed.
+
+`ace locales status` shows each language and whether it has been reviewed. `ace locales backcheck <code>` gives reviewers a head start: it translates every string back into English with Google Cloud Translation and lists the strings whose meaning most likely drifted first, safety strings marked. It needs a Google Cloud project (see [speech.md](speech.md)), writes nothing to the locale file, and never replaces a fluent reviewer.

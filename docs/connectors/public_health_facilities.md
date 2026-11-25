@@ -8,7 +8,9 @@
 
 **Licence.** CC BY 4.0.
 
-**Limits, stated in every answer.** Public facilities only. The list dates from 2019. It has no phone numbers, opening hours or services, so ACE never claims them; every answer ends with the country's verified emergency number.
+**Limits, stated in every answer.** Public facilities only. The list dates from 2019. It has no phone numbers, opening hours or services, so ACE never claims them; every answer ends with the country's verified medical emergency number, and never guesses one where no pack publishes it.
+
+**Clean up.** The source saves accented letters in the wrong encoding (Santé reads Sant├⌐ in 3,359 names, nearly all in Côte d'Ivoire, Senegal and Togo) and title cases apostrophes (St. Mary'S). The connector repairs both and changes nothing else.
 
 **Refresh.** Quarterly, to pick up a new release.
 

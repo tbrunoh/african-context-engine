@@ -13,7 +13,7 @@ git clone https://github.com/tbrunoh/african-context-engine.git
 cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
-pytest && ruff check src tests && ace packs validate
+pytest && ruff check src tests benchmark && ace packs validate && python -m benchmark.run --quick
 ```
 
 ## 1. Knowledge: context packs
@@ -32,7 +32,7 @@ Packs are YAML files under `context_packs/<country>/`. You can contribute throug
 
 1. Open or comment on an issue first for anything larger than a small fix.
 2. Keep pull requests focused. Add tests for new behaviour.
-3. Run `ruff check src tests`, `pytest` and `ace packs validate` before you push.
+3. Run `ruff check src tests benchmark`, `pytest`, `ace packs validate` and `python -m benchmark.run --quick` before you push.
 4. Sign off each commit (`git commit -s`) to certify the [Developer Certificate of Origin](https://developercertificate.org/).
 
 Principles that reviewers will hold you to:

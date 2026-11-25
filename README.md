@@ -8,7 +8,9 @@
 
 **Checked, local, citable knowledge for Africa, on any phone.**
 
-ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong. It answers on USSD, SMS, voice, WhatsApp and the web, in English, Swahili and French, across 13 African countries, and every answer points to the published source it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on USSD, SMS, voice, WhatsApp and the web, in English, Swahili and French, across 13 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+
+**Release 2.0 preview (2.0.0b1, 24 November 2026)** adds six decision services built on public data: rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check. Each one covers all 13 countries wherever open data exists, and names the gap wherever it does not. The services are a preview: they pass ACE's own tests and benchmark, but they have not yet passed the expert review and forecast skill gates set in the [build plan](docs/v2/build-plan.md).
 
 ```
 $ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms
@@ -20,6 +22,13 @@ Sources:
       https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content
   [sourced] ICIPE, Fall armyworm identification, management and control; CIFOR-ICRAF, Fall Armyworm guide
       https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
+
+$ ace ask "will it rain in Kano this week" --phone +2348010000001
+Rain near Kano: mostly dry Wed to Tue. Chances from the ECMWF forecast of 24 Nov.
+
+Sources:
+  [preview] ECMWF IFS ensemble forecast (open data), via Open-Meteo
+      https://open-meteo.com/
 ```
 
 ## Why ACE exists
@@ -30,7 +39,7 @@ Sources:
 
 ACE is the shared layer underneath: open knowledge packs anyone can load, a channel toolkit for the phones people actually use, and a safety rail that runs before anything else. The full competitive map is in [docs/landscape.md](docs/landscape.md).
 
-## What V1 does
+## What ACE does
 
 | Capability | What it means for a person | Where |
 |:--|:--|:--|
@@ -49,7 +58,7 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 
 ### Coverage: 13 countries
 
-67 facts across 18 packs. Every fact was checked against a published public source on 2026-11-23, and every emergency number expires after a year so it is checked again before it is served.
+77 facts across 20 packs. Every fact was checked against a published public source in November 2026, every emergency number expires after a year so it is checked again before it is served, and from 2.0 the number watcher rechecks each one weekly.
 
 | Country | Calling code | Default language | Emergency and helpline numbers | Sources for the numbers |
 |:--|:-:|:-:|:--|:--|
@@ -67,29 +76,52 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | Côte d'Ivoire | +225 | French | 170, 110, 111, 185, 180, 1308, 116 | UK FCDO, Ministère de la Femme, de la Famille et de l'Enfant |
 | Togo | +228 | French | 117, 118, 1011 | UK FCDO, Government of Canada, Child Helpline International |
 
-Two packs apply in every covered country, with English, Swahili and French text:
+Four packs apply in every covered country, with English, Swahili and French text:
 
 | Pack | Facts | Sources |
 |:--|:-:|:--|
 | Danger signs in pregnancy and after birth | 5 | WHO. ACE adds the caller's own national numbers |
+| Antenatal care schedule | 2 | WHO 2016 recommendations |
 | Fall armyworm in maize | 8 | FAO guidance notes, ICIPE, CIFOR-ICRAF. Push-pull is offered only where ICIPE has disseminated it |
+| Crop pests and diseases | 8 | CIMMYT, CABI Plantwise, Bioversity International, IITA, World Vegetable Center |
 
-Kenya also has packs on maize drying and aflatoxin (7 facts, KALRO, USAID AflaSTOP, CGIAR), mobile money safety (10 facts, Safaricom) and rainfall seasons (2 facts, Kenya Meteorological Department).
+Three packs so far are for one country, Kenya: maize drying and aflatoxin (7 facts, KALRO, USAID AflaSTOP, CGIAR), mobile money safety (10 facts, Safaricom) and rainfall seasons (2 facts, Kenya Meteorological Department). Equivalent packs for the other 12 countries are the most valuable contribution a local expert can make.
 
 Where a public source does not publish a number, ACE does not invent one. Togo has no sourced national ambulance number, so a medical emergency there gets the instruction to call the local emergency number or go to the nearest health facility. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. Swahili and French renderings await review by fluent speakers.
 
-## V2: decision services on public data
+## Release 2.0 preview: decision services on public data
 
 <img src="docs/v2/hero.svg" alt="ACE V2 in one picture: public data and open models go in; ACE fetches them into dated snapshots, runs the safety rail first and applies a published decision rule; people get a short, cited answer on any phone" width="100%">
 
-V2 is designed and published; work starts in December 2026. It turns the best public data and open models into decisions people can act on today, on any phone: AI weather and flood forecasts, soil maps, health facility registries, WHO guidance and open speech data in African languages, each turned into a short, cited answer.
+Each service answers one decision in one or two sentences, cites a dated snapshot or a sourced pack fact, and returns a refusal that names who to ask when it cannot answer safely. The safety rail still runs before every service, and services never touch the network: connectors fetch public data on a schedule and write dated, checksummed snapshots that services read.
 
-- **Twelve decision services**, from rain this week and a planting window to the nearest clinic with maternity care and Scam Shield 2 with SIM swap checks.
-- **A voice line** in Swahili, Hausa, Yoruba, French and English, built on open speech data such as WAXAL.
-- **Knowledge that stays true**: signed packs, a weekly number watcher, and dated snapshots from public data connectors.
-- **A shared layer**: every service one API or MCP call away for health, farming and assistant services.
+| Service | What a person hears | Built on | Coverage of the 13 countries |
+|:--|:--|:--|:--|
+| **Rain this week** | The chance of rain each day for their area, in plain words, with the forecast date | ECMWF IFS ensemble (51 runs), open data, via Open-Meteo | All 13 |
+| **Official warnings** | Any warning in force from the national alerting authority, in the authority's own words | CAP feeds listed in the WMO Register of Alerting Authorities | 11 publish a feed ACE reads. Rwanda and Namibia list none. `ace services` shows which feeds answered at the last refresh |
+| **Nearest health facility** | The nearest public facilities with type and distance, then the country's emergency number | Public health facility database for sub-Saharan Africa (Maina et al. 2019, KEMRI-Wellcome) | All 13 (public facilities, 2019 list, no phone numbers) |
+| **Market prices** | What a food cost in the nearest market, and the change on the month before | WFP Price Database, via HDX | 8 with current prices. Botswana has no WFP data; South Africa, Namibia, Zimbabwe and Ghana have none recent enough to quote |
+| **Pregnancy companion** | When the next antenatal check is due, the signs that mean go now, and the country's numbers | WHO 2016 antenatal care schedule; WHO danger signs | All 13 |
+| **Crop problem check** | The likely problem for maize, cassava, banana or tomato, the first step, and a referral before any spraying | FAO, CIMMYT, CABI Plantwise, Bioversity International, IITA, World Vegetable Center | All 13 |
 
-Read the [product spec](docs/v2/product-spec.md), the [data and model catalog](docs/v2/data-catalog.md) and the [build plan](docs/v2/build-plan.md). AI coding agents follow [AGENTS.md](AGENTS.md).
+Places come from official and open boundaries for every country: 346 areas, so a person can name their county, state, region or district instead of sharing a GPS position. Run `ace services` for the live coverage table, with the reason for every gap.
+
+```
+$ ace ask "nearest hospital in Gulu" --phone +256771000001
+Public hospitals in Gulu: Gulu Regional Referral Hospital (regional referral hospital); St. Mary'S Lacor
+Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities; check it is open before you travel.
+```
+
+**What else ships in 2.0**
+
+- **Connectors and snapshots.** Five connectors (`ace refresh`), a licence register (`snapshots/register.yaml`) and dated, checksummed snapshots. ODbL data lives in its own store. A deployment runs `ace refresh` on its own schedule: warnings hourly, weather twice a day, prices weekly. The repository refreshes its demo set daily.
+- **The number watcher.** `ace watch` rechecks every served phone number against its source page every week and opens an issue for a person when one is not found. It never edits a pack on its own.
+- **A public benchmark.** `python -m benchmark.run` reports emergency recall per language, the wrong number rate, the false alarm rate and service checks for every covered country. CI fails on any regression. The red team set is small and written by maintainers, so field messages are the most useful contribution.
+- **Grounding for every assistant.** `POST /v1/services/<id>` on the web server, and seven new MCP tools: `rain_this_week`, `official_warnings`, `nearest_facility`, `market_prices`, `pregnancy_companion`, `pest_check` and `service_coverage`.
+- **USSD menu.** The six services come first on the menu, with topics, questions, Scam Shield and language behind them. Every screen still fits 182 characters.
+- **New packs.** Antenatal care (WHO) and four crop pests and diseases (maize lethal necrosis, cassava mosaic disease, banana Xanthomonas wilt, tomato leaf miner), in English, Swahili and French.
+
+**Not in this preview.** The voice line in African languages, the planting window, soil advice, flood forecasts, Scam Shield 2 with SIM swap checks, opt in alerts and health worker assist are still on the [roadmap](ROADMAP.md). Each needs data access, partners or expert review that a code release cannot supply. Read the [product spec](docs/v2/product-spec.md), the [services guide](docs/services.md), the [data and model catalog](docs/v2/data-catalog.md) and the [build plan](docs/v2/build-plan.md). AI coding agents follow [AGENTS.md](AGENTS.md).
 
 ## Quickstart
 
@@ -99,18 +131,20 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 270+ tests, a few seconds
+pytest                                   # 350+ tests, under a minute
 ace demo                                 # one person, four channels, one memory
+ace services                             # the V2 services and their coverage in each country
+ace ask "bei ya mahindi Mwanza" --phone +255711000001
 ace chat --channel ussd                  # a USSD session in your terminal
 ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```
 
-Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.0.0b1 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 
-<img src="docs/architecture.svg" alt="ACE V1 architecture: six entry points, one pseudonymous identity, an engine that runs the safety rail, Scam Shield, checked context and cited answers over sourced context packs" width="100%">
+<img src="docs/architecture.svg" alt="ACE architecture: six entry points, one pseudonymous identity, an engine that runs the safety rail, Scam Shield, checked context and cited answers over sourced context packs" width="100%">
 
 ```
  USSD   SMS   Voice   WhatsApp   Web/API   MCP        thin adapters, one Message type
@@ -120,18 +154,21 @@ Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language
     | safety      emergency phrases -> verified numbers + human handoff
     | commands    HELP  LANG SW  TIP  SCAM  SOURCES  MORE  FORGET
     | scam        Scam Shield on forwarded money messages
+    | services    V2: rain, warnings, facilities, prices, pregnancy, crops
     | retrieve    filters (review, expiry, place, season) then BM25 ranking
     | compose     extractive by default, or a model with a grounding check
     +----------------------------------------+
                       |
-            Context packs (YAML, CC BY 4.0, versioned in git)
+   Context packs (YAML, CC BY 4.0)    Snapshots (dated, checksummed, licence registered)
+                                              ^
+                                     Connectors (ace refresh, on a schedule)
 ```
 
 Design choices that matter:
 
-- **Nothing reaches a person unless it is grounded in a checked fact or is a fixed system message.** Draft and expired facts are withheld by default.
+- **Nothing reaches a person unless it is grounded in a checked fact, a dated snapshot or is a fixed system message.** Draft and expired facts, and snapshots past their validity, are withheld by default.
 - **Safety first, always.** The rail runs before commands, retrieval and generation. HELP followed by an emergency is still an emergency.
-- **Honest about gaps.** When no checked fact matches, ACE says so and lists what it can help with.
+- **Honest about gaps.** When no checked fact matches, ACE says so and lists what it can help with. When a country has no data for a service, ACE names the gap instead of guessing, and it never says there is no warning unless it checked the official feed in the last six hours.
 - **Fits the channel.** Each channel has a character budget, and answers are composed to fit rather than cut mid sentence.
 - **No vendor lock in.** Standard library plus PyYAML. Any OpenAI compatible model server works, including models you host yourself.
 
@@ -139,8 +176,8 @@ Design choices that matter:
 
 ACE grows through two kinds of contributors, and both matter equally.
 
-- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators. Add facts to a pack, review a Swahili or French translation, or start a pack for your county or country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
-- **Developers**: new channels, languages, retrieval, evaluation. See [docs/good-first-issues.md](docs/good-first-issues.md) for scoped starter tasks.
+- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators and meteorologists in any of the 13 countries or beyond. Add facts to a pack, review a Swahili or French translation, add red team messages people actually send, or start a pack for your country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
+- **Developers**: new connectors that close a gap in the coverage table, new channels, languages, retrieval and evaluation. See [docs/good-first-issues.md](docs/good-first-issues.md) for scoped starter tasks.
 
 Everything else is in [CONTRIBUTING.md](CONTRIBUTING.md). The plan is in [ROADMAP.md](ROADMAP.md).
 
@@ -150,7 +187,7 @@ ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance an
 
 ## Acknowledgments
 
-ACE uses guidance and data published by the World Health Organization, FAO, ICIPE, KALRO, the Kenya Meteorological Department, Safaricom, national governments and regulators in all 13 countries, Child Helpline International, UN agencies and others. Every fact names its source, and [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) credits each organisation and the sources planned for V2. A credit does not mean the organisation endorses ACE.
+ACE uses guidance and data published by the World Health Organization, FAO, ECMWF, WFP, OCHA, the national meteorological services that publish CAP warnings, the KEMRI-Wellcome Trust Research Programme, CIMMYT, CABI, IITA, Bioversity International, the World Vegetable Center, ICIPE, KALRO, Safaricom, national governments and regulators in all 13 countries, Child Helpline International, geoBoundaries, Open-Meteo, UN agencies and others. Every fact names its source, and [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) credits each organisation, and `snapshots/register.yaml` records the licence of every dataset. A credit does not mean the organisation endorses ACE.
 
 ## License
 

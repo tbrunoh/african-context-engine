@@ -61,6 +61,34 @@ Every number was checked against the sources below on 23 November 2026. Each cou
 
 ACE prefers primary sources. Where a fact was confirmed through reporting, the outlet is credited: [The Standard](https://www.standardmedia.co.ke/business/amp/national/article/2001432592/emergency-numbers-you-should-have-over-the-holiday), [The Star](https://the-star.co.ke/news/2023-08-03-dry-and-store-maize-well-to-avoid-aflatoxin-farmers-told), [Daily Nation, Seeds of Gold](https://nation.africa/kenya/business/seeds-of-gold/keep-in-control-maize-losses-this-rainy-season-474984), [Nile Post](https://nilepost.co.ug/news/109883/police-ask-gender-based-violence-victims-to-always-speak-out) and [K24 Digital](https://k24.digital/lifestyle/money/safaricom-lists-fake-fuliza-limit-messages-among-top-scams-targeting-m-pesa-users).
 
+## Sources added in release 2.0 preview
+
+Every dataset below is fetched by a connector into a dated snapshot, and its licence is recorded in [`snapshots/register.yaml`](snapshots/register.yaml). Each connector has a page in [`docs/connectors/`](docs/connectors/README.md).
+
+### Data behind the decision services
+
+| Organisation | What ACE uses | Licence and credit |
+| --- | --- | --- |
+| ECMWF | IFS ensemble forecasts, open data, for rain this week | CC BY 4.0 |
+| Open-Meteo | The [Ensemble API](https://open-meteo.com/en/docs/ensemble-api) that serves the ECMWF data. Weather data by Open-Meteo.com | CC BY 4.0; free API for non-commercial use |
+| World Meteorological Organization | The [Register of Alerting Authorities](https://alertingauthority.wmo.int/), which names each country's official CAP feed | Index of official sources |
+| Kenya Meteorological Department; Tanzania Meteorological Authority; Uganda Department of Meteorological Services; South African Weather Service; Botswana Meteorological Services; Zimbabwe Meteorological Services Department; Nigerian Meteorological Agency; Ghana Meteorological Agency; ANACIM, Senegal; Direction de la Météorologie Nationale (SODEXAM), Côte d'Ivoire; Agence Nationale de la Météorologie du Togo | Official CAP warnings, passed on in the authority's own words | Public warnings; each credited to its authority |
+| World Food Programme | The [WFP Price Database](https://data.humdata.org/organization/wfp), food prices by market for 12 countries | CC BY-IGO |
+| KEMRI-Wellcome Trust Research Programme | Maina J, Ouma PO, Macharia PM et al. (2019), [A spatial database of health facilities managed by the public health sector in sub Saharan Africa](https://doi.org/10.1038/s41597-019-0142-2), Scientific Data 6: 134 | CC BY 4.0 |
+| UN OCHA and the Humanitarian Data Exchange | Hosting of the price and facility datasets, and [COD-AB boundaries](https://data.humdata.org/dataset/cod-ab-uga) for Uganda (Uganda Bureau of Statistics) and Namibia (Namibia Statistics Agency) | CC BY-IGO |
+| geoBoundaries, William & Mary geoLab | [First level boundaries](https://www.geoboundaries.org/) for 11 countries (Runfola et al. 2020), with the national and open sources named in each snapshot, including OpenStreetMap contributors for Tanzania, Togo, Botswana and Ghana | Licence recorded per country; ODbL data in its own store |
+
+### Guidance in the new packs
+
+| Organisation | What ACE uses | Pack |
+| --- | --- | --- |
+| World Health Organization | [New guidelines on antenatal care for a positive pregnancy experience](https://www.who.int/news/item/07-11-2016-new-guidelines-on-antenatal-care-for-a-positive-pregnancy-experience) (2016) | `africa/antenatal-care` |
+| CIMMYT | [Maize lethal necrosis symptoms and best practices](https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf) | `africa/crop-pests-diseases` |
+| CABI Plantwise, with the Tanzania Ministry of Agriculture, Food Security and Cooperatives | [Control of cassava mosaic disease by uprooting](https://farmknowledge.info/sites/default/files/resource/20157800492.pdf) (2014) and [Life cycle of the tomato leaf miner](https://factsheetadmin.plantwise.org/Uploads/PDFs/20187800458.pdf) (Ghana, 2018) | `africa/crop-pests-diseases` |
+| Bioversity International | [Single diseased stem removal for Xanthomonas wilt of banana](https://core.ac.uk/download/211048384.pdf) | `africa/crop-pests-diseases` |
+| International Institute of Tropical Agriculture (IITA) | [Single diseased stem removal to control banana Xanthomonas wilt](https://www.iita.org/news-item/novel-and-effective-technique-to-control-banana-xanthomonas-wilt-is-suitable-for-rwandan-agroecology/) (2020) | `africa/crop-pests-diseases` |
+| World Vegetable Center, with TAHA and icipe | [Tuta absoluta flyer](https://worldveg.tind.io/record/66511/files/Tuta-revised-flyer.pdf) (2016) | `africa/crop-pests-diseases` |
+
 ## Software, services and standards
 
 | Project or service | How ACE uses it | Licence or terms |
@@ -73,7 +101,7 @@ ACE prefers primary sources. Where a fact was confirmed through reporting, the o
 | WhatsApp Cloud API (Meta) | WhatsApp channel, when a deployment configures it | Provider terms |
 | Any OpenAI compatible model server | Optional wording of answers, behind ACE's citation check | Provider or model terms |
 
-## Planned for V2: sources and the credit each requires
+## Planned for later V2 releases: sources and the credit each requires
 
 None of these sources is in the code yet. The [V2 design](docs/v2/README.md) plans to use them. Before a connector fetches anything, it must record the licence and the credit line in `docs/connectors/<name>.md`, and every answer built on it must show the source and its date. The [V2 data and model catalog](docs/v2/data-catalog.md) gives the details of each.
 

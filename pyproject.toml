@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ace-engine"
-version = "1.1.0"
-description = "The African Context Engine: checked, local, citable knowledge behind USSD, SMS, voice, WhatsApp and AI assistants"
+version = "2.0.0b1"
+description = "The African Context Engine: checked, local, citable answers and decision services behind USSD, SMS, voice, WhatsApp and AI assistants, for 13 African countries"
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.10"
 authors = [{ name = "Tom Bruno" }]
-keywords = ["africa", "ussd", "sms", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "mpesa", "swahili"]
+keywords = ["africa", "ussd", "sms", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "weather", "early warning", "market prices", "mpesa", "swahili", "french"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
@@ -45,6 +45,7 @@ packages = ["src/ace_engine"]
 
 [tool.hatch.build.targets.wheel.force-include]
 "context_packs" = "ace_engine/context_packs"
+"snapshots" = "ace_engine/data/snapshots"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

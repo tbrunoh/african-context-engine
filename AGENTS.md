@@ -4,7 +4,7 @@ These rules apply to every AI coding agent working in this repository, including
 
 ## What ACE is
 
-ACE is an open source safety and decision layer for people on any phone in Africa. Release 1.1.0 serves 13 countries in English, Swahili and French over USSD, SMS, voice, WhatsApp, the web and MCP. The [V2 design](docs/v2/README.md) turns public data and open models into short, cited answers. The [V2 build plan](docs/v2/build-plan.md) sets out the epics, the contracts and the order of work.
+ACE is an open source safety and decision layer for people on any phone in Africa. It covers 13 countries in English, Swahili and French over USSD, SMS, voice, WhatsApp, the web and MCP. Release 2.0 preview adds six decision services on dated public data; see [docs/services.md](docs/services.md). The [V2 design](docs/v2/README.md) and [build plan](docs/v2/build-plan.md) set out the rest. Every service covers all 13 countries by default and names the gap wherever data does not exist: never build for one country first.
 
 ## Never break these rules
 
@@ -19,7 +19,7 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 9. **Never store phone numbers in clear.** Use the pseudonymous profile key.
 10. **Keep languages in step.** Every user facing string exists in English, Swahili and French.
 11. **Fit the phone.** 182 characters per USSD screen, three SMS segments, short spoken turns.
-12. **Pass the checks before proposing a change.** Run `ruff check src tests`, `ace packs validate` and `pytest -q`. All must pass. Once `benchmark/` exists, `python -m benchmark.run --quick` must pass too.
+12. **Pass the checks before proposing a change.** Run `ruff check src tests benchmark`, `ace packs validate`, `pytest -q` and `python -m benchmark.run --quick`. All must pass.
 
 ## Where things live
 
@@ -31,10 +31,16 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 | `src/ace_engine/context/` | Pack loading, schema checks and retrieval |
 | `src/ace_engine/channels/` | USSD, SMS, voice and WhatsApp adapters |
 | `src/ace_engine/server.py`, `mcp_server.py` | The web server, JSON API and MCP server |
+| `src/ace_engine/connectors/` | V2 connectors, the only code that touches the network |
+| `src/ace_engine/snapshots/` | The snapshot store and the licence register loader |
+| `src/ace_engine/services/` | V2 decision services, one module each, and the hub that routes to them |
+| `src/ace_engine/places.py`, `watch.py` | Places by name or position; the number watcher |
 | `context_packs/` | Sourced YAML packs, CC BY 4.0 |
-| `docs/v2/` | The V2 product spec, data and model catalog, and build plan |
+| `snapshots/` | Dated snapshots and `register.yaml`; ODbL data in `snapshots/odbl/` |
+| `benchmark/` | Red team and false alarm sets, the runner and the CI baseline |
+| `docs/v2/`, `docs/services.md`, `docs/connectors/` | The V2 design, the services guide and one page per connector |
 
-V2 adds `connectors/`, `snapshots/`, `services/`, `speech/` and `benchmark/` as set out in the build plan. Create them in that shape.
+`speech/` comes with the voice epic, in the shape the build plan sets out.
 
 ## Writing style for docs and user facing text
 

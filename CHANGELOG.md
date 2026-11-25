@@ -1,6 +1,36 @@
 # Changelog
 
-## Unreleased
+## 2.0.0b1 (2026-11-24): V2 preview
+
+The first V2 release. Six decision services turn dated public data into short, cited answers, and each covers all 13 countries wherever open data exists. Where it does not, ACE names the gap. The services are a preview until they pass the launch gates in the build plan: expert panel review, forecast skill and fluent speaker review.
+
+### Added
+- **Six decision services** in `src/ace_engine/services/`: rain this week (ECMWF ensemble), official warnings (national CAP feeds from the WMO register), nearest health facility (Maina et al. 2019), market prices (WFP), a pregnancy companion (WHO 2016 antenatal schedule and danger signs) and a crop problem check (maize, cassava, banana and tomato). The hub runs after the safety rail and Scam Shield and before pack retrieval, asks for the place in the local word when it needs one, and remembers the question.
+- **Places for every country**: 346 areas from geoBoundaries and OCHA COD-AB, found by name or by position, with common names such as Abuja, Accra and Kigali.
+- **Five connectors** and `ace refresh`, the only code that touches the network. Snapshots are dated and checksummed, every source is in the licence register `snapshots/register.yaml`, and ODbL data lives in `snapshots/odbl/`. A page per connector in `docs/connectors/`.
+- **The number watcher**, `ace watch`, and a weekly workflow that opens an issue when a served number is not found on its source page.
+- **A public benchmark**, `python -m benchmark.run`: emergency recall per language, wrong number rate, false alarm rate and service checks for every covered country. CI fails on any regression. The first run found that a snake bit my child and its French form were missed by the safety rail; both now escalate.
+- **Grounding API and MCP tools**: `GET /v1/services`, `POST /v1/services/<id>`, and seven MCP tools, one per service plus `service_coverage`.
+- `ace services`, a coverage table with the reason for every gap.
+- Two packs for every country: antenatal care (WHO) and crop pests and diseases (CIMMYT, CABI Plantwise, Bioversity International, IITA, World Vegetable Center), in English, Swahili and French.
+- `docs/services.md`, and 84 new tests, all offline.
+- A daily `refresh` workflow that keeps the demo snapshots current.
+
+### Changed
+- The USSD main menu puts the six services first, then topics, questions, Scam Shield and language. Without snapshots a deployment keeps the V1 menu.
+- `Engine.from_packs` loads snapshots from `./snapshots` or the installed copy; pass `snapshots=None` for a packs only engine.
+- Citations carry a licence and a date. Profiles remember the last place named and a service waiting for an answer.
+- The V2 spec, build plan and roadmap drop the Kenya first framing: every service covers all 13 countries by default.
+- The wheel ships the snapshots, so an installed ACE answers without a refresh.
+
+### Known gaps
+- Official warnings: Rwanda and Namibia list no CAP feed. South Africa's feed was down and Kenya's was reachable only through an out of date mirror at the release refresh; ACE says it cannot tell until a feed answers.
+- Market prices: Botswana has no WFP dataset, and South Africa, Ghana, Namibia and Zimbabwe have no price recent enough to quote.
+- Facilities: public facilities only, from a 2019 list, with no phone numbers.
+- The number watcher found source links to recheck: Botswana Police's magazine PDF and Senegal's health ministry page no longer load, and three Namibia numbers sit on a page that loads them with a script.
+- Swahili and French text in the new packs and services awaits review by fluent speakers.
+
+## Design work (24 November 2026)
 
 ### Added
 - The V2 design in `docs/v2/`: a product spec with twelve decision services built on public data, a data and model catalog, and a build plan for Google Antigravity.

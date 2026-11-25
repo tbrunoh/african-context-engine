@@ -1,7 +1,7 @@
 """ACE: the African Context Engine.
 
 Checked, local, citable knowledge behind every entry point people in Africa
-actually use: USSD, SMS, voice, WhatsApp, apps and AI assistants. From 2.0, decision
+actually use: USSD, SMS, RCS, voice, WhatsApp, apps and AI assistants. From 2.0, decision
 services turn dated public data into short, cited answers for 34 countries, in English, Swahili,
 French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali.
 """

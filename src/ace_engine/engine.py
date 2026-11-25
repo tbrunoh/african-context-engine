@@ -43,6 +43,7 @@ from .tips import Tip, TipQueue
 CHANNEL_BUDGETS: dict[Channel, Budget] = {
     Channel.USSD: Budget(max_chars=150, short=True, max_facts=1),
     Channel.SMS: Budget(max_chars=450, short=True, max_facts=3),     # three GSM-7 segments
+    Channel.RCS: Budget(max_chars=450, short=True, max_facts=3),     # fits SMS, so a fallback never cuts it
     Channel.VOICE: Budget(max_chars=320, short=True, max_facts=2),
     Channel.RADIO: Budget(max_chars=320, short=True, max_facts=2),
     Channel.WHATSAPP: Budget(max_chars=1200, short=False, max_facts=3),
@@ -159,7 +160,7 @@ class Engine:
 
     @staticmethod
     def _fit_alphabet(budget: Budget, channel: Channel, lang: str) -> Budget:
-        """Shrink SMS and USSD budgets for languages whose script needs UCS-2 (Arabic, Amharic)."""
+        """Shrink SMS, RCS and USSD budgets for languages whose script needs UCS-2 (Arabic, Amharic)."""
         scaled = encoding.scale(budget.max_chars, channel.value, lang)
         return budget if scaled == budget.max_chars else replace(budget, max_chars=scaled)
 

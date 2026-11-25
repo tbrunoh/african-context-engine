@@ -15,11 +15,18 @@ Routes
     GET  /voice/audio/<file>  synthesised prompts the voice call plays (only with a PlayedVoice)
     GET  /whatsapp            Meta webhook verification
     POST /whatsapp            WhatsApp Cloud API webhook (JSON)      -> sends replies if configured
+    POST /rcs                 RCS Business Messaging webhook (JSON)  -> replies by RCS, or SMS as fallback
 
 Security
     ACE_API_TOKEN         when set, /v1/* requires "Authorization: Bearer <token>"
     ACE_WEBHOOK_SECRET    when set, /ussd, /sms and /voice require ?key=<secret> in the callback URL
     WHATSAPP_APP_SECRET   when set, POST /whatsapp requires a valid X-Hub-Signature-256
+    RBM_CLIENT_TOKEN      the RCS webhook client token: answers console verification and checks X-Goog-Signature.
+                          Without it, POST /rcs answers 503, so unsigned messages can never trigger texts
+
+RCS
+    ACE_RCS_COUNTRIES     countries where RCS is switched on, for example NG,ZA. Empty (the default) keeps RCS off,
+                          so replies go by SMS. Where it is on, ACE checks that each person can receive RCS first
 
 Voice audio
     ACE_VOICE_AUDIO_URL   public base URL of this server; with GEMINI_API_KEY set, the voice line plays Gemini
@@ -38,7 +45,17 @@ from importlib import resources
 from typing import Any
 from urllib.parse import parse_qs
 
-from .channels import SmsAdapter, UssdApp, VoiceApp, WhatsAppAdapter, verify_signature, verify_subscription
+from .channels import (
+    RcsAdapter,
+    RcsWithSmsFallback,
+    SmsAdapter,
+    UssdApp,
+    VoiceApp,
+    WhatsAppAdapter,
+    verify_signature,
+    verify_subscription,
+)
+from .channels import rcs as rcs_channel
 from .countries import COUNTRIES
 from .engine import Engine
 from .models import Channel, GeoPoint, Message
@@ -65,12 +82,15 @@ class AceApp:
 
     def __init__(self, engine: Engine, sms_sender: Any = None, whatsapp_sender: Any = None,
                  api_token: str | None = None, webhook_secret: str | None = None,
-                 whatsapp_verify_token: str | None = None, whatsapp_app_secret: str | None = None) -> None:
+                 whatsapp_verify_token: str | None = None, whatsapp_app_secret: str | None = None,
+                 rcs_sender: Any = None, rcs_client_token: str | None = None,
+                 rcs_countries: Iterable[str] | None = None) -> None:
         self.engine = engine
         self.ussd = UssdApp(engine)
         self.voice = VoiceApp(engine, voice=played_voice_from_env())
         self.sms = SmsAdapter()
         self.wa = WhatsAppAdapter()
+        self.rcs = RcsAdapter()
         self.sms_sender = sms_sender
         self.whatsapp_sender = whatsapp_sender
         self.api_token = api_token if api_token is not None else os.environ.get("ACE_API_TOKEN", "")
@@ -79,6 +99,9 @@ class AceApp:
         self.wa_verify = whatsapp_verify_token or os.environ.get("WHATSAPP_VERIFY_TOKEN", "")
         self.wa_secret = (whatsapp_app_secret if whatsapp_app_secret is not None
                           else os.environ.get("WHATSAPP_APP_SECRET", ""))
+        self.rcs_token = (rcs_client_token if rcs_client_token is not None
+                          else os.environ.get("RBM_CLIENT_TOKEN", ""))
+        self.rcs_delivery = RcsWithSmsFallback(rcs_sender, sms_sender, rcs_countries)
 
     # ------------------------------------------------------------------ WSGI
 
@@ -139,6 +162,19 @@ class AceApp:
                                                            self.wa_secret):
                     return _json(403, {"error": "invalid signature"})
                 return self._whatsapp(body)
+
+        if path == "/rcs" and method == "POST":
+            data = _json_body(body)
+            if environ.get("HTTP_X_GOOG_WEBHOOK_TYPE") == "verification" or "clientToken" in data:
+                secret = rcs_channel.verify_webhook(data, self.rcs_token)
+                if secret is None:
+                    return _json(403, {"error": "verification failed"})
+                return "200 OK", [("Content-Type", "text/plain")], secret.encode()
+            if not self.rcs_token:  # never act on unsigned messages: they could trigger texts to any number
+                return _json(503, {"error": "RCS webhook not configured: set RBM_CLIENT_TOKEN"})
+            if not rcs_channel.verify_signature(body, environ.get("HTTP_X_GOOG_SIGNATURE"), self.rcs_token):
+                return _json(403, {"error": "invalid signature"})
+            return self._rcs(data)
         return _json(404, {"error": "not found"})
 
     # ------------------------------------------------------------------ handlers
@@ -231,6 +267,16 @@ class AceApp:
                 self.whatsapp_sender.send(message.sender, part)
         return _json(200, {"kind": reply.kind.value, "messages": parts, "sent": self.whatsapp_sender is not None})
 
+    def _rcs(self, data: dict[str, Any]) -> tuple[str, list[tuple[str, str]], bytes]:
+        try:
+            message = self.rcs.parse_inbound(data)
+        except ValueError:
+            return _json(200, {"status": "ignored"})  # delivery, read and typing events
+        reply = self.engine.handle(message)
+        text = self.rcs.render(reply)[0]
+        sent = self.rcs_delivery.send(message.sender, text, rcs_channel.chips_for(reply), sms_text=reply.text)
+        return _json(200, {"kind": reply.kind.value, "messages": sent["parts"], "channel": sent["channel"]})
+
     @staticmethod
     def _body(environ: dict[str, Any]) -> bytes:
         try:
@@ -244,7 +290,7 @@ class AceApp:
 
 def _json(code: int, data: dict[str, Any]) -> tuple[str, list[tuple[str, str]], bytes]:
     reasons = {200: "OK", 400: "Bad Request", 401: "Unauthorized", 403: "Forbidden", 404: "Not Found",
-               405: "Method Not Allowed", 500: "Internal Server Error"}
+               405: "Method Not Allowed", 500: "Internal Server Error", 503: "Service Unavailable"}
     return (f"{code} {reasons.get(code, 'OK')}", [("Content-Type", "application/json; charset=utf-8")],
             json.dumps(data, ensure_ascii=False).encode())
 

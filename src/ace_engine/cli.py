@@ -27,7 +27,7 @@ import sys
 from pathlib import Path
 
 from . import __version__
-from .channels import SmsAdapter, UssdApp, VoiceAdapter, WhatsAppAdapter
+from .channels import RcsAdapter, SmsAdapter, UssdApp, VoiceAdapter, WhatsAppAdapter
 from .context.packs import check_file, pack_files
 from .countries import COUNTRIES, default_language
 from .engine import Engine, EngineConfig
@@ -86,7 +86,7 @@ def cmd_chat(args: argparse.Namespace) -> int:
     print("Type a message. Ctrl+D or 'exit' to quit.\n")
     if channel is Channel.USSD:
         return _ussd_loop(engine, args.phone)
-    adapter = {Channel.SMS: SmsAdapter(), Channel.WHATSAPP: WhatsAppAdapter(),
+    adapter = {Channel.SMS: SmsAdapter(), Channel.RCS: RcsAdapter(), Channel.WHATSAPP: WhatsAppAdapter(),
                Channel.VOICE: VoiceAdapter()}.get(channel)
     while True:
         try:
@@ -210,7 +210,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_ask)
 
     p = sub.add_parser("chat", parents=[common], help="interactive session")
-    p.add_argument("--channel", default="sms", choices=["sms", "ussd", "whatsapp", "voice", "api"])
+    p.add_argument("--channel", default="sms", choices=["sms", "rcs", "ussd", "whatsapp", "voice", "api"])
     p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country")
     p.add_argument("--tips-file", dest="tips_file")
     p.set_defaults(func=cmd_chat)

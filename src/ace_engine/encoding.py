@@ -62,7 +62,7 @@ def sms_limit(lang: str, segments: int = 3) -> int:
 
 def scale(max_chars: int, channel: str, lang: str) -> int:
     """A channel budget in GSM characters, scaled to what the language's alphabet carries."""
-    if not i18n.is_ucs2(lang) or channel not in ("ussd", "sms"):
+    if not i18n.is_ucs2(lang) or channel not in ("ussd", "sms", "rcs"):
         return max_chars
-    ratio = USSD_UCS2 / USSD_GSM if channel == "ussd" else SMS_UCS2_MULTI / SMS_GSM_MULTI
+    ratio = USSD_UCS2 / USSD_GSM if channel == "ussd" else SMS_UCS2_MULTI / SMS_GSM_MULTI  # RCS falls back to SMS
     return max(40, int(max_chars * ratio))

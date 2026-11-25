@@ -13,6 +13,7 @@ class Channel(str, Enum):
     VOICE = "voice"
     USSD = "ussd"
     SMS = "sms"
+    RCS = "rcs"
     WHATSAPP = "whatsapp"
     APP = "app"
     AGENT = "agent"

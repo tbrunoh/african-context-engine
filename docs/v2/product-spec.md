@@ -2,6 +2,8 @@
 
 24 November 2026 · Tom Bruno
 
+**Status.** Release 2.0 preview, published the same day, ships six of the twelve services for all 13 countries: rain this week, official warnings, nearest health facility, market prices, the pregnancy companion and the pest check. Each is labelled a preview until it passes its gate. The [services guide](../services.md) has the decision rules, coverage and gaps.
+
 <img src="hero.svg" alt="ACE V2 in one picture: public data and open models go in; ACE fetches them into dated snapshots, runs the safety rail first and applies a published decision rule; people get a short, cited answer on any phone" width="100%">
 
 **On this page:** [Summary](#summary-v2-turns-the-best-public-data-and-open-models-into-decisions-people-can-act-on-today-on-any-phone) · [The big picture](#the-big-picture-the-data-now-exists-the-last-mile-does-not) · [Who V2 serves](#who-v2-serves-six-people-each-facing-a-decision-that-cannot-wait) · [Twelve services](#what-v2-ships-twelve-decision-services-each-built-on-named-public-data) · [Journeys](#three-journeys-show-what-usable-means) · [Pillars](#five-pillars-carry-v2-on-one-foundation-of-measured-safety) · [Architecture](#architecture-v1s-pipeline-stays-v2-adds-speech-in-front-decision-services-in-the-middle-and-public-data-connectors-behind) · [Roadmap](#roadmap-foundations-first-then-weather-and-voice-then-farm-and-health-then-reach) · [Measures](#how-we-will-know-it-works-nine-measures-published-every-release) · [Risks](#risks-and-safeguards-the-biggest-risk-is-a-confident-voice-giving-a-wrong-instruction) · [Decisions](#decisions-needed-before-phase-1) · [Sources](#sources)
@@ -80,11 +82,11 @@ ACE should not race to be the smartest assistant. It should own those two things
 
 | Person | The decision they face | What ACE gives them |
 | --- | --- | --- |
-| A smallholder farmer in Embu with a basic phone | When to plant, whether to spray, whether to sell this week | Planting window, rain this week, pest check and market prices, by USSD, SMS or voice in Swahili |
+| A smallholder farmer near Kaolack with a basic phone | When to plant, whether to spray, whether to sell this week | Planting window, rain this week, pest check and market prices, by USSD, SMS or voice in French |
 | An expectant mother in Kano who cannot read | Whether a symptom means go now, and where | Danger sign check, the nearest facility with maternity care and its number, and pregnancy reminders, by voice in Hausa |
 | A community health worker in Kakamega | Whether to refer, where, and how to explain it to the family | Danger sign rules inside her Community Health Toolkit app, the referral facility and a short script in Swahili |
 | A trader in Accra who lives on mobile money | Whether a message or call is a scam | Scam check with the SIM swap signal, the right report line and scam wave warnings |
-| A county extension officer in Kenya | Which wards face flood, pest or price shocks this week | A weekly digest of flood forecasts, official warnings, pest reports and market prices, by SMS or web |
+| A district agricultural officer in Tanzania | Which wards face flood, pest or price shocks this week | A weekly digest of flood forecasts, official warnings, pest reports and market prices, by SMS or web |
 | A developer at a health or farming service | How to add verified local safety and data without rebuilding it | The grounding API and MCP tools, with citations and a public benchmark |
 
 ## What V2 ships: twelve decision services, each built on named public data
@@ -114,9 +116,9 @@ Every service is reachable four ways: the voice line, USSD and SMS, WhatsApp and
 
 The journeys are illustrative; each step uses a service from the table above.
 
-<img src="journeys.svg" alt="Three journeys: a farmer in Embu, an expectant mother in Kano and a community health worker in Kakamega, each in four steps from question to cited answer" width="100%">
+<img src="journeys.svg" alt="Three journeys: a farmer near Kaolack, an expectant mother in Kano and a community health worker in Kakamega, each in four steps from question to cited answer" width="100%">
 
-- **Wanjiru, a farmer in Embu with a basic phone.** In late September she dials the ACE short code and picks Farm, then Planting. An SMS in Swahili tells her the rains are likely to start in her ward within two weeks, and to plant after the first soaking rain, not the first shower. Two weeks after she reports planting, ACE sends a fall armyworm scouting reminder. When the river near her farm is forecast to flood, she gets a voice call, because she opted in.
+- **Fatou, a farmer near Kaolack in Senegal with a basic phone.** In June she dials the ACE short code and picks Farm, then Planting. An SMS in French tells her the rains are likely to start in her area within two weeks, and to plant after the first soaking rain, not the first shower. Two weeks after she reports planting, ACE sends a fall armyworm scouting reminder. When the river near her farm is forecast to flood, she gets a voice call, because she opted in.
 - **Amina, expecting her first child in Kano, who cannot read.** She calls the voice line and speaks Hausa. She says her feet are swollen and her head hurts. The safety rail matches danger signs from the maternal pack and answers first: go to a facility today. ACE names the nearest facility with maternity care and its number, then offers a reminder call before her next antenatal visit.
 - **Grace, a community health worker in Kakamega, using Kenya's eCHIS app.** During a home visit she records a newborn breathing fast. The app calls ACE, which returns the danger sign rule, the referral facility for that household and a short explanation in Swahili for the family. The answer cites the WHO table and the facility record it came from.
 
@@ -128,7 +130,7 @@ Each pillar maps to a commitment: decision services make ACE useful, voice makes
 
 | Pillar | What ships | The person it serves |
 | --- | --- | --- |
-| **1. Decision services and alerts** | Twelve services built on named public data, each with a published decision rule, a source and a date. Opt in alerts by SMS or voice, only from official or published sources, only to people who asked | A farmer in Embu learns the rains are likely to start within two weeks, then gets a fall armyworm scouting reminder after planting, without asking |
+| **1. Decision services and alerts** | Twelve services built on named public data, each with a published decision rule, a source and a date. Opt in alerts by SMS or voice, only from official or published sources, only to people who asked | A farmer near Kaolack learns the rains are likely to start within two weeks, then gets a fall armyworm scouting reminder after planting, without asking |
 | **2. Voice for everyone** | A voice line: call, speak in Swahili, Hausa, Yoruba, French or English, hear the answer. Speech recognition fine tuned on open WAXAL data, with code switching. Danger words checked on the transcript and on keyword spotting, so an emergency is never lost to a bad transcription. Keypad fallback on every turn | A grandmother in Kano who cannot read describes her grandson's fever and hears what to do and which number to call |
 | **3. Signed, self checking knowledge** | Packs signed by the publishing institution and the reviewer. A number watcher that rechecks every source page weekly and flags any change before an answer can use it. An importer for WHO SMART Guidelines decision tables and FAO guidance. Dated snapshots from every data connector, each with its source and licence | A Ministry of Health officer updates a helpline number once, and every service using ACE serves the new number the same day |
 | **4. Scam Shield 2** | Checks the sender against operator SIM Swap and Scam Signal APIs where available. Packs for MTN MoMo, Airtel Money, Orange Money and Wave from the operators' own guidance. Community scam reports grouped into scam wave warnings. Advice on voice cloned calls | A trader in Accra forwards a message from her brother's number and learns that his SIM was swapped an hour ago |
@@ -180,10 +182,10 @@ The targets below are proposed for the end of V2 and would be confirmed once the
 
 ## Decisions needed before phase 1
 
-1. **First voice country and language.** Kenya in Swahili builds on the deepest packs; Senegal or Côte d'Ivoire in French proves the multilingual claim. Recommendation: Kenya first, French second.
-2. **First service bundle.** Rain this week, flood and official warnings and the facility finder, or the full farming and health bundles at once. Recommendation: the first three, because their data is national, ready and safe to state; farming and health follow in phase 3.
+1. **First voice languages.** Swahili reaches East Africa and French reaches Senegal, Côte d'Ivoire, Togo and Rwanda. Recommendation: pilot Swahili and French together, so the first voice release proves the multilingual claim in East and West Africa at once; Hausa, Yoruba and English follow.
+2. **First service bundle.** Decided: the 2.0 preview shipped rain this week, official warnings, the facility finder, market prices, the pregnancy companion and the pest check for all 13 countries, each labelled a preview until it passes its gate.
 3. **Data access to request in December.** The Flood Forecasting API waitlist, the WeatherNext data request, the Agricultural Understanding API allowlist and a TomorrowNow GAP account. MetNet nowcasts appear only in Search today, with no public data access found, so ask Google Research Africa whether partner access is possible. Recommendation: file all four in week one of phase 1.
-4. **Partner programme to approach first.** TomorrowNow and KALRO, grantees of the Gates Foundation and Google farmer initiative, or Horizon1000 in Rwanda. Recommendation: TomorrowNow and KALRO, because ACE already has its deepest packs in Kenya and GAP is open source.
+4. **Partner programmes to approach first.** TomorrowNow and KALRO, grantees of the Gates Foundation and Google farmer initiative, Horizon1000 in Rwanda, and the national met services whose CAP warnings ACE already reads. Recommendation: approach one programme in East Africa and one in West Africa in parallel, so no region waits on the other: TomorrowNow, whose GAP platform is open source, and a francophone met service such as ANACIM in Senegal.
 5. **Who ACE serves first.** Partners first (grounding API) or people first (voice line). Recommendation: build both, but count a partner integration as the main success measure, because it multiplies reach.
 6. **A neutral home.** Stay under the current GitHub account, or move to a foundation or fiscal host and apply to the Digital Public Goods registry so governments and funders can adopt it. Recommendation: decide before approaching ministries in phase 2.
 7. **Model policy.** Stay model free by default, or ship an optional small on device model such as Gemma 3n, which runs in about 2 GB of memory ([Google](https://developers.googleblog.com/introducing-gemma-3n-developer-guide/)), for wording answers. Recommendation: keep extractive answers as the default; allow a model only behind the citation check that V1 already has.

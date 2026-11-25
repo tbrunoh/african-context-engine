@@ -4,6 +4,8 @@ This plan turns the [product spec](product-spec.md) into work an agent team can 
 
 <img src="architecture.svg" alt="V2 architecture the build plan delivers: entry points, one identity, the engine, a knowledge layer fed by public data connectors, and outbound alerts and handoff" width="100%">
 
+Status on 24 November 2026: release 2.0 preview delivered E0 (foundations, the benchmark in CI and the number watcher) and first versions of E1, E2, E3, E4, E5 and E8 for all 13 countries, labelled preview. The done criteria below are the gates each service must still pass to leave preview.
+
 ## How ACE uses each Antigravity feature
 
 | Antigravity feature | How ACE uses it |
@@ -90,9 +92,9 @@ class Answer:
 | Epic | First tickets | Done when | Phase |
 | --- | --- | --- | --- |
 | E0 Foundations | Connector base and snapshot store; licence register; contract test kit; benchmark runner in CI | A sample connector passes the contract tests; every snapshot carries source, licence, date and checksum; CI fails on any benchmark regression | 1 |
-| E1 Weather | WeatherNext connector on BigQuery; GAP connector; rain this week service for Kenya in English and Swahili | On 2022 to 2025 hindcasts the service beats the season average at TAHMO stations; every answer fits one SMS | 2 |
+| E1 Weather | WeatherNext connector on BigQuery; GAP connector; rain this week service out of preview in all 13 countries | On 2022 to 2025 hindcasts the service beats the season average at weather stations in each country, TAHMO where available; every answer fits one SMS | 2 |
 | E2 Floods and warnings | Flood Forecasting API connector; CAP connector driven by the WMO register; flood and warning services; opt in alerts | A replayed CAP alert reaches test phones within 15 minutes; nobody who did not opt in receives it | 2 |
-| E3 Facilities | KMHFL connector; healthsites.io connector in its own ODbL store; facility finder by service type | Nearest facility correct on a hand checked sample of 200 Kenyan locations; when no number is listed, ACE gives the national line | 2 |
+| E3 Facilities | KMHFL connector; healthsites.io connector in its own ODbL store; facility finder by service type | Nearest facility correct on a hand checked sample of 200 locations spread across the 13 countries; when no number is listed, ACE gives the national line | 2 |
 | E4 Farm | iSDAsoil and Agricultural Understanding connectors; pest symptom trees from signed packs; HDX HAPI price connector; planting window service | An agronomist panel reviews 50 answers per crop and finds no unsafe advice; every price shows its market and date | 3 |
 | E5 Health | WHO antenatal care kit importer; pregnancy companion; Community Health Toolkit integration through the grounding API | Every danger sign in the kit has a safety rail test; a clinician panel signs off; a CHT test instance calls ACE end to end | 3 and 4 |
 | E6 Voice | Swahili speech recognition tuned on WAXAL; keyword spotting for danger words; text to speech; voice channel | 99% emergency recall on the voice red team set; keypad fallback on every turn | 2 to 4 |
@@ -104,7 +106,7 @@ class Answer:
 1. **Planner.** Read AGENTS.md, docs/architecture.md and docs/v2/product-spec.md. Break epic E0 into pull requests under 400 lines each, list the tests each adds, and stop for review before writing code.
 2. **Connector agent, in its own worktree.** Build connectors/base.py and snapshots/store.py to the contracts in this plan, with a fake connector and contract tests. Do not touch safety.py.
 3. **Benchmark agent.** Add benchmark/run.py with a quick mode for CI and a full mode for nightly runs. Start from the V1 safety tests and report emergency recall per language.
-4. **Weather agent, after E0 merges.** Build the GAP connector against its documented REST API with a key from the environment, then the rain this week service for Kenya. Add the connector to ACKNOWLEDGMENTS.md and docs/connectors/. Show a walkthrough of five sample answers in English and Swahili.
+4. **Weather agent, after E0 merges.** Build the GAP connector against its documented REST API with a key from the environment, then extend the rain this week service with it in every covered country. Add the connector to ACKNOWLEDGMENTS.md and docs/connectors/. Show a walkthrough of five sample answers from different countries in English, Swahili and French.
 5. **Reviewer.** On every pull request, run the checks in AGENTS.md, confirm that each new user facing string exists in English, Swahili and French, confirm that every new source is credited, and reject any answer without a citation.
 
 ## Evaluation plan: every gate is a published number

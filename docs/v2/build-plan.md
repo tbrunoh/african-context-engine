@@ -97,7 +97,7 @@ class Answer:
 | E3 Facilities | KMHFL connector; healthsites.io connector in its own ODbL store; facility finder by service type | Nearest facility correct on a hand checked sample of 200 locations spread across the covered countries; when no number is listed, ACE gives the national line | 2 |
 | E4 Farm | iSDAsoil and Agricultural Understanding connectors; pest symptom trees from signed packs; HDX HAPI price connector; planting window service | An agronomist panel reviews 50 answers per crop and finds no unsafe advice; every price shows its market and date | 3 |
 | E5 Health | WHO antenatal care kit importer; pregnancy companion; Community Health Toolkit integration through the grounding API | Every danger sign in the kit has a safety rail test; a clinician panel signs off; a CHT test instance calls ACE end to end | 3 and 4 |
-| E6 Voice | Swahili speech recognition tuned on WAXAL; keyword spotting for danger words; text to speech; voice channel | 99% emergency recall on the voice red team set; keypad fallback on every turn | 2 to 4 |
+| E6 Voice | Speech recognition on Chirp 3 where it exists and tuned on WAXAL for Amharic and Afaan Oromo; keyword spotting for danger words; text to speech; voice channel. 2.2 shipped the interfaces, the Google Cloud providers and the spoken language rule ([speech.md](../speech.md)) | 99% emergency recall on the voice red team set; keypad fallback on every turn | 2 to 4 |
 | E7 Scam Shield 2 | SIM Swap connector through an operator or aggregator sandbox; scam service; scam wave grouping | Recall and false alarm rate published per country | 3 |
 | E8 Grounding | MCP tool and API route per service; partner keys and rate limits; citation badge rule | A partner sandbox passes the safety benchmark | 3 |
 

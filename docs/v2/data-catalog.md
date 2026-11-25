@@ -5,7 +5,7 @@ Every V2 service is built on the sources below. Each row says what ACE takes fro
 ## Six licence rules every connector follows
 
 - Record the licence, the attribution line and the refresh schedule in `docs/connectors/<name>.md` before the first fetch, add the source to ACKNOWLEDGMENTS.md, and show the source and its date in every answer.
-- CC BY 4.0 data, such as WAXAL, iSDAsoil and the Flood Forecasting API, can be used and redistributed with attribution.
+- CC BY 4.0 data, such as iSDAsoil, the Flood Forecasting API and the University of Ghana sets in WAXAL, can be used and redistributed with attribution. The other WAXAL sets are CC BY-SA 4.0, so anything derived from them carries the same licence.
 - ODbL data, such as healthsites.io and OpenStreetMap, stays in its own store, because any database derived from it and shared must also be shared under ODbL.
 - Terms of use apply on top of any licence for MedGemma (HAI-DEF terms), HDX HAPI and the FEWS NET Data Warehouse. Read them before a service ships.
 - The Community Health Toolkit is AGPL 3.0, so ACE integrates with it over an API and does not copy its code.
@@ -71,7 +71,7 @@ Every V2 service is built on the sources below. Each row says what ACE takes fro
 
 | Source | What ACE uses it for | Coverage | Access and licence | Feeds |
 | --- | --- | --- | --- | --- |
-| [WAXAL](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/) | Speech recognition and voice data for 27 Sub-Saharan languages: about 1,846 hours of transcribed speech plus studio recordings for synthetic voices | More than 26 countries | CC BY 4.0 on Hugging Face | Voice line |
+| [WAXAL](https://research.google/blog/waxal-a-large-scale-open-resource-for-african-language-speech-technology/) | Speech recognition and voice data. The dataset card (revision 5f4d8ca, 1 September 2026) lists 2,242 hours of transcribed speech in 19 languages, including Amharic and Afaan Oromo, and 15 voice sets, including Swahili, Hausa and Yoruba. The March 2026 announcement counted 27 languages. ACE measures its language tools on it today; see [speech.md](../speech.md) | More than 26 countries | CC BY 4.0 for University of Ghana sets, CC BY-SA 4.0 for the rest, on Hugging Face | Voice line, language benchmark |
 | [Sunbird AI](https://huggingface.co/sunbird) | Sunflower 14B and 32B models for about 40 Ugandan languages; Whisper based speech models for 51 African languages | Uganda and East Africa | Open models on Hugging Face; check each model's licence | Voice, translation |
 | [N-ATLaS](https://techcabal.com/2025/09/25/nigerian-government-awarri-launch-n-atlas/) | Open model for Yoruba, Hausa, Igbo and Nigerian accented English, in speech and text | Nigeria | Open on Hugging Face; check licence | Hausa and Yoruba voice |
 | [Intron Sahara](https://techcabal.com/2026/03/05/intron-expands-sahara-to-57-languages/) | Speech recognition in 57 languages, including Swahili and English code switching | Africa | Check terms | Voice fallback |

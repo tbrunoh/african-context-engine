@@ -147,6 +147,14 @@ Every number was checked on 24 November 2026 against the getting help page the U
 | Google AI for Developers | Published language lists for [Gemini TTS](https://ai.google.dev/gemini-api/docs/speech-generation) and [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe), checked on 25 November 2026 | Public documentation | `src/ace_engine/speech/support.yaml` |
 | Africa's Talking | The [Say action](https://developers.africastalking.com/docs/voice/actions/say) reads text with Google Cloud Text-to-Speech voices, which sets which languages the keypad line can speak without synthesis | Public documentation | `src/ace_engine/channels/voice.py` |
 
+### Used by the tokenizer audit in 2.2.0b3
+
+| Organisation | What ACE uses | Licence | Where |
+| --- | --- | --- | --- |
+| Meta AI and the NLLB team | The [FLORES-200](https://github.com/facebookresearch/flores/blob/main/flores200/README.md) dev and devtest sentences, downloaded at run time to measure tokenizers. No FLORES text is stored in ACE | CC BY-SA 4.0 | `benchmark/tokenizer-audit` |
+| Abdulmumin et al. (2024), from Data Science for Social Impact at the University of Pretoria and co-authors | [Native speaker corrections](https://github.com/dsfsi/flores-fix-4-africa) to FLORES for Hausa, Northern Sotho, Xitsonga and isiZulu (Abdulmumin et al., 2024), downloaded at run time from one pinned commit | As published by the authors | `benchmark/tokenizer-audit` |
+| OpenAI, Meta, Alibaba Qwen, Google, DeepSeek, Mistral AI and NVIDIA | The published tokenizers of o200k and cl100k (through tiktoken, which checks its own files), Llama 3 and Llama 4 (through the unsloth mirrors on Hugging Face, because Meta's repositories require a sign in), Qwen3 and Qwen3.5, Gemma 3 and Gemma 4, DeepSeek-V3 and DeepSeek-V4, Mistral Tekken and Nemotron 3 Nano, downloaded at run time from pinned commits and checked against their SHA-256 | Each publisher's licence | `benchmark/tokenizer-audit/tokenizers.json` |
+
 ## Software, services and standards
 
 | Project or service | How ACE uses it | Licence or terms |

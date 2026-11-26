@@ -12,9 +12,9 @@ ACE answers the questions that matter to people who will never install an app: a
 
 **Reach by default, richer by choice.** USSD, SMS and voice are the default, because they reach every phone with no app and no data. People with a smartphone and data can choose WhatsApp, or RCS where their carrier supports it, to see the sources under every answer, with suggested replies on RCS; RCS falls back to SMS, so a reply never depends on RCS. Other services and AI assistants connect through the API and MCP.
 
-**Release 2.2 preview (2.2.0b2, 25 November 2026)** adds speech and translation. ACE now measures its language tools on real African speech text from Google's open WAXAL corpus, the voice line speaks only languages a voice exists for, and optional Google Cloud providers hear spoken questions, speak replies and give fluent reviewers back translations of every string. The design and the gaps are in [docs/speech.md](docs/speech.md).
+**Release 2.2 preview, third build (2.2.0b3, 26 November 2026)** ships RCS with SMS fallback, switched on country by country (see [docs/channels.md](docs/channels.md#rcs-with-sms-fallback)), and the [ACE tokenizer audit](benchmark/tokenizer-audit/README.md): what 59 African language varieties cost against English on nine released tokenizers, on FLORES-200 and on the text ACE sends, with an offline check any lab can run before it releases a tokenizer.
 
-**On main, in the next release:** RCS with SMS fallback, switched on country by country. See [docs/channels.md](docs/channels.md#rcs-with-sms-fallback).
+**Release 2.2 preview (2.2.0b1 and 2.2.0b2, 25 November 2026)** adds speech and translation. ACE now measures its language tools on real African speech text from Google's open WAXAL corpus, the voice line speaks only languages a voice exists for, and optional Google Cloud providers hear spoken questions, speak replies and give fluent reviewers back translations of every string. The design and the gaps are in [docs/speech.md](docs/speech.md).
 
 **Release 2.1 preview (2.1.0b1, 24 November 2026)** took ACE from 13 to 34 countries and from three to eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Every new country gets all six decision services at once (rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check), and wherever open data does not reach, ACE names the gap in the person's language. Arabic and Amharic replies are budgeted for the smaller UCS-2 alphabet, so they still fit one USSD screen. The services and the five new languages are a preview: they pass ACE's own tests and benchmark, but no fluent speaker has reviewed the new translations yet, and the expert review and forecast skill gates in the [build plan](docs/v2/build-plan.md) are still open. The design is in [docs/v2/release-2.1.md](docs/v2/release-2.1.md).
 
@@ -151,6 +151,7 @@ Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities;
 
 **What 2.2 adds**
 
+- **A tokenizer audit for African languages**: `benchmark/tokenizer-audit` finds that eight of 59 African language varieties meet 1.5 times English on a released tokenizer, that script predicts which tokenizer wins, and that newer is not always fairer: Llama 4 cuts Amharic from 7.71 to 2.43 times English, while Qwen3.5 nearly doubles the cost of Tifinagh against Qwen3. Its `check` command scores an unreleased tokenizer offline. See [the audit](benchmark/tokenizer-audit/README.md).
 - **A language check on real speech**: `python -m benchmark.waxal` runs ACE's language guess, safety rail and service router on 12,333 sentences from 27 WAXAL sets. ACE recognises Amharic, Swahili and Afaan Oromo in 93% to 100% of sentences, and the safety rail fired on 3 ordinary sentences in 12,333. Across 23 languages it does not speak, ACE still mistakes an average of 45.8% of sentences for one of its own languages, most often Swahili, down from 54.0%. No WAXAL text is stored in the repository.
 - **A voice line that only speaks what it can say**: the Africa's Talking Say action reads English, Swahili, French, Portuguese and Arabic with Google Cloud voices. With a Gemini API key, ACE synthesises Amharic and Somali with Gemini 3.8 Flash TTS and the call plays the audio. No Google model speaks Afaan Oromo yet, so Oromo callers hear the next language of their country with a voice and get the full reply on SMS and USSD in their own language.
 - **Speech and translation providers**: `SpeechToText`, `TextToSpeech` and `Translator` interfaces, with Google Cloud Speech-to-Text (Chirp 3), Text-to-Speech and Cloud Translation behind the optional `google` extra, and Gemini 3.8 Flash TTS for the languages Cloud Text-to-Speech cannot speak. `ace voice languages` shows what exists for each language, with sources.
@@ -193,7 +194,7 @@ ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```
 
-The preview wheel is attached to the [v2.2.0b2 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.2.0b3 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 

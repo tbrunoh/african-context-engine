@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ace-engine"
-version = "2.2.0b2"
+version = "2.2.0b3"
 description = "The African Context Engine: checked, local, citable knowledge for Africa on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), with six decision services, for 34 African countries in eight languages"
 readme = "README.md"
 license = "Apache-2.0"

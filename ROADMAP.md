@@ -22,11 +22,12 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
-### Next release: RCS
+### 2.2 preview, third build (2.2.0b3, 26 November 2026): RCS and the tokenizer audit
 
 - [x] RCS with SMS fallback: switched on per country, a reachability check before each reply, replies composed to the SMS budget, and signed webhooks
+- [x] The ACE tokenizer audit: 59 African language varieties on nine released tokenizers, ACE's own text and SMS, and an offline check for unreleased tokenizers
 
-### 2.2 preview (current release, 25 November 2026): speech and translation
+### 2.2 preview (25 November 2026): speech and translation
 
 - [x] Language check on 12,333 sentences of real speech text from WAXAL, with counts published and no text stored
 - [x] Colliding marker words removed, cutting how often ACE claims a language it does not speak from an average of 54.0% to 45.8% across 23 languages

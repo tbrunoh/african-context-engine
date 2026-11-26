@@ -6,9 +6,9 @@ By Tom Bruno, part of [ACE, the African Context Engine](https://tbrunoh.github.i
 
 ## What it finds
 
-- **Eight of 59 varieties meet 1.5 times English on a released tokenizer today**: Portuguese, four Arabic varieties, French, Afrikaans and Swahili. Of the other 53, only Afrikaans and Swahili do, and Swahili sits on the line: its devtest interval reaches 1.5005.
+- **Eight of 59 varieties meet 1.5 times English on a released tokenizer today**: Portuguese, four Arabic varieties, French, Afrikaans and Swahili. Of the 53 varieties other than French, Portuguese and the four Arabic varieties, only Afrikaans and Swahili meet it, and Swahili sits on the line: its devtest interval reaches 1.5005.
 - **Script predicts which tokenizer wins.** o200k uses the fewest tokens for all 34 varieties written almost entirely in basic Latin letters. Of the 20 other varieties outside Arabic script, Gemma 4's tokenizer gives the lowest ratio for 13, including all four in Ge'ez and Tifinagh, and it needs a third of o200k's tokens for Amharic.
-- **Newer is not always fairer.** Llama 4 needs fewer tokens than Llama 3 for all 59 varieties and cuts Amharic by 68.6%. Qwen3.5, which Alibaba says covers 201 languages and dialects, costs more than Qwen3 for 17 varieties and nearly doubles the cost of Tifinagh. DeepSeek-V4 produces the same token ids as DeepSeek-V3 for every sentence measured.
+- **Newer is not always fairer.** Llama 4 needs fewer tokens than Llama 3 for all 59 varieties and cuts Amharic by 68.6%. Qwen3.5, which Alibaba says covers 201 languages and dialects, costs more than Qwen3 for 17 varieties and nearly doubles the cost of both varieties written in Tifinagh. DeepSeek-V4 produces the same token ids as DeepSeek-V3 for every sentence measured.
 - **A ratio can reward spending more on English.** Mistral Tekken's French ratio is 3 to 4% lower than o200k's, yet the two use almost the same French tokens, because Tekken spends 3.5% to 3.7% more on the same English.
 - **Somali and Oromo miss 1.5 on all nine tokenizers.** Their best figures are 1.70 and 1.88, on o200k.
 - **Spelling Hausa correctly costs more.** Native speaker corrections to FLORES double the hooked letters ɓ, ɗ, ƙ and ƴ in the Hausa dev sentences, from 855 to 1,714, and every tokenizer then needs 2.1% to 4.4% more tokens.
@@ -129,9 +129,9 @@ What this audit adds: a test of the English denominator; paired tests of each wi
 
 Use the Cite this repository button on GitHub, or:
 
-> Bruno, T. (2026). ACE tokenizer audit, in *ACE, the African Context Engine* (version 2.2.0b3). Zenodo. https://doi.org/10.5281/zenodo.24565738
+> Bruno, T. (2026). *ACE, the African Context Engine* (version 2.2.0b3) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.24565738. Tokenizer audit in `benchmark/tokenizer-audit`.
 
-The DOI points to the archived 2.2.0b3 release; the code and results are at [v2.2.0b3/benchmark/tokenizer-audit](https://github.com/tbrunoh/african-context-engine/tree/v2.2.0b3/benchmark/tokenizer-audit).
+The DOI points to the archived 2.2.0b3 release, and 10.5281/zenodo.24565737 always resolves to the latest version; the code and results are at [v2.2.0b3/benchmark/tokenizer-audit](https://github.com/tbrunoh/african-context-engine/tree/v2.2.0b3/benchmark/tokenizer-audit).
 
 ## Acknowledgements
 

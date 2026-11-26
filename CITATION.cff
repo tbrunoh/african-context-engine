@@ -13,6 +13,14 @@ authors:
     family-names: Bruno
 repository-code: "https://github.com/tbrunoh/african-context-engine"
 url: "https://tbrunoh.github.io/ace/"
+doi: 10.5281/zenodo.24565737
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24565737
+    description: Concept DOI, which resolves to the latest version of ACE
+  - type: doi
+    value: 10.5281/zenodo.24565738
+    description: Version 2.2.0b3, the first to include the tokenizer audit
 license: Apache-2.0
 version: 2.2.0b3
 date-released: "2026-11-26"

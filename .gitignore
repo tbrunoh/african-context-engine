@@ -9,3 +9,6 @@ build/
 .env
 tips.jsonl
 benchmark/.waxal_cache/
+
+# Tokenizer audit downloads (FLORES-200, tokenizer files, tiktoken cache)
+benchmark/tokenizer-audit/cache/

@@ -71,7 +71,7 @@ The next step is a language guess trained on the WAXAL train splits and evaluate
 ## Running it
 
 ```bash
-pip install "ace-engine[google]"
+pip install -e ".[google]"                      # from a checkout of this repository
 export GOOGLE_CLOUD_PROJECT=your-project        # the project that is billed
 gcloud auth application-default login           # or a service account attached to the host
 ace voice languages                             # what each language can do, with sources
@@ -92,13 +92,17 @@ The server then serves the synthesised files at `/voice/audio/<file>.wav`. The f
 
 ### Who pays, and how to keep costs in check
 
-Every operator runs ACE in their own Google Cloud project and pays for their own use. The repository holds no project, key or credential, so cloning or running ACE never bills anyone else. Costs arise only where your own credentials call a Google API: a back translation report, speech on your voice line, or Gemini audio for Amharic and Somali. ACE stores each Gemini audio file once and replays it, so a prompt is synthesised only the first time.
+Every operator runs ACE in their own Google Cloud project and pays for their own use. The repository holds no project, key or credential, so cloning or running ACE never bills anyone else. Costs arise only where your own credentials call a Google API. As shipped, ACE does that in two places: `ace locales backcheck`, which calls Cloud Translation, and Gemini audio for Amharic and Somali on the voice line, which runs only when `GEMINI_API_KEY` is set. Cloud Speech-to-Text and Text-to-Speech run only if you wire them into your own code. Nothing else in ACE calls Google Cloud; your SMS, voice, WhatsApp and RCS providers bill messages and calls separately.
+
+A caller cannot run up the Gemini bill. The voice line is a keypad menu, and ACE synthesises only its fixed prompts and public pack text, never a caller's words. Each file is synthesised once and replayed, so the cost is bounded by the prompts and packs, not by the number of calls. Keep `ACE_VOICE_AUDIO_DIR` on storage that survives a restart, or every new server will synthesise the files again.
 
 Before you open a voice line to the public:
 
-- Set a budget with alerts on the billing account. A budget warns you; it does not stop spending.
-- Lower the quotas on each API in the project. Cloud Translation has a characters per day quota, unlimited by default; Text-to-Speech and Speech-to-Text have requests per minute quotas. A quota is a hard limit: requests beyond it fail, and the voice line falls back to the keypad and SMS.
-- Restrict any API key to the one API it needs, and keep it in the server's environment only.
+- Set a spend cap budget for the Gemini API in Cloud Billing or Google AI Studio. Once the month's estimated cost passes the cap, new Gemini calls stop until the next month, and the voice line still answers by reading the reply with the provider's own voice in a language it speaks. Enforcement takes a little time, so set the cap slightly below your limit.
+- Lower the Cloud Translation characters per day quota, which is unlimited by default. Text-to-Speech and Speech-to-Text offer only requests per minute quotas. Requests beyond a quota fail.
+- Add a budget with alerts on the billing account for everything else. An alert budget warns you; it does not stop spending.
+- Restrict the Gemini API key to the Generative Language API, and keep it in the server's environment only.
+- Set `ACE_WEBHOOK_SECRET`, so only your voice and SMS provider can call `/voice`, `/ussd` and `/sms`.
 - Turn on GitHub secret scanning and push protection for your fork, so a key committed by mistake is blocked or flagged at once.
 
 ### The back translation report

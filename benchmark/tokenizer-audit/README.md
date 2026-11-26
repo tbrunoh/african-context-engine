@@ -129,7 +129,9 @@ What this audit adds: a test of the English denominator; paired tests of each wi
 
 Use the Cite this repository button on GitHub, or:
 
-> Bruno, T. (2026). ACE tokenizer audit, in *ACE, the African Context Engine* (version 2.2.0b3). https://github.com/tbrunoh/african-context-engine/tree/v2.2.0b3/benchmark/tokenizer-audit
+> Bruno, T. (2026). ACE tokenizer audit, in *ACE, the African Context Engine* (version 2.2.0b3). Zenodo. https://doi.org/10.5281/zenodo.24565738
+
+The DOI points to the archived 2.2.0b3 release; the code and results are at [v2.2.0b3/benchmark/tokenizer-audit](https://github.com/tbrunoh/african-context-engine/tree/v2.2.0b3/benchmark/tokenizer-audit).
 
 ## Acknowledgements
 

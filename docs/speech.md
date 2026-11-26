@@ -97,7 +97,7 @@ Every operator runs ACE in their own Google Cloud project and pays for their own
 Before you open a voice line to the public:
 
 - Set a budget with alerts on the billing account. A budget warns you; it does not stop spending.
-- Set daily quotas on each API in the project, such as characters per day for Text-to-Speech and Translation and minutes per day for Speech-to-Text. A quota is a hard limit: requests beyond it fail, and the voice line falls back to the keypad and SMS.
+- Lower the quotas on each API in the project. Cloud Translation has a characters per day quota, unlimited by default; Text-to-Speech and Speech-to-Text have requests per minute quotas. A quota is a hard limit: requests beyond it fail, and the voice line falls back to the keypad and SMS.
 - Restrict any API key to the one API it needs, and keep it in the server's environment only.
 - Turn on GitHub secret scanning and push protection for your fork, so a key committed by mistake is blocked or flagged at once.
 

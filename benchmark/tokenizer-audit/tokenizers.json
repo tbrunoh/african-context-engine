@@ -1,0 +1,93 @@
+[
+ {
+  "name": "o200k",
+  "kind": "tiktoken",
+  "description": "OpenAI o200k_base, the GPT-4o and GPT-5 family encoding; GPT-OSS's o200k_harmony adds only special tokens",
+  "encoding": "o200k_base",
+  "vocab_size": 200019
+ },
+ {
+  "name": "cl100k",
+  "kind": "tiktoken",
+  "description": "OpenAI cl100k_base, the GPT-4 encoding",
+  "encoding": "cl100k_base",
+  "vocab_size": 100277
+ },
+ {
+  "name": "Llama 3",
+  "kind": "hf",
+  "description": "Meta Llama 3 tokenizer, from the unsloth mirror of Llama 3.2 1B, because Meta's repository requires a sign in",
+  "file": "unsloth_Llama-3.2-1B.json",
+  "url": "https://huggingface.co/unsloth/Llama-3.2-1B/resolve/9535bd9b1d1dea6acafbdc4813b728796aeb28da/tokenizer.json",
+  "sha256": "6b9e4e7fb171f92fd137b777cc2714bf87d11576700a1dcd7a399e7bbe39537b",
+  "vocab_size": 128256,
+  "embedding_rows": 128256,
+  "config": "https://huggingface.co/unsloth/Llama-3.2-1B/blob/9535bd9b1d1dea6acafbdc4813b728796aeb28da/config.json"
+ },
+ {
+  "name": "Llama 4",
+  "kind": "hf",
+  "description": "Meta Llama 4 tokenizer, from the unsloth mirror of Llama 4 Scout, because Meta's repository requires a sign in",
+  "file": "unsloth_Llama-4-Scout-17B-16E-Instruct.json",
+  "url": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct/resolve/afd8e498c87bda51c7ea8ec68ea2f7c066e6340b/tokenizer.json",
+  "sha256": "172c9eb4beafc72601690da3ccfcede5c2e6806a8d5ec1fca33e22acea8023a4",
+  "vocab_size": 201135,
+  "embedding_rows": 202048,
+  "config": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct/blob/afd8e498c87bda51c7ea8ec68ea2f7c066e6340b/config.json"
+ },
+ {
+  "name": "Qwen3",
+  "kind": "hf",
+  "description": "Alibaba Qwen3 tokenizer, from Qwen's official Qwen3 0.6B repository",
+  "file": "Qwen_Qwen3-0.6B.json",
+  "url": "https://huggingface.co/Qwen/Qwen3-0.6B/resolve/c1899de289a04d12100db370d81485cdf75e47ca/tokenizer.json",
+  "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+  "vocab_size": 151669,
+  "embedding_rows": 151936,
+  "config": "https://huggingface.co/Qwen/Qwen3-0.6B/blob/c1899de289a04d12100db370d81485cdf75e47ca/config.json"
+ },
+ {
+  "name": "Qwen3.5",
+  "kind": "hf",
+  "description": "Alibaba Qwen3.5 tokenizer, from Qwen's official Qwen3.5 9B repository (Apache-2.0)",
+  "file": "Qwen_Qwen3.5-9B.json",
+  "url": "https://huggingface.co/Qwen/Qwen3.5-9B/resolve/c202236235762e1c871ad0ccb60c8ee5ba337b9a/tokenizer.json",
+  "sha256": "5f9e4d4901a92b997e463c1f46055088b6cca5ca61a6522d1b9f64c4bb81cb42",
+  "vocab_size": 248070,
+  "embedding_rows": 248320,
+  "config": "https://huggingface.co/Qwen/Qwen3.5-9B/blob/c202236235762e1c871ad0ccb60c8ee5ba337b9a/config.json"
+ },
+ {
+  "name": "Gemma 4",
+  "kind": "hf",
+  "description": "Google Gemma 4 tokenizer, from Google's official Gemma 4 E2B repository (Apache-2.0); Gemma 3's gives the same ratios to two decimals (audit.py equivalence)",
+  "file": "google_gemma-4-E2B-it.json",
+  "url": "https://huggingface.co/google/gemma-4-E2B-it/resolve/4adf15748de9e1a0097b6274cee9c15836c41c37/tokenizer.json",
+  "sha256": "ab26b2add729e6f645bd869f228f14190a06615538f3be6f7786f33d13d78ad2",
+  "vocab_size": 262144,
+  "embedding_rows": 262144,
+  "config": "https://huggingface.co/google/gemma-4-E2B-it/blob/4adf15748de9e1a0097b6274cee9c15836c41c37/config.json"
+ },
+ {
+  "name": "DeepSeek-V4",
+  "kind": "hf",
+  "description": "DeepSeek-V4 tokenizer, from DeepSeek's official V4 Flash repository (MIT); DeepSeek-V3's gives identical token ids on every FLORES-200 sentence here (audit.py equivalence)",
+  "file": "deepseek-ai_DeepSeek-V4-Flash.json",
+  "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/resolve/60d8d70770c6776ff598c94bb586a859a38244f1/tokenizer.json",
+  "sha256": "8f9f37ca37fdc4f5fd36d5cf4d3b0e8392edb4e894fd10cc0d70b4957c8633cf",
+  "vocab_size": 129280,
+  "embedding_rows": 129280,
+  "config": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/blob/60d8d70770c6776ff598c94bb586a859a38244f1/config.json"
+ },
+ {
+  "name": "Mistral Tekken",
+  "kind": "hf",
+  "description": "Mistral Tekken tokenizer, from Mistral AI's official Mistral Nemo repository (Apache-2.0); NVIDIA Nemotron 3 Nano's gives identical token ids on every FLORES-200 sentence here (audit.py equivalence)",
+  "file": "mistralai_Mistral-Nemo-Instruct-2407.json",
+  "url": "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407/resolve/04d8a90549d23fc6bd7f642064003592df51e9b3/tokenizer.json",
+  "sha256": "e11c71726323d33da7b8d6f6f269f1988931c0a52b7122bcdd8c05042974e0db",
+  "vocab_size": 131072,
+  "embedding_rows": 131072,
+  "config": "https://huggingface.co/mistralai/Mistral-Nemo-Instruct-2407/blob/04d8a90549d23fc6bd7f642064003592df51e9b3/config.json"
+ }
+]

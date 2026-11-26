@@ -1,0 +1,511 @@
+{
+ "results": {
+  "varieties": 59,
+  "meets_1_5_point": [
+   "Afrikaans",
+   "Arabic (Standard)",
+   "Moroccan Arabic",
+   "Egyptian Arabic",
+   "Tunisian Arabic",
+   "French",
+   "Portuguese",
+   "Swahili"
+  ],
+  "meets_1_5_interval": [
+   "Afrikaans",
+   "Arabic (Standard)",
+   "Moroccan Arabic",
+   "Egyptian Arabic",
+   "Tunisian Arabic",
+   "French",
+   "Portuguese",
+   "Swahili"
+  ],
+  "bands": {
+   "at_most_1_5": 8,
+   "1_5_to_2": 36,
+   "2_to_3": 12,
+   "above_3": 3
+  },
+  "wins_by_ratio": {
+   "o200k": 38,
+   "Gemma 4": 13,
+   "Mistral Tekken": 5,
+   "Qwen3.5": 2,
+   "Llama 4": 1
+  },
+  "wins_by_absolute_tokens": {
+   "o200k": 41,
+   "Gemma 4": 13,
+   "Mistral Tekken": 4,
+   "Qwen3.5": 1
+  },
+  "ratio_ties": [
+   [
+    "Kabuverdianu",
+    "o200k",
+    "Llama 4"
+   ],
+   [
+    "Portuguese",
+    "Llama 4",
+    "o200k"
+   ]
+  ],
+  "absolute_ties": []
+ },
+ "results_devtest": {
+  "varieties": 59,
+  "meets_1_5_point": [
+   "Afrikaans",
+   "Arabic (Standard)",
+   "Moroccan Arabic",
+   "Egyptian Arabic",
+   "Tunisian Arabic",
+   "French",
+   "Portuguese",
+   "Swahili"
+  ],
+  "meets_1_5_interval": [
+   "Afrikaans",
+   "Arabic (Standard)",
+   "Moroccan Arabic",
+   "Egyptian Arabic",
+   "Tunisian Arabic",
+   "French",
+   "Portuguese"
+  ],
+  "bands": {
+   "at_most_1_5": 8,
+   "1_5_to_2": 36,
+   "2_to_3": 12,
+   "above_3": 3
+  },
+  "wins_by_ratio": {
+   "o200k": 38,
+   "Gemma 4": 13,
+   "Mistral Tekken": 5,
+   "Qwen3.5": 2,
+   "Llama 4": 1
+  },
+  "wins_by_absolute_tokens": {
+   "o200k": 40,
+   "Gemma 4": 14,
+   "Mistral Tekken": 5
+  },
+  "ratio_ties": [
+   [
+    "Portuguese",
+    "Llama 4",
+    "o200k"
+   ]
+  ],
+  "absolute_ties": [
+   [
+    "French",
+    "Mistral Tekken",
+    "o200k"
+   ],
+   [
+    "Kanuri (Ajami)",
+    "Gemma 4",
+    "Qwen3.5"
+   ]
+  ]
+ },
+ "results_nfc": {
+  "varieties": 59,
+  "meets_1_5_point": [
+   "Afrikaans",
+   "Arabic (Standard)",
+   "Moroccan Arabic",
+   "Egyptian Arabic",
+   "Tunisian Arabic",
+   "French",
+   "Portuguese",
+   "Swahili"
+  ],
+  "meets_1_5_interval": [
+   "Afrikaans",
+   "Arabic (Standard)",
+   "Moroccan Arabic",
+   "Egyptian Arabic",
+   "Tunisian Arabic",
+   "French",
+   "Portuguese",
+   "Swahili"
+  ],
+  "bands": {
+   "at_most_1_5": 8,
+   "1_5_to_2": 36,
+   "2_to_3": 12,
+   "above_3": 3
+  },
+  "wins_by_ratio": {
+   "o200k": 38,
+   "Gemma 4": 13,
+   "Mistral Tekken": 5,
+   "Qwen3.5": 2,
+   "Llama 4": 1
+  },
+  "wins_by_absolute_tokens": {
+   "o200k": 41,
+   "Gemma 4": 13,
+   "Mistral Tekken": 4,
+   "Qwen3.5": 1
+  },
+  "ratio_ties": [
+   [
+    "Kabuverdianu",
+    "o200k",
+    "Llama 4"
+   ],
+   [
+    "Portuguese",
+    "Llama 4",
+    "o200k"
+   ]
+  ],
+  "absolute_ties": []
+ },
+ "dev_vs_devtest": {
+  "pairs": 531,
+  "median_abs_change": 0.0116,
+  "max_abs_change": 0.1286,
+  "best_by_ratio_changes": [],
+  "best_by_absolute_changes": [
+   "French",
+   "Kanuri (Ajami)"
+  ]
+ },
+ "nfc": {
+  "moves_of_0_005_or_more": [
+   [
+    "Fon",
+    "Mistral Tekken",
+    3.5378,
+    3.3921
+   ],
+   [
+    "Yoruba",
+    "Mistral Tekken",
+    2.8107,
+    2.715
+   ],
+   [
+    "Fon",
+    "DeepSeek-V4",
+    3.1592,
+    3.076
+   ],
+   [
+    "Fon",
+    "Llama 3",
+    3.6088,
+    3.533
+   ],
+   [
+    "Fon",
+    "Llama 4",
+    2.8654,
+    2.7982
+   ],
+   [
+    "Fon",
+    "Gemma 4",
+    2.6247,
+    2.5616
+   ],
+   [
+    "Fon",
+    "cl100k",
+    3.6466,
+    3.5854
+   ],
+   [
+    "Fon",
+    "o200k",
+    2.8663,
+    2.8109
+   ],
+   [
+    "Yoruba",
+    "o200k",
+    2.1793,
+    2.1329
+   ],
+   [
+    "Yoruba",
+    "Gemma 4",
+    2.398,
+    2.361
+   ],
+   [
+    "Yoruba",
+    "Llama 4",
+    2.493,
+    2.4585
+   ],
+   [
+    "Yoruba",
+    "Llama 3",
+    2.7115,
+    2.68
+   ],
+   [
+    "Yoruba",
+    "cl100k",
+    2.9498,
+    2.9198
+   ],
+   [
+    "Yoruba",
+    "DeepSeek-V4",
+    2.826,
+    2.8024
+   ],
+   [
+    "Ewe",
+    "Mistral Tekken",
+    2.6393,
+    2.6334
+   ]
+  ],
+  "english_unchanged": null
+ },
+ "script": {
+  "basic_latin_varieties": 34,
+  "basic_latin_o200k_fewest_absolute_tokens": 34,
+  "non_basic_varieties_outside_arabic_script": 20,
+  "of_those_gemma4_best_by_ratio": [
+   "Amharic",
+   "Dyula",
+   "Ewe",
+   "Fon",
+   "Kabyle",
+   "Kabiye",
+   "Kanuri (Latin)",
+   "Mossi",
+   "Nuer",
+   "Tamasheq (Latin)",
+   "Tamasheq (Tifinagh)",
+   "Tigrinya",
+   "Central Atlas Tamazight"
+  ],
+  "of_those_other_winners": {
+   "Akan": "o200k",
+   "Bambara": "o200k",
+   "Dinka": "o200k",
+   "Igbo": "o200k",
+   "Kikuyu": "Qwen3.5",
+   "Twi": "o200k",
+   "Yoruba": "o200k"
+  },
+  "spearman_share_vs_gemma4_over_o200k_tokens": -0.688,
+  "n": 59,
+  "amharic_gemma4_over_o200k_tokens": 0.3395,
+  "letter_share_outside_basic_latin": {
+   "Afrikaans": 0.0031,
+   "Akan": 0.1094,
+   "Amharic": 0.9824,
+   "Arabic (Standard)": 0.9968,
+   "Moroccan Arabic": 0.9935,
+   "Egyptian Arabic": 0.9975,
+   "Tunisian Arabic": 0.9969,
+   "Bambara": 0.1111,
+   "Bemba": 0.0001,
+   "Chokwe": 0.002,
+   "Dinka": 0.1502,
+   "Dyula": 0.078,
+   "Ewe": 0.1226,
+   "Fon": 0.2627,
+   "French": 0.0379,
+   "Fulfulde (Nigerian)": 0.0225,
+   "Oromo": 0.0,
+   "Hausa": 0.0083,
+   "Igbo": 0.1126,
+   "Kabyle": 0.0561,
+   "Kamba": 0.0465,
+   "Kabiye": 0.3313,
+   "Kabuverdianu": 0.028,
+   "Kikuyu": 0.1366,
+   "Kinyarwanda": 0.0001,
+   "Kimbundu": 0.0018,
+   "Kanuri (Latin)": 0.0639,
+   "Kanuri (Ajami)": 0.9778,
+   "Kikongo": 0.0012,
+   "Lingala": 0.0013,
+   "Luba-Kasai": 0.0003,
+   "Luganda": 0.0001,
+   "Luo": 0.0001,
+   "Mossi": 0.0883,
+   "Northern Sotho": 0.03,
+   "Nuer": 0.2247,
+   "Chichewa": 0.0001,
+   "Malagasy": 0.002,
+   "Portuguese": 0.0345,
+   "Kirundi": 0.0005,
+   "Sango": 0.0377,
+   "Shona": 0.0001,
+   "Somali": 0.0001,
+   "Southern Sotho": 0.0001,
+   "Swati": 0.0001,
+   "Swahili": 0.0001,
+   "Tamasheq (Latin)": 0.0771,
+   "Tamasheq (Tifinagh)": 0.9848,
+   "Tigrinya": 0.998,
+   "Setswana": 0.0001,
+   "Tsonga": 0.0001,
+   "Tumbuka": 0.0144,
+   "Twi": 0.0941,
+   "Central Atlas Tamazight": 0.9976,
+   "Umbundu": 0.0139,
+   "Wolof": 0.0457,
+   "Xhosa": 0.0001,
+   "Yoruba": 0.2839,
+   "Zulu": 0.0001
+  }
+ },
+ "meets_1_5_outside_french_portuguese_and_arabic_varieties": {
+  "varieties": 53,
+  "meet": [
+   "Afrikaans",
+   "Swahili"
+  ]
+ },
+ "generations": {
+  "Llama 3 to Llama 4": {
+   "median_token_change_pct": -8.88,
+   "largest_cut": [
+    "Amharic",
+    -68.61
+   ],
+   "varieties_costlier": 0,
+   "costlier": []
+  },
+  "Qwen3 to Qwen3.5": {
+   "median_token_change_pct": -4.36,
+   "largest_cut": [
+    "Kanuri (Ajami)",
+    -24.32
+   ],
+   "varieties_costlier": 17,
+   "costlier": [
+    [
+     "Central Atlas Tamazight",
+     96.98
+    ],
+    [
+     "Tamasheq (Tifinagh)",
+     87.32
+    ],
+    [
+     "Kabiye",
+     38.82
+    ],
+    [
+     "Fon",
+     19.89
+    ],
+    [
+     "Bambara",
+     14.71
+    ],
+    [
+     "Akan",
+     14.18
+    ],
+    [
+     "Nuer",
+     13.57
+    ],
+    [
+     "Twi",
+     13.17
+    ],
+    [
+     "Tigrinya",
+     12.55
+    ],
+    [
+     "Ewe",
+     12.53
+    ],
+    [
+     "Kabyle",
+     10.53
+    ],
+    [
+     "Amharic",
+     7.87
+    ],
+    [
+     "Tamasheq (Latin)",
+     6.19
+    ],
+    [
+     "Dinka",
+     5.64
+    ],
+    [
+     "Kanuri (Latin)",
+     1.35
+    ],
+    [
+     "Mossi",
+     1.3
+    ],
+    [
+     "Fulfulde (Nigerian)",
+     0.83
+    ]
+   ]
+  }
+ },
+ "english_budget_devtest": {
+  "o200k": 26873,
+  "budget_at_1_pct": 27141,
+  "pass": [
+   "DeepSeek-V4",
+   "Gemma 4",
+   "Llama 4",
+   "o200k"
+  ],
+  "fail": {
+   "cl100k": 41,
+   "Llama 3": 30,
+   "Qwen3": 480,
+   "Qwen3.5": 389,
+   "Mistral Tekken": 686
+  }
+ },
+ "corrections": {
+  "hausa_dev_change_pct": {
+   "o200k": 2.41,
+   "cl100k": 3.98,
+   "Llama 3": 4.08,
+   "Llama 4": 2.09,
+   "Qwen3": 2.34,
+   "Qwen3.5": 4.44,
+   "Gemma 4": 2.43,
+   "DeepSeek-V4": 3.53,
+   "Mistral Tekken": 3.95
+  },
+  "hausa_dev_every_corrected_interval_above_original": true,
+  "hausa_dev_hooked_letters": {
+   "original": 855,
+   "corrected": 1714
+  },
+  "largest_change_elsewhere": 0.0111,
+  "best_tokenizer_changes": 0
+ },
+ "flores_character_ratio": {
+  "Amharic": 0.68,
+  "Arabic (Standard)": 0.883,
+  "French": 1.188,
+  "Portuguese": 1.087,
+  "Swahili": 1.052,
+  "Somali": 1.136,
+  "Oromo": 1.188
+ }
+}

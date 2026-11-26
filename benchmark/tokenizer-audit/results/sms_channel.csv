@@ -1,0 +1,15 @@
+corpus,language,characters_ratio,utf8_bytes_ratio,sms_segments_ratio,sms_segments_ratio_after_folding,share_fitting_gsm7
+service_message,Swahili,1.01,1.01,1.0,1.0,1.0
+service_message,French,1.199,1.231,1.165,1.024,0.774
+service_message,Portuguese,1.12,1.152,1.341,1.0,0.405
+service_message,Arabic,0.854,1.513,1.141,1.141,0.0
+service_message,Amharic,0.708,1.808,1.094,1.094,0.0
+service_message,Oromo,1.139,1.139,1.024,1.024,1.0
+service_message,Somali,1.145,1.145,1.012,1.012,1.0
+fact,Swahili,1.065,1.065,1.098,1.098,1.0
+fact,French,1.193,1.226,2.244,1.195,0.174
+fact,Portuguese,1.126,1.149,2.22,1.146,0.043
+fact,Arabic,0.856,1.55,1.805,1.805,0.0
+fact,Amharic,0.704,1.828,1.512,1.512,0.0
+fact,Oromo,1.235,1.235,1.22,1.22,1.0
+fact,Somali,1.228,1.228,1.268,1.268,1.0

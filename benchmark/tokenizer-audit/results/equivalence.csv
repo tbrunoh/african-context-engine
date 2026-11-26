@@ -1,0 +1,7 @@
+tokenizer,compared_with,split,sentences,identical_token_ids,identical_counts,files,files_with_identical_counts
+DeepSeek-V3,DeepSeek-V4,dev,59820,59820,59820,60,60
+DeepSeek-V3,DeepSeek-V4,devtest,60720,60720,60720,60,60
+Gemma 3,Gemma 4,dev,59820,59818,59818,60,58
+Gemma 3,Gemma 4,devtest,60720,60719,60719,60,59
+Nemotron 3 Nano,Mistral Tekken,dev,59820,59820,59820,60,60
+Nemotron 3 Nano,Mistral Tekken,devtest,60720,60720,60720,60,60

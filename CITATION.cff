@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: If you use ACE in research or a deployment, please cite it as below.
+message: If you use ACE in research or a deployment, please cite it using the metadata in this file.
 title: "ACE, the African Context Engine"
 abstract: >-
   Open source software that gives checked, local, citable knowledge for Africa on any phone

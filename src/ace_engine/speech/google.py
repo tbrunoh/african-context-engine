@@ -1,7 +1,7 @@
 """Google providers for hearing, speaking and translating: Cloud Speech-to-Text V2, Cloud Text-to-Speech, Cloud
 Translation, and Gemini TTS for languages Cloud Text-to-Speech has no voice for, such as Amharic and Somali.
 
-Optional. Install with `pip install "ace-engine[google]"` and give ACE a Google Cloud project with the APIs you
+Optional. Install with `pip install -e ".[google]"` from a checkout and give ACE a Google Cloud project with the APIs you
 need enabled. Credentials come from Application Default Credentials (a service account attached to the host, or
 GOOGLE_APPLICATION_CREDENTIALS pointing at a key file outside the repository). ACE never reads, stores or logs a
 key itself, and no key belongs in this repository. Usage is billed to the operator's project.
@@ -40,7 +40,7 @@ def authorized_post() -> Post:
         import google.auth
         from google.auth.transport.requests import AuthorizedSession
     except ImportError as exc:  # pragma: no cover - depends on the optional extra
-        raise RuntimeError('Install the Google extra: pip install "ace-engine[google]"') from exc
+        raise RuntimeError('Install the Google extra: pip install -e ".[google]" from a checkout') from exc
     credentials, _ = google.auth.default(scopes=[SCOPE])
     session = AuthorizedSession(credentials)
 

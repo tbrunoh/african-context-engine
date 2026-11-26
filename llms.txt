@@ -14,7 +14,7 @@
 
 ## V2: design published and preview released, 24 and 25 November 2026
 
-- [Speech and translation](https://github.com/tbrunoh/african-context-engine/blob/main/docs/speech.md): what exists to hear, speak and translate each of the eight languages, how ACE uses WAXAL, the WAXAL language results, the voice line rule, who pays for Google Cloud use and how to cap it, and the gaps
+- [Speech and translation](https://github.com/tbrunoh/african-context-engine/blob/main/docs/speech.md): what exists to hear, speak and translate each of the eight languages, how ACE uses WAXAL, the WAXAL language results, the voice line rule, who pays for Google Cloud use, why a caller cannot run up the bill, and how to cap it, and the gaps
 - [Release 2.1 design](https://github.com/tbrunoh/african-context-engine/blob/main/docs/v2/release-2.1.md): the 21 new countries, the five new languages, the alphabet each reply travels in, the five data problems ACE designs around, decisions and gaps
 - [Languages](https://github.com/tbrunoh/african-context-engine/blob/main/docs/languages.md): the eight languages, how a person picks one, and how to add a ninth in one file
 - [Back translation reports](https://github.com/tbrunoh/african-context-engine/blob/main/docs/reviews/README.md): machine back translations of every string in Portuguese, Arabic, Amharic, Afaan Oromo and Somali, with the rows fluent reviewers should check first

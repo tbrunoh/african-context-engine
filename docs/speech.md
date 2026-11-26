@@ -78,7 +78,7 @@ ace voice languages                             # what each language can do, wit
 ace locales backcheck am --out am-backcheck.md  # back translation report for Amharic reviewers
 ```
 
-Enable the Cloud Translation, Speech-to-Text and Text-to-Speech APIs in that project. ACE reads credentials through Application Default Credentials and never stores, logs or prints a key. To accept spoken questions, pass `GoogleSpeechToText()` to `VoiceAdapter`. To tell the voice line which languages your own provider speaks, set `ACE_VOICE_LANGUAGES`, for example `en,sw,fr`.
+Enable the Cloud Translation, Speech-to-Text and Text-to-Speech APIs in that project. ACE reads credentials through Application Default Credentials and never stores, logs or prints a key. In Google Cloud Shell, run `gcloud auth application-default login` first: the credentials Cloud Shell provides by default are not accepted by the Google auth library ACE uses, and the call fails with a RefreshError about a missing email field. To accept spoken questions, pass `GoogleSpeechToText()` to `VoiceAdapter`. To tell the voice line which languages your own provider speaks, set `ACE_VOICE_LANGUAGES`, for example `en,sw,fr`.
 
 To give the voice line Amharic and Somali, set two more variables on the server that receives the voice callback:
 
@@ -90,9 +90,20 @@ export ACE_VOICE_AUDIO_DIR=/var/lib/ace/voice-audio    # optional cache folder
 
 The server then serves the synthesised files at `/voice/audio/<file>.wav`. The first call to use a new prompt waits for synthesis; every later call plays the stored file.
 
+### Who pays, and how to keep costs in check
+
+Every operator runs ACE in their own Google Cloud project and pays for their own use. The repository holds no project, key or credential, so cloning or running ACE never bills anyone else. Costs arise only where your own credentials call a Google API: a back translation report, speech on your voice line, or Gemini audio for Amharic and Somali. ACE stores each Gemini audio file once and replays it, so a prompt is synthesised only the first time.
+
+Before you open a voice line to the public:
+
+- Set a budget with alerts on the billing account. A budget warns you; it does not stop spending.
+- Set daily quotas on each API in the project, such as characters per day for Text-to-Speech and Translation and minutes per day for Speech-to-Text. A quota is a hard limit: requests beyond it fail, and the voice line falls back to the keypad and SMS.
+- Restrict any API key to the one API it needs, and keep it in the server's environment only.
+- Turn on GitHub secret scanning and push protection for your fork, so a key committed by mistake is blocked or flagged at once.
+
 ### The back translation report
 
-`ace locales backcheck` translates every string of a locale file back into English and lines it up with the English ACE wrote, lowest word overlap first, with safety strings marked. A low overlap points a reviewer to where meaning may have drifted. It is a pointer, never a verdict: only a fluent speaker may set `reviewed: true`, and safety phrases also need a clinician. The report writes nothing to the locale file.
+`ace locales backcheck` translates every string of a locale file back into English and lines it up with the English ACE wrote, lowest word overlap first, with safety strings marked. A low overlap points a reviewer to where meaning may have drifted. It is a pointer, never a verdict: only a fluent speaker may set `reviewed: true`, and safety phrases also need a clinician. The report writes nothing to the locale file. The reports for the five newest languages, run on 25 November 2026, are in [docs/reviews](reviews/README.md) with the rows to check first.
 
 ## Gaps
 
@@ -101,4 +112,4 @@ The server then serves the synthesised files at `/voice/audio/<file>.wav`. The f
 - No African locale of French or Portuguese for speech recognition.
 - Arabic speech recognition has no locale for Libya, Sudan or Chad.
 - The language guess still reads many neighbour languages as Swahili and Tigrinya as Amharic.
-- The five new languages still await fluent review; the back translation report is ready for reviewers once a Google Cloud project is connected.
+- The five new languages still await fluent review; their back translation reports are in [docs/reviews](reviews/README.md).

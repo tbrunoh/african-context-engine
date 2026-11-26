@@ -1,0 +1,127 @@
+corpus,items,language,tokenizer,same_text_ratio,ci_low,ci_high
+service_message,84,Swahili,o200k,1.4182,1.3562,1.4855
+service_message,84,French,o200k,1.3239,1.2719,1.3806
+service_message,84,Portuguese,o200k,1.2026,1.1674,1.2423
+service_message,84,Arabic,o200k,1.2622,1.2106,1.3225
+service_message,84,Amharic,o200k,5.3965,5.1281,5.6895
+service_message,84,Oromo,o200k,1.701,1.6282,1.7865
+service_message,84,Somali,o200k,1.6154,1.5594,1.6825
+service_message,84,Swahili,cl100k,1.7728,1.7054,1.8511
+service_message,84,French,cl100k,1.5005,1.4338,1.5706
+service_message,84,Portuguese,cl100k,1.4244,1.3741,1.4804
+service_message,84,Arabic,cl100k,2.6474,2.5132,2.7839
+service_message,84,Amharic,cl100k,7.1265,6.7338,7.521
+service_message,84,Oromo,cl100k,2.0965,1.9885,2.2119
+service_message,84,Somali,cl100k,2.0118,1.9289,2.1115
+service_message,84,Swahili,Llama 3,1.7629,1.6952,1.845
+service_message,84,French,Llama 3,1.4979,1.4327,1.5678
+service_message,84,Portuguese,Llama 3,1.4185,1.3692,1.4712
+service_message,84,Arabic,Llama 3,1.4914,1.4241,1.5655
+service_message,84,Amharic,Llama 3,7.1255,6.7336,7.5122
+service_message,84,Oromo,Llama 3,2.073,1.9682,2.1836
+service_message,84,Somali,Llama 3,2.0032,1.9222,2.1034
+service_message,84,Swahili,Llama 4,1.6002,1.531,1.6792
+service_message,84,French,Llama 4,1.338,1.2843,1.3978
+service_message,84,Portuguese,Llama 4,1.2167,1.1804,1.2592
+service_message,84,Arabic,Llama 4,1.4453,1.3785,1.5157
+service_message,84,Amharic,Llama 4,2.3456,2.2248,2.4764
+service_message,84,Oromo,Llama 4,1.9534,1.8602,2.0533
+service_message,84,Somali,Llama 4,1.8245,1.75,1.9112
+service_message,84,Swahili,Qwen3,1.7646,1.6984,1.8445
+service_message,84,French,Qwen3,1.492,1.4286,1.5603
+service_message,84,Portuguese,Qwen3,1.4083,1.3587,1.4616
+service_message,84,Arabic,Qwen3,1.4539,1.3993,1.5161
+service_message,84,Amharic,Qwen3,3.8314,3.6253,4.0558
+service_message,84,Oromo,Qwen3,2.0827,1.9747,2.196
+service_message,84,Somali,Qwen3,1.9979,1.9157,2.0997
+service_message,84,Swahili,Qwen3.5,1.682,1.6182,1.7581
+service_message,84,French,Qwen3.5,1.3447,1.289,1.4034
+service_message,84,Portuguese,Qwen3.5,1.2327,1.1934,1.2758
+service_message,84,Arabic,Qwen3.5,1.2252,1.1755,1.2828
+service_message,84,Amharic,Qwen3.5,4.3458,4.1314,4.5849
+service_message,84,Oromo,Qwen3.5,1.9776,1.8776,2.0838
+service_message,84,Somali,Qwen3.5,1.936,1.8544,2.0333
+service_message,84,Swahili,Gemma 4,1.5558,1.4928,1.6244
+service_message,84,French,Gemma 4,1.3521,1.2965,1.4137
+service_message,84,Portuguese,Gemma 4,1.2514,1.2123,1.2946
+service_message,84,Arabic,Gemma 4,1.351,1.2933,1.4164
+service_message,84,Amharic,Gemma 4,1.8787,1.7832,1.9835
+service_message,84,Oromo,Gemma 4,1.9296,1.833,2.0321
+service_message,84,Somali,Gemma 4,1.8191,1.7452,1.9047
+service_message,84,Swahili,DeepSeek-V4,1.7655,1.6997,1.8388
+service_message,84,French,DeepSeek-V4,1.4915,1.4318,1.5574
+service_message,84,Portuguese,DeepSeek-V4,1.4051,1.3497,1.4624
+service_message,84,Arabic,DeepSeek-V4,1.4733,1.4055,1.5461
+service_message,84,Amharic,DeepSeek-V4,5.6439,5.3319,5.9685
+service_message,84,Oromo,DeepSeek-V4,2.048,1.9248,2.1688
+service_message,84,Somali,DeepSeek-V4,2.0011,1.9112,2.1021
+service_message,84,Swahili,Mistral Tekken,1.6806,1.6153,1.7513
+service_message,84,French,Mistral Tekken,1.3267,1.2726,1.3869
+service_message,84,Portuguese,Mistral Tekken,1.2808,1.2404,1.3233
+service_message,84,Arabic,Mistral Tekken,1.1754,1.1218,1.2347
+service_message,84,Amharic,Mistral Tekken,6.9363,6.505,7.3679
+service_message,84,Oromo,Mistral Tekken,1.9875,1.8753,2.0981
+service_message,84,Somali,Mistral Tekken,1.9499,1.8557,2.0592
+fact,23,Swahili,o200k,1.4847,1.4138,1.5632
+fact,23,French,o200k,1.3569,1.2912,1.4302
+fact,23,Portuguese,o200k,1.2681,1.2236,1.3188
+fact,23,Arabic,o200k,1.354,1.285,1.4309
+fact,23,Amharic,o200k,5.7805,5.5042,6.1004
+fact,23,Oromo,o200k,1.8836,1.8093,1.9727
+fact,23,Somali,o200k,1.7662,1.6598,1.8793
+fact,23,Swahili,cl100k,1.8792,1.7796,1.9964
+fact,23,French,cl100k,1.5755,1.4904,1.6677
+fact,23,Portuguese,cl100k,1.517,1.4623,1.576
+fact,23,Arabic,cl100k,2.7519,2.6225,2.8972
+fact,23,Amharic,cl100k,7.5981,7.2147,8.002
+fact,23,Oromo,cl100k,2.3358,2.2451,2.4347
+fact,23,Somali,cl100k,2.2066,2.0771,2.3371
+fact,23,Swahili,Llama 3,1.864,1.7616,1.9832
+fact,23,French,Llama 3,1.5751,1.4896,1.6679
+fact,23,Portuguese,Llama 3,1.5165,1.4591,1.5758
+fact,23,Arabic,Llama 3,1.5571,1.4882,1.6363
+fact,23,Amharic,Llama 3,7.5921,7.203,7.9903
+fact,23,Oromo,Llama 3,2.3286,2.2361,2.4278
+fact,23,Somali,Llama 3,2.1841,2.0621,2.3149
+fact,23,Swahili,Llama 4,1.6552,1.5695,1.7517
+fact,23,French,Llama 4,1.3743,1.3096,1.4488
+fact,23,Portuguese,Llama 4,1.281,1.2379,1.326
+fact,23,Arabic,Llama 4,1.52,1.4494,1.6002
+fact,23,Amharic,Llama 4,2.4143,2.3072,2.5355
+fact,23,Oromo,Llama 4,2.18,2.0958,2.2783
+fact,23,Somali,Llama 4,1.999,1.8847,2.1155
+fact,23,Swahili,Qwen3,1.8686,1.7644,1.9917
+fact,23,French,Qwen3,1.5582,1.4684,1.6536
+fact,23,Portuguese,Qwen3,1.4939,1.4337,1.5568
+fact,23,Arabic,Qwen3,1.5732,1.4925,1.6639
+fact,23,Amharic,Qwen3,4.1053,3.8827,4.3333
+fact,23,Oromo,Qwen3,2.3178,2.2174,2.4219
+fact,23,Somali,Qwen3,2.192,2.0667,2.3263
+fact,23,Swahili,Qwen3.5,1.7696,1.672,1.8815
+fact,23,French,Qwen3.5,1.3694,1.3016,1.4452
+fact,23,Portuguese,Qwen3.5,1.2799,1.2331,1.3297
+fact,23,Arabic,Qwen3.5,1.2901,1.2348,1.3491
+fact,23,Amharic,Qwen3.5,4.4198,4.1592,4.7029
+fact,23,Oromo,Qwen3.5,2.1996,2.1055,2.3035
+fact,23,Somali,Qwen3.5,2.0728,1.9586,2.1933
+fact,23,Swahili,Gemma 4,1.6537,1.5571,1.7632
+fact,23,French,Gemma 4,1.3737,1.2974,1.4559
+fact,23,Portuguese,Gemma 4,1.36,1.2954,1.4317
+fact,23,Arabic,Gemma 4,1.4595,1.3845,1.54
+fact,23,Amharic,Gemma 4,2.0156,1.8856,2.1564
+fact,23,Oromo,Gemma 4,2.2283,2.1203,2.3469
+fact,23,Somali,Gemma 4,2.04,1.903,2.1827
+fact,23,Swahili,DeepSeek-V4,1.9128,1.813,2.0312
+fact,23,French,DeepSeek-V4,1.534,1.4442,1.6301
+fact,23,Portuguese,DeepSeek-V4,1.4784,1.4184,1.5384
+fact,23,Arabic,DeepSeek-V4,1.5638,1.4876,1.6512
+fact,23,Amharic,DeepSeek-V4,6.0978,5.7888,6.4267
+fact,23,Oromo,DeepSeek-V4,2.3452,2.2414,2.46
+fact,23,Somali,DeepSeek-V4,2.2694,2.1311,2.4126
+fact,23,Swahili,Mistral Tekken,1.7833,1.6896,1.8878
+fact,23,French,Mistral Tekken,1.3407,1.2835,1.4015
+fact,23,Portuguese,Mistral Tekken,1.35,1.2977,1.3995
+fact,23,Arabic,Mistral Tekken,1.2565,1.207,1.306
+fact,23,Amharic,Mistral Tekken,7.4639,7.0598,7.8832
+fact,23,Oromo,Mistral Tekken,2.2389,2.1375,2.3447
+fact,23,Somali,Mistral Tekken,2.163,2.0374,2.2947

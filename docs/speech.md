@@ -78,7 +78,7 @@ ace voice languages                             # what each language can do, wit
 ace locales backcheck am --out am-backcheck.md  # back translation report for Amharic reviewers
 ```
 
-Enable the Cloud Translation, Speech-to-Text and Text-to-Speech APIs in that project. ACE reads credentials through Application Default Credentials and never stores, logs or prints a key. In Google Cloud Shell, run `gcloud auth application-default login` first: the credentials Cloud Shell provides by default are not accepted by the Google auth library ACE uses, and the call fails with a RefreshError about a missing email field. To accept spoken questions, pass `GoogleSpeechToText()` to `VoiceAdapter`. To tell the voice line which languages your own provider speaks, set `ACE_VOICE_LANGUAGES`, for example `en,sw,fr`.
+Enable the Cloud Translation API in that project, and Speech-to-Text or Text-to-Speech only if you wire them in. ACE reads credentials through Application Default Credentials and never stores, logs or prints a key. In Google Cloud Shell, run `gcloud auth application-default login` first: the credentials Cloud Shell provides by default are not accepted by the Google auth library ACE uses, and the call fails with a RefreshError about a missing email field. To accept spoken questions, pass `GoogleSpeechToText()` to `VoiceAdapter`. To tell the voice line which languages your own provider speaks, set `ACE_VOICE_LANGUAGES`, for example `en,sw,fr`.
 
 To give the voice line Amharic and Somali, set two more variables on the server that receives the voice callback:
 
@@ -99,7 +99,8 @@ A caller cannot run up the Gemini bill. The voice line is a keypad menu, and ACE
 Before you open a voice line to the public:
 
 - Set a spend cap budget for the Gemini API in Cloud Billing or Google AI Studio. Once the month's estimated cost passes the cap, new Gemini calls stop until the next month, and the voice line still answers by reading the reply with the provider's own voice in a language it speaks. Enforcement takes a little time, so set the cap slightly below your limit.
-- Lower the Cloud Translation characters per day quota, which is unlimited by default. Text-to-Speech and Speech-to-Text offer only requests per minute quotas. Requests beyond a quota fail.
+- Lower the Cloud Translation characters per day quota, which is unlimited by default, and the separate batch translation quota beside it. One back translation report sends 3,600 to 5,600 characters, depending on the language, so 25,000 a day covers all five newest languages and limits the worst case to a few dollars a month. Text-to-Speech and Speech-to-Text offer only requests per minute quotas. Requests beyond a quota fail.
+- Enable only the APIs you call. As shipped, ACE needs Cloud Translation for the report and the Gemini API for voice audio; leave Speech-to-Text and Text-to-Speech off until you use them.
 - Add a budget with alerts on the billing account for everything else. An alert budget warns you; it does not stop spending.
 - Restrict the Gemini API key to the Generative Language API, and keep it in the server's environment only.
 - Set `ACE_WEBHOOK_SECRET`, so only your voice and SMS provider can call `/voice`, `/ussd` and `/sms`.

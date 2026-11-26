@@ -21,6 +21,7 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 11. **Fit the phone.** 182 characters per USSD screen, three SMS segments, short spoken turns. Arabic and Amharic travel as UCS-2: about 80 characters per USSD screen and 67 per SMS segment. Latin script is folded into GSM-7 before it leaves. RCS replies use the SMS budget, so falling back to SMS never cuts them.
 12. **Reach by default, richer by choice.** Every answer, service and safety feature works on USSD, SMS and voice, which reach any phone without data. WhatsApp, RCS and apps built on the API are optional layers for people with a smartphone and data. RCS always falls back to SMS and stays off until an operator lists its countries in `ACE_RCS_COUNTRIES`.
 13. **Pass the checks before proposing a change.** Run `ruff check src tests benchmark`, `ace packs validate`, `pytest -q` and `python -m benchmark.run --quick`. All must pass.
+14. **Commits name only their human authors.** Add no co-author or session lines for an AI tool. An AI tool that helped with a change is not listed as a contributor.
 
 ## Where things live
 

@@ -155,7 +155,8 @@ class UssdApp:
             return [("pack:" + p.id, p.label(lang)) for p in self._packs(phone)] + tail
         from ..services import SERVICES
 
-        services = [("svc:" + sid, SERVICES[sid].title[lang]) for sid in SERVICE_ORDER]
+        # A service title in the caller's language where it has one, otherwise English: a menu never fails
+        services = [("svc:" + sid, SERVICES[sid].title.get(lang) or SERVICES[sid].title["en"]) for sid in SERVICE_ORDER]
         return services + [("topics", UI[lang]["topics"])] + tail
 
     def _topic_items(self, lang: str, phone: str) -> list[tuple[str, str]]:
@@ -233,6 +234,8 @@ class UssdApp:
                     reply = self._ask(phone, text, session_id)
                 s.answer = reply.text
                 s.end = reply.kind is ReplyKind.EMERGENCY or reply.end_session
+                if reply.kind is ReplyKind.EMERGENCY and reply.escalation_queue:
+                    s.answer = self._emergency_screen(reply, phone)
             s.screen = "answer"
         elif s.screen == "lang":
             choices = {str(n): code for n, code in enumerate(self._lang_menu(phone), 1)}
@@ -248,7 +251,10 @@ class UssdApp:
         lang = self._lang(phone)
         ui = UI[lang]
         screen = self._limit(lang)  # a value per request: the app is shared by every thread
-        con, end = (lambda body: self._con(body, screen)), (lambda body: self._end(body, screen))
+
+        def con(body: str) -> str:  # menus keep the screen of the profile's language
+            return self._con(body, screen)
+
         prefix = ""
         if s.error:
             prefix = ui["invalid"] + "\n"
@@ -289,16 +295,32 @@ class UssdApp:
             menu = "\n".join(f"{n} {i18n.native_name(code)}" for n, code in enumerate(self._lang_menu(phone), 1))
             return con(prefix + menu)
         if s.screen == "answer":
+            # An answer screen is sized by the alphabet of its own text, not the profile's language: an English
+            # emergency reply to a caller in Ethiopia travels in GSM-7 and keeps the full screen for its numbers
             if s.end:
-                return end(s.answer)
-            return con(f"{s.answer}\n{ui['menu']}")
+                return self._end(s.answer)
+            return self._con(f"{s.answer}\n{ui['menu']}")
         return con(self.title)
 
+    def _emergency_screen(self, reply: Reply, phone: str) -> str:
+        """An emergency reply that keeps every number on one closing screen, in whatever alphabet it is written."""
+        from ..safety import contacts_for, emergency_text_within
+
+        country = self.engine.country_for(phone)
+        contacts = contacts_for(reply.escalation_queue, self.engine._contact_facts(country), country)
+        return emergency_text_within(reply.escalation_queue, contacts, reply.language,
+                                     lambda text: len(encoding.gsm_fold(text)) <= self._screen(text) - 4)
+
+    def _screen(self, body: str, screen: int | None = None) -> int:
+        """Characters this screen carries: text outside GSM-7 travels as UCS-2, whatever the profile's language."""
+        limit = screen or self.max_chars
+        return limit if encoding.is_gsm7(encoding.gsm_fold(body)) else min(limit, encoding.USSD_UCS2)
+
     def _con(self, body: str, screen: int | None = None) -> str:
-        return "CON " + _fit(encoding.gsm_fold(body), (screen or self.max_chars) - 4)
+        return "CON " + _fit(encoding.gsm_fold(body), self._screen(body, screen) - 4)
 
     def _end(self, body: str, screen: int | None = None) -> str:
-        return "END " + _fit(encoding.gsm_fold(body), (screen or self.max_chars) - 4)
+        return "END " + _fit(encoding.gsm_fold(body), self._screen(body, screen) - 4)
 
 
 def _fit(body: str, limit: int) -> str:

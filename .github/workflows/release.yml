@@ -20,6 +20,23 @@ jobs:
         with:
           name: dist
           path: dist/
+  attach:
+    # Attaches the wheel and source archive to the GitHub release that triggered the run
+    needs: build
+    if: github.event_name == 'release'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+      - run: gh release upload "$TAG" dist/* --repo "$REPO" --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.release.tag_name }}
+          REPO: ${{ github.repository }}
   pypi:
     needs: build
     if: vars.PYPI_PUBLISH == 'true'

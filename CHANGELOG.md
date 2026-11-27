@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 2.3.0b2 (2026-11-27): no default country
 
 ACE no longer assumes that a caller is in Kenya anywhere in the code. Since 2.1 it covers 34 countries, but a few defaults from the first release still pointed at Kenya.
 
@@ -11,6 +11,10 @@ ACE no longer assumes that a caller is in Kenya anywhere in the code. Since 2.1 
 - **A phone-less emergency sent to `/v1/services` keeps no profile.** It left a profile holding the message text, as `/v1/ask` did before 2.3.
 - **`ace ask` and `ace chat` need `--country` or `--phone`**, instead of a Kenyan sample number, and `Engine.ask` with no sender answers as for a caller outside ACE's 34 countries unless the engine pins a country.
 - Tests that relied on the Kenyan default now pass a Kenyan number, and new tests hold each fix.
+
+### Changed
+- **The release workflow attaches the wheel and source archive to each GitHub release**, so a release no longer waits on a manual upload.
+- Version 2.3.0b2 in `pyproject.toml`, `ace_engine.__version__` and `CITATION.cff`.
 
 ## 2.3.0b1 (2026-11-26): 32 languages, and honesty about the rest
 

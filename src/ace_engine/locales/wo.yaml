@@ -18,6 +18,7 @@ templates:
   safety.OPENERS.poisoning: "Lii dafa mel ni pósoŋ. Seetal ndimbalu doktoor léegi, te yóbbu butéel bi. {numbers}"
   safety.OPENERS.child_protection: "Xale man na nekk ci musiba. Baal ma, seetal ndimbal léegi. {numbers}"
   safety.OPENERS.gbv: "Dama jaaxle ci li lay dal. Man nga am ndimbal léegi. {numbers}"
+  safety.OPENERS.fire: "Lii dafa mel ni sawara. Génnal ñépp léegi, buleen dellu ci biir. {numbers}"
   safety.OPENERS.health_urgent: "Lii dafa mel ni lu gaaw. Seetal ndimbalu doktoor léegi. {numbers}"
   safety.CALL_WORD: "Wooteel {numbers}"
   safety.OR_WORD: "walla"
@@ -162,6 +163,10 @@ phrases:
   safety.CHILD: ["xale", "sama doom", "sama doom ju jigéen", "sama doom ju góor", "janq bu ndaw", "xale yi", "xale bu ndaw"]
   safety.CHILD_HARM: ["dañu ko ray sutura", "dafa ko ray sutura", "dañu koy fitnaal", "dañu koy sonal", "dañu koy dóor", "dóor na ko", "séy bu ñu ko sonal"]
   safety.SELF_HARM: ["rey sama bopp", "dinaa rey sama bopp", "dama bëgg dee", "bëgguma dund", "dama bëgg a jeexal sama dund", "gaañ sama bopp"]
+  safety.FIRE: ["kër gi dafa lakk", "kër dafa lakk", "kër gi mungiy lakk", "sawara jàpp na kër gi", "am na sawara", "gaas bi toj na", "marse bi dafa lakk"]
+  safety.DROWNING: ["mungiy lab", "dafa lab", "labna", "daanu ci dex gi", "daanu ci ndox mi", "daanu ci teen bi", "ndox mi yóbbu na ko", "mbënn mi yóbbu na ko"]
+  safety.STABBING: ["jam nañu ko paaka", "paaka jam na ko", "jam nañu", "dañu ko fetal", "fetal bi dal na ko"]
+  safety.ROAD_ACCIDENT: ["aksidaa oto", "aksidaa", "oto dal na", "oto bi dal na ko", "jakarta dal na ko", "oto bi dafa daanu"]
 
   scam.PIN: ["pin", "baatu kumpa", "nimero bu kumpa"]
   scam.ASK: ["yónnee", "jox ma", "dëggal", "duggal", "bindal"]

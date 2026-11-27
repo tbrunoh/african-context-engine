@@ -100,7 +100,28 @@ class _Index:
         return total
 
 
+def _content(text: str) -> set[str]:
+    """Query terms that can carry a topic: three letters or more, and not a bare number."""
+    return {t for t in terms(text) if len(t) >= 3 and not t.isdigit()}
+
+
 class ContextStore:
+    def on_topic(self, fact_id: str, text: str) -> bool:
+        """The relevance test (2.4): is this fact about what the question asks, or does it only share a word?
+
+        A question is off topic for a fact when the fact matches at most one of its content words and the question
+        has a word that no fact in the store contains at all. Where can I donate blood matches bleeding in
+        pregnancy on blood alone, and donate appears in no fact, so ACE asks the person to say more instead of
+        answering about bleeding. A question whose every word ACE knows, or that matches a fact on two words or
+        more, is answered as before."""
+        tf = self._index.docs.get(fact_id)
+        content = _content(text)
+        if tf is None or len(content) < 2:
+            return True
+        matched = {t for t in content if tf.get(t)}
+        unknown = {t for t in content if self._index.df[t] == 0}
+        return len(matched) >= 2 or not unknown
+
     def __init__(self) -> None:
         self._facts: dict[str, ContextFact] = {}
         self._index = _Index()

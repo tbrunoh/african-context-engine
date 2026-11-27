@@ -19,6 +19,7 @@ templates:
   safety.OPENERS.poisoning: "Ɗum ina nanndi e pooson. Yiylo ballal doktoor jooni, ronda butelli ndii. {numbers}"
   safety.OPENERS.child_protection: "Ɓiɗɗo ina waawi wonde e kulol. Yiylo ballal jooni. {numbers}"
   safety.OPENERS.gbv: "Mi sunii nde ɗum ina hewtude ma. A waawii heɓude ballal jooni. {numbers}"
+  safety.OPENERS.fire: "Ɗum ina nanndi e jaynge. Yaltin yimɓe fof jooni, wata on rutto nder. {numbers}"
   safety.OPENERS.health_urgent: "Ɗum ina nanndi e huunde yaawnde. Yiylo ballal doktoor jooni. {numbers}"
   safety.CALL_WORD: "Noddu {numbers}"
   safety.OR_WORD: "walla"
@@ -163,6 +164,10 @@ phrases:
   safety.CHILD: ["ɓiɗɗo", "ɓiɗɗo am", "ɓiɗɗo am debbo", "ɓiɗɗo am gorko", "suka debbo", "sukaaɓe", "ɓiɗɗo tokooso"]
   safety.CHILD_HARM: ["ɓe kaɓɓii mo e doole", "kaɓɓii mo e doole", "ɓe ina torra mo", "ɓe torrii mo", "ɓe ina fiya mo", "o fiyii mo", "resaando e doole"]
   safety.SELF_HARM: ["warde hoore am", "mi warat hoore am", "mi faalaa maayde", "mi faalaaka wuurde kadi", "mi faalaa gasnude ngurndam am", "gaañde hoore am"]
+  safety.FIRE: ["suudu ndu ina wula", "suudu amen ina wula", "suudu ina wula", "jaynge nanngii suudu", "jaynge ina wonnde", "jaynge fuɗɗii", "gaas fuɗii", "luumo ina wula"]
+  safety.DROWNING: ["ina yoora e ndiyam", "ina luufa", "luufii", "yanii e maayo", "yanii e ndiyam", "yanii e woyndu", "ndiyam ronndii mo"]
+  safety.STABBING: ["soppaama labi", "soppii mo labi", "labi soppii mo", "fiyaama fetel", "fiyii mo fetel"]
+  safety.ROAD_ACCIDENT: ["aksida oto", "aksida laawol", "oto fiyii", "oto ndo fiyii mo", "moto fiyii mo", "oto ndo hippii"]
 
   scam.PIN: ["pin", "konngol suuɗiingol", "limoore suuɗiinde"]
   scam.ASK: ["neldu", "okku kam", "teeŋtin", "naatnu", "winndu"]

@@ -25,7 +25,7 @@ Scoped tasks for a first contribution. Each one is useful on its own and comes w
 16. **Evaluation set.** A YAML file of real style questions in English and Swahili with the fact ids that should answer them, and a `pytest` that reports retrieval accuracy.
 17. **`ace packs stats`.** Coverage by country, vertical, language and review status, for maintainers.
 18. **Voice speech input.** A `SpeechToText` implementation for an open model, behind an optional dependency, with a test that uses a recorded fixture.
-19. **Playground polish.** Show the USSD character count live and add a language toggle to the SMS tab.
+19. **Phone polish.** Show the USSD character count as you type, and remember the chosen channel between visits.
 20. **Type checking in CI.** Add mypy or pyright and fix what it finds.
 
 ## How to submit

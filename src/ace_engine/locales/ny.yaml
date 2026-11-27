@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Izi zikumveka ngati poizoni. Pezani thandizo la dokotala tsopano, mutenge botolo. {numbers}"
   safety.OPENERS.child_protection: "Mwana akhoza kukhala pachiopsezo. Chonde pezani thandizo tsopano. {numbers}"
   safety.OPENERS.gbv: "Pepani kuti izi zikukuchitikirani. Mutha kupeza thandizo tsopano. {numbers}"
+  safety.OPENERS.fire: "Izi zikuoneka ngati moto. Tulutsani anthu onse tsopano, musabwerere mkati. {numbers}"
   safety.OPENERS.health_urgent: "Izi zikumveka zofulumira. Pezani thandizo la dokotala tsopano. {numbers}"
   safety.CALL_WORD: "Imbani {numbers}"
   safety.OR_WORD: "kapena"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["mwana", "mwana wanga", "mwana wanga wamkazi", "mwana wanga wamwamuna", "kamtsikana", "mtsikana wamng'ono"]
   safety.CHILD_HARM: ["wagwiriridwa", "anamugwirira", "akuzunzidwa", "akumuzunza", "akumumenya", "wamumenya", "ukwati wokakamiza"]
   safety.SELF_HARM: ["kudzipha", "ndidzipha", "ndikufuna kufa", "sindikufunanso kukhala ndi moyo", "ndikufuna kuthetsa moyo wanga", "kudzivulaza"]
+  safety.FIRE: ["nyumba ikuyaka", "nyumba yathu ikuyaka", "pali moto", "moto wayaka", "moto wagwira nyumba", "nyumba yapsa", "gasi laphulika"]
+  safety.DROWNING: ["akumira", "wamira", "wamira m'madzi", "wagwera mumtsinje", "wagwera m'madzi", "wagwera m'chitsime", "madzi amutenga"]
+  safety.STABBING: ["wabayidwa ndi mpeni", "wabayidwa", "amubaya", "wamubaya ndi mpeni", "wawomberedwa", "amuwombera"]
+  safety.ROAD_ACCIDENT: ["ngozi ya pamsewu", "ngozi ya galimoto", "wagundidwa ndi galimoto", "agundidwa ndi galimoto", "galimoto yamugunda", "galimoto yagubuduka", "basi yagubuduka"]
 
   scam.PIN: ["pin", "chinsinsi", "nambala yachinsinsi"]
   scam.ASK: ["tumizani", "ndipatseni", "tsimikizani", "lowetsani", "lembani"]

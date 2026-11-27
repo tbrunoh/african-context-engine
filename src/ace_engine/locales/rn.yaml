@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Ibi bisa n'uburozi. Rondera imfashanyo ya muganga ubu nyene, ujane icupa. {numbers}"
   safety.OPENERS.child_protection: "Umwana ashobora kuba ari mu kaga. Ndakwinginze rondera imfashanyo ubu nyene. {numbers}"
   safety.OPENERS.gbv: "Birambabaje kubona ibi bikubako. Urashobora kuronka imfashanyo ubu nyene. {numbers}"
+  safety.OPENERS.fire: "Ibi bisa n'umuriro. Sohora abantu bose ubu nyene, ntimusubire mu nzu. {numbers}"
   safety.OPENERS.health_urgent: "Ibi bisa n'ivyihuta. Rondera imfashanyo ya muganga ubu nyene. {numbers}"
   safety.CALL_WORD: "Hamagara {numbers}"
   safety.OR_WORD: "canke"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["umwana", "umwana wanje", "umukobwa wanje", "umuhungu wanje", "agakobwa", "abana", "akana"]
   safety.CHILD_HARM: ["yakorewe ku nguvu", "bamukoreye ku nguvu", "arahohoterwa", "baramuhohotera", "baramukubita", "yamukubise", "kwubakishwa ku nguvu"]
   safety.SELF_HARM: ["kwiyahura", "ngiye kwiyahura", "ndashaka gupfa", "sinshaka kubaho", "ndashaka kwiyaka ubuzima", "kwigirira nabi"]
+  safety.FIRE: ["inzu iriko irashya", "inzu irashya", "inzu yacu irashya", "umuriro wafashe inzu", "hari umuriro", "inzu yahiye", "gaze yaturitse", "isoko riraka"]
+  safety.DROWNING: ["ariko araroha", "araroha", "yarohamye", "yaguye mu ruzi", "yaguye mu mazi", "yaguye mw'iriba", "amazi yamutwaye", "isegenya ryamutwaye"]
+  safety.STABBING: ["yatewe imbugita", "bamuteye imbugita", "yatemwe n'umupanga", "yarashwe", "bamurashe"]
+  safety.ROAD_ACCIDENT: ["isanganya ryo mu nzira", "isanganya ry'imodoka", "yagonzwe n'imodoka", "imodoka yamugonze", "moto yamugonze", "imodoka yaguye", "bisi yaguye"]
 
   scam.PIN: ["pin", "ijambo ry'ibanga", "inomero y'ibanga"]
   scam.ASK: ["rungika", "mpa", "emeza", "injiza", "andika"]

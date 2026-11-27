@@ -22,6 +22,7 @@ V2 decision services (preview), each answering with dated, cited data:
 from __future__ import annotations
 
 import argparse
+import json
 import secrets
 from typing import Any
 
@@ -177,16 +178,97 @@ def build_server(engine: Engine) -> Any:
     return server
 
 
+def http_app(engine: Engine, allowed_hosts: list[str] | None = None, path: str = "/mcp",
+             paused: bool = False) -> Any:
+    """An ASGI app serving MCP over Streamable HTTP: stateless, JSON responses, a /healthz route, and host checks.
+
+    Stateless means no session is held between calls, so any instance can answer any request and nothing about a
+    caller outlives their request. When paused (the spend guard sets ACE_PAUSED), every MCP call gets 503."""
+    if paused:
+        return _paused_app
+    from mcp.server.transport_security import TransportSecuritySettings
+
+    server = build_server(engine)
+    hosts = [h for h in (allowed_hosts or []) if h]
+    security = TransportSecuritySettings(
+        enable_dns_rebinding_protection=bool(hosts),
+        allowed_hosts=[*hosts, *(f"{h}:*" for h in hosts)],
+        allowed_origins=[f"https://{h}" for h in hosts])
+
+    from starlette.requests import Request
+    from starlette.responses import JSONResponse
+
+    from . import __version__
+
+    @server.custom_route("/healthz", methods=["GET"])
+    async def healthz(request: Request) -> JSONResponse:
+        return JSONResponse({"status": "ok", "version": __version__, "tools": len(build_tools(engine))})
+
+    try:  # SDK 2.x takes the transport settings here
+        return server.streamable_http_app(streamable_http_path=path, stateless_http=True, json_response=True,
+                                          transport_security=security)
+    except TypeError:  # SDK 1.x reads them from the server's settings
+        server.settings.streamable_http_path = path
+        server.settings.stateless_http = True
+        server.settings.json_response = True
+        server.settings.transport_security = security
+        return server.streamable_http_app()
+
+
+async def _paused_app(scope: dict[str, Any], receive: Any, send: Any) -> None:
+    """The MCP endpoint while the demo is paused: health still answers, every call gets 503 and a reason."""
+    if scope["type"] != "http":
+        return
+    from . import __version__
+
+    if scope.get("path") == "/healthz":
+        status, body = 200, {"status": "paused", "version": __version__}
+    else:
+        status, body = 503, {"error": "This demonstration has reached its spending limit for the month and is paused "
+                                       "until the 1st."}
+    await send({"type": "http.response.start", "status": status,
+                "headers": [(b"content-type", b"application/json"), (b"retry-after", b"86400")]})
+    await send({"type": "http.response.body", "body": json.dumps(body).encode()})
+
+
 def main() -> None:
+    import os
+
     parser = argparse.ArgumentParser(description="ACE context MCP server")
     parser.add_argument("--packs", action="append", help="pack file or folder (repeatable)")
     parser.add_argument("--country", default=None, help="pin one country (default: callers choose per call)")
+    parser.add_argument("--transport", choices=("stdio", "http"), default="stdio",
+                        help="stdio for a local assistant (default), or http for Streamable HTTP at /mcp")
+    parser.add_argument("--host", default="0.0.0.0", help="address to listen on with --transport http")
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8080")),
+                        help="port for --transport http (default: $PORT or 8080)")
+    parser.add_argument("--allowed-host", action="append", dest="allowed_hosts",
+                        help="Host header to accept with --transport http (repeatable; also ACE_MCP_ALLOWED_HOSTS)")
     args = parser.parse_args()
     from .cli import _pack_roots
 
     roots = _pack_roots(args.packs)
     engine = Engine.from_packs(*roots, config=EngineConfig(country=args.country))
-    build_server(engine).run()
+    if args.transport == "stdio":
+        build_server(engine).run()
+        return
+    import threading
+
+    import uvicorn
+
+    if engine.services is not None:  # the same snapshot sets and facility index as the site
+        from .services import facility
+
+        threading.Thread(target=lambda: facility.warm(engine.services.ctx), daemon=True).start()
+        if os.environ.get("ACE_SNAPSHOT_BASE"):
+            from .snapshots.manifest import SnapshotWatcher
+
+            SnapshotWatcher(engine, os.environ["ACE_SNAPSHOT_BASE"], float(os.environ.get("ACE_SNAPSHOT_INTERVAL") or 300),
+                            on_swap=lambda hub: facility.warm(hub.ctx)).start()
+    hosts = args.allowed_hosts or [h.strip() for h in os.environ.get("ACE_MCP_ALLOWED_HOSTS", "").split(",")]
+    paused = bool(os.environ.get("ACE_PAUSED"))
+    uvicorn.run(http_app(engine, hosts, paused=paused), host=args.host, port=args.port, log_level="warning",
+                proxy_headers=True, forwarded_allow_ips="*")
 
 
 if __name__ == "__main__":  # pragma: no cover

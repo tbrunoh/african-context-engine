@@ -1,0 +1,60 @@
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Developers</div>
+    <h1>Put ACE behind your channel or your assistant.</h1>
+    <p class="lead">One JSON call returns a grounded answer with its sources, or the national emergency numbers when the message needs them. AI assistants connect over MCP. No key is needed for this demonstration.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap doc-grid doc">
+    <nav class="toc" aria-label="On this page">
+      <a href="#ask">Ask a question</a>
+      <a href="#country">Country and language</a>
+      <a href="#services">Decision services</a>
+      <a href="#more">Scam Shield and emergency numbers</a>
+      <a href="#mcp">MCP for assistants</a>
+      <a href="#limits">Limits and terms</a>
+      <a href="#deploy">Run your own</a>
+    </nav>
+    <div>
+      <h2 id="ask">Ask a question</h2>
+      <pre><code>curl https://ace.korext.com/v1/ask \
+  -H "Content-Type: application/json" \
+  -d '{"text": "how do I store maize", "country": "KE", "channel": "sms"}'</code></pre>
+      <p>The reply carries <code>text</code>, <code>kind</code> (answer, emergency, scam, clarify or system), <code>language</code>, <code>escalated</code>, and <code>citations</code>, each with its source, link, licence, checked date and review status. With <code>"channel": "sms"</code> it also returns the SMS segments.</p>
+
+      <h2 id="country">Country and language</h2>
+      <p>Pass <code>country</code> as an ISO code, such as <code>NG</code>, <code>SN</code> or <code>ZA</code>. It decides the facts, the services and the emergency numbers. A request with no country is answered as from outside ACE's 34 countries: guidance that applies everywhere, and an emergency is told to call the local emergency number, never another country's lines.</p>
+      <p>This public server ignores a <code>phone</code> field, so no caller can act as a real subscriber, and it keeps no profile for an API call. Pass <code>language</code> to choose the reply language, or leave it out and ACE reads it from the message among the country's languages.</p>
+
+      <h2 id="services">Decision services</h2>
+      <pre><code>curl https://ace.korext.com/v1/services/rain_this_week \
+  -H "Content-Type: application/json" \
+  -d '{"country": "GH", "place": "Ashanti", "language": "en"}'</code></pre>
+      <p>Services: <code>rain_this_week</code>, <code>official_warnings</code>, <code>nearest_facility</code>, <code>market_prices</code> (add <code>food</code>), <code>pregnancy_companion</code> (add <code>weeks</code>) and <code>pest_check</code> (add <code>text</code>). Each result carries <code>outcome</code> (answer, needs_place, gap, stale or no_match), <code>preview</code>, its citations and the structured <code>data</code> behind the text. <a href="/v1/services">GET /v1/services</a> lists every service and its coverage by country.</p>
+
+      <h2 id="more">Scam Shield and emergency numbers</h2>
+      <pre><code>curl https://ace.korext.com/v1/scam \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Your SIM is registered twice. Send your PIN to confirm", "country": "KE"}'
+
+curl "https://ace.korext.com/v1/emergency?country=NG&amp;queue=gbv"</code></pre>
+      <p>Scam Shield never declares a message safe. Emergency queues: emergency, health_urgent, maternal, poisoning, gbv, violence, child_protection, self_harm and fire.</p>
+
+      <h2 id="mcp">MCP for assistants</h2>
+      <p>Add this address to any assistant that speaks MCP over Streamable HTTP:</p>
+      <pre><code>https://ace.korext.com/mcp</code></pre>
+      <p>Tools: <code>ask_ace</code>, <code>search_context</code>, <code>check_message</code>, <code>emergency_contacts</code>, <code>list_packs</code>, and one per service: <code>rain_this_week</code>, <code>official_warnings</code>, <code>nearest_facility</code>, <code>market_prices</code>, <code>pregnancy_companion</code>, <code>pest_check</code> and <code>service_coverage</code>. Every tool is read only, sends no messages, and takes the country when the assistant knows it. No tool assumes a country.</p>
+
+      <h2 id="limits">Limits and terms</h2>
+      <ul>
+        <li>Requests are limited per address, generously, because many mobile users share one carrier address. A client that goes over gets HTTP 429 and can retry after a minute.</li>
+        <li>This is a demonstration with no service level. For production, run your own copy.</li>
+        <li>Code under Apache 2.0. Knowledge packs under CC BY 4.0, language profiles under CC BY-SA 4.0, and each snapshot under its source's licence, named in every citation. Weather comes from Open-Meteo's free tier and is credited in every weather answer.</li>
+      </ul>
+
+      <h2 id="deploy">Run your own</h2>
+      <p>Everything that runs this site is in the repository: <code>pip install ace-engine</code> from the release wheel, <code>ace serve</code> on your own machine, or the Google Cloud scripts in <a href="https://github.com/tbrunoh/african-context-engine/tree/main/deploy/gcp">deploy/gcp</a>, which stand up the same stack in any project.</p>
+    </div>
+  </div>
+</section>

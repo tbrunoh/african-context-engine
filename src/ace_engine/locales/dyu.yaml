@@ -19,6 +19,7 @@ templates:
   safety.OPENERS.poisoning: "Nin bɛ iko pɔsɔni. Dɔgɔtɔrɔ ka dɛmɛ ɲini sisan, ka butɛli ta taa. {numbers}"
   safety.OPENERS.child_protection: "Den dɔ bɛ se ka kɛ farati la. Dɛmɛ ɲini sisan. {numbers}"
   safety.OPENERS.gbv: "Hakɛto, a ma diya ne ye ko nin bɛ ka kɛ i la. I bɛ se ka dɛmɛ sɔrɔ sisan. {numbers}"
+  safety.OPENERS.fire: "Nin bɛ i ko tasuma. Mɔgɔw bɛɛ labɔ sisan, aw kana segin kɔnɔ. {numbers}"
   safety.OPENERS.health_urgent: "Nin bɛ iko ko teliman. Dɔgɔtɔrɔ ka dɛmɛ ɲini sisan. {numbers}"
   safety.CALL_WORD: "Wele {numbers}"
   safety.OR_WORD: "walima"
@@ -163,6 +164,10 @@ phrases:
   safety.CHILD: ["den", "ne den", "ne denmuso", "ne dencɛ", "sunguru fitini", "denmisɛnw", "den fitini"]
   safety.CHILD_HARM: ["u y'a cɛn barika la", "y'a cɛn barika la", "u bɛ a tɔɔrɔ", "u b'a tɔɔrɔ", "u bɛ a gosi", "a y'a gosi", "furu barika la"]
   safety.SELF_HARM: ["ne yɛrɛ faga", "n bɛna ne yɛrɛ faga", "n b'a fɛ ka sa", "n t'a fɛ ka ɲɛnamaya tugun", "n b'a fɛ ka ne ɲɛnamaya ban", "ne yɛrɛ jogin"]
+  safety.FIRE: ["so bɛ jeni", "ka so bɛ jeni", "tasuma bɛ so la", "tasuma minɛna", "gazi pɛrɛnna", "sugu bɛ jeni"]
+  safety.DROWNING: ["bɛ ji la ka su", "sunna ji la", "binna baji la", "binna ji la", "binna kɔlɔn na", "ji ye a ta", "sanji ye a ta"]
+  safety.STABBING: ["sɔgɔ muru la", "muru ye a sɔgɔ", "sɔgɔra muru la", "marifa ci a la", "marifa kisɛ ye a sɔrɔ"]
+  safety.ROAD_ACCIDENT: ["mobili kasaara", "sira kan kasaara", "mobili ye a gosi", "moto ye a gosi", "mobili yɛlɛmana"]
 
   scam.PIN: ["pin", "gundo daɲɛ", "gundo nimɔrɔ"]
   scam.ASK: ["ci", "a di ne ma", "sɛmɛntiya", "a don", "sɛbɛn"]

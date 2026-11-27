@@ -1,0 +1,41 @@
+<section class="hero">
+  <div class="wrap narrow">
+    <div class="eyebrow">About</div>
+    <h1>Open source context for Africa, checked before it is served.</h1>
+    <p class="lead">ACE, the African Context Engine, gives checked, local, citable knowledge on any phone. This site runs ACE {{VERSION}} from the public repository, with no fork, on Google Cloud in Johannesburg.</p>
+    <div class="actions">
+      <a class="button" href="https://github.com/tbrunoh/african-context-engine">ACE on GitHub</a>
+      <a class="button quiet" href="https://doi.org/10.5281/zenodo.24565737">Cite: doi 10.5281/zenodo.24565737</a>
+    </div>
+  </div>
+</section>
+<section class="band sand">
+  <div class="wrap narrow">
+    <h2>The project</h2>
+    <p>ACE is open source under the Apache License 2.0. Its knowledge packs are under CC BY 4.0, its language profiles under CC BY-SA 4.0, and each dataset snapshot under its source's own licence, named in every citation. The DOI above always resolves to the latest archived version. Tom Bruno maintains the project, and every organisation whose published work ACE uses is credited in <a href="https://github.com/tbrunoh/african-context-engine/blob/main/ACKNOWLEDGMENTS.md">ACKNOWLEDGMENTS.md</a>. A credit does not mean the organisation endorses ACE.</p>
+    <p>This site is a demonstration. It is not an emergency service: emergency numbers are real and checked against published public sources, but no person monitors these messages and no one will call back. Every language after English is a preview until clinicians and fluent speakers review it.</p>
+  </div>
+</section>
+<section class="band" id="privacy">
+  <div class="wrap narrow">
+    <h2>Privacy notice</h2>
+    <p><b>Data controller.</b> Tom Bruno, as maintainer of the open source ACE project. Questions or requests about personal data: tom@tbrunoh.net. Security problems: please use private vulnerability reporting on the GitHub repository.</p>
+    <h3>What the phone on this site keeps</h3>
+    <ul>
+      <li>It never asks for a phone number. Your browser gets a random session key in a cookie, used only by the phone, for 24 hours.</li>
+      <li>Against that key ACE keeps your language, the last place you named, the last question you asked and, while a service waits for a place, the question behind it, so a two step question works. Each expires 24 hours after your last message and is deleted within a day after that.</li>
+      <li>There is no conversation history. Send FORGET, or use the link under the phone, to delete everything at once.</li>
+      <li>When a message reaches the safety rail, ACE counts it by kind of emergency, country and channel. It keeps no words and no session key with the count.</li>
+      <li>Calls to the API and MCP keep nothing at all.</li>
+    </ul>
+    <h3>Logs and where data is held</h3>
+    <ul>
+      <li>ACE's application logs record the path, status, time taken, country, channel and kind of answer, never message text.</li>
+      <li>Google Cloud's request logs hold the address a request came from and the page asked for, for 30 days, to keep the service working and to stop abuse.</li>
+      <li>Sessions, counts and logs are held in Google Cloud's Johannesburg region (africa-south1).</li>
+      <li>When the language model is on, the question and the facts ACE retrieved are sent to Google's Gemini API to rephrase the answer, under Google's terms for paid API use, and may be processed outside Africa. USSD and voice never use the model, and no message that reaches the safety rail is ever sent to it.</li>
+    </ul>
+    <h3>Your choices</h3>
+    <p>You can delete your session at any time, and you can use the API or run your own copy of ACE instead. ACE is not designed for children; if you are under 18, ask an adult before using it.</p>
+  </div>
+</section>

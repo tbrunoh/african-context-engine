@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Kun summaa'uu fakkaata. Amma gargaarsa yaalaa barbaadi, qodaa isaas qabadhu. {numbers}"
   safety.OPENERS.child_protection: "Daa'immi tokko balaa keessa jiraachuu danda'a. Maaloo amma gargaarsa barbaadi. {numbers}"
   safety.OPENERS.gbv: "Wanti kun sirra ga'uu isaatti gaddeera. Amma gargaarsa argachuu dandeessa. {numbers}"
+  safety.OPENERS.fire: "Kun ibidda fakkaata. Amma nama hunda baasaa, deebitanii hin seeninaa. {numbers}"
   safety.OPENERS.health_urgent: "Kun hatattamaa fakkaata. Amma gargaarsa yaalaa barbaadi. {numbers}"
   safety.CALL_WORD: "Bilbili {numbers}"
   safety.OR_WORD: "ykn"
@@ -159,6 +160,10 @@ phrases:
   safety.CHILD: ["daa'ima", "daa'imni", "intala koo", "ilma koo", "intala", "ijoollee", "mucaa", "intalti", "intalti koo", "ilmi koo", "mucaan koo", "mucaa koo"]
   safety.CHILD_HARM: ["gudeedame", "gudeedamte", "miidhame", "miidhamte", "rukutame", "rukutamte", "fuudhaa fi heeruma dirqamaa", "humnaan heerumsiifte", "dhaqna qabaa"]
   safety.SELF_HARM: ["of ajjeesuu", "of ajjeesa", "du'uu barbaada", "lubbuu koo balleessuu", "of miidhuu", "jiraachuu hin barbaadu"]
+  safety.FIRE: ["manni gubachaa jira", "manni keenya gubachaa jira", "ibiddi ka'e", "ibiddi qabate", "balaa ibiddaa", "manni gubate", "gaaziin dhohe", "gabaan gubachaa jira"]
+  safety.DROWNING: ["bishaan liqimsaa jira", "bishaan liqimse", "bishaan keessatti dhume", "laga keessa kufe", "boolla bishaanii keessa kufe", "bishaan keessa kufe", "lolaan fudhate", "bishaan fudhate"]
+  safety.STABBING: ["billaadhaan waraaname", "billaadhaan isa waraane", "billaadhaan ishee waraane", "rasaasaan rukutame", "rasaasaan dhahame"]
+  safety.ROAD_ACCIDENT: ["balaa tiraafikaa", "balaa konkolaataa", "konkolaataan rukute", "konkolaataan dhahe", "motorsaayikiliin rukute", "konkolaataan garagale", "awtobisiin garagale"]
 
   scam.PIN: ["lakkoofsa iccitii", "jecha darbii", "piinii"]
   scam.ASK: ["ergi", "erguu", "qoodi", "naaf kenni", "mirkaneessi", "galchi", "barreessi"]

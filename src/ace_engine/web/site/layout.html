@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<link rel="canonical" href="{{CANONICAL}}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:url" content="{{CANONICAL}}">
+<meta name="theme-color" content="#006B69">
+<link rel="icon" href="/static/mark.svg" type="image/svg+xml">
+<link rel="preload" href="/static/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/static/ace.css">
+<script src="/static/site.js" defer></script>
+</head>
+<body data-page="{{PAGE}}">
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="/" aria-label="ACE home">
+      <img src="/static/mark.svg" alt="" width="32" height="32">
+      <span class="brand-name">ACE</span>
+      <span class="brand-sub">African Context Engine</span>
+    </a>
+    <button class="menu" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav id="nav" class="nav" aria-label="Main">
+      <a href="/try" data-nav="try">Try</a>
+      <a href="/coverage" data-nav="coverage">Coverage</a>
+      <a href="/developers" data-nav="developers">Developers</a>
+      <a href="/status" data-nav="status">Status</a>
+      <a href="/about" data-nav="about">About</a>
+      <a class="nav-gh" href="https://github.com/tbrunoh/african-context-engine">GitHub</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+{{CONTENT}}
+</main>
+<footer class="foot">
+  <svg class="dunes" viewBox="0 0 1000 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 L0 38 C 120 18 220 18 330 34 C 430 48 520 46 610 30 C 700 14 820 12 1000 36 L1000 60 Z"/><path class="ridge" d="M0 38 C 120 18 220 18 330 34 C 430 48 520 46 610 30 C 700 14 820 12 1000 36"/></svg>
+  <div class="foot-body">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-brand">ACE, the African Context Engine</p>
+      <p class="muted">A demonstration of open source software, not an emergency service. Emergency numbers are real and checked; no one monitors these messages.</p>
+    </div>
+    <div>
+      <p class="foot-h">Product</p>
+      <p><a href="/try">Try it</a><br><a href="/coverage">Coverage</a><br><a href="/developers">API and MCP</a><br><a href="/status">Status</a></p>
+    </div>
+    <div>
+      <p class="foot-h">Open source</p>
+      <p><a href="https://github.com/tbrunoh/african-context-engine">GitHub</a><br><a href="https://doi.org/10.5281/zenodo.24565737">Cite on Zenodo</a><br><a href="/about">About and privacy</a></p>
+    </div>
+    <div>
+      <p class="foot-h">This build</p>
+      <p class="muted mono">ACE {{VERSION}}<br>{{COMMIT}}</p>
+    </div>
+  </div>
+  <div class="wrap foot-base muted">Code under Apache 2.0, knowledge packs under CC BY 4.0. Maintained by Tom Bruno. {{YEAR}}.</div>
+  </div>
+</footer>
+</body>
+</html>

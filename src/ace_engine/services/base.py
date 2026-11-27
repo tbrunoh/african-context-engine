@@ -137,7 +137,10 @@ def cite_snapshot(snap: Snapshot, label: str | None = None) -> Citation:
 
 
 def cite_fact(fact: Any) -> Citation:
-    return Citation(fact.id, fact.source, fact.review_status.value, fact.source_url, date=fact.checked_on)
+    from ..engine import _PACK_LICENCE, _date_text
+
+    return Citation(fact.id, fact.source, fact.review_status.value, fact.source_url,
+                    licence=_PACK_LICENCE.get(fact.id), date=_date_text(fact.checked_on))
 
 
 def snapshot_age_hours(snap: Snapshot, now: datetime) -> float:

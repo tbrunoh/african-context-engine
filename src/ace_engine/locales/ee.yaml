@@ -18,6 +18,7 @@ templates:
   safety.OPENERS.poisoning: "Esia dze abe aɖi ene. Di dɔkta ƒe kpeɖeŋu fifia, eye nàtsɔ goe la ɖe asi. {numbers}"
   safety.OPENERS.child_protection: "Ɖevi aɖe ate ŋu anɔ afɔku me. Meɖe kuku di kpeɖeŋu fifia. {numbers}"
   safety.OPENERS.gbv: "Eve nam be esia le dzɔdzɔm ɖe ŋuwò. Àte ŋu axɔ kpeɖeŋu fifia. {numbers}"
+  safety.OPENERS.fire: "Esia dze abe dzo ene. Kplɔ amewo katã do goe fifia, migagbugbɔ yi eme o. {numbers}"
   safety.OPENERS.health_urgent: "Esia dze abe nya si hiã kabakaba ene. Di dɔkta ƒe kpeɖeŋu fifia. {numbers}"
   safety.CALL_WORD: "Yɔ {numbers}"
   safety.OR_WORD: "alo"
@@ -162,6 +163,10 @@ phrases:
   safety.CHILD: ["ɖevi", "vinye", "vinye nyɔnu", "vinye ŋutsu", "nyɔnuvi", "ɖeviwo", "ɖevi sue"]
   safety.CHILD_HARM: ["wodo ŋusẽ dɔ gbɔe", "edo ŋusẽ dɔ gbɔe", "do ŋusẽ dɔ gbɔe", "wole funyafunya wɔm", "wole funyafunyam", "wole eƒom", "srɔ̃ɖeɖe le ŋusẽ me"]
   safety.SELF_HARM: ["wu ɖokuinye", "mawu ɖokuinye", "medi be maku", "nyemegadi be manɔ agbe o", "medi be maɖe nye agbe ɖa", "gbegblẽ ɖokuinye"]
+  safety.FIRE: ["dzo le xɔ la fiam", "xɔ le fiafiam", "dzo le bibim", "dzo lé xɔ la", "dzo do", "gas ʋuʋu"]
+  safety.DROWNING: ["le tsi mem", "tsi mee", "ge ɖe tɔsisi me", "ge ɖe tsi me", "ge ɖe vudo me", "tsi kplɔe", "tsiɖɔɖɔ kplɔe"]
+  safety.STABBING: ["hɛ tsɔ", "tsɔ hɛ ɖui", "hɛ ɖui", "wotu tu ɖe eŋu", "tu ƒoe"]
+  safety.ROAD_ACCIDENT: ["ʋu ƒe nuxaxa", "mɔ dzi nuxaxa", "ʋu ƒoe", "ʋu ƒo", "ʋu tue", "moto ƒoe", "ʋu la mlɔ anyi"]
 
   scam.PIN: ["pin", "password", "nɔmba ɣaɣla"]
   scam.ASK: ["ɖo", "na m", "ɖo kpe edzi", "de eme", "ŋlɔ"]

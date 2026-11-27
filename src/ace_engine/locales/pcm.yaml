@@ -19,6 +19,7 @@ templates:
   safety.OPENERS.poisoning: "E be like poison. Find doctor help now, carry the bottle go. {numbers}"
   safety.OPENERS.child_protection: "Pikin fit dey for danger. Abeg find help now. {numbers}"
   safety.OPENERS.gbv: "I sorry say dem dey do you like this. You fit get help now. {numbers}"
+  safety.OPENERS.fire: "E be like fire. Carry everybody comot now, no go back inside. {numbers}"
   safety.OPENERS.health_urgent: "E be like emergency. Find doctor help now. {numbers}"
   safety.CALL_WORD: "Call {numbers}"
   safety.OR_WORD: "or"
@@ -163,6 +164,10 @@ phrases:
   safety.CHILD: ["pikin", "my pikin", "small pikin", "pikin dem", "small girl", "small boy"]
   safety.CHILD_HARM: ["rape am", "rape her", "touch am for bad way", "dey beat am", "beat am", "dey abuse am", "force am marry", "cut am for down"]
   safety.SELF_HARM: ["wan kill myself", "go kill myself", "I wan die", "make I just die", "I no wan live again", "end my life", "tire for life"]
+  safety.FIRE: ["house dey burn", "fire dey burn", "fire don catch", "fire catch house", "fire don start", "gas explode", "gas don burst", "market dey burn"]
+  safety.DROWNING: ["dey drown", "don drown", "fall inside river", "fall inside water", "fall inside well", "water carry am", "flood carry am"]
+  safety.STABBING: ["dem stab am", "dem stab", "dem use knife", "dem shoot am", "bullet hit am"]
+  safety.ROAD_ACCIDENT: ["motor jam", "motor hit am", "okada jam", "car jam am", "accident for road", "motor accident", "okada accident", "motor don turn"]
 
   scam.PIN: ["pin", "password", "secret number"]
   scam.ASK: ["send", "give me", "confirm", "enter", "type"]

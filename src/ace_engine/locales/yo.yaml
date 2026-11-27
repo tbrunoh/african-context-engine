@@ -18,6 +18,7 @@ templates:
   safety.OPENERS.poisoning: "Eyi dabi majele. Wa iranlọwọ dokita ni bayi, ki o si mu igo naa lọwọ. {numbers}"
   safety.OPENERS.child_protection: "Ọmọde kan le wa ninu ewu. Jọwọ wa iranlọwọ ni bayi. {numbers}"
   safety.OPENERS.gbv: "Ma binu pe eyi n ṣẹlẹ si ọ. O le ri iranlọwọ gba ni bayi. {numbers}"
+  safety.OPENERS.fire: "Eyi dabi ina. Mu gbogbo eniyan jade ni bayi, ẹ ma ṣe pada wọle. {numbers}"
   safety.OPENERS.health_urgent: "Eyi dabi pajawiri. Wa iranlọwọ dokita ni bayi. {numbers}"
   safety.CALL_WORD: "Pe {numbers}"
   safety.OR_WORD: "tabi"
@@ -162,6 +163,10 @@ phrases:
   safety.CHILD: ["ọmọ", "ọmọ mi", "ọmọbinrin mi", "ọmọkunrin mi", "ọmọde", "ọmọbinrin", "ọmọkunrin"]
   safety.CHILD_HARM: ["fipa ba a lo pọ", "ifipabanilopọ", "fi ọwọ kan an", "wọn n lu u", "wọn lu u", "fi agbara fẹ ẹ", "igbeyawo ipa", "dida abẹ"]
   safety.SELF_HARM: ["pa ara mi", "mo fẹ pa ara mi", "mo fẹ ku", "pari aye mi", "mi o fẹ wa laaye mọ", "ṣe ara mi leṣe", "gbẹmi ara mi", "igbẹmi ara ẹni"]
+  safety.FIRE: ["ina n jo", "ile n jo", "ile wa n jo", "ina ti mu ile", "ina ti sọ", "ijamba ina", "gaasi bu", "gaasi ti bu", "ọja n jo"]
+  safety.DROWNING: ["n rì sinu omi", "ri sinu omi", "omi gbe e lọ", "omi gbe lo", "ṣubu sinu odo", "ṣubu sinu kanga", "ṣubu sinu omi", "omi ti gbe"]
+  safety.STABBING: ["fi ọbẹ gun", "gun un lọbẹ", "gun lobe", "fi ada ṣa", "yin ibọn", "yinbọn", "ibọn ba"]
+  safety.ROAD_ACCIDENT: ["ijamba ọkọ", "ijamba moto", "ijamba ọkada", "ọkọ kọlu", "moto kọlu", "ọkada kọlu", "mọto kọlu", "ọkọ ti doju de"]
 
   scam.PIN: ["pin", "nọmba aṣiri", "ọrọ igbaniwọle"]
   scam.ASK: ["fi ranṣẹ", "firanṣẹ", "fun mi", "jẹrisi", "tẹ sii", "kọ"]

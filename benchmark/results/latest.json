@@ -3,334 +3,334 @@
     "by_language": {
       "en": {
         "recall": 1.0,
-        "hit": 612,
-        "total": 612
+        "hit": 748,
+        "total": 748
       },
       "sw": {
         "recall": 1.0,
-        "hit": 510,
-        "total": 510
+        "hit": 646,
+        "total": 646
       },
       "fr": {
         "recall": 1.0,
-        "hit": 476,
-        "total": 476
+        "hit": 612,
+        "total": 612
       },
       "pt": {
         "recall": 1.0,
-        "hit": 408,
-        "total": 408
+        "hit": 544,
+        "total": 544
       },
       "ar": {
         "recall": 1.0,
-        "hit": 408,
-        "total": 408
+        "hit": 544,
+        "total": 544
       },
       "am": {
         "recall": 1.0,
-        "hit": 408,
-        "total": 408
+        "hit": 544,
+        "total": 544
       },
       "om": {
         "recall": 1.0,
-        "hit": 408,
-        "total": 408
+        "hit": 544,
+        "total": 544
       },
       "so": {
         "recall": 1.0,
-        "hit": 408,
-        "total": 408
+        "hit": 544,
+        "total": 544
       },
       "ha": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "yo": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ig": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "pcm": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "zu": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "xh": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "af": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "st": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "tn": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ts": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "sn": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ny": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "bem": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "rw": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "rn": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "lg": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ln": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ak": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ee": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "wo": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "dyu": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "mos": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "fuf": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       },
       "ti": {
         "recall": 1.0,
-        "hit": 442,
-        "total": 442
+        "hit": 578,
+        "total": 578
       }
     },
     "by_country": {
       "KE": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "TZ": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "UG": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "RW": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "ZA": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "BW": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "NA": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "ZW": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "NG": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "GH": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "SN": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "CI": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "TG": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "CD": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "MW": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "BI": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "CM": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "BJ": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "ZM": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "TD": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "GN": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "BF": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "SS": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "ET": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "MZ": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "GW": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "AO": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "SO": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "SD": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "DZ": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "EG": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "LY": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "MA": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       },
       "TN": {
-        "hit": 419,
-        "total": 419,
+        "hit": 547,
+        "total": 547,
         "wrong": 0
       }
     },
@@ -342,7 +342,7 @@
   "ordinary": {
     "false_alarm_rate": 0.0,
     "false_alarms": [],
-    "total": 220
+    "total": 234
   },
   "services": {
     "checks": 5856,

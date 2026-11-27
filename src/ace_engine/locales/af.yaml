@@ -19,6 +19,7 @@ templates:
   safety.OPENERS.poisoning: "Dit klink na vergiftiging. Kry nou mediese hulp en neem die bottel saam. {numbers}"
   safety.OPENERS.child_protection: "'n Kind kan in gevaar wees. Kry asseblief nou hulp. {numbers}"
   safety.OPENERS.gbv: "Ek is jammer dat dit met jou gebeur. Jy kan nou hulp kry. {numbers}"
+  safety.OPENERS.fire: "Dit klink na 'n brand. Kry almal nou uit en moenie weer ingaan nie. {numbers}"
   safety.OPENERS.health_urgent: "Dit klink dringend. Kry nou mediese hulp. {numbers}"
   safety.CALL_WORD: "Bel {numbers}"
   safety.OR_WORD: "of"
@@ -163,6 +164,10 @@ phrases:
   safety.CHILD: ["my kind", "die kind", "ons kind", "klein kind", "dogter", "seun", "dogtertjie", "seuntjie", "kinders"]
   safety.CHILD_HARM: ["verkrag", "gemolesteer", "misbruik", "word geslaan", "slaan haar", "slaan hom", "gedwonge huwelik"]
   safety.SELF_HARM: ["selfmoord", "myself doodmaak", "ek wil doodgaan", "wil nie meer lewe nie", "my lewe beëindig", "myself seermaak"]
+  safety.FIRE: ["huis brand", "ons huis brand", "die huis brand", "daar is 'n brand", "brand uitgebreek", "aan die brand", "huis aan die brand", "gas ontplof", "gasbottel ontplof", "veldbrand"]
+  safety.DROWNING: ["verdrink", "besig om te verdrink", "het verdrink", "in die rivier geval", "in die dam geval", "in die water geval", "in die put geval", "deur die water weggespoel"]
+  safety.STABBING: ["met 'n mes gesteek", "is gesteek", "hy is gesteek", "sy is gesteek", "messteek", "is geskiet", "skietwond"]
+  safety.ROAD_ACCIDENT: ["motorongeluk", "padongeluk", "taxi ongeluk", "deur 'n motor getref", "deur 'n kar getref", "omgery", "die kar het omgeslaan", "die taxi het omgeslaan", "kar het hom getref", "kar het haar getref"]
 
   scam.PIN: ["pin", "wagwoord", "geheime nommer"]
   scam.ASK: ["stuur", "gee my", "bevestig", "sleutel in", "tik"]

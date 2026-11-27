@@ -179,7 +179,8 @@ class UssdApp:
         return pages
 
     def _answer_budget(self, lang: str) -> Budget:
-        return Budget(max_chars=self._limit(lang) - 4 - len(UI[lang]["menu"]) - 1, short=True, max_facts=1)
+        return Budget(max_chars=self._limit(lang) - 4 - len(UI[lang]["menu"]) - 1, short=True, max_facts=1,
+                      fitted=True)
 
     def _ask(self, phone: str, text: str, session_id: str | None) -> Reply:
         message = Message(channel=Channel.USSD, sender=phone, text=text, session_id=session_id)
@@ -238,6 +239,7 @@ class UssdApp:
             if token in choices:
                 profile = self.engine.profiles.get_or_create(phone)
                 profile.language = choices[token]
+                self.engine.profiles.save(profile)
                 s.screen, s.page = "main", 0
             else:
                 s.error = True
@@ -245,7 +247,8 @@ class UssdApp:
     def _render(self, s: _State, phone: str) -> str:
         lang = self._lang(phone)
         ui = UI[lang]
-        self._screen = self._limit(lang)
+        screen = self._limit(lang)  # a value per request: the app is shared by every thread
+        con, end = (lambda body: self._con(body, screen)), (lambda body: self._end(body, screen))
         prefix = ""
         if s.error:
             prefix = ui["invalid"] + "\n"
@@ -259,42 +262,43 @@ class UssdApp:
                 lines.append(ui["more"])
             if topics:
                 lines.append(ui["back"])
-            return self._con("\n".join(lines))
+            return con("\n".join(lines))
         if s.screen == "svc":
             from ..services.base import EXAMPLE_PLACE, area_word
 
             country = self.engine.country_for(phone)
             prompt = ui[PROMPT_KEY[s.service]].format(area=area_word(country, lang),
                                                       example=EXAMPLE_PLACE.get(country or "", "Kano"))
-            return self._con(prefix + prompt)
+            return con(prefix + prompt)
         if s.screen == "pack":
             pack = self._packs(phone)[s.pack_index]
             footer_full = f"\n{ui['next']}  {ui['back']}"
-            budget = Budget(self._limit(lang) - 4 - len(prefix) - len(footer_full), short=True, max_facts=1)
+            budget = Budget(self._limit(lang) - 4 - len(prefix) - len(footer_full), short=True, max_facts=1,
+                            fitted=True)
             text, has_more = self.engine.browse(pack.id, s.fact_index, lang, budget,
                                                 self.engine.country_for(phone))
             if not text:
-                return self._con(f"{prefix}{ui['end_pack']}\n{ui['back']}")
+                return con(f"{prefix}{ui['end_pack']}\n{ui['back']}")
             footer = footer_full if has_more else f"\n{ui['back']}"
-            return self._con(prefix + text + footer)
+            return con(prefix + text + footer)
         if s.screen == "ask":
-            return self._con(prefix + ui["ask_prompt"])
+            return con(prefix + ui["ask_prompt"])
         if s.screen == "scam":
-            return self._con(prefix + ui["scam_prompt"])
+            return con(prefix + ui["scam_prompt"])
         if s.screen == "lang":
             menu = "\n".join(f"{n} {i18n.native_name(code)}" for n, code in enumerate(self._lang_menu(phone), 1))
-            return self._con(prefix + menu)
+            return con(prefix + menu)
         if s.screen == "answer":
             if s.end:
-                return self._end(s.answer)
-            return self._con(f"{s.answer}\n{ui['menu']}")
-        return self._con(self.title)
+                return end(s.answer)
+            return con(f"{s.answer}\n{ui['menu']}")
+        return con(self.title)
 
-    def _con(self, body: str) -> str:
-        return "CON " + _fit(encoding.gsm_fold(body), getattr(self, "_screen", self.max_chars) - 4)
+    def _con(self, body: str, screen: int | None = None) -> str:
+        return "CON " + _fit(encoding.gsm_fold(body), (screen or self.max_chars) - 4)
 
-    def _end(self, body: str) -> str:
-        return "END " + _fit(encoding.gsm_fold(body), getattr(self, "_screen", self.max_chars) - 4)
+    def _end(self, body: str, screen: int | None = None) -> str:
+        return "END " + _fit(encoding.gsm_fold(body), (screen or self.max_chars) - 4)
 
 
 def _fit(body: str, limit: int) -> str:

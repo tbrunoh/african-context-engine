@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Wannan yana kama da guba. Ku nemi taimakon likita yanzu, ku tafi da kwalbar. {numbers}"
   safety.OPENERS.child_protection: "Yaro na iya kasancewa cikin haɗari. Don Allah ku nemi taimako yanzu. {numbers}"
   safety.OPENERS.gbv: "Na yi baƙin ciki da wannan ke faruwa. Kuna iya samun taimako yanzu. {numbers}"
+  safety.OPENERS.fire: "Wannan yana kama da gobara. Ku fitar da kowa yanzu, kada ku koma ciki. {numbers}"
   safety.OPENERS.health_urgent: "Wannan yana kama da gaggawa. Ku nemi taimakon likita yanzu. {numbers}"
   safety.CALL_WORD: "Ku kira {numbers}"
   safety.OR_WORD: "ko"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["yaro", "yarinya", "ɗana", "'yata", "jariri", "yara", "ɗiyata"]
   safety.CHILD_HARM: ["an yi mata fyaɗe", "an ci zarafinta", "an ci zarafinsa", "an buge shi", "ana dukanta", "ana dukansa", "auren dole", "auren wuri", "kaciyar mata", "an taɓa ta", "fyaɗe"]
   safety.SELF_HARM: ["kashe kaina", "zan kashe kaina", "ina son mutuwa", "ina so in mutu", "ba na son rayuwa", "kawo ƙarshen rayuwata", "cutar da kaina", "na gaji da rayuwa"]
+  safety.FIRE: ["gobara", "yana ci da wuta", "tana ci da wuta", "wuta ta kama gida", "wuta ta kama", "ya kama wuta", "ta kama wuta", "tukunyar gas ta fashe", "gas ya fashe"]
+  safety.DROWNING: ["yana nutsewa", "tana nutsewa", "ya nutse", "ta nutse", "faɗa rafi", "fada rafi", "faɗa rijiya", "fada rijiya", "faɗa ruwa", "fada ruwa", "ruwa ya tafi da shi", "ruwa ya tafi da ita", "ambaliya ta tafi da"]
+  safety.STABBING: ["caka masa wuka", "caka mata wuka", "soke shi da wuka", "soke ta da wuka", "sare shi da adda", "harbin bindiga", "an harbe shi", "an harbe ta"]
+  safety.ROAD_ACCIDENT: ["hatsarin mota", "hadarin mota", "haɗarin mota", "hatsarin babur", "haɗarin babur", "mota ta kade", "mota ta kaɗe", "mota ta buge", "babur ya kade", "babur ya kaɗe", "mota ta kife", "bas ta kife"]
 
   scam.PIN: ["pin", "lambar sirri", "kalmar sirri"]
   scam.ASK: ["aika", "turo", "ba ni", "tabbatar", "shigar", "rubuta"]

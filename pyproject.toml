@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ace-engine"
-version = "2.3.0b2"
+version = "2.4.0b1"
 description = "The African Context Engine: checked, local, citable knowledge for Africa on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), with six decision services, for 34 African countries in 32 languages"
 readme = "README.md"
 license = "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND ODbL-1.0"  # code; packs; language profiles; ODbL snapshots (see NOTICE)
@@ -31,8 +31,10 @@ classifiers = [
 dependencies = ["PyYAML>=6"]
 
 [project.optional-dependencies]
-mcp = ["mcp>=1.2"]
+mcp = ["mcp>=1.2", "uvicorn>=0.30"]
 google = ["google-auth[requests]>=2.20"]
+serve = ["gunicorn>=23"]
+cloud = ["google-cloud-firestore>=2.16"]
 dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.urls]

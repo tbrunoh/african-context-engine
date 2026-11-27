@@ -22,6 +22,18 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
+### 2.4 preview (2.4.0b1, 27 November 2026): ACE as a public product
+
+- [x] The site at ace.korext.com: a phone for USSD, SMS, voice, WhatsApp and RCS, coverage, developers, status and about pages
+- [x] Private web sessions, a production factory that refuses unsafe settings, and no phone number trusted from an unauthenticated caller
+- [x] Firestore sessions with a 24 hour expiry, escalation counts with no text, and checked snapshot sets swapped in without a restart
+- [x] MCP over Streamable HTTP, a facility index, the model off for USSD and voice, citations with licence and date
+- [x] Fire, drowning, stabbing and road accidents in the safety rail, in all 32 languages, with red team messages
+- [x] The relevance test: no fact on another topic
+- [x] deploy/gcp: the same stack in any Google Cloud project, a spend guard and a weekly model check
+- [ ] Fluent speaker and clinician review, language by language, lifting the preview label
+- [ ] Real phone numbers, country by country, after each privacy review
+
 ### 2.3 preview (2.3.0b1, 26 November 2026): 24 languages, and honesty about the rest
 
 2.3.0b2 (27 November 2026) removes the last defaults that assumed a caller is in Kenya: in the MCP tools, local format numbers, the playground, the command line and `Engine.ask`.

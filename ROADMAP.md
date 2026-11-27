@@ -24,6 +24,8 @@ The design is published in [docs/v2](docs/v2/README.md). Every service covers ev
 
 ### 2.3 preview (2.3.0b1, 26 November 2026): 24 languages, and honesty about the rest
 
+2.3.0b2 (27 November 2026) removes the last defaults that assumed a caller is in Kenya: in the MCP tools, local format numbers, the playground, the command line and `Engine.ask`.
+
 - [x] Hausa, Yoruba, Igbo and Nigerian Pidgin in Nigeria; isiZulu, isiXhosa, Afrikaans, Sesotho, Setswana and Xitsonga in South Africa; Setswana in Botswana; Afrikaans in Namibia; Shona in Zimbabwe; Akan and Ewe in Ghana; Ewe in Togo; Wolof in Senegal; Dyula in Côte d'Ivoire and Burkina Faso; Mooré in Burkina Faso; Pular in Guinea; Yoruba in Benin; Chichewa in Malawi and Zambia; Bemba in Zambia; Xitsonga in Mozambique; Kinyarwanda in Rwanda; Kirundi in Burundi; Luganda in Uganda; Lingala in DR Congo; Tigrinya in Ethiopia
 - [x] Every template, safety phrase, command and Africa pack fact in each, and 13 red team and 7 ordinary benchmark messages each
 - [x] Language detection within the caller's country, ties between close languages resolved by the country's order, and double weight for Nigerian Pidgin and Afrikaans markers against English and for Lingala against Swahili

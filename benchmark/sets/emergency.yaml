@@ -21,6 +21,10 @@ en:
   - {text: "My mother is struggling to breathe", queue: health_urgent}
   - {text: "my baby has stopped breathing", queue: health_urgent}
   - {text: "My husband hits me every night", queue: gbv}
+  - {text: "Our house is on fire and the children are inside", queue: fire}
+  - {text: "My son fell into the river and is drowning", queue: health_urgent}
+  - {text: "My brother was stabbed and is bleeding", queue: health_urgent}
+  - {text: "A car hit my mother on the road", queue: health_urgent}
 sw:
   - {text: "Mke wangu ni mjamzito na anatoka damu nyingi", queue: maternal}
   - {text: "Nina mimba ya miezi saba na mtoto hachezi tumboni", queue: maternal}
@@ -37,6 +41,10 @@ sw:
   - {text: "Nimeumwa na nyoka mguuni", queue: health_urgent}
   - {text: "Nyoka amemng'ata mtoto wangu", queue: health_urgent}
   - {text: "Mke wangu anatoka damu mingi baada ya kuzaa", queue: maternal}
+  - {text: "Nyumba yetu inaungua moto na watoto wamo ndani", queue: fire}
+  - {text: "Mtoto ameanguka mtoni na anazama", queue: health_urgent}
+  - {text: "Kaka yangu amechomwa kisu na anatoka damu", queue: health_urgent}
+  - {text: "Mama amegongwa na gari barabarani", queue: health_urgent}
 fr:
   - {text: "Ma femme est enceinte et elle saigne beaucoup", queue: maternal}
   - {text: "Je suis enceinte de sept mois et le bébé ne bouge plus", queue: maternal}
@@ -50,6 +58,10 @@ fr:
   - {text: "Je ne veux plus vivre", queue: self_harm}
   - {text: "Mon père est inconscient et ne respire plus", queue: health_urgent}
   - {text: "Un serpent a mordu mon enfant au champ", queue: health_urgent}
+  - {text: "Notre maison brûle et les enfants sont à l'intérieur", queue: fire}
+  - {text: "Mon fils est tombé dans la rivière, il se noie", queue: health_urgent}
+  - {text: "Mon frère a été poignardé, il saigne", queue: health_urgent}
+  - {text: "Ma mère a été renversée par une voiture", queue: health_urgent}
 # Added in 2.1. Renderings by the maintainers, not yet reviewed by fluent speakers or clinicians.
   - {text: "Mon mari me frappe tous les jours", queue: gbv}
   - {text: "Mon enfant a du mal à respirer", queue: health_urgent}
@@ -66,6 +78,10 @@ pt:
   - {text: "Não quero viver mais", queue: self_harm}
   - {text: "O meu pai desmaiou e não respira", queue: health_urgent}
   - {text: "Uma cobra mordeu o meu filho na machamba", queue: health_urgent}
+  - {text: "A nossa casa está a arder e há crianças lá dentro", queue: fire}
+  - {text: "O meu filho caiu no rio e está a afogar-se", queue: health_urgent}
+  - {text: "O meu irmão foi esfaqueado e está a sangrar", queue: health_urgent}
+  - {text: "A minha mãe foi atropelada por um carro", queue: health_urgent}
 ar:
   - {text: "زوجتي حامل وعندها نزيف شديد", queue: maternal}
   - {text: "أنا حامل في الشهر السابع والجنين توقف عن الحركة", queue: maternal}
@@ -79,6 +95,10 @@ ar:
   - {text: "لا أريد أن أعيش بعد الآن", queue: self_harm}
   - {text: "أبي أغمي عليه ولا يتنفس", queue: health_urgent}
   - {text: "لدغت أفعى ابني في الحقل", queue: health_urgent}
+  - {text: "البيت يحترق والأطفال في الداخل", queue: fire}
+  - {text: "ابني سقط في النهر ويغرق", queue: health_urgent}
+  - {text: "أخي تعرض للطعن وينزف", queue: health_urgent}
+  - {text: "صدمت سيارة أمي في الطريق", queue: health_urgent}
 am:
   - {text: "ባለቤቴ እርጉዝ ናት እና ብዙ ደም እየፈሰሳት ነው", queue: maternal}
   - {text: "የሰባት ወር እርጉዝ ነኝ ህፃኑ መንቀሳቀስ አቁሟል", queue: maternal}
@@ -92,6 +112,10 @@ am:
   - {text: "ከዚህ በኋላ መኖር አልፈልግም", queue: self_harm}
   - {text: "አባቴ ራሱን ስቶ አይተነፍስም", queue: health_urgent}
   - {text: "እባብ ልጄን በማሳ ውስጥ ነደፈው", queue: health_urgent}
+  - {text: "ቤታችን እየተቃጠለ ነው ልጆች ውስጥ አሉ", queue: fire}
+  - {text: "ልጄ ወንዝ ውስጥ ወደቀ እየሰጠመ ነው", queue: health_urgent}
+  - {text: "ወንድሜ በቢላ ተወጋ ደም እየፈሰሰው ነው", queue: health_urgent}
+  - {text: "እናቴን መኪና ገጨቻት", queue: health_urgent}
 om:
   - {text: "Haadha manaa koo ulfa qabdi dhiigni baay'een ishee irraa dhangala'aa jira", queue: maternal}
   - {text: "Ulfa ji'a torbaa qaba daa'imni sochii dhiise", queue: maternal}
@@ -105,6 +129,10 @@ om:
   - {text: "Lubbuun jiraachuu hin barbaadu", queue: self_harm}
   - {text: "Abbaan koo of wallaale hafuura hin baafatu", queue: health_urgent}
   - {text: "Bofti maasii keessatti mucaa koo nyaate", queue: health_urgent}
+  - {text: "Manni keenya gubachaa jira ijoolleen keessa jiru", queue: fire}
+  - {text: "Ilmi koo laga keessa kufe bishaan liqimsaa jira", queue: health_urgent}
+  - {text: "Obboleessi koo billaadhaan waraaname dhiigaa jira", queue: health_urgent}
+  - {text: "Haadha koo konkolaataan rukute", queue: health_urgent}
 so:
   - {text: "Xaaskeyga waa uur leedahay dhiig badan ayaa ka imanaya", queue: maternal}
   - {text: "Waxaan ahay uur toddoba bilood ah ilmihii wuu joojiyay dhaqdhaqaaqa", queue: maternal}
@@ -118,6 +146,10 @@ so:
   - {text: "Ma doonayo inaan sii noolaado", queue: self_harm}
   - {text: "Aabahay wuu suuxay oo ma neefsanayo", queue: health_urgent}
   - {text: "Mas ayaa qaniinay wiilkeyga beerta", queue: health_urgent}
+  - {text: "Gurigayaga ayaa gubanaya carruur ayaa ku jirta", queue: fire}
+  - {text: "Wiilkayga webiga ku dhacay wuu qarqoomayaa", queue: health_urgent}
+  - {text: "Walaalkay mindi lagu dhuftay dhiig ayaa ka socda", queue: health_urgent}
+  - {text: "Hooyaday baabuur ayaa jiiray", queue: health_urgent}
 ha:
   - {text: "Matata tana da ciki kuma tana zubar da jini sosai", queue: maternal}
   - {text: "Ina da ciki na wata bakwai kuma jaririn ba ya motsi", queue: maternal}
@@ -132,6 +164,10 @@ ha:
   - {text: "Ba na son rayuwa kuma, zan kashe kaina", queue: self_harm}
   - {text: "Babana ya suma kuma ba ya numfashi", queue: health_urgent}
   - {text: "Maciji ya sare yarona a gona", queue: health_urgent}
+  - {text: "Gidanmu yana ci da wuta kuma yara suna ciki", queue: fire}
+  - {text: "Ɗana ya faɗa rafi yana nutsewa", queue: health_urgent}
+  - {text: "An caka masa wuka yana zubar da jini", queue: health_urgent}
+  - {text: "Mota ta buge mahaifiyata a hanya", queue: health_urgent}
 yo:
   - {text: "Iyawo mi loyun o si n ṣe ẹjẹ pupọ", queue: maternal}
   - {text: "Mo loyun oṣu meje ọmọ inu ko mira mọ", queue: maternal}
@@ -146,6 +182,10 @@ yo:
   - {text: "Mi o fẹ wa laaye mọ, mo fẹ pari aye mi", queue: self_harm}
   - {text: "Baba mi daku ko si mi mọ", queue: health_urgent}
   - {text: "Ejo bu ọmọ mi ninu oko", queue: health_urgent}
+  - {text: "Ile wa n jo, awọn ọmọde wa ninu rẹ", queue: fire}
+  - {text: "Ọmọ mi ṣubu sinu odo, o n rì sinu omi", queue: health_urgent}
+  - {text: "Wọn fi ọbẹ gun arakunrin mi, ẹjẹ n jade", queue: health_urgent}
+  - {text: "Ọkọ kọlu iya mi lori ọna", queue: health_urgent}
 ig:
   - {text: "Nwunye m dị ime ọbara na-agba ya nke ukwuu", queue: maternal}
   - {text: "Afọ ime m dị ọnwa asaa nwa anaghị akpali", queue: maternal}
@@ -160,6 +200,10 @@ ig:
   - {text: "Achọghị m ịdị ndụ ọzọ, achọrọ m ịnwụ", queue: self_harm}
   - {text: "Nna m dakpọrọ ọ naghị eku ume", queue: health_urgent}
   - {text: "Agwọ tara nwa m n'ugbo", queue: health_urgent}
+  - {text: "Ụlọ anyị na-ere ọkụ, ụmụaka nọ n'ime", queue: fire}
+  - {text: "Nwa m dabara n'osimiri, mmiri na-eri ya", queue: health_urgent}
+  - {text: "A maara ya mma, ọ na-agba ọbara", queue: health_urgent}
+  - {text: "Ụgbọ ala kụrụ nne m n'okporo ụzọ", queue: health_urgent}
 pcm:
   - {text: "My wife get belle and blood dey comot well well", queue: maternal}
   - {text: "I carry belle seven months baby no dey move", queue: maternal}
@@ -174,6 +218,10 @@ pcm:
   - {text: "I no wan live again, make I just die", queue: self_harm}
   - {text: "My papa faint e no dey breathe", queue: health_urgent}
   - {text: "Snake don bite my pikin for farm", queue: health_urgent}
+  - {text: "Our house dey burn and pikin dey inside", queue: fire}
+  - {text: "My pikin fall inside river, e dey drown", queue: health_urgent}
+  - {text: "Dem stab my brother, blood dey comot", queue: health_urgent}
+  - {text: "Motor jam my mama for road", queue: health_urgent}
 zu:
   - {text: "Umkami ukhulelwe futhi uopha kakhulu igazi", queue: maternal}
   - {text: "Ngikhulelwe izinyanga eziyisikhombisa ingane ayinyakazi", queue: maternal}
@@ -188,6 +236,10 @@ zu:
   - {text: "Angisafuni ukuphila, ngifuna ukufa", queue: self_harm}
   - {text: "Ubaba uquleke akaphefumuli", queue: health_urgent}
   - {text: "Ingane yami ilunywe yinyoka ensimini", queue: health_urgent}
+  - {text: "Indlu yethu iyasha izingane zingaphakathi", queue: fire}
+  - {text: "Ingane yami iwele emfuleni iyaminza", queue: health_urgent}
+  - {text: "Umfowethu ugwazwe ngommese uyopha", queue: health_urgent}
+  - {text: "Umama ushayiswe yimoto emgwaqeni", queue: health_urgent}
 xh:
   - {text: "Umfazi wam ukhulelwe kwaye uopha kakhulu igazi", queue: maternal}
   - {text: "Ndikhulelwe iinyanga ezisixhenxe umntwana akashukumi", queue: maternal}
@@ -202,6 +254,10 @@ xh:
   - {text: "Andisafuni ukuphila, ndifuna ukufa", queue: self_harm}
   - {text: "Utata uwile akavuki akaphefumli", queue: health_urgent}
   - {text: "Umntwana wam ulunywe yinyoka entsimini", queue: health_urgent}
+  - {text: "Indlu yethu iyatsha abantwana bangaphakathi", queue: fire}
+  - {text: "Umntwana wam uwele emlanjeni uyarhaxwa", queue: health_urgent}
+  - {text: "Umntakwethu uhlatywe ngemela uyopha", queue: health_urgent}
+  - {text: "Umama ubethwe yimoto endleleni", queue: health_urgent}
 af:
   - {text: "My vrou is swanger en sy bloei baie", queue: maternal}
   - {text: "Ek is sewe maande swanger en die baba beweeg nie", queue: maternal}
@@ -216,6 +272,10 @@ af:
   - {text: "Ek wil nie meer lewe nie, ek wil doodgaan", queue: self_harm}
   - {text: "My pa het flou geword en asem nie", queue: health_urgent}
   - {text: "My kind is deur 'n slang gepik op die plaas", queue: health_urgent}
+  - {text: "Ons huis brand en die kinders is binne", queue: fire}
+  - {text: "My kind het in die rivier geval en verdrink", queue: health_urgent}
+  - {text: "My broer is met 'n mes gesteek en bloei", queue: health_urgent}
+  - {text: "My ma is deur 'n kar getref", queue: health_urgent}
 st:
   - {text: "Mosadi wa ka o imme mme o tswa madi haholo", queue: maternal}
   - {text: "Ke imme dikgwedi tse supileng lesea ha le sisinyehe", queue: maternal}
@@ -230,6 +290,10 @@ st:
   - {text: "Ha ke sa batla ho phela, ke batla ho shwa", queue: self_harm}
   - {text: "Ntate o idibetse ha a heme", queue: health_urgent}
   - {text: "Ngwana wa ka o lomilwe ke noha tshimong", queue: health_urgent}
+  - {text: "Ntlo ya rona e a tjha bana ba ka hare", queue: fire}
+  - {text: "Ngwana wa ka o wetse nokeng o a qwela", queue: health_urgent}
+  - {text: "Abuti o hlabilwe ka thipa o a tswa madi", queue: health_urgent}
+  - {text: "Mme o thutswe ke koloi tseleng", queue: health_urgent}
 tn:
   - {text: "Mosadi wa me o imile mme o tswa madi thata", queue: maternal}
   - {text: "Ke imile dikgwedi di le supa lesea ga le tshikinyege", queue: maternal}
@@ -244,6 +308,10 @@ tn:
   - {text: "Ga ke sa batla go tshela, ke batla go swa", queue: self_harm}
   - {text: "Rre o idibetse ga a heme", queue: health_urgent}
   - {text: "Ngwana wa me o lomilwe ke noga mo tshimong", queue: health_urgent}
+  - {text: "Ntlo ya rona e a sha bana ba mo teng", queue: fire}
+  - {text: "Ngwana wa me o weletse mo nokeng o a nwela", queue: health_urgent}
+  - {text: "Mogolwane wa me o tlhabilwe ka thipa o a tswa madi", queue: health_urgent}
+  - {text: "Mme o thutswe ke koloi mo tseleng", queue: health_urgent}
 ts:
   - {text: "Nsati wa mina u tikile naswona u huma ngati ngopfu", queue: maternal}
   - {text: "Ndzi tikile tin'hweti ta nkombo n'wana a nga tsekatseki", queue: maternal}
@@ -258,6 +326,10 @@ ts:
   - {text: "A ndza ha lavi ku hanya, ndzi lava ku fa", queue: self_harm}
   - {text: "Tatana u wisile a nga hefemuli", queue: health_urgent}
   - {text: "N'wana wa mina u lumiwile hi nyoka ensinwini", queue: health_urgent}
+  - {text: "Yindlu ya hina ya pfurha vana va le ndzeni", queue: fire}
+  - {text: "N'wana wa mina u welile enambyeni u nwela", queue: health_urgent}
+  - {text: "Makwerhu u tlhaviwe hi mukwana u huma ngati", queue: health_urgent}
+  - {text: "Manana u biwe hi movha egondzweni", queue: health_urgent}
 sn:
   - {text: "Mudzimai wangu ane pamuviri ari kubuda ropa zvakanyanya", queue: maternal}
   - {text: "Ndine pamuviri pemwedzi minomwe mwana haasi kufamba", queue: maternal}
@@ -272,6 +344,10 @@ sn:
   - {text: "Handichadi kurarama, ndinoda kufa", queue: self_harm}
   - {text: "Baba vangu vafenda havasi kufema, afenda", queue: health_urgent}
   - {text: "Mwana wangu arumwa nenyoka mumunda", queue: health_urgent}
+  - {text: "Imba yedu iri kutsva vana vari mukati", queue: fire}
+  - {text: "Mwana wangu awira murwizi ari kunyura", queue: health_urgent}
+  - {text: "Mukoma wangu abaiwa nebanga ari kubuda ropa", queue: health_urgent}
+  - {text: "Amai varohwa nemotokari mumugwagwa", queue: health_urgent}
 ny:
   - {text: "Mkazi wanga ali ndi mimba ndipo akutuluka magazi kwambiri", queue: maternal}
   - {text: "Ndili ndi mimba ya miyezi isanu ndi iwiri mwana sakusuntha", queue: maternal}
@@ -286,6 +362,10 @@ ny:
   - {text: "Sindikufunanso kukhala ndi moyo, ndikufuna kufa", queue: self_harm}
   - {text: "Bambo anga akomoka sakupuma, wakomoka", queue: health_urgent}
   - {text: "Mwana wanga walumidwa ndi njoka kumunda", queue: health_urgent}
+  - {text: "Nyumba yathu ikuyaka ana ali mkati", queue: fire}
+  - {text: "Mwana wanga wagwera mumtsinje akumira", queue: health_urgent}
+  - {text: "Mchimwene wanga wabayidwa ndi mpeni akutuluka magazi", queue: health_urgent}
+  - {text: "Mayi anga agundidwa ndi galimoto pamsewu", queue: health_urgent}
 bem:
   - {text: "Umukashi wandi ali ne fumo kabili alefuma umulopa sana", queue: maternal}
   - {text: "Nkwete ifumo lya myeshi cine lubali umwana talesela", queue: maternal}
@@ -300,6 +380,10 @@ bem:
   - {text: "Nshilefwaya ukuba no mweo, ndefwaya ukufwa", queue: self_harm}
   - {text: "Batata bafitilwa talepema, afitilwa", queue: health_urgent}
   - {text: "Umwana wandi alumwa ne nsoka mu bala", queue: health_urgent}
+  - {text: "Ing'anda yesu ileoca abana bali mukati", queue: fire}
+  - {text: "Umwana wandi awila mumumana alebila", queue: health_urgent}
+  - {text: "Ndume wandi atuntwa ne cimpeni alefuma umulopa", queue: health_urgent}
+  - {text: "Bamayo bapumwa ne motoka mu musebo", queue: health_urgent}
 rw:
   - {text: "Umugore wanjye aratwite kandi ava amaraso menshi", queue: maternal}
   - {text: "Ndatwite inda y'amezi arindwi umwana ntanyeganyega", queue: maternal}
@@ -314,6 +398,10 @@ rw:
   - {text: "Sinshaka kubaho, ndashaka gupfa", queue: self_harm}
   - {text: "Data yataye ubwenge ntahumeka", queue: health_urgent}
   - {text: "Umwana wanjye yariwe n'inzoka mu murima", queue: health_urgent}
+  - {text: "Inzu yacu irashya abana bari imbere", queue: fire}
+  - {text: "Umwana wanjye yaguye mu mugezi ararohama", queue: health_urgent}
+  - {text: "Musaza wanjye yatewe icyuma arava amaraso", queue: health_urgent}
+  - {text: "Mama yagonzwe n'imodoka mu muhanda", queue: health_urgent}
 rn:
   - {text: "Umugore wanje afise imbanyi kandi ava amaraso menshi", queue: maternal}
   - {text: "Ndafise imbanyi y'amezi indwi umwana ntanyiganyiga", queue: maternal}
@@ -328,6 +416,10 @@ rn:
   - {text: "Sinshaka kubaho, ndashaka gupfa", queue: self_harm}
   - {text: "Data yataye ubwenge ntahema", queue: health_urgent}
   - {text: "Umwana wanje yarumwe n'inzoka mu ndimiro", queue: health_urgent}
+  - {text: "Inzu yacu irashya abana bari imbere", queue: fire}
+  - {text: "Umwana wanje yaguye mu ruzi ariko araroha", queue: health_urgent}
+  - {text: "Mukuru wanje yatewe imbugita ariko ava amaraso", queue: health_urgent}
+  - {text: "Mawe yagonzwe n'imodoka mu nzira", queue: health_urgent}
 lg:
   - {text: "Mukyala wange ali lubuto era avaamu omusaayi mungi", queue: maternal}
   - {text: "Ndi lubuto lwa myezi musanvu omwana tasagaasagana", queue: maternal}
@@ -342,6 +434,10 @@ lg:
   - {text: "Sikyayagala kubeera mulamu, njagala kufa", queue: self_harm}
   - {text: "Taata azirise tassa mukka", queue: health_urgent}
   - {text: "Omwana wange abojjeddwa omusota mu nnimiro", queue: health_urgent}
+  - {text: "Ennyumba yaffe eyaka abaana bali munda", queue: fire}
+  - {text: "Omwana wange agudde mu mugga abbira", queue: health_urgent}
+  - {text: "Muganda wange afumitiddwa akambe avaamu omusaayi", queue: health_urgent}
+  - {text: "Maama atomeddwa emmotoka ku luguudo", queue: health_urgent}
 ln:
   - {text: "Mwasi na ngai azali na zemi mpe azali kobima makila mingi", queue: maternal}
   - {text: "Nazali na zemi ya sanza nsambo mwana azali koningana te", queue: maternal}
@@ -356,6 +452,10 @@ ln:
   - {text: "Nalingi lisusu kozala na bomoi te, nalingi kokufa", queue: self_harm}
   - {text: "Papa akufi mayele azali kopema te", queue: health_urgent}
   - {text: "Nyoka eswi ye, mwana na ngai aswami na nyoka na elanga", queue: health_urgent}
+  - {text: "Ndako na biso ezali kopela bana bazali na kati", queue: fire}
+  - {text: "Mwana na ngai akwei na ebale azali kozinda", queue: health_urgent}
+  - {text: "Batuboli ndeko na ngai mbeli azali kobima makila", queue: health_urgent}
+  - {text: "Motuka etuti mama na ngai na nzela", queue: health_urgent}
 ak:
   - {text: "Me yere wɔ nyinsɛn na mogya reba no bebree", queue: maternal}
   - {text: "Mewɔ nyinsɛn abosome ason abofra no nkeka ne ho", queue: maternal}
@@ -370,6 +470,10 @@ ak:
   - {text: "Mempɛ sɛ mete ase bio, mepɛ sɛ mewu", queue: self_harm}
   - {text: "Me papa atɔ beraw na ɔnhome", queue: health_urgent}
   - {text: "Ɔwɔ aka me ba wɔ afuom", queue: health_urgent}
+  - {text: "Yɛn dan no rehyew na mmofra wɔ mu", queue: fire}
+  - {text: "Me ba tɔɔ asubɔnten mu na nsuo rekum no", queue: health_urgent}
+  - {text: "Wɔde sekan wɔɔ me nua na mogya retu", queue: health_urgent}
+  - {text: "Kar abɔ me maame wɔ kwan so", queue: health_urgent}
 ee:
   - {text: "Srɔ̃nye fɔ fu eye ʋu le dodom ŋutɔ", queue: maternal}
   - {text: "Mefɔ fu ɣleti adre vi la meʋãna o", queue: maternal}
@@ -384,6 +488,10 @@ ee:
   - {text: "Nyemegadi be manɔ agbe o, medi be maku", queue: self_harm}
   - {text: "Fofonye ku ŋkuli megbɔa ya o", queue: health_urgent}
   - {text: "Da ɖu vinye le agble", queue: health_urgent}
+  - {text: "Míaƒe xɔ le fiafiam eye ɖeviwo le eme", queue: fire}
+  - {text: "Nye vi ge ɖe tɔsisi me eye wòle tsi mem", queue: health_urgent}
+  - {text: "Wotsɔ hɛ tsɔ nɔvinye eye ʋu le dodom", queue: health_urgent}
+  - {text: "Ʋu ƒo danye le mɔ dzi", queue: health_urgent}
 wo:
   - {text: "Sama jabar dafa ëmb te deret dafay rot lool", queue: maternal}
   - {text: "Dama ëmb juróom ñaari weer xale bi yëngootul", queue: maternal}
@@ -398,6 +506,10 @@ wo:
   - {text: "Bëgguma dund, dama bëgg dee", queue: self_harm}
   - {text: "Sama baay dafa daanu te noyul", queue: health_urgent}
   - {text: "Jaan màtt na sama doom ci tool bi", queue: health_urgent}
+  - {text: "Sunu kër dafa lakk te xale yi ngi ci biir", queue: fire}
+  - {text: "Sama doom daanu ci dex gi mungiy lab", queue: health_urgent}
+  - {text: "Jam nañu sama mag paaka deret mungiy rot", queue: health_urgent}
+  - {text: "Oto dal na sama yaay ci yoon wi", queue: health_urgent}
 dyu:
   - {text: "N muso kɔnɔma don ani joli bɛ bɔ kosɛbɛ", queue: maternal}
   - {text: "Kɔnɔ bɛ ne la kalo wolonwula den tɛ lamaga", queue: maternal}
@@ -412,6 +524,10 @@ dyu:
   - {text: "N t'a fɛ ka ɲɛnamaya tugun, n b'a fɛ ka sa", queue: self_harm}
   - {text: "N fa binna a tɛ ninakili", queue: health_urgent}
   - {text: "Sa ye den cin foro la", queue: health_urgent}
+  - {text: "An ka so bɛ jeni ani denmisɛnw bɛ kɔnɔ", queue: fire}
+  - {text: "N den binna baji la a bɛ ji la ka su", queue: health_urgent}
+  - {text: "U ye n kɔrɔ sɔgɔ muru la joli bɛ bɔ", queue: health_urgent}
+  - {text: "N ba ye mobili kasaara sɔrɔ sira kan", queue: health_urgent}
 mos:
   - {text: "M pagã tara puga la zĩim yiita wusgo", queue: maternal}
   - {text: "M tara puga kiuug a yopoe biigã pa yĩgimd ye", queue: maternal}
@@ -426,6 +542,10 @@ mos:
   - {text: "M ka le dat n viimd ye, m data n ki", queue: self_harm}
   - {text: "M ba luiime a pa vuusd ye", queue: health_urgent}
   - {text: "Waaf dũma m biiga puugẽ", queue: health_urgent}
+  - {text: "D roogã yaa bugum la kambã be pʋgẽ", queue: fire}
+  - {text: "M biiga lʋɩ kʋlgã pʋgẽ n lʋɩɩ koomẽ", queue: health_urgent}
+  - {text: "Sʋʋga wẽ m saam biiga, zĩim yitame", queue: health_urgent}
+  - {text: "Loor wẽ m ma sor zugu", queue: health_urgent}
 fuf:
   - {text: "Debbo am ina e reedu e ƴiiƴam ina yalta no feewi", queue: maternal}
   - {text: "Mi woni e reedu lebbi njeeɗiɗi ɓiɗɗo oo dilloyaaki", queue: maternal}
@@ -440,6 +560,10 @@ fuf:
   - {text: "Mi faalaaka wuurde kadi, mi faalaa maayde", queue: self_harm}
   - {text: "Baaba am hiiɓii o foofataa", queue: health_urgent}
   - {text: "Mboddi ŋatii ɓiɗɗo am e ngesa", queue: health_urgent}
+  - {text: "Suudu amen ina wula, sukaaɓe ina nder", queue: fire}
+  - {text: "Ɓiyam yanii e maayo ina luufa", queue: health_urgent}
+  - {text: "O soppaama labi, ƴiiƴam ina yalta", queue: health_urgent}
+  - {text: "Oto fiyii yumma am e laawol", queue: health_urgent}
 ti:
   - {text: "ሰበይተይ ጥንሲ ኣለዋ ብዙሕ ደም ይፈሳ ኣሎ", queue: maternal}
   - {text: "ናይ ሸውዓተ ወርሒ ጥንሲ ኣለኒ ህጻን ኣይንቀሳቐስን", queue: maternal}
@@ -454,3 +578,7 @@ ti:
   - {text: "ክነብር ኣይደልን፣ ክመውት እደሊ", queue: self_harm}
   - {text: "ኣቦይ ዓንቀፎ ኣይተንፍስን", queue: health_urgent}
   - {text: "ቆልዓይ ኣብ ግራት ተመን ነኺሱዎ", queue: health_urgent}
+  - {text: "ገዛና ይነድድ ኣሎ ቆልዑ ኣብ ውሽጢ ኣለዉ", queue: fire}
+  - {text: "ወደይ ኣብ ሩባ ወዲቑ ይጥሕል ኣሎ", queue: health_urgent}
+  - {text: "ሓወይ ብካራ ተወጊኡ ደም ይፈሶ ኣሎ", queue: health_urgent}
+  - {text: "ንኣደይ መኪና ገጪያታ", queue: health_urgent}

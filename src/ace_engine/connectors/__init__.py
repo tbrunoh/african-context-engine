@@ -6,6 +6,7 @@ from pathlib import Path
 
 from ..countries import COUNTRIES
 from ..snapshots import SnapshotStore
+from . import base
 from .base import Connector, ConnectorError, ConnectorHealth, http_get, http_json
 from .boundaries import BoundariesConnector
 from .cap import CapConnector
@@ -40,6 +41,7 @@ def refresh(root: str | Path, names: list[str] | None = None, countries: list[st
     """Run connectors and write snapshots. A failure leaves the last good snapshot in place."""
     report = RefreshReport()
     root = Path(root)
+    base.reset_rate_limit_budget()  # each run gets its own ten minutes of rate limit waiting
     holding = held(root)
     for name in names or list(CONNECTORS):
         connector = CONNECTORS[name]

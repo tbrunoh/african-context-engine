@@ -39,7 +39,7 @@ from .safety import (
     format_numbers,
 )
 from .scam import GENERIC_REPORT_LINE, HEADLINES, NEUTRAL_ADVICE, REPORT_LINE, SIGNS_LABEL, ScamReport, Verdict, analyse
-from .services import PLACE_SERVICES, ServiceHub, detect
+from .services import PLACE_SERVICES, ServiceHub, add_known_words, bare_name, detect, needs_named_place
 from .snapshots import SnapshotStore, default_root
 from .text import SUPPORTED_LANGUAGES, terms, tokens, truncate_words, wants_action
 from .tips import Tip, TipQueue
@@ -117,6 +117,8 @@ class Engine:
         store = ContextStore()
         for pack in packs:
             store.extend(pack.facts)
+            # What people ask about is never a place ACE should ask after: armyworm, viwavijeshi, malaria
+            add_known_words(w for f in pack.facts for w in (*f.keywords, *f.subjects, f.topic))
         if "services" not in kwargs and snapshots is not None:
             if isinstance(snapshots, SnapshotStore):
                 snap_store = snapshots
@@ -337,6 +339,10 @@ class Engine:
             if not cmd.arg:
                 return self._system(say("scam_usage", lang), lang)
             return self.scam_reply(analyse(cmd.arg, message.raw.get("forwarded_from")), lang, budget, country)
+        if cmd.name in ("sources", "more") and not profile.last_fact_ids and profile.last_sources:
+            # After a service answer there are no more facts to give: both name the data it came from
+            body = "; ".join(src if not budget.short else src.split(" (http")[0] for src in profile.last_sources)
+            return Reply(truncate_words(body, budget.max_chars), ReplyKind.SYSTEM, lang)
         if cmd.name == "sources":
             facts = [f for f in (self.store.get(i) for i in profile.last_fact_ids) if f]
             if not facts:
@@ -369,8 +375,20 @@ class Engine:
         if sid is None and pending:
             sid, asked = pending, f"{profile.pending_text} {text}".strip()
             if sid in PLACE_SERVICES and self.services.resolve_place(text, country, message.location) is None:
-                profile.pending_service, profile.pending_text = None, ""
+                name = None if profile.pending_asked else bare_name(text)
+                if name:  # a short answer to ACE's own question that names no place ACE knows: say so, ask again once
+                    profile.pending_asked = True
+                    refusal = needs_named_place(sid, country, name)
+                    return Reply(truncate_words(refusal.text.get(lang) or refusal.text["en"], budget.max_chars),
+                                 ReplyKind.CLARIFY, lang, actions=[{"type": "service", "service": sid,
+                                                                    "preview": True, "outcome": "needs_place",
+                                                                    "data": refusal.data}])
+                profile.pending_service, profile.pending_text, profile.pending_asked = None, "", False
                 return None  # not a place: treat it as a new question
+        if (sid is None and profile.last_service in PLACE_SERVICES
+                and (self.services.follow_up_place(text, country) is not None
+                     or self.services.follow_up_unknown(text))):
+            sid = profile.last_service  # What about Nakuru? Et à Kolda ? A follow-up that names another place
         if sid is None:
             return None
         return self._service_reply(sid, asked, lang, profile, message, budget, country, pending=pending)
@@ -408,8 +426,13 @@ class Engine:
             profile.last_place = (run.place.country, run.place.code)
         if not run.ok and result.reason in ("needs_place", "needs_crop", "needs_weeks") and pending != sid:
             profile.pending_service, profile.pending_text, profile.pending_language = sid, asked, lang
+            profile.pending_asked = False
         else:
-            profile.pending_service, profile.pending_text = None, ""
+            profile.pending_service, profile.pending_text, profile.pending_asked = None, "", False
+        if run.ok:
+            profile.last_service = sid
+            profile.last_fact_ids, profile.last_query = [], None
+            profile.last_sources = [c.source + (f" ({c.source_url})" if c.source_url else "") for c in result.citations]
         action = {"type": "service", "service": sid, "preview": result.preview, "outcome":
                   "answer" if run.ok else result.reason, "data": result.data}
         if run.ok:
@@ -464,6 +487,7 @@ class Engine:
         if not exclude:
             profile.last_query = text
         profile.last_fact_ids = list(exclude | {f.id for f in composed.used})
+        profile.last_sources, profile.last_service = [], None
         if composed.used:
             profile.last_topic = (composed.used[0].vertical, composed.used[0].topic)
         return Reply(body, ReplyKind.ANSWER, composed.language, _cite(composed.used))

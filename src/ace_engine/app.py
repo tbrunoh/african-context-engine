@@ -63,8 +63,9 @@ def check_production(env: Mapping[str, str]) -> list[str]:
     return problems
 
 
-def composer_from_env(env: Mapping[str, str]) -> Any:
-    """The grounded model, when one is configured and not switched off; otherwise None (extraction only)."""
+def composer_from_env(env: Mapping[str, str], usage: Any = None) -> Any:
+    """The grounded model, when one is configured and not switched off; otherwise None (extraction only).
+    With usage (stores.ModelUsage), every call's tokens are counted for the spend cap."""
     if (not env.get("ACE_LLM_BASE_URL") or not env.get("ACE_LLM_MODEL") or _on(env, "ACE_LLM_DISABLED")
             or _on(env, "ACE_LLM_HELD")):
         return None
@@ -72,6 +73,8 @@ def composer_from_env(env: Mapping[str, str]) -> Any:
 
     provider = OpenAICompatibleProvider(env["ACE_LLM_BASE_URL"], env["ACE_LLM_MODEL"], env.get("ACE_LLM_API_KEY"),
                                         env.get("ACE_LLM_REASONING_EFFORT") or None)
+    if usage is not None:
+        provider.on_usage = usage.record
     return GroundedGenerator(provider, timeout_s=float(env.get("ACE_LLM_TIMEOUT") or 2.0))
 
 
@@ -95,7 +98,12 @@ def build_engine(env: Mapping[str, str] | None = None, packs: list[Path] | None 
         from .stores import CountingHandoffs
 
         kwargs["handoffs"] = CountingHandoffs(client)
-    composer = composer_from_env(env)
+    usage = None
+    if client is not None:
+        from .stores import ModelUsage
+
+        usage = ModelUsage(client)
+    composer = composer_from_env(env, usage)
     if composer is not None:
         kwargs["composer"] = composer
     return Engine.from_packs(*(packs or _pack_roots(None)), **kwargs)

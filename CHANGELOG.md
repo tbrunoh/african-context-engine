@@ -1,5 +1,52 @@
 # Changelog
 
+## 2.4.0b1 (2026-11-27): ACE as a public product
+
+2.4 is what runs [ace.korext.com](https://ace.korext.com): a site where anyone can try ACE on a simulated phone, an API and MCP for builders and assistants, and everything a public deployment needs, built from this repository with no fork. The safety rail learns four more emergencies, and an answer must now be on the question's topic.
+
+### Added
+- **The site**: a phone that behaves like the real channels at `/` and `/try`, with USSD (the characters a screen carries), SMS (segments and alphabet), a voice call's script, and chat views for WhatsApp and RCS; a country and language picker with a preview label on every language after English; and the sources behind every answer. `/coverage` shows each service, language and emergency number by country, `/developers` the API and MCP, `/status` the running version and the freshness of every dataset, and `/about` the project and the privacy notice. Coast to Dunes colours, self hosted Inter and Newsreader fonts (SIL Open Font License), no inline styles or scripts, and a content security policy on every page.
+- **Private web sessions.** The phone never asks for a number: each browser gets a random token in a cookie scoped to `/try`, and its sender is `web:<country>:<token>`, which can never match a real subscriber. `POST /try/forget` deletes the session.
+- **`create_app()`**, one factory for every deployment (`gunicorn "ace_engine.app:create_app()"`). In production it refuses to start with the development salt or a short one, or with any sender that lacks its webhook secret or signature key. `ACE_PUBLIC=1` runs a public demonstration: no phone number from an unauthenticated API caller is trusted, and TIP is off.
+- **Durable state on Google Cloud** (`pip install "ace-engine[cloud]"`): `FirestoreProfileStore` reads a profile once and writes it once per message, keeps no history, gives every document an expiry 24 hours after its last write, ignores an expired one, and never writes a profile back after FORGET. `CountingHandoffs` counts escalations by queue, country and channel with no text and no person key; the sink interface gains the country.
+- **Snapshot sets that change without a restart.** `ace refresh --publish BASE` copies the set in use, refreshes the chosen sources into the copy, checks every snapshot (licence entry, checksum, data date, valid until time for weather and warnings), and publishes the manifest only if the checks pass and no other run changed it; sets older than seven days are deleted, never the one in use. `SnapshotWatcher` loads a new set off the request path and swaps it in, keeping the last good one on any failure.
+- **MCP over Streamable HTTP**: `ace-mcp --transport http`, stateless with JSON responses, a `/healthz` route, and host checks (`--allowed-host` or `ACE_MCP_ALLOWED_HOSTS`).
+- **Four more safety categories, in all 32 languages**: fire, drowning, stabbing and other violent wounds, and road accidents. A fire gets its own opener and the general emergency numbers as well as any fire line, because many packs list none; the other three get the urgent medical reply. Each language has a red team message for each category, and the benchmark's ordinary set gains lookalikes such as drowning in work and a boss who fired someone.
+- **`/v1/countries` and `/v1/status`**, and the version and build commit in `/healthz` and on every page.
+- **`deploy/gcp`**: `setup.sh` stands up the whole stack in any project (Cloud Run, a global load balancer with a managed certificate and Cloud Armor, Firestore, Cloud Storage, Cloud Scheduler, regional logs), `cloudbuild.yaml` tests, builds and releases through a candidate revision, `smoke.py` checks a live deployment, and `ace_engine.ops` holds the spend guard (the model off at 90% of the monthly budget, the demo paused at 100%) and the weekly model check, which pins the last Gemini model that passed ACE's grounding checks.
+
+### Changed
+- **The relevance test.** An answer whose best fact matches at most one of the question's content words, when the question has a word no fact contains, becomes a clarify: where can I donate blood no longer gets bleeding in pregnancy, and the scam and crop questions an earlier draft refused still get their answers. Questions in languages whose retrieval is weakest now get an honest clarify more often instead of a fact on another topic.
+- **The facility finder tags each facility with its area once per snapshot set**, so an area question looks the list up: the largest areas of DR Congo, Nigeria, Ethiopia and South Africa answer in a few milliseconds instead of up to a second.
+- **The language model never runs for USSD or voice**, and the provider can ask for the least reasoning a model allows (`ACE_LLM_REASONING_EFFORT`).
+- **Pack citations carry the pack's licence and the fact's checked date**, as snapshot citations already did.
+- **The USSD screen limit is a value per request**, so threads can no longer mix one language's limit into another's menu; a concurrency test runs in CI.
+- **TIP can be switched off** (`EngineConfig(tips=False)` or `ACE_TIPS=off`): TIP is then read as an ordinary message, and help and clarify replies do not offer it.
+- **The Dockerfile builds again**: two stages, the snapshots included, gunicorn on `$PORT`, a non-root user, and the build commit in `ACE_COMMIT`. New extras: `serve` (gunicorn) and `cloud` (Firestore); `mcp` adds uvicorn.
+- **The playground is replaced by the site**, served by `ace serve` with threads.
+- Version 2.4.0b1 in `pyproject.toml`, `ace_engine.__version__` and `CITATION.cff`.
+
+### Fixed before release, from an independent audit
+- **A snapshot set swapped in while serving kept no pack facts or emergency numbers**, so crop and pregnancy questions lost their answers and their numbers. Every hub now reaches the engine through `Engine.use_services`, and a test swaps a set and checks the answers do not change.
+- **A public server accepted unsigned gateway webhooks**, so a caller could set or forget the profile of any number. With `ACE_PUBLIC=1`, `/ussd`, `/sms`, `/voice` and `/whatsapp` answer 404 unless their secret is set.
+- **USSD budgets were scaled for the alphabet twice** in Amharic, Arabic and Tigrinya, so a facility answer showed only part of a name. A screen now carries its full limit, and on a small screen the nearest name and the emergency numbers come before the heading.
+- **Safety phrases that fired on ordinary speech** (a song on fire, fire insurance, a crowd that drowned out a speaker, a company drowning in debt, someone who shot a message) no longer do. The broad phrases stay, so my child is on fire, he was shot and she drowned still raise the alarm; a short list of everyday lookalikes is removed from a message before the rules are read. Each lookalike and each real emergency is a test, and the lookalikes are in the benchmark's ordinary set.
+- **French questions in Algeria, Morocco and Tunisia were answered in Arabic** when they had no French marker word. French gains marker words such as cette, semaine, pleuvoir, quel and prix, and the weather service reads quel temps fera-t-il. The /try suggestions are in French or Portuguese where a country does not offer English.
+- **Automatic on the language picker now clears a language chosen earlier**, and FORGET on /try deletes the browser's session in every country and sets a fresh session cookie, which before carried a malformed value.
+- **The spend guard** sets each service's minimum instances to zero on pause and restores them in a new month, MCP answers 503 while paused, and every change carries the etag it read, so the guard and the model check cannot overwrite each other.
+- **The services API** answers 400, not 500, for a field of the wrong type.
+- **`deploy/gcp`**: argument lists that stopped `setup.sh`, Cloud Armor attached to every backend, the right to run the refresh job with overrides, a snapshot bucket the image user can write, Cloud Run reachable only through the load balancer, TLS 1.2 or later, a build account with no IAM rights, a strict smoke test, and a candidate route that sends /mcp to MCP.
+
+### Benchmarks
+- Emergency recall 100.0% on 18,598 emergency messages in 32 languages, with no wrong numbers and no false alarms on the ordinary set, which now includes the new lookalikes; all 5,856 service checks pass.
+- WAXAL test split: the language figures are unchanged within 0.2 points, and ACE tells the writer it does not read the language in 46.5% of sentences on average across 12 languages it does not speak. The safety rail fired on 6 ordinary texts, up from 4: an Afaan Oromo insurance definition that names a car accident, and a Yoruba news report of a pastor swept away by water. Both name the emergency itself, so the phrases stay. Two drafts that fired on ordinary stories were removed before release: the bare Akan word for an accident, and a Nigerian Pidgin phrase for a knife cut.
+- FLORES-200 devtest: unchanged, with 5 country language sentences of 32,384 read as English and none turned away.
+
+### Not in this release
+- **A place ACE does not recognise is not flagged.** In a conversation, a place name ACE cannot find falls back to the last place named, without saying so. Planned for 2.4.1.
+- **Fluent speaker review**: the 31 languages after English, and the new safety phrases in them, are unreviewed drafts. Review starts with 2.4 and lifts the preview label one language at a time.
+- **A human on the other end**: the public demonstration counts escalations and connects them to no one, and says so.
+
 ## 2.3.0b2 (2026-11-27): no default country
 
 ACE no longer assumes that a caller is in Kenya anywhere in the code. Since 2.1 it covers 34 countries, but a few defaults from the first release still pointed at Kenya.

@@ -1,4 +1,4 @@
-"""Release 2.1: eight languages, 34 countries, the alphabet a reply travels in, and the data problems ACE designs around."""
+"""Release 2.1 and 2.3: 32 languages, 34 countries, the alphabet a reply travels in, and the data problems ACE designs around."""
 from __future__ import annotations
 
 import re
@@ -22,12 +22,16 @@ from ace_engine.services import facility, prices, warnings
 from ace_engine.text import SUPPORTED_LANGUAGES, fold, guess_language, script_language, tokens
 
 ROOT = Path(__file__).resolve().parents[1]
-ADDED = ("pt", "ar", "am", "om", "so")
+ADDED_21 = ("pt", "ar", "am", "om", "so")
+# Added in 2.3, in alphabetical order after the 2.1 languages.
+ADDED_23 = ("af", "ak", "bem", "dyu", "ee", "fuf", "ha", "ig", "lg", "ln", "mos", "ny", "pcm", "rn", "rw", "sn", "st",
+            "ti", "tn", "ts", "wo", "xh", "yo", "zu")
+ADDED = ADDED_21 + ADDED_23
 FIELD = re.compile(r"{(\w+)}")
 
 
-def test_eight_languages_in_a_stable_order():
-    assert SUPPORTED_LANGUAGES == ("en", "sw", "fr", "pt", "ar", "am", "om", "so")
+def test_thirty_two_languages_in_a_stable_order():
+    assert SUPPORTED_LANGUAGES == ("en", "sw", "fr") + ADDED and len(SUPPORTED_LANGUAGES) == 32
     assert i18n.added_languages() == ADDED
     assert i18n.native_name("am") == "አማርኛ" and i18n.native_name("om") == "Afaan Oromoo"
 

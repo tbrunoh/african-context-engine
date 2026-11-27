@@ -53,9 +53,13 @@ def test_playground_is_served(app):
 
 
 def test_ask_endpoint(app):
-    code, _, body = call(app, "POST", "/v1/ask", json.dumps({"text": "how do I store maize", "channel": "sms"}).encode())
+    code, _, body = call(app, "POST", "/v1/ask",
+                         json.dumps({"text": "how do I store maize", "channel": "sms", "country": "KE"}).encode())
     data = json.loads(body)
     assert code == 200 and data["kind"] == "answer" and data["citations"] and data["segments"]
+    # With no phone and no country, the request is from no ACE country, so no country's numbers come back
+    code, _, body = call(app, "POST", "/v1/ask", json.dumps({"text": "emergency numbers"}).encode())
+    assert code == 200 and not any(ch.isdigit() for ch in json.loads(body)["text"])
 
 
 def test_ask_validation(app):

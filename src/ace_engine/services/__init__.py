@@ -14,7 +14,7 @@ from ..countries import COUNTRIES
 from ..models import GeoPoint
 from ..places import Gazetteer, Place
 from ..snapshots import SnapshotStore, utcnow
-from ..text import contains_phrase, tokens, truncate_words
+from ..text import phrase_in, token_hay, tokens, truncate_words
 from .base import LANGS, Answer, Context, Query, Refusal, Result, Service
 from .facility import FacilityService
 from .pests import PestService, crop_in
@@ -57,17 +57,18 @@ def detect(text: str) -> str | None:
     """The service a message is about, or None to fall through to pack retrieval."""
     if not tokens(text):
         return None
-    if any(contains_phrase(text, c) for c in CUES["pregnancy_companion"]) or (
-            weeks_from(text) is not None and any(contains_phrase(text, p) for p in PREGNANT)):
+    hay = token_hay(text)
+    if any(phrase_in(hay, c) for c in CUES["pregnancy_companion"]) or (
+            weeks_from(text) is not None and any(phrase_in(hay, p) for p in PREGNANT)):
         return "pregnancy_companion"
     for sid in ("nearest_facility", "official_warnings", "rain_this_week", "market_prices"):
-        if any(contains_phrase(text, c) for c in CUES[sid]):
-            if sid == "rain_this_week" and any(contains_phrase(text, c) for c in SEASONAL):
+        if any(phrase_in(hay, c) for c in CUES[sid]):
+            if sid == "rain_this_week" and any(phrase_in(hay, c) for c in SEASONAL):
                 continue  # a question about the rainy seasons, which the season packs answer
             return sid
-    if wanted_food(text) and any(contains_phrase(text, c) for c in HOW_MUCH):
+    if wanted_food(text) and any(phrase_in(hay, c) for c in HOW_MUCH):
         return "market_prices"
-    if crop_in(text) and any(contains_phrase(text, c) for c in CUES["pest_check"]):
+    if crop_in(text) and any(phrase_in(hay, c) for c in CUES["pest_check"]):
         return "pest_check"
     return None
 

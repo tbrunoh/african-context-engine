@@ -207,4 +207,4 @@ class WarningsService:
                                        "expires", "area_desc", "instruction", "language", "url")} for a in mine]})
 
 
-i18n.localize("services.warnings", globals(), ("FOUND", "NATIONAL", "MORE", "NONE", "STALE", "GAP"))
+i18n.localize("services.warnings", globals(), ("FOUND", "NATIONAL", "MORE", "NONE", "STALE", "GAP", "YOUR_AREA"))

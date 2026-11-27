@@ -77,6 +77,10 @@ class PregnancyService:
         bare = q.text.strip()
         weeks = q.params.get("weeks") or weeks_from(q.text) or (int(bare) if bare.isdigit() and 1 <= int(bare) <= 45
                                                                  else None)
+        try:  # a week count outside a pregnancy (0, 100, -3) is asked again, from any caller
+            weeks = int(weeks) if weeks is not None and 1 <= int(weeks) <= 45 else None
+        except (TypeError, ValueError):
+            weeks = None
         schedule = self._fact(ctx, "africa-antenatal-care/eight-contacts")
         danger = self._fact(ctx, "africa-maternal-danger-signs/go-now")
         country = q.place.country if q.place else q.country

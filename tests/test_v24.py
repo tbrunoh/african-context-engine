@@ -396,6 +396,18 @@ def test_a_swapped_set_answers_like_the_bundled_one(tmp_path):
     assert engine.services.ctx.contacts("health_urgent", "KE") == before_contacts and before_contacts
 
 
+def test_a_new_instance_answers_from_the_published_set_at_once(tmp_path):
+    """create_app loads the published set before it returns, so no request meets the bundled set."""
+    from ace_engine.snapshots.manifest import publish, read_manifest
+
+    base = tmp_path / "snapshots"
+    base.mkdir()
+    publish(base, lambda folder: "ok")
+    app = create_app(env={"ACE_SNAPSHOT_BASE": str(base), "ACE_SNAPSHOT_INTERVAL": "3600"})
+    assert app.watcher.current == read_manifest(base)["set"]
+    assert str(base) in str(app.engine.services.snapshots.root)
+
+
 def test_watcher_keeps_the_last_good_set(tmp_path):
     from ace_engine.snapshots.manifest import SnapshotWatcher
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.0b3 (2026-11-27): fresh data from the first request
+
+### Fixed
+- **A new instance answered from the snapshots bundled in its image until the published set loaded.** The release gate for 2.4.0b2 caught it: the candidate revision called Kenya's official warnings stale, because its first requests met the bundled warnings from 25 November while the published set, refreshed that hour, was still loading in the background. The site and MCP now load the published set before they take their first request, and warm the facility index off the request path as before; a test starts the app against a published set and checks that it is in use when the app is created. 2.4.0b2 never took traffic; 2.4.0b3 carries its icons and this fix.
+
 ## 2.4.0b2 (2026-11-27): the ACE icon everywhere
 
 ### Fixed

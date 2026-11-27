@@ -18,7 +18,7 @@ These files stand up the stack that runs [ace.korext.com](https://ace.korext.com
 
 ```
 git clone https://github.com/tbrunoh/african-context-engine && cd african-context-engine
-git checkout v2.4.0b2
+git checkout v2.4.0b3
 PROJECT=your-project DOMAIN=ace.example.org bash deploy/gcp/setup.sh
 ```
 

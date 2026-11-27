@@ -15,7 +15,7 @@ Scoped tasks for a first contribution. Each one is useful on its own and comes w
 
 ## Code
 
-9. **Kikuyu, Dholuo or Luhya stopwords and markers** in `text.py`, with tests, so language guessing and retrieval work for more speakers.
+9. **Gikuyu, Dholuo or Luhya stopwords and markers** in `text.py`, with tests, so language guessing and retrieval work for more speakers.
 10. **Swahili prefix aware matching.** Swahili inflects with prefixes (`wanakula`, `anakula`, `kula`). Add a conservative normaliser to `text.py` and show a retrieval test that improves.
 11. **Persistent profiles.** A `SqliteProfileStore` with the same methods as `ProfileStore`, plus tests. Keep deletion complete.
 12. **Persistent handoffs.** A `HandoffSink` that writes to a JSON lines file or posts to a webhook.

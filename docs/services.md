@@ -7,7 +7,7 @@ All six are a preview. They pass ACE's tests and benchmark, but none has yet pas
 ## How a question reaches a service
 
 1. The safety rail, commands and Scam Shield run first, exactly as in V1.
-2. The hub recognises the decision from words in any of the eight languages: rain, warnings, a facility, prices, a pregnancy check or a crop problem. A question about the rainy seasons goes to the season packs instead.
+2. The hub recognises the decision from words in any of the 32 languages: rain, warnings, a facility, prices, a pregnancy check or a crop problem. A question about the rainy seasons goes to the season packs instead.
 3. The hub works out the place: an area named in the message, the position a channel shares, or the area the person named last time. When it needs a place and has none, it asks in the local word (county, state, region, district, kaunti, mkoa, wilaya) and remembers the question.
 4. The service reads snapshots and packs, never the network, and answers inside the channel's character budget.
 

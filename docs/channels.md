@@ -77,6 +77,8 @@ curl -s localhost:8000/v1/packs
 
 Responses carry `text`, `kind` (answer, emergency, scam, clarify, system), `language`, `escalated` and `citations` with source URLs.
 
+`phone` sets the caller's country from its dialling code; without it, `country` (for example `"country": "NG"`) does the same. A request with neither is read as coming from outside ACE's 34 countries, so it gets only guidance that applies everywhere and is told to call the local emergency number, never another country's lines.
+
 ## Escalations
 
 Emergency replies call `HandoffSink.raise_handoff(queue, person_key, text, channel)`. The default sink keeps events in memory. Connect it to your nurse helpdesk, extension officer queue or ticketing system by implementing that one method. The person key is pseudonymous; if your helpdesk must call people back, keep the number to key mapping in your own system under your own data protection controls.

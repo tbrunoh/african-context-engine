@@ -25,6 +25,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24579654
     description: Version 2.3.0b1, 32 languages
+  - type: doi
+    value: 10.5281/zenodo.24583948
+    description: Version 2.3.0b2, no default country
 # The code licence. Packs, language profiles and snapshots carry their own licences: see NOTICE and DATA_LICENSE.md.
 license: Apache-2.0
 version: 2.3.0b2

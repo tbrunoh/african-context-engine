@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+### Fixed
+- **`deploy/gcp/setup.sh`, from the first deployment of ace.korext.com.** Service accounts are created a few seconds apart, because a new project may create only a few a minute. The site and MCP are made public by turning off Cloud Run's invoker IAM check, which Google recommends where domain restricted sharing refuses an `allUsers` grant. Where the budget cannot publish its alerts to Pub/Sub for the same reason, it is created with email alerts only, and the README shows how to cap Gemini with a daily request quota until the spend guard can act.
+
 ## 2.4.0b1 (2026-11-27): ACE as a public product
 
 2.4 is what runs [ace.korext.com](https://ace.korext.com): a site where anyone can try ACE on a simulated phone, an API and MCP for builders and assistants, and everything a public deployment needs, built from this repository with no fork. The safety rail learns four more emergencies, and an answer must now be on the question's topic.

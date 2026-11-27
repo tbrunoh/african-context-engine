@@ -28,6 +28,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24583948
     description: Version 2.3.0b2, no default country
+  - type: doi
+    value: 10.5281/zenodo.24594217
+    description: Version 2.4.0b1, the public product at ace.korext.com
 # The code licence. Packs, language profiles and snapshots carry their own licences: see NOTICE and DATA_LICENSE.md.
 license: Apache-2.0
 version: 2.4.0b1

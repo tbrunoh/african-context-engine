@@ -6,9 +6,11 @@ no pack publishes one (Togo today), it tells the person to call the local emerge
 """
 from __future__ import annotations
 
+import threading
+
 from .. import i18n
 from ..countries import COUNTRIES
-from ..geo import haversine_km, in_bbox, in_polygons
+from ..geo import bbox, haversine_km, in_bbox, in_polygons
 from ..text import fold
 from .base import LANGS, Answer, Context, Query, Refusal, Result, cite_snapshot, fit, needs_place, say
 
@@ -40,6 +42,43 @@ GAP = {"en": "ACE has no facility list for this country yet.",
        "sw": "ACE bado haina orodha ya vituo kwa nchi hii.",
        "fr": "ACE n'a pas encore de liste d'établissements pour ce pays."}
 KM = {"en": "{km} km", "sw": "km {km}", "fr": "{km} km"}
+
+
+# Facilities tagged with their area once per snapshot and country, so a question about an area looks its list up
+# instead of testing every facility in the country against the area's boundary (up to a second in DR Congo).
+_AREA_INDEX: dict[tuple[int, str], tuple[object, dict[str, list]]] = {}
+_INDEX_LOCK = threading.Lock()
+
+
+def area_index(ctx: Context, snap, country: str) -> dict[str, list]:
+    """Each area code of a country, mapped to the facilities inside it, in the snapshot's order."""
+    key = (id(snap), country)
+    hit = _AREA_INDEX.get(key)
+    if hit is not None and hit[0] is snap:
+        return hit[1]
+    with _INDEX_LOCK:
+        hit = _AREA_INDEX.get(key)
+        if hit is not None and hit[0] is snap:
+            return hit[1]
+        areas = [(rec["code"], bbox(rec["rings"]), rec["rings"]) for rec in ctx.places.areas(country) if rec.get("rings")]
+        index: dict[str, list] = {code: [] for code, _, _ in areas}
+        for f in snap.records:
+            point = (f[4], f[5])
+            for code, box, rings in areas:
+                if in_bbox(point, box) and in_polygons(point, rings):
+                    index[code].append(f)
+        for stale in [k for k, v in _AREA_INDEX.items() if k[1] == country and v[0] is not snap]:
+            del _AREA_INDEX[stale]  # an older snapshot set: free its index
+        _AREA_INDEX[key] = (snap, index)
+        return index
+
+
+def warm(ctx: Context, countries=None) -> None:
+    """Build the area index for every country with facilities, so the first question in an area is fast too."""
+    for country in countries or sorted(COUNTRIES):
+        snap = FacilityService.source(ctx, country)
+        if snap is not None and ctx.places.has(country):
+            area_index(ctx, snap, country)
 
 
 def emergency_numbers(ctx: Context, country: str) -> list[str]:
@@ -122,8 +161,7 @@ class FacilityService:
                 return Refusal(self.id, "no_match", with_numbers(NONE, numbers, km=int(MAX_KM)), [cite_snapshot(snap)])
             head, items = NEAR, [(f, km) for km, f in near]
         else:
-            rings = ctx.places.rings(country, q.place.code)
-            inside = [f for f in facilities if rings and in_polygons((f[4], f[5]), rings)]
+            inside = area_index(ctx, snap, country).get(q.place.code, [])
             hospitals = [f for f in inside if is_hospital(f[1])]
             if hospitals:
                 head, items = IN_AREA, [(f, None) for f in sorted(hospitals, key=lambda f: (tier(f[1]), f[0]))[:3]]
@@ -141,8 +179,13 @@ class FacilityService:
             listing = "; ".join(label(f, km, lang) for f, km in items)
             place = q.place.name if q.place else ""
             caveat = say(REGISTRY_CAVEAT if snap.dataset == "facilities_registry" else CAVEAT, lang)
-            text[lang] = fit([f"{say(head, lang, place=place)} {listing}.", emergency_line(numbers, lang), caveat],
-                             q.max_chars)
+            urgent = emergency_line(numbers, lang)
+            # On a small screen, as in Amharic USSD, the nearest name and the emergency numbers come before the heading
+            forms = [f"{say(head, lang, place=place)} {listing}.", f"{say(head, lang, place=place)} {label(*items[0], lang)}.",
+                     f"{label(*items[0], lang)}.", f"{items[0][0][0]}."]
+            first = next((f for f in forms if len(f"{f} {urgent}") <= q.max_chars),
+                         next((f for f in forms if len(f) <= q.max_chars), forms[-1]))
+            text[lang] = fit([first, urgent, caveat], q.max_chars)
         return Answer(
             self.id, text, [cite_snapshot(snap)], confidence="medium", data_date=snap.data_date,
             data={"country": country, "facilities": [

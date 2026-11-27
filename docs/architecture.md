@@ -105,7 +105,7 @@ The model sees only the retrieved facts, numbered, and must end every sentence w
 
 ## MCP
 
-`ace-mcp --packs context_packs` starts a stdio MCP server with five core tools, `ask_ace`, `search_context`, `check_message`, `emergency_contacts` and `list_packs`, and, when snapshots are present, seven V2 tools: `rain_this_week`, `official_warnings`, `nearest_facility`, `market_prices`, `pregnancy_companion`, `pest_check` and `service_coverage`. The tools are plain functions built by `build_tools(engine)`, so they are tested without the MCP SDK. Install the SDK with `pip install "ace-engine[mcp]"`.
+`ace-mcp --packs context_packs` starts a stdio MCP server, which never assumes a country, with five core tools, `ask_ace`, `search_context`, `check_message`, `emergency_contacts` and `list_packs`, and, when snapshots are present, seven V2 tools: `rain_this_week`, `official_warnings`, `nearest_facility`, `market_prices`, `pregnancy_companion`, `pest_check` and `service_coverage`. The tools are plain functions built by `build_tools(engine)`, so they are tested without the MCP SDK. Install the SDK with `pip install "ace-engine[mcp]"`.
 
 ## Scaling and storage
 

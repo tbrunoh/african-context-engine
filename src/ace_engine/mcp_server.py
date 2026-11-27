@@ -61,13 +61,17 @@ def build_tools(engine: Engine) -> dict[str, Any]:
             raise ValueError("country is required, one of " + ", ".join(COUNTRIES))
         return code
 
-    def ask_ace(question: str, country: str = "KE", language: str | None = None, lat: float | None = None,
+    def ask_ace(question: str, country: str | None = None, language: str | None = None, lat: float | None = None,
                 lon: float | None = None) -> dict[str, Any]:
-        """Answer a person's question from checked context packs for one country (ISO code such as KE, NG
-        or SN). Returns text, kind and citations. Emergencies get that country's numbers."""
+        """Answer a person's question from checked context packs for the country they are in (ISO code such as
+        KE, NG or SN; pass it whenever it is known). Returns text, kind and citations. Emergencies get that
+        country's numbers. With no country, ACE answers as for a caller outside its 34 countries: no country's
+        facts or numbers, and an emergency is told to call the local emergency number."""
         location = GeoPoint(lat, lon) if lat is not None and lon is not None else None
+        code = _country(country) if (country or engine.config.country) else None
         # A fresh number for each question, so agents never share a session, a language choice or a pending question
-        sender = f"+{COUNTRIES[_country(country)].dial}7{secrets.randbelow(10**8):08d}"
+        sender = (f"+{COUNTRIES[code].dial}7{secrets.randbelow(10**8):08d}" if code
+                  else f"+888{secrets.randbelow(10**9):09d}")
         reply = engine.handle(Message(channel=Channel.AGENT, sender=sender, text=question,
                                       language=language, location=location))
         engine.profiles.forget(sender)  # one question, one profile: nothing builds up in a long running server
@@ -86,11 +90,12 @@ def build_tools(engine: Engine) -> dict[str, Any]:
         return [_fact_dict(r.fact, r.score) for r in results]
 
     def check_message(text: str, sender: str | None = None, language: str = "en",
-                      country: str = "KE") -> dict[str, Any]:
+                      country: str | None = None) -> dict[str, Any]:
         """Scam Shield: check a suspicious mobile money message (en, sw or fr). Never declares a message safe.
-        Operator guidance is cited only for the country it belongs to."""
+        Operator guidance is cited only for the country it belongs to, so pass the country when it is known."""
         report = analyse(text, sender)
-        reply = engine.scam_reply(report, language, engine.config.budgets[Channel.AGENT], _country(country))
+        code = _country(country) if (country or engine.config.country) else None
+        reply = engine.scam_reply(report, language, engine.config.budgets[Channel.AGENT], code)
         return {**reply.to_dict(), "verdict": report.verdict.value, "score": report.score,
                 "signals": [s.id for s in report.signals]}
 
@@ -144,10 +149,13 @@ def build_tools(engine: Engine) -> dict[str, Any]:
             return hub.call("pregnancy_companion", country, None, None, None, language,
                             params={"weeks": weeks} if weeks else None)
 
-        def pest_check(crop: str, symptoms: str = "", country: str = "KE", language: str = "en") -> dict[str, Any]:
+        def pest_check(crop: str, symptoms: str = "", country: str | None = None,
+                       language: str = "en") -> dict[str, Any]:
             """The likely problem for maize, cassava, banana or tomato from what the farmer sees, the first step,
-            and a referral to an extension officer before spraying."""
-            return hub.call("pest_check", country, None, None, None, language, text=f"{crop} {symptoms}".strip())
+            and a referral to an extension officer before spraying. The country (ISO code such as KE, NG or SN)
+            is required."""
+            return hub.call("pest_check", _country(country), None, None, None, language,
+                            text=f"{crop} {symptoms}".strip())
 
         def service_coverage() -> dict[str, Any]:
             """Which V2 service is available in which covered country, and the reason where it is not."""

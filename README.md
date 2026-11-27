@@ -21,7 +21,7 @@ ACE answers the questions that matter to people who will never install an app: a
 **Release 2.1 preview (2.1.0b1, 24 November 2026)** took ACE from 13 to 34 countries and from three to eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Every new country gets all six decision services at once (rain this week, official warnings, the nearest health facility, market prices, a pregnancy companion and a crop problem check), and wherever open data does not reach, ACE names the gap in the person's language. Arabic and Amharic replies are budgeted for the smaller UCS-2 alphabet, so they still fit one USSD screen. The services and the five new languages are a preview: they pass ACE's own tests and benchmark, but no fluent speaker has reviewed the new translations yet, and the expert review and forecast skill gates in the [build plan](docs/v2/build-plan.md) are still open. The design is in [docs/v2/release-2.1.md](docs/v2/release-2.1.md).
 
 ```
-$ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms
+$ ace ask "viwavi wanakula mahindi yangu nifanye nini" --channel sms --country KE
 Huenda ni viwavijeshi vamizi. ACE haioni zao lako, hivyo kagua dalili hizi: madoa kama madirisha kwenye majani,
 kilele kilicholiwa, kinyesi kibichi kama unga wa mbao. Ponda mayai na viwavi wachanga kwa mkono. Inafaa sana kwa
 mashamba madogo. Muulize afisa ugani athibitishe kabla ya kunyunyizia dawa.
@@ -196,12 +196,12 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 820 tests, about two and a half minutes
+pytest                                   # 822 tests, about two and a half minutes
 ace demo                                 # one person, four channels, one memory
 ace services                             # the V2 services and their coverage in each country
 ace ask "bei ya mahindi Mwanza" --phone +255711000001
 ace ask "vai chover em Nampula esta semana" --phone +258841000001
-ace chat --channel ussd                  # a USSD session in your terminal
+ace chat --channel ussd --country GH     # a USSD session in your terminal
 ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```

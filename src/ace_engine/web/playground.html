@@ -16,6 +16,9 @@
   header p { margin:8px 0 0; color:var(--muted); max-width:760px; }
   main { display:grid; grid-template-columns: 380px 1fr; gap:32px; padding:24px 32px 48px; max-width:1180px; margin:0 auto; }
   @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+  .country { display:flex; align-items:center; gap:8px; margin:0 0 12px; color:#C9D3D6; font-size:14px; font-weight:600; }
+  .country select { flex:1; background:#FFFFFF; color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:8px 10px; font:inherit; font-weight:400; }
+  .country select:focus { outline:2px solid var(--tide); outline-offset:1px; }
   .phone { background:#253239; border-radius:40px; padding:24px 18px 28px; box-shadow:0 2px 4px rgba(37,50,57,.06), 0 24px 48px rgba(37,50,57,.18); }
   .tabs { display:flex; gap:6px; margin-bottom:14px; }
   .tabs button { flex:1; background:rgba(255,255,255,.06); color:#C9D3D6; border:1px solid rgba(255,255,255,.12); border-radius:10px; padding:8px 0; cursor:pointer; font-weight:600; }
@@ -55,6 +58,7 @@
 </header>
 <main>
   <section class="phone">
+    <label class="country">Country <select id="country"><option value="">Choose a country</option></select></label>
     <div class="tabs"><button id="tab-ussd" class="on">USSD</button><button id="tab-sms">SMS</button></div>
     <div id="ussd">
       <div class="screen" id="lcd">Press Dial to open the ACE menu.</div>
@@ -77,8 +81,17 @@
 </main>
 <script>
 const $ = (id) => document.getElementById(id);
-const phone = "+2547" + String(Math.floor(10000000 + Math.random() * 89999999));
-let path = [], session = "play-" + Date.now();
+// ACE covers 34 countries; the phone takes a sample number in the one chosen, so its facts and emergency numbers apply
+const COUNTRIES = /*ACE_COUNTRIES*/[];
+let phone = "", path = [], session = "play-" + Date.now();
+for (const c of COUNTRIES) { const o = document.createElement("option"); o.value = c.code; o.textContent = c.name; $("country").appendChild(o); }
+function pick(code) { const c = COUNTRIES.find((x) => x.code === code); $("country").value = c ? c.code : "";
+  phone = c ? "+" + c.dial + "7" + String(Math.floor(10000000 + Math.random() * 89999999)) : "";
+  path = []; session = "play-" + Date.now(); $("lcd").textContent = c ? "Press Dial to open the ACE menu." : "Choose a country to begin."; }
+$("country").onchange = () => pick($("country").value);
+pick(((navigator.languages || [navigator.language || ""]).map((l) => (l.split("-")[1] || "").toUpperCase())
+  .find((r) => COUNTRIES.some((c) => c.code === r))) || "");
+function ready() { if (phone) return true; $("why").textContent = "Choose a country first: ACE answers with that country's facts and numbers."; $("country").focus(); return false; }
 
 const tries = ["Armyworm is eating my maize, what do I do?", "viwavi wanakula mahindi yangu nifanye nini",
   "How do I store maize to avoid aflatoxin?", "Your SIM is registered twice, send your M-PESA PIN to confirm",
@@ -91,6 +104,7 @@ function show(which) { $("ussd").hidden = which !== "ussd"; $("sms").hidden = wh
 $("tab-ussd").onclick = () => show("ussd"); $("tab-sms").onclick = () => show("sms");
 
 async function ussd() {
+  if (!ready()) return;
   const body = new URLSearchParams({ sessionId: session, serviceCode: "*384#", phoneNumber: phone, text: path.join("*") });
   const r = await fetch("/ussd", { method: "POST", body });
   const t = await r.text();
@@ -106,7 +120,7 @@ function bubble(text, who, segs) { const d = document.createElement("div"); d.cl
   if (segs) { const s = document.createElement("span"); s.className = "seg"; s.textContent = segs + " SMS segment" + (segs > 1 ? "s" : ""); d.appendChild(s); }
   $("chat").appendChild(d); $("chat").scrollTop = 1e9; }
 async function sendSms() {
-  const text = $("sms-in").value.trim(); if (!text) return; $("sms-in").value = ""; bubble(text, "me");
+  const text = $("sms-in").value.trim(); if (!text || !ready()) return; $("sms-in").value = ""; bubble(text, "me");
   const r = await fetch("/v1/ask", { method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ text, phone, channel: "sms" }) });
   const data = await r.json();

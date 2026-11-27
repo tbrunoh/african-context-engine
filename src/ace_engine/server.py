@@ -213,7 +213,10 @@ class AceApp:
             if self.engine.safety.check(str(data.get("text", ""))).escalate:
                 message = Message(channel=Channel.API, sender=_sender(data),
                                   text=str(data["text"]), language=data.get("language"))
-                return _json(200, {"outcome": "emergency", **self.engine.handle(message).to_dict()})
+                reply = self.engine.handle(message)
+                if not data.get("phone"):
+                    self.engine.profiles.forget(message.sender)  # a phone-less request keeps no profile
+                return _json(200, {"outcome": "emergency", **reply.to_dict()})
             return _json(200, hub.call(path.rsplit("/", 1)[-1], data.get("country"), data.get("place"),
                                        data.get("lat"), data.get("lon"), data.get("language") or "en",
                                        str(data.get("text", "")), params))
@@ -331,7 +334,9 @@ def _bearer_ok(environ: dict[str, Any], token: str) -> bool:
 
 
 def _playground() -> bytes:
-    return resources.files("ace_engine").joinpath("web/playground.html").read_bytes()
+    page = resources.files("ace_engine").joinpath("web/playground.html").read_text(encoding="utf-8")
+    countries = [{"code": c.code, "name": c.name, "dial": c.dial} for c in sorted(COUNTRIES.values(), key=lambda c: c.name)]
+    return page.replace("/*ACE_COUNTRIES*/[]", json.dumps(countries)).encode("utf-8")
 
 
 def serve(engine: Engine, host: str = "127.0.0.1", port: int = 8000, **kwargs: Any) -> None:

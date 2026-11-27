@@ -50,6 +50,9 @@ def test_health_and_packs(app):
 def test_playground_is_served(app):
     code, headers, body = call(app, "GET", "/")
     assert code == 200 and headers["Content-Type"].startswith("text/html") and b"ACE playground" in body
+    # The phone takes a number in the country the visitor picks, from all 34, and never assumes Kenya
+    assert b"/*ACE_COUNTRIES*/[]" not in body and b'"code": "NG"' in body and b'"code": "KE"' in body
+    assert b'"+2547"' not in body
 
 
 def test_ask_endpoint(app):

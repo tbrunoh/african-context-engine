@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+ACE no longer assumes that a caller is in Kenya anywhere in the code. Since 2.1 it covers 34 countries, but a few defaults from the first release still pointed at Kenya.
+
+### Fixed
+- **The MCP server no longer falls back to Kenya.** `ask_ace` and `check_message` defaulted to Kenya, so an assistant that named no country got Kenyan facts and emergency numbers, and `pest_check` defaulted to Kenyan crops. With no country, `ask_ace` and `check_message` now answer as for a caller outside ACE's 34 countries, as `/v1/ask` has since 2.3, and `pest_check` requires the country, like the other service tools.
+- **A number in local format is no longer read as Kenyan.** A number such as 0712345678 took Kenya's dialling code, so its caller got Kenyan numbers wherever they were. It now gets its own private key and no country, unless the deployment pins one with `--country`, which also gives local numbers that country's code.
+- **The playground phone asks for a country.** It invented a Kenyan number for every visitor. It now offers all 34 countries, starts with the visitor's own when the browser names a covered country, and takes a sample number in the country chosen.
+- **A phone-less emergency sent to `/v1/services` keeps no profile.** It left a profile holding the message text, as `/v1/ask` did before 2.3.
+- **`ace ask` and `ace chat` need `--country` or `--phone`**, instead of a Kenyan sample number, and `Engine.ask` with no sender answers as for a caller outside ACE's 34 countries unless the engine pins a country.
+- Tests that relied on the Kenyan default now pass a Kenyan number, and new tests hold each fix.
+
 ## 2.3.0b1 (2026-11-26): 32 languages, and honesty about the rest
 
 ACE grows from eight to 32 languages, each offered in the countries that speak it, and learns to tell a language it speaks from one it does not. Every new language is a draft: it passes ACE's own tests and benchmark, but no fluent speaker has reviewed it yet. The guide is [docs/languages.md](docs/languages.md).

@@ -80,7 +80,9 @@ class Engine:
                  services: ServiceHub | None = None) -> None:
         self.store = store
         self.packs = sorted(packs or [], key=lambda p: (p.order, p.id))
-        self.profiles = profiles or ProfileStore()
+        pinned = COUNTRIES.get(((config.country if config else None) or "").upper())
+        # Local numbers take the pinned country's code; with none pinned, a caller's country comes only from their number
+        self.profiles = profiles or ProfileStore(default_country_code=pinned.dial if pinned else None)
         self.composer = composer or ExtractiveComposer()
         self.safety = safety or EscalationPolicy()
         self.handoffs = handoffs or InMemoryHandoffs()
@@ -185,9 +187,13 @@ class Engine:
         """Keep Latin script SMS and USSD replies in the GSM alphabet, so they keep their full length."""
         return encoding.gsm_fold(text) if channel in (Channel.SMS, Channel.USSD) else text
 
-    def ask(self, text: str, sender: str = "+254700000000", channel: Channel = Channel.API,
+    def ask(self, text: str, sender: str | None = None, channel: Channel = Channel.API,
             language: str | None = None) -> Reply:
-        """Convenience for scripts, notebooks and tests."""
+        """Convenience for scripts, notebooks and tests. Pass the caller's number, or pin a country in the
+        config; with neither, ACE answers as for a caller outside its 34 countries."""
+        if sender is None:
+            pinned = COUNTRIES.get((self.config.country or "").upper())
+            sender = f"+{pinned.dial}700000000" if pinned else "+888700000000"
         return self.handle(Message(channel=channel, sender=sender, text=text, language=language))
 
     # ------------------------------------------------------------------ stages

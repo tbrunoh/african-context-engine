@@ -140,11 +140,15 @@ def _start_background(app: Any, engine: Engine, env: Mapping[str, str]) -> None:
     def warm(hub: Any) -> None:
         facility.warm(hub.ctx)
 
-    threading.Thread(target=lambda: warm(engine.services), name="ace-warm", daemon=True).start()
     base = env.get("ACE_SNAPSHOT_BASE")
     if base:
         from .snapshots.manifest import SnapshotWatcher
 
-        watcher = SnapshotWatcher(engine, base, float(env.get("ACE_SNAPSHOT_INTERVAL") or 300), on_swap=warm)
+        # Load the published set before the first request, so a new instance never answers from the older set
+        # bundled in the image; the facility index then warms off the request path, as for later swaps.
+        watcher = SnapshotWatcher(engine, base, float(env.get("ACE_SNAPSHOT_INTERVAL") or 300))
+        watcher.check_once()
+        watcher.on_swap = warm
         app.watcher = watcher
         watcher.start()
+    threading.Thread(target=lambda: warm(engine.services), name="ace-warm", daemon=True).start()

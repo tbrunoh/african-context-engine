@@ -259,12 +259,16 @@ def main() -> None:
     if engine.services is not None:  # the same snapshot sets and facility index as the site
         from .services import facility
 
-        threading.Thread(target=lambda: facility.warm(engine.services.ctx), daemon=True).start()
         if os.environ.get("ACE_SNAPSHOT_BASE"):
             from .snapshots.manifest import SnapshotWatcher
 
-            SnapshotWatcher(engine, os.environ["ACE_SNAPSHOT_BASE"], float(os.environ.get("ACE_SNAPSHOT_INTERVAL") or 300),
-                            on_swap=lambda hub: facility.warm(hub.ctx)).start()
+            # The published set is loaded before the server starts, so no call is answered from the bundled set
+            watcher = SnapshotWatcher(engine, os.environ["ACE_SNAPSHOT_BASE"],
+                                      float(os.environ.get("ACE_SNAPSHOT_INTERVAL") or 300))
+            watcher.check_once()
+            watcher.on_swap = lambda hub: facility.warm(hub.ctx)
+            watcher.start()
+        threading.Thread(target=lambda: facility.warm(engine.services.ctx), daemon=True).start()
     hosts = args.allowed_hosts or [h.strip() for h in os.environ.get("ACE_MCP_ALLOWED_HOSTS", "").split(",")]
     paused = bool(os.environ.get("ACE_PAUSED"))
     uvicorn.run(http_app(engine, hosts, paused=paused), host=args.host, port=args.port, log_level="warning",

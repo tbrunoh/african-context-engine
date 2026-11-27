@@ -1,0 +1,204 @@
+# Luganda for Uganda, in the standard spelling. Drafted for ACE 2.3. Awaiting review by fluent speakers and, for
+# the safety phrases, by clinicians.
+meta:
+  code: lg
+  name: Luganda
+  native: "Luganda"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE ejja kuddamu mu Luganda."
+  names: ["luganda", "ganda", "lg"]
+
+templates:
+  safety.OPENERS.self_harm: "Nnina ennaku nnyingi okuba nti owulira bw'otyo. Osaanidde okufuna obuyambi kaakano. {numbers}"
+  safety.OPENERS.maternal: "Kino kiyinza okuba obuzibu obw'amangu obw'olubuto. Genda mu ddwaaliro eriri okumpi kaakano. {numbers}"
+  safety.OPENERS.poisoning: "Kino kiwulikika ng'obutwa. Funa obuyambi bw'omusawo kaakano, otwale eccupa. {numbers}"
+  safety.OPENERS.child_protection: "Omwana ayinza okuba mu kabi. Nsaba ofune obuyambi kaakano. {numbers}"
+  safety.OPENERS.gbv: "Nnina ennaku nti kino kikutuukako. Osobola okufuna obuyambi kaakano. {numbers}"
+  safety.OPENERS.health_urgent: "Kino kiwulikika ng'eky'amangu. Funa obuyambi bw'omusawo kaakano. {numbers}"
+  safety.CALL_WORD: "Kuba {numbers}"
+  safety.OR_WORD: "oba"
+  safety.EMERGENCY_WORD: "eky'amangu"
+  safety.FALLBACK_NUMBERS: "Kuba ennamba y'eby'amangu ey'ewammwe oba genda mu ddwaaliro eriri okumpi."
+
+  commands.TEXTS.help: "ACE ewa amagezi ag'omu kitundu agakeberebwa. Buuza mu lulimi lwo. Ebiragiro: OBUFERE + obubaka okukebera obubaka, AMAGEZI + amagezi go okugabana okumanya, ENSIBUKO, EBIRALA, OLULIMI + koodi (okugeza OLULIMI EN), SANGULA okusangula ebikukwatako."
+  commands.TEXTS.help_short: "Buuza ACE mu lulimi lwo. OBUFERE + obubaka bubukebera. SANGULA esangula ebikukwatako."
+  commands.TEXTS.forgotten: "Kikoleddwa. ACE esangudde byonna bye yali erina ku namba eno."
+  commands.TEXTS.stopped: "Tojja kuddamu kufuna bubaka okuva mu ACE okuggyako ng'owandiise nate. Weereza SANGULA okusangula ebikukwatako."
+  commands.TEXTS.language: "Ddamu OLULIMI ne koodi:"
+  commands.TEXTS.tip_thanks: "Webale. Amagezi go gaterekeddwa omukugu agakebere. Tegajja kugabanwa nga tegannakeberebwa."
+  commands.TEXTS.tip_usage: "Weereza AMAGEZI n'amagezi go, okugeza: AMAGEZI ebikoola bya neem biyamba ku nsowera z'kasooli e Masaka."
+  commands.TEXTS.scam_usage: "Weereza OBUFERE n'obubaka bw'otakkiriza, ACE ejja kububekera."
+  commands.TEXTS.no_sources: "Tewali kuddamu kwa kubiri kulaga gye kwava. Sooka obuuze ekibuuzo."
+  commands.TEXTS.no_more: "Ebyo bye byonna ACE by'erina ku nsonga eno kaakano. Buuza ekibuuzo ekirala oba weereza OBUYAMBI."
+  commands.TEXTS.clarify: "ACE tennaba kufuna magezi gakeberebwa ku ekyo. ACE esobola okukuyamba ku: {topics}. Weereza AMAGEZI okwongerako okumanya."
+  commands.TEXTS.unread: "ACE tennaba kusoma lulimi luno. Bambi wandiika mu lumu ku nnimi zino: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "KIRABIKA NG'OBUFERE."
+  scam.HEADLINES.SUSPICIOUS: "WEEGENDEREZE."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Siraba bubonero bumanyiddwa obw'obufere, naye ekyo tekitegeeza nti tekirina buzibu."
+  scam.SIGNS_LABEL: "Obubonero obulabula:"
+  scam.REPORT_LINE: "Bubuweereze ku 333, bwa bwereere."
+  scam.GENERIC_REPORT_LINE: "Toddamu era toweereza ssente. Kiloopa ku kampuni y'essimu yo ng'okozesa namba eri ku mukutu gwabwe oba ku kapapula ka SIM."
+  scam.NEUTRAL_ADVICE: "Tobuulira muntu PIN yo, era kebera ssente eziri ku ssimu yo nga tonnakola kintu kyonna obubaka bwonna kye bugamba."
+  scam.SIGNAL.asks_for_pin: "busaba PIN yo oba ekigambo eky'ekyama"
+  scam.SIGNAL.double_registration: "bugamba nti SIM yo yawandiisibwa emirundi ebiri"
+  scam.SIGNAL.refund_request: "bukusaba okuddiza ssente ezaaweerezebwa mu nsobi"
+  scam.SIGNAL.confirmation_from_personal_number: "bufaanana ng'obukakafu bwa M-PESA naye buva ku namba y'omuntu"
+  scam.SIGNAL.unofficial_operator_number: "bugamba nti buva mu Safaricom naye buwa namba etali 0722000000"
+  scam.SIGNAL.dial_code_instruction: "bukugamba okukuba koodi ku ssimu yo"
+  scam.SIGNAL.prize_or_offer: "bugamba nti owangudde ekirabo oba buwa ssente"
+  scam.SIGNAL.link: "bulimu link"
+  scam.SIGNAL.pressure: "bukukubiriza okukola mangu"
+
+  channels.ussd.UI:
+    ask: "Buuza ekibuuzo"
+    scam: "Kebera obubaka"
+    lang: "Olulimi"
+    more: "98 Ebirala"
+    next: "1 Ekiddako"
+    back: "0 Ddayo"
+    menu: "0 Menu"
+    ask_prompt: "Wandiika ekibuuzo kyo:"
+    scam_prompt: "Wandiika oba teekamu obubaka:"
+    invalid: "Okulonda si kutuufu."
+    end_pack: "Ebyo bye byonna ku mutwe guno."
+    lang_prompt: "1 English"
+    topics: "Emitwe"
+    place_prompt: "Wandiika erinnya lya {area} lyo:"
+    food_prompt: "Wandiika emmere ne {area} lyo, okugeza kasooli {example}:"
+    weeks_prompt: "Olubuto lwo lulina wiiki mmeka?"
+    crop_prompt: "Wandiika ekirime n'ky'olaba:"
+  channels.voice.PROMPTS:
+    welcome: "Tukwaniriza mu ACE."
+    press: "Ku {label}, nyiga {n}."
+    repeat: "Okuddamu okuwulira menu, nyiga 0."
+    bye: "Tetufunye kulonda kwo. Weeraba."
+    invalid: "Ekyo si kulonda kutuufu."
+
+  services.base.DAYS: ["Bal", "Lw2", "Lw3", "Lw4", "Lw5", "Lw6", "Ssa"]
+  services.base.MONTHS: ["Jan", "Feb", "Mar", "Apu", "Maa", "Jun", "Jul", "Agu", "Seb", "Oki", "Nov", "Des"]
+  services.base.NEEDS_PLACE: "Oli mu {area} ki? Ddamu erinnya lyalyo, okugeza {example}."
+  services.base.AREA_DEFAULT: "ekitundu"
+  services.base.AREA_WORD: {UG: "disitulikiti"}
+  services.base.COUNTRY_SAID: {UG: "Uganda"}
+
+  services.rain.WORDS.likely: "kiyinza nnyo"
+  services.rain.WORDS.possible: "kiyinza"
+  services.rain.WORDS.dry: "omusana mungi"
+  services.rain.HEAD: "Enkuba okumpi ne {place}:"
+  services.rain.HEAVY_LINE: "Enkuba ey'amaanyi (20 mm oba okusingawo) eyinza okutonnya {days}."
+  services.rain.FOOT: "Emikisa giva mu kuteebereza kwa ECMWF okwa {date}."
+  services.rain.SPAN: "{a} okutuuka {b}"
+  services.rain.AND: "ne"
+  services.rain.STALE: "ACE terina kuteebereza kwa budde okwa kaakano okwa {place}. Laba okuteebereza kwa {met}."
+  services.rain.NEXT: "Tegeka emirimu gy'ennimiro ku nnaku ez'omusana."
+
+  services.warnings.FOUND: "Okulabula kwa gavumenti okwa {place} okuva mu {authority}, okutuuka {until}:"
+  services.warnings.NATIONAL: "Okulabula kwa gavumenti okw'eggwanga lyonna okuva mu {authority}, okutuuka {until}:"
+  services.warnings.MORE: "Ebirala {n} bikyakola."
+  services.warnings.NONE: "Tewali kulabula kwa gavumenti okuva mu {authority} okukwata ku {place} kaakano (kwakeberebwa {checked})."
+  services.warnings.STALE: "ACE tesobodde kukebera kulabula kwa {authority} mu bbanga eritali ddene, kale temanyi oba kuliwo. Wuliriza ebirangiriro bya gavumenti okuva mu {authority}."
+  services.warnings.GAP: "{authority} tefulumya kulabula mu ngeri ACE gy'esobola okusoma, kale ACE tesobola kukebera kulabula eyo. Wuliriza ebirangiriro bya gavumenti okuva mu {authority} ku leediyo ne ttivvi."
+  services.warnings.YOUR_AREA: "ekitundu kyo"
+
+  services.facility.NEAR: "Eddwaaliro lya gavumenti eriri okumpi:"
+  services.facility.IN_AREA: "Eddwaaliro lya gavumenti mu {place}:"
+  services.facility.CAVEAT: "Okuva ku lukalala lwa 2019 olw'amalwaliro ga gavumenti; kakasa nti liggule nga tonnagenda."
+  services.facility.REGISTRY_CAVEAT: "Okuva mu kitabo ky'amalwaliro ekya Minisitule y'Ebyobulamu; kuba essimu nga tonnagenda bw'oba osobola."
+  services.facility.EMERGENCY: "Eby'amangu: {numbers}."
+  services.facility.NO_NUMBER: "Bwe kiba eky'amangu, kuba ennamba y'eby'amangu ey'ewammwe."
+  services.facility.NONE: "ACE tefunye ddwaaliro lya gavumenti mu {km} km ku lukalala lwayo olwa 2019."
+  services.facility.GAP: "ACE tennaba kufuna lukalala lwa malwaliro ga ggwanga lino."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} e {market}: {currency} {price} {unit} mu {month}"
+  services.prices.CHANGE.up: "kweyongedde {pct}% okuva ku {prev}"
+  services.prices.CHANGE.down: "kukendedde {pct}% okuva ku {prev}"
+  services.prices.CHANGE.same: "kwe kumu ne {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km okuva e {place})"
+  services.prices.FOOT: "Emiwendo gya WFP."
+  services.prices.TOP: "Emiwendo gya WFP egisembyeyo e {market}{far}:"
+  services.prices.OLD: "Emiwendo gya WFP egisembyeyo ACE gy'erina egya {country} gya {month}, era gikadde. Buuza abasuubuzi oba ofiisi y'ebyobulimi."
+  services.prices.GAP: "WFP tefulumya miwendo gya {country}, kale ACE tesobola kuwa miwendo eyo. Buuza abasuubuzi oba ofiisi y'ebyobulimi."
+  services.prices.THIN: "Emiwendo gya WFP egisembyeyo egya {country} gikwata ku mmere ntono yokka. Buuza abasuubuzi oba ofiisi y'ebyobulimi."
+  services.prices.NO_FOOD: "ACE terina muwendo gwa WFP ogusembyeyo ogwa {food} okumpi ne {place}."
+  services.prices.UNIT: "buli {unit}"
+  services.prices.UNIT_MANY: "buli {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Kasooli", "maize flour": "Akawunga", "maize meal": "Akawunga", beans: "Ebijanjaalo", rice: "Omuceere", sorghum: "Omuwemba", millet: "Obulo", sugar: "Ssukaali", oil: "Butto", "wheat flour": "Obuwunga bw'eŋŋaano", wheat: "Eŋŋaano", cowpeas: "Empindi", potatoes: "Lumonde", tomatoes: "Nnyaanya", onions: "Obutungulu", salt: "Omunnyo", milk: "Amata", eggs: "Amagi", bread: "Omugaati", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "enjeru", yellow: "eya kyenvu", imported: "eyaleetebwa ebweru", local: "ey'ewaka", dry: "enkalu", red: "emmyufu"}
+
+  services.pregnancy.FIRST: "Ku wiiki {w}, genda okukeberebwa olubuto omulundi ogusooka kaakano, wiiki 12 nga tezinnatuuka."
+  services.pregnancy.DUE_NOW: "Ku wiiki {w}, okukeberebwa olubuto kutuuse kaakano. Okuddako kuli ku wiiki {next}."
+  services.pregnancy.NEXT: "Ku wiiki {w}, okukeberebwa kwo okuddako okw'olubuto kuli ku wiiki {next}."
+  services.pregnancy.LATE: "Ku wiiki {w} oyise okukeberebwa okusembayo okwategekebwa ku wiiki 40. Laba omukozi w'ebyobulamu leero."
+  services.pregnancy.ASK: "Olubuto lwo lulina wiiki mmeka? Ddamu na namba, okugeza wiiki 22."
+  services.pregnancy.CALL: "Kuba {numbers}."
+
+  services.pests.LIKELY: "Kino kiyinza okuba {problem}. ACE terabye kirime kyo, kale laba obubonero buno:"
+  services.pests.MAYBE: "Oboolyawo {problem}."
+  services.pests.REFER: "Saba omukozi w'ebyobulimi akakase nga tonnafuuyira."
+  services.pests.NAMES.fall_armyworm: "ensowera za kasooli (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "obulwadde obutta kasooli (MLN)"
+  services.pests.NAMES.cassava_mosaic: "obulwadde bwa mosaic obwa muwogo"
+  services.pests.NAMES.banana_xanthomonas_wilt: "obulwadde bwa kiwotoka obw'amatooke (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "envunyu z'ebikoola bya nnyaanya (Tuta absoluta)"
+  services.pests.ASK: "Kirime ki, era olaba ki? Okugeza: ebikoola bya kasooli birina ebituli n'enfuufu ng'ey'emitti."
+  services.pests.UNKNOWN: "Kaakano ACE ekebera kasooli, muwogo, amatooke ne nnyaanya. Ku birime ebirala, buuza omukozi w'ebyobulimi."
+
+phrases:
+  safety.PREGNANCY: ["ali lubuto", "ndi lubuto", "olubuto", "omukazi ali olubuto", "ali mbuto", "lubuto lwa myezi"]
+  safety.POSTPARTUM: ["yakazaala", "yazadde", "nazadde", "oluvannyuma lw'okuzaala", "amaze okuzaala"]
+  safety.MATERNAL_DANGER: ["omusaayi", "avaamu omusaayi", "okuvaamu omusaayi", "akankana", "ensimbu", "akwatiddwa ensimbu", "omutwe gumuluma nnyo", "amaaso tegalaba bulungi", "omwana tasagaasagana", "amazzi gatise", "omusujja mungi"]
+  safety.URGENT: ["tassa mukka", "tasobola kussa", "azirise", "agudde tazuukuka", "akwatiddwa ensimbu", "avaamu omusaayi mungi", "obulumi mu kifuba", "omusota gumubojje", "abojjeddwa omusota", "ayokeddwa nnyo"]
+  safety.POISON_ACT: ["anywedde", "amize", "alidde", "omwana anywedde", "anywedde obutwa"]
+  safety.POISON_WHAT: ["obutwa", "eddagala ly'ebiwuka", "eddagala ly'emmese", "palafini", "amafuta g'ettaala", "petulooli", "bleach"]
+  safety.POISONED: ["bamuwadde obutwa", "anywedde obutwa", "alidde obutwa", "bamuteeredde obutwa", "yaloggeddwa"]
+  safety.GBV: ["bankakaatako", "yankakaatako", "ankuba", "omwami wange ankuba", "yankubye", "obutabanguko mu maka", "ayagala kunzita"]
+  safety.CHILD: ["omwana", "omwana wange", "muwala wange", "mutabani wange", "akawala", "abaana", "akaana"]
+  safety.CHILD_HARM: ["yakakkibwako", "bamukakaatako", "atulugunyizibwa", "bamutulugunya", "bamukuba", "yamukubye", "okufumbizibwa olw'empaka"]
+  safety.SELF_HARM: ["okwetta", "nja kwetta", "njagala kufa", "sikyayagala kubeera mulamu", "njagala kumalako obulamu bwange", "okwerumya", "njagala kwetta", "kwetta", "nneetta", "njagala okwetta"]
+
+  scam.PIN: ["pin", "ekigambo eky'ekyama", "namba ey'ekyama"]
+  scam.ASK: ["weereza", "mpa", "kakasa", "teekamu", "wandiika"]
+  scam.MISTAKE: ["mu nsobi", "ensobi", "ddiza ssente", "zizze"]
+  scam.DOUBLE: ["emirundi ebiri"]
+  scam.PRIZE: ["owangudde", "ekirabo", "ekirabo kya bwereere", "ssente za bwereere"]
+  scam.URGENT: ["mangu ddala", "kaakano wennyini", "mu ssaawa 24", "egenda kuggalwa", "egenda kuyimirizibwa", "okulabula okusembayo"]
+  scam.CLAIMS_OPERATOR: ["mtn", "momo", "airtel", "airtel money", "lycamobile"]
+  scam.DIAL: ["kuba"]
+
+  services.CUES.pregnancy_companion: ["okukeberebwa olubuto", "okwekebeza olubuto", "okukeberebwa okuddako"]
+  services.CUES.nearest_facility: ["eddwaaliro", "kiraliniki", "omusawo"]
+  services.CUES.official_warnings: ["okulabula", "amataba", "omuyaga"]
+  services.CUES.rain_this_week: ["enkuba", "egenda kutonnya", "obudde", "okuteebereza"]
+  services.CUES.market_prices: ["omuwendo", "ssente mmeka", "akatale"]
+  services.CUES.pest_check: ["ebiwuka", "ensowera", "obulwadde", "ebikoola", "kyenvu", "ebituli", "biwotoka", "bifa"]
+  services.SEASONAL: ["ekyeya", "ttoggo", "ebiseera by'enkuba"]
+  services.PREGNANT: ["olubuto", "lubuto"]
+  services.HOW_MUCH: ["mmeka"]
+  services.prices.FOODS: {kasooli: maize, akawunga: maize meal, ebijanjaalo: beans, omuceere: rice, ssukaali: sugar, butto: oil, lumonde: potatoes, nnyaanya: tomatoes, obutungulu: onions, omunnyo: salt, amagi: eggs, omugaati: bread}
+  services.pests.CROPS.maize: ["kasooli"]
+  services.pests.CROPS.cassava: ["muwogo"]
+  services.pests.CROPS.banana: ["amatooke", "ettooke"]
+  services.pests.CROPS.tomato: ["nnyaanya"]
+  services.pests.PROBLEMS.fall_armyworm: ["ensowera", "ebituli", "enfuufu"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["kyenvu", "biwotose", "bifudde"]
+  services.pregnancy.WEEK_WORDS: ["wiiki", "sabbiiti"]
+  services.pregnancy.MONTH_WORDS: ["emyezi", "omwezi", "myezi"]
+  commands.COMMANDS.help: ["obuyambi"]
+  commands.COMMANDS.forget: ["sangula"]
+  commands.COMMANDS.stop: ["yimiriza"]
+  commands.COMMANDS.language: ["olulimi"]
+  commands.COMMANDS.tip: ["amagezi"]
+  commands.COMMANDS.scam: ["obufere"]
+  commands.COMMANDS.sources: ["ensibuko"]
+  commands.COMMANDS.more: ["ebirala"]
+  text.ACTION_CUES: ["nkole ki", "nsaanidde kukola ki", "nnyinza ntya okukiziyiza", "nnyinza ntya okuzitta", "nnyinza ntya okukitereka", "nnyamba"]
+
+words:
+  stopwords: ["ne", "oba", "naye", "kino", "wano", "kaakano", "ki", "ntya", "kubanga", "nti", "nsaba", "wange", "yange", "nnyo", "ku"]
+  markers: ["nsaba", "ntya", "kaakano", "kubanga", "oba", "omwana", "eddwaaliro", "kasooli", "webale", "wano", "kino", "simanyi", "njagala", "wange", "yange", "nnyo", "olubuto", "jjo", "leero", "enkya", "ssente", "ebikoola", "muwogo", "mmeka", "wiiki", "enkuba", "ebijanjaalo", "nnina", "nga", "waliwo", "waliyo", "abantu", "nti", "ddala", "bulungi", "mulimu", "ono", "eri"]

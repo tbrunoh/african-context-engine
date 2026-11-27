@@ -1,0 +1,206 @@
+# Mooré for Burkina Faso, written with plain u and i where the standard spelling has u and i, as most people type
+# it on phones; SMS folds the nasal vowels. Commands stay in French, as many speakers use them. Drafted for ACE 2.3
+# with the lowest confidence of the added languages: fluent speakers and, for the safety phrases, clinicians must
+# review it before it is offered widely. The French safety phrases still apply to messages that mix French in.
+meta:
+  code: mos
+  name: Mooré
+  native: "Mooré"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE na n leok-y ne Mooré."
+  names: ["moore", "mooré", "mossi", "mos"]
+
+templates:
+  safety.OPENERS.self_harm: "M sũur sãamame wusgo y sẽn tagsd woto wã. Y segda ne sõngre masã. {numbers}"
+  safety.OPENERS.maternal: "Yɛl kãngã tõe n yaa puga yel-beed sẽn pa tar yaood ye. Kẽng logtoeeg sẽn be kĩngã masã. {numbers}"
+  safety.OPENERS.poisoning: "Yɛl kãngã wõnda tiim-wẽnga. Bao dogtoor sõngre masã, la y zãa butɛllã. {numbers}"
+  safety.OPENERS.child_protection: "Biig tõe n be zabr pugẽ. Bao sõngre masã. {numbers}"
+  safety.OPENERS.gbv: "M sũur sãamame y sẽn paamd yɛl kãngã. Y tõe n paama sõngre masã. {numbers}"
+  safety.OPENERS.health_urgent: "Yɛl kãngã wõnda yel-kaseng sẽn pa tar yaood ye. Bao dogtoor sõngre masã. {numbers}"
+  safety.CALL_WORD: "Bool {numbers}"
+  safety.OR_WORD: "bi"
+  safety.EMERGENCY_WORD: "yel-kaseng"
+  safety.FALLBACK_NUMBERS: "Bool yel-kaseng nimero sẽn be y zĩigẽ bi y kẽng logtoeeg sẽn be kĩngã."
+
+  commands.TEXTS.help: "ACE kõta saglg sẽn gesa sõma y zĩigẽ. Sok ne y goamã. Kɛlg-goama: ARNAQUE + kibare n ges-a, CONSEIL + y saglgã n buus bãngr, SOURCES, PLUS, LANGUE + kood (wa LANGUE EN), OUBLIER n yẽes y kibayã."
+  commands.TEXTS.help_short: "Sok ACE ne y goamã. ARNAQUE + kibare n ges-a. OUBLIER yẽesda y kibayã."
+  commands.TEXTS.forgotten: "D maana. ACE yẽesa a sẽn da tar fãa nimero kãngã zugu."
+  commands.TEXTS.stopped: "Y kõn le paam kibare ACE nengẽ ye, rẽ yĩnga y sã n le gulse. Tum OUBLIER n yẽes y kibayã."
+  commands.TEXTS.language: "Leok ne LANGUE la kood:"
+  commands.TEXTS.tip_thanks: "Barka. D bĩnga y saglgã ti bãngd ges-a. D kõn buus-a ne neb ye hal ti b ges-a."
+  commands.TEXTS.tip_usage: "Tum CONSEIL la y saglgã, wa: CONSEIL neem vãado sõngda kamaan zãngã zugu Kudugu."
+  commands.TEXTS.scam_usage: "Tum ARNAQUE la kibare y sẽn pa kisg ye, ACE na n ges-a."
+  commands.TEXTS.no_sources: "Leoor ka be n wilg a sẽn yi zĩig ye. Sok sogsg pipi."
+  commands.TEXTS.no_more: "Woto la ACE sẽn tar yɛl kãngã zugu masã. Sok sogs-a to bi y tum AIDE."
+  commands.TEXTS.clarify: "ACE ka tar saglg sẽn gesa sõma yɛl kãngã zugu ye. ACE tõe n sõng-y ne: {topics}. Tum CONSEIL n paas bãngr."
+  commands.TEXTS.unread: "ACE pa tõe n karem goam kãngã ye. Bi y guls ne goam-kãens a yembr: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "A WÕNDA ZĨMBA."
+  scam.HEADLINES.SUSPICIOUS: "GESG SÕMA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Mam pa ne zĩmb bãnd b sẽn mi ye, la rẽ pa rat n yeel ti a yaa sõma ye."
+  scam.SIGNS_LABEL: "Sagls bãnde:"
+  scam.REPORT_LINE: "Tum-a 333, a yaa zaalem."
+  scam.GENERIC_REPORT_LINE: "Ra leok ye, la ra tum ligd ye. Togs y telefɔn sosiete ne nimero sẽn be b site zugu bi SIM pake zugu."
+  scam.NEUTRAL_ADVICE: "Ra kõ y PIN ne ned ye, la y ges y telefɔn ligdã reng ti y maan kibar sẽn yeel bũmb ninga."
+  scam.SIGNAL.asks_for_pin: "a kotame ti y kõ y PIN bi y sogn-goama"
+  scam.SIGNAL.double_registration: "a yeta ti b gulsa y SIM naoor a yiibu"
+  scam.SIGNAL.refund_request: "a kotame ti y lebs ligd b sẽn tum ne tudgri"
+  scam.SIGNAL.confirmation_from_personal_number: "a wõnda M-PESA kibare la a yita ned nimero"
+  scam.SIGNAL.unofficial_operator_number: "a yeta ti a yita Safaricom la a kõta nimero sẽn pa 0722000000 ye"
+  scam.SIGNAL.dial_code_instruction: "a yeta ti y yãk kood y telefɔnã zugu"
+  scam.SIGNAL.prize_or_offer: "a yeta ti y paama keoor bi a kõta ligdi"
+  scam.SIGNAL.link: "lien be a pugẽ"
+  scam.SIGNAL.pressure: "a pẽnemd-y ti y maan tao-tao"
+
+  channels.ussd.UI:
+    ask: "Sok sogsg"
+    scam: "Ges kibare"
+    lang: "Goama"
+    more: "98 Plus"
+    next: "1 Sẽn pugd"
+    back: "0 Lebg poore"
+    menu: "0 Menu"
+    ask_prompt: "Guls y sogsgã:"
+    scam_prompt: "Guls bi y ning kibarã:"
+    invalid: "Yãkr kãngã pa sõma ye."
+    end_pack: "Woto la fãa yɛl kãngã zugu."
+    lang_prompt: "1 English"
+    topics: "Yɛla"
+    place_prompt: "Guls y {area} yuurã:"
+    food_prompt: "Guls riib la y {area}, wa kamaana {example}:"
+    weeks_prompt: "Y pugã tara semen a wãna?"
+    crop_prompt: "Guls koodã la y sẽn yã:"
+  channels.voice.PROMPTS:
+    welcome: "Ne y waoogo ACE."
+    press: "{label} yĩnga, nag {n}."
+    repeat: "Y sã n dat n le wum menu wã, nag 0."
+    bye: "D pa paam y yãkrã ye. Wẽnd na kõ laafi."
+    invalid: "Woto pa yãkr sẽn zemse ye."
+
+  services.base.DAYS: ["Tɛn", "Tal", "Ark", "Ara", "Arz", "Sib", "Kar"]
+  services.base.MONTHS: ["Zan", "Feb", "Mar", "Awr", "Mɛ", "Zue", "Zul", "Ut", "Sɛt", "Ɔkt", "Nɔv", "Des"]
+  services.base.NEEDS_PLACE: "Y be {area} bug pugẽ? Leok ne a yuurã, wa {example}."
+  services.base.AREA_DEFAULT: "zĩiga"
+  services.base.AREA_WORD: {BF: "rejɔɔ"}
+  services.base.COUNTRY_SAID: {BF: "Burkina"}
+
+  services.rain.WORDS.likely: "a tõe n wa wusgo"
+  services.rain.WORDS.possible: "a tõe n wa"
+  services.rain.WORDS.dry: "wĩntoog na n tuug wusgo"
+  services.rain.HEAD: "Saag {place} kĩngã:"
+  services.rain.HEAVY_LINE: "Saag-kãsenga (20 mm bi n yiig rẽ) tõe n ni {days}."
+  services.rain.FOOT: "Sãmb-sãmb yita ECMWF saag kibar sẽn yaa {date} pugẽ."
+  services.rain.SPAN: "{a} n tãag {b}"
+  services.rain.AND: "la"
+  services.rain.STALE: "ACE ka tar saag kibar paal {place} yĩnga ye. Ges {met} kibarã."
+  services.rain.NEXT: "Segl y puug tuumd ne raasem nins wĩntoog sẽn na n tuuge."
+
+  services.warnings.FOUND: "Naam sagls {place} yĩnga sẽn yi {authority} nengẽ, n tãag {until}:"
+  services.warnings.NATIONAL: "Naam sagls tẽngã fãa yĩnga sẽn yi {authority} nengẽ, n tãag {until}:"
+  services.warnings.MORE: "A to {n} ra tumda."
+  services.warnings.NONE: "Naam sagls ka be {authority} nengẽ n tũ {place} masã ye (b gesa {checked})."
+  services.warnings.STALE: "ACE pa tõog n ges {authority} sagls a kaoreng ye, rẽ n so t'a pa mi ti sagls be ye. Kelg naam kibay sẽn yi {authority} nengẽ."
+  services.warnings.GAP: "{authority} pa yiisd sagls ne sor ACE sẽn tõe n karem ye, rẽ n so ti ACE pa tõe n ges sagls be ye. Kelg naam kibay sẽn yi {authority} nengẽ radyo la televizɔɔ zugu."
+  services.warnings.YOUR_AREA: "y zĩigã"
+
+  services.facility.NEAR: "Naam logtoeeg sẽn be kĩngã:"
+  services.facility.IN_AREA: "Naam logtoeeg {place} pugẽ:"
+  services.facility.CAVEAT: "A yita naam logtoeemb lisi 2019 pugẽ; ges ti a pakame reng ti y kẽnge."
+  services.facility.REGISTRY_CAVEAT: "A yita Laafi Minisɛɛr logtoeemb sɛbrẽ; bool reng ti y kẽng y sã n tõe."
+  services.facility.EMERGENCY: "Yel-kaseng: {numbers}."
+  services.facility.NO_NUMBER: "Y sã n yaa yel-kaseng, bool yel-kaseng nimero sẽn be y zĩigẽ."
+  services.facility.NONE: "ACE pa yã naam logtoeeg {km} km pugẽ a lisi 2019 zugu ye."
+  services.facility.GAP: "ACE ka tar tẽn-kãngã logtoeemb lisi ye."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} {market}: {currency} {price} {unit} {month} pugẽ"
+  services.prices.CHANGE.up: "a zuuga {pct}% n yi {prev}"
+  services.prices.CHANGE.down: "a sigame {pct}% n yi {prev}"
+  services.prices.CHANGE.same: "a yaa wa {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km n yi {place})"
+  services.prices.FOOT: "WFP koos ligdi."
+  services.prices.TOP: "WFP koos ligd paal {market}{far}:"
+  services.prices.OLD: "WFP koos ligd paal ACE sẽn tar {country} yĩngã yaa {month} rẽnda, a kuulame. Sok koosdb bi y koodb biro."
+  services.prices.GAP: "WFP pa yiisd koos ligd {country} yĩng ye, rẽ n so ti ACE pa tõe n kõ koos ligd be ye. Sok koosdb bi y koodb biro."
+  services.prices.THIN: "WFP koos ligd paal {country} yĩngã tũuda riib bilf bal. Sok koosdb bi y koodb biro."
+  services.prices.NO_FOOD: "ACE ka tar WFP koos ligd paal {food} yĩng {place} kĩngã ye."
+  services.prices.UNIT: "{unit} fãa"
+  services.prices.UNIT_MANY: "{unit} fãa"
+  services.prices.LOCAL_FOOD: {maize: "Kamaana", "maize flour": "Kamaan zom", "maize meal": "Kamaan zom", beans: "Benga", rice: "Mui", sorghum: "Kazẽnga", millet: "Kazui", sugar: "Sukr", oil: "Kaam", "wheat flour": "Farin", wheat: "Ble", cowpeas: "Benga", potatoes: "Pom-tɛɛr", tomatoes: "Tomaati", onions: "Zabl", salt: "Yamsa", milk: "Kĩlm", eggs: "Gela", bread: "Buuru", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "sẽn yaa peelga", yellow: "sẽn yaa miuuga", imported: "sẽn yi tẽn-zãnga", local: "ka", dry: "sẽn kuuma", red: "sẽn yaa miuuga"}
+
+  services.pregnancy.FIRST: "Semen {w} zugu, kẽng y puga gesg pipi masã, reng ti semen 12 ta."
+  services.pregnancy.DUE_NOW: "Semen {w} zugu, puga gesg wakatã ta masã. A sẽn pugdã yaa semen {next}."
+  services.pregnancy.NEXT: "Semen {w} zugu, y puga gesg sẽn pugdã yaa semen {next}."
+  services.pregnancy.LATE: "Semen {w} zugu y loogame gesg a yaoorã b sẽn segl semen 40 yĩngã. Kẽng n yã laafi tuumd-soab rũndã."
+  services.pregnancy.ASK: "Y pugã tara semen a wãna? Leok ne nimero, wa semen 22."
+  services.pregnancy.CALL: "Bool {numbers}."
+
+  services.pests.LIKELY: "Yɛl kãngã tõe n yaa {problem}. ACE pa ne y koodã ye, rẽ n so ti y ges bãnd-kãens:"
+  services.pests.MAYBE: "Tõe n yaa {problem}."
+  services.pests.REFER: "Sok koodb sagl-soab t'a kiis reng ti y sãag tiim."
+  services.pests.NAMES.fall_armyworm: "kamaan zãngã (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "kamaan bãag sẽn kuud (MLN)"
+  services.pests.NAMES.cassava_mosaic: "maniok mozayik bãaga"
+  services.pests.NAMES.banana_xanthomonas_wilt: "banaan kuub bãaga (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "tomaat vãad zãnga (Tuta absoluta)"
+  services.pests.ASK: "Kood bugo, la y yãta bõe? Wa: kamaan vãado tara bogdo la tom sẽn wõnd tiig tom."
+  services.pests.UNKNOWN: "Masã ACE gesda kamaana, maniok, banaana la tomaati. Kood a taab yĩnga, sok koodb sagl-soab."
+
+phrases:
+  safety.PREGNANCY: ["a tara puga", "m tara puga", "tara puga", "pug-tara", "pagb sẽn tar puga", "a puga", "puga kiuugu"]
+  safety.POSTPARTUM: ["a rogame zaame", "a rogame", "m rogame", "rogem poore", "a sẽn rog"]
+  safety.MATERNAL_DANGER: ["zĩim", "zĩim yiita", "zĩim yiib", "a zẽgdame", "kiirsa", "kiirsa n tara", "zugu zabda wusgo", "nini pa ne sõma", "biigã pa yĩgimd ye", "koomã puka", "tool-kãsenga"]
+  safety.URGENT: ["a pa vuusd ye", "a pa tõe n vuus ye", "a luiime", "a luii n pa vuug", "kiirsa n tara", "zĩim yiita wusgo", "sũur zabdo", "waaf n dũma", "waaf dũma", "bugum tuuga wusgo"]
+  safety.POISON_ACT: ["a yũuma", "a lebe", "a riiba", "biigã yũuma"]
+  safety.POISON_WHAT: ["tiim-wẽnga", "tiim wẽnga", "yoyos tiim", "yoyã tiim", "petrol", "esãnsi", "zavɛl"]
+  safety.POISONED: ["b kõo-a tiim-wẽnga", "a yũuma tiim-wẽnga", "a riiba tiim-wẽnga", "b ninga tiim-wẽnga", "b sãag-a tiim-wẽnga"]
+  safety.GBV: ["b pãnga m", "a pãnga m", "a puugda maam", "m sid puugda maam", "a puuga maam", "zak-pugẽ wẽgdo", "a dat n ku maam"]
+  safety.CHILD: ["biiga", "m biiga", "m bi-pugla", "m bi-ribla", "pug-sadga", "kamba", "bi-bila"]
+  safety.CHILD_HARM: ["b pãnga a", "a pãnga a", "b namsda a", "b namsa a", "b puugda a", "a puuga a", "pãng kãadem"]
+  safety.SELF_HARM: ["ku m menga", "m na n ku m menga", "m data n ki", "m ka le dat n viimd ye", "m data n siis m viimã", "nams m menga"]
+
+  scam.PIN: ["pin", "sogn-goama", "sogn nimero"]
+  scam.ASK: ["tum", "kõ maam", "kiis", "ning", "guls"]
+  scam.MISTAKE: ["ne tudgri", "tudgri", "lebs ligdã", "lebs-a"]
+  scam.DOUBLE: ["naoor a yiibu"]
+  scam.PRIZE: ["y paama keoor", "keoor", "kũuni", "zaalem ligdi"]
+  scam.URGENT: ["tao-tao", "masã masã", "lɛɛr 24 pugẽ", "b na n pag-a", "b na n gidg-a", "sagls a yaoore"]
+  scam.CLAIMS_OPERATOR: ["orange", "orange money", "moov", "moov money", "telecel", "coris money"]
+  scam.DIAL: ["yãk", "nag"]
+
+  services.CUES.pregnancy_companion: ["puga gesg", "cpn", "gesg sẽn pugd"]
+  services.CUES.nearest_facility: ["logtoeeg", "dispãnsɛɛr", "dogtoor"]
+  services.CUES.official_warnings: ["sagls", "ko-kãsenga", "sobg-kãsenga"]
+  services.CUES.rain_this_week: ["saaga", "saag na n ni", "sãmb-sãmb", "saag kibare"]
+  services.CUES.market_prices: ["koos ligdi", "yaa wãna", "raaga"]
+  services.CUES.pest_check: ["yoyo", "zãnga", "bãaga", "vãado", "miuuga", "bogdo", "kuumda", "kiida"]
+  services.SEASONAL: ["seoogo", "sipaongo", "saag wakato"]
+  services.PREGNANT: ["puga", "pug-tara"]
+  services.HOW_MUCH: ["wãna"]
+  services.prices.FOODS: {kamaana: maize, benga: beans, mui: rice, sukr: sugar, kaam: oil, tomaati: tomatoes, zabl: onions, yamsa: salt, gela: eggs, buuru: bread, kazui: millet}
+  services.pests.CROPS.maize: ["kamaana", "kamaan"]
+  services.pests.CROPS.cassava: ["maniok"]
+  services.pests.CROPS.banana: ["banaana"]
+  services.pests.CROPS.tomato: ["tomaati"]
+  services.pests.PROBLEMS.fall_armyworm: ["zãnga", "bogdo", "tom"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["miuuga", "kuuma", "kiime"]
+  services.pregnancy.WEEK_WORDS: ["semen"]
+  services.pregnancy.MONTH_WORDS: ["kiuugu", "kiuuse"]
+  commands.COMMANDS.help: ["aide"]
+  commands.COMMANDS.forget: ["oublier"]
+  commands.COMMANDS.stop: ["arret"]
+  commands.COMMANDS.language: ["langue"]
+  commands.COMMANDS.tip: ["conseil"]
+  commands.COMMANDS.scam: ["arnaque"]
+  commands.COMMANDS.sources: ["sources"]
+  commands.COMMANDS.more: ["plus"]
+  text.ACTION_CUES: ["m na n maan bõe", "m segd n maan bõe", "m na n gidg-a wãna", "m na n ku-b wãna", "m na n bĩng-a wãna", "sõng maam"]
+
+words:
+  stopwords: ["la", "bi", "la a", "kãngã", "ka", "masã", "bõe", "wãna", "bala", "ti", "m", "wusgo", "yaa", "n", "ne"]
+  markers: ["masã", "bõe", "wãna", "ãnda", "yaa", "biiga", "logtoeeg", "kamaana", "barka", "kãngã", "wusgo", "puga", "zaame", "rũndã", "beoogo", "ligdi", "vãado", "maniok", "semen", "saaga", "benga", "tara", "sõngre", "yɛla", "zĩim", "sẽn", "ti", "yãmb", "maam"]

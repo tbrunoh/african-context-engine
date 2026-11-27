@@ -8,9 +8,11 @@
 
 **Checked, local, citable knowledge for Africa, on any phone.**
 
-ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), in eight languages across 34 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
+ACE answers the questions that matter to people who will never install an app: a farmer whose maize is being eaten, a pregnant woman who is bleeding, a mother who just got an M-PESA message that feels wrong, a family deciding whether to plant before the rain. It answers on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), in 32 languages across 34 African countries, and every answer points to the published source or dated dataset it came from. It runs with no language model and no API key. When you do plug in a model, ACE checks that the model stayed with the facts and falls back when it did not.
 
 **Reach by default, richer by choice.** USSD, SMS and voice are the default, because they reach every phone with no app and no data. People with a smartphone and data can choose WhatsApp, or RCS where their carrier supports it, to see the sources under every answer, with suggested replies on RCS; RCS falls back to SMS, so a reply never depends on RCS. Other services and AI assistants connect through the API and MCP.
+
+**Release 2.3 preview (2.3.0b1, 26 November 2026)** adds 24 languages, each offered in the countries that speak it: Hausa, Yoruba, Igbo and Nigerian Pidgin in Nigeria; isiZulu, isiXhosa, Afrikaans, Sesotho, Setswana and Xitsonga in South Africa; Akan and Ewe in Ghana; Wolof, Dyula, Mooré and Pular in West Africa; Shona, Chichewa and Bemba in Southern Africa; Kinyarwanda, Kirundi, Luganda and Lingala in East and Central Africa; and Tigrinya in Ethiopia. ACE now guesses a message's language only among the languages of the caller's country, reads a message with no marker word by its letters, and tells a person when it does not read their language yet, naming the languages it does read in their country instead of answering in one they may not read. It folds letters such as ɓ, ɛ and ŋ into the SMS alphabet so replies keep 160 characters a segment, gives 12 of the new languages a voice, and answers every red team message in its benchmark with the emergency reply, in all 32 languages, with no false alarm on the benchmark's ordinary messages. Every new language is a draft that no fluent speaker has reviewed yet; see [docs/languages.md](docs/languages.md) for how confident each draft is and what to review first.
 
 **Release 2.2 preview, third build (2.2.0b3, 26 November 2026)** ships RCS with SMS fallback, switched on country by country (see [docs/channels.md](docs/channels.md#rcs-with-sms-fallback)), and the [ACE tokenizer audit](benchmark/tokenizer-audit/README.md): what 59 African language varieties cost against English on nine released tokenizers, on FLORES-200 and on the text ACE sends, with an offline check any lab can run before it releases a tokenizer. Cite it with DOI [10.5281/zenodo.24565738](https://doi.org/10.5281/zenodo.24565738).
 
@@ -58,12 +60,12 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | Capability | What it means for a person | Where |
 |:--|:--|:--|
 | **34 countries, one engine** | The caller's dialling code picks the country, so the numbers, topics and default language are always right for that person | `countries.py`, `engine.py` |
-| **Eight languages** | English, Swahili and French in the code; Portuguese, Arabic, Amharic, Afaan Oromo and Somali in one file each, so a new language needs no code change | `i18n.py`, `locales/` |
+| **32 languages** | English, Swahili and French in the code; 29 more in one file each, so a new language needs no code change. Each is offered in the countries that speak it, and a message's language is guessed only among its country's languages | `i18n.py`, `locales/`, `text.py` |
 | **Grounded answers** | Short, practical answers in the person's language, each traced to a published source | `engine.py`, `context/` |
-| **Safety rail** | Emergency language in any of the eight languages gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
-| **Scam Shield** | Forward a suspicious mobile money message in any of the eight languages and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
+| **Safety rail** | Emergency language in any of the 32 languages gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
+| **Scam Shield** | Forward a suspicious mobile money message in any of the 32 languages and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
 | **USSD app** | A full menu on any phone: browse topics, ask in your own words, check a message, switch language. Every screen fits 182 characters | `channels/ussd.py` |
-| **SMS** | Replies within three segments, folded into GSM-7 for Latin script and budgeted for UCS-2 in Arabic and Amharic, keyword commands, Africa's Talking sending | `channels/sms.py`, `encoding.py` |
+| **SMS** | Replies within three segments, folded into GSM-7 for Latin script, African letters included, and budgeted for UCS-2 in Arabic, Amharic and Tigrinya, keyword commands, Africa's Talking sending | `channels/sms.py`, `encoding.py` |
 | **RCS** | Suggested replies and sources in the phone's own messaging app, switched on per country. ACE checks that each person can receive RCS and falls back to SMS, and composes every reply to the SMS budget so the fallback never cuts it | `channels/rcs.py` |
 | **Voice IVR** | Keypad menu over the same knowledge, spoken only in languages with a known voice, plus speech recognition through any provider; Google Cloud is ready to plug in | `channels/voice.py`, `speech/` |
 | **WhatsApp** | Cloud API webhook with signature checks, sources listed under every answer | `channels/whatsapp.py` |
@@ -80,29 +82,29 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 |:--|:-:|:--|:--|:--|
 | Kenya | +254 | English, Swahili | 999, 112, 911, 1199, 1195, 116, 1190 | State Department for Gender, NASCOP |
 | Tanzania | +255 | Swahili, English | 112, 116 | UK FCDO, Government of Canada, Child Helpline International |
-| Uganda | +256 | English, Swahili | 999, 112, 0800 199 195, Sauti 116 | Uganda Police via Nile Post, UNICEF Uganda, UK FCDO |
-| Rwanda | +250 | English, French | 112, 912, 3512, 116 | Government of Rwanda |
-| South Africa | +27 | English | 112, 10111, 10177, 0800 428 428, 116 | Department of Justice, UK FCDO |
-| Botswana | +267 | English | 999, 997, 998, 11611 | Botswana Police Service, Child Helpline International |
-| Namibia | +264 | English | 10111, 112, 106, 116 | UK FCDO, LifeLine/ChildLine Namibia |
-| Zimbabwe | +263 | English | 999, 112, 114, 0800 3222 911, 116 | UK FCDO, Government of Canada |
-| Nigeria | +234 | English | 112, 0800 800 8001, 0808 0551 376 | UK FCDO, NCC, Child Helpline International |
-| Ghana | +233 | English | 112, 191, 18555, 192, 193, 0800 111 222 | Government of Canada, Ministry of Gender, Children and Social Protection |
-| Senegal | +221 | French | 17, 15, 18, 1515, 116 | UK FCDO, Ministère de la Santé |
-| Côte d'Ivoire | +225 | French | 170, 110, 111, 185, 180, 1308, 116 | UK FCDO, Ministère de la Femme, de la Famille et de l'Enfant |
-| Togo | +228 | French | 117, 118, 1011 | UK FCDO, Government of Canada, Child Helpline International |
-| DR Congo | +243 | French, Swahili | 112, 118 (Kinshasa) | UK FCDO |
-| Malawi | +265 | English | 998, 990, 997, 999 | UK FCDO |
-| Burundi | +257 | French, Swahili | 112, 109 | UK FCDO |
+| Uganda | +256 | English, Swahili, Luganda | 999, 112, 0800 199 195, Sauti 116 | Uganda Police via Nile Post, UNICEF Uganda, UK FCDO |
+| Rwanda | +250 | English, French, Kinyarwanda | 112, 912, 3512, 116 | Government of Rwanda |
+| South Africa | +27 | English, isiZulu, isiXhosa, Afrikaans, Sesotho, Setswana, Xitsonga | 112, 10111, 10177, 0800 428 428, 116 | Department of Justice, UK FCDO |
+| Botswana | +267 | English, Setswana | 999, 997, 998, 11611 | Botswana Police Service, Child Helpline International |
+| Namibia | +264 | English, Afrikaans | 10111, 112, 106, 116 | UK FCDO, LifeLine/ChildLine Namibia |
+| Zimbabwe | +263 | English, Shona | 999, 112, 114, 0800 3222 911, 116 | UK FCDO, Government of Canada |
+| Nigeria | +234 | English, Hausa, Yoruba, Igbo, Nigerian Pidgin | 112, 0800 800 8001, 0808 0551 376 | UK FCDO, NCC, Child Helpline International |
+| Ghana | +233 | English, Akan, Ewe | 112, 191, 18555, 192, 193, 0800 111 222 | Government of Canada, Ministry of Gender, Children and Social Protection |
+| Senegal | +221 | French, Wolof | 17, 15, 18, 1515, 116 | UK FCDO, Ministère de la Santé |
+| Côte d'Ivoire | +225 | French, Dyula | 170, 110, 111, 185, 180, 1308, 116 | UK FCDO, Ministère de la Femme, de la Famille et de l'Enfant |
+| Togo | +228 | French, Ewe | 117, 118, 1011 | UK FCDO, Government of Canada, Child Helpline International |
+| DR Congo | +243 | French, Swahili, Lingala | 112, 118 (Kinshasa) | UK FCDO |
+| Malawi | +265 | English, Chichewa | 998, 990, 997, 999 | UK FCDO |
+| Burundi | +257 | French, Swahili, Kirundi | 112, 109 | UK FCDO |
 | Cameroon | +237 | French, English | 112, 117, 119 | UK FCDO |
-| Benin | +229 | French | 118, 117 | UK FCDO |
-| Zambia | +260 | English | 992, 991, 993 | UK FCDO |
+| Benin | +229 | French, Yoruba | 118, 117 | UK FCDO |
+| Zambia | +260 | English, Bemba, Chichewa | 992, 991, 993 | UK FCDO |
 | Chad | +235 | French, Arabic | 112, 18, 117, 2020 | UK FCDO |
-| Guinea | +224 | French | None national: go to the nearest health facility | UK FCDO |
-| Burkina Faso | +226 | French | 18, 17 | UK FCDO |
+| Guinea | +224 | French, Pular | None national: go to the nearest health facility | UK FCDO |
+| Burkina Faso | +226 | French, Mooré, Dyula | 18, 17 | UK FCDO |
 | South Sudan | +211 | English, Arabic | None national: go to the nearest health facility | UK FCDO |
-| Ethiopia | +251 | Amharic, Afaan Oromo, Somali, English | 911, 907 | UK FCDO |
-| Mozambique | +258 | Portuguese | 112, 198 | UK FCDO |
+| Ethiopia | +251 | Amharic, Afaan Oromo, Somali, English, Tigrinya | 911, 907 | UK FCDO |
+| Mozambique | +258 | Portuguese, Xitsonga | 112, 198 | UK FCDO |
 | Guinea-Bissau | +245 | Portuguese, French | 1313, 117 | UK FCDO |
 | Angola | +244 | Portuguese | 112, 110, 118 | UK FCDO |
 | Somalia | +252 | Somali, Arabic, English | 446, 999, 888, 555 | UK FCDO |
@@ -113,7 +115,7 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | Morocco | +212 | Arabic, French | 150, 190, 177 | UK FCDO |
 | Tunisia | +216 | Arabic, French | 190, 198, 197, 193 | UK FCDO |
 
-Four packs apply in every covered country, in all eight languages:
+Four packs apply in every covered country, in all 32 languages:
 
 | Pack | Facts | Sources |
 |:--|:-:|:--|
@@ -124,7 +126,7 @@ Four packs apply in every covered country, in all eight languages:
 
 Three packs so far are for one country, Kenya: maize drying and aflatoxin (7 facts, KALRO, USAID AflaSTOP, CGIAR), mobile money safety (10 facts, Safaricom) and rainfall seasons (2 facts, Kenya Meteorological Department). Equivalent packs for the other 33 countries are the most valuable contribution a local expert can make.
 
-Where a public source does not publish a number, ACE does not invent one. Guinea and South Sudan have no national emergency number, and Togo and DR Congo no national ambulance number, so a medical emergency there gets the instruction to go to the nearest health facility. DR Congo's police and fire numbers serve Kinshasa, and the FCDO warns that Malawi's lines are unreliable and Sudan's services are disrupted; the packs say so. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. The Swahili and French renderings, and everything in the five new languages, await review by fluent speakers.
+Where a public source does not publish a number, ACE does not invent one. Guinea and South Sudan have no national emergency number, and Togo and DR Congo no national ambulance number, so a medical emergency there gets the instruction to go to the nearest health facility. DR Congo's police and fire numbers serve Kinshasa, and the FCDO warns that Malawi's lines are unreliable and Sudan's services are disrupted; the packs say so. Botswana's police publish two different GBV toll free numbers, so ACE routes GBV to the police on 999 until the conflict is resolved. The Swahili and French renderings, and everything in the 29 added languages, await review by fluent speakers.
 
 ## Decision services on public data, in all 34 countries
 
@@ -149,7 +151,17 @@ Public hospitals in Gulu: Gulu Regional Referral Hospital (regional referral hos
 Hospital (hospital). Emergency: 999, 112. From a 2019 list of public facilities; check it is open before you travel.
 ```
 
-**What 2.2 adds**
+**What 2.3 adds**
+
+- **24 languages**: Afrikaans, Akan, Bemba, Chichewa, Dyula, Ewe, Hausa, Igbo, isiXhosa, isiZulu, Kinyarwanda, Kirundi, Lingala, Luganda, Mooré, Nigerian Pidgin, Pular, Sesotho, Setswana, Shona, Tigrinya, Wolof, Xitsonga and Yoruba, each in one locale file with every template, safety phrase and command, every Africa pack fact, and 13 red team and 7 ordinary benchmark messages. Umbundu waits for a fluent speaker.
+- **Language detection within the caller's country**: a Kenyan question is never read as Portuguese, close languages such as Sesotho and Setswana resolve to the one the country lists first, Nigerian Pidgin and Afrikaans count their own words double against English, and Lingala against Swahili. Ge'ez text is read as Amharic or Tigrinya by marker words. A message with no marker word is read by its letters, among the country's languages.
+- **Honesty about the languages ACE does not speak**: character profiles of ACE's 32 languages and 49 languages its callers speak but ACE does not, such as Gikuyu, Dholuo, Dagbani and Malagasy, let ACE say it does not read a language yet, name the ones it does and give the emergency numbers, in the caller's country language. The safety rail and Scam Shield still run first, capitalised names, the country's place names, links and numbers are left out before a message is judged, and a message with English, French or Portuguese marker words is never turned away. ACE languages written from across a border, such as Somali in Kenya or Hausa in Cameroon, are read and answered. An operator can add Cloud Translation's language detection or the open GlotLID model to confirm. See [docs/languages.md](docs/languages.md#languages-ace-does-not-speak).
+- **Voices for 12 new languages**: Gemini 3.8 Flash TTS speaks Afrikaans, Hausa, Igbo, Sesotho, Chichewa, Bemba, Kinyarwanda, Luganda, Lingala, Akan, Dyula and Tigrinya on the voice line, and the Say action reads Afrikaans. Speech to text now covers 23 of the 32 languages, Afaan Oromo among them, and the voice line speaks 19.
+- **African letters in the SMS alphabet**: ɓ, ɗ, ƙ, ƴ, ɛ, ɔ, ŋ, ɖ, ƒ, ɣ, ʋ, ɲ and the dotted vowels of Yoruba and Igbo fold to their closest GSM-7 letter, so replies keep 160 characters a segment.
+- **A benchmark in 32 languages**: every red team message, 12 to 18 per language, gets the emergency reply from numbers in all 34 countries, wrong number rate 0, no false alarm on the benchmark's ordinary messages, and 5,856 of 5,856 service checks.
+- **Real speech, read as a real caller's would be**: on 12,333 WAXAL sentences, each read as from a country where its language is spoken, ACE recognises nine of its languages in 94% to 100% of sentences, among them Hausa, Igbo, Shona, Akan and Luganda, Yoruba in 92%, and Fula, Lingala and Nigerian Pidgin in 69% to 77%. Across 12 languages it does not speak, ACE tells the writer so in 46.6% of sentences on average, while turning away at most 0.5% of any of its own languages where it offers them, and none of the FLORES-200 test sentences of its languages in any country that offers or reads them. The safety rail fires on 4 ordinary texts, among them two stories in which a snake bites. The full results are in [benchmark/results/waxal.md](benchmark/results/waxal.md).
+
+**What 2.2 added**
 
 - **A tokenizer audit for African languages**: `benchmark/tokenizer-audit` finds that eight of 59 African language varieties meet 1.5 times English on a released tokenizer, that script predicts which tokenizer wins, and that newer is not always fairer: Llama 4 cuts Amharic from 7.71 to 2.43 times English, while Qwen3.5 nearly doubles the cost of both varieties written in Tifinagh against Qwen3. Its `check` command scores an unreleased tokenizer offline. See [the audit](benchmark/tokenizer-audit/README.md).
 - **A language check on real speech**: `python -m benchmark.waxal` runs ACE's language guess, safety rail and service router on 12,333 sentences from 27 WAXAL sets. ACE recognises Amharic, Swahili and Afaan Oromo in 93% to 100% of sentences, and the safety rail fired on 3 ordinary sentences in 12,333. Across 23 languages it does not speak, ACE still mistakes an average of 45.8% of sentences for one of its own languages, most often Swahili, down from 54.0%. No WAXAL text is stored in the repository.
@@ -184,7 +196,7 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 500+ tests, about two minutes
+pytest                                   # 820 tests, about two and a half minutes
 ace demo                                 # one person, four channels, one memory
 ace services                             # the V2 services and their coverage in each country
 ace ask "bei ya mahindi Mwanza" --phone +255711000001
@@ -194,7 +206,7 @@ ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 for the phone playground
 ```
 
-The preview wheel is attached to the [v2.2.0b3 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.3.0b1 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 
@@ -210,7 +222,7 @@ The preview wheel is attached to the [v2.2.0b3 release](https://github.com/tbrun
     | commands    HELP  LANG SW  TIP  SCAM  SOURCES  MORE  FORGET
     | scam        Scam Shield on forwarded money messages
     | services    V2: rain, warnings, facilities, prices, pregnancy, crops
-    | i18n        eight languages, GSM-7 or UCS-2 budgets per language
+    | i18n        32 languages, GSM-7 or UCS-2 budgets per language
     | retrieve    filters (review, expiry, place, season) then BM25 ranking
     | compose     extractive by default, or a model with a grounding check
     +----------------------------------------+
@@ -232,7 +244,7 @@ Design choices that matter:
 
 ACE grows through two kinds of contributors, and both matter equally.
 
-- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators and meteorologists in any of the 34 countries or beyond. Add facts to a pack, review a translation in Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo or Somali, add red team messages people actually send, or start a pack for your country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
+- **People who know a place**: extension officers, clinicians, midwives, agronomists, translators and meteorologists in any of the 34 countries or beyond. Add facts to a pack, review a translation in any of the 31 languages beyond English, add red team messages people actually send, or start a pack for your country. No coding needed. Start with [docs/context-packs.md](docs/context-packs.md).
 - **Developers**: new connectors that close a gap in the coverage table, new channels, languages, retrieval and evaluation. See [docs/good-first-issues.md](docs/good-first-issues.md) for scoped starter tasks.
 
 Everything else is in [CONTRIBUTING.md](CONTRIBUTING.md). The plan is in [ROADMAP.md](ROADMAP.md).
@@ -247,7 +259,7 @@ ACE uses guidance and data published by the World Health Organization, FAO, ECMW
 
 ## License
 
-Code: [Apache License 2.0](LICENSE). Open context packs: CC BY 4.0, see [DATA_LICENSE.md](DATA_LICENSE.md).
+Code: [Apache License 2.0](LICENSE). Open context packs: CC BY 4.0. Language profiles in `src/ace_engine/langid/profiles.json`: CC BY-SA 4.0, because they are built in part from FLORES-200. Place snapshots derived from OpenStreetMap: ODbL 1.0, in their own store. See [DATA_LICENSE.md](DATA_LICENSE.md) and [NOTICE](NOTICE).
 
 ---
 

@@ -13,14 +13,17 @@ channel adapter        parse_inbound -> Message
    v
 Engine.handle
    1 identity          ProfileStore.record_inbound: salted HMAC key, language, location, channels
-   2 language          message language, else the person's chosen language, else a light guess
+   2 language          message language, else the person's chosen language, else marker words among the
+                       country's languages, else the closest character profile
    3 safety rail       EscalationPolicy.check -> verified numbers + HandoffSink, then stop
    4 commands          HELP, LANG, TIP, SCAM, SOURCES, MORE, STOP, FORGET
-   5 Scam Shield       auto checks forwarded money messages with strong warning signs
-   6 V2 services       ServiceHub: detect the decision, resolve the place, answer from snapshots
-   7 retrieval         ContextStore.query: hard filters, then ranking, then topic coherence
-   8 compose           ExtractiveComposer or GroundedGenerator, inside the channel budget
-   9 safety numbers    safety critical facts always carry the numbers to call
+   5 unread language   a message plainly in a language ACE does not speak gets told so, with the
+                       languages ACE reads in the caller's country (langid)
+   6 Scam Shield       auto checks forwarded money messages with strong warning signs
+   7 V2 services       ServiceHub: detect the decision, resolve the place, answer from snapshots
+   8 retrieval         ContextStore.query: hard filters, then ranking, then topic coherence
+   9 compose           ExtractiveComposer or GroundedGenerator, inside the channel budget
+  10 safety numbers    safety critical facts always carry the numbers to call
    |
    v
 Reply (text, kind, language, citations, escalation)  -> channel adapter render -> provider
@@ -35,7 +38,7 @@ connectors (ace refresh, scheduled)  ->  snapshots/<dataset>/<COUNTRY>.json  -> 
    the only network access               dated, checksummed, licence registered     read only
 ```
 
-Services sit after Scam Shield and before retrieval. `detect()` recognises the decision from words in all eight languages; the gazetteer resolves the place from a name, a position or the place named last time; the service answers from snapshots and packs inside the channel budget, or refuses and says who to ask. A service waiting for a place or details is remembered on the profile, so the next message completes it. Menus call `Engine.run_service`, which still runs the safety rail first and gives it the screen's context, so bleeding typed on the pregnancy screen is treated as a pregnancy emergency. The [services guide](services.md) has the decision rules and coverage, and [docs/connectors](connectors/README.md) has every source.
+Services sit after Scam Shield and before retrieval. `detect()` recognises the decision from words in all 32 languages; the gazetteer resolves the place from a name, a position or the place named last time; the service answers from snapshots and packs inside the channel budget, or refuses and says who to ask. A service waiting for a place or details is remembered on the profile, so the next message completes it. Menus call `Engine.run_service`, which still runs the safety rail first and gives it the screen's context, so bleeding typed on the pregnancy screen is treated as a pregnancy emergency. The [services guide](services.md) has the decision rules and coverage, and [docs/connectors](connectors/README.md) has every source.
 
 ## Modules
 
@@ -49,9 +52,10 @@ Services sit after Scam Shield and before retrieval. `detect()` recognises the d
 | `context/schema.py` | `ContextFact`, `GeoScope`, `Rendering`, `Contact`, `ReviewStatus` |
 | `context/packs.py` | Loading and strict validation of pack files |
 | `context/store.py` | Filters plus BM25 ranking over each fact's text, keywords and translations |
-| `safety.py` | Phrase rules per queue in all eight languages, contact lookup by country, emergency wording with the call verb where each language puts it |
+| `safety.py` | Phrase rules per queue in all 32 languages, contact lookup by country, emergency wording with the call verb where each language puts it |
 | `scam.py` | Scam Shield signals, scoring and verdicts |
 | `commands.py` | Keyword commands and fixed system texts |
+| `langid/` | Character profiles of ACE's languages and of 49 it does not speak; reading a message with no marker word, and telling a language ACE does not speak |
 | `router.py` | Channel budgets, extractive composer, grounded generator, OpenAI compatible provider |
 | `identity.py` | Phone normalisation, pseudonymisation, profiles, deletion |
 | `tips.py` | Community tip queue |

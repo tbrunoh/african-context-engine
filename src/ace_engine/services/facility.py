@@ -152,4 +152,5 @@ class FacilityService:
                 "emergency_numbers": numbers})
 
 
-i18n.localize("services.facility", globals(), ("NEAR", "IN_AREA", "CAVEAT", "EMERGENCY", "NO_NUMBER", "NONE", "GAP", "KM"))
+i18n.localize("services.facility", globals(), ("NEAR", "IN_AREA", "CAVEAT", "REGISTRY_CAVEAT", "EMERGENCY", "NO_NUMBER",
+                                             "NONE", "GAP", "KM"))

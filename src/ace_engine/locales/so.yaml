@@ -34,6 +34,7 @@ templates:
   commands.TEXTS.no_sources: "Ma jiro jawaab hore oo ilaheeda la tusi karo. Marka hore su'aal weydii."
   commands.TEXTS.no_more: "Taasi waa waxa ACE ka hayo mawduucan hadda. Su'aal kale weydii ama dir CAAWIMAAD."
   commands.TEXTS.clarify: "ACE weli ma hayo hagid la hubiyay oo ku saabsan taas. ACE wuxuu ka caawin karaa: {topics}. Dir TALO si aad aqoon u soo jeediso."
+  commands.TEXTS.unread: "ACE weli ma akhrin karto luqaddan. Fadlan ku qor mid ka mid ah kuwan: {languages}."
 
   scam.HEADLINES.LIKELY_SCAM: "WAXAY U EGTAHAY KHIYAANO."
   scam.HEADLINES.SUSPICIOUS: "IS TAXADAR."
@@ -150,7 +151,7 @@ phrases:
   safety.PREGNANCY: ["uur", "uur leh", "uurka", "uurleey", "waan uur leeyahay", "bilood uur ah", "haweeney uur leh"]
   safety.POSTPARTUM: ["dhashay", "ummushay", "dhalmada kadib", "umulida kadib", "foolka kadib"]
   safety.MATERNAL_DANGER: ["dhiig", "dhiig bax", "dhiig baxaya", "suuxdin", "gariir", "madax xanuun daran", "araggu wuu iga madoobaaday", "ilmaha ma dhaqdhaqaaqo", "ilmuhu ma dhaqaaqo", "biyihii ayaa jabay", "qandho daran", "joojiyay dhaqdhaqaaqa", "ma dhaqdhaqaaqayo", "dhaqdhaqaaqii wuu joojiyay", "ma dhaqaaqayo"]
-  safety.URGENT: ["ma neefsanayo", "neefsan kari waayay", "neef qabatin", "miyir beelay", "miyirka ayuu ka dhacay", "suuxay", "gariir", "dhiig badan", "laab xanuun", "abeesadu qaniintay", "mas qaniinyo", "mas ayaa qaniinay", "gubasho daran"]
+  safety.URGENT: ["ma neefsanayo", "neefsan kari waayay", "neef qabatin", "miyir beelay", "miyirka ayuu ka dhacay", "suuxay", "gariir", "dhiig badan", "laab xanuun", "abeesadu qaniintay", "mas qaniinyo", "mas ayaa qaniinay", "gubasho daran", "mas baa qaniinay", "mas qaniinay", "maska ayaa qaniinay", "mas ayaa qaniintay"]
   safety.POISON_ACT: ["cabay", "liqay", "cunay"]
   safety.POISON_WHAT: ["sun", "sunta", "sunta cayayaanka", "kiimiko", "sunta jiirka", "gaas", "baansiin", "kloriin"]
   safety.POISONED: ["sumoobay", "la sumeeyay", "sumoobid"]

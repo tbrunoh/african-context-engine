@@ -74,5 +74,5 @@ def test_scam_reply_in_swahili(engine):
 def test_scam_reply_fits_ussd(engine):
     budget = engine.config.budgets[Channel.USSD]
     reply = engine.scam_reply(analyse("Registered twice, send PIN, dial *123#, won a prize, http://x.xyz"), "sw",
-                              budget)
+                              budget, "KE")
     assert len(reply.text) <= budget.max_chars and "333" in reply.text

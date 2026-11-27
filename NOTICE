@@ -13,3 +13,21 @@ research institutes, companies and news outlets. Each fact names its source,
 and ACKNOWLEDGMENTS.md credits every organisation whose published work ACE
 uses. Those sources keep their own rights and terms of use, and their names
 and marks belong to their owners. A credit does not imply endorsement.
+
+Language profiles
+src/ace_engine/langid/profiles.json holds counts of three letter sequences,
+derived in part from FLORES-200 by the NLLB Team at Meta AI, licensed under
+CC BY-SA 4.0, and from translations of the Universal Declaration of Human
+Rights published by OHCHR, through the UDHR in XML project. That file is
+shared under CC BY-SA 4.0, not Apache 2.0:
+https://creativecommons.org/licenses/by-sa/4.0/
+
+Context packs
+The context packs in context_packs/ are shared under CC BY 4.0:
+https://creativecommons.org/licenses/by/4.0/
+
+Open Database Licence data
+Snapshots in snapshots/odbl/, shipped as ace_engine/data/snapshots/odbl/,
+hold geoBoundaries places derived from OpenStreetMap under the Open
+Database Licence 1.0 and stay in their own store:
+https://opendatacommons.org/licenses/odbl/1-0/

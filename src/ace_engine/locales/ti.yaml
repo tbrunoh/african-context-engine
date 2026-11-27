@@ -1,0 +1,205 @@
+# ትግርኛ (Tigrinya) for Ethiopia, in the Ge'ez script. Travels as UCS-2, like Amharic. Ge'ez text is read as
+# Amharic or Tigrinya by marker words, and Amharic wins a tie. Drafted for ACE 2.3. Awaiting review by fluent
+# speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ti
+  name: Tigrinya
+  native: "ትግርኛ"
+  script: Ethi
+  encoding: ucs2
+  direction: ltr
+  reviewed: false
+  confirm: "ACE ብትግርኛ ክትምልሰልካ እያ።"
+  names: ["ትግርኛ", "tigrinya", "tigrigna", "ti"]
+
+templates:
+  safety.OPENERS.self_harm: "ከምዚ ይስምዓካ ብምህላዉ ብጣዕሚ የሕዝነኒ። ሕጂ ሓገዝ ክትረክብ ይግባእ። {numbers}"
+  safety.OPENERS.maternal: "እዚ ህጹጽ ጸገም ጥንሲ ክኸውን ይኽእል። ሕጂ ናብ እቲ ዝቐረበ ሆስፒታል ኪዱ። {numbers}"
+  safety.OPENERS.poisoning: "እዚ መርዚ ይመስል። ሕጂ ሓገዝ ሓኪም ድለ፣ ነቲ ጥርሙዝ ሒዝካ ኪድ። {numbers}"
+  safety.OPENERS.child_protection: "ቆልዓ ኣብ ሓደጋ ክህሉ ይኽእል። በጃኻ ሕጂ ሓገዝ ድለ። {numbers}"
+  safety.OPENERS.gbv: "እዚ ስለ ዘጋጥመካ የሕዝነኒ። ሕጂ ሓገዝ ክትረክብ ትኽእል ኢኻ። {numbers}"
+  safety.OPENERS.health_urgent: "እዚ ህጹጽ ይመስል። ሕጂ ሓገዝ ሓኪም ድለ። {numbers}"
+  safety.CALL_WORD: "ደውል {numbers}"
+  safety.OR_WORD: "ወይ"
+  safety.EMERGENCY_WORD: "ህጹጽ"
+  safety.FALLBACK_NUMBERS: "ናብ ናይ ከባቢኻ ቁጽሪ ህጹጽ ደውል ወይ ናብ እቲ ዝቐረበ ሆስፒታል ኪድ።"
+
+  commands.TEXTS.help: "ACE ዝተመርመረ ናይ ከባቢ ምኽሪ ትህብ። ብቋንቋኻ ሕተት። ትእዛዛት: ምትላል + መልእኽቲ ንምምርማር፣ ምኽሪ + ምኽርኻ ፍልጠት ንምክፋል፣ ምንጪ፣ ተወሳኺ፣ ቋንቋ + ኮድ (ንኣብነት ቋንቋ EN)፣ ደምስስ ሓበሬታኻ ንምድምሳስ።"
+  commands.TEXTS.help_short: "ንACE ብቋንቋኻ ሕተት። ምትላል + መልእኽቲ ይምርምሮ። ደምስስ ሓበሬታኻ ይድምስስ።"
+  commands.TEXTS.forgotten: "ተፈጺሙ። ACE ብዛዕባ እዚ ቁጽሪ ዝነበራ ኩሉ ደምሲሳ።"
+  commands.TEXTS.stopped: "ደጊምካ እንተ ዘይጸሓፍካ ካብ ACE መልእኽቲ ኣይክትረክብን ኢኻ። ሓበሬታኻ ንምድምሳስ ደምስስ ስደድ።"
+  commands.TEXTS.language: "ቋንቋን ኮድን መልስ:"
+  commands.TEXTS.tip_thanks: "የቐንየልና። ምኽርኻ ክኢላ ክምርምሮ ተዓቂቡ ኣሎ። ቅድሚ ምምርማሩ ኣይክፋፈልን።"
+  commands.TEXTS.tip_usage: "ምኽሪ ምስ ምኽርኻ ስደድ፣ ንኣብነት: ምኽሪ ቆጽሊ ኒም ኣንጻር ሓሰኻ ዕፉን ይሕግዝ ኣብ ትግራይ።"
+  commands.TEXTS.scam_usage: "ምትላል ምስቲ ዘይትኣምኖ መልእኽቲ ስደድ፣ ACE ክትምርምሮ እያ።"
+  commands.TEXTS.no_sources: "ምንጩ ዝርአ ናይ ቀደም መልሲ የለን። ቅድም ሕቶ ሕተት።"
+  commands.TEXTS.no_more: "ACE ብዛዕባ እዚ ጉዳይ ሕጂ ዘለዋ ኩሉ እዚ እዩ። ካልእ ሕቶ ሕተት ወይ ሓገዝ ስደድ።"
+  commands.TEXTS.clarify: "ACE ብዛዕባ እዚ ዝተመርመረ ምኽሪ ገና የብላን። ACE ብዚ ክትሕግዘካ ትኽእል: {topics}። ፍልጠት ንምውሳኽ ምኽሪ ስደድ።"
+  commands.TEXTS.unread: "ACE ነዚ ቋንቋ እዚ ገና ኣየንብቦን። በጃኹም ብሓደ ካብዚኦም ጽሓፉ፦ {languages}።"
+
+  scam.HEADLINES.LIKELY_SCAM: "ምትላል ይመስል።"
+  scam.HEADLINES.SUSPICIOUS: "ተጠንቀቕ።"
+  scam.HEADLINES.NO_KNOWN_SIGNS: "ዝፍለጡ ምልክታት ምትላል ኣይረኣኹን፣ ግን እዚ ውሑስ እዩ ማለት ኣይኮነን።"
+  scam.SIGNS_LABEL: "ምልክታት መጠንቀቕታ:"
+  scam.REPORT_LINE: "ናብ 333 ስደዶ፣ ብናጻ እዩ።"
+  scam.GENERIC_REPORT_LINE: "ኣይትመልስ ወይ ገንዘብ ኣይትስደድ። ብቁጽሪ ኣብ ወብሳይቶም ወይ ኣብ ፓኬት SIM ዘሎ ናብ ኔትወርክኻ ሓብር።"
+  scam.NEUTRAL_ADVICE: "PINካ ንማንም ኣይትሃብ፣ ዝኾነ መልእኽቲ ዝበሎ ቅድሚ ምግባርካ ናይ ሞባይል ገንዘብካ ተመልከት።"
+  scam.SIGNAL.asks_for_pin: "PINካ ወይ ፓስወርድካ ይሓትት"
+  scam.SIGNAL.double_registration: "SIMካ ክልተ ግዜ ተመዝጊቡ ይብል"
+  scam.SIGNAL.refund_request: "ብጌጋ ዝተላእከ ገንዘብ ክትመልስ ይሓትት"
+  scam.SIGNAL.confirmation_from_personal_number: "ናይ M-PESA መረጋገጺ ይመስል ግን ካብ ናይ ሰብ ቁጽሪ እዩ መጺኡ"
+  scam.SIGNAL.unofficial_operator_number: "ካብ Safaricom እዩ ይብል ግን 0722000000 ዘይኮነ ቁጽሪ ይህብ"
+  scam.SIGNAL.dial_code_instruction: "ኣብ ተሌፎንካ ኮድ ክትጥውቕ ይነግረካ"
+  scam.SIGNAL.prize_or_offer: "ሽልማት ረኺብካ ይብል ወይ ገንዘብ ይህብ"
+  scam.SIGNAL.link: "ሊንክ ኣለዎ"
+  scam.SIGNAL.pressure: "ቀልጢፍካ ክትገብር የገድደካ"
+
+  channels.ussd.UI:
+    ask: "ሕቶ ሕተት"
+    scam: "መልእኽቲ መርምር"
+    lang: "ቋንቋ"
+    more: "98 ተወሳኺ"
+    next: "1 ዝቕጽል"
+    back: "0 ተመለስ"
+    menu: "0 ሜኑ"
+    ask_prompt: "ሕቶኻ ጸሓፍ:"
+    scam_prompt: "ነቲ መልእኽቲ ጸሓፍ ወይ ኣእቱ:"
+    invalid: "ዘይቅቡል ምርጫ።"
+    end_pack: "ብዛዕባ እዚ ኣርእስቲ እዚ ኩሉ እዩ።"
+    lang_prompt: "1 English"
+    topics: "ኣርእስትታት"
+    place_prompt: "ስም {area}ኻ ጸሓፍ:"
+    food_prompt: "መግብን {area}ኻን ጸሓፍ፣ ንኣብነት ዕፉን {example}:"
+    weeks_prompt: "ጥንስኺ ክንደይ ሰሙን ኮይኑ?"
+    crop_prompt: "ነቲ ዘርእን ዝረኣኻዮን ጸሓፍ:"
+  channels.voice.PROMPTS:
+    welcome: "እንቋዕ ናብ ACE ብደሓን መጻእኩም።"
+    press: "ን{label}፣ {n} ጠውቕ።"
+    repeat: "ሜኑ ደጊምካ ክትሰምዕ፣ 0 ጠውቕ።"
+    bye: "ምርጫኻ ኣይረኸብናን። ብደሓን ኩን።"
+    invalid: "እዚ ቅቡል ምርጫ ኣይኮነን።"
+
+  services.base.DAYS: ["ሰኑይ", "ሰሉስ", "ረቡዕ", "ሓሙስ", "ዓርቢ", "ቀዳም", "ሰንበት"]
+  services.base.MONTHS: ["ጥሪ", "ለካቲ", "መጋቢ", "ሚያዝ", "ግንቦ", "ሰነ", "ሓምለ", "ነሓሰ", "መስከ", "ጥቅም", "ሕዳር", "ታሕሳ"]
+  services.base.NEEDS_PLACE: "ኣብ ኣየናይ {area} ኢኻ ዘለኻ? ስሙ መልስ፣ ንኣብነት {example}።"
+  services.base.AREA_DEFAULT: "ከባቢ"
+  services.base.AREA_WORD: {ET: "ክልል"}
+  services.base.COUNTRY_SAID: {ET: "ኢትዮጵያ"}
+
+  services.rain.WORDS.likely: "ብዙሕ ክኸውን ይኽእል"
+  services.rain.WORDS.possible: "ክኸውን ይኽእል"
+  services.rain.WORDS.dry: "ብዙሕ ደረቕ"
+  services.rain.HEAD: "ዝናብ ኣብ ጥቓ {place}:"
+  services.rain.HEAVY_LINE: "ብርቱዕ ዝናብ (20 mm ወይ ልዕሊኡ) {days} ክዘንብ ይኽእል።"
+  services.rain.FOOT: "ዕድላት ካብ ትንቢት ኣየር ECMWF ናይ {date}።"
+  services.rain.SPAN: "{a} ክሳብ {b}"
+  services.rain.AND: "ከምኡውን"
+  services.rain.STALE: "ACE ን{place} ናይ ሕጂ ትንቢት ኣየር የብላን። ትንቢት {met} ተመልከት።"
+  services.rain.NEXT: "ስራሕ ሕርሻ ንደረቕ መዓልታት ኣዳሉ።"
+
+  services.warnings.FOUND: "ናይ መንግስቲ መጠንቀቕታ ን{place} ካብ {authority}፣ ክሳብ {until}:"
+  services.warnings.NATIONAL: "ናይ መንግስቲ መጠንቀቕታ ንምሉእ ሃገር ካብ {authority}፣ ክሳብ {until}:"
+  services.warnings.MORE: "ካልኦት {n} ገና ይሰርሑ ኣለዉ።"
+  services.warnings.NONE: "ሕጂ ካብ {authority} ን{place} ዝምልከት ናይ መንግስቲ መጠንቀቕታ የለን (ተመርሚሩ {checked})።"
+  services.warnings.STALE: "ACE ናይ {authority} መጠንቀቕታታት ቀረባ ግዜ ክትምርምር ኣይከኣለትን፣ ስለዚ እንተሎ ኣይትፈልጥን። ካብ {authority} ዝመጽእ ናይ መንግስቲ ምልክታ ስማዕ።"
+  services.warnings.GAP: "{authority} ACE ክተንብቦ ብእትኽእል መንገዲ መጠንቀቕታ ኣይዝርግሕን፣ ስለዚ ACE ኣብኡ መጠንቀቕታ ክትምርምር ኣይትኽእልን። ኣብ ሬድዮን ተለቪዥንን ካብ {authority} ዝመጽእ ናይ መንግስቲ ምልክታ ስማዕ።"
+  services.warnings.YOUR_AREA: "ከባቢኻ"
+
+  services.facility.NEAR: "ዝቐረበ ናይ መንግስቲ ትካል ጥዕና:"
+  services.facility.IN_AREA: "ናይ መንግስቲ ትካል ጥዕና ኣብ {place}:"
+  services.facility.CAVEAT: "ካብ ዝርዝር ትካላት ጥዕና መንግስቲ 2019፤ ቅድሚ ምኻድካ ክፉት ምዃኑ ኣረጋግጽ።"
+  services.facility.REGISTRY_CAVEAT: "ካብ መዝገብ ትካላት ሚኒስትሪ ጥዕና፤ እንተ ኽኢልካ ቅድሚ ምኻድካ ደውል።"
+  services.facility.EMERGENCY: "ህጹጽ: {numbers}።"
+  services.facility.NO_NUMBER: "ህጹጽ እንተኾይኑ፣ ናብ ናይ ከባቢኻ ቁጽሪ ህጹጽ ደውል።"
+  services.facility.NONE: "ACE ኣብ ዝርዝራ 2019 ኣብ ውሽጢ {km} km ናይ መንግስቲ ትካል ጥዕና ኣይረኸበትን።"
+  services.facility.GAP: "ACE ንዚ ሃገር ዝርዝር ትካላት ጥዕና ገና የብላን።"
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} ኣብ {market}: {currency} {price} {unit} ኣብ {month}"
+  services.prices.CHANGE.up: "ካብ {prev} {pct}% ወሲኹ"
+  services.prices.CHANGE.down: "ካብ {prev} {pct}% ጎዲሉ"
+  services.prices.CHANGE.same: "ከም {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km ካብ {place})"
+  services.prices.FOOT: "ዋጋታት WFP።"
+  services.prices.TOP: "ናይ ቀረባ ዋጋታት WFP ኣብ {market}{far}:"
+  services.prices.OLD: "ACE ን{country} ዘለዋ ናይ ቀረባ ዋጋታት WFP ናይ {month} እዮም፣ ኣረጊቶም ድማ። ነጋዶ ወይ ቤት ጽሕፈት ሕርሻኻ ሕተት።"
+  services.prices.GAP: "WFP ን{country} ዋጋታት ኣይዝርግሕን፣ ስለዚ ACE ኣብኡ ዋጋታት ክትህብ ኣይትኽእልን። ነጋዶ ወይ ቤት ጽሕፈት ሕርሻኻ ሕተት።"
+  services.prices.THIN: "ናይ ቀረባ ዋጋታት WFP ን{country} ውሑዳት መግብታት ጥራይ ይሽፍኑ። ነጋዶ ወይ ቤት ጽሕፈት ሕርሻኻ ሕተት።"
+  services.prices.NO_FOOD: "ACE ን{food} ኣብ ጥቓ {place} ናይ ቀረባ ዋጋ WFP የብላን።"
+  services.prices.UNIT: "ን{unit}"
+  services.prices.UNIT_MANY: "ን{unit}"
+  services.prices.LOCAL_FOOD: {maize: "ዕፉን", "maize flour": "ሓርጭ ዕፉን", "maize meal": "ሓርጭ ዕፉን", beans: "ባልደንጓ", rice: "ሩዝ", sorghum: "ማሽላ", millet: "ዳጉሳ", sugar: "ሽኮር", oil: "ዘይቲ", "wheat flour": "ሓርጭ ስርናይ", wheat: "ስርናይ", cowpeas: "ባልደንጓ", potatoes: "ድንሽ", tomatoes: "ኮምደረ", onions: "ሽጉርቲ", salt: "ጨው", milk: "ጸባ", eggs: "እንቋቑሖ", bread: "ባኒ", pasta: "ፓስታ"}
+  services.prices.LOCAL_DETAIL: {white: "ጻዕዳ", yellow: "ብጫ", imported: "ካብ ወጻኢ", local: "ናይ ዓዲ", dry: "ደረቕ", red: "ቀይሕ"}
+
+  services.pregnancy.FIRST: "ኣብ ሰሙን {w}፣ ሕጂ ቅድሚ ሰሙን 12 ናብ ቀዳማይ ምርመራ ጥንሲ ኪዲ።"
+  services.pregnancy.DUE_NOW: "ኣብ ሰሙን {w}፣ ግዜ ምርመራ ጥንሲ ሕጂ በጺሑ። ዝቕጽል ኣብ ሰሙን {next} እዩ።"
+  services.pregnancy.NEXT: "ኣብ ሰሙን {w}፣ ዝቕጽል ምርመራ ጥንስኺ ኣብ ሰሙን {next} እዩ።"
+  services.pregnancy.LATE: "ኣብ ሰሙን {w} ነቲ ኣብ ሰሙን 40 ዝተመደበ ናይ መወዳእታ ምርመራ ሓሊፍኪ። ሎሚ ሰራሕተኛ ጥዕና ርኣዪ።"
+  services.pregnancy.ASK: "ጥንስኺ ክንደይ ሰሙን ኮይኑ? ብቁጽሪ መልሲ፣ ንኣብነት 22 ሰሙን።"
+  services.pregnancy.CALL: "ደውሊ {numbers}።"
+
+  services.pests.LIKELY: "እዚ {problem} ክኸውን ይኽእል። ACE ዘርእኻ ኣይትርእን፣ ስለዚ እዞም ምልክታት ተመልከት:"
+  services.pests.MAYBE: "ምናልባት {problem} እዩ።"
+  services.pests.REFER: "ቅድሚ ምንጻግካ ክኢላ ሕርሻ ከረጋግጽ ሕተት።"
+  services.pests.NAMES.fall_armyworm: "ሓሰኻ ዕፉን (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "ቀታሊ ሕማም ዕፉን (MLN)"
+  services.pests.NAMES.cassava_mosaic: "ሕማም ሞዛይክ ካሳቫ"
+  services.pests.NAMES.banana_xanthomonas_wilt: "ሕማም ምንቕፋፍ ባናና (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "ሓሰኻ ቆጽሊ ኮምደረ (Tuta absoluta)"
+  services.pests.ASK: "ኣየናይ ዘርኢ፣ እንታይ ድማ ረኣኻ? ንኣብነት: ቆጽሊ ዕፉን ነቓጻት ዘለዎን ከም ሓርጭ ዕንጨይቲ ዝመስል ደሮናን።"
+  services.pests.UNKNOWN: "ሕጂ ACE ዕፉን፣ ካሳቫ፣ ባናናን ኮምደረን ትምርምር። ንኻልኦት ዘርእታት፣ ክኢላ ሕርሻ ሕተት።"
+
+phrases:
+  safety.PREGNANCY: ["ጥንሲ", "ነፍሰ ጾር", "ጥንሲ ኣለኒ", "ጥንሲ ኣለዋ", "ጥንስቲ", "ወርሒ ጥንሲ"]
+  safety.POSTPARTUM: ["ሕጂ ወሊዳ", "ወሊዳ", "ወሊደ", "ድሕሪ ሕርሲ", "ድሕሪ ምውላድ"]
+  safety.MATERNAL_DANGER: ["ደም ይፈሳ", "ደም ይወጻ", "ደም ምፍሳስ", "ትንቀጥቀጥ", "ሕማም ምንፍርፋር", "ትንፈርፈር", "ርእሳ ብርቱዕ ቃንዛ", "ኣዒንታ ኣጸቢቑ ኣይርእያን", "ህጻን ኣይንቀሳቐስን", "ማይ ተፈንጢሑ", "ብርቱዕ ረስኒ"]
+  safety.URGENT: ["ኣይተንፍስን", "ክተንፍስ ኣይክእልን", "ዓንቀፎ", "ወዲቑ ኣይተንስአን", "ትንፈርፈር", "ብዙሕ ደም ይፈስሶ", "ቃንዛ ኣፍልቢ", "ተመን ነኺሱዎ", "ተመን ነኺሱ", "ብሓዊ ተሓሪሩ"]
+  safety.POISON_ACT: ["ሰትዩ", "ውሒጡ", "በሊዑ", "ቆልዓ ሰትዩ"]
+  safety.POISON_WHAT: ["መርዚ", "ፀረ ባልዕ", "መርዚ ኣንጭዋ", "ላምባ", "ቤንዚን", "በረኪና", "ኬሚካል"]
+  safety.POISONED: ["መርዚ ሂቦምዎ", "መርዚ ሰትዩ", "መርዚ በሊዑ", "መርዚ ኣእቲዮምሉ", "ተመሪዙ"]
+  safety.GBV: ["ብሓይሊ ደፊሮምኒ", "ብሓይሊ ደፊሩኒ", "ይወቕዓኒ", "ሰብኣየይ ይወቕዓኒ", "ወቒዑኒ", "ዓመጽ ኣብ ገዛ", "ክቐትለኒ የፈራርሓኒ"]
+  safety.CHILD: ["ቆልዓ", "ወደይ", "ጓለይ", "ቆልዓይ", "ንእሽቶ ጓል", "ቆልዑ", "ህጻን"]
+  safety.CHILD_HARM: ["ተደፊራ", "ብሓይሊ ደፊሮማ", "ይበድልዋ", "ይበድልዎ", "ይወቕዕዎ", "ወቒዑዎ", "ብሓይሊ ምምርዓው"]
+  safety.SELF_HARM: ["ርእሰይ ክቐትል", "ርእሰይ ክቐትል እየ", "ክመውት እደሊ", "ክነብር ኣይደልን", "ህይወተይ ከብቅዕ እደሊ", "ርእሰይ ምጉዳእ"]
+
+  scam.PIN: ["pin", "ፓስወርድ", "ምስጢራዊ ቁጽሪ"]
+  scam.ASK: ["ስደድ", "ሃበኒ", "ኣረጋግጽ", "ኣእቱ", "ጸሓፍ"]
+  scam.MISTAKE: ["ብጌጋ", "ጌጋ", "ገንዘብ መልስ", "መልሶ"]
+  scam.DOUBLE: ["ክልተ ግዜ"]
+  scam.PRIZE: ["ረኺብካ", "ሽልማት", "ህያብ", "ናጻ ገንዘብ"]
+  scam.URGENT: ["ቀልጢፍካ", "ሕጂ ሕጂ", "ኣብ ውሽጢ 24 ሰዓት", "ክዕጾ እዩ", "ክጠፍእ እዩ", "ናይ መወዳእታ መጠንቀቕታ"]
+  scam.CLAIMS_OPERATOR: ["ethio telecom", "telebirr", "safaricom", "m-pesa", "ኢትዮ ቴሌኮም", "ቴሌብር"]
+  scam.DIAL: ["ጠውቕ", "ደውል"]
+
+  services.CUES.pregnancy_companion: ["ምርመራ ጥንሲ", "ክሊኒክ ጥንሲ", "ዝቕጽል ምርመራ"]
+  services.CUES.nearest_facility: ["ሆስፒታል", "ጣቢያ ጥዕና", "ሓኪም", "ክሊኒክ"]
+  services.CUES.official_warnings: ["መጠንቀቕታ", "ውሕጅ", "ህቦብላ"]
+  services.CUES.rain_this_week: ["ዝናብ", "ክዘንብ", "ኩነታት ኣየር", "ትንቢት ኣየር"]
+  services.CUES.market_prices: ["ዋጋ", "ክንደይ እዩ", "ዕዳጋ"]
+  services.CUES.pest_check: ["ባልዕ", "ሓሰኻ", "ሕማም", "ቆጽሊ", "ብጫ", "ነቓጻት", "ይነቕጽ", "ይመውት"]
+  services.SEASONAL: ["ክረምቲ", "በጋ", "ግዜ ዝናብ"]
+  services.PREGNANT: ["ጥንሲ", "ነፍሰ ጾር"]
+  services.HOW_MUCH: ["ክንደይ"]
+  services.prices.FOODS: {ዕፉን: maize, ባልደንጓ: beans, ሩዝ: rice, ሽኮር: sugar, ዘይቲ: oil, ድንሽ: potatoes, ኮምደረ: tomatoes, ሽጉርቲ: onions, ጨው: salt, እንቋቑሖ: eggs, ባኒ: bread, ስርናይ: wheat, ማሽላ: sorghum}
+  services.pests.CROPS.maize: ["ዕፉን", "ዕፉኝ"]
+  services.pests.CROPS.cassava: ["ካሳቫ"]
+  services.pests.CROPS.banana: ["ባናና", "ሙዝ"]
+  services.pests.CROPS.tomato: ["ኮምደረ", "ቲማቲም"]
+  services.pests.PROBLEMS.fall_armyworm: ["ሓሰኻ", "ነቓጻት", "ደሮና"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["ብጫ", "ነቒጹ", "ሞይቱ"]
+  services.pregnancy.WEEK_WORDS: ["ሰሙን", "ሰሙናት"]
+  services.pregnancy.MONTH_WORDS: ["ወርሒ", "ኣዋርሕ"]
+  commands.COMMANDS.help: ["ሓገዝ"]
+  commands.COMMANDS.forget: ["ደምስስ"]
+  commands.COMMANDS.stop: ["ደው"]
+  commands.COMMANDS.language: ["ቋንቋ"]
+  commands.COMMANDS.tip: ["ምኽሪ"]
+  commands.COMMANDS.scam: ["ምትላል"]
+  commands.COMMANDS.sources: ["ምንጪ"]
+  commands.COMMANDS.more: ["ተወሳኺ"]
+  text.ACTION_CUES: ["እንታይ ክገብር", "እንታይ ክገብር ኣለኒ", "ከመይ ገይረ ክከላኸል", "ከመይ ገይረ ክቐትሎ", "ከመይ ገይረ ክዕቅቦ", "ሓግዘኒ"]
+
+words:
+  stopwords: ["ከምኡውን", "ወይ", "ግን", "እዚ", "እዚኣ", "ሕጂ", "እንታይ", "ከመይ", "ምኽንያቱ", "ከም", "በጃኻ", "ናተይ", "ብጣዕሚ", "ኣብ", "ናይ"]
+  markers: ["እዩ", "ኣሎ", "እንታይ", "ከመይ", "ኣበይ", "እዚ", "ኣነ", "ቆልዓ", "ሕጂ", "ሎሚ", "ብጣዕሚ", "የቐንየለይ", "ኣብ", "ናይ", "ምስ", "ኣይኮነን", "ክንደይ", "ሰሙን", "ጥንሲ", "ኣለኒ", "በጃኻ", "ዕፉን", "ኮምደረ", "ቆጽሊ", "ትማሊ", "ጽባሕ", "እዮ", "ኣለዋ", "ደኣ", "እንተ"]

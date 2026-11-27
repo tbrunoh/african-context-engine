@@ -16,19 +16,22 @@ from dataclasses import dataclass, field, replace
 from datetime import datetime
 from pathlib import Path
 
-from . import encoding
-from .commands import LANGUAGE_COMMANDS, Command, parse_command, say
+from . import encoding, i18n
+from .commands import LANGUAGE_COMMANDS, Command, language_menu, parse_command, say
 from .context.packs import ContextPack, load_packs
 from .context.schema import Contact, ContextFact, ReviewStatus
 from .context.store import ContextQuery, ContextStore, ScoredFact
-from .countries import COUNTRIES, country_for_msisdn, default_language
+from .countries import COUNTRIES, country_for_msisdn, default_language, readable
 from .identity import Profile, ProfileStore, normalize_msisdn
+from .langid import LanguageIdentifier, carries_language, confirmed_by, detect_language, unread_language
 from .models import Channel, Citation, Message, Reply, ReplyKind
 from .router import Budget, ExtractiveComposer, GroundedGenerator
 from .safety import (
+    OR_WORD,
     EscalationPolicy,
     HandoffSink,
     InMemoryHandoffs,
+    alarm_language,
     call_line,
     contacts_for,
     emergency_text,
@@ -37,7 +40,7 @@ from .safety import (
 from .scam import GENERIC_REPORT_LINE, HEADLINES, NEUTRAL_ADVICE, REPORT_LINE, SIGNS_LABEL, ScamReport, Verdict, analyse
 from .services import PLACE_SERVICES, ServiceHub, detect
 from .snapshots import SnapshotStore, default_root
-from .text import SUPPORTED_LANGUAGES, guess_language, terms, truncate_words, wants_action
+from .text import SUPPORTED_LANGUAGES, terms, tokens, truncate_words, wants_action
 from .tips import Tip, TipQueue
 
 CHANNEL_BUDGETS: dict[Channel, Budget] = {
@@ -63,6 +66,9 @@ class EngineConfig:
     min_review: ReviewStatus = ReviewStatus.SOURCED
     include_verified: bool = False  # True only when this deployment holds a verified tier license
     budgets: dict[Channel, Budget] = field(default_factory=lambda: dict(CHANNEL_BUDGETS))
+    # Optional: a fuller language identifier that confirms a message is in a language ACE does not speak before ACE
+    # says so (see ace_engine.langid). Without one, ACE's own character profiles decide.
+    language_identifier: LanguageIdentifier | None = None
 
 
 class Engine:
@@ -128,14 +134,22 @@ class Engine:
             return profile.language
         country = self.country_for(phone)
         fallback = default_language(country, self.config.default_language)
-        return guess_language(text, fallback) if text else fallback
+        allowed = COUNTRIES[country].languages if country in COUNTRIES else None
+        also = (readable(country) or ())[len(allowed or ()):]
+        if not text:
+            return fallback
+        lang = detect_language(text, fallback, allowed, also, self._place_words(country))
+        # An answer to ACE's own question, such as a county name, carries no language: keep the question's.
+        if (profile and profile.pending_service and profile.pending_language
+                and not carries_language(text, self._place_words(country))):
+            return profile.pending_language
+        return lang
 
     def packs_for(self, country: str | None) -> list[ContextPack]:
-        """Packs that hold at least one fact for the country (all packs when the country is unknown)."""
-        if not country:
-            return list(self.packs)
+        """Packs that hold at least one fact for the country; with no known country, packs with a fact that applies
+        everywhere, so a caller from outside ACE's countries never browses another country's lines."""
         return [p for p in self.packs
-                if any(not f.scope.countries or country in f.scope.countries for f in p.facts)]
+                if any(not f.scope.countries or (country and country in f.scope.countries) for f in p.facts)]
 
     # ------------------------------------------------------------------ pipeline
 
@@ -150,11 +164,13 @@ class Engine:
         reply = (self._safety(text, lang, profile, message, country)
                  or self._command(text, lang, profile, message, budget, country)
                  or self._scam_auto(text, lang, message, budget, country)
+                 or self._unread(text, lang, profile, message, budget, country)
                  or self._service(text, lang, profile, message, budget, country)
                  or self._answer(text, lang, profile, message, budget, country))
+        # Fold first: folding ŋ to ng or ɲ to ny lengthens the text, and the budget is for what is sent.
+        reply.text = self._for_network(reply.text, message.channel, lang)
         if reply.kind is not ReplyKind.EMERGENCY and len(reply.text) > budget.max_chars:
             reply.text = truncate_words(reply.text, budget.max_chars)  # last line of defence
-        reply.text = self._for_network(reply.text, message.channel, lang)
         self.profiles.record_reply(profile, message.channel, reply.text)
         return reply
 
@@ -181,6 +197,8 @@ class Engine:
         decision = self.safety.check(text)
         if not decision.escalate or decision.queue is None:
             return None
+        if not (message.language or profile.language):  # a chosen language is kept, in an emergency too
+            lang = alarm_language(text, lang, readable(country))
         facts = self._contact_facts(country)
         contacts = contacts_for(decision.queue, facts, country)
         numbers = {c.number for c in contacts}
@@ -195,11 +213,69 @@ class Engine:
     def _command(self, text: str, lang: str, profile: Profile, message: Message,
                  budget: Budget, country: str | None) -> Reply | None:
         cmd = parse_command(text)
+        if (cmd is not None and cmd.name in LANGUAGE_COMMANDS and profile.pending_service and self.services is not None
+                and self.services.resolve_place(text, country) is not None):
+            cmd = None  # Somali answering ACE's region question in Ethiopia is a place, not a language switch
         if cmd is None:
-            if not terms(text):  # a greeting or an empty message
+            # A greeting or an empty message gets the help text; a bare place name, such as Oyo, answering ACE's own
+            # question goes on to that question, even when the name is also a common word.
+            if not terms(text) and not (profile.pending_service and self.services is not None
+                                        and self.services.resolve_place(text, country) is not None):
                 return self._help(lang, budget)
             return None
         return self.run_command(cmd, lang, profile, message, budget, country)
+
+    def _unread(self, text: str, lang: str, profile: Profile, message: Message, budget: Budget,
+                country: str | None) -> Reply | None:
+        """A message in a language ACE does not speak gets told so, in the caller's country language, with the
+        languages ACE reads there and the country's emergency numbers, instead of an answer in a language its
+        writer may not read.
+
+        A person who chose a language, a message that says its language, and the answer to a question ACE just
+        asked are always read."""
+        if profile.language or message.language or profile.pending_service:
+            return None
+        offered = COUNTRIES[country].languages if country in COUNTRIES else None
+        places = self._place_words(country)
+        also = (readable(country) or ())[len(offered or ()):]
+        if unread_language(text, offered, places, also) is None:
+            return None
+        if not confirmed_by(self.config.language_identifier, text, readable(country)):
+            return None
+        reply_lang = offered[0] if offered else self.config.default_language
+        codes = list(offered or (reply_lang,))
+        if len(codes) == 1 and "en" not in codes:
+            codes.append("en")  # ACE reads English in every country, so a list of one is never all it offers
+        names = [i18n.native_name(code) for code in codes]
+        listing = _listing(names, reply_lang)
+        # The lines the safety rail would give for an urgent health message, so a person in danger who writes in any
+        # language still has a number to call; the country's emergency lines come first.
+        urgent = contacts_for("health_urgent", self._contact_facts(country), country)[:3]
+        numbers = format_numbers(urgent, reply_lang)
+        base = self.config.budgets.get(message.channel, CHANNEL_BUDGETS[Channel.API]).max_chars
+        coded = _listing([c.upper() for c in codes], reply_lang)
+        # Names first; on a small screen the codes, which LANG understands; on the smallest, the codes alone, so the
+        # languages ACE reads and the numbers to call always both reach the person.
+        for unread in (say("unread", reply_lang, languages=listing), say("unread", reply_lang, languages=coded),
+                       f"{coded}."):
+            script_lang = reply_lang if encoding.is_gsm7(encoding.gsm_fold(f"{unread} {numbers}")) else "ar"
+            room = encoding.scale(base, message.channel.value, script_lang) - len(numbers) - 1
+            if len(unread) <= room:
+                break
+        return self._system(f"{truncate_words(unread, room)} {numbers}", reply_lang)
+
+    def _place_words(self, country: str | None) -> frozenset[str]:
+        """Folded words of the caller's country's place names, so a list of towns is not read as a language."""
+        if not country or self.services is None:
+            return frozenset()
+        cache = self.__dict__.setdefault("_place_word_cache", {})
+        if country not in cache:
+            words: set[str] = set()
+            for rec in self.services.places.areas(country):
+                for name in [rec.get("name", ""), *rec.get("aliases", [])]:
+                    words.update(t for t in tokens(name) if len(t) > 3)  # not de, du, le or of
+            cache[country] = frozenset(words)
+        return cache[country]
 
     def _help(self, lang: str, budget: Budget) -> Reply:
         return self._system(say("help" if budget.max_chars >= 250 else "help_short", lang), lang)
@@ -219,7 +295,10 @@ class Engine:
             profile.language = LANGUAGE_COMMANDS[cmd.name]
             return self._system(say(cmd.name, profile.language), profile.language)
         if cmd.name == "language":
-            return self._system(say("language", lang), lang)
+            menu = COUNTRIES[country].languages if country in COUNTRIES else None
+            text = say("language", lang, menu)
+            # On a small screen the list itself is the message: every code in it works with LANG.
+            return self._system(text if len(text) <= budget.max_chars else language_menu(menu), lang)
         if cmd.name == "tip":
             if not cmd.arg:
                 return self._system(say("tip_usage", lang), lang)
@@ -285,6 +364,8 @@ class Engine:
                  or self._service_reply(service_id, text, lang, profile, message, budget, country,
                                         pending=service_id, params=params))
         reply.text = self._for_network(reply.text, message.channel, lang)
+        if reply.kind is not ReplyKind.EMERGENCY and len(reply.text) > budget.max_chars:
+            reply.text = truncate_words(reply.text, budget.max_chars)  # folding can lengthen a reply
         self.profiles.record_reply(profile, message.channel, reply.text)
         return reply
 
@@ -296,7 +377,7 @@ class Engine:
         if run.place is not None:
             profile.last_place = (run.place.country, run.place.code)
         if not run.ok and result.reason in ("needs_place", "needs_crop", "needs_weeks") and pending != sid:
-            profile.pending_service, profile.pending_text = sid, asked
+            profile.pending_service, profile.pending_text, profile.pending_language = sid, asked, lang
         else:
             profile.pending_service, profile.pending_text = None, ""
         action = {"type": "service", "service": sid, "preview": result.preview, "outcome":
@@ -319,7 +400,9 @@ class Engine:
             language=lang, min_review=self.config.min_review,
             include_verified=self.config.include_verified, limit=budget.max_facts + len(exclude) + 4,
         )
-        scored = [s for s in self.store.query(query) if s.fact.id not in exclude]
+        scored = [s for s in self.store.query(query) if s.fact.id not in exclude
+                  # with no known country, a fact for one country, and its numbers, is for someone else
+                  and (country is not None or not s.fact.scope.countries)]
         if not scored:
             if exclude:
                 return self._system(say("no_more", lang), lang)
@@ -358,7 +441,7 @@ class Engine:
         caller's country, plus the caller's national lines for the fact's refer_queue."""
         out: list[Contact] = []
         for f in facts:
-            if not f.scope.countries or not country or f.scope.countries == (country,):
+            if not f.scope.countries or (country and f.scope.countries == (country,)):
                 out.extend(f.contacts)
             if f.refer_queue:
                 out.extend(contacts_for(f.refer_queue, self._contact_facts(country), country))
@@ -392,7 +475,7 @@ class Engine:
         is never shown to a caller in another country."""
         country = (country or self.config.country or "").upper()
         matches = [f for f in self.store if f.id.endswith("/" + suffix)
-                   and (not country or not f.scope.countries or country in f.scope.countries)]
+                   and (not f.scope.countries or (country and country in f.scope.countries))]
         matches.sort(key=lambda f: f.id)
         return matches[0] if matches else None
 
@@ -402,7 +485,7 @@ class Engine:
         pack = next((p for p in self.packs if p.id == pack_id), None)
         if pack is None:
             return "", False
-        facts = [f for f in pack.facts if self.store.allowed(f, ContextQuery(
+        facts = [f for f in pack.facts if (country or not f.scope.countries) and self.store.allowed(f, ContextQuery(
             country=country, min_review=self.config.min_review,
             include_verified=self.config.include_verified))]
         if index >= len(facts):
@@ -417,9 +500,11 @@ class Engine:
         return truncate_words(text, budget.max_chars), index + 1 < len(facts)
 
     def _contact_facts(self, country: str | None = None) -> list[ContextFact]:
-        """Facts that publish phone lines for the country. Emergency contact facts come first."""
+        """Facts that publish phone lines for the country. Emergency contact facts come first. With no known country,
+        only lines that serve everywhere count, so a caller from outside ACE's countries is never given another
+        country's number; with none, the reply tells them to call their local emergency number."""
         facts = [f for f in self.store if f.contacts
-                 and (not country or not f.scope.countries or country in f.scope.countries)]
+                 and (not f.scope.countries or (country is not None and country in f.scope.countries))]
         return sorted(facts, key=lambda f: (0 if f.topic == "emergency_contacts" else 1, f.id))
 
     def _canonical(self, contacts: list[Contact], country: str | None = None) -> list[Contact]:
@@ -448,6 +533,11 @@ class Engine:
     @staticmethod
     def covered_countries() -> list[str]:
         return list(COUNTRIES)
+
+
+def _listing(items: list[str], lang: str) -> str:
+    """A, B or C, with the word for or in the reply's language."""
+    return items[0] if len(items) == 1 else f"{', '.join(items[:-1])} {OR_WORD.get(lang, 'or')} {items[-1]}"
 
 
 def coherent(scored: list[ScoredFact], keep_ratio: float = 0.75) -> list[ContextFact]:

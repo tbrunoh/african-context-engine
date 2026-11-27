@@ -1,0 +1,205 @@
+# Igbo for Nigeria, in the standard Latin script with the dotted letters ị, ọ, ụ and ṅ. Tone marks are left out, as
+# most people type Igbo on phones. Drafted for ACE 2.3. Awaiting review by fluent speakers and, for the safety
+# phrases, by clinicians.
+meta:
+  code: ig
+  name: Igbo
+  native: "Igbo"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE ga-aza n'asụsụ Igbo."
+  names: ["igbo", "asusu igbo", "ig"]
+
+templates:
+  safety.OPENERS.self_harm: "Ọ dị m nwute nke ukwuu na ị na-enwe mmetụta a. I kwesịrị inweta nkwado ugbu a. {numbers}"
+  safety.OPENERS.maternal: "Nke a nwere ike ịbụ ihe mberede afọ ime. Gaa n'ụlọ ọgwụ kacha nso ugbu a. {numbers}"
+  safety.OPENERS.poisoning: "Nke a dị ka nsi. Chọọ enyemaka dọkịta ugbu a, were karama ahụ gaa. {numbers}"
+  safety.OPENERS.child_protection: "Nwatakịrị nwere ike ịnọ n'ihe egwu. Biko chọọ enyemaka ugbu a. {numbers}"
+  safety.OPENERS.gbv: "Ọ dị m nwute na nke a na-eme gị. Ị nwere ike inweta enyemaka ugbu a. {numbers}"
+  safety.OPENERS.health_urgent: "Nke a dị ka ihe mberede. Chọọ enyemaka dọkịta ugbu a. {numbers}"
+  safety.CALL_WORD: "Kpọọ {numbers}"
+  safety.OR_WORD: "ma ọ bụ"
+  safety.EMERGENCY_WORD: "mberede"
+  safety.FALLBACK_NUMBERS: "Kpọọ nọmba mberede mpaghara gị ma ọ bụ gaa n'ụlọ ọgwụ kacha nso."
+
+  commands.TEXTS.help: "ACE na-enye ndụmọdụ mpaghara a nyochara. Jụọ ajụjụ n'asụsụ gị. Iwu: AGHỤGHỌ + ozi iji nyochaa ozi, NDỤMỌDỤ + ndụmọdụ gị iji kesaa ihe ọmụma, NDABERE, ỌZỌ, ASỤSỤ + koodu (dịka ASỤSỤ EN), HICHAPỤ iji hichapụ data gị."
+  commands.TEXTS.help_short: "Jụọ ACE ajụjụ n'asụsụ gị. AGHỤGHỌ + ozi na-enyocha ya. HICHAPỤ na-ehichapụ data gị."
+  commands.TEXTS.forgotten: "Emechala. Ehichapụla ihe niile ACE nwere gbasara nọmba a."
+  commands.TEXTS.stopped: "Ị gaghị enweta ozi ọzọ site n'aka ACE ọ gwụla ma i dee ọzọ. Ziga HICHAPỤ iji hichapụ data gị."
+  commands.TEXTS.language: "Zaa ASỤSỤ na koodu:"
+  commands.TEXTS.tip_thanks: "Daalụ. Echekwala ndụmọdụ gị ka ọkachamara nyochaa ya. A gaghị ekesa ya ruo mgbe a nyochara ya."
+  commands.TEXTS.tip_usage: "Ziga NDỤMỌDỤ na ndụmọdụ gị, dịka: NDỤMỌDỤ akwụkwọ dogonyaro na-enyere aka megide ikpuru ọka na Enugu."
+  commands.TEXTS.scam_usage: "Ziga AGHỤGHỌ na ozi ị na-enweghị obi ike na ya, ACE ga-enyocha ya."
+  commands.TEXTS.no_sources: "Enweghị azịza mbụ a ga-egosi ebe o si. Buru ụzọ jụọ ajụjụ."
+  commands.TEXTS.no_more: "Nke ahụ bụ ihe niile ACE nwere n'isiokwu a ugbu a. Jụọ ajụjụ ọzọ ma ọ bụ ziga ENYEMAKA."
+  commands.TEXTS.clarify: "ACE enwebeghị ndụmọdụ a nyochara gbasara nke ahụ. ACE nwere ike inyere gị aka na: {topics}. Ziga NDỤMỌDỤ iji tụnye ihe ọmụma."
+  commands.TEXTS.unread: "ACE agụbeghị asụsụ a. Biko dee n'otu n'ime ndị a: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "O YIRI AGHỤGHỌ."
+  scam.HEADLINES.SUSPICIOUS: "KPACHARA ANYA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Ahụghị m akara aghụghọ a ma ama, mana nke ahụ egosighi na ọ dị mma."
+  scam.SIGNS_LABEL: "Akara ịdọ aka na ntị:"
+  scam.REPORT_LINE: "Ziga ya na 333, ọ bụ n'efu."
+  scam.GENERIC_REPORT_LINE: "Azala ma ọ bụ zipu ego. Kọọ ya na ụlọ ọrụ netwọk gị site na nọmba dị na weebụsaịtị ha ma ọ bụ na mkpuchi SIM."
+  scam.NEUTRAL_ADVICE: "Ekesala PIN gị, ma lelee ego dị n'akpa ego ekwentị gị tupu ị mee ihe ozi ọ bụla kwuru."
+  scam.SIGNAL.asks_for_pin: "ọ na-arịọ PIN gị ma ọ bụ okwuntughe"
+  scam.SIGNAL.double_registration: "ọ na-ekwu na edebanyere SIM gị aha ugboro abụọ"
+  scam.SIGNAL.refund_request: "ọ na-arịọ gị ka ị weghachite ego e zitere na mmejọ"
+  scam.SIGNAL.confirmation_from_personal_number: "ọ dị ka nkwenye M-PESA mana o si na nọmba onwe onye"
+  scam.SIGNAL.unofficial_operator_number: "ọ na-ekwu na o si Safaricom mana o nyere nọmba ọzọ karịa 0722000000"
+  scam.SIGNAL.dial_code_instruction: "ọ na-agwa gị ka ị pịa koodu na ekwentị gị"
+  scam.SIGNAL.prize_or_offer: "ọ na-ekwu na i meriri ihe ma ọ bụ na-enye ego"
+  scam.SIGNAL.link: "o nwere njikọ (link)"
+  scam.SIGNAL.pressure: "ọ na-amanye gị ime ngwa ngwa"
+
+  channels.ussd.UI:
+    ask: "Jụọ ajụjụ"
+    scam: "Nyochaa ozi"
+    lang: "Asụsụ"
+    more: "98 Ọzọ"
+    next: "1 Nke ọzọ"
+    back: "0 Laghachi"
+    menu: "0 Menu"
+    ask_prompt: "Dee ajụjụ gị:"
+    scam_prompt: "Dee ma ọ bụ mado ozi ahụ:"
+    invalid: "Nhọrọ adịghị mma."
+    end_pack: "Nke ahụ bụ ihe niile n'isiokwu a."
+    lang_prompt: "1 English"
+    topics: "Isiokwu"
+    place_prompt: "Dee aha {area} gị:"
+    food_prompt: "Dee nri na {area} gị, dịka ọka {example}:"
+    weeks_prompt: "Izu ole ka afọ ime gị dị?"
+    crop_prompt: "Dee ihe ọkụkụ na ihe ị hụrụ:"
+  channels.voice.PROMPTS:
+    welcome: "Nnọọ na ACE."
+    press: "Maka {label}, pịa {n}."
+    repeat: "Iji nụ menu ọzọ, pịa 0."
+    bye: "Anyị enwetaghị nhọrọ gị. Ka ọ dị."
+    invalid: "Nke ahụ abụghị nhọrọ ziri ezi."
+
+  services.base.DAYS: ["Mọn", "Tiu", "Wen", "Tọọ", "Fra", "Sat", "Sọn"]
+  services.base.MONTHS: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  services.base.NEEDS_PLACE: "Kedu {area} ị nọ? Zaa aha ya, dịka {example}."
+  services.base.AREA_DEFAULT: "mpaghara"
+  services.base.AREA_WORD: {NG: "steeti"}
+  services.base.COUNTRY_SAID: {NG: "Naịjirịa", GH: "Ghana"}
+
+  services.rain.WORDS.likely: "o yikarịrị"
+  services.rain.WORDS.possible: "o nwere ike"
+  services.rain.WORDS.dry: "ọkachasị akọrọ"
+  services.rain.HEAD: "Mmiri ozuzo nso {place}:"
+  services.rain.HEAVY_LINE: "Mmiri ozuzo dị ukwuu (20 mm ma ọ bụ karịa) nwere ike ịdị {days}."
+  services.rain.FOOT: "Ohere sitere n'amụma ECMWF nke {date}."
+  services.rain.SPAN: "{a} ruo {b}"
+  services.rain.AND: "na"
+  services.rain.STALE: "ACE enweghị amụma ihu igwe ugbu a maka {place}. Lelee amụma {met}."
+  services.rain.NEXT: "Hazie ọrụ ugbo maka ụbọchị ndị akọrọ."
+
+  services.warnings.FOUND: "Ịdọ aka na ntị gọọmentị maka {place} site n'aka {authority}, ruo {until}:"
+  services.warnings.NATIONAL: "Ịdọ aka na ntị gọọmentị maka mba niile site n'aka {authority}, ruo {until}:"
+  services.warnings.MORE: "{n} ọzọ ka na-arụ ọrụ."
+  services.warnings.NONE: "Ọ dịghị ịdọ aka na ntị gọọmentị site n'aka {authority} metụtara {place} ugbu a (enyochara {checked})."
+  services.warnings.STALE: "ACE enweghị ike inyocha ịdọ aka na ntị {authority} n'oge na-adịbeghị anya, ya mere ọ maghị ma ọ dị. Gee ọkwa gọọmentị site n'aka {authority}."
+  services.warnings.GAP: "{authority} anaghị ebipụta ịdọ aka na ntị n'ụzọ ACE nwere ike ịgụ, ya mere ACE enweghị ike inyocha ịdọ aka na ntị ebe ahụ. Gee ọkwa gọọmentị site n'aka {authority} na redio na televishọn."
+  services.warnings.YOUR_AREA: "mpaghara gị"
+
+  services.facility.NEAR: "Ụlọ ọgwụ gọọmentị kacha nso:"
+  services.facility.IN_AREA: "Ụlọ ọgwụ gọọmentị dị na {place}:"
+  services.facility.CAVEAT: "Site na ndepụta ụlọ ọgwụ gọọmentị nke 2019; jide n'aka na ọ meghere tupu ị gaa."
+  services.facility.REGISTRY_CAVEAT: "Site na ndekọ ụlọ ọgwụ nke Ministri Ahụike; kpọọ tupu ị gaa ma ọ bụrụ na ị nwere ike."
+  services.facility.EMERGENCY: "Mberede: {numbers}."
+  services.facility.NO_NUMBER: "Ọ bụrụ na ọ bụ mberede, kpọọ nọmba mberede mpaghara gị."
+  services.facility.NONE: "ACE ahụghị ụlọ ọgwụ gọọmentị n'ime {km} km na ndepụta ya nke 2019."
+  services.facility.GAP: "ACE enwebeghị ndepụta ụlọ ọgwụ maka mba a."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} na {market}: {currency} {price} {unit} na {month}"
+  services.prices.CHANGE.up: "rịgoro {pct}% karịa {prev}"
+  services.prices.CHANGE.down: "gbadara {pct}% karịa {prev}"
+  services.prices.CHANGE.same: "otu ihe ahụ dị ka {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km site na {place})"
+  services.prices.FOOT: "Ọnụ ahịa WFP."
+  services.prices.TOP: "Ọnụ ahịa WFP kachasị ọhụrụ na {market}{far}:"
+  services.prices.OLD: "Ọnụ ahịa WFP kachasị ọhụrụ ACE nwere maka {country} bụ nke {month}, o kariela nka. Jụọ ndị ahịa ma ọ bụ ụlọ ọrụ ugbo gị."
+  services.prices.GAP: "WFP anaghị ebipụta ọnụ ahịa maka {country}, ya mere ACE enweghị ike inye ọnụ ahịa ebe ahụ. Jụọ ndị ahịa ma ọ bụ ụlọ ọrụ ugbo gị."
+  services.prices.THIN: "Ọnụ ahịa WFP na-adịbeghị anya maka {country} metụtara nri ole na ole. Jụọ ndị ahịa ma ọ bụ ụlọ ọrụ ugbo gị."
+  services.prices.NO_FOOD: "ACE enweghị ọnụ ahịa WFP na-adịbeghị anya maka {food} nso {place}."
+  services.prices.UNIT: "kwa {unit}"
+  services.prices.UNIT_MANY: "kwa {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Ọka", "maize flour": "Ntụ ọka", "maize meal": "Ntụ ọka", beans: "Agwa", rice: "Osikapa", sorghum: "Ọka okpoko", millet: "Milet", sugar: "Shuga", oil: "Mmanụ", "wheat flour": "Ntụ ọka wiit", wheat: "Wiit", cowpeas: "Agwa", potatoes: "Nduku", tomatoes: "Tomato", onions: "Yabasị", salt: "Nnu", milk: "Mmiri ara ehi", eggs: "Akwa", bread: "Achịcha", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "ọcha", yellow: "edo edo", imported: "si mba ọzọ", local: "nke obodo", dry: "akọrọ", red: "uhie"}
+
+  services.pregnancy.FIRST: "Na izu {w}, gaa nyocha afọ ime mbụ gị ugbu a, tupu izu 12."
+  services.pregnancy.DUE_NOW: "Na izu {w}, oge nyocha afọ ime eruola ugbu a. Nke ọzọ bụ na izu {next}."
+  services.pregnancy.NEXT: "Na izu {w}, nyocha afọ ime gị ọzọ bụ na izu {next}."
+  services.pregnancy.LATE: "Na izu {w} i gafeela nyocha ikpeazụ a haziri na izu 40. Hụ onye ọrụ ahụike taa."
+  services.pregnancy.ASK: "Izu ole ka afọ ime gị dị? Zaa na nọmba, dịka izu 22."
+  services.pregnancy.CALL: "Kpọọ {numbers}."
+
+  services.pests.LIKELY: "Nke a nwere ike ịbụ {problem}. ACE anaghị ahụ ihe ọkụkụ gị, ya mere lelee akara ndị a:"
+  services.pests.MAYBE: "Ma eleghị anya {problem}."
+  services.pests.REFER: "Jụọ onye ndụmọdụ ugbo ka o kwado tupu ị gbaa ọgwụ."
+  services.pests.NAMES.fall_armyworm: "ikpuru ọka (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "ọrịa ọka na-egbu egbu (MLN)"
+  services.pests.NAMES.cassava_mosaic: "ọrịa mosaic akpụ"
+  services.pests.NAMES.banana_xanthomonas_wilt: "ọrịa nkụ unere (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "ikpuru akwụkwọ tomato (Tuta absoluta)"
+  services.pests.ASK: "Kedu ihe ọkụkụ, gịnị ka ị hụrụ? Dịka: akwụkwọ ọka nwere oghere na ntụ dị ka nke osisi."
+  services.pests.UNKNOWN: "Ugbu a ACE na-enyocha ọka, akpụ, unere na tomato. Maka ihe ọkụkụ ndị ọzọ, jụọ onye ndụmọdụ ugbo."
+
+phrases:
+  safety.PREGNANCY: ["afọ ime", "dị ime", "ọ dị ime", "a dị m ime", "nwanyị dị ime", "ime ọnwa"]
+  safety.POSTPARTUM: ["mụrụ nwa", "ọ mụrụ nwa", "a mụrụ m nwa", "mụsịrị nwa", "omugwo"]
+  safety.MATERNAL_DANGER: ["ọbara", "ọbara na-agba", "ọbara na-apụta", "ọdịdọ", "ọ na-ama jijiji", "isi ọwụwa siri ike", "anya anaghị ahụ ụzọ nke ọma", "nwa anaghị akpali", "nwa akwụsịla imegharị ahụ", "mmiri agbawala", "ahụ ọkụ siri ike"]
+  safety.URGENT: ["anaghị eku ume", "naghị eku ume", "enweghị ike iku ume", "dakpọrọ", "ọ tụbọrọ", "amaghị onwe ya", "ọdịdọ", "ọbara na-agba nke ukwuu", "mgbu obi", "agwọ tara", "agwọ tagburu", "ọkụ gbara ya nke ukwuu", "nweghị ike iku ume", "apụghị iku ume", "adaala", "onye a adaala", "enweghị ume", "o nweghị ume", "ọ naghị eku ume"]
+  safety.POISON_ACT: ["ṅụrụ", "ọ ṅụrụ", "lodara", "ọ lodara", "riri", "ọ riri"]
+  safety.POISON_WHAT: ["ọgwụ ụmụ ahụhụ", "ọgwụ oke", "mmanụ ọkụ", "kerosin", "petrol", "bleach", "kemịkal"]
+  safety.POISONED: ["nyere ya nsi", "tinyere ya nsi", "ṅụrụ nsi", "riri nsi", "nsi na-egbu ya"]
+  safety.GBV: ["dinara m n'ike", "dinara ya n'ike", "di m na-eti m ihe", "ọ na-eti m ihe", "ọ kụrụ m ihe", "ime ihe ike n'ụlọ", "ọ yiri egwu igbu m"]
+  safety.CHILD: ["nwa", "nwa m", "nwatakịrị", "nwa m nwanyị", "nwa m nwoke", "nwa agbọghọ", "ụmụaka"]
+  safety.CHILD_HARM: ["dinara ya n'ike", "mmetọ", "metọrọ ya", "a na-eti ya ihe", "tie ya ihe", "alụ n'ike", "ibi nwanyị ugwu"]
+  safety.SELF_HARM: ["igbu onwe m", "m ga-egbu onwe m", "achọrọ m ịnwụ", "achọghị m ịdị ndụ", "kwụsị ndụ m", "imerụ onwe m ahụ", "igbu onwe"]
+
+  scam.PIN: ["pin", "nọmba nzuzo", "okwuntughe"]
+  scam.ASK: ["ziga", "nye m", "kwado", "tinye", "dee"]
+  scam.MISTAKE: ["na mmejọ", "mmejọ", "weghachite ego", "weghachi ya"]
+  scam.DOUBLE: ["ugboro abụọ"]
+  scam.PRIZE: ["i meriri", "ihe nrite", "onyinye", "ego n'efu"]
+  scam.URGENT: ["ngwa ngwa", "ozugbo", "n'ime awa 24", "a ga-emechi", "a ga-akwụsị", "ịdọ aka na ntị ikpeazụ"]
+  scam.CLAIMS_OPERATOR: ["mtn", "airtel", "glo", "9mobile", "opay", "palmpay", "moniepoint"]
+  scam.DIAL: ["pịa"]
+
+  services.CUES.pregnancy_companion: ["nyocha afọ ime", "ụlọ ọgwụ ndị dị ime", "oge nyocha ọzọ"]
+  services.CUES.nearest_facility: ["ụlọ ọgwụ", "dọkịta"]
+  services.CUES.official_warnings: ["ịdọ aka na ntị", "idei mmiri", "oke ifufe"]
+  services.CUES.rain_this_week: ["mmiri ozuzo", "ọ ga-ezo", "ihu igwe", "amụma"]
+  services.CUES.market_prices: ["ọnụ ahịa", "ole ka ọ bụ", "ahịa"]
+  services.CUES.pest_check: ["ụmụ ahụhụ", "ikpuru", "ọrịa", "akwụkwọ", "edo edo", "oghere", "na-akpọnwụ", "na-anwụ"]
+  services.SEASONAL: ["udu mmiri", "ọkọchị", "oge mmiri"]
+  services.PREGNANT: ["afọ ime", "dị ime"]
+  services.HOW_MUCH: ["ole"]
+  services.prices.FOODS: {ọka: maize, agwa: beans, osikapa: rice, shuga: sugar, mmanụ: oil, wiit: wheat, nduku: potatoes, tomato: tomatoes, yabasị: onions, nnu: salt, akwa: eggs, achịcha: bread, ntụ: flour}
+  services.pests.CROPS.maize: ["ọka"]
+  services.pests.CROPS.cassava: ["akpụ"]
+  services.pests.CROPS.banana: ["unere", "ọgẹdẹ"]
+  services.pests.CROPS.tomato: ["tomato"]
+  services.pests.PROBLEMS.fall_armyworm: ["ikpuru", "oghere", "ntụ"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["edo edo", "akpọnwụla", "nwụrụ"]
+  services.pregnancy.WEEK_WORDS: ["izu"]
+  services.pregnancy.MONTH_WORDS: ["ọnwa"]
+  commands.COMMANDS.help: ["enyemaka"]
+  commands.COMMANDS.forget: ["hichapụ"]
+  commands.COMMANDS.stop: ["kwụsị"]
+  commands.COMMANDS.language: ["asụsụ"]
+  commands.COMMANDS.tip: ["ndụmọdụ"]
+  commands.COMMANDS.scam: ["aghụghọ"]
+  commands.COMMANDS.sources: ["ndabere"]
+  commands.COMMANDS.more: ["ọzọ"]
+  text.ACTION_CUES: ["gịnị ka m ga-eme", "kedu ihe m ga-eme", "kedu ka m ga-esi gbochie", "kedu ka m ga-esi gbuo", "kedu ka m ga-esi chekwaa", "nyere m aka"]
+
+words:
+  stopwords: ["ma", "bụ", "nke", "ahụ", "gị", "anyị", "unu", "ha", "gịnị", "kedu", "mgbe", "ebe", "onye", "biko", "maka"]
+  markers: ["nke", "bụ", "dị", "gị", "anyị", "unu", "gịnị", "kedu", "biko", "nwa", "ọka", "mmiri", "ozuzo", "ọbara", "ego", "ụlọ", "ọgwụ", "nwunye", "ụnyaahụ", "taa", "echi", "ole", "akpụ", "akwụkwọ", "ahịa", "ọnụ", "nwanyị", "nwoke", "ihe", "ugbu", "ime", "afọ"]

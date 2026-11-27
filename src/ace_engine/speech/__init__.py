@@ -146,6 +146,7 @@ def table() -> list[dict[str, str]]:
             "speak": "; ".join(x for x in spoken if x) or "none found",
             "translate": trans["model"] if trans else "none found",
             "waxal": (f"{waxal['asr_hours']} h transcribed" if "asr_hours" in waxal else
-                      f"{waxal['tts_utterances']} voice script lines" if "tts_utterances" in waxal else "not in WAXAL"),
+                      f"{waxal['tts_utterances']} voice script lines" if "tts_utterances" in waxal else
+                      "in WAXAL, not yet measured" if waxal.get("listed") else "not in WAXAL"),
         })
     return rows

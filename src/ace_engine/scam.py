@@ -17,7 +17,7 @@ from dataclasses import dataclass, field
 from enum import Enum
 
 from . import i18n
-from .text import contains_phrase, fold
+from .text import fold, phrase_in, token_hay
 
 
 class Verdict(str, Enum):
@@ -128,7 +128,8 @@ SIGNALS: dict[str, Signal] = {s.id: s for s in (
 
 
 def _any(text: str, phrases: tuple[str, ...]) -> bool:
-    return any(contains_phrase(text, p) for p in phrases)
+    hay = token_hay(text)
+    return any(phrase_in(hay, p) for p in phrases)
 
 
 def _is_personal_number(sender: str | None) -> bool:

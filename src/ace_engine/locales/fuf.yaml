@@ -1,0 +1,206 @@
+# Pular (Fuuta Jalon Fula) for Guinea, in the Latin spelling with ɓ, ɗ, ŋ, ɲ and ƴ, which SMS folds to b, d, ng,
+# ny and y. Drafted for ACE 2.3 with lower confidence than most added languages: fluent speakers and, for the
+# safety phrases, clinicians must review it first. Many speakers mix Pular with French, and the French safety
+# phrases still apply to those messages.
+meta:
+  code: fuf
+  name: Pular
+  native: "Pular"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE jaabotoo ma e Pular."
+  names: ["pular", "pulaar", "fula", "peul", "fulfulde", "fuf"]
+
+templates:
+  safety.OPENERS.self_harm: "Mi sunii no feewi nde a woni e miijooji ɗii. Ɗum haani a heɓa ballal jooni. {numbers}"
+  safety.OPENERS.maternal: "Ɗum ina waawi wonde caɗeele reedu ɗe yaawi. Yah lopitaal ɓadiiɗo jooni. {numbers}"
+  safety.OPENERS.poisoning: "Ɗum ina nanndi e pooson. Yiylo ballal doktoor jooni, ronda butelli ndii. {numbers}"
+  safety.OPENERS.child_protection: "Ɓiɗɗo ina waawi wonde e kulol. Yiylo ballal jooni. {numbers}"
+  safety.OPENERS.gbv: "Mi sunii nde ɗum ina hewtude ma. A waawii heɓude ballal jooni. {numbers}"
+  safety.OPENERS.health_urgent: "Ɗum ina nanndi e huunde yaawnde. Yiylo ballal doktoor jooni. {numbers}"
+  safety.CALL_WORD: "Noddu {numbers}"
+  safety.OR_WORD: "walla"
+  safety.EMERGENCY_WORD: "huunde yaawnde"
+  safety.FALLBACK_NUMBERS: "Noddu limoore huunde yaawnde nokku maa walla yah lopitaal ɓadiiɗo."
+
+  commands.TEXTS.help: "ACE ina hokka wasiyaaji nokku maa ɗi ndaarii. Naamnu e ɗemngal maa. Yamirɗe: JAMFA + mesaas ngam ndaarde mesaas, WASIYAA + wasiyaa maa ngam senndude anndal, IWDI, GODDE, ƊEMNGAL + kood (no ƊEMNGAL EN), MOMTU ngam momtude kabaruuji maa."
+  commands.TEXTS.help_short: "Naamnu ACE e ɗemngal maa. JAMFA + mesaas ina ndaara ɗum. MOMTU ina momta kabaruuji maa."
+  commands.TEXTS.forgotten: "Ɗum gasii. ACE momtii kala ko o jogii e limoore nde."
+  commands.TEXTS.stopped: "A heɓataa mesaas ACE kadi si a winndaali kadi. Neldu MOMTU ngam momtude kabaruuji maa."
+  commands.TEXTS.language: "Jaabo ƊEMNGAL e kood:"
+  commands.TEXTS.tip_thanks: "A jaaraama. Wasiyaa maa resaama ngam anndiiɗo ndaara ɗum. Ɗum senndataake si ndaaraaka."
+  commands.TEXTS.tip_usage: "Neldu WASIYAA e wasiyaa maa, no: WASIYAA haakoo neem ina walla e ɓowɗi makka to Labe."
+  commands.TEXTS.scam_usage: "Neldu JAMFA e mesaas mo a hoolaaki, ACE ndaarat ɗum."
+  commands.TEXTS.no_sources: "Jaabawol adinoowol alaa ngol iwdi mum waawi hollireede. Naamnu naamne arannde."
+  commands.TEXTS.no_more: "Ɗum ko kala ko ACE jogii e ndee haala jooni. Naamnu naamne goɗɗo walla neldu BALLAL."
+  commands.TEXTS.clarify: "ACE jogaaki tawo wasiyaa ndaaraaɗo e ɗum. ACE ina waawi wallude ma e: {topics}. Neldu WASIYAA ngam ɓeydude anndal."
+  commands.TEXTS.unread: "ACE waawaa jangude ɗemngal ngal tawo. Tiiɗno winndu e ɗemngal gooto e ɗee: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "ƊUM INA NANNDI E JAMFA."
+  scam.HEADLINES.SUSPICIOUS: "REENTO."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Mi yiyaani maandeeji jamfa anndaaɗi, kono ɗum hollirtaa wonde ɗum ina hoolnii."
+  scam.SIGNS_LABEL: "Maandeeji reentinoore:"
+  scam.REPORT_LINE: "Neldu ɗum e 333, ɗum ko mehe."
+  scam.GENERIC_REPORT_LINE: "Wata jaabo walla neldude kaalis. Haal ɗum sosiyete telefon maa e limoore woni e siit mum walla e paket SIM."
+  scam.NEUTRAL_ADVICE: "Wata hokku PIN maa hay gooto, ndaar kaalis telefon maa ado nde waɗataa ko mesaas gooto wi'i."
+  scam.SIGNAL.asks_for_pin: "ina ɗaɓɓita PIN maa walla konngol suuɗiingol"
+  scam.SIGNAL.double_registration: "ina wi'a SIM maa winndaama laabi ɗiɗi"
+  scam.SIGNAL.refund_request: "ina ɗaɓɓita ma artirde kaalis neldaaɗo e juumre"
+  scam.SIGNAL.confirmation_from_personal_number: "ina nanndi e teeŋtinol M-PESA kono ina iwi e limoore neɗɗo"
+  scam.SIGNAL.unofficial_operator_number: "ina wi'a ina iwi Safaricom kono ina hokka limoore nde wonaa 0722000000"
+  scam.SIGNAL.dial_code_instruction: "ina wi'a ma njoɓɓaa kood e telefon maa"
+  scam.SIGNAL.prize_or_offer: "ina wi'a a heɓii njeenaari walla ina hokka kaalis"
+  scam.SIGNAL.link: "lien woni e mum"
+  scam.SIGNAL.pressure: "ina hiɓɓa ma ngam waɗde ɗum ko yaawi"
+
+  channels.ussd.UI:
+    ask: "Naamnu"
+    scam: "Ndaar mesaas"
+    lang: "Ɗemngal"
+    more: "98 Godde"
+    next: "1 Ko rewi"
+    back: "0 Rutto"
+    menu: "0 Menu"
+    ask_prompt: "Winndu naamne maa:"
+    scam_prompt: "Winndu walla naatnu mesaas oo:"
+    invalid: "Suɓaade nde moƴƴaani."
+    end_pack: "Ɗum ko kala e ndee haala."
+    lang_prompt: "1 English"
+    topics: "Haalaaji"
+    place_prompt: "Winndu innde {area} maa:"
+    food_prompt: "Winndu ñaamdu e {area} maa, no makka {example}:"
+    weeks_prompt: "Reedu maa ina jogii yontaaji noy?"
+    crop_prompt: "Winndu ko aawi e ko yiyɗaa:"
+  channels.voice.PROMPTS:
+    welcome: "Bisimilla e ACE."
+    press: "Ngam {label}, ñoƴƴu {n}."
+    repeat: "Ngam nande menu oo kadi, ñoƴƴu 0."
+    bye: "Min keɓaali suɓaade maa. En njahdu e jam."
+    invalid: "Ɗum wonaa suɓaade moƴƴere."
+
+  services.base.DAYS: ["Alt", "Tal", "Ala", "Alk", "Ajj", "Ase", "Dew"]
+  services.base.MONTHS: ["Sam", "Few", "Mar", "Awr", "Mee", "Suw", "Sul", "Ut", "Sat", "Okt", "Now", "Des"]
+  services.base.NEEDS_PLACE: "Hol {area} nde woɗɗaa? Jaabo e innde mum, no {example}."
+  services.base.AREA_DEFAULT: "nokku"
+  services.base.AREA_WORD: {GN: "diiwaan"}
+  services.base.COUNTRY_SAID: {GN: "Gine"}
+
+  services.rain.WORDS.likely: "ina waawi wonde no feewi"
+  services.rain.WORDS.possible: "ina waawi wonde"
+  services.rain.WORDS.dry: "naange heewat"
+  services.rain.HEAD: "Toɓo ɓadii {place}:"
+  services.rain.HEAVY_LINE: "Toɓo mawɗo (20 mm walla ko ɓuri ɗum) ina waawi toɓude {days}."
+  services.rain.FOOT: "Ngalu ɗii iwi e anndinoore weeyo ECMWF nde {date}."
+  services.rain.SPAN: "{a} haa {b}"
+  services.rain.AND: "e"
+  services.rain.STALE: "ACE jogaaki anndinoore weeyo hesere nde {place}. Ndaar anndinoore {met}."
+  services.rain.NEXT: "Feewnu golle ngesa ngam balɗe naange."
+
+  services.warnings.FOUND: "Reentinoore laamu nde {place} iwnde e {authority}, haa {until}:"
+  services.warnings.NATIONAL: "Reentinoore laamu nde leydi ndii fof iwnde e {authority}, haa {until}:"
+  services.warnings.MORE: "Goɗɗe {n} ina golloo tawo."
+  services.warnings.NONE: "Reentinoore laamu alaa iwnde e {authority} jowitiinde e {place} jooni (ndaaraama {checked})."
+  services.warnings.STALE: "ACE waawaali ndaarde reentinooje {authority} ɗe ɓadii, ɗum noon o anndaa si goɗɗe ina woodi. Heɗito anndinooje laamu iwɗe e {authority}."
+  services.warnings.GAP: "{authority} yaltinataa reentinooje e laawol ngol ACE waawi janngude, ɗum noon ACE waawaa ndaarde reentinooje toon. Heɗito anndinooje laamu iwɗe e {authority} e rajo e tele."
+  services.warnings.YOUR_AREA: "nokku maa"
+
+  services.facility.NEAR: "Lopitaal laamu ɓadiiɗo:"
+  services.facility.IN_AREA: "Lopitaal laamu to {place}:"
+  services.facility.CAVEAT: "Iwi e doggol lopitaaluuji laamu 2019; teeŋtin wonde ina udditii ado yahde."
+  services.facility.REGISTRY_CAVEAT: "Iwi e deftere lopitaaluuji Ministeer Cellal; noddu ado yahde si a waawii."
+  services.facility.EMERGENCY: "Huunde yaawnde: {numbers}."
+  services.facility.NO_NUMBER: "Si ɗum ko huunde yaawnde, noddu limoore huunde yaawnde nokku maa."
+  services.facility.NONE: "ACE yiyaani lopitaal laamu nder {km} km e doggol mum 2019."
+  services.facility.GAP: "ACE jogaaki tawo doggol lopitaaluuji leydi ndii."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} to {market}: {currency} {price} {unit} e {month}"
+  services.prices.CHANGE.up: "ɓeydii {pct}% iwde e {prev}"
+  services.prices.CHANGE.down: "ustii {pct}% iwde e {prev}"
+  services.prices.CHANGE.same: "ina wayi no {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km iwde {place})"
+  services.prices.FOOT: "Coggu WFP."
+  services.prices.TOP: "Coggu WFP hesu to {market}{far}:"
+  services.prices.OLD: "Coggu WFP hesu ɗu ACE jogii ngam {country} ko ɗu {month}, ɗu ɓooyii. Naamnu coggooɓe walla biro ndema maa."
+  services.prices.GAP: "WFP yaltinataa coggu ngam {country}, ɗum noon ACE waawaa hokkude coggu toon. Naamnu coggooɓe walla biro ndema maa."
+  services.prices.THIN: "Coggu WFP hesu ngam {country} ina jowitii e ñaamde seeɗa tan. Naamnu coggooɓe walla biro ndema maa."
+  services.prices.NO_FOOD: "ACE jogaaki coggu WFP hesu ngam {food} ɓadii {place}."
+  services.prices.UNIT: "e {unit}"
+  services.prices.UNIT_MANY: "e {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Makka", "maize flour": "Kollo makka", "maize meal": "Kollo makka", beans: "Ñebbe", rice: "Maaro", sorghum: "Gawri", millet: "Feela", sugar: "Suukara", oil: "Nebam", "wheat flour": "Farin", wheat: "Ble", cowpeas: "Ñebbe", potatoes: "Pomu tere", tomatoes: "Tomati", onions: "Soble", salt: "Lamɗam", milk: "Kosam", eggs: "Boccoonde", bread: "Mburu", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "daneejo", yellow: "oolo", imported: "iwɗo leydi woɗɗundi", local: "gaa", dry: "yoorɗo", red: "boɗeejo"}
+
+  services.pregnancy.FIRST: "E yontere {w}, yah ndaarol reedu maa arandeewol jooni, ado yontere 12 hewtude."
+  services.pregnancy.DUE_NOW: "E yontere {w}, saha ndaarol reedu hewtii jooni. Ngol rewata ko yontere {next}."
+  services.pregnancy.NEXT: "E yontere {w}, ndaarol reedu maa rewowol ko yontere {next}."
+  services.pregnancy.LATE: "E yontere {w} a ɓennii ndaarol sakkitorol feewnaangol yontere 40. Yah yiyaa golloowo cellal hannde."
+  services.pregnancy.ASK: "Reedu maa ina jogii yontaaji noy? Jaabo e limoore, no yontaaji 22."
+  services.pregnancy.CALL: "Noddu {numbers}."
+
+  services.pests.LIKELY: "Ɗum ina waawi wonde {problem}. ACE yiyataa ko aawɗaa, ɗum noon ndaar maandeeji ɗii:"
+  services.pests.MAYBE: "Teema ko {problem}."
+  services.pests.REFER: "Ɗaɓɓit ballotooɗo ndema ngam teeŋtinde ado mbuuftaa lekki."
+  services.pests.NAMES.fall_armyworm: "ɓowɗi makka (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "ñawu makka warooɗo (MLN)"
+  services.pests.NAMES.cassava_mosaic: "ñawu mosayik bantara"
+  services.pests.NAMES.banana_xanthomonas_wilt: "ñawu yoorugol banaana (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "ɓowɗi haakoo tomati (Tuta absoluta)"
+  services.pests.ASK: "Hol ko aawi, e hol ko yiyɗaa? No: haakoo makka ina jogii luulɗe e ndonndi nanndundi e ndonndi lekki."
+  services.pests.UNKNOWN: "Jooni ACE ina ndaara makka, bantara, banaana e tomati. Ngam ko aawi goɗɗum, naamnu ballotooɗo ndema."
+
+phrases:
+  safety.PREGNANCY: ["o woni e reedu", "mi woni e reedu", "e reedu", "debbo jogiiɗo reedu", "reedu lebbi", "o jogii reedu"]
+  safety.POSTPARTUM: ["o jibinii hanki", "o jibinii", "mi jibinii", "caggal jibinde", "nde o jibini"]
+  safety.MATERNAL_DANGER: ["ƴiiƴam", "ƴiiƴam ina yalta", "yaltude ƴiiƴam", "ina siwnoo", "hoore ina muusa no feewi", "gite ngi yiyataa no moƴƴi", "ɓiɗɗo oo dilloyaaki", "ndiyam ɓuɓɓii", "wulnde mawnde"]
+  safety.URGENT: ["o foofataa", "o waawaa foofaade", "o hiiɓii", "o yani o immaaki", "ƴiiƴam ina yalta no feewi", "ɓernde ina muusa", "mboddi ŋatii mo", "mboddi ŋatii", "yiite sunnii mo no feewi"]
+  safety.POISON_ACT: ["o yarii", "o modii", "o ñaamii", "ɓiɗɗo oo yarii"]
+  safety.POISON_WHAT: ["pooson", "lekki ɓowɗi", "lekki doomburu", "petorol", "esaans", "jawel", "lekki bonɗi"]
+  safety.POISONED: ["ɓe okkii mo pooson", "o yarii pooson", "o ñaamii pooson", "ɓe naatnii pooson", "ɓe poosonii mo"]
+  safety.GBV: ["ɓe kaɓɓii kam e doole", "o kaɓɓii kam e doole", "o ina fiya kam", "gorko am ina fiya kam", "o fiyii kam", "bone e galle", "o ina sabbinde warde kam"]
+  safety.CHILD: ["ɓiɗɗo", "ɓiɗɗo am", "ɓiɗɗo am debbo", "ɓiɗɗo am gorko", "suka debbo", "sukaaɓe", "ɓiɗɗo tokooso"]
+  safety.CHILD_HARM: ["ɓe kaɓɓii mo e doole", "kaɓɓii mo e doole", "ɓe ina torra mo", "ɓe torrii mo", "ɓe ina fiya mo", "o fiyii mo", "resaando e doole"]
+  safety.SELF_HARM: ["warde hoore am", "mi warat hoore am", "mi faalaa maayde", "mi faalaaka wuurde kadi", "mi faalaa gasnude ngurndam am", "gaañde hoore am"]
+
+  scam.PIN: ["pin", "konngol suuɗiingol", "limoore suuɗiinde"]
+  scam.ASK: ["neldu", "okku kam", "teeŋtin", "naatnu", "winndu"]
+  scam.MISTAKE: ["e juumre", "juumre", "artir kaalis oo", "artir ɗum"]
+  scam.DOUBLE: ["laabi ɗiɗi"]
+  scam.PRIZE: ["a heɓii njeenaari", "njeenaari", "dokkal", "kaalis mehe"]
+  scam.URGENT: ["yaawnu", "jooni jooni", "nder waktuuji 24", "maa uddu", "maa daaru", "reentinoore sakkitiinde"]
+  scam.CLAIMS_OPERATOR: ["orange", "orange money", "mtn", "momo", "cellcom"]
+  scam.DIAL: ["ñoƴƴu"]
+
+  services.CUES.pregnancy_companion: ["ndaarol reedu", "cpn", "ndaarol rewowol"]
+  services.CUES.nearest_facility: ["lopitaal", "dispanseer", "doktoor"]
+  services.CUES.official_warnings: ["reentinoore", "ilam", "henndu mawndu"]
+  services.CUES.rain_this_week: ["toɓo", "toɓo maa toɓu", "weeyo", "anndinoore weeyo"]
+  services.CUES.market_prices: ["coggu", "ko noy", "luumo"]
+  services.CUES.pest_check: ["ɓowɗi", "ɓowru", "ñawu", "haakoo", "oolo", "luulɗe", "ina yoora", "ina maaya"]
+  services.SEASONAL: ["ndungu", "ceeɗu", "saha toɓo"]
+  services.PREGNANT: ["reedu"]
+  services.HOW_MUCH: ["noy"]
+  services.prices.FOODS: {makka: maize, ñebbe: beans, maaro: rice, suukara: sugar, nebam: oil, tomati: tomatoes, soble: onions, lamɗam: salt, boccoonde: eggs, mburu: bread, bantara: cassava}
+  services.pests.CROPS.maize: ["makka"]
+  services.pests.CROPS.cassava: ["bantara"]
+  services.pests.CROPS.banana: ["banaana"]
+  services.pests.CROPS.tomato: ["tomati"]
+  services.pests.PROBLEMS.fall_armyworm: ["ɓowɗi", "luulɗe", "ndonndi"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["oolo", "yoorii", "maayii"]
+  services.pregnancy.WEEK_WORDS: ["yontere", "yontaaji"]
+  services.pregnancy.MONTH_WORDS: ["lebbi", "lewru"]
+  commands.COMMANDS.help: ["ballal"]
+  commands.COMMANDS.forget: ["momtu"]
+  commands.COMMANDS.stop: ["darnu"]
+  commands.COMMANDS.language: ["ɗemngal"]
+  commands.COMMANDS.tip: ["wasiyaa"]
+  commands.COMMANDS.scam: ["jamfa"]
+  commands.COMMANDS.sources: ["iwdi"]
+  commands.COMMANDS.more: ["godde"]
+  text.ACTION_CUES: ["ko mi waɗa", "ko haani mi waɗa", "no mi haɗirta", "no mi warirta", "no mi resirta", "wallu kam"]
+
+words:
+  stopwords: ["e", "walla", "kono", "ɗum", "ɗoo", "jooni", "honɗun", "no", "ngam", "wonde", "am", "maa", "feewi", "ko", "ina"]
+  markers: ["jooni", "honɗun", "mbaadda", "hombo", "hoto", "ngam", "walla", "ɓiɗɗo", "lopitaal", "makka", "jaaraama", "ɗum", "anndaa", "faalaa", "feewi", "reedu", "hanki", "hannde", "jaŋngo", "kaalis", "haakoo", "bantara", "noy", "yontere", "toɓo", "ñebbe", "ina", "woni", "maa", "mi"]

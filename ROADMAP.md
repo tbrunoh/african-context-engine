@@ -22,6 +22,24 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
+### 2.3 preview (2.3.0b1, 26 November 2026): 24 languages, and honesty about the rest
+
+- [x] Hausa, Yoruba, Igbo and Nigerian Pidgin in Nigeria; isiZulu, isiXhosa, Afrikaans, Sesotho, Setswana and Xitsonga in South Africa; Setswana in Botswana; Afrikaans in Namibia; Shona in Zimbabwe; Akan and Ewe in Ghana; Ewe in Togo; Wolof in Senegal; Dyula in Côte d'Ivoire and Burkina Faso; Mooré in Burkina Faso; Pular in Guinea; Yoruba in Benin; Chichewa in Malawi and Zambia; Bemba in Zambia; Xitsonga in Mozambique; Kinyarwanda in Rwanda; Kirundi in Burundi; Luganda in Uganda; Lingala in DR Congo; Tigrinya in Ethiopia
+- [x] Every template, safety phrase, command and Africa pack fact in each, and 13 red team and 7 ordinary benchmark messages each
+- [x] Language detection within the caller's country, ties between close languages resolved by the country's order, and double weight for Nigerian Pidgin and Afrikaans markers against English and for Lingala against Swahili
+- [x] African Latin letters folded into GSM-7, so replies keep 160 characters a segment
+- [x] A message with no marker word read by its letters, among the country's languages
+- [x] ACE says when it does not read a language, from character profiles of 49 languages its callers speak, names the languages it reads and gives the emergency numbers; an optional Cloud Translation or GlotLID check confirms
+- [x] Every benchmark red team message escalates in all 32 languages, no false alarm on the benchmark's ordinary messages, no wrong numbers
+- [x] Nine independent reviews of the draft, with their fixes: Dyula comfort lines, false alarm words, marker collisions, command words, Ewe letters, messages the new check had turned away, emergencies the safety rail missed, and numbers given to callers outside ACE's countries
+- [x] The WAXAL check reads each language as from a country where it is spoken; 4 safety rail firings in 12,333 real texts; 46.6% of sentences in languages ACE does not speak now told so
+- [x] Voices for 12 of the 24 through Gemini 3.8 Flash TTS, Afrikaans also through a Cloud voice, and speech to text for 16 more languages, 23 of the 32
+- [ ] Fluent speaker review of all 24, with Mooré, Bemba, Dyula, Pular and Wolof first
+- [ ] Umbundu for Angola, written or checked by a fluent speaker
+- [ ] A fluent listener for each of the 12 new voices before a public voice line
+- [ ] Profiles for Lusoga, Sidama and Wolaytta, and a fuller one for Runyankole, once open text exists
+- [ ] A paged USSD language menu, so countries with more than four languages list them all
+
 ### 2.2 preview, third build (2.2.0b3, 26 November 2026): RCS and the tokenizer audit
 
 - [x] RCS with SMS fallback: switched on per country, a reachability check before each reply, replies composed to the SMS budget, and signed webhooks
@@ -59,7 +77,7 @@ The design is published in [docs/v2](docs/v2/README.md). Every service covers ev
 ### Phase 1, foundations: December 2026 to February 2027
 
 - [ ] Signed packs
-- [ ] Fluent speaker review of every Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali rendering and every safety phrase
+- [ ] Fluent speaker review of every rendering in the 31 languages other than English and every safety phrase
 - [ ] Written confirmation from the Malawi and Zambia ministries of health to reuse their facility registries
 - [ ] A facility list for Algeria, Egypt, Libya, Morocco and Tunisia from an open source with a clear licence
 - [ ] Mali and Niger, with the same data as their neighbours
@@ -77,7 +95,7 @@ Gate: every served number checked against its source within 30 days.
 - [ ] Flood warnings, with opt in alerts for flood and official warnings
 - [ ] Nearest health facility with services and phone numbers from open national registries
 - [ ] Voice pilot with keyword spotting for danger words, starting in Swahili and French on Chirp 3
-- [ ] Amharic and Afaan Oromo speech recognition tuned on WAXAL, and a voice for Afaan Oromo, the one ACE language no Google model speaks
+- [ ] Amharic and Afaan Oromo speech recognition tuned on WAXAL, and a voice for Afaan Oromo, which no Google model speaks
 - [ ] Pilot with one programme on a live shortcode, with a human helpdesk behind the safety rail
 
 Gate: 99% recall on voice emergencies.
@@ -104,7 +122,7 @@ Gate: V2 targets met, then the V2.0 release.
 
 ## Later
 
-- [ ] Kikuyu, Dholuo and Luhya; Sheng keywords across packs
+- [ ] Gikuyu, Dholuo and Luhya; Sheng keywords across packs
 - [ ] Livestock and land rights packs
 - [ ] Mobile money payments as an optional plugin (moved out of the core in V1 to keep credentials out of the default install)
 - [ ] More countries, added as contributors who can source and review the packs come forward

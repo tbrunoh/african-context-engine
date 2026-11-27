@@ -4,7 +4,8 @@ title: "ACE, the African Context Engine"
 abstract: >-
   Open source software that gives checked, local, citable knowledge for Africa on any phone
   (USSD, SMS/RCS, voice, WhatsApp and MCP), with a safety rail, Scam Shield and six decision services
-  on dated public data, for 34 African countries in eight languages. It includes the ACE tokenizer audit
+  on dated public data, for 34 African countries in 32 languages, and a check that tells a person when ACE
+  does not read their language yet. It includes the ACE tokenizer audit
   (benchmark/tokenizer-audit), which measures what 59 African language varieties cost against English on nine
   released tokenizers and scores unreleased tokenizers offline.
 type: software
@@ -21,8 +22,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24565738
     description: Version 2.2.0b3, the first to include the tokenizer audit
+# The code licence. Packs, language profiles and snapshots carry their own licences: see NOTICE and DATA_LICENSE.md.
 license: Apache-2.0
-version: 2.2.0b3
+version: 2.3.0b1
 date-released: "2026-11-26"
 keywords:
   - Africa

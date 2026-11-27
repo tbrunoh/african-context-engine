@@ -17,6 +17,30 @@ labels:
   am: 'የበቆሎ ተምች'
   om: 'Raammoo boqqolloo'
   so: 'Dirxiga galleyda'
+  ti: 'ሓሰኻ ዕፉን'
+  fuf: 'Ɓowɗi makka'
+  mos: 'Kamaan zãngã'
+  dyu: 'Kaba tumuw'
+  wo: 'Sóoboo mbóq'
+  ee: 'Bli ƒe ŋɔ'
+  ak: 'Aburow sumpii'
+  ln: 'Banzoto ya masango'
+  lg: 'Ensowera za kasooli'
+  rn: 'Inkongwa y''ibigori'
+  rw: 'Nkongwa y''ibigori'
+  bem: 'Ifishishi fya mataba'
+  ny: 'Mbozi za chimanga'
+  sn: 'Gonye rechibage'
+  ts: 'Xivungu xa mavele'
+  tn: 'Seboko sa mmidi'
+  st: 'Seboko sa poone'
+  af: 'Herfsruspe op mielies'
+  xh: 'Isibungu sombona'
+  zu: 'Isibungu sommbila'
+  pcm: 'Maize armyworm'
+  ig: 'Ikpuru ọka'
+  yo: 'Kokoro agbado'
+  ha: 'Tsutsar masara'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -117,6 +141,102 @@ facts:
       claim: 'Dirxiga yar ee fall armyworm wuxuu xoqaa caleemaha galleyda wuxuuna uga tagaa dhibco khafiif ah oo daaqad u eg. Dirxiga waaweyn waxay ku dhuuntaan bartamaha geedka, waxay jeexjeexaan caleemaha cusub, waxayna ka tagaan saxaro qoyan oo budo alwaax u eg.'
       short: 'Calaamadaha fall armyworm: dhibco daaqad u eg oo caleemaha ku yaal, bartame jeexjeexan, saxaro qoyan oo budo alwaax u eg bartamaha.'
       reviewed: false
+    ti:
+      claim: 'ንኣሽቱ ሓሰኻ ዕፉን (fall armyworm) ቆጽሊ ዕፉን ይፍሕፍሑ፣ ከም መስተዋት መስኮት ዝኾኑ ቀጠንቲ ቦታታት ይገድፉ። ዓበይቲ ሓሰኻ ኣብ ልቢ ተኽሊ ይሕብኡ፣ ንኣሽቱ ቆጽሊ ይቐድዱ፣ frass ዝበሃል ከም ሓርጭ ዕንጨይቲ ዝመስል ርሑስ ርስሓት ድማ ይገድፉ።'
+      short: 'ምልክታት ሓሰኻ ዕፉን: ኣብ ቆጽሊ ከም መስተዋት ዝኾኑ ቦታታት፣ ዝተቐደደ ልቢ ተኽሊ፣ ኣብ ልቢ ተኽሊ ከም ሓርጭ ዕንጨይቲ ዝመስል ርሑስ ርስሓት።'
+      reviewed: false
+    fuf:
+      claim: 'Ɓowɗi makka tokooɗi (fall armyworm) ina ñaama haakoo makka, ina acca nokkuuji ɓennuɗi no weer palanteer. Ɓowɗi mawɗi ina suuɗoo e ɓernde ko aawi, ina seeka haakoo kesoo, ina acca bolaaje leppuɗe no ndonndi lekki ɗe noddirtee frass.'
+      short: 'Maandeeji ɓowɗi makka: nokkuuji no weer e haakoo, ɓernde ko aawi seekaaɗo, bolaaje leppuɗe no ndonndi lekki e ɓernde ko aawi.'
+      reviewed: false
+    mos:
+      claim: 'Kamaan zãns bilfã (fall armyworm) koosda kamaan vãadã, n basd zĩis sẽn yaa bilf wa fenetr wɛɛr. Zãns-kãsemsã solgda b menga koodã sũurẽ, b pãrgda vãad-paalã, la b basda bĩnd sẽn tar koom wa tiig tom b sẽn boond ti frass.'
+      short: 'Kamaan zãnga bãnde: zĩis wa fenetr wɛɛr vãadã zugu, kood sũur sẽn pãrge, bĩnd sẽn tar koom wa tiig tom kood sũurã pugẽ.'
+      reviewed: false
+    dyu:
+      claim: 'Kaba tumu fitininw (fall armyworm) bɛ kaba furaw sɔsɔ, ka yɔrɔ finmanw to minnu bɛ iko finɛtiri wɛrɛ. Tumu kɔrɔbaw bɛ dogo sɛnɛfɛn dusukun na, ka fura kuraw faran, ka nɔgɔ sumaman to min bɛ iko yiri mugu min bɛ wele frass.'
+      short: 'Kaba tumuw taamashiyɛnw: yɔrɔw iko finɛtiri wɛrɛ furaw kan, sɛnɛfɛn dusukun faranen, nɔgɔ sumaman iko yiri mugu sɛnɛfɛn dusukun na.'
+      reviewed: false
+    wo:
+      claim: 'Sóoboo mbóq (fall armyworm) yu ndaw dañuy sëgg xobu mbóq, bàyyi barab yu sew yu mel ni weeru palanteer. Sóoboo yu mag yi dañuy nëbbu ci xolu gàncax gi, xotti xob yu bees yi, te bàyyi tooj bu tooy bu mel ni pëndu garab bu ñuy wax frass.'
+      short: 'Màndargay sóoboo mbóq: barab yu mel ni weer ci xob yi, xolu gàncax bu xottiku, tooj bu tooy bu mel ni pëndu garab ci xolu gàncax gi.'
+      reviewed: false
+    ee:
+      claim: 'Bli ƒe ŋɔ (fall armyworm) suewo kpaa bli aŋgbawo, eye wogblea teƒe sue siwo le abe fesre ƒe ahuhɔ̃e ene. Ŋɔ gãwo ɣlaa wo ɖokui ɖe nukuku la ƒe dzi me, wovuvua aŋgba yeyewo, eye wogblea mi si fa abe ati ƒe ke ene si woyɔna be frass.'
+      short: 'Bli ƒe ŋɔ ƒe dzesiwo: teƒe siwo le abe ahuhɔ̃e ene le aŋgbawo dzi, nukuku ƒe dzi si vuvu, mi si fa abe ati ƒe ke ene le nukuku ƒe dzi me.'
+      reviewed: false
+    ak:
+      claim: 'Aburow sumpii (fall armyworm) nketewa twitwa aburow nhaban, na wogyaw mmeae a ɛyɛ tratraa te sɛ mpoma ahwehwɛ. Wɔn a wɔanyin no hintaw afifide no koma mu, wɔtetew nhaban foforo, na wogyaw ebin a ɛyɛ fɔkyee te sɛ dua mfuturo a wɔfrɛ no frass.'
+      short: 'Aburow sumpii nsɛnkyerɛnne: mmeae te sɛ mpoma ahwehwɛ wɔ nhaban so, afifide koma a atetew, ebin a ɛyɛ fɔkyee te sɛ dua mfuturo wɔ afifide koma mu.'
+      reviewed: false
+    ln:
+      claim: 'Banzoto ya moke ya masango (fall armyworm) epalolaka nkasa ya masango, etikaka bisika ya pete lokola talatala ya lininisa. Banzoto minene ebombanaka na motema ya bilona, epasolaka nkasa ya sika, mpe etikaka nyei ya mai lokola putulu ya nzete oyo babengaka frass.'
+      short: 'Bilembo ya banzoto ya masango: bisika lokola talatala na nkasa, motema ya bilona epasuki, nyei ya mai lokola putulu ya nzete na motema ya bilona.'
+      reviewed: false
+    lg:
+      claim: 'Ensowera za kasooli (fall armyworm) ento zikolokota ebikoola bya kasooli, ne zireka amabala amalungi ng''endabirwamu y''eddirisa. Ensowera ennene zeekweka mu mutima gw''ekirime, ziyuza ebikoola ebito, era zireka obubi obubisi obufaanana ng''enfuufu y''omuti obuyitibwa frass.'
+      short: 'Obubonero bw''ensowera za kasooli: amabala ng''endabirwamu ku bikoola, omutima gw''ekirime ogwayuziddwa, obubi obubisi ng''enfuufu y''omuti mu mutima gw''ekirime.'
+      reviewed: false
+    rn:
+      claim: 'Inkongwa ntoya (fall armyworm) zihomba amababi y''ibigori, zigasiga ahantu hato hasa n''ikirahuri c''idirisha. Inkongwa nkuru zinyegeza mu mutima w''ikimera, zigacagagura amababi mato, kandi zigasiga amase atose asa n''ifu y''igiti yitwa frass.'
+      short: 'Ibimenyetso vy''inkongwa: ahantu hasa n''ikirahuri ku mababi, umutima w''ikimera wacagaguritse, amase atose asa n''ifu y''igiti mu mutima w''ikimera.'
+      reviewed: false
+    rw:
+      claim: 'Nkongwa nto (fall armyworm) zihomboka amababi y''ibigori, zigasiga ahantu hato hasa n''ikirahure cy''idirishya. Nkongwa nkuru zihisha mu mutima w''igihingwa, zigacagagura amababi mato, kandi zigasiga amase atose asa n''ifu y''igiti yitwa frass.'
+      short: 'Ibimenyetso bya nkongwa: ahantu hasa n''ikirahure ku mababi, umutima w''igihingwa wacagaguritse, amase atose asa n''ifu y''igiti mu mutima w''igihingwa.'
+      reviewed: false
+    bem:
+      claim: 'Ifishishi ifinono fya mataba (fall armyworm) filapala amabula ya mataba, ukushiya utubala utunono nge cilolo ca pa windo. Ifishishi ifikalamba filabelama mu mutima wa cilimwa, filalepula amabula ayapya, kabili filashiya imyanda iyatalala nge lufu lwa muti iyo beta ati frass.'
+      short: 'Ifishibilo fya fishishi fya mataba: utubala nge cilolo pa mabula, umutima wa cilimwa uwalepuka, imyanda iyatalala nge lufu lwa muti mu mutima.'
+      reviewed: false
+    ny:
+      claim: 'Mbozi zazing''ono za chimanga (fall armyworm) zimakwangula masamba a chimanga, kusiya mawanga opyapyala ngati galasi la zenera. Mbozi zazikulu zimabisala mumtima wa mbewu, zimang''amba masamba atsopano, ndipo zimasiya ndowe zonyowa ngati utuchi zotchedwa frass.'
+      short: 'Zizindikiro za mbozi za chimanga: mawanga ngati galasi pa masamba, mtima wa mbewu wong''ambika, ndowe zonyowa ngati utuchi mumtima wa mbewu.'
+      reviewed: false
+    sn:
+      claim: 'Makonye madiki egonye rechibage (fall armyworm) anokwenya mashizha echibage, achisiya mavara matete akaita segirazi rewindo. Makonye makuru anovanda mumoyo wechirimwa, anobvarura mashizha matsva, uye anosiya tsvina nyoro yakaita seuswa hwemuti inonzi frass.'
+      short: 'Zviratidzo zvegonye rechibage: mavara akaita segirazi pamashizha, moyo wechirimwa wakabvaruka, tsvina nyoro yakaita seuswa hwemuti mumoyo wechirimwa.'
+      reviewed: false
+    ts:
+      claim: 'Swivungu swintsongo swa xivungu xa mavele (fall armyworm) swi kwecula matluka ya mavele, swi siya swivati swo ondza swo fana na nghilazi ya fasitere. Swivungu leswikulu swi tumbela embilwini ya ximila, swi handzula matluka lamantshwa, naswona swi siya nyanyu wa mati wo fana na ntshuri wa ntsandza lowu vitaniwaka frass.'
+      short: 'Swikombiso swa xivungu xa mavele: swivati swo fana na nghilazi eka matluka, mbilu ya ximila leyi handzukeke, nyanyu wa mati wo fana na ntshuri wa ntsandza.'
+      reviewed: false
+    tn:
+      claim: 'Diboko tse dinnye tsa seboko sa mmidi (fall armyworm) di gogola matlhare a mmidi, di tlogela matheba a a tshesane a a jaaka galase ya fensetere. Diboko tse dikgolo di iphitlha mo pelong ya semela, di gagola matlhare a masha, mme di tlogela masepa a metsi a a jaaka lorole lwa logong a a bidiwang frass.'
+      short: 'Matshwao a seboko sa mmidi: matheba a a jaaka galase mo matlhareng, pelo ya semela e e gagogileng, masepa a metsi a a jaaka lorole lwa logong.'
+      reviewed: false
+    st:
+      claim: 'Diboko tse nyane tsa seboko sa poone (fall armyworm) di hohla makgasi a poone, di siya matheba a tshesane a kang kgalase ya fensetere. Diboko tse kgolo di ipata pelong ya semela, di tabola makgasi a matjha, mme di siya mantle a metsi a kang lerole la lehong a bitswang frass.'
+      short: 'Matshwao a seboko sa poone: matheba a kang kgalase makgasing, pelo ya semela e tabohileng, mantle a metsi a kang lerole la lehong.'
+      reviewed: false
+    af:
+      claim: 'Jong herfsruspes skraap mielieblare en laat dun, vensteragtige kolle. Ouer ruspes kruip weg in die hart van die plant, skeur die jong blare en laat nat, saagselagtige mis wat frass genoem word.'
+      short: 'Herfsruspe-tekens: vensteragtige kolle op blare, geskeurde plantharte, nat saagselagtige mis in die hart van die plant.'
+      reviewed: false
+    xh:
+      claim: 'Izibungu zesibungu sombona (fall armyworm) ezincinci zikrwela amagqabi ombona, zishiye amabala amancinci afana neglasi yefestile. Izibungu ezindala zizimela entliziyweni yesityalo, zikrazula amagqabi amatsha, kwaye zishiya ilindle elimanzi elifana nomgubo womthi elibizwa ngokuba yi-frass.'
+      short: 'Iimpawu zesibungu sombona: amabala afana neglasi kumagqabi, intliziyo yesityalo ekrazukileyo, ilindle elimanzi elifana nomgubo womthi.'
+      reviewed: false
+    zu:
+      claim: 'Izibungu zesibungu sommbila (fall armyworm) ezisencane ziklwebha amaqabunga ommbila, zishiye amabala amancane afana nengilazi yefasitela. Izibungu ezindala zicasha enhliziyweni yesitshalo, zidabula amaqabunga amasha, futhi zishiya indle emanzi efana nomgubo wokhuni ebizwa ngokuthi yi-frass.'
+      short: 'Izimpawu zesibungu sommbila: amabala afana nengilazi emaqabungeni, inhliziyo yesitshalo edabukile, indle emanzi efana nomgubo wokhuni.'
+      reviewed: false
+    pcm:
+      claim: 'Young fall armyworm dey scrape maize leaf and leave thin spots like window glass. Big ones dey hide for the middle of the plant, dey tear the young leaves, and dey leave wet poo like sawdust wey dem dey call frass.'
+      short: 'Armyworm signs: spots like window glass for leaf, torn middle of plant, wet poo like sawdust for the middle of plant.'
+      reviewed: false
+    ig:
+      claim: 'Ikpuru ọka (fall armyworm) ndị na-eto eto na-akpacha akwụkwọ ọka, na-ahapụ ebe dị gịrịgịrị dịka iko windo. Ikpuru ndị tozuru etozu na-ezo n''etiti osisi, na-adọwa akwụkwọ na-eto eto, na-ahapụkwa nsị mmiri mmiri dịka ntụ osisi a na-akpọ frass.'
+      short: 'Akara ikpuru ọka: ebe dịka iko windo n''akwụkwọ, etiti osisi adọwara adọwa, nsị mmiri mmiri dịka ntụ osisi n''etiti osisi.'
+      reviewed: false
+    yo:
+      claim: 'Awọn idin kokoro agbado (fall armyworm) kekere n ha ewe agbado ti wọn si fi aaye tinrin bi gilaasi ferese silẹ. Awọn idin agba n fara pamọ si aarin ọgbin, wọn n fa awọn ewe ọdọ ya, wọn si n fi igbẹ tutu bi iyẹfun igi ti a n pe ni frass silẹ.'
+      short: 'Ami kokoro agbado: aaye bi gilaasi ferese lori ewe, aarin ọgbin ti a fa ya, igbẹ tutu bi iyẹfun igi ni aarin ọgbin.'
+      reviewed: false
+    ha:
+      claim: 'Ƙananan tsutsotsin masara (fall armyworm) suna kankare ganyen masara su bar wurare sirara kamar gilashin taga. Manyan tsutsotsi suna ɓoyewa a cikin tsakiyar shukar, suna yayyaga sabbin ganye kuma suna barin kashi mai danshi kamar garin katako da ake kira frass.'
+      short: 'Alamun tsutsar masara: wurare kamar gilashin taga a kan ganye, tsakiyar shuka da aka yayyaga, kashi mai danshi kamar garin katako a tsakiyar shuka.'
+      reviewed: false
   source: ICIPE, Fall armyworm identification, management and control; CIFOR-ICRAF, Fall Armyworm guide
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
   checked_on: 2026-11-23
@@ -203,6 +323,102 @@ facts:
     so:
       claim: 'Dirxiga fall armyworm wuxuu madaxa ku leeyahay calaamad Y ah oo rogan, iyo afar dhibcood oo madow oo afargeesle ahaan u habaysan qaybta jirkiisa ee ka horreysa tan ugu dambaysa.'
       short: 'Dirxiga fall armyworm: Y rogan oo madaxa ku yaal, afar dhibcood oo madow oo afargeesle ah dabada agteeda.'
+      reviewed: false
+    ti:
+      claim: 'ሓሰኻ ዕፉን (fall armyworm) ኣብ ርእሱ ዝተገልበጠ Y ምልክትን ኣብቲ ካብ መወዳእታ ካልኣይ ክፋል ኣካላቱ ከም ርቡዕ ዝተሰርዑ ኣርባዕተ ጸለምቲ ነጥብታትን ኣለዎ።'
+      short: 'ሓሰኻ ዕፉን: ኣብ ርእሲ ዝተገልበጠ Y፣ ኣብ ጥቓ ጭራ ከም ርቡዕ ኣርባዕተ ጸለምቲ ነጥብታት።'
+      reviewed: false
+    fuf:
+      claim: 'Ɓowru makka (fall armyworm) ina jogii maande Y waylitiinde e hoore mum e tobbe ɓaleeje nayi feewnaaɗe no karre e terde ɗiɗaɓre iwde e gasirde ɓanndu mum.'
+      short: 'Ɓowru makka: Y waylitiinde e hoore, tobbe ɓaleeje nayi no karre ɓadii laaci.'
+      reviewed: false
+    mos:
+      claim: 'Kamaan zãngã (fall armyworm) tara Y sẽn lebg a zugã zugu la bãnd sabels naas sẽn yaa wa kare a yĩngã puud a yiib-n-soabã pugẽ, n sing a yaoorã.'
+      short: 'Kamaan zãnga: Y sẽn lebg zugã zugu, bãnd sabels naas wa kare a zuudã kĩngã.'
+      reviewed: false
+    dyu:
+      claim: 'Kaba tumu (fall armyworm) ka kunkolo kan, Y taamashiyɛn bɛ yen min yɛlɛmana, ani tomi finman naani minnu labɛnna iko kare a farikolo yɔrɔ filanan na ka bɔ a laban na.'
+      short: 'Kaba tumu: Y yɛlɛmanen kunkolo kan, tomi finman naani iko kare a ku kɛrɛfɛ.'
+      reviewed: false
+    wo:
+      claim: 'Sóoboo mbóq (fall armyworm) am na màndargay Y bu walbatiku ci boppam ak ñeenti tomb yu ñuul yu ñu tëgg ni karre ci pàcc bu ñaareel bi jóge ci cat bu yaramam.'
+      short: 'Sóoboo mbóq: Y bu walbatiku ci bopp bi, ñeenti tomb yu ñuul ni karre ci wetu geen gi.'
+      reviewed: false
+    ee:
+      claim: 'Bli ƒe ŋɔ (fall armyworm) ƒe ta dzi Y si trɔ ta le kple dzesi yibɔ ene siwo wodo ɖe ɖoɖo me abe kɔtɔɔ ene le eƒe ŋutilã ƒe akpa evelia tso nuwuwu.'
+      short: 'Bli ƒe ŋɔ: Y si trɔ ta le ta dzi, dzesi yibɔ ene abe kɔtɔɔ ene le asike gbɔ.'
+      reviewed: false
+    ak:
+      claim: 'Aburow sumpii (fall armyworm) wɔ Y a adan ne ti so nsɛnkyerɛnne wɔ ne ti so ne nsensanee tuntum anan a wɔahyehyɛ sɛ kaakuu wɔ ne nipadua fa a ɛto so abien fi n''awiei.'
+      short: 'Aburow sumpii: Y a adan ne ti so wɔ ne ti so, nsensanee tuntum anan sɛ kaakuu bɛn ne dua.'
+      reviewed: false
+    ln:
+      claim: 'Nzoto ya masango (fall armyworm) ezali na elembo ya Y oyo ebaluki na motó na yango mpe matono minei ya moindo oyo etiami lokola karé na eteni ya mibale kobanda na nsuka ya nzoto na yango.'
+      short: 'Nzoto ya masango: Y ebaluki na motó, matono minei ya moindo lokola karé penepene na mokila.'
+      reviewed: false
+    lg:
+      claim: 'Ensowera ya kasooli (fall armyworm) erina akabonero ka Y akakyusiddwa ku mutwe gwayo n''obutonnyeze buna obuddugavu obusengekeddwa nga square ku kitundu eky''okubiri okuva ku nkomerero y''omubiri gwayo.'
+      short: 'Ensowera ya kasooli: Y ekyusiddwa ku mutwe, obutonnyeze buna obuddugavu nga square okumpi n''omukira.'
+      reviewed: false
+    rn:
+      claim: 'Inkongwa y''ibigori (fall armyworm) ifise ikimenyetso ca Y ihindukiye ku mutwe wayo n''utudomo tune tw''umukara dutondetse nka kare ku gice ca kabiri uhereye ku mpera y''umubiri wayo.'
+      short: 'Inkongwa y''ibigori: Y ihindukiye ku mutwe, utudomo tune tw''umukara nka kare hafi y''umurizo.'
+      reviewed: false
+    rw:
+      claim: 'Nkongwa y''ibigori (fall armyworm) ifite ikimenyetso cya Y ihindukiye ku mutwe wayo n''utudomo tune tw''umukara dutondetse nka kare ku gice cya kabiri uhereye ku mpera y''umubiri wayo.'
+      short: 'Nkongwa y''ibigori: Y ihindukiye ku mutwe, utudomo tune tw''umukara nka kare hafi y''umurizo.'
+      reviewed: false
+    bem:
+      claim: 'Icishishi ca mataba (fall armyworm) cakwata icishibilo ca Y iyapilibuka pa mutwe waco no tubala tune utwafiita utwapekanishiwa nge cipimo ca mbali shine pa cipande ca bubili ukufuma ku mpela ya mubili waco.'
+      short: 'Icishishi ca mataba: Y iyapilibuka pa mutwe, utubala tune utwafiita nge cipimo ca mbali shine mupepi no mucila.'
+      reviewed: false
+    ny:
+      claim: 'Mbozi ya chimanga (fall armyworm) ili ndi chizindikiro cha Y yozondoka pamutu pake ndi madontho anayi akuda okonzedwa ngati sikweya pa gawo lachiwiri kuchokera kumapeto a thupi lake.'
+      short: 'Mbozi ya chimanga: Y yozondoka pamutu, madontho anayi akuda ngati sikweya pafupi ndi mchira.'
+      reviewed: false
+    sn:
+      claim: 'Gonye rechibage (fall armyworm) rine chiratidzo cheY yakapidiguka pamusoro waro uye mavara mana matema akarongwa sesikweya pachikamu chechipiri kubva kumagumo emuviri waro.'
+      short: 'Gonye rechibage: Y yakapidiguka pamusoro, mavara mana matema sesikweya pedyo nemuswe.'
+      reviewed: false
+    ts:
+      claim: 'Xivungu xa mavele (fall armyworm) xi na mfungho wa Y lowu hundzuluxiweke enhlokweni ya xona na swivati swa mune swa ntima leswi hleriweke ku fana na xikwere eka xiphemu xa vumbirhi ku suka emakumu ka miri wa xona.'
+      short: 'Xivungu xa mavele: Y leyi hundzuluxiweke enhlokweni, swivati swa mune swa ntima ku fana na xikwere ekusuhi na ncila.'
+      reviewed: false
+    tn:
+      claim: 'Seboko sa mmidi (fall armyworm) se na le letshwao la Y e e fetotsweng mo tlhogong ya sone le matheba a mane a mantsho a a rulagantsweng jaaka sekwere mo karolong ya bobedi go tswa kwa bofelong jwa mmele wa sone.'
+      short: 'Seboko sa mmidi: Y e e fetotsweng mo tlhogong, matheba a mane a mantsho jaaka sekwere gaufi le mogatla.'
+      reviewed: false
+    st:
+      claim: 'Seboko sa poone (fall armyworm) se na le letshwao la Y e fetotsweng hloohong ya sona le matheba a mane a matsho a hlophisitsweng jwalo ka sekwere karolong ya bobedi ho tloha qetellong ya mmele wa sona.'
+      short: 'Seboko sa poone: Y e fetotsweng hloohong, matheba a mane a matsho jwalo ka sekwere haufi le mohatla.'
+      reviewed: false
+    af:
+      claim: 'Die herfsruspe het ''n omgekeerde Y-merk op sy kop en vier swart kolle in ''n vierkant op die voorlaaste segment van sy liggaam.'
+      short: 'Herfsruspe: omgekeerde Y op die kop, vier swart kolle in ''n vierkant naby die stert.'
+      reviewed: false
+    xh:
+      claim: 'Isibungu sombona (fall armyworm) sinophawu lwe-Y olujikiweyo entlokweni yaso kunye namachaphaza amane amnyama alungelelaniswe njengesikwere kwicandelo lesibini ukusuka ekugqibeleni lomzimba waso.'
+      short: 'Isibungu sombona: i-Y ejikiweyo entlokweni, amachaphaza amane amnyama njengesikwere kufutshane nomsila.'
+      reviewed: false
+    zu:
+      claim: 'Isibungu sommbila (fall armyworm) sinophawu lwe-Y oluphendukile ekhanda laso namachashaza amane amnyama ahlelwe njengesikwele engxenyeni yesibili kweyokugcina yomzimba waso.'
+      short: 'Isibungu sommbila: i-Y ephendukile ekhanda, amachashaza amane amnyama njengesikwele eduze komsila.'
+      reviewed: false
+    pcm:
+      claim: 'Fall armyworm get upside down Y mark for im head and four black dots wey arrange like square for the second to last part of im body.'
+      short: 'Fall armyworm: upside down Y for head, four black dots like square near the tail.'
+      reviewed: false
+    ig:
+      claim: 'Ikpuru ọka (fall armyworm) nwere akara Y tụgharịrị atụgharị n''isi ya na ntụpọ ojii anọ a haziri n''akụkụ anọ n''akụkụ nke abụọ site na ikpeazụ nke ahụ ya.'
+      short: 'Ikpuru ọka: Y tụgharịrị atụgharị n''isi, ntụpọ ojii anọ n''akụkụ anọ nso ọdụ.'
+      reviewed: false
+    yo:
+      claim: 'Idin kokoro agbado (fall armyworm) ni ami Y ti o doju kọ lori ori rẹ ati ami dudu mẹrin ti a to ni onigun mẹrin lori apa keji si ikẹhin ara rẹ.'
+      short: 'Idin kokoro agbado: Y ti o doju kọ lori ori, ami dudu mẹrin ni onigun mẹrin nitosi iru.'
+      reviewed: false
+    ha:
+      claim: 'Tsutsar masara (fall armyworm) tana da alamar Y a juye a kanta da ɗigo huɗu masu duhu da aka jera a siffar murabba''i a kashi na biyu daga ƙarshen jikinta.'
+      short: 'Tsutsar masara: Y a juye a kai, ɗigo huɗu masu duhu a siffar murabba''i kusa da wutsiya.'
       reviewed: false
   source: Oklahoma State University Extension; Texas A&M AgriLife Extension
   source_url: https://extension.okstate.edu/e-pest-alerts/2024/fall-armyworms-aug-28-2024.html
@@ -293,6 +509,102 @@ facts:
     so:
       claim: 'Booqo galleydaada marar badan si aad u baadho. Hubi 50 geed adigoo beerta u maraya qaab W ah, ku istaagaya shan meelood, meel kastana eegaya bartamaha toban geed.'
       short: 'Baadh marar badan: beerta u mar qaab W, ku istaag 5 meelood, meel kasta hubi bartamaha 10 geed.'
+      reviewed: false
+    ti:
+      claim: 'ንዕፉንካ ኩሉ ግዜ ክትምርምሮ ብጸሖ። ኣብ ምሉእ ግራት ብቕርጺ W ብምኻድ 50 ኣትኽልቲ መርምር፣ ኣብ ሓሙሽተ ቦታታት ደው በል ኣብ ነፍሲ ወከፍ ቦታ ልቢ ዓሰርተ ኣትኽልቲ ተመልከት።'
+      short: 'ኩሉ ግዜ መርምር: ኣብ ግራት ብቕርጺ W ኪድ፣ ኣብ 5 ቦታታት ደው በል፣ ኣብ ነፍሲ ወከፍ ቦታ ልቢ 10 ኣትኽልቲ ተመልከት።'
+      reviewed: false
+    fuf:
+      claim: 'Yah ndaaru makka maa sahaa kala. Ndaar ko aawi 50 e yahde e mbaadi W e ngesa fof, darodaa e nokkuuji jowi ndaaraa ɓerɗe ko aawi sappo e kala nokku.'
+      short: 'Ndaar sahaa kala: yah e mbaadi W e ngesa, daro e nokkuuji 5, ndaar ɓerɗe ko aawi 10 e kala nokku.'
+      reviewed: false
+    mos:
+      claim: 'Kẽng n ges y kamaanã wakat fãa. Ges kood 50 ne y sẽn na n kẽnd W sore puugã fãa pugẽ, n yals zĩis a nu la y ges kood piig sũy zĩig fãa.'
+      short: 'Ges wakat fãa: kẽng W sore puugã pugẽ, yals zĩis 5, ges kood 10 sũy zĩig fãa.'
+      reviewed: false
+    dyu:
+      claim: 'Taa i ka kaba lajɛ waati bɛɛ. Sɛnɛfɛn 50 lajɛ ni i taamana W cogo la foro bɛɛ kɔnɔ, ka jɔ yɔrɔ duuru na ka sɛnɛfɛn tan dusukunw lajɛ yɔrɔ kelen kelen bɛɛ la.'
+      short: 'A lajɛ waati bɛɛ: taama W cogo la foro kɔnɔ, jɔ yɔrɔ 5 na, sɛnɛfɛn 10 dusukunw lajɛ yɔrɔ kelen kelen bɛɛ la.'
+      reviewed: false
+    wo:
+      claim: 'Demal seeti sa mbóq saa su nekk. Seetal 50 gàncax ci dox ci anamu W ci tool bi bépp, taxaw ci juróom barab te seet xolu fukki gàncax ci barab bu nekk.'
+      short: 'Seetal saa su nekk: doxal ci anamu W ci tool bi, taxawal ci barab 5, seetal xolu 10 gàncax ci barab bu nekk.'
+      reviewed: false
+    ee:
+      claim: 'Yi ɖakpɔ wò bli ɣesiaɣi. Kpɔ nukuku 50 to zɔzɔ le W ƒe nɔnɔme dzi to agble blibo la me, nànɔ te le teƒe atɔ̃ eye nàkpɔ nukuku ewo ƒe dzi le teƒe ɖesiaɖe.'
+      short: 'Kpɔ ɣesiaɣi: zɔ le W ƒe nɔnɔme dzi to agble la me, nɔ te le teƒe 5, kpɔ nukuku 10 ƒe dzi le teƒe ɖesiaɖe.'
+      reviewed: false
+    ak:
+      claim: 'Kɔ w''aburow ho daa kɔhwɛ. Hwɛ afifide 50 denam sɛ wobɛnantew wɔ W nsɛso so wɔ afuo no nyinaa mu, gyina mmeae anum na hwɛ afifide du koma wɔ beae biara.'
+      short: 'Hwɛ daa: nantew wɔ W nsɛso so wɔ afuo no mu, gyina mmeae 5, hwɛ afifide 10 koma wɔ beae biara.'
+      reviewed: false
+    ln:
+      claim: 'Kende kotala masango na yo mbala na mbala. Tala bilona 50 na kotambola na ndenge ya W na elanga mobimba, kotelema na bisika mitano mpe kotala mitema ya bilona zomi na esika moko na moko.'
+      short: 'Tala mbala na mbala: tambola na ndenge ya W na elanga, telema na bisika 5, tala mitema ya bilona 10 na esika moko na moko.'
+      reviewed: false
+    lg:
+      claim: 'Kyalira kasooli wo buli kiseera okumukebera. Kebera ebirime 50 ng''otambula mu ngeri ya W mu nnimiro yonna, ng''oyimirira mu bifo bitaano era ng''otunuulira emitima gy''ebirime kkumi mu buli kifo.'
+      short: 'Kebera buli kiseera: tambula mu ngeri ya W mu nnimiro, yimirira mu bifo 5, tunuulira emitima gy''ebirime 10 mu buli kifo.'
+      reviewed: false
+    rn:
+      claim: 'Jana ugendere ibigori vyawe kenshi ubisuzume. Suzuma ibimera 50 ugenda ushushanya W mu ndimiro yose, uhagarara ahantu hatanu kandi urabe imitima y''ibimera cumi aho hantu hose.'
+      short: 'Suzuma kenshi: genda ushushanya W mu ndimiro, hagarara ahantu 5, raba imitima y''ibimera 10 aho hose.'
+      reviewed: false
+    rw:
+      claim: 'Jya usura ibigori byawe kenshi ubigenzure. Genzura ibihingwa 50 ugenda ushushanya W mu murima wose, uhagarara ahantu hatanu kandi urebe imitima y''ibihingwa icumi aho hantu hose.'
+      short: 'Genzura kenshi: genda ushushanya W mu murima, hagarara ahantu 5, reba imitima y''ibihingwa 10 aho hose.'
+      reviewed: false
+    bem:
+      claim: 'Takeni amataba yenu lyonse ukuyapima. Pimeni ifilimwa 50 ukupitila mu kwenda mu cimoneko ca W mu bala lyonse, ukwiminina pa ncende shisano no kumona imitima ya filimwa ikumi pa ncende imo imo.'
+      short: 'Pimeni lyonse: endeni mu cimoneko ca W mu bala, iminineni pa ncende 5, moneni imitima ya filimwa 10 pa ncende imo imo.'
+      reviewed: false
+    ny:
+      claim: 'Pitani ku chimanga chanu pafupipafupi kuti muchiyang''ane. Yang''anani mbewu 50 poyenda ngati chilembo W m''munda wonse, kuima malo asanu ndi kuyang''ana mitima ya mbewu khumi pamalo aliwonse.'
+      short: 'Yang''anani pafupipafupi: yendani ngati W m''munda, imani malo 5, yang''anani mitima ya mbewu 10 pamalo aliwonse.'
+      reviewed: false
+    sn:
+      claim: 'Shanyira chibage chako nguva dzose kuti uchiongorore. Ongorora zvirimwa 50 nekufamba nechimiro cheW mumunda wose, uchimira panzvimbo shanu uye uchitarisa moyo yezvirimwa gumi panzvimbo imwe neimwe.'
+      short: 'Ongorora nguva dzose: famba nechimiro cheW mumunda, mira panzvimbo 5, tarisa moyo yezvirimwa 10 panzvimbo imwe neimwe.'
+      reviewed: false
+    ts:
+      claim: 'Endzela mavele ya wena nkarhi na nkarhi ku ma kambela. Kambela swimila swa 50 hi ku famba hi xivumbeko xa W enimini wa nsimu hinkwayo, u yima eka tindhawu ta ntlhanu u languta timbilu ta swimila swa khume eka ndhawu yin''wana na yin''wana.'
+      short: 'Kambela nkarhi na nkarhi: famba hi xivumbeko xa W ensinwini, yima eka tindhawu ta 5, languta timbilu ta swimila swa 10 eka ndhawu yin''wana na yin''wana.'
+      reviewed: false
+    tn:
+      claim: 'Etela mmidi wa gago ka metlha go o tlhatlhoba. Tlhatlhoba dijalo di le 50 ka go tsamaya ka sebopego sa W mo tshimong yotlhe, o eme mo mafelong a le matlhano mme o lebe dipelo tsa dijalo di le lesome mo lefelong lengwe le lengwe.'
+      short: 'Tlhatlhoba ka metlha: tsamaya ka sebopego sa W mo tshimong, ema mo mafelong a le 5, leba dipelo tsa dijalo di le 10 mo lefelong lengwe le lengwe.'
+      reviewed: false
+    st:
+      claim: 'Etela poone ya hao kamehla ho e hlahloba. Hlahloba dimela tse 50 ka ho tsamaya ka sebopeho sa W ho pholletsa le tshimo, o eme dibakeng tse hlano mme o shebe dipelo tsa dimela tse leshome sebakeng se seng le se seng.'
+      short: 'Hlahloba kamehla: tsamaya ka sebopeho sa W tshimong, ema dibakeng tse 5, sheba dipelo tsa dimela tse 10 sebakeng ka seng.'
+      reviewed: false
+    af:
+      claim: 'Besoek jou mielies gereeld om dit na te gaan. Gaan 50 plante na deur in ''n W-patroon oor die land te loop, op vyf plekke stil te staan en in elkeen na die harte van tien plante te kyk.'
+      short: 'Gaan gereeld na: loop in ''n W-patroon oor die land, staan op 5 plekke stil, kyk na die harte van 10 plante op elke plek.'
+      reviewed: false
+    xh:
+      claim: 'Tyelela umbona wakho rhoqo ukuze uwuhlole. Hlola izityalo ezingama-50 ngokuhamba ngohlobo lwe-W kuyo yonke intsimi, ume kwiindawo ezintlanu uze ujonge iintliziyo zezityalo ezilishumi kwindawo nganye.'
+      short: 'Hlola rhoqo: hamba ngohlobo lwe-W kwintsimi, yima kwiindawo ezi-5, jonga iintliziyo zezityalo ezili-10 kwindawo nganye.'
+      reviewed: false
+    zu:
+      claim: 'Vakashela ummbila wakho njalo ukuze uwuhlole. Hlola izitshalo ezingu-50 ngokuhamba ngesimo se-W kuyo yonke insimu, uma ezindaweni ezinhlanu futhi ubheke izinhliziyo zezitshalo eziyishumi endaweni ngayinye.'
+      short: 'Hlola njalo: hamba ngesimo se-W kuyo yonke insimu, yima ezindaweni ezingu-5, bheka izinhliziyo zezitshalo ezingu-10 endaweni ngayinye.'
+      reviewed: false
+    pcm:
+      claim: 'Dey go check your maize every time. Check 50 plants as you waka for W shape across the farm, stop for five places and look the middle of ten plants for each place.'
+      short: 'Check every time: waka for W shape across the farm, stop for 5 places, look the middle of 10 plants for each place.'
+      reviewed: false
+    ig:
+      claim: 'Na-aga lelee ọka gị mgbe niile. Lelee osisi 50 site n''ije ije n''ụdị W gafee ugbo, kwụsị n''ebe ise ma lelee etiti osisi iri n''ebe ọ bụla.'
+      short: 'Na-elele mgbe niile: jee ije n''ụdị W gafee ugbo, kwụsị n''ebe 5, lelee etiti osisi 10 n''ebe ọ bụla.'
+      reviewed: false
+    yo:
+      claim: 'Maa lọ wo agbado rẹ nigbagbogbo lati ṣayẹwo. Ṣayẹwo ọgbin 50 nipa rinrin ni apẹrẹ W kọja oko, duro ni ibi marun ki o si wo aarin ọgbin mẹwa ni ibi kọọkan.'
+      short: 'Ṣayẹwo nigbagbogbo: rin ni apẹrẹ W kọja oko, duro ni ibi 5, wo aarin ọgbin 10 ni ibi kọọkan.'
+      reviewed: false
+    ha:
+      claim: 'Ku riƙa ziyartar masararku akai-akai don ku duba. Ku duba shuke-shuke 50 ta hanyar tafiya a siffar W a fadin gona, ku tsaya a wurare biyar kuma ku duba tsakiyar shuke-shuke goma a kowane wuri.'
+      short: 'Ku riƙa dubawa: ku yi tafiya a siffar W a gona, ku tsaya a wurare 5, ku duba tsakiyar shuke-shuke 10 a kowane.'
       reviewed: false
   source: FAO Fall Armyworm Guidance Notes 2 and 4
   source_url: https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf
@@ -394,6 +706,102 @@ facts:
       claim: 'Ku burburinta gacanta ukunta isku urursan iyo dirxiga yar waa xeelad aad waxtar u leh oo loogu talagalay beeralayda yaryar ee galleyda.'
       short: 'Gacanta ku burburi ukunta isku urursan iyo dirxiga yar ee fall armyworm. Si fiican ayay ugu shaqeysaa beeraha yaryar.'
       reviewed: false
+    ti:
+      claim: 'ጉጅለታት እንቋቑሖን ንኣሽቱ ሓሰኻን ብኢድ ምጭፍላቕ ንንኣሽቱ ሓረስቶት ዕፉን ኣዝዩ ውጽኢታዊ መንገዲ እዩ።'
+      short: 'ጉጅለታት እንቋቑሖ ሓሰኻ ዕፉንን ንኣሽቱ ሓሰኻን ብኢድ ጨፍልቕ። ኣብ ንኣሽቱ ግራውቲ ጽቡቕ ይሰርሕ።'
+      reviewed: false
+    fuf:
+      claim: 'Ŋoƴƴude e juuɗe mbooloo boccooɗe e ɓowɗi tokooɗi ko laawol gollirɗo no feewi ngam demooɓe makka tokooɓe.'
+      short: 'Ŋoƴƴu e juuɗe mbooloo boccooɗe ɓowɗi makka e ɓowɗi tokooɗi. Ɗum ina golla no moƴƴi e ngesa tokooso.'
+      reviewed: false
+    mos:
+      claim: 'Gel-tudg la zãns bilf ning y sẽn na n nug ne y nugã yaa sor sẽn tumd sõma wusg kamaan koodb bilfã yĩnga.'
+      short: 'Nug ne y nugã kamaan zãngã gel-tudg la zãns bilfu. A tumda sõma puud bilf zugu.'
+      reviewed: false
+    dyu:
+      claim: 'Shɛfan jɛkuluw ni tumu fitininw ɲɔni ni bolo ye, o ye sira ɲuman ye kosɛbɛ kaba sɛnɛkɛla fitininw ma.'
+      short: 'Kaba tumuw shɛfan jɛkuluw ni tumu fitininw ɲɔni ni bolo ye. A bɛ baara kɛ ka ɲɛ foro fitininw kan.'
+      reviewed: false
+    wo:
+      claim: 'Toj ak loxo mbooloo nen yi ak sóoboo yu ndaw yi ab pexe bu baax lool la ngir beykat yu ndaw yu mbóq.'
+      short: 'Tojal ak loxo mbooloo neni sóoboo mbóq ak sóoboo yu ndaw. Dafay dox bu baax ci tool yu ndaw.'
+      reviewed: false
+    ee:
+      claim: 'Azi ƒe ƒuƒoƒowo kple ŋɔ suewo tsɔtsɔ asi gbã nye mɔ si wɔa dɔ nyuie ŋutɔ na bli agbledela suewo.'
+      short: 'Tsɔ asi gbã bli ƒe ŋɔ ƒe azi ƒuƒoƒowo kple ŋɔ suewo. Ewɔa dɔ nyuie le agble suewo dzi.'
+      reviewed: false
+    ak:
+      claim: 'Sɛ wode wo nsa bɛbubu nkesua akuwakuw ne sumpii nketewa a, ɛyɛ ɔkwan a ɛyɛ adwuma paa ma aburow akuafo nketewa.'
+      short: 'Fa wo nsa bubu aburow sumpii nkesua akuwakuw ne sumpii nketewa. Ɛyɛ adwuma yiye wɔ mfuw nketewa so.'
+      reviewed: false
+    ln:
+      claim: 'Kopanza na maboko masanga ya maki mpe banzoto ya moke ezali nzela oyo esalaka malamu mingi mpo na balimi ya mike ya masango.'
+      short: 'Panza na maboko masanga ya maki ya banzoto ya masango mpe banzoto ya moke. Esalaka malamu na bilanga ya mike.'
+      reviewed: false
+    lg:
+      claim: 'Okubetenta n''engalo ebibinja by''amagi n''ensowera ento y''engeri ekola obulungi ennyo eri abalimi ba kasooli abatono.'
+      short: 'Betenta n''engalo ebibinja by''amagi g''ensowera za kasooli n''ensowera ento. Kikola bulungi mu nnimiro entono.'
+      reviewed: false
+    rn:
+      claim: 'Kumenagura n''intoke amagi n''inyo ntoya ni uburyo bukora neza cane ku barimyi bato b''ibigori.'
+      short: 'Menagura n''intoke amagi y''inkongwa n''inyo ntoya. Bikora neza mu ndimiro ntoya.'
+      reviewed: false
+    rw:
+      claim: 'Kumenagura n''intoki amagi n''inyo nto ni uburyo bukora neza cyane ku bahinzi bato b''ibigori.'
+      short: 'Menagura n''intoki amagi ya nkongwa n''inyo nto. Bikora neza mu mirima mito.'
+      reviewed: false
+    bem:
+      claim: 'Ukukonaula no kuboko amaumba ya mani ne fishishi ifinono ni nshila iyabomba bwino sana ku balimi abanono aba mataba.'
+      short: 'Konauleni no kuboko amaumba ya mani ya fishishi fya mataba ne fishishi ifinono. Cilabomba bwino mu mabala ayanono.'
+      reviewed: false
+    ny:
+      claim: 'Kuphwanya ndi manja magulu a mazira ndi mbozi zazing''ono ndi njira yogwira ntchito kwambiri kwa alimi ang''onoang''ono a chimanga.'
+      short: 'Phwanyani ndi manja magulu a mazira a mbozi za chimanga ndi mbozi zazing''ono. Zimagwira ntchito bwino m''minda yaing''ono.'
+      reviewed: false
+    sn:
+      claim: 'Kupwanya neruoko mapoka emazai nemakonye madiki inzira inoshanda zvikuru kuvarimi vadiki vechibage.'
+      short: 'Pwanya neruoko mapoka emazai egonye rechibage nemakonye madiki. Zvinoshanda zvakanaka paminda midiki.'
+      reviewed: false
+    ts:
+      claim: 'Ku pfotlosa hi voko mintlawa ya mandza na swivungu swintsongo i ndlela leyi tirhaka kahle swinene eka varimi vatsongo va mavele.'
+      short: 'Pfotlosa hi voko mintlawa ya mandza ya xivungu xa mavele na swivungu swintsongo. Swi tirha kahle eka mapurasi lamatsongo.'
+      reviewed: false
+    tn:
+      claim: 'Go pitlaganya ka seatla ditlhopha tsa mae le diboko tse dinnye ke mokgwa o o dirang sentle thata mo balemiing ba bannye ba mmidi.'
+      short: 'Pitlaganya ka seatla ditlhopha tsa mae a seboko sa mmidi le diboko tse dinnye. Go dira sentle mo masimong a mannye.'
+      reviewed: false
+    st:
+      claim: 'Ho pshatla ka letsoho dihlopha tsa mahe le diboko tse nyane ke mokgwa o sebetsang hantle haholo bakeng sa balemi ba banyane ba poone.'
+      short: 'Pshatla ka letsoho dihlopha tsa mahe a seboko sa poone le diboko tse nyane. Ho sebetsa hantle dipolasing tse nyane.'
+      reviewed: false
+    af:
+      claim: 'Om eiertrosse en jong ruspes met die hand plat te druk, is ''n baie doeltreffende metode vir kleinboer-mielieboere.'
+      short: 'Druk herfsruspe-eiertrosse en jong ruspes met die hand plat. Dit werk goed op klein plase.'
+      reviewed: false
+    xh:
+      claim: 'Ukutyumza ngesandla amaqela amaqanda nezibungu ezincinci yindlela esebenza kakuhle kakhulu kumafama amancinci ombona.'
+      short: 'Tyumza ngesandla amaqela amaqanda esibungu sombona nezibungu ezincinci. Kusebenza kakuhle kwiifama ezincinci.'
+      reviewed: false
+    zu:
+      claim: 'Ukuchoboza ngesandla amaqoqo amaqanda nezibungu ezincane kuyindlela esebenza kahle kakhulu kubalimi abancane bommbila.'
+      short: 'Choboza ngesandla amaqoqo amaqanda esibungu sommbila nezibungu ezincane. Kusebenza kahle emapulazini amancane.'
+      reviewed: false
+    pcm:
+      claim: 'To use hand press egg groups and small worms die na very good way for small maize farmers.'
+      short: 'Use hand press armyworm egg groups and small worms. E work well for small farm.'
+      reviewed: false
+    ig:
+      claim: 'Iji aka gwepịa ụyọkọ akwa na ikpuru ndị na-eto eto bụ ụzọ dị irè nke ukwuu maka ndị ọrụ ugbo ọka nta.'
+      short: 'Jiri aka gwepịa ụyọkọ akwa ikpuru ọka na ikpuru ndị na-eto eto. Ọ na-arụ ọrụ nke ọma n''ugbo nta.'
+      reviewed: false
+    yo:
+      claim: 'Fifi ọwọ tẹ awọn ikojọpọ ẹyin ati awọn idin kekere pa jẹ ọna ti o munadoko pupọ fun awọn agbẹ agbado kekere.'
+      short: 'Fi ọwọ tẹ ikojọpọ ẹyin kokoro agbado ati idin kekere pa. O ṣiṣẹ daradara lori oko kekere.'
+      reviewed: false
+    ha:
+      claim: 'Murƙushe ɗimbin ƙwai da ƙananan tsutsotsi da hannu hanya ce mai matuƙar tasiri ga ƙananan manoman masara.'
+      short: 'Ku murƙushe ɗimbin ƙwan tsutsar masara da ƙananan tsutsotsi da hannu. Yana aiki sosai a ƙananan gonaki.'
+      reviewed: false
   source: FAO, Fall armyworm management guidance for smallholders
   source_url: https://openknowledge.fao.org/server/api/core/bitstreams/f1e28a46-3822-4c03-bc31-4294e7e83ea1/content
   checked_on: 2026-11-23
@@ -477,6 +885,102 @@ facts:
     so:
       claim: 'Ukunta fall armyworm waxaa loo dhigaa kooxo ay dabooleen qolof caddaan u dhow, inta badan dhinaca hoose ee caleemaha hoose.'
       short: 'Ukunta fall armyworm: kooxo qolof caddaan ah ku daboolan, inta badan caleemaha hoose hoostooda.'
+      reviewed: false
+    ti:
+      claim: 'ሓሰኻ ዕፉን (fall armyworm) እንቋቑሖኡ ብጻዕዳ ጸጉሪ ዝተሸፈኑ ጉጅለታት ይገብሮ፣ መብዛሕትኡ ግዜ ኣብ ትሕቲ ታሕተዎት ቆጽሊ።'
+      short: 'እንቋቑሖ ሓሰኻ ዕፉን: ብጻዕዳ ጸጉሪ ዝተሸፈኑ ጉጅለታት፣ መብዛሕትኡ ግዜ ኣብ ትሕቲ ታሕተዎት ቆጽሊ።'
+      reviewed: false
+    fuf:
+      claim: 'Ɓowru makka (fall armyworm) ina boccoo e mbooloo ɗe sukundu daneeru ɗaɓɓi, laabi keewɗi les haakoo leseeɓe.'
+      short: 'Boccooɗe ɓowɗi makka: mbooloo ɗe sukundu daneeru ɗaɓɓi, laabi keewɗi les haakoo leseeɓe.'
+      reviewed: false
+    mos:
+      claim: 'Kamaan zãngã (fall armyworm) rogda a gelã tudg sẽn pilg ne kõbg peelga, naoor wusg vãad sẽn be tẽngrã tẽngre.'
+      short: 'Kamaan zãngã gela: tudg sẽn pilg ne kõbg peelga, naoor wusg vãad sẽn be tẽngrã tẽngre.'
+      reviewed: false
+    dyu:
+      claim: 'Kaba tumu (fall armyworm) bɛ a shɛfanw da jɛkuluw la minnu datugura ni si jɛman ye, tuma caman furaw jukɔrɔ minnu bɛ duguma.'
+      short: 'Kaba tumuw shɛfanw: jɛkuluw minnu datugura ni si jɛman ye, tuma caman fura duguma taw jukɔrɔ.'
+      reviewed: false
+    wo:
+      claim: 'Sóoboo mbóq (fall armyworm) dafay nen ci mbooloo yu ñu muur ak kawar bu weex, lu ëpp ci suufu xob yu suuf yi.'
+      short: 'Neni sóoboo mbóq: mbooloo yu ñu muur ak kawar bu weex, lu ëpp ci suufu xob yu suuf yi.'
+      reviewed: false
+    ee:
+      claim: 'Bli ƒe ŋɔ (fall armyworm) ɖoa eƒe aziwo ɖe ƒuƒoƒo siwo dzi wotsɔ ɖa ɣi tsyɔ, zi geɖe le aŋgba siwo le anyi la te.'
+      short: 'Bli ƒe ŋɔ ƒe aziwo: ƒuƒoƒo siwo dzi wotsɔ ɖa ɣi tsyɔ, zi geɖe le aŋgba siwo le anyi la te.'
+      reviewed: false
+    ak:
+      claim: 'Aburow sumpii (fall armyworm) to ne nkesua akuwakuw a wɔde nwi fitaa akata so, mpɛn pii wɔ nhaban a ɛwɔ fam no ase.'
+      short: 'Aburow sumpii nkesua: akuwakuw a wɔde nwi fitaa akata so, mpɛn pii wɔ nhaban a ɛwɔ fam no ase.'
+      reviewed: false
+    ln:
+      claim: 'Nzoto ya masango (fall armyworm) ebotaka maki na yango na masanga oyo ezipami na nsuki ya pembe, mingi na se ya nkasa ya nse.'
+      short: 'Maki ya banzoto ya masango: masanga oyo ezipami na nsuki ya pembe, mingi na se ya nkasa ya nse.'
+      reviewed: false
+    lg:
+      claim: 'Ensowera ya kasooli (fall armyworm) ebiika amagi gaayo mu bibinja ebibikkiddwako obwoya obweru, emirundi mingi wansi w''ebikoola ebya wansi.'
+      short: 'Amagi g''ensowera za kasooli: ebibinja ebibikkiddwako obwoya obweru, emirundi mingi wansi w''ebikoola ebya wansi.'
+      reviewed: false
+    rn:
+      claim: 'Inkongwa y''ibigori (fall armyworm) itera amagi yayo mu migwi ipfutswe n''ubwoya bwera, akenshi munsi y''amababi yo hasi.'
+      short: 'Amagi y''inkongwa: imigwi ipfutswe n''ubwoya bwera, akenshi munsi y''amababi yo hasi.'
+      reviewed: false
+    rw:
+      claim: 'Nkongwa y''ibigori (fall armyworm) itera amagi yayo mu matsinda apfundikiwe n''ubwoya bwera, akenshi munsi y''amababi yo hasi.'
+      short: 'Amagi ya nkongwa: amatsinda apfundikiwe n''ubwoya bwera, akenshi munsi y''amababi yo hasi.'
+      reviewed: false
+    bem:
+      claim: 'Icishishi ca mataba (fall armyworm) cilabika amani yaco mu maumba ayafimbwa ne nsako ishabuuta, libili libili pe samba lya mabula aya pe samba.'
+      short: 'Amani ya fishishi fya mataba: amaumba ayafimbwa ne nsako ishabuuta, libili libili pe samba lya mabula aya pe samba.'
+      reviewed: false
+    ny:
+      claim: 'Mbozi ya chimanga (fall armyworm) imaikira mazira ake m''magulu okutidwa ndi ubweya woyera, kawirikawiri pansi pa masamba a m''munsi.'
+      short: 'Mazira a mbozi za chimanga: magulu okutidwa ndi ubweya woyera, kawirikawiri pansi pa masamba a m''munsi.'
+      reviewed: false
+    sn:
+      claim: 'Gonye rechibage (fall armyworm) rinokandira mazai aro mumapoka akafukidzwa nemvere chena, kazhinji pasi pemashizha epasi.'
+      short: 'Mazai egonye rechibage: mapoka akafukidzwa nemvere chena, kazhinji pasi pemashizha epasi.'
+      reviewed: false
+    ts:
+      claim: 'Xivungu xa mavele (fall armyworm) xi tswala mandza ya xona hi mintlawa leyi funengetiweke hi voya byo basa, hi ntolovelo ehansi ka matluka ya le hansi.'
+      short: 'Mandza ya xivungu xa mavele: mintlawa leyi funengetiweke hi voya byo basa, hi ntolovelo ehansi ka matluka ya le hansi.'
+      reviewed: false
+    tn:
+      claim: 'Seboko sa mmidi (fall armyworm) se baya mae a sone ka ditlhopha tse di khurumeditsweng ka boboa jo bosweu, gantsi kwa tlase ga matlhare a a kwa tlase.'
+      short: 'Mae a seboko sa mmidi: ditlhopha tse di khurumeditsweng ka boboa jo bosweu, gantsi kwa tlase ga matlhare a a kwa tlase.'
+      reviewed: false
+    st:
+      claim: 'Seboko sa poone (fall armyworm) se behela mahe a sona ka dihlopha tse koahetsweng ke boya bo bosweu, hangata ka tlase ho makgasi a ka tlase.'
+      short: 'Mahe a seboko sa poone: dihlopha tse koahetsweng ke boya bo bosweu, hangata ka tlase ho makgasi a ka tlase.'
+      reviewed: false
+    af:
+      claim: 'Die herfsruspe lê sy eiers in trosse wat met wit hare bedek is, gewoonlik aan die onderkant van die laer blare.'
+      short: 'Herfsruspe-eiers: trosse bedek met wit hare, gewoonlik aan die onderkant van die laer blare.'
+      reviewed: false
+    xh:
+      claim: 'Isibungu sombona (fall armyworm) sibeka amaqanda aso ngamaqela agqunywe ngoboya obumhlophe, ngokuqhelekileyo ngaphantsi kwamagqabi asezantsi.'
+      short: 'Amaqanda esibungu sombona: amaqela agqunywe ngoboya obumhlophe, ngokuqhelekileyo ngaphantsi kwamagqabi asezantsi.'
+      reviewed: false
+    zu:
+      claim: 'Isibungu sommbila (fall armyworm) sizalela amaqanda aso ngamaqoqo amboziwe ngoboya obumhlophe, ngokuvamile ngaphansi kwamaqabunga aphansi.'
+      short: 'Amaqanda esibungu sommbila: amaqoqo amboziwe ngoboya obumhlophe, ngokuvamile ngaphansi kwamaqabunga aphansi.'
+      reviewed: false
+    pcm:
+      claim: 'Fall armyworm dey lay eggs for groups wey white hair cover, mostly under the low leaves.'
+      short: 'Armyworm eggs: groups wey white hair cover, mostly under the low leaves.'
+      reviewed: false
+    ig:
+      claim: 'Ikpuru ọka (fall armyworm) na-eyi akwa ya n''ụyọkọ e ji ajị ọcha kpuchie, mgbe mgbe n''okpuru akwụkwọ ndị dị n''ala.'
+      short: 'Akwa ikpuru ọka: ụyọkọ e ji ajị ọcha kpuchie, mgbe mgbe n''okpuru akwụkwọ ndị dị n''ala.'
+      reviewed: false
+    yo:
+      claim: 'Kokoro agbado (fall armyworm) maa n yin ẹyin rẹ ni ikojọpọ ti a fi ipẹ funfun bo, nigbagbogbo ni abẹ awọn ewe isalẹ.'
+      short: 'Ẹyin kokoro agbado: ikojọpọ ti a fi ipẹ funfun bo, nigbagbogbo ni abẹ awọn ewe isalẹ.'
+      reviewed: false
+    ha:
+      claim: 'Ana sa ƙwan tsutsar masara (fall armyworm) a dunƙule da aka rufe da ɓawo fari-fari, sau da yawa a ƙarƙashin ganyen ƙasa.'
+      short: 'Ƙwan tsutsar masara: dunƙule da aka rufe da ɓawo fari-fari, sau da yawa a ƙarƙashin ganyen ƙasa.'
       reviewed: false
   source: ICIPE, Fall armyworm identification, management and control; Pacific Pests, Pathogens and Weeds fact sheet
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
@@ -570,6 +1074,102 @@ facts:
       claim: 'Habka riix iyo jiid (push-pull) wuxuu yareeyaa fall armyworm. Ku beer Desmodium safafka galleyda dhexdooda si uu u eryo balanbaalisyada, cawska Napier ama Brachiaria-na ku beer xudduudda beerta si uu meel kale ugu jiido. Desmodium wuxuu sidoo kale xakameeyaa haramaha Striga, labada geedba waa calaf wanaagsan.'
       short: 'Riix iyo jiid: Desmodium safafka galleyda dhexdooda, cawska Napier ama Brachiaria hareeraha beerta. Wuxuu yareeyaa fall armyworm.'
       reviewed: false
+    ti:
+      claim: 'ኣገባብ push-pull ሓሰኻ ዕፉን ይንክዮ። ነቶም ዝነፍሩ ባልዕ ንምርሓቕ ኣብ መንጎ መስመራት ዕፉን Desmodium ዝራእ፣ ንምስሓቦም ድማ ኣብ ዙርያ ደረት ግራት ሳዕሪ Napier ወይ Brachiaria ዝራእ። Desmodium ንሳዕሪ Striga እውን ይቆጻጸር፣ ክልቲኦም ኣትኽልቲ ድማ ጽቡቕ መግቢ ማል እዮም።'
+      short: 'Push-pull: Desmodium ኣብ መንጎ መስመራት ዕፉን፣ ሳዕሪ Napier ወይ Brachiaria ኣብ ዙርያ ግራት። ሓሰኻ ዕፉን ይንክዮ።'
+      reviewed: false
+    fuf:
+      claim: 'Laawol push-pull ina usta ɓowɗi makka. Aawu Desmodium hakkunde daarle makka ngam riiwde ɓowɗi fiirooɗi, e huɗo Napier walla Brachiaria e ceŋol ngesa ngam foodde ɗi woɗɗi. Desmodium kadi ina haɗa huɗo Striga, ko aawi ɗiɗi ɗii fof ko ñaamdu kulle moƴƴundu.'
+      short: 'Push-pull: Desmodium hakkunde daarle makka, huɗo Napier walla Brachiaria e ceŋol ngesa. Ina usta ɓowɗi makka.'
+      reviewed: false
+    mos:
+      claim: 'Push-pull sore boogda kamaan zãngã. Bud Desmodium kamaan sorsã suka n kõ yoy sẽn yikdẽ n zoe, la Napier bi Brachiaria moodo puugã noorẽ n yõk-b n kẽng zĩig zãrga. Desmodium me gidgda Striga moodo, la kood a yiibã fãa yaa rũms riib sõngo.'
+      short: 'Push-pull: Desmodium kamaan sorsã suka, Napier bi Brachiaria moodo puugã noorẽ. A boogda kamaan zãngã.'
+      reviewed: false
+    dyu:
+      claim: 'Push-pull sira bɛ kaba tumuw dɔgɔya. Desmodium dan kaba sɔnw cɛ walasa ka binkɛnɛ pankalenw gɛn, ani Napier walima Brachiaria bin dan foro da la walasa k''u sama ka taa yɔrɔjan. Desmodium bɛ Striga bin fana kunbɛn, ani sɛnɛfɛn fila bɛɛ ye bagan dumuni ɲuman ye.'
+      short: 'Push-pull: Desmodium kaba sɔnw cɛ, Napier walima Brachiaria bin foro da la. A bɛ kaba tumuw dɔgɔya.'
+      reviewed: false
+    wo:
+      claim: 'Pexe push-pull dafay wàññi sóoboo mbóq. Jiil Desmodium ci diggante rëddi mbóq yi ngir dàq gunóor yiy naaw, ak ñaxu Napier walla Brachiaria ci wetu tool bi ngir xëcc leen fu sore. Desmodium dafay tere itam ñaxu Striga, te ñaari gàncax yi ñépp ñam bu baax lañu ngir jur.'
+      short: 'Push-pull: Desmodium ci diggante rëddi mbóq, ñaxu Napier walla Brachiaria ci wetu tool bi. Dafay wàññi sóoboo mbóq.'
+      reviewed: false
+    ee:
+      claim: 'Push-pull mɔ la ɖea bli ƒe ŋɔ dzi kpɔtɔ. De Desmodium ɖe bli ƒe fliwo dome be wòanya nudzodzoe siwo dzona, eye nàde Napier alo Brachiaria gbe ɖe agble la ƒe toƒewo ŋu be wòahe wo ayi didiƒe. Desmodium xea mɔ na Striga gbe hã, eye nukuku eveawo siaa nye lãwo ƒe nuɖuɖu nyui.'
+      short: 'Push-pull: Desmodium ɖe bli ƒe fliwo dome, Napier alo Brachiaria gbe ɖe agble ƒe toƒewo ŋu. Eɖea bli ƒe ŋɔ dzi kpɔtɔ.'
+      reviewed: false
+    ak:
+      claim: 'Push-pull kwan no tew aburow sumpii so. Dua Desmodium wɔ aburow ntoatoaso mfinimfini de pam mmoa a wɔtu, na dua Napier anaa Brachiaria sare twa afuo no ano ho hyia de twe wɔn kɔ akyiri. Desmodium nso si Striga wura ano, na afifide abien no nyinaa yɛ mmoa aduan pa.'
+      short: 'Push-pull: Desmodium wɔ aburow ntoatoaso mfinimfini, Napier anaa Brachiaria sare twa afuo ano ho hyia. Ɛtew aburow sumpii so.'
+      reviewed: false
+    ln:
+      claim: 'Nzela ya push-pull ekitisaka banzoto ya masango. Lona Desmodium na katikati ya milongo ya masango mpo na kobengana banyama oyo epumbwaka, mpe matiti ya Napier to Brachiaria zingazinga ya nsuka ya elanga mpo na kobenda yango mosika. Desmodium ekangaka mpe matiti ya Striga, mpe bilona yango mibale ezali bilei malamu ya bibwele.'
+      short: 'Push-pull: Desmodium na katikati ya milongo ya masango, matiti ya Napier to Brachiaria zingazinga ya elanga. Ekitisaka banzoto ya masango.'
+      reviewed: false
+    lg:
+      claim: 'Enkola ya push-pull ekendeeza ensowera za kasooli. Simba Desmodium wakati mu nnyiriri za kasooli okugoba ebiwuka ebibuuka, n''essubi lya Napier oba Brachiaria ku mabbali g''ennimiro okubisika ewala. Desmodium era efuga omuddo gwa Striga, era ebirime byombi mmere nnungi ey''ebisolo.'
+      short: 'Push-pull: Desmodium wakati mu nnyiriri za kasooli, essubi lya Napier oba Brachiaria ku mabbali g''ennimiro. Ekendeeza ensowera za kasooli.'
+      reviewed: false
+    rn:
+      claim: 'Uburyo bwa push-pull bugabanya inkongwa. Tera Desmodium hagati y''imirongo y''ibigori kugira wirukane udukoko tuguruka, n''urubingo rwa Napier canke Brachiaria ku mpera y''indimiro kugira tubikwegere kure. Desmodium inarwanya icatsi ca Striga, kandi ibimera vyompi ni indya nziza y''amatungo.'
+      short: 'Push-pull: Desmodium hagati y''imirongo y''ibigori, urubingo rwa Napier canke Brachiaria ku mpera y''indimiro. Bigabanya inkongwa.'
+      reviewed: false
+    rw:
+      claim: 'Uburyo bwa push-pull bugabanya nkongwa. Tera Desmodium hagati y''imirongo y''ibigori kugira ngo wirukane udukoko tuguruka, n''urubingo rwa Napier cyangwa Brachiaria ku nkengero z''umurima kugira ngo tubikururire kure. Desmodium inarwanya icyatsi cya Striga, kandi ibihingwa byombi ni ibiryo byiza by''amatungo.'
+      short: 'Push-pull: Desmodium hagati y''imirongo y''ibigori, urubingo rwa Napier cyangwa Brachiaria ku nkengero z''umurima. Bigabanya nkongwa.'
+      reviewed: false
+    bem:
+      claim: 'Inshila ya push-pull ilacefya ifishishi fya mataba. Byaleni Desmodium pa kati ka milongo ya mataba ukutamfya ifishishi ifilepupuka, no bwanga bwa Napier nangu Brachiaria ukushinguluka impela ya bala ukufikulila kutali. Desmodium na yo ilacilikila amasote ya Striga, kabili ifilimwa fyonse fibili cakulya cisuma ica nama.'
+      short: 'Push-pull: Desmodium pa kati ka milongo ya mataba, ubwanga bwa Napier nangu Brachiaria ukushinguluka ibala. Ilacefya ifishishi fya mataba.'
+      reviewed: false
+    ny:
+      claim: 'Njira ya push-pull imachepetsa mbozi za chimanga. Bzalani Desmodium pakati pa mizere ya chimanga kuthamangitsa tizilombo touluka, ndi udzu wa Napier kapena Brachiaria m''mphepete mwa munda kuzikokera kutali. Desmodium imaletsanso udzu wa Striga, ndipo mbewu zonse ziwiri ndi chakudya chabwino cha ziweto.'
+      short: 'Push-pull: Desmodium pakati pa mizere ya chimanga, udzu wa Napier kapena Brachiaria m''mphepete mwa munda. Imachepetsa mbozi za chimanga.'
+      reviewed: false
+    sn:
+      claim: 'Nzira yepush-pull inoderedza gonye rechibage. Dyara Desmodium pakati pemitsara yechibage kudzinga zvipembenene zvinobhururuka, uye uswa hweNapier kana Brachiaria kumucheto wemunda kuzvikwevera kure. Desmodium inodzorawo sora reStriga, uye zvirimwa zvese zviri zviviri chikafu chakanaka chezvipfuyo.'
+      short: 'Push-pull: Desmodium pakati pemitsara yechibage, uswa hweNapier kana Brachiaria kumucheto wemunda. Inoderedza gonye rechibage.'
+      reviewed: false
+    ts:
+      claim: 'Ndlela ya push-pull yi hunguta xivungu xa mavele. Byala Desmodium exikarhi ka milayini ya mavele ku hlongola swifuwo leswi hahaka, na byanyi bya Napier kumbe Brachiaria ku rhendzela makumu ya nsimu ku swi koka kule. Desmodium yi tlhela yi lawula nhova ya Striga, naswona swimila leswi swimbirhi i swakudya leswinene swa swifuwo swa le kaya.'
+      short: 'Push-pull: Desmodium exikarhi ka milayini ya mavele, byanyi bya Napier kumbe Brachiaria ku rhendzela nsimu. Yi hunguta xivungu xa mavele.'
+      reviewed: false
+    tn:
+      claim: 'Mokgwa wa push-pull o fokotsa seboko sa mmidi. Jala Desmodium magareng ga mela ya mmidi go kgoromeletsa ditshenekegi tse di fofang kgakala, le bojang jwa Napier kgotsa Brachiaria go dikologa molelwane wa tshimo go di gogela kgakala. Desmodium gape e laola mefero ya Striga, mme dijalo tse pedi tse ke dijo tse di molemo tsa diphologolo.'
+      short: 'Push-pull: Desmodium magareng ga mela ya mmidi, bojang jwa Napier kgotsa Brachiaria go dikologa tshimo. E fokotsa seboko sa mmidi.'
+      reviewed: false
+    st:
+      claim: 'Mokgwa wa push-pull o fokotsa seboko sa poone. Jala Desmodium pakeng tsa mela ya poone ho leleka dikokonyana tse fofang, le jwang ba Napier kapa Brachiaria ho potoloha moedi wa tshimo ho di hohela hole. Desmodium e boetse e laola mofoka wa Striga, mme dimela tsena ka bobedi ke dijo tse ntle tsa diphoofolo.'
+      short: 'Push-pull: Desmodium pakeng tsa mela ya poone, jwang ba Napier kapa Brachiaria ho potoloha tshimo. E fokotsa seboko sa poone.'
+      reviewed: false
+    af:
+      claim: 'Die push-pull-metode verminder herfsruspe. Plant Desmodium tussen mielierye om die motte weg te dryf, en Napier- of Brachiaria-gras om die rand van die land om hulle weg te lok. Desmodium beheer ook Striga-onkruid, en albei plante is goeie veevoer.'
+      short: 'Push-pull: Desmodium tussen mielierye, Napier- of Brachiaria-gras om die rand van die land. Dit verminder herfsruspe.'
+      reviewed: false
+    xh:
+      claim: 'Indlela ye-push-pull inciphisa isibungu sombona. Tyala i-Desmodium phakathi kwemiqolo yombona ukuze ugxothe izinambuzane ezibhabhayo, kunye nengca ye-Napier okanye i-Brachiaria emiphethweni yentsimi ukuze uzitsalele kude. I-Desmodium ikwalawula ukhula lwe-Striga, kwaye zombini izityalo kukutya okulungileyo kwezilwanyana.'
+      short: 'I-push-pull: i-Desmodium phakathi kwemiqolo yombona, ingca ye-Napier okanye i-Brachiaria emiphethweni yentsimi. Inciphisa isibungu sombona.'
+      reviewed: false
+    zu:
+      claim: 'Indlela ye-push-pull inciphisa isibungu sommbila. Tshala i-Desmodium phakathi kwemigqa yommbila ukuze uxoshe izinambuzane ezindizayo, kanye notshani be-Napier noma i-Brachiaria emaphethelweni ensimu ukuze uzidonsele kude. I-Desmodium iphinde ilawule ukhula lwe-Striga, futhi zombili izitshalo ziwukudla okuhle kwezilwane.'
+      short: 'I-push-pull: i-Desmodium phakathi kwemigqa yommbila, utshani be-Napier noma i-Brachiaria emaphethelweni ensimu. Kunciphisa isibungu sommbila.'
+      reviewed: false
+    pcm:
+      claim: 'Push-pull dey reduce fall armyworm. Plant Desmodium between maize lines to drive the flying insects away, and Napier or Brachiaria grass round the edge of the farm to pull them comot. Desmodium also dey control Striga weed, and the two plants na good food for animals.'
+      short: 'Push-pull: Desmodium between maize lines, Napier or Brachiaria grass round the edge of the farm. E dey reduce armyworm.'
+      reviewed: false
+    ig:
+      claim: 'Usoro push-pull na-ebelata ikpuru ọka. Kụọ Desmodium n''etiti ahịrị ọka iji chụpụ ụmụ ahụhụ nwere nku, kụọkwa ahịhịa Napier ma ọ bụ Brachiaria gburugburu nsọtụ ugbo iji dọpụ ha. Desmodium na-achịkwakwa ahịhịa Striga, osisi abụọ ahụ bụkwa nri anụmanụ dị mma.'
+      short: 'Push-pull: Desmodium n''etiti ahịrị ọka, ahịhịa Napier ma ọ bụ Brachiaria gburugburu nsọtụ ugbo. Ọ na-ebelata ikpuru ọka.'
+      reviewed: false
+    yo:
+      claim: 'Ọna push-pull n dinku kokoro agbado. Gbin Desmodium laarin awọn ila agbado lati le awọn kokoro abiyẹ lọ, ati koriko Napier tabi Brachiaria yika eti oko lati fa wọn kuro. Desmodium tun n ṣakoso igbo Striga, awọn ọgbin mejeeji si jẹ ounjẹ ẹran to dara.'
+      short: 'Push-pull: Desmodium laarin awọn ila agbado, koriko Napier tabi Brachiaria yika eti oko. O n dinku kokoro agbado.'
+      reviewed: false
+    ha:
+      claim: 'Hanyar push-pull tana rage tsutsar masara. Ku shuka Desmodium tsakanin layukan masara don korar asu, da ciyawar Napier ko Brachiaria a kewayen iyakar gona don janye su. Desmodium kuma yana hana ciyawar Striga, kuma dukansu abincin dabbobi ne mai kyau.'
+      short: 'Push-pull: Desmodium tsakanin layukan masara, ciyawar Napier ko Brachiaria a kewaye. Yana rage tsutsar masara.'
+      reviewed: false
   source: ICIPE, Managing the fall armyworm threat using push-pull technology; CIFOR-ICRAF, Fall Armyworm guide
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/FAW-Comic.pdf
   checked_on: 2026-11-23
@@ -661,6 +1261,102 @@ facts:
       claim: 'Wareegga nolosha fall armyworm wuxuu qaataa qiyaastii afar toddobaad, sidaas darteed hal xilli galley ah waxaa weerari kara saddex jiil. Sii wad baadhista xilliga oo dhan.'
       short: 'Wareegga nolosha fall armyworm waa qiyaastii 4 toddobaad, markaa hal xilli wuxuu keeni karaa 3 jiil. Sii wad baadhista.'
       reviewed: false
+    ti:
+      claim: 'ዑደት ህይወት ሓሰኻ ዕፉን (fall armyworm) ኣስታት ኣርባዕተ ሰሙን ይወስድ፣ ስለዚ ሓደ ወቕቲ ዕፉን ሰለስተ ወለዶ ክርኢ ይኽእል። ምሉእ ወቕቲ ምምርማር ቀጽል።'
+      short: 'ዑደት ህይወት ሓሰኻ ዕፉን 4 ሰሙን እዩ፣ ስለዚ ሓደ ወቕቲ 3 ወለዶ ከምጽእ ይኽእል። ኩሉ ግዜ መርምር።'
+      reviewed: false
+    fuf:
+      claim: 'Ngurndam ɓowru makka (fall armyworm) ina jooɗa wakkati yontaaji nayi, ɗum noon dumunna makka gooto ina waawi yiyde jamaanuuji tati. Jokku ndaarde dumunna oo fof.'
+      short: 'Ngurndam ɓowru makka ko yontaaji 4, ɗum noon dumunna gooto ina waawi addude jamaanuuji 3. Ndaar sahaa kala.'
+      reviewed: false
+    mos:
+      claim: 'Kamaan zãngã (fall armyworm) viim wakat yaa wa semen a naase, rẽ n so ti kamaan seoog a ye tõe n yã rogem a tãabo. Kell n ges seoogã fãa.'
+      short: 'Kamaan zãngã viim yaa semen 4, rẽ n so ti seoog a ye tõe n wa ne rogem 3. Ges wakat fãa.'
+      reviewed: false
+    dyu:
+      claim: 'Kaba tumu (fall armyworm) ka ɲɛnamaya bɛ dɔgɔkun naani ɲɔgɔn ta, o la kaba waati kelen bɛ se ka bɔnsɔn saba ye. Tɛmɛ ni lajɛli ye waati bɛɛ.'
+      short: 'Kaba tumu ka ɲɛnamaya ye dɔgɔkun 4 ye, o la waati kelen bɛ se ka bɔnsɔn 3 lana. A lajɛ waati bɛɛ.'
+      reviewed: false
+    wo:
+      claim: 'Dundu sóoboo mbóq (fall armyworm) dafay jël lu tollu ci ñeenti ayu-bés, kon benn jamonoy mbóq man na gis ñetti maas. Wéyal seet jamono ji bépp.'
+      short: 'Dundu sóoboo mbóq 4 ayu-bés la, kon benn jamono man na indi 3 maas. Seetal saa su nekk.'
+      reviewed: false
+    ee:
+      claim: 'Bli ƒe ŋɔ (fall armyworm) ƒe agbenɔɣi xɔa kwasiɖa ene lɔƒo, eya ta bli ƒe ɣeyiɣi ɖeka ate ŋu akpɔ dzidzime etɔ̃. Yi edzi nàkpɔ ɣeyiɣi blibo la.'
+      short: 'Bli ƒe ŋɔ ƒe agbenɔɣi nye kwasiɖa 4, eya ta ɣeyiɣi ɖeka ate ŋu ahe dzidzime 3 vɛ. Kpɔ ɣesiaɣi.'
+      reviewed: false
+    ak:
+      claim: 'Aburow sumpii (fall armyworm) nkwa bere fa bɛyɛ nnawɔtwe anan, enti aburow bere baako betumi ahu awo ntoatoaso abiɛsa. Kɔ so hwɛ bere no nyinaa.'
+      short: 'Aburow sumpii nkwa bere yɛ nnawɔtwe 4, enti bere baako betumi de awo ntoatoaso 3 aba. Hwɛ daa.'
+      reviewed: false
+    ln:
+      claim: 'Bomoi ya nzoto ya masango (fall armyworm) ezwaka pene na baposo minei, yango wana eleko moko ya masango ekoki komona mabota misato. Kobá kotala eleko mobimba.'
+      short: 'Bomoi ya nzoto ya masango ezali baposo 4, yango wana eleko moko ekoki komema mabota 3. Tala mbala na mbala.'
+      reviewed: false
+    lg:
+      claim: 'Obulamu bw''ensowera ya kasooli (fall armyworm) butwala nga wiiki nnya, kale sizoni emu eya kasooli eyinza okulaba emirembe esatu. Weeyongere okukebera sizoni yonna.'
+      short: 'Obulamu bw''ensowera ya kasooli wiiki 4, kale sizoni emu eyinza okuleeta emirembe 3. Kebera buli kiseera.'
+      reviewed: false
+    rn:
+      claim: 'Ubuzima bw''inkongwa y''ibigori (fall armyworm) bumara hafi indwi zine, rero igihembwe kimwe c''ibigori gishobora kubona ibisekuru bitatu. Bandanya usuzume igihembwe cose.'
+      short: 'Ubuzima bw''inkongwa ni indwi 4, rero igihembwe kimwe gishobora kuzana ibisekuru 3. Suzuma kenshi.'
+      reviewed: false
+    rw:
+      claim: 'Ubuzima bwa nkongwa y''ibigori (fall armyworm) bumara hafi ibyumweru bine, bityo igihembwe kimwe cy''ibigori gishobora kubona ibisekuru bitatu. Komeza ugenzure igihembwe cyose.'
+      short: 'Ubuzima bwa nkongwa ni ibyumweru 4, bityo igihembwe kimwe gishobora kuzana ibisekuru 3. Genzura kenshi.'
+      reviewed: false
+    bem:
+      claim: 'Umweo wa cishishi ca mataba (fall armyworm) ulasenda imilungu ine, e ico inshita imo iya mataba kuti yamona inkulo shitatu. Twalilileni ukupima inshita yonse.'
+      short: 'Umweo wa cishishi ca mataba ni milungu 4, e ico inshita imo kuti yaleta inkulo 3. Pimeni lyonse.'
+      reviewed: false
+    ny:
+      claim: 'Moyo wa mbozi ya chimanga (fall armyworm) umatenga pafupifupi masabata anayi, choncho nyengo imodzi ya chimanga itha kuona mibadwo itatu. Pitirizani kuyang''ana nyengo yonse.'
+      short: 'Moyo wa mbozi ya chimanga ndi masabata 4, choncho nyengo imodzi itha kubweretsa mibadwo 3. Yang''anani pafupipafupi.'
+      reviewed: false
+    sn:
+      claim: 'Hupenyu hwegonye rechibage (fall armyworm) hunotora anenge mavhiki mana, saka mwaka mumwe wechibage unogona kuona zvizvarwa zvitatu. Ramba uchiongorora mwaka wose.'
+      short: 'Hupenyu hwegonye rechibage mavhiki 4, saka mwaka mumwe unogona kuunza zvizvarwa 3. Ongorora nguva dzose.'
+      reviewed: false
+    ts:
+      claim: 'Nhlayo ya vutomi bya xivungu xa mavele (fall armyworm) yi teka kwalomu ka mavhiki ya mune, kutani nguva yin''we ya mavele yi nga vona switukulu swinharhu. Yisa emahlweni ku kambela nguva hinkwayo.'
+      short: 'Nhlayo ya vutomi bya xivungu xa mavele i mavhiki ya 4, kutani nguva yin''we yi nga tisa switukulu swa 3. Kambela nkarhi na nkarhi.'
+      reviewed: false
+    tn:
+      claim: 'Modikologo wa botshelo jwa seboko sa mmidi (fall armyworm) o tsaya dibeke di ka nna nne, ka jalo paka e le nngwe ya mmidi e ka bona dikokomane di le tharo. Tswelela go tlhatlhoba paka yotlhe.'
+      short: 'Modikologo wa botshelo jwa seboko sa mmidi ke dibeke di le 4, ka jalo paka e le nngwe e ka tlisa dikokomane di le 3. Tlhatlhoba ka metlha.'
+      reviewed: false
+    st:
+      claim: 'Potoloho ya bophelo ya seboko sa poone (fall armyworm) e nka dibeke tse ka bang nne, kahoo nako e le nngwe ya poone e ka bona meloko e meraro. Tswela pele ho hlahloba nako yohle.'
+      short: 'Potoloho ya bophelo ya seboko sa poone ke dibeke tse 4, kahoo nako e le nngwe e ka tlisa meloko e 3. Hlahloba kamehla.'
+      reviewed: false
+    af:
+      claim: 'Die lewensiklus van die herfsruspe duur omtrent vier weke, so een mielieseisoen kan drie generasies sien. Hou aan om die hele seisoen na te gaan.'
+      short: 'Die herfsruspe se lewensiklus is 4 weke, so een seisoen kan 3 generasies bring. Gaan gereeld na.'
+      reviewed: false
+    xh:
+      claim: 'Umjikelo wobomi besibungu sombona (fall armyworm) uthatha malunga neeveki ezine, ngoko ixesha elinye lombona linokubona izizukulwana ezintathu. Qhubeka uhlola lonke ixesha.'
+      short: 'Umjikelo wobomi besibungu sombona ziiveki ezi-4, ngoko ixesha elinye linokuzisa izizukulwana ezi-3. Hlola rhoqo.'
+      reviewed: false
+    zu:
+      claim: 'Umjikelezo wempilo wesibungu sommbila (fall armyworm) uthatha cishe amasonto amane, ngakho isizini eyodwa yommbila ingabona izizukulwane ezintathu. Qhubeka uhlola isizini yonke.'
+      short: 'Umjikelezo wempilo wesibungu sommbila ungamasonto angu-4, ngakho isizini eyodwa ingaletha izizukulwane ezingu-3. Hlola njalo.'
+      reviewed: false
+    pcm:
+      claim: 'Fall armyworm life cycle dey take about four weeks, so one maize season fit see three generations. Continue to dey check for the whole season.'
+      short: 'Armyworm life cycle na 4 weeks, so one season fit bring 3 generations. Dey check every time.'
+      reviewed: false
+    ig:
+      claim: 'Usoro ndụ ikpuru ọka (fall armyworm) na-ewe ihe dị ka izu anọ, ya mere otu oge ọka nwere ike ịhụ ọgbọ atọ. Gaa n''ihu na-elele n''oge ahụ niile.'
+      short: 'Usoro ndụ ikpuru ọka bụ izu 4, ya mere otu oge nwere ike iweta ọgbọ 3. Na-elele mgbe niile.'
+      reviewed: false
+    yo:
+      claim: 'Iyipo aye kokoro agbado (fall armyworm) gba to ọsẹ mẹrin, nitorinaa akoko agbado kan le ri iran mẹta. Maa tẹsiwaju lati ṣayẹwo jakejado akoko naa.'
+      short: 'Iyipo aye kokoro agbado jẹ ọsẹ 4, nitorinaa akoko kan le mu iran 3 wa. Maa ṣayẹwo nigbagbogbo.'
+      reviewed: false
+    ha:
+      claim: 'Rayuwar tsutsar masara (fall armyworm) tana ɗaukar kimanin makonni huɗu, don haka kakar masara ɗaya na iya fuskantar zuriya uku. Ku ci gaba da dubawa a duk tsawon kakar.'
+      short: 'Rayuwar tsutsar masara kimanin makonni 4 ce, don haka kaka ɗaya na iya kawo zuriya 3. Ku ci gaba da dubawa.'
+      reviewed: false
   source: ICIPE, Fall armyworm identification, management and control
   source_url: https://technologytransfer.icipe.org/wp-content/uploads/2021/04/Fall-Armyworm-Brochure-Identification-Management-and-Control-1.pdf
   checked_on: 2026-11-23
@@ -745,6 +1441,102 @@ facts:
     so:
       claim: 'Cadowyada dabiiciga ah ee ku nool beerahaaga iyo hareerahooda ayaa weerara fall armyworm. Haynta dhir kala duwan oo beerta ku taal waxay cadowyadaas dabiiciga ah ku haysaa galleydaada agteeda.'
       short: 'Cadowyada dabiiciga ah ayaa cuna fall armyworm. Dhir kala duwan oo beerta ku taal ayaa galleydaada agteeda ku haysa.'
+      reviewed: false
+    ti:
+      claim: 'ኣብ ውሽጥን ዙርያን ግራትካ ዝነብሩ ተፈጥሮኣዊ ጸላእቲ ንሓሰኻ ዕፉን ይጻረዉ። ኣብ ግራት ዝተፈላለዩ ኣትኽልቲ ምህላው ነቶም ተፈጥሮኣዊ ጸላእቲ ኣብ ጥቓ ዕፉንካ የጽንሖም።'
+      short: 'ተፈጥሮኣዊ ጸላእቲ ንሓሰኻ ዕፉን ይበልዑ። ኣብ ግራት ዝተፈላለዩ ኣትኽልቲ ኣብ ጥቓ ዕፉንካ የጽንሕዎም።'
+      reviewed: false
+    fuf:
+      claim: 'Ayyuɓe tagoodi wonɓe nder e daande ngesa maa ina njangina ɓowɗi makka. Jogaade ko aawi heddiiɗi e ngesa ina waɗa ayyuɓe ɓee ngona ɓadii makka maa.'
+      short: 'Ayyuɓe tagoodi ina ñaama ɓowɗi makka. Ko aawi heddiiɗi e ngesa ina waɗa ɓe ngona ɓadii makka maa.'
+      reviewed: false
+    mos:
+      claim: 'Tẽng-zĩig bera nins sẽn be y puugã pugẽ la a gilgã zabda kamaan zãngã. Kood buud toor-toor sã n be puugã zugu, a sõngda ti bera kãens be y kamaanã kĩngã.'
+      short: 'Tẽng-zĩig bera ritda kamaan zãngã. Kood buud toor-toor puugã zugu sõngda ti b be y kamaanã kĩngã.'
+      reviewed: false
+    dyu:
+      claim: 'Danfɛn juguw minnu bɛ i ka foro kɔnɔ ani a lamini na, olu bɛ kaba tumuw kɛlɛ. Sɛnɛfɛn suguya caman foro kɔnɔ bɛ o danfɛn juguw to i ka kaba kɛrɛfɛ.'
+      short: 'Danfɛn juguw bɛ kaba tumuw dun. Sɛnɛfɛn suguya caman foro kɔnɔ b''u to i ka kaba kɛrɛfɛ.'
+      reviewed: false
+    wo:
+      claim: 'Noon yu tabiyaa yiy dëkk ci biir ak ci wetu sa tool dañuy song sóoboo mbóq. Am gàncax yu wute ci tool bi dafay tax noon yu tabiyaa yooyu des ci wetu sa mbóq.'
+      short: 'Noon yu tabiyaa dañuy lekk sóoboo mbóq. Gàncax yu wute ci tool bi dañuy tax ñu des ci wetu sa mbóq.'
+      reviewed: false
+    ee:
+      claim: 'Dzɔdzɔme ƒe futɔ siwo nɔa wò agble me kple eŋu ƒoa bli ƒe ŋɔ. Nukuku vovovowo nɔnɔ agble dzi naa dzɔdzɔme ƒe futɔ mawo nɔa wò bli gbɔ.'
+      short: 'Dzɔdzɔme ƒe futɔwo ɖua bli ƒe ŋɔ. Nukuku vovovowo le agble dzi naa wonɔa wò bli gbɔ.'
+      reviewed: false
+    ak:
+      claim: 'Abɔde mu atamfo a wɔte w''afuo mu ne ho hyia ko tia aburow sumpii. Sɛ afifide ahodoɔ wɔ afuo no so a, ɛma saa abɔde mu atamfo no tena w''aburow ho.'
+      short: 'Abɔde mu atamfo di aburow sumpii. Afifide ahodoɔ wɔ afuo so ma wɔtena w''aburow ho.'
+      reviewed: false
+    ln:
+      claim: 'Banguna ya bozalisi oyo bavandaka na kati mpe zingazinga ya elanga na yo babundaka na banzoto ya masango. Kozala na bilona ndenge na ndenge na elanga ebatelaka banguna yango penepene na masango na yo.'
+      short: 'Banguna ya bozalisi baliaka banzoto ya masango. Bilona ndenge na ndenge na elanga ebatelaka bango penepene na masango na yo.'
+      reviewed: false
+    lg:
+      claim: 'Abalabe ab''obutonde ababeera mu nnimiro yo ne mu kitundu kyayo balumba ensowera za kasooli. Okuba n''ebirime eby''enjawulo mu nnimiro kukuuma abalabe abo okumpi ne kasooli wo.'
+      short: 'Abalabe ab''obutonde balya ensowera za kasooli. Ebirime eby''enjawulo mu nnimiro bibakuuma okumpi ne kasooli wo.'
+      reviewed: false
+    rn:
+      claim: 'Abansi kamere baba mu ndimiro yawe no hafi yayo barwanya inkongwa. Kugira ibimera bitandukanye mu ndimiro bituma abo bansi kamere baguma hafi y''ibigori vyawe.'
+      short: 'Abansi kamere barya inkongwa. Ibimera bitandukanye mu ndimiro bituma baguma hafi y''ibigori vyawe.'
+      reviewed: false
+    rw:
+      claim: 'Abanzi kamere baba mu murima wawe no hafi yawo barwanya nkongwa. Kugira ibihingwa bitandukanye mu murima bituma abo banzi kamere baguma hafi y''ibigori byawe.'
+      short: 'Abanzi kamere barya nkongwa. Ibihingwa bitandukanye mu murima bituma baguma hafi y''ibigori byawe.'
+      reviewed: false
+    bem:
+      claim: 'Abalwani ba cifyalilwa abekala mukati no kushinguluka ibala lyenu balasasha ifishishi fya mataba. Ukukwata ifilimwa ifyapusana pa bala kulasunga abo balwani ba cifyalilwa mupepi na mataba yenu.'
+      short: 'Abalwani ba cifyalilwa balalya ifishishi fya mataba. Ifilimwa ifyapusana pa bala filabasunga mupepi na mataba yenu.'
+      reviewed: false
+    ny:
+      claim: 'Adani achilengedwe omwe amakhala m''kati ndi mozungulira famu yanu amalimbana ndi mbozi za chimanga. Kukhala ndi mbewu zosiyanasiyana pa famu kumasunga adani achilengedwewo pafupi ndi chimanga chanu.'
+      short: 'Adani achilengedwe amadya mbozi za chimanga. Mbewu zosiyanasiyana pa famu zimawasunga pafupi ndi chimanga chanu.'
+      reviewed: false
+    sn:
+      claim: 'Vavengi vechisikigo vanogara mukati nekupoteredza purazi rako vanorwisa gonye rechibage. Kuva nezvirimwa zvakasiyana papurazi kunochengeta vavengi ivavo pedyo nechibage chako.'
+      short: 'Vavengi vechisikigo vanodya gonye rechibage. Zvirimwa zvakasiyana papurazi zvinovachengeta pedyo nechibage chako.'
+      reviewed: false
+    ts:
+      claim: 'Valala va ntumbuluko lava hanyaka endzeni na ku rhendzela purasi ya wena va hlasela xivungu xa mavele. Ku va na swimila swo hambana epurasini swi hlayisa valala volavo va ntumbuluko ekusuhi na mavele ya wena.'
+      short: 'Valala va ntumbuluko va dya xivungu xa mavele. Swimila swo hambana epurasini swi va hlayisa ekusuhi na mavele ya wena.'
+      reviewed: false
+    tn:
+      claim: 'Baba ba tlhago ba ba nnang mo teng le go dikologa tshimo ya gago ba tlhasela seboko sa mmidi. Go nna le dijalo tse di farologaneng mo tshimong go boloka baba bao ba tlhago gaufi le mmidi wa gago.'
+      short: 'Baba ba tlhago ba ja seboko sa mmidi. Dijalo tse di farologaneng mo tshimong di ba boloka gaufi le mmidi wa gago.'
+      reviewed: false
+    st:
+      claim: 'Dira tsa tlhaho tse phelang ka hare le ho potoloha polasi ya hao di hlasela seboko sa poone. Ho ba le dimela tse fapaneng polasing ho boloka dira tseo tsa tlhaho haufi le poone ya hao.'
+      short: 'Dira tsa tlhaho di ja seboko sa poone. Dimela tse fapaneng polasing di di boloka haufi le poone ya hao.'
+      reviewed: false
+    af:
+      claim: 'Natuurlike vyande wat in en om jou plaas woon, val die herfsruspe aan. ''n Verskeidenheid plante op die plaas hou daardie natuurlike vyande naby jou mielies.'
+      short: 'Natuurlike vyande vreet herfsruspe. ''n Verskeidenheid plante op die plaas hou hulle naby jou mielies.'
+      reviewed: false
+    xh:
+      claim: 'Iintshaba zendalo ezihlala ngaphakathi nangeenxa zonke zefama yakho zihlasela isibungu sombona. Ukuba nezityalo ezahlukeneyo efama kugcina ezo ntshaba zendalo kufutshane nombona wakho.'
+      short: 'Iintshaba zendalo zitya isibungu sombona. Izityalo ezahlukeneyo efama zizigcina kufutshane nombona wakho.'
+      reviewed: false
+    zu:
+      claim: 'Izitha zemvelo ezihlala ngaphakathi nasezungeze ipulazi lakho zihlasela isibungu sommbila. Ukuba nezitshalo ezahlukahlukene epulazini kugcina lezo zitha zemvelo eduze nommbila wakho.'
+      short: 'Izitha zemvelo zidla isibungu sommbila. Izitshalo ezahlukahlukene epulazini zizigcina eduze nommbila wakho.'
+      reviewed: false
+    pcm:
+      claim: 'Natural enemies wey dey live inside and around your farm dey attack fall armyworm. To get different plants for the farm dey keep those natural enemies near your maize.'
+      short: 'Natural enemies dey chop armyworm. Different plants for the farm dey keep them near your maize.'
+      reviewed: false
+    ig:
+      claim: 'Ndị iro okike bi n''ime na gburugburu ugbo gị na-awakpo ikpuru ọka. Inwe ụdị osisi dị iche iche n''ugbo na-eme ka ndị iro okike ahụ nọrọ nso ọka gị.'
+      short: 'Ndị iro okike na-eri ikpuru ọka. Ụdị osisi dị iche iche n''ugbo na-eme ka ha nọrọ nso ọka gị.'
+      reviewed: false
+    yo:
+      claim: 'Awọn ọta adayeba ti o n gbe inu ati ayika oko rẹ n kọlu kokoro agbado. Nini oniruuru ọgbin lori oko n jẹ ki awọn ọta adayeba naa wa nitosi agbado rẹ.'
+      short: 'Awọn ọta adayeba n jẹ kokoro agbado. Oniruuru ọgbin lori oko n jẹ ki wọn wa nitosi agbado rẹ.'
+      reviewed: false
+    ha:
+      claim: 'Maƙiyan halitta da ke zaune a cikin da kewayen gonakinku suna kai wa tsutsar masara hari. Samun nau''o''in shuke-shuke daban-daban a gona yana sa waɗannan maƙiyan halitta su kasance kusa da masararku.'
+      short: 'Maƙiyan halitta suna cin tsutsar masara. Nau''o''in shuke-shuke daban-daban a gona suna sa su zauna kusa da masararku.'
       reviewed: false
   source: FAO Fall Armyworm Guidance Note 4
   source_url: https://ges.research.ncsu.edu/wp-content/uploads/2018/10/FAW-How-to-Manage-FAW-Guidance-note-4-Allan-Hruska.pdf

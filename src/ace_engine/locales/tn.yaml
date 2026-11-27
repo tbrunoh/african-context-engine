@@ -1,0 +1,204 @@
+# Setswana for Botswana and South Africa, in the standard spelling. Drafted for ACE 2.3. Awaiting review by fluent
+# speakers and, for the safety phrases, by clinicians.
+meta:
+  code: tn
+  name: Setswana
+  native: "Setswana"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE e tla araba ka Setswana."
+  names: ["setswana", "tswana", "tn"]
+
+templates:
+  safety.OPENERS.self_harm: "Ke maswabi thata gore o ikutlwa jaana. O tshwanetse go bona thuso jaanong. {numbers}"
+  safety.OPENERS.maternal: "Se e ka nna tshoganyetso ya boimana. Ya kwa bookelong jo bo gaufi jaanong. {numbers}"
+  safety.OPENERS.poisoning: "Se se utlwala jaaka botlhole. Bona thuso ya ngaka jaanong, o tseye botlolo. {numbers}"
+  safety.OPENERS.child_protection: "Ngwana a ka nna mo kotsing. Tsweetswee bona thuso jaanong. {numbers}"
+  safety.OPENERS.gbv: "Ke maswabi gore se se go diragalela. O ka bona thuso jaanong. {numbers}"
+  safety.OPENERS.health_urgent: "Se se utlwala se le potlako. Bona thuso ya ngaka jaanong. {numbers}"
+  safety.CALL_WORD: "Leletsa {numbers}"
+  safety.OR_WORD: "kgotsa"
+  safety.EMERGENCY_WORD: "tshoganyetso"
+  safety.FALLBACK_NUMBERS: "Leletsa nomore ya tshoganyetso ya kwa lefelong la gago kgotsa o ye kwa bookelong jo bo gaufi."
+
+  commands.TEXTS.help: "ACE e naya kgakololo ya lefelo e e tlhatlhobilweng. Botsa ka puo ya gago. Ditaelo: BOFORA + molaetsa go tlhatlhoba molaetsa, KGAKOLOLO + kgakololo ya gago go abelana kitso, METSWEDI, GAPE, PUO + khoutu (sk. PUO EN), PHIMOLA go phimola tshedimosetso ya gago."
+  commands.TEXTS.help_short: "Botsa ACE ka puo ya gago. BOFORA + molaetsa e a o tlhatlhoba. PHIMOLA e phimola tshedimosetso ya gago."
+  commands.TEXTS.forgotten: "Go dirilwe. ACE e phimotse sotlhe se e neng e na le sone ka nomore e."
+  commands.TEXTS.stopped: "Ga o kitla o tlhola o amogela melaetsa go tswa kwa ACE fa e se fa o kwala gape. Romela PHIMOLA go phimola tshedimosetso ya gago."
+  commands.TEXTS.language: "Araba ka PUO le khoutu:"
+  commands.TEXTS.tip_thanks: "Re a leboga. Kgakololo ya gago e bolokilwe gore moitseanape a e tlhatlhobe. Ga e kitla e abelanwa pele e tlhatlhobiwa."
+  commands.TEXTS.tip_usage: "Romela KGAKOLOLO le kgakololo ya gago, sk.: KGAKOLOLO matlhare a neem a thusa kgatlhanong le seboko sa mmidi kwa Kgatleng."
+  commands.TEXTS.scam_usage: "Romela BOFORA le molaetsa o o sa o ikanyeng, ACE e tla o tlhatlhoba."
+  commands.TEXTS.no_sources: "Ga go na karabo ya pele e go ka bontshiwang motswedi wa yone. Botsa potso pele."
+  commands.TEXTS.no_more: "Ke sotlhe se ACE e nang le sone ka kgang e ga jaana. Botsa potso e nngwe kgotsa o romele THUSO."
+  commands.TEXTS.clarify: "ACE ga e ise e nne le kaedi e e tlhatlhobilweng ka seo. ACE e ka go thusa ka: {topics}. Romela KGAKOLOLO go oketsa kitso."
+  commands.TEXTS.unread: "ACE ga e ise e kgone go bala puo e. Tsweetswee kwala ka nngwe ya tseno: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "GO LEBEGA E LE BOFORA."
+  scam.HEADLINES.SUSPICIOUS: "TLHOKOMELA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Ga ke bone matshwao a a itsiweng a bofora, mme seo ga se reye gore go babalesegile."
+  scam.SIGNS_LABEL: "Matshwao a tlhagiso:"
+  scam.REPORT_LINE: "O fetisetse kwa 333, ke mahala."
+  scam.GENERIC_REPORT_LINE: "O se ka wa araba kgotsa wa romela madi. Bega kwa netweke ya gago ka nomore e e mo websaeteng ya bone kgotsa mo pakeng ya SIM."
+  scam.NEUTRAL_ADVICE: "O se ka wa abelana PIN ya gago, mme o tlhatlhobe tekatekano ya madi a gago a selefounu pele o dira se molaetsa ope o se buang."
+  scam.SIGNAL.asks_for_pin: "o kopa PIN ya gago kgotsa lefoko la sephiri"
+  scam.SIGNAL.double_registration: "o re SIM ya gago e kwadisitswe gabedi"
+  scam.SIGNAL.refund_request: "o go kopa go busa madi a a rometsweng ka phoso"
+  scam.SIGNAL.confirmation_from_personal_number: "o lebega jaaka netefatso ya M-PESA mme o tswa mo nomoreng ya motho"
+  scam.SIGNAL.unofficial_operator_number: "o re o tswa kwa Safaricom mme o naya nomore e e seng 0722000000"
+  scam.SIGNAL.dial_code_instruction: "o go bolelela go leletsa khoutu mo mogaleng wa gago"
+  scam.SIGNAL.prize_or_offer: "o re o gapile sekgele kgotsa o naya madi"
+  scam.SIGNAL.link: "o na le kgolagano"
+  scam.SIGNAL.pressure: "o go potlakisa go dira ka bonako"
+
+  channels.ussd.UI:
+    ask: "Botsa potso"
+    scam: "Tlhatlhoba molaetsa"
+    lang: "Puo"
+    more: "98 Gape"
+    next: "1 E e latelang"
+    back: "0 Morago"
+    menu: "0 Menyu"
+    ask_prompt: "Kwala potso ya gago:"
+    scam_prompt: "Kwala kgotsa o kgomaretse molaetsa:"
+    invalid: "Tlhopho e e phoso."
+    end_pack: "Ke sotlhe ka setlhogo se."
+    lang_prompt: "1 English"
+    topics: "Ditlhogo"
+    place_prompt: "Kwala leina la {area} la gago:"
+    food_prompt: "Kwala dijo le {area} la gago, sk. mmidi {example}:"
+    weeks_prompt: "O imile dibeke di le kae?"
+    crop_prompt: "Kwala sejalo le se o se bonang:"
+  channels.voice.PROMPTS:
+    welcome: "O amogelesegile mo ACE."
+    press: "Go {label}, tobetsa {n}."
+    repeat: "Go utlwa menyu gape, tobetsa 0."
+    bye: "Ga re a bona tlhopho ya gago. Sala sentle."
+    invalid: "Seo ga se tlhopho e e siameng."
+
+  services.base.DAYS: ["Mos", "Lab", "Lbr", "Lbn", "Lbt", "Mat", "Tsh"]
+  services.base.MONTHS: ["Fer", "Tlh", "Mop", "Mor", "Mot", "See", "Phu", "Pha", "Lwe", "Dip", "Ngw", "Sed"]
+  services.base.NEEDS_PLACE: "O mo {area} lefe? Araba ka leina la lone, sk. {example}."
+  services.base.AREA_DEFAULT: "lefelo"
+  services.base.AREA_WORD: {BW: "kgaolo", ZA: "porofense"}
+  services.base.COUNTRY_SAID: {BW: "Botswana", ZA: "Aforika Borwa"}
+
+  services.rain.WORDS.likely: "go ka direga thata"
+  services.rain.WORDS.possible: "go ka direga"
+  services.rain.WORDS.dry: "go omile thata"
+  services.rain.HEAD: "Pula gaufi le {place}:"
+  services.rain.HEAVY_LINE: "Pula e kgolo (20 mm kgotsa go feta) e ka na {days}."
+  services.rain.FOOT: "Ditšhono di tswa mo ponelopeleng ya ECMWF ya {date}."
+  services.rain.SPAN: "{a} go ya {b}"
+  services.rain.AND: "le"
+  services.rain.STALE: "ACE ga e na ponelopele ya bosa ya ga jaana ya {place}. Leba ponelopele ya {met}."
+  services.rain.NEXT: "Rulaganya tiro ya masimo mo malatsing a a omileng."
+
+  services.warnings.FOUND: "Tlhagiso ya puso ya {place} go tswa kwa {authority}, go fitlha {until}:"
+  services.warnings.NATIONAL: "Tlhagiso ya puso ya naga yotlhe go tswa kwa {authority}, go fitlha {until}:"
+  services.warnings.MORE: "Tse dingwe di le {n} di sa ntse di dira."
+  services.warnings.NONE: "Ga go na tlhagiso ya puso go tswa kwa {authority} e e amang {place} ga jaana (e tlhatlhobilwe {checked})."
+  services.warnings.STALE: "ACE ga e a kgona go tlhatlhoba ditlhagiso tsa {authority} bosheng, ka jalo ga e itse gore a di teng. Reetsa dikitsiso tsa puso go tswa kwa {authority}."
+  services.warnings.GAP: "{authority} ga e phasalatse ditlhagiso ka tsela e ACE e ka e balang, ka jalo ACE ga e kgone go tlhatlhoba ditlhagiso koo. Reetsa dikitsiso tsa puso go tswa kwa {authority} mo seromamoweng le thelebisheneng."
+  services.warnings.YOUR_AREA: "lefelo la gago"
+
+  services.facility.NEAR: "Lefelo la boitekanelo la puso le le gaufi:"
+  services.facility.IN_AREA: "Lefelo la boitekanelo la puso kwa {place}:"
+  services.facility.CAVEAT: "Go tswa mo lenaaneng la 2019 la mafelo a boitekanelo a puso; netefatsa gore le bulegile pele o ya."
+  services.facility.REGISTRY_CAVEAT: "Go tswa mo rejisetareng ya mafelo ya Lefapha la Boitekanelo; leletsa pele o ya fa o kgona."
+  services.facility.EMERGENCY: "Tshoganyetso: {numbers}."
+  services.facility.NO_NUMBER: "Fa e le tshoganyetso, leletsa nomore ya tshoganyetso ya kwa lefelong la gago."
+  services.facility.NONE: "ACE ga e a bona lefelo la boitekanelo la puso mo teng ga {km} km mo lenaaneng la yone la 2019."
+  services.facility.GAP: "ACE ga e ise e nne le lenaane la mafelo a boitekanelo la naga e."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} kwa {market}: {currency} {price} {unit} ka {month}"
+  services.prices.CHANGE.up: "e oketsegile ka {pct}% go tswa go {prev}"
+  services.prices.CHANGE.down: "e fokotsegile ka {pct}% go tswa go {prev}"
+  services.prices.CHANGE.same: "e tshwana le {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km go tswa {place})"
+  services.prices.FOOT: "Ditlhwatlhwa tsa WFP."
+  services.prices.TOP: "Ditlhwatlhwa tsa bosheng tsa WFP kwa {market}{far}:"
+  services.prices.OLD: "Ditlhwatlhwa tsa bosheng tsa WFP tse ACE e nang le tsone tsa {country} ke tsa {month}, mme di tsofetse. Botsa barekisi kgotsa ofisi ya gago ya temo."
+  services.prices.GAP: "WFP ga e phasalatse ditlhwatlhwa tsa {country}, ka jalo ACE ga e kgone go naya ditlhwatlhwa koo. Botsa barekisi kgotsa ofisi ya gago ya temo."
+  services.prices.THIN: "Ditlhwatlhwa tsa bosheng tsa WFP tsa {country} di akaretsa dijo di le mmalwa fela. Botsa barekisi kgotsa ofisi ya gago ya temo."
+  services.prices.NO_FOOD: "ACE ga e na tlhwatlhwa ya bosheng ya WFP ya {food} gaufi le {place}."
+  services.prices.UNIT: "ka {unit}"
+  services.prices.UNIT_MANY: "ka {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Mmidi", "maize flour": "Bupi", "maize meal": "Bupi", beans: "Dinawa", rice: "Raese", sorghum: "Mabele", millet: "Lebelebele", sugar: "Sukiri", oil: "Lookwane", "wheat flour": "Bupi jwa korong", wheat: "Korong", cowpeas: "Dinawa", potatoes: "Ditapole", tomatoes: "Tamati", onions: "Anyanese", salt: "Letswai", milk: "Mashi", eggs: "Mae", bread: "Borotho", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "e tshweu", yellow: "e serolwana", imported: "e e tswang kwa ntle", local: "ya selegae", dry: "e e omileng", red: "e khibidu"}
+
+  services.pregnancy.FIRST: "Fa o le mo dibekeng di le {w}, ya kwa tlhatlhobong ya gago ya ntlha ya boimana jaanong, pele ga beke ya 12."
+  services.pregnancy.DUE_NOW: "Fa o le mo dibekeng di le {w}, tlhatlhobo ya boimana e tshwanetse jaanong. E e latelang ke mo bekeng ya {next}."
+  services.pregnancy.NEXT: "Fa o le mo dibekeng di le {w}, tlhatlhobo ya gago e e latelang ya boimana ke mo bekeng ya {next}."
+  services.pregnancy.LATE: "Fa o le mo dibekeng di le {w} o fetile tlhatlhobo ya bofelo e e rulagantsweng mo bekeng ya 40. Bona modiredi wa boitekanelo gompieno."
+  services.pregnancy.ASK: "O imile dibeke di le kae? Araba ka nomore, sk. dibeke di le 22."
+  services.pregnancy.CALL: "Leletsa {numbers}."
+
+  services.pests.LIKELY: "Se e ka nna {problem}. ACE ga e bone sejalo sa gago, ka jalo leba matshwao a:"
+  services.pests.MAYBE: "Gongwe ke {problem}."
+  services.pests.REFER: "Kopa motlhankedi wa temo go netefatsa pele o gasa."
+  services.pests.NAMES.fall_armyworm: "seboko sa mmidi (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "bolwetse jo bo bolayang jwa mmidi (MLN)"
+  services.pests.NAMES.cassava_mosaic: "bolwetse jwa mosaic jwa kasava"
+  services.pests.NAMES.banana_xanthomonas_wilt: "bolwetse jwa go swaba ga banana (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "seboko sa matlhare a tamati (Tuta absoluta)"
+  services.pests.ASK: "Ke sejalo sefe, mme o bona eng? Sk.: matlhare a mmidi a na le masoba le lorole lo lo jaaka lwa logong."
+  services.pests.UNKNOWN: "Ga jaana ACE e tlhatlhoba mmidi, kasava, banana le tamati. Ka dijalo tse dingwe, botsa motlhankedi wa temo."
+
+phrases:
+  safety.PREGNANCY: ["o imile", "ke imile", "mosadi yo o imileng", "o na le boimana", "dikgwedi tsa boimana", "imile dikgwedi"]
+  safety.POSTPARTUM: ["o sa tswa go belega", "o belegile", "ke belegile", "morago ga go belega", "o tshotse"]
+  safety.MATERNAL_DANGER: ["o tswa madi", "go tswa madi", "madi a mantsi", "o a roroma", "sethoathoa", "tlhogo e e botlhoko thata", "matlho ga a bone sentle", "lesea ga le tshikinyege", "ngwana ga a tshikinyege", "metsi a thubegile", "fefere e kgolo"]
+  safety.URGENT: ["ga a heme", "ga a kgone go hema", "o idibetse", "o wele ga a tsoge", "sethoathoa", "o tswa madi thata", "botlhoko jwa sehuba", "o lomilwe ke noga", "noga e mo lomile", "o fisegile thata"]
+  safety.POISON_ACT: ["o nwele", "o metsitse", "o jele", "ngwana o nwele", "o kometse"]
+  safety.POISON_WHAT: ["botlhole", "botlhole jwa ditshenekegi", "botlhole jwa dipeba", "parafene", "peterole", "bleach", "dikhemikale"]
+  safety.POISONED: ["ba mo nositse botlhole", "o nwele botlhole", "o jele botlhole", "ba mo neile botlhole", "o tsentswe botlhole"]
+  safety.GBV: ["ke betilwe", "ba mpetile", "o a mpetsa", "monna wa me o a mpetsa", "o ntiteile", "tirisodikgoka mo lapeng", "o tshosetsa go mpolaya"]
+  safety.CHILD: ["ngwana", "ngwana wa me", "morwadi wa me", "morwa wa me", "mosetsana", "bana", "lesea"]
+  safety.CHILD_HARM: ["o betilwe", "ba mo betile", "o tlhokofaditswe", "ba a mo tlhokofatsa", "ba a mo itaya", "o mo iteile", "lenyalo la patelediso"]
+  safety.SELF_HARM: ["go ipolaya", "ke tla ipolaya", "ke batla go swa", "ga ke sa batla go tshela", "ke batla go fedisa botshelo jwa me", "go ikgobatsa"]
+
+  scam.PIN: ["pin", "lefoko la sephiri", "nomore ya sephiri"]
+  scam.ASK: ["romela", "mpha", "netefatsa", "tsenya", "kwala"]
+  scam.MISTAKE: ["ka phoso", "phoso", "busa madi", "a buse"]
+  scam.DOUBLE: ["gabedi"]
+  scam.PRIZE: ["o gapile", "sekgele", "mpho", "madi a mahala"]
+  scam.URGENT: ["ka bonako", "jaanong jaana", "mo diureng di le 24", "e tla tswalwa", "e tla emisiwa", "tlhagiso ya bofelo"]
+  scam.CLAIMS_OPERATOR: ["mascom", "orange", "btc", "vodacom", "mtn", "cell c", "fnb"]
+  scam.DIAL: ["leletsa"]
+
+  services.CUES.pregnancy_companion: ["tlhatlhobo ya boimana", "kokelwana ya boimana", "tlhatlhobo e e latelang"]
+  services.CUES.nearest_facility: ["bookelong", "sepatela", "kokelwana", "ngaka"]
+  services.CUES.official_warnings: ["tlhagiso", "morwalela", "setsuatsue"]
+  services.CUES.rain_this_week: ["pula", "pula e tla na", "bosa", "ponelopele"]
+  services.CUES.market_prices: ["tlhwatlhwa", "ke bokae", "mmaraka"]
+  services.CUES.pest_check: ["ditshenekegi", "seboko", "bolwetse", "matlhare", "serolwana", "masoba", "a swaba", "a a swa"]
+  services.SEASONAL: ["selemo", "mariga", "nako ya pula"]
+  services.PREGNANT: ["imile", "boimana"]
+  services.HOW_MUCH: ["bokae"]
+  services.prices.FOODS: {mmidi: maize, bupi: maize meal, dinawa: beans, raese: rice, sukiri: sugar, lookwane: oil, ditapole: potatoes, tamati: tomatoes, anyanese: onions, letswai: salt, mae: eggs, borotho: bread}
+  services.pests.CROPS.maize: ["mmidi"]
+  services.pests.CROPS.cassava: ["kasava"]
+  services.pests.CROPS.banana: ["banana"]
+  services.pests.CROPS.tomato: ["tamati"]
+  services.pests.PROBLEMS.fall_armyworm: ["seboko", "masoba", "lorole"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["serolwana", "a swabile", "a sule"]
+  services.pregnancy.WEEK_WORDS: ["dibeke", "beke"]
+  services.pregnancy.MONTH_WORDS: ["dikgwedi", "kgwedi"]
+  commands.COMMANDS.help: ["thuso"]
+  commands.COMMANDS.forget: ["phimola"]
+  commands.COMMANDS.stop: ["emisa"]
+  commands.COMMANDS.language: ["puo"]
+  commands.COMMANDS.tip: ["kgakololo"]
+  commands.COMMANDS.scam: ["bofora"]
+  commands.COMMANDS.sources: ["metswedi"]
+  commands.COMMANDS.more: ["gape"]
+  text.ACTION_CUES: ["ke dire eng", "ke tshwanetse go dira eng", "nka thibela jang", "nka se bolaya jang", "nka boloka jang", "nthuse"]
+
+words:
+  stopwords: ["le", "ka", "ke", "go", "gore", "mme", "kgotsa", "eng", "jang", "gonne", "tsweetswee", "sa", "ya", "wa", "mo"]
+  markers: ["jang", "gompieno", "gape", "bookelong", "sepatela", "mmidi", "leboga", "rre", "maabane", "kamoso", "tsweetswee", "gonne", "jaanong", "imile", "matlhare", "gaufi", "kgotsa", "botlhole", "nna", "thata", "sentle", "gago", "jaana", "bega", "leng", "thobo", "bofora", "mo", "ke", "bokae", "dibeke", "dinawa", "kasava", "botsa"]

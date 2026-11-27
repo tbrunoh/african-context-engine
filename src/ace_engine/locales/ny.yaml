@@ -1,0 +1,204 @@
+# Chichewa (Chinyanja) for Malawi and Zambia, in the Malawian spelling. Drafted for ACE 2.3. Awaiting review by
+# fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ny
+  name: Chichewa
+  native: "Chichewa"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE iyankha mu Chichewa."
+  names: ["chichewa", "chewa", "nyanja", "chinyanja", "ny"]
+
+templates:
+  safety.OPENERS.self_harm: "Pepani kwambiri kuti mukumva chonchi. Muyenera kulandira thandizo tsopano. {numbers}"
+  safety.OPENERS.maternal: "Izi zitha kukhala zoopsa za mimba. Pitani kuchipatala chapafupi tsopano. {numbers}"
+  safety.OPENERS.poisoning: "Izi zikumveka ngati poizoni. Pezani thandizo la dokotala tsopano, mutenge botolo. {numbers}"
+  safety.OPENERS.child_protection: "Mwana akhoza kukhala pachiopsezo. Chonde pezani thandizo tsopano. {numbers}"
+  safety.OPENERS.gbv: "Pepani kuti izi zikukuchitikirani. Mutha kupeza thandizo tsopano. {numbers}"
+  safety.OPENERS.health_urgent: "Izi zikumveka zofulumira. Pezani thandizo la dokotala tsopano. {numbers}"
+  safety.CALL_WORD: "Imbani {numbers}"
+  safety.OR_WORD: "kapena"
+  safety.EMERGENCY_WORD: "zadzidzidzi"
+  safety.FALLBACK_NUMBERS: "Imbani nambala ya zadzidzidzi ya kwanuko kapena pitani kuchipatala chapafupi."
+
+  commands.TEXTS.help: "ACE imapereka malangizo a kwanuko otsimikizika. Funsani m'chilankhulo chanu. Malamulo: CHINYENGO + uthenga kuti muwone uthenga, MALANGIZO + malangizo anu kuti mugawane nzeru, MAGWERO, ZAMBIRI, CHILANKHULO + khodi (mwachitsanzo CHILANKHULO EN), FUFUTA kufufuta zambiri zanu."
+  commands.TEXTS.help_short: "Funsani ACE m'chilankhulo chanu. CHINYENGO + uthenga imauwona. FUFUTA imafufuta zambiri zanu."
+  commands.TEXTS.forgotten: "Zachitika. ACE yafufuta zonse zomwe inali nazo za nambala iyi."
+  commands.TEXTS.stopped: "Simudzalandiranso mauthenga ochokera ku ACE pokhapokha mutalembanso. Tumizani FUFUTA kufufuta zambiri zanu."
+  commands.TEXTS.language: "Yankhani CHILANKHULO ndi khodi:"
+  commands.TEXTS.tip_thanks: "Zikomo. Malangizo anu asungidwa kuti katswiri awawone. Sadzagawidwa asanawunikidwe."
+  commands.TEXTS.tip_usage: "Tumizani MALANGIZO ndi malangizo anu, mwachitsanzo: MALANGIZO masamba a neem amathandiza polimbana ndi mbozi za chimanga ku Kasungu."
+  commands.TEXTS.scam_usage: "Tumizani CHINYENGO ndi uthenga womwe simukuukhulupirira, ACE iuwona."
+  commands.TEXTS.no_sources: "Palibe yankho lakale loti tiwonetse komwe lachokera. Funsani funso kaye."
+  commands.TEXTS.no_more: "Ndizo zonse zomwe ACE ili nazo pa nkhaniyi pakadali pano. Funsani funso lina kapena tumizani THANDIZO."
+  commands.TEXTS.clarify: "ACE ilibe malangizo otsimikizika pa zimenezo. ACE ingakuthandizeni ndi: {topics}. Tumizani MALANGIZO kuti muwonjezere nzeru."
+  commands.TEXTS.unread: "ACE sinathe kuwerenga chilankhulo ichi. Chonde lembani m'chimodzi mwa izi: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "ZIKUOONEKA NGATI CHINYENGO."
+  scam.HEADLINES.SUSPICIOUS: "SAMALANI."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Sindikuona zizindikiro zodziwika za chinyengo, koma izi sizitanthauza kuti ndi zotetezeka."
+  scam.SIGNS_LABEL: "Zizindikiro zochenjeza:"
+  scam.REPORT_LINE: "Utumizeni ku 333, ndi kwaulere."
+  scam.GENERIC_REPORT_LINE: "Musayankhe kapena kutumiza ndalama. Nenani ku netiweki yanu kudzera pa nambala ya pa webusayiti yawo kapena pa paketi ya SIM."
+  scam.NEUTRAL_ADVICE: "Musagawane PIN yanu, ndipo onani ndalama za pa foni yanu musanachite chilichonse chomwe uthenga wanena."
+  scam.SIGNAL.asks_for_pin: "ukupempha PIN yanu kapena chinsinsi"
+  scam.SIGNAL.double_registration: "ukunena kuti SIM yanu yalembetsedwa kawiri"
+  scam.SIGNAL.refund_request: "ukukupemphani kubweza ndalama zotumizidwa molakwitsa"
+  scam.SIGNAL.confirmation_from_personal_number: "ukuoneka ngati chitsimikizo cha M-PESA koma ukuchokera ku nambala ya munthu"
+  scam.SIGNAL.unofficial_operator_number: "ukunena kuti ukuchokera ku Safaricom koma ukupereka nambala yosakhala 0722000000"
+  scam.SIGNAL.dial_code_instruction: "ukukuuzani kuti muyimbe khodi pa foni yanu"
+  scam.SIGNAL.prize_or_offer: "ukunena kuti mwapambana mphotho kapena ukupereka ndalama"
+  scam.SIGNAL.link: "uli ndi ulalo"
+  scam.SIGNAL.pressure: "ukukufulumizani kuti muchite mwachangu"
+
+  channels.ussd.UI:
+    ask: "Funsani funso"
+    scam: "Onani uthenga"
+    lang: "Chilankhulo"
+    more: "98 Zambiri"
+    next: "1 Chotsatira"
+    back: "0 Bwererani"
+    menu: "0 Menyu"
+    ask_prompt: "Lembani funso lanu:"
+    scam_prompt: "Lembani kapena ikani uthenga:"
+    invalid: "Kusankha kolakwika."
+    end_pack: "Ndizo zonse pa mutuwu."
+    lang_prompt: "1 English"
+    topics: "Mitu"
+    place_prompt: "Lembani dzina la {area} lanu:"
+    food_prompt: "Lembani chakudya ndi {area} lanu, mwachitsanzo chimanga {example}:"
+    weeks_prompt: "Mimba yanu ili ndi masabata angati?"
+    crop_prompt: "Lembani mbewu ndi zomwe mukuona:"
+  channels.voice.PROMPTS:
+    welcome: "Takulandirani ku ACE."
+    press: "Pa {label}, dinani {n}."
+    repeat: "Kuti mumvenso menyu, dinani 0."
+    bye: "Sitinalandire kusankha kwanu. Tsalani bwino."
+    invalid: "Kumeneko si kusankha koyenera."
+
+  services.base.DAYS: ["Lol", "Lach", "Lch", "Lcn", "Lcs", "Lwk", "Lam"]
+  services.base.MONTHS: ["Jan", "Feb", "Mar", "Epu", "Mei", "Jun", "Jul", "Oga", "Sep", "Oku", "Nov", "Dis"]
+  services.base.NEEDS_PLACE: "Muli m'{area} liti? Yankhani ndi dzina lake, mwachitsanzo {example}."
+  services.base.AREA_DEFAULT: "dera"
+  services.base.AREA_WORD: {MW: "boma", ZM: "chigawo"}
+  services.base.COUNTRY_SAID: {MW: "Malawi", ZM: "Zambia"}
+
+  services.rain.WORDS.likely: "mwina kwambiri"
+  services.rain.WORDS.possible: "mwina"
+  services.rain.WORDS.dry: "kouma kwambiri"
+  services.rain.HEAD: "Mvula pafupi ndi {place}:"
+  services.rain.HEAVY_LINE: "Mvula yambiri (20 mm kapena kupitirira) ikhoza kugwa {days}."
+  services.rain.FOOT: "Mwayi wochokera ku zolosera za ECMWF za {date}."
+  services.rain.SPAN: "{a} mpaka {b}"
+  services.rain.AND: "ndi"
+  services.rain.STALE: "ACE ilibe zolosera za nyengo zaposachedwa za {place}. Onani zolosera za {met}."
+  services.rain.NEXT: "Konzani ntchito za kumunda pa masiku owuma."
+
+  services.warnings.FOUND: "Chenjezo la boma la {place} lochokera ku {authority}, mpaka {until}:"
+  services.warnings.NATIONAL: "Chenjezo la boma la dziko lonse lochokera ku {authority}, mpaka {until}:"
+  services.warnings.MORE: "Ena {n} akugwirabe ntchito."
+  services.warnings.NONE: "Palibe chenjezo la boma lochokera ku {authority} lokhudza {place} pakadali pano (lawunikidwa {checked})."
+  services.warnings.STALE: "ACE sinathe kuwona machenjezo a {authority} posachedwa, choncho sidziwa ngati alipo. Mverani zilengezo za boma zochokera ku {authority}."
+  services.warnings.GAP: "{authority} sifalitsa machenjezo m'njira yomwe ACE ingawerenge, choncho ACE singawone machenjezo kumeneko. Mverani zilengezo za boma zochokera ku {authority} pa wailesi ndi kanema."
+  services.warnings.YOUR_AREA: "dera lanu"
+
+  services.facility.NEAR: "Chipatala cha boma chapafupi:"
+  services.facility.IN_AREA: "Chipatala cha boma ku {place}:"
+  services.facility.CAVEAT: "Kuchokera pa mndandanda wa 2019 wa zipatala za boma; tsimikizani kuti chili chotsegula musanapite."
+  services.facility.REGISTRY_CAVEAT: "Kuchokera pa kaundula wa zipatala wa Unduna wa Zaumoyo; imbani musanapite ngati mungathe."
+  services.facility.EMERGENCY: "Zadzidzidzi: {numbers}."
+  services.facility.NO_NUMBER: "Ngati ndi zadzidzidzi, imbani nambala ya zadzidzidzi ya kwanuko."
+  services.facility.NONE: "ACE sinapeze chipatala cha boma m'kati mwa {km} km pa mndandanda wake wa 2019."
+  services.facility.GAP: "ACE ilibe mndandanda wa zipatala wa dziko lino."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} ku {market}: {currency} {price} {unit} mu {month}"
+  services.prices.CHANGE.up: "yakwera ndi {pct}% kuchokera {prev}"
+  services.prices.CHANGE.down: "yatsika ndi {pct}% kuchokera {prev}"
+  services.prices.CHANGE.same: "yofanana ndi {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km kuchokera {place})"
+  services.prices.FOOT: "Mitengo ya WFP."
+  services.prices.TOP: "Mitengo yaposachedwa ya WFP ku {market}{far}:"
+  services.prices.OLD: "Mitengo yaposachedwa ya WFP yomwe ACE ili nayo ya {country} ndi ya {month}, ndipo ndi yakale. Funsani amalonda kapena ofesi yanu ya zaulimi."
+  services.prices.GAP: "WFP sifalitsa mitengo ya {country}, choncho ACE singapereke mitengo kumeneko. Funsani amalonda kapena ofesi yanu ya zaulimi."
+  services.prices.THIN: "Mitengo yaposachedwa ya WFP ya {country} ikukhudza zakudya zochepa zokha. Funsani amalonda kapena ofesi yanu ya zaulimi."
+  services.prices.NO_FOOD: "ACE ilibe mtengo waposachedwa wa WFP wa {food} pafupi ndi {place}."
+  services.prices.UNIT: "pa {unit}"
+  services.prices.UNIT_MANY: "pa {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Chimanga", "maize flour": "Ufa", "maize meal": "Ufa", beans: "Nyemba", rice: "Mpunga", sorghum: "Mapira", millet: "Mawere", sugar: "Shuga", oil: "Mafuta", "wheat flour": "Ufa wa tirigu", wheat: "Tirigu", cowpeas: "Khobwe", potatoes: "Mbatata", tomatoes: "Tomato", onions: "Anyezi", salt: "Mchere", milk: "Mkaka", eggs: "Mazira", bread: "Buledi", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "choyera", yellow: "chachikasu", imported: "chochokera kunja", local: "cham'dziko", dry: "chowuma", red: "chofiira"}
+
+  services.pregnancy.FIRST: "Pa masabata {w}, pitani ku kuyezetsa kwanu koyamba kwa mimba tsopano, sabata 12 lisanafike."
+  services.pregnancy.DUE_NOW: "Pa masabata {w}, kuyezetsa kwa mimba kwafika tsopano. Kotsatira ndi pa sabata {next}."
+  services.pregnancy.NEXT: "Pa masabata {w}, kuyezetsa kwanu kotsatira kwa mimba ndi pa sabata {next}."
+  services.pregnancy.LATE: "Pa masabata {w} mwadutsa kuyezetsa komaliza kokonzedwa pa sabata 40. Onani wogwira ntchito ya zaumoyo lero."
+  services.pregnancy.ASK: "Mimba yanu ili ndi masabata angati? Yankhani ndi nambala, mwachitsanzo masabata 22."
+  services.pregnancy.CALL: "Imbani {numbers}."
+
+  services.pests.LIKELY: "Izi zitha kukhala {problem}. ACE siyiona mbewu yanu, choncho onani zizindikiro izi:"
+  services.pests.MAYBE: "Mwina ndi {problem}."
+  services.pests.REFER: "Funsani mlangizi wa zaulimi kuti atsimikize musanapopere mankhwala."
+  services.pests.NAMES.fall_armyworm: "mbozi za chimanga (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "matenda opha chimanga (MLN)"
+  services.pests.NAMES.cassava_mosaic: "matenda a mosaic a chinangwa"
+  services.pests.NAMES.banana_xanthomonas_wilt: "matenda ofota nthochi (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "mbozi za masamba a tomato (Tuta absoluta)"
+  services.pests.ASK: "Mbewu yanji, ndipo mukuona chiyani? Mwachitsanzo: masamba a chimanga ali ndi mabowo ndi fumbi ngati utuchi."
+  services.pests.UNKNOWN: "Pakadali pano ACE imawunika chimanga, chinangwa, nthochi ndi tomato. Pa mbewu zina, funsani mlangizi wa zaulimi."
+
+phrases:
+  safety.PREGNANCY: ["ali ndi mimba", "ndili ndi mimba", "woyembekezera", "ali woyembekezera", "mayi woyembekezera", "miyezi ya mimba"]
+  safety.POSTPARTUM: ["wangobereka kumene", "wabereka", "ndabereka", "atabereka", "ndikabereka"]
+  safety.MATERNAL_DANGER: ["magazi", "akutuluka magazi", "kutuluka magazi", "akunjenjemera", "khunyu", "akugwa khunyu", "mutu ukupweteka kwambiri", "maso sakuona bwino", "mwana sakusuntha", "madzi aphulika", "malungo kwambiri"]
+  safety.URGENT: ["sakupuma", "sangathe kupuma", "wakomoka", "wagwa sakudzuka", "akugwa khunyu", "akutuluka magazi kwambiri", "kupweteka pachifuwa", "walumidwa ndi njoka", "njoka yamuluma", "wapsa kwambiri"]
+  safety.POISON_ACT: ["wamwa", "wameza", "wadya", "mwana wamwa", "wamwa poizoni"]
+  safety.POISON_WHAT: ["poizoni", "mankhwala a tizilombo", "mankhwala a makoswe", "parafini", "palafini", "petulo", "bleach", "makemikolo"]
+  safety.POISONED: ["amupatsa poizoni", "wamwa poizoni", "wadya poizoni", "anamupatsa poizoni", "amuthira poizoni"]
+  safety.GBV: ["andigwirira", "anandigwirira", "akundimenya", "amuna anga akundimenya", "wandimenya", "nkhanza za m'banja", "akuopseza kundipha", "amandimenya", "mwamuna wanga amandimenya"]
+  safety.CHILD: ["mwana", "mwana wanga", "mwana wanga wamkazi", "mwana wanga wamwamuna", "kamtsikana", "mtsikana wamng'ono"]
+  safety.CHILD_HARM: ["wagwiriridwa", "anamugwirira", "akuzunzidwa", "akumuzunza", "akumumenya", "wamumenya", "ukwati wokakamiza"]
+  safety.SELF_HARM: ["kudzipha", "ndidzipha", "ndikufuna kufa", "sindikufunanso kukhala ndi moyo", "ndikufuna kuthetsa moyo wanga", "kudzivulaza"]
+
+  scam.PIN: ["pin", "chinsinsi", "nambala yachinsinsi"]
+  scam.ASK: ["tumizani", "ndipatseni", "tsimikizani", "lowetsani", "lembani"]
+  scam.MISTAKE: ["molakwitsa", "kulakwitsa", "bwezani ndalama", "zibwezeni"]
+  scam.DOUBLE: ["kawiri"]
+  scam.PRIZE: ["mwapambana", "mphotho", "mphatso", "ndalama zaulere"]
+  scam.URGENT: ["mwachangu", "tsopano lino", "pasanathe maola 24", "itsekedwa", "iyimitsidwa", "chenjezo lomaliza"]
+  scam.CLAIMS_OPERATOR: ["airtel", "tnm", "mpamba", "zamtel", "mtn"]
+  scam.DIAL: ["imbani", "dayilani"]
+
+  services.CUES.pregnancy_companion: ["kuyezetsa mimba", "chipatala cha amayi oyembekezera", "kuyezetsa kotsatira"]
+  services.CUES.nearest_facility: ["chipatala", "kiliniki", "dokotala"]
+  services.CUES.official_warnings: ["chenjezo", "kusefukira", "mphepo yamkuntho"]
+  services.CUES.rain_this_week: ["mvula", "igwa", "nyengo", "zolosera"]
+  services.CUES.market_prices: ["mtengo", "ndi zingati", "msika"]
+  services.CUES.pest_check: ["tizilombo", "mbozi", "matenda", "masamba", "achikasu", "mabowo", "akufota", "akufa"]
+  services.SEASONAL: ["chilimwe", "dzinja", "nyengo ya mvula"]
+  services.PREGNANT: ["mimba", "woyembekezera"]
+  services.HOW_MUCH: ["zingati", "ndi ndalama zingati"]
+  services.prices.FOODS: {chimanga: maize, ufa: maize meal, nyemba: beans, mpunga: rice, shuga: sugar, mafuta: oil, mbatata: potatoes, tomato: tomatoes, anyezi: onions, mchere: salt, mazira: eggs, buledi: bread}
+  services.pests.CROPS.maize: ["chimanga"]
+  services.pests.CROPS.cassava: ["chinangwa"]
+  services.pests.CROPS.banana: ["nthochi"]
+  services.pests.CROPS.tomato: ["tomato"]
+  services.pests.PROBLEMS.fall_armyworm: ["mbozi", "mabowo", "utuchi"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["achikasu", "afota", "afa"]
+  services.pregnancy.WEEK_WORDS: ["masabata", "sabata"]
+  services.pregnancy.MONTH_WORDS: ["miyezi", "mwezi"]
+  commands.COMMANDS.help: ["thandizo"]
+  commands.COMMANDS.forget: ["fufuta"]
+  commands.COMMANDS.stop: ["leka"]
+  commands.COMMANDS.language: ["chilankhulo"]
+  commands.COMMANDS.tip: ["malangizo"]
+  commands.COMMANDS.scam: ["chinyengo"]
+  commands.COMMANDS.sources: ["magwero"]
+  commands.COMMANDS.more: ["zambiri"]
+  text.ACTION_CUES: ["ndichite chiyani", "ndiyenera kuchita chiyani", "ndingapewe bwanji", "ndingaphe bwanji", "ndingasunge bwanji", "ndithandizeni"]
+
+words:
+  stopwords: ["ndi", "kapena", "koma", "izi", "pano", "tsopano", "chiyani", "bwanji", "chifukwa", "kuti", "chonde", "wanga", "yanga", "kwambiri", "ali"]
+  markers: ["chonde", "bwanji", "chiyani", "tsopano", "ndani", "kuti", "chifukwa", "kapena", "mwana", "chipatala", "chimanga", "zikomo", "izi", "sindikudziwa", "ndikufuna", "wanga", "yanga", "kwambiri", "mimba", "dzulo", "lero", "mawa", "ndalama", "masamba", "chinangwa", "zingati", "sabata", "mvula", "nyemba"]

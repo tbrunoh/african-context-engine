@@ -1,0 +1,206 @@
+# Nigerian Pidgin (Naija), written the way most people type it on phones. Commands stay in English, as Naija
+# speakers use them. Drafted for ACE 2.3. Awaiting review by fluent speakers and, for the safety phrases, by
+# clinicians.
+meta:
+  code: pcm
+  name: Nigerian Pidgin
+  native: "Naija"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  marker_weight: 2
+  confirm: "ACE go dey answer you for Pidgin."
+  names: ["pidgin", "naija", "naija pidgin", "pcm"]
+
+templates:
+  safety.OPENERS.self_harm: "I sorry well well say you dey feel like this. You need support now now. {numbers}"
+  safety.OPENERS.maternal: "This one fit be belle emergency. Go the nearest hospital now. {numbers}"
+  safety.OPENERS.poisoning: "E be like poison. Find doctor help now, carry the bottle go. {numbers}"
+  safety.OPENERS.child_protection: "Pikin fit dey for danger. Abeg find help now. {numbers}"
+  safety.OPENERS.gbv: "I sorry say dem dey do you like this. You fit get help now. {numbers}"
+  safety.OPENERS.health_urgent: "E be like emergency. Find doctor help now. {numbers}"
+  safety.CALL_WORD: "Call {numbers}"
+  safety.OR_WORD: "or"
+  safety.EMERGENCY_WORD: "emergency"
+  safety.FALLBACK_NUMBERS: "Call your local emergency number or go the nearest hospital."
+
+  commands.TEXTS.help: "ACE dey give local advice wey dem don check. Ask question for your language. Commands: SCAM + message to check message, TIP + your tip to share wetin you sabi, SOURCES, MORE, LANG + code (like LANG EN), FORGET to clear your data."
+  commands.TEXTS.help_short: "Ask ACE question for your language. SCAM + message go check am. FORGET go clear your data."
+  commands.TEXTS.forgotten: "E don do. ACE don clear everything wey e get about this number."
+  commands.TEXTS.stopped: "You no go receive message from ACE again unless you write again. Send FORGET to clear your data."
+  commands.TEXTS.language: "Reply LANG and code:"
+  commands.TEXTS.tip_thanks: "Thank you. We don keep your tip make expert check am. We no go share am until dem check am."
+  commands.TEXTS.tip_usage: "Send TIP and your tip, like: TIP neem leaf dey help against armyworm for Kaduna."
+  commands.TEXTS.scam_usage: "Send SCAM and the message wey you no trust, ACE go check am."
+  commands.TEXTS.no_sources: "No previous answer to show where e come from. Ask question first."
+  commands.TEXTS.no_more: "Na everything ACE get for this matter be that for now. Ask another question or send HELP."
+  commands.TEXTS.clarify: "ACE never get advice wey dem don check about that one. ACE fit help you with: {topics}. Send TIP to add wetin you sabi."
+  commands.TEXTS.unread: "ACE never sabi read this language. Abeg write for one of these ones: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "E BE LIKE SCAM."
+  scam.HEADLINES.SUSPICIOUS: "SHINE YOUR EYE."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "I no see any scam sign wey we know, but that one no mean say e safe."
+  scam.SIGNS_LABEL: "Warning signs:"
+  scam.REPORT_LINE: "Forward am to 333, e free."
+  scam.GENERIC_REPORT_LINE: "No reply or send money. Report am to your network with the number for their website or for your SIM pack."
+  scam.NEUTRAL_ADVICE: "No share your PIN, and check your mobile money balance before you do anything wey any message talk."
+  scam.SIGNAL.asks_for_pin: "e dey ask for your PIN or password"
+  scam.SIGNAL.double_registration: "e talk say your SIM register two times"
+  scam.SIGNAL.refund_request: "e dey ask you to return money wey dem send by mistake"
+  scam.SIGNAL.confirmation_from_personal_number: "e look like M-PESA confirmation but e come from person number"
+  scam.SIGNAL.unofficial_operator_number: "e talk say e be Safaricom but e give number wey no be 0722000000"
+  scam.SIGNAL.dial_code_instruction: "e dey tell you to dial code for your phone"
+  scam.SIGNAL.prize_or_offer: "e talk say you win prize or e dey offer money"
+  scam.SIGNAL.link: "e get link"
+  scam.SIGNAL.pressure: "e dey rush you to act quick quick"
+
+  channels.ussd.UI:
+    ask: "Ask question"
+    scam: "Check message"
+    lang: "Language"
+    more: "98 More"
+    next: "1 Next"
+    back: "0 Back"
+    menu: "0 Menu"
+    ask_prompt: "Type your question:"
+    scam_prompt: "Type or paste the message:"
+    invalid: "Wrong choice."
+    end_pack: "Na everything for this topic be that."
+    lang_prompt: "1 English"
+    topics: "Topics"
+    place_prompt: "Type your {area} name:"
+    food_prompt: "Type food and your {area}, like maize {example}:"
+    weeks_prompt: "How many weeks your belle don reach?"
+    crop_prompt: "Type the crop and wetin you see:"
+  channels.voice.PROMPTS:
+    welcome: "Welcome to ACE."
+    press: "For {label}, press {n}."
+    repeat: "To hear the menu again, press 0."
+    bye: "We no get your choice. Bye bye."
+    invalid: "That one no be correct choice."
+
+  services.base.DAYS: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  services.base.MONTHS: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  services.base.NEEDS_PLACE: "Which {area} you dey? Reply with the name, like {example}."
+  services.base.AREA_DEFAULT: "area"
+  services.base.AREA_WORD: {NG: "state"}
+  services.base.COUNTRY_SAID: {NG: "Naija", GH: "Ghana"}
+
+  services.rain.WORDS.likely: "e go likely"
+  services.rain.WORDS.possible: "e fit"
+  services.rain.WORDS.dry: "mostly dry"
+  services.rain.HEAD: "Rain near {place}:"
+  services.rain.HEAVY_LINE: "Heavy rain (20 mm or more) fit fall {days}."
+  services.rain.FOOT: "Chances from ECMWF forecast of {date}."
+  services.rain.SPAN: "{a} to {b}"
+  services.rain.AND: "and"
+  services.rain.STALE: "ACE no get current weather forecast for {place}. Check {met} forecast."
+  services.rain.NEXT: "Plan farm work for the dry days."
+
+  services.warnings.FOUND: "Government warning for {place} from {authority}, until {until}:"
+  services.warnings.NATIONAL: "Government warning for the whole country from {authority}, until {until}:"
+  services.warnings.MORE: "{n} more still dey active."
+  services.warnings.NONE: "No government warning from {authority} for {place} now (dem check am {checked})."
+  services.warnings.STALE: "ACE no fit check {authority} warnings recently, so e no know if any dey. Listen to government announcement from {authority}."
+  services.warnings.GAP: "{authority} no dey publish warnings for way wey ACE fit read, so ACE no fit check warnings there. Listen to government announcement from {authority} for radio and TV."
+  services.warnings.YOUR_AREA: "your area"
+
+  services.facility.NEAR: "Nearest government health facility:"
+  services.facility.IN_AREA: "Government health facility for {place}:"
+  services.facility.CAVEAT: "From 2019 list of government health facilities; confirm say e open before you go."
+  services.facility.REGISTRY_CAVEAT: "From Ministry of Health facility register; call before you go if you fit."
+  services.facility.EMERGENCY: "Emergency: {numbers}."
+  services.facility.NO_NUMBER: "If na emergency, call your local emergency number."
+  services.facility.NONE: "ACE no see any government health facility within {km} km for its 2019 list."
+  services.facility.GAP: "ACE never get health facility list for this country."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} for {market}: {currency} {price} {unit} for {month}"
+  services.prices.CHANGE.up: "e go up {pct}% from {prev}"
+  services.prices.CHANGE.down: "e come down {pct}% from {prev}"
+  services.prices.CHANGE.same: "e still be like {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km from {place})"
+  services.prices.FOOT: "WFP prices."
+  services.prices.TOP: "Latest WFP prices for {market}{far}:"
+  services.prices.OLD: "The latest WFP prices wey ACE get for {country} na from {month}, e don old. Ask traders or your agriculture office."
+  services.prices.GAP: "WFP no dey publish prices for {country}, so ACE no fit give prices there. Ask traders or your agriculture office."
+  services.prices.THIN: "Recent WFP prices for {country} cover only small foods. Ask traders or your agriculture office."
+  services.prices.NO_FOOD: "ACE no get recent WFP price for {food} near {place}."
+  services.prices.UNIT: "per {unit}"
+  services.prices.UNIT_MANY: "per {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Maize", "maize flour": "Maize flour", "maize meal": "Maize flour", beans: "Beans", rice: "Rice", sorghum: "Guinea corn", millet: "Millet", sugar: "Sugar", oil: "Oil", "wheat flour": "Wheat flour", wheat: "Wheat", cowpeas: "Beans", potatoes: "Irish potato", tomatoes: "Tomato", onions: "Onion", salt: "Salt", milk: "Milk", eggs: "Egg", bread: "Bread", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "white", yellow: "yellow", imported: "imported", local: "local", dry: "dry", red: "red"}
+
+  services.pregnancy.FIRST: "For week {w}, go your first antenatal check now, before week 12."
+  services.pregnancy.DUE_NOW: "For week {w}, antenatal check don reach now. The next one na week {next}."
+  services.pregnancy.NEXT: "For week {w}, your next antenatal check na week {next}."
+  services.pregnancy.LATE: "For week {w} you don pass the last check wey dem plan for week 40. See health worker today."
+  services.pregnancy.ASK: "How many weeks your belle don reach? Reply with number, like 22 weeks."
+  services.pregnancy.CALL: "Call {numbers}."
+
+  services.pests.LIKELY: "This one fit be {problem}. ACE no fit see your crop, so check these signs:"
+  services.pests.MAYBE: "E fit be {problem}."
+  services.pests.REFER: "Ask extension officer to confirm before you spray."
+  services.pests.NAMES.fall_armyworm: "fall armyworm"
+  services.pests.NAMES.maize_lethal_necrosis: "maize lethal necrosis (MLN)"
+  services.pests.NAMES.cassava_mosaic: "cassava mosaic disease"
+  services.pests.NAMES.banana_xanthomonas_wilt: "banana Xanthomonas wilt"
+  services.pests.NAMES.tomato_leaf_miner: "tomato leaf miner (Tuta absoluta)"
+  services.pests.ASK: "Which crop, and wetin you see? Like: maize leaf get hole and dust like sawdust."
+  services.pests.UNKNOWN: "For now ACE dey check maize, cassava, banana and tomato. For other crops, ask extension officer."
+
+phrases:
+  safety.PREGNANCY: ["get belle", "carry belle", "dey carry belle", "my belle", "her belle", "belle woman", "belle don reach"]
+  safety.POSTPARTUM: ["don born", "she don born", "after she born", "after I born", "omugwo"]
+  safety.MATERNAL_DANGER: ["blood dey comot", "blood dey come out", "dey bleed", "blood plenty", "she dey shake", "dey jerk", "head dey pain am well well", "eye no dey see well", "pikin no dey move", "baby no dey move", "water don break", "hot body well well"]
+  safety.URGENT: ["no dey breathe", "no fit breathe", "e faint", "she faint", "he faint", "e no dey wake", "no dey talk again", "chest dey pain", "snake bite", "snake don bite", "fire burn am"]
+  safety.POISON_ACT: ["don drink", "don swallow", "don chop", "pikin drink", "pikin swallow", "e drink", "e swallow", "boy swallow", "girl swallow", "baby swallow", "boy drink", "girl drink", "baby drink", "im swallow", "im drink"]
+  safety.POISON_WHAT: ["poison", "sniper", "otapiapia", "rat poison", "kerosene", "petrol", "bleach", "hypo", "chemical", "insecticide", "kerosine", "kerosin", "karasin", "otapia pia", "pesticide", "snipper"]
+  safety.POISONED: ["dem poison am", "dem poison her", "dem poison him", "dem put poison", "drink poison", "chop poison"]
+  safety.GBV: ["my husband dey beat me", "e dey beat me", "dem rape me", "rape me", "dey beat me", "beat me every", "e wan kill me", "e threaten to kill me"]
+  safety.CHILD: ["pikin", "my pikin", "small pikin", "pikin dem", "small girl", "small boy"]
+  safety.CHILD_HARM: ["rape am", "rape her", "touch am for bad way", "dey beat am", "beat am", "dey abuse am", "force am marry", "cut am for down"]
+  safety.SELF_HARM: ["wan kill myself", "go kill myself", "I wan die", "make I just die", "I no wan live again", "end my life", "tire for life"]
+
+  scam.PIN: ["pin", "password", "secret number"]
+  scam.ASK: ["send", "give me", "confirm", "enter", "type"]
+  scam.MISTAKE: ["by mistake", "mistake", "return the money", "send am back"]
+  scam.DOUBLE: ["two times"]
+  scam.PRIZE: ["you don win", "you win", "prize", "free money", "bonus"]
+  scam.URGENT: ["quick quick", "now now", "within 24 hours", "dem go block", "dem go close", "last warning"]
+  scam.CLAIMS_OPERATOR: ["mtn", "airtel", "glo", "9mobile", "opay", "palmpay", "moniepoint"]
+  scam.DIAL: ["dial"]
+
+  services.CUES.pregnancy_companion: ["antenatal", "belle check", "next check"]
+  services.CUES.nearest_facility: ["hospital", "clinic", "doctor"]
+  services.CUES.official_warnings: ["warning", "flood", "storm"]
+  services.CUES.rain_this_week: ["rain", "e go rain", "weather", "forecast"]
+  services.CUES.market_prices: ["price", "how much", "market"]
+  services.CUES.pest_check: ["insect", "worm", "disease", "leaf", "yellow", "hole", "dey dry", "dey die"]
+  services.SEASONAL: ["rainy season", "dry season", "harmattan"]
+  services.PREGNANT: ["belle", "get belle"]
+  services.HOW_MUCH: ["how much"]
+  services.prices.FOODS: {maize: maize, corn: maize, beans: beans, rice: rice, sugar: sugar, oil: oil, garri: cassava, tomato: tomatoes, onion: onions, salt: salt, egg: eggs, bread: bread}
+  services.pests.CROPS.maize: ["maize", "corn"]
+  services.pests.CROPS.cassava: ["cassava"]
+  services.pests.CROPS.banana: ["banana", "plantain"]
+  services.pests.CROPS.tomato: ["tomato"]
+  services.pests.PROBLEMS.fall_armyworm: ["worm", "hole", "sawdust"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["yellow", "don dry", "don die"]
+  services.pregnancy.WEEK_WORDS: ["week", "weeks"]
+  services.pregnancy.MONTH_WORDS: ["month", "months"]
+  commands.COMMANDS.help: ["help"]
+  commands.COMMANDS.forget: ["forget"]
+  commands.COMMANDS.stop: ["stop"]
+  commands.COMMANDS.language: ["lang"]
+  commands.COMMANDS.tip: ["tip"]
+  commands.COMMANDS.scam: ["scam"]
+  commands.COMMANDS.sources: ["sources"]
+  commands.COMMANDS.more: ["more"]
+  text.ACTION_CUES: ["wetin I go do", "wetin I fit do", "how I go take stop", "how I go take kill", "how I go take keep", "abeg help me"]
+
+words:
+  stopwords: ["dey", "wetin", "abeg", "una", "dem", "wey", "na", "sef", "abi", "dis", "dat", "im", "don", "fit", "go"]
+  markers: ["dey", "wetin", "abeg", "pikin", "una", "dem", "wey", "sabi", "wahala", "comot", "chop", "oya", "abi", "sef", "naim", "dis", "dat", "belle", "wan", "oga", "shey", "ehn", "garri", "pipo", "naija", "jare", "tey", "waka", "yarn", "gbege", "katakata"]

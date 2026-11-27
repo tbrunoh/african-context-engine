@@ -1,0 +1,204 @@
+# Ikirundi for Burundi, in the standard spelling. Drafted for ACE 2.3. Awaiting review by fluent speakers and, for
+# the safety phrases, by clinicians.
+meta:
+  code: rn
+  name: Kirundi
+  native: "Ikirundi"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE izokwishura mu Kirundi."
+  names: ["ikirundi", "kirundi", "rundi", "rn"]
+
+templates:
+  safety.OPENERS.self_harm: "Birambabaje cane kubona wiyumva gutyo. Ukwiye kuronka imfashanyo ubu nyene. {numbers}"
+  safety.OPENERS.maternal: "Ibi vyoshobora kuba ingorane yihuta y'imbanyi. Ja ku bitaro biri hafi ubu nyene. {numbers}"
+  safety.OPENERS.poisoning: "Ibi bisa n'uburozi. Rondera imfashanyo ya muganga ubu nyene, ujane icupa. {numbers}"
+  safety.OPENERS.child_protection: "Umwana ashobora kuba ari mu kaga. Ndakwinginze rondera imfashanyo ubu nyene. {numbers}"
+  safety.OPENERS.gbv: "Birambabaje kubona ibi bikubako. Urashobora kuronka imfashanyo ubu nyene. {numbers}"
+  safety.OPENERS.health_urgent: "Ibi bisa n'ivyihuta. Rondera imfashanyo ya muganga ubu nyene. {numbers}"
+  safety.CALL_WORD: "Hamagara {numbers}"
+  safety.OR_WORD: "canke"
+  safety.EMERGENCY_WORD: "ivyihuta"
+  safety.FALLBACK_NUMBERS: "Hamagara inomero y'ivyihuta y'aho uri canke uje ku bitaro biri hafi."
+
+  commands.TEXTS.help: "ACE itanga impanuro z'aho uri zasuzumwe. Baza mu rurimi rwawe. Amabwirizwa: UBUHENDANYI + ubutumwa gusuzuma ubutumwa, IMPANURO + inama yawe gusangira ubumenyi, INKOMOKO, IBINDI, URURIMI + kode (akarorero URURIMI EN), FUTA guhanagura amakuru yawe."
+  commands.TEXTS.help_short: "Baza ACE mu rurimi rwawe. UBUHENDANYI + ubutumwa buzobusuzuma. FUTA ihanagura amakuru yawe."
+  commands.TEXTS.forgotten: "Vyakozwe. ACE yahanaguye ivyo yari ifise vyose kuri iyi nomero."
+  commands.TEXTS.stopped: "Ntuzosubira kwakira ubutumwa bwa ACE kiretse wanditse kandi. Rungika FUTA guhanagura amakuru yawe."
+  commands.TEXTS.language: "Ishura URURIMI na kode:"
+  commands.TEXTS.tip_thanks: "Urakoze. Inama yawe yabitswe kugira ngo umuhinga ayisuzume. Ntizosangirwa itarasuzumwa."
+  commands.TEXTS.tip_usage: "Rungika IMPANURO n'inama yawe, akarorero: IMPANURO amababi ya neem afasha kurwanya inkongwa mu Ngozi."
+  commands.TEXTS.scam_usage: "Rungika UBUHENDANYI n'ubutumwa utizigiye, ACE izobusuzuma."
+  commands.TEXTS.no_sources: "Nta nyishu ya mbere yerekanwa aho yavuye. Banza ubaze ikibazo."
+  commands.TEXTS.no_more: "Ivyo ni vyo vyose ACE ifise kuri iyi ngingo ubu. Baza ikindi kibazo canke urungike UBUFASHA."
+  commands.TEXTS.clarify: "ACE ntiragira impanuro zasuzumwe kuri ivyo. ACE irashobora kugufasha kuri: {topics}. Rungika IMPANURO wongereko ubumenyi."
+  commands.TEXTS.unread: "ACE ntirashobora gusoma uru rurimi. Turagusavye wandike mu rumwe muri izi: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "BISA N'UBUHENDANYI."
+  scam.HEADLINES.SUSPICIOUS: "IYUBARIKE."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Sindabona ibimenyetso bizwi vy'ubuhendanyi, ariko ivyo ntibisigura ko ari amahoro."
+  scam.SIGNS_LABEL: "Ibimenyetso vyo kuburira:"
+  scam.REPORT_LINE: "Burungike kuri 333, ni ubuntu."
+  scam.GENERIC_REPORT_LINE: "Ntiwishure canke ngo urungike amahera. Bimenyeshe isosiyete y'itumanaho ukoresheje inomero iri ku rubuga rwayo canke ku gapaki ka SIM."
+  scam.NEUTRAL_ADVICE: "Ntihagire uwo ubwira PIN yawe, kandi urabe amahera ari kuri terefone yawe imbere yo gukora ico ubutumwa ubwo ari bwo bwose buvuze."
+  scam.SIGNAL.asks_for_pin: "busaba PIN yawe canke ijambo ry'ibanga"
+  scam.SIGNAL.double_registration: "buvuga ko SIM yawe yanditswe kabiri"
+  scam.SIGNAL.refund_request: "bugusaba gusubiza amahera yarungitswe ku bw'ikosa"
+  scam.SIGNAL.confirmation_from_personal_number: "busa n'icemeza ca M-PESA ariko buva ku nomero y'umuntu"
+  scam.SIGNAL.unofficial_operator_number: "buvuga ko buva kuri Safaricom ariko butanga inomero itari 0722000000"
+  scam.SIGNAL.dial_code_instruction: "bukubwira gukanda kode kuri terefone yawe"
+  scam.SIGNAL.prize_or_offer: "buvuga ko watsindiye igihembo canke butanga amahera"
+  scam.SIGNAL.link: "burimwo umurongo (link)"
+  scam.SIGNAL.pressure: "bukwihutisha gukora vuba"
+
+  channels.ussd.UI:
+    ask: "Baza ikibazo"
+    scam: "Suzuma ubutumwa"
+    lang: "Ururimi"
+    more: "98 Ibindi"
+    next: "1 Ibikurikira"
+    back: "0 Subira inyuma"
+    menu: "0 Menu"
+    ask_prompt: "Andika ikibazo cawe:"
+    scam_prompt: "Andika canke ushiremwo ubutumwa:"
+    invalid: "Uguhitamwo ntikwemewe."
+    end_pack: "Ivyo ni vyo vyose kuri iyi ngingo."
+    lang_prompt: "1 English"
+    topics: "Ingingo"
+    place_prompt: "Andika izina rya {area} yawe:"
+    food_prompt: "Andika ibifungurwa na {area} yawe, akarorero ibigori {example}:"
+    weeks_prompt: "Imbanyi yawe ifise indwi zingahe?"
+    crop_prompt: "Andika ikimera n'ivyo ubona:"
+  channels.voice.PROMPTS:
+    welcome: "Kaze kuri ACE."
+    press: "Kuri {label}, kanda {n}."
+    repeat: "Kugira wongere wumve menu, kanda 0."
+    bye: "Ntitwabonye ico wahisemwo. Mugire amahoro."
+    invalid: "Ico si ico guhitamwo cemewe."
+
+  services.base.DAYS: ["Mbe", "Kab", "Gat", "Kan", "Gat", "Gtd", "Iny"]
+  services.base.MONTHS: ["Nze", "Ruh", "Ntw", "Nda", "Rus", "Ruh", "Nya", "Kan", "Nze", "Ukw", "Ugu", "Uku"]
+  services.base.NEEDS_PLACE: "Uri mu {area} iyihe? Ishura izina ryayo, akarorero {example}."
+  services.base.AREA_DEFAULT: "akarere"
+  services.base.AREA_WORD: {BI: "intara"}
+  services.base.COUNTRY_SAID: {BI: "Uburundi"}
+
+  services.rain.WORDS.likely: "birashoboka cane"
+  services.rain.WORDS.possible: "birashoboka"
+  services.rain.WORDS.dry: "hazoba izuba cane"
+  services.rain.HEAD: "Imvura hafi ya {place}:"
+  services.rain.HEAVY_LINE: "Imvura nyinshi (20 mm canke irenga) irashobora kugwa {days}."
+  services.rain.FOOT: "Amahirwe ava ku mumenyesha ry'ikirere rya ECMWF ryo ku wa {date}."
+  services.rain.SPAN: "{a} gushika {b}"
+  services.rain.AND: "na"
+  services.rain.STALE: "ACE ntifise umumenyesha ry'ikirere rigezweho rya {place}. Raba umumenyesha rya {met}."
+  services.rain.NEXT: "Tegura ibikorwa vy'indimiro ku misi y'izuba."
+
+  services.warnings.FOUND: "Imburizi ya leta ya {place} iva kuri {authority}, gushika {until}:"
+  services.warnings.NATIONAL: "Imburizi ya leta y'igihugu cose iva kuri {authority}, gushika {until}:"
+  services.warnings.MORE: "Izindi {n} ziracakora."
+  services.warnings.NONE: "Nta mburizi ya leta iva kuri {authority} iraba {place} ubu (vyasuzumwe {checked})."
+  services.warnings.STALE: "ACE ntiyashoboye gusuzuma imburizi za {authority} vuba aha, rero ntizi nimba zihari. Umviriza amatangazo ya leta ava kuri {authority}."
+  services.warnings.GAP: "{authority} ntitangaza imburizi mu buryo ACE ishobora gusoma, rero ACE ntishobora gusuzuma imburizi aho. Umviriza amatangazo ya leta ava kuri {authority} kuri radiyo na televiziyo."
+  services.warnings.YOUR_AREA: "akarere kawe"
+
+  services.facility.NEAR: "Ivuriro rya leta riri hafi:"
+  services.facility.IN_AREA: "Ivuriro rya leta muri {place}:"
+  services.facility.CAVEAT: "Bivuye ku rutonde rwa 2019 rw'amavuriro ya leta; emeza ko ryuguruye imbere yo kujayo."
+  services.facility.REGISTRY_CAVEAT: "Bivuye mu gitabo c'amavuriro ca Minisiteri y'Amagara; hamagara imbere yo kujayo nimba ubishoboye."
+  services.facility.EMERGENCY: "Ivyihuta: {numbers}."
+  services.facility.NO_NUMBER: "Nimba ari ivyihuta, hamagara inomero y'ivyihuta y'aho uri."
+  services.facility.NONE: "ACE ntiyabonye ivuriro rya leta mu bilometero {km} ku rutonde rwayo rwa 2019."
+  services.facility.GAP: "ACE ntiragira urutonde rw'amavuriro y'iki gihugu."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} i {market}: {currency} {price} {unit} muri {month}"
+  services.prices.CHANGE.up: "vyaduze {pct}% uhereye kuri {prev}"
+  services.prices.CHANGE.down: "vyamanutse {pct}% uhereye kuri {prev}"
+  services.prices.CHANGE.same: "kimwe na {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km uvuye {place})"
+  services.prices.FOOT: "Ibiciro vya WFP."
+  services.prices.TOP: "Ibiciro vya WFP vya vuba i {market}{far}:"
+  services.prices.OLD: "Ibiciro vya WFP vya vuba ACE ifise vya {country} ni ivya {month}, kandi birashaje. Baza abadandaza canke ibiro vy'uburimyi."
+  services.prices.GAP: "WFP ntitangaza ibiciro vya {country}, rero ACE ntishobora gutanga ibiciro aho. Baza abadandaza canke ibiro vy'uburimyi."
+  services.prices.THIN: "Ibiciro vya WFP vya vuba vya {country} biraba ibifungurwa bike gusa. Baza abadandaza canke ibiro vy'uburimyi."
+  services.prices.NO_FOOD: "ACE ntifise igiciro ca WFP ca vuba ca {food} hafi ya {place}."
+  services.prices.UNIT: "kuri {unit}"
+  services.prices.UNIT_MANY: "kuri {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Ibigori", "maize flour": "Ifu y'ibigori", "maize meal": "Ifu y'ibigori", beans: "Ibiharage", rice: "Umuceri", sorghum: "Amasaka", millet: "Uburo", sugar: "Isukari", oil: "Amavuta", "wheat flour": "Ifu y'ingano", wheat: "Ingano", cowpeas: "Inkori", potatoes: "Ibiraya", tomatoes: "Inyanya", onions: "Ibitunguru", salt: "Umunyu", milk: "Amata", eggs: "Amagi", bread: "Umukate", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "vyera", yellow: "vy'umuhondo", imported: "bivuye hanze", local: "vyo mu gihugu", dry: "vyumye", red: "bitukura"}
+
+  services.pregnancy.FIRST: "Ku ndwi {w}, ja kwisuzumisha imbanyi ubwa mbere ubu nyene, imbere y'indwi ya 12."
+  services.pregnancy.DUE_NOW: "Ku ndwi {w}, igihe co kwisuzumisha imbanyi kirageze ubu. Ubukurikira ni ku ndwi ya {next}."
+  services.pregnancy.NEXT: "Ku ndwi {w}, isuzuma ry'imbanyi rikurikira ni ku ndwi ya {next}."
+  services.pregnancy.LATE: "Ku ndwi {w} warenze isuzuma rya nyuma ryategekanijwe ku ndwi ya 40. Ja kuraba umukozi w'amagara uyu musi."
+  services.pregnancy.ASK: "Imbanyi yawe ifise indwi zingahe? Ishura mu mibare, akarorero indwi 22."
+  services.pregnancy.CALL: "Hamagara {numbers}."
+
+  services.pests.LIKELY: "Iki gishobora kuba {problem}. ACE ntibona ikimera cawe, rero raba ibi bimenyetso:"
+  services.pests.MAYBE: "Kumbure ni {problem}."
+  services.pests.REFER: "Saba umujejwe w'uburimyi kubyemeza imbere yo kumisha umuti."
+  services.pests.NAMES.fall_armyworm: "inkongwa y'ibigori (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "indwara yica ibigori (MLN)"
+  services.pests.NAMES.cassava_mosaic: "indwara ya mozayike y'imyumbati"
+  services.pests.NAMES.banana_xanthomonas_wilt: "indwara yumisha insina (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "inyo z'amababi y'inyanya (Tuta absoluta)"
+  services.pests.ASK: "Ni ikihe kimera, kandi ubona iki? Akarorero: amababi y'ibigori afise imyobo n'ivu risa n'ifu y'igiti."
+  services.pests.UNKNOWN: "Ubu ACE isuzuma ibigori, imyumbati, insina n'inyanya. Ku bindi bimera, baza umujejwe w'uburimyi."
+
+phrases:
+  safety.PREGNANCY: ["afise imbanyi", "ndafise imbanyi", "imbanyi", "umugore afise imbanyi", "arakuriwe", "ndakuriwe"]
+  safety.POSTPARTUM: ["amaze kwibaruka", "yibarutse", "naribarutse", "inyuma yo kwibaruka", "aheruka kwibaruka"]
+  safety.MATERNAL_DANGER: ["amaraso", "ava amaraso", "kuva amaraso", "arajugumira", "igicuri", "afashwe n'igicuri", "umutwe urababaza cane", "amaso ntabona neza", "umwana ntanyiganyiga", "amazi yamenetse", "ubushuhe bwinshi"]
+  safety.URGENT: ["ntahema", "ntashobora guhema", "yataye ubwenge", "yaguye ntavyuka", "afashwe n'igicuri", "ava amaraso menshi", "kubabara mu gikiriza", "yarumwe n'inzoka", "inzoka yamurumye", "yahiye cane"]
+  safety.POISON_ACT: ["yanyoye", "yamize", "yariye", "umwana yanyoye", "yanyoye uburozi"]
+  safety.POISON_WHAT: ["uburozi", "umuti wica udukoko", "umuti w'imbeba", "petrole", "esanse", "bleach"]
+  safety.POISONED: ["baramuroze", "yanyoye uburozi", "yariye uburozi", "bamuhaye uburozi", "yarozwe"]
+  safety.GBV: ["barankoreye ku nguvu", "yankoreye ku nguvu", "arankubita", "umugabo wanje arankubita", "yankubise", "uruhamo mu rugo", "arashaka kunyica"]
+  safety.CHILD: ["umwana", "umwana wanje", "umukobwa wanje", "umuhungu wanje", "agakobwa", "abana", "akana"]
+  safety.CHILD_HARM: ["yakorewe ku nguvu", "bamukoreye ku nguvu", "arahohoterwa", "baramuhohotera", "baramukubita", "yamukubise", "kwubakishwa ku nguvu"]
+  safety.SELF_HARM: ["kwiyahura", "ngiye kwiyahura", "ndashaka gupfa", "sinshaka kubaho", "ndashaka kwiyaka ubuzima", "kwigirira nabi"]
+
+  scam.PIN: ["pin", "ijambo ry'ibanga", "inomero y'ibanga"]
+  scam.ASK: ["rungika", "mpa", "emeza", "injiza", "andika"]
+  scam.MISTAKE: ["ku bw'ikosa", "ikosa", "subiza amahera", "uyasubize"]
+  scam.DOUBLE: ["kabiri"]
+  scam.PRIZE: ["watsindiye", "igihembo", "ingabirano", "amahera y'ubuntu"]
+  scam.URGENT: ["vuba vuba", "ubu nyene", "mu masaha 24", "izougarwa", "izohagarikwa", "imburizi ya nyuma"]
+  scam.CLAIMS_OPERATOR: ["econet", "lumicash", "lumitel", "onatel", "ecocash"]
+  scam.DIAL: ["kanda"]
+
+  services.CUES.pregnancy_companion: ["isuzuma ry'imbanyi", "kwisuzumisha imbanyi", "isuzuma rikurikira"]
+  services.CUES.nearest_facility: ["ibitaro", "ivuriro", "muganga"]
+  services.CUES.official_warnings: ["imburizi", "isegenya", "inkubi"]
+  services.CUES.rain_this_week: ["imvura", "izogwa", "ikirere"]
+  services.CUES.market_prices: ["igiciro", "ni angahe", "isoko"]
+  services.CUES.pest_check: ["udukoko", "inkongwa", "indwara", "amababi", "umuhondo", "imyobo", "arumye", "arapfa"]
+  services.SEASONAL: ["impeshi", "itumba", "igihe c'imvura"]
+  services.PREGNANT: ["imbanyi", "ndakuriwe"]
+  services.HOW_MUCH: ["angahe"]
+  services.prices.FOODS: {ibigori: maize, ibiharage: beans, umuceri: rice, isukari: sugar, amavuta: oil, ibiraya: potatoes, inyanya: tomatoes, ibitunguru: onions, umunyu: salt, amagi: eggs, umukate: bread}
+  services.pests.CROPS.maize: ["ibigori", "ikigori"]
+  services.pests.CROPS.cassava: ["imyumbati", "umwumbati"]
+  services.pests.CROPS.banana: ["insina", "ibitoke"]
+  services.pests.CROPS.tomato: ["inyanya"]
+  services.pests.PROBLEMS.fall_armyworm: ["inkongwa", "imyobo", "ivu"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["umuhondo", "vyumye", "vyapfuye"]
+  services.pregnancy.WEEK_WORDS: ["indwi"]
+  services.pregnancy.MONTH_WORDS: ["amezi", "ukwezi"]
+  commands.COMMANDS.help: ["ubufasha"]
+  commands.COMMANDS.forget: ["futa"]
+  commands.COMMANDS.stop: ["hagarika"]
+  commands.COMMANDS.language: ["ururimi"]
+  commands.COMMANDS.tip: ["impanuro"]
+  commands.COMMANDS.scam: ["ubuhendanyi"]
+  commands.COMMANDS.sources: ["inkomoko"]
+  commands.COMMANDS.more: ["ibindi"]
+  text.ACTION_CUES: ["nkore iki", "nokora iki", "novyirinda gute", "noyica gute", "novyibika gute", "mumfashe"]
+
+words:
+  stopwords: ["na", "canke", "ariko", "ibi", "ngaha", "ubu", "iki", "gute", "kuko", "ko", "wanje", "yanje", "cane", "ni", "mu"]
+  markers: ["urakoze", "gute", "iki", "nyene", "canke", "kuko", "umwana", "ibitaro", "ibigori", "ngaha", "sinzi", "ndashaka", "wanje", "yanje", "cane", "imbanyi", "ndafise", "ejo", "uyu", "musi", "amahera", "amababi", "imyumbati", "angahe", "indwi", "imvura", "ibiharage", "vyose", "ivyo", "rero"]

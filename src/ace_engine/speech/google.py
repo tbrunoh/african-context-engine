@@ -34,7 +34,7 @@ def project_from_env() -> str:
     return project
 
 
-def authorized_post() -> Post:
+def authorized_post(timeout: float = 60.0) -> Post:
     """A POST function signed with Application Default Credentials. Needs the google extra."""
     try:
         import google.auth
@@ -45,7 +45,7 @@ def authorized_post() -> Post:
     session = AuthorizedSession(credentials)
 
     def post(url: str, body: dict[str, Any]) -> dict[str, Any]:
-        response = session.post(url, json=body, timeout=60)
+        response = session.post(url, json=body, timeout=timeout)
         if response.status_code >= 400:
             raise RuntimeError(f"Google Cloud returned {response.status_code} for {url.split('?')[0]}")
         return response.json()
@@ -82,7 +82,8 @@ class GoogleSpeechToText:
         hear = capability(language_hint or "", "hear")
         if hear is None:
             raise ValueError(f"No speech recognition model is recorded for {language_hint!r}; use the keypad line")
-        location = self.location or ("asia-southeast1" if hear["model"] == "chirp" else "us")
+        # Chirp and Chirp 2 run in single regions; Chirp 3 and the older long and short models in multi-regions.
+        location = self.location or ("us-central1" if hear["model"] in ("chirp", "chirp_2") else "us")
         host = "speech.googleapis.com" if location == "global" else f"{location}-speech.googleapis.com"
         url = f"https://{host}/v2/projects/{self.project}/locations/{location}/recognizers/_:recognize"
         body: dict[str, Any] = {"config": {"autoDecodingConfig": {}, "model": hear["model"],
@@ -202,3 +203,35 @@ class GoogleTranslator:
                 raise RuntimeError("Translation returned a different number of texts than were sent")
             out.extend(found)
         return out
+
+
+class GoogleLanguageDetector:
+    """Cloud Translation Advanced (v3) detectLanguage, as a LanguageIdentifier (see ace_engine.langid).
+
+    Unlike the translator, this runs while a person waits: ACE calls it only to confirm a message its own check
+    would turn away and sends at most the first 500 characters. ACE gives up after three seconds, credentials
+    included (see langid.confirmed_by), and keeps its own judgement. The message text goes to Google Cloud under
+    the operator's own project and terms, so an operator who turns it on says so in their privacy notice. Each call
+    is billed like translation."""
+
+    MAX_CHARS = 500
+
+    def __init__(self, project: str | None = None, post: Post | None = None, timeout: float = 3.0) -> None:
+        self.project = project or project_from_env()
+        self._post = post
+        self.timeout = timeout
+
+    @property
+    def post(self) -> Post:
+        if self._post is None:
+            self._post = authorized_post(timeout=self.timeout)
+        return self._post
+
+    @property
+    def url(self) -> str:
+        return f"https://translation.googleapis.com/v3/projects/{self.project}/locations/global:detectLanguage"
+
+    def identify(self, text: str) -> list[tuple[str, float]]:
+        found = self.post(self.url, {"content": text[:self.MAX_CHARS], "mimeType": "text/plain"}).get("languages", [])
+        return [(str(f.get("languageCode", "")), float(f.get("confidence", 0.0))) for f in found]
+

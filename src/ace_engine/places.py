@@ -8,11 +8,15 @@ too large to be useful; every other country uses its first level areas.
 """
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from .geo import distance_to_rings_km, in_bbox, in_polygons
 from .snapshots import SnapshotStore
-from .text import fold, tokens
+from .text import ETHIOPIC_PREFIXES, fold, tokens
+
+# Arabic in, to, and, as, joined to the article: بالقاهرة is in Cairo.
+ARABIC_PREFIXES = "بلوفك"
 
 GENERIC_WORDS = frozenset(
     "county region state province district division municipality city town wilaya mkoa kaunti jimbo "
@@ -46,7 +50,14 @@ class Gazetteer:
         country = country.upper()
         if country not in self._areas:
             snap = self.snapshots.get("places", country)
-            self._areas[country] = list(snap.records) if snap else []
+            records = [dict(r) for r in snap.records] if snap else []
+            # Aliases added since the snapshot was built count at once, without waiting for the next refresh.
+            from .connectors.boundaries import ALIASES
+            for rec in records:
+                for source, extra in ALIASES.get(country, {}).items():
+                    if source == rec.get("name") or source in rec.get("aliases", ()):
+                        rec["aliases"] = [*rec.get("aliases", ()), *(a for a in extra if a not in rec.get("aliases", ()))]
+            self._areas[country] = records
         return self._areas[country]
 
     def has(self, country: str | None) -> bool:
@@ -61,12 +72,19 @@ class Gazetteer:
         """The area named in a message, longest name first, within the caller's country."""
         if not country or not text:
             return None
-        hay = " " + " ".join(t for t in tokens(text)) + " "
+        words = tokens(text)
+        # Also each word without a prefix that means in or at: Shona muHarare, isiZulu eThekwini spelt eThekwini or
+        # ethekwini, Amharic በአዲስ አበባ (in Addis Ababa).
+        # A Bantu prefix is set aside only when the name after it is capitalised, as in muHarare: kutanga is a word,
+        # not Tanga.
+        capped = {fold(m) for m in re.findall(r"\b(?:mu|ku|pa|kwa)([A-Z][\w']+)", text)}
+        bare = [next((c for c in capped if w.endswith(c) and len(w) - len(c) <= 3), _bare(w)) for w in words]
+        hays = (" " + " ".join(words) + " ", " " + " ".join(bare) + " ")
         best: tuple[int, dict] | None = None
         for rec in self.areas(country):
             for name in [rec["name"], *rec.get("aliases", [])]:
                 key = _key(name)
-                if key and f" {key} " in hay and (best is None or len(key) > best[0]):
+                if key and any(f" {key} " in hay for hay in hays) and (best is None or len(key) > best[0]):
                     best = (len(key), rec)
         return self._place(country, best[1]) if best else None
 
@@ -115,14 +133,24 @@ class Gazetteer:
 
     def named_in(self, text: str, country: str) -> set[str]:
         """Codes of the areas a text names, by official name or alias, as whole words."""
-        from .text import contains_phrase
+        from .text import phrase_in, token_hay
+        hay = token_hay(text)
         found: set[str] = set()
         for rec in self.areas(country):
             for name in (rec["name"], *rec.get("aliases", ())):
-                if len(fold(name)) > 2 and contains_phrase(text, name):
+                if len(fold(name)) > 2 and phrase_in(hay, name):
                     found.add(rec["code"])
                     break
         return found
+
+
+def _bare(word: str) -> str:
+    """A word without an Arabic or Amharic prefix that means in or at: القاهرة for بالقاهرة, አዲስ for በአዲስ."""
+    if len(word) > 3 and word[0] in ARABIC_PREFIXES and word[1:3] == "ال":
+        return word[1:]
+    if len(word) > 2 and word[0] in ETHIOPIC_PREFIXES:
+        return word[1:]
+    return word
 
 
 def same_name(a: str, b: str) -> bool:

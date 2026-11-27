@@ -1,0 +1,204 @@
+# chiShona for Zimbabwe, in the standard spelling. Drafted for ACE 2.3. Awaiting review by fluent speakers and,
+# for the safety phrases, by clinicians.
+meta:
+  code: sn
+  name: Shona
+  native: "chiShona"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE ichapindura nechiShona."
+  names: ["chishona", "shona", "sn"]
+
+templates:
+  safety.OPENERS.self_harm: "Ndine urombo chaizvo kuti uri kunzwa saizvozvi. Unofanira kuwana rutsigiro izvozvi. {numbers}"
+  safety.OPENERS.maternal: "Iyi inogona kuva njodzi yepamuviri. Enda kuchipatara chiri pedyo izvozvi. {numbers}"
+  safety.OPENERS.poisoning: "Izvi zvinonzwika sechepfu. Tsvaga rubatsiro rwachiremba izvozvi, utore bhodhoro. {numbers}"
+  safety.OPENERS.child_protection: "Mwana anogona kunge ari munjodzi. Ndapota tsvaga rubatsiro izvozvi. {numbers}"
+  safety.OPENERS.gbv: "Ndine urombo kuti izvi zviri kuitika kwauri. Unogona kuwana rubatsiro izvozvi. {numbers}"
+  safety.OPENERS.health_urgent: "Izvi zvinonzwika sezvinokurumidzira. Tsvaga rubatsiro rwachiremba izvozvi. {numbers}"
+  safety.CALL_WORD: "Fonera {numbers}"
+  safety.OR_WORD: "kana"
+  safety.EMERGENCY_WORD: "njodzi"
+  safety.FALLBACK_NUMBERS: "Fonera nhamba yenjodzi yenzvimbo yako kana kuenda kuchipatara chiri pedyo."
+
+  commands.TEXTS.help: "ACE inopa mazano enzvimbo akaongororwa. Bvunza nemutauro wako. Mirairo: KUBIRIDZIRA + meseji kuongorora meseji, ZANO + zano rako kugovera ruzivo, MANYUKO, ZVIMWE, MUTAURO + kodhi (semuenzaniso MUTAURO EN), DZIMA kudzima ruzivo rwako."
+  commands.TEXTS.help_short: "Bvunza ACE nemutauro wako. KUBIRIDZIRA + meseji inoiongorora. DZIMA inodzima ruzivo rwako."
+  commands.TEXTS.forgotten: "Zvaitwa. ACE yadzima zvese zvayaive nazvo pamusoro penhamba iyi."
+  commands.TEXTS.stopped: "Hauchazowana mameseji kubva kuACE kunze kwekunge wanyora zvakare. Tumira DZIMA kudzima ruzivo rwako."
+  commands.TEXTS.language: "Pindura neMUTAURO nekodhi:"
+  commands.TEXTS.tip_thanks: "Tatenda. Zano rako rachengetwa kuti riongororwe nenyanzvi. Haridzi kugoverwa risati raongororwa."
+  commands.TEXTS.tip_usage: "Tumira ZANO nezano rako, semuenzaniso: ZANO mashizha eneem anobatsira pagonye rechibage muMasvingo."
+  commands.TEXTS.scam_usage: "Tumira KUBIRIDZIRA nemeseji yausingavimbi nayo, ACE ichaiongorora."
+  commands.TEXTS.no_sources: "Hapana mhinduro yapfuura ingaratidzwa kwayakabva. Bvunza mubvunzo kutanga."
+  commands.TEXTS.no_more: "Ndizvo zvese ACE yainazvo pamusoro penyaya iyi parizvino. Bvunza umwe mubvunzo kana tumira RUBATSIRO."
+  commands.TEXTS.clarify: "ACE haisati yava nemazano akaongororwa pamusoro paizvozvo. ACE inogona kukubatsira ne: {topics}. Tumira ZANO kuwedzera ruzivo."
+  commands.TEXTS.unread: "ACE haisati yakwanisa kuverenga mutauro uyu. Ndapota nyora mune mumwe weiyi: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "ZVINOITA SEKUBIRIDZIRA."
+  scam.HEADLINES.SUSPICIOUS: "CHENJERA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Handioni zviratidzo zvinozivikanwa zvekubiridzira, asi izvozvo hazvireve kuti zvakachengeteka."
+  scam.SIGNS_LABEL: "Zviratidzo zveyambiro:"
+  scam.REPORT_LINE: "Iendese ku333, ndeyemahara."
+  scam.GENERIC_REPORT_LINE: "Usapindura kana kutumira mari. Shuma kunetiweki yako nenhamba iri pawebhusaiti yavo kana papaketi reSIM."
+  scam.NEUTRAL_ADVICE: "Usagovera PIN yako, uye tarisa mari iri muhomwe yako yerunhare usati waita chero chinhu chinotaurwa nemeseji."
+  scam.SIGNAL.asks_for_pin: "inokumbira PIN yako kana pasiwedhi"
+  scam.SIGNAL.double_registration: "inoti SIM yako yakanyoreswa kaviri"
+  scam.SIGNAL.refund_request: "inokukumbira kudzosa mari yakatumirwa nekukanganisa"
+  scam.SIGNAL.confirmation_from_personal_number: "inoita sesimbiso yeM-PESA asi inobva panhamba yemunhu"
+  scam.SIGNAL.unofficial_operator_number: "inoti inobva kuSafaricom asi inopa nhamba isiri 0722000000"
+  scam.SIGNAL.dial_code_instruction: "inokuudza kuti ufonere kodhi parunhare rwako"
+  scam.SIGNAL.prize_or_offer: "inoti wakunda mubairo kana kupa mari"
+  scam.SIGNAL.link: "ine link"
+  scam.SIGNAL.pressure: "inokumhanyisa kuti uite nekukurumidza"
+
+  channels.ussd.UI:
+    ask: "Bvunza mubvunzo"
+    scam: "Ongorora meseji"
+    lang: "Mutauro"
+    more: "98 Zvimwe"
+    next: "1 Inotevera"
+    back: "0 Kumashure"
+    menu: "0 Menyu"
+    ask_prompt: "Nyora mubvunzo wako:"
+    scam_prompt: "Nyora kana kuisa meseji:"
+    invalid: "Sarudzo isiriyo."
+    end_pack: "Ndizvo zvese panyaya iyi."
+    lang_prompt: "1 English"
+    topics: "Misoro"
+    place_prompt: "Nyora zita re{area} rako:"
+    food_prompt: "Nyora chikafu ne{area} rako, semuenzaniso chibage {example}:"
+    weeks_prompt: "Une pamuviri pevhiki mangani?"
+    crop_prompt: "Nyora chirimwa nezvauri kuona:"
+  channels.voice.PROMPTS:
+    welcome: "Mauya kuACE."
+    press: "Pa{label}, dzvanya {n}."
+    repeat: "Kuti unzwe menyu zvakare, dzvanya 0."
+    bye: "Hatina kuwana sarudzo yako. Sarai zvakanaka."
+    invalid: "Iyo haisi sarudzo chaiyo."
+
+  services.base.DAYS: ["Muv", "Chp", "Cht", "Chn", "Chs", "Mug", "Svo"]
+  services.base.MONTHS: ["Ndi", "Kuk", "Kur", "Kub", "Chv", "Chk", "Chg", "Nya", "Gun", "Gum", "Mbu", "Zvi"]
+  services.base.NEEDS_PLACE: "Uri mu{area} ripi? Pindura nezita raro, semuenzaniso {example}."
+  services.base.AREA_DEFAULT: "nzvimbo"
+  services.base.AREA_WORD: {ZW: "dunhu"}
+  services.base.COUNTRY_SAID: {ZW: "Zimbabwe"}
+
+  services.rain.WORDS.likely: "zvingangoitika chaizvo"
+  services.rain.WORDS.possible: "zvingangoitika"
+  services.rain.WORDS.dry: "kuoma zvakanyanya"
+  services.rain.HEAD: "Mvura pedyo ne{place}:"
+  services.rain.HEAVY_LINE: "Mvura zhinji (20 mm kana kupfuura) inogona kunaya {days}."
+  services.rain.FOOT: "Mikana inobva mufungidziro yeECMWF ya{date}."
+  services.rain.SPAN: "{a} kusvika {b}"
+  services.rain.AND: "ne"
+  services.rain.STALE: "ACE haina fungidziro yemamiriro ekunze yazvino ye{place}. Tarisa fungidziro ye{met}."
+  services.rain.NEXT: "Ronga basa remunda pamazuva akaoma."
+
+  services.warnings.FOUND: "Yambiro yehurumende ye{place} kubva ku{authority}, kusvika {until}:"
+  services.warnings.NATIONAL: "Yambiro yehurumende yenyika yose kubva ku{authority}, kusvika {until}:"
+  services.warnings.MORE: "Dzimwe {n} dzichiri kushanda."
+  services.warnings.NONE: "Hapana yambiro yehurumende kubva ku{authority} inobata {place} parizvino (yakaongororwa {checked})."
+  services.warnings.STALE: "ACE haina kukwanisa kuongorora yambiro dze{authority} munguva pfupi yapfuura, saka haizivi kana dziripo. Teerera zviziviso zvehurumende kubva ku{authority}."
+  services.warnings.GAP: "{authority} haibudisi yambiro nenzira ACE inogona kuverenga, saka ACE haigone kuongorora yambiro ikoko. Teerera zviziviso zvehurumende kubva ku{authority} paredhiyo neterevhizheni."
+  services.warnings.YOUR_AREA: "nzvimbo yako"
+
+  services.facility.NEAR: "Kiriniki yehurumende iri pedyo:"
+  services.facility.IN_AREA: "Kiriniki yehurumende mu{place}:"
+  services.facility.CAVEAT: "Kubva pane runyorwa rwe2019 rwemakiriniki ehurumende; simbisa kuti yakavhurika usati waenda."
+  services.facility.REGISTRY_CAVEAT: "Kubva parejista yemakiriniki yeBazi reUtano; fona usati waenda kana uchikwanisa."
+  services.facility.EMERGENCY: "Njodzi: {numbers}."
+  services.facility.NO_NUMBER: "Kana iri njodzi, fonera nhamba yenjodzi yenzvimbo yako."
+  services.facility.NONE: "ACE haina kuwana kiriniki yehurumende mukati me{km} km parunyorwa rwayo rwe2019."
+  services.facility.GAP: "ACE haisati yava nerunyorwa rwemakiriniki enyika iyi."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} ku{market}: {currency} {price} {unit} mu{month}"
+  services.prices.CHANGE.up: "yakwira ne{pct}% kubva pa{prev}"
+  services.prices.CHANGE.down: "yadzika ne{pct}% kubva pa{prev}"
+  services.prices.CHANGE.same: "yakafanana ne{prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km kubva ku{place})"
+  services.prices.FOOT: "Mitengo yeWFP."
+  services.prices.TOP: "Mitengo yazvino yeWFP ku{market}{far}:"
+  services.prices.OLD: "Mitengo yazvino yeWFP ACE yainayo ye{country} ndeye{month}, uye yakare. Bvunza vatengesi kana hofisi yako yezvekurima."
+  services.prices.GAP: "WFP haibudisi mitengo ye{country}, saka ACE haigone kupa mitengo ikoko. Bvunza vatengesi kana hofisi yako yezvekurima."
+  services.prices.THIN: "Mitengo yazvino yeWFP ye{country} inobata zvikafu zvishoma chete. Bvunza vatengesi kana hofisi yako yezvekurima."
+  services.prices.NO_FOOD: "ACE haina mutengo wazvino weWFP we{food} pedyo ne{place}."
+  services.prices.UNIT: "pa{unit}"
+  services.prices.UNIT_MANY: "pa{unit}"
+  services.prices.LOCAL_FOOD: {maize: "Chibage", "maize flour": "Hupfu", "maize meal": "Hupfu", beans: "Bhinzi", rice: "Mupunga", sorghum: "Mapfunde", millet: "Mhunga", sugar: "Shuga", oil: "Mafuta", "wheat flour": "Hupfu hwegorosi", wheat: "Gorosi", cowpeas: "Nyemba", potatoes: "Mbatatisi", tomatoes: "Madomasi", onions: "Hanyanisi", salt: "Munyu", milk: "Mukaka", eggs: "Mazai", bread: "Chingwa", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "chena", yellow: "yero", imported: "yakatengwa kunze", local: "yemuno", dry: "yakaoma", red: "tsvuku"}
+
+  services.pregnancy.FIRST: "Pavhiki {w}, enda kuongororo yako yekutanga yepamuviri izvozvi, vhiki 12 isati yasvika."
+  services.pregnancy.DUE_NOW: "Pavhiki {w}, ongororo yepamuviri yakwana izvozvi. Inotevera iri pavhiki {next}."
+  services.pregnancy.NEXT: "Pavhiki {w}, ongororo yako inotevera yepamuviri iri pavhiki {next}."
+  services.pregnancy.LATE: "Pavhiki {w} wapfuura ongororo yekupedzisira yakarongwa pavhiki 40. Ona mushandi wezveutano nhasi."
+  services.pregnancy.ASK: "Une pamuviri pevhiki mangani? Pindura nenhamba, semuenzaniso mavhiki 22."
+  services.pregnancy.CALL: "Fonera {numbers}."
+
+  services.pests.LIKELY: "Izvi zvinogona kuva {problem}. ACE haioni chirimwa chako, saka tarisa zviratidzo izvi:"
+  services.pests.MAYBE: "Zvimwe i{problem}."
+  services.pests.REFER: "Kumbira mushandi weAgritex kuti asimbise usati wapfapfaidza."
+  services.pests.NAMES.fall_armyworm: "gonye rechibage (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "chirwere chinouraya chibage (MLN)"
+  services.pests.NAMES.cassava_mosaic: "chirwere chemosaic chemufarinya"
+  services.pests.NAMES.banana_xanthomonas_wilt: "chirwere chekusvava kwemabhanana (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "gonye remashizha emadomasi (Tuta absoluta)"
+  services.pests.ASK: "Chirimwa chipi, uye uri kuona chii? Semuenzaniso: mashizha echibage ane maburi neguruva rakaita seuswa hwemuti."
+  services.pests.UNKNOWN: "Parizvino ACE inoongorora chibage, mufarinya, mabhanana nemadomasi. Pane zvimwe zvirimwa, bvunza mushandi weAgritex."
+
+phrases:
+  safety.PREGNANCY: ["ane pamuviri", "ndine pamuviri", "pamuviri", "mukadzi ane pamuviri", "ane nhumbu", "ndine nhumbu"]
+  safety.POSTPARTUM: ["achangobva kusununguka", "asununguka", "ndasununguka", "mushure mekusununguka", "abereka"]
+  safety.MATERNAL_DANGER: ["ropa", "ari kubuda ropa", "kubuda ropa", "ari kudedera", "kugwinha", "ari kugwinha", "musoro uri kurwadza zvakanyanya", "maziso haaone zvakanaka", "mwana haasi kufamba", "mvura yaputika", "fivha yakanyanya"]
+  safety.URGENT: ["haasi kufema", "haakwanise kufema", "afenda", "awira pasi haamuke", "ari kugwinha", "ari kubuda ropa zvakanyanya", "kurwadza kwechipfuva", "arumwa nenyoka", "nyoka yamuruma", "atsva zvakanyanya"]
+  safety.POISON_ACT: ["anwa", "amedza", "adya", "mwana anwa", "anwa chepfu"]
+  safety.POISON_WHAT: ["chepfu", "mushonga wezvipembenene", "chepfu yembeva", "parafini", "peturu", "bleach", "makemikari"]
+  safety.POISONED: ["vamupa chepfu", "anwa chepfu", "adya chepfu", "akapihwa chepfu", "vamuisira chepfu"]
+  safety.GBV: ["ndabatwa chibharo", "vakandibata chibharo", "anondirova", "murume wangu anondirova", "andirova", "mhirizhonga mumba", "anotyisidzira kundiuraya"]
+  safety.CHILD: ["mwana", "mwana wangu", "mwanasikana wangu", "mwanakomana wangu", "musikana", "vana", "kamwana"]
+  safety.CHILD_HARM: ["abatwa chibharo", "vakamubata chibharo", "ari kushungurudzwa", "vanomushungurudza", "vanomurova", "amurova", "kuroorwa nechisimba"]
+  safety.SELF_HARM: ["kuzviuraya", "ndichazviuraya", "ndinoda kufa", "handichadi kurarama", "ndinoda kupedza hupenyu hwangu", "kuzvikuvadza"]
+
+  scam.PIN: ["pin", "pasiwedhi", "nhamba yakavanzika"]
+  scam.ASK: ["tumira", "ndipe", "simbisa", "isa", "nyora"]
+  scam.MISTAKE: ["nekukanganisa", "kukanganisa", "dzosa mari", "idzose"]
+  scam.DOUBLE: ["kaviri"]
+  scam.PRIZE: ["wakunda", "mubairo", "chipo", "mari yemahara"]
+  scam.URGENT: ["nekukurumidza", "izvozvi izvozvi", "mukati memaawa 24", "ichavharwa", "ichamiswa", "yambiro yekupedzisira"]
+  scam.CLAIMS_OPERATOR: ["econet", "ecocash", "netone", "onemoney", "telecel"]
+  scam.DIAL: ["fonera", "dhaira"]
+
+  services.CUES.pregnancy_companion: ["ongororo yepamuviri", "kiriniki yepamuviri", "ongororo inotevera"]
+  services.CUES.nearest_facility: ["chipatara", "kiriniki", "chiremba"]
+  services.CUES.official_warnings: ["yambiro", "mafashame", "dutu"]
+  services.CUES.rain_this_week: ["mvura", "kuchanaya", "mamiriro ekunze", "fungidziro"]
+  services.CUES.market_prices: ["mutengo", "imarii", "musika"]
+  services.CUES.pest_check: ["zvipembenene", "gonye", "chirwere", "mashizha", "yero", "maburi", "ari kusvava", "ari kufa"]
+  services.SEASONAL: ["zhizha", "chando", "mwaka wekunaya"]
+  services.PREGNANT: ["pamuviri", "nhumbu"]
+  services.HOW_MUCH: ["imarii", "marii"]
+  services.prices.FOODS: {chibage: maize, hupfu: maize meal, bhinzi: beans, mupunga: rice, shuga: sugar, mafuta: oil, mbatatisi: potatoes, madomasi: tomatoes, hanyanisi: onions, munyu: salt, mazai: eggs, chingwa: bread}
+  services.pests.CROPS.maize: ["chibage", "chibahwe"]
+  services.pests.CROPS.cassava: ["mufarinya"]
+  services.pests.CROPS.banana: ["mabhanana", "bhanana"]
+  services.pests.CROPS.tomato: ["madomasi", "domasi"]
+  services.pests.PROBLEMS.fall_armyworm: ["gonye", "maburi", "guruva"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["yero", "asvava", "afa"]
+  services.pregnancy.WEEK_WORDS: ["mavhiki", "vhiki"]
+  services.pregnancy.MONTH_WORDS: ["mwedzi"]
+  commands.COMMANDS.help: ["rubatsiro"]
+  commands.COMMANDS.forget: ["dzima"]
+  commands.COMMANDS.stop: ["mira"]
+  commands.COMMANDS.language: ["mutauro"]
+  commands.COMMANDS.tip: ["zano"]
+  commands.COMMANDS.scam: ["kubiridzira"]
+  commands.COMMANDS.sources: ["manyuko"]
+  commands.COMMANDS.more: ["zvimwe"]
+  text.ACTION_CUES: ["ndoita sei", "ndinofanira kuita sei", "ndingadzivirira sei", "ndingaruraya sei", "ndingachengeta sei", "ndibatsireiwo"]
+
+words:
+  stopwords: ["uye", "kana", "asi", "izvi", "pano", "izvozvi", "chii", "sei", "nekuti", "kuti", "ndapota", "wangu", "yangu", "zvakanyanya", "ndiri"]
+  markers: ["ndapota", "sei", "chii", "izvozvi", "ndiani", "kupi", "nekuti", "uye", "mwana", "chipatara", "chibage", "ndatenda", "pano", "izvi", "kuti", "handizivi", "ndinoda", "wangu", "yangu", "zvakanyanya", "pamuviri", "nezuro", "nhasi", "mangwana", "mari", "mashizha", "mufarinya", "imarii", "vhiki", "mvura", "svondo", "rino", "kuchanaya", "rini", "ongororo", "ndine", "inotevera", "ari", "ane", "zvino", "kana", "asi", "zvese", "munda", "zvirimwa", "chirimwa", "mazuva", "nguva", "inofanira", "kuita", "vanhu", "vana", "zvakanaka", "kwete", "hongu"]

@@ -1,0 +1,204 @@
+# Xitsonga for South Africa and Mozambique (Changana), in the South African spelling. Drafted for ACE 2.3.
+# Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ts
+  name: Xitsonga
+  native: "Xitsonga"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE yi ta hlamula hi Xitsonga."
+  names: ["xitsonga", "tsonga", "changana", "shangaan", "ts"]
+
+templates:
+  safety.OPENERS.self_harm: "Ndzi khomiwa hi gome swinene leswi u titwaka hi ndlela leyi. U fanele ku kuma nseketelo sweswi. {numbers}"
+  safety.OPENERS.maternal: "Leswi swi nga va xihatla xa vutikari. Famba exibedlhele lexi nga ekusuhi sweswi. {numbers}"
+  safety.OPENERS.poisoning: "Leswi swi twala onge i chefu. Kuma mpfuno wa dokodela sweswi, u teka bodlhela. {numbers}"
+  safety.OPENERS.child_protection: "N'wana a nga va ekhombyeni. Hi kombela u kuma mpfuno sweswi. {numbers}"
+  safety.OPENERS.gbv: "Ndzi khomiwa hi gome leswi swi ku humelelaka. U nga kuma mpfuno sweswi. {numbers}"
+  safety.OPENERS.health_urgent: "Leswi swi twala swi hatlisa. Kuma mpfuno wa dokodela sweswi. {numbers}"
+  safety.CALL_WORD: "Ringela {numbers}"
+  safety.OR_WORD: "kumbe"
+  safety.EMERGENCY_WORD: "xihatla"
+  safety.FALLBACK_NUMBERS: "Ringela nomboro ya xihatla ya ndhawu ya wena kumbe u ya exibedlhele lexi nga ekusuhi."
+
+  commands.TEXTS.help: "ACE yi nyika switsundzuxo swa ndhawu leswi kamberiweke. Vutisa hi ririmi ra wena. Swileriso: VUXISI + rungula ku kambela rungula, XITSUNDZUXO + xitsundzuxo xa wena ku avelana vutivi, SWIHLOVO, SWINWANA, RIRIMI + khodi (xik. RIRIMI EN), SULA ku sula vuxokoxoko bya wena."
+  commands.TEXTS.help_short: "Vutisa ACE hi ririmi ra wena. VUXISI + rungula yi ri kambela. SULA yi sula vuxokoxoko bya wena."
+  commands.TEXTS.forgotten: "Swi endliwile. ACE yi sule hinkwaswo leswi a yi ri na swona hi nomboro leyi."
+  commands.TEXTS.stopped: "A wu nge he amukeli marungula ku suka eka ACE handle ka loko u tsala nakambe. Rhumela SULA ku sula vuxokoxoko bya wena."
+  commands.TEXTS.language: "Hlamula hi RIRIMI na khodi:"
+  commands.TEXTS.tip_thanks: "Inkomu. Xitsundzuxo xa wena xi hlayisiwile leswaku xi kamberiwa hi xitshembi. A xi nge avelaniwi xi nga si kamberiwa."
+  commands.TEXTS.tip_usage: "Rhumela XITSUNDZUXO na xitsundzuxo xa wena, xik.: XITSUNDZUXO matluka ya neem ma pfuna eka xivungu xa mavele eLimpopo."
+  commands.TEXTS.scam_usage: "Rhumela VUXISI na rungula leri u nga ri tshembiki, ACE yi ta ri kambela."
+  commands.TEXTS.no_sources: "A ku na nhlamulo ya khale leyi xihlovo xa yona xi nga kombisiwaka. Vutisa xivutiso ku sungula."
+  commands.TEXTS.no_more: "Hi swona hinkwaswo leswi ACE yi nga na swona hi mhaka leyi sweswi. Vutisa xivutiso xin'wana kumbe u rhumela PFUNO."
+  commands.TEXTS.clarify: "ACE a yi si va na nkongomiso lowu kamberiweke hi leswo. ACE yi nga ku pfuna hi: {topics}. Rhumela XITSUNDZUXO ku engetela vutivi."
+  commands.TEXTS.unread: "ACE a yi si kota ku hlaya ririmi leri. Hi kombela u tsala hi rin'wana ra lawa: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "SWI VONAKA ONGE I VUXISI."
+  scam.HEADLINES.SUSPICIOUS: "TIVONELE."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "A ndzi voni swikombiso leswi tiviwaka swa vuxisi, kambe leswo a swi vuli leswaku swi hlayisekile."
+  scam.SIGNS_LABEL: "Swikombiso swa xilemukiso:"
+  scam.REPORT_LINE: "Ri hundzisela eka 333, i mahala."
+  scam.GENERIC_REPORT_LINE: "U nga hlamuli kumbe ku rhumela mali. Vika eka nethiwekhi ya wena hi nomboro leyi nga eka websayiti ya yona kumbe eka phakeji ya SIM."
+  scam.NEUTRAL_ADVICE: "U nga avelani PIN ya wena, naswona kambela mali ya wena ya selfoni u nga si endla leswi rungula rin'wana ri swi vulaka."
+  scam.SIGNAL.asks_for_pin: "ri kombela PIN ya wena kumbe phasiwedi"
+  scam.SIGNAL.double_registration: "ri vula leswaku SIM ya wena yi tsarisiwile kambirhi"
+  scam.SIGNAL.refund_request: "ri ku kombela ku vuyisa mali leyi rhumeriweke hi xihoxo"
+  scam.SIGNAL.confirmation_from_personal_number: "ri vonaka onge i ntiyiso wa M-PESA kambe ri huma eka nomboro ya munhu"
+  scam.SIGNAL.unofficial_operator_number: "ri vula leswaku ri huma eka Safaricom kambe ri nyika nomboro leyi nga riki 0722000000"
+  scam.SIGNAL.dial_code_instruction: "ri ku byela ku ringela khodi eka riqingho ra wena"
+  scam.SIGNAL.prize_or_offer: "ri vula leswaku u hlule hakelo kumbe ri nyika mali"
+  scam.SIGNAL.link: "ri na xihlanganisi"
+  scam.SIGNAL.pressure: "ri ku hatlisisa ku endla xin'wana"
+
+  channels.ussd.UI:
+    ask: "Vutisa xivutiso"
+    scam: "Kambela rungula"
+    lang: "Ririmi"
+    more: "98 Swinwana"
+    next: "1 Lexi landzelaka"
+    back: "0 Endzhaku"
+    menu: "0 Menyu"
+    ask_prompt: "Tsala xivutiso xa wena:"
+    scam_prompt: "Tsala kumbe u namarhetela rungula:"
+    invalid: "Nhlawulo a wu kahle."
+    end_pack: "Hi swona hinkwaswo hi nhloko-mhaka leyi."
+    lang_prompt: "1 English"
+    topics: "Tinhloko-mhaka"
+    place_prompt: "Tsala vito ra {area} ra wena:"
+    food_prompt: "Tsala swakudya na {area} ra wena, xik. mavele {example}:"
+    weeks_prompt: "U tikile mavhiki mangani?"
+    crop_prompt: "Tsala ximila na leswi u swi vonaka:"
+  channels.voice.PROMPTS:
+    welcome: "U amukelekile eka ACE."
+    press: "Eka {label}, tshikelela {n}."
+    repeat: "Ku twa menyu nakambe, tshikelela 0."
+    bye: "A hi kumanga nhlawulo wa wena. Sala kahle."
+    invalid: "Leswo a hi nhlawulo lowu faneleke."
+
+  services.base.DAYS: ["Sun", "Bir", "Har", "Mun", "Ntl", "Mug", "Son"]
+  services.base.MONTHS: ["Sun", "Yan", "Kul", "Dzi", "Mud", "Kho", "Maw", "Mha", "Ndz", "Nhl", "Huk", "N'w"]
+  services.base.NEEDS_PLACE: "U le ka {area} rihi? Hlamula hi vito ra rona, xik. {example}."
+  services.base.AREA_DEFAULT: "ndhawu"
+  services.base.AREA_WORD: {ZA: "xifundzankulu", MZ: "xifundzankulu"}
+  services.base.COUNTRY_SAID: {ZA: "Afrika Dzonga", MZ: "Mozambiki"}
+
+  services.rain.WORDS.likely: "swi nga humelela swinene"
+  services.rain.WORDS.possible: "swi nga humelela"
+  services.rain.WORDS.dry: "ku oma ngopfu"
+  services.rain.HEAD: "Mpfula ekusuhi na {place}:"
+  services.rain.HEAVY_LINE: "Mpfula leyikulu (20 mm kumbe ku tlula) yi nga na {days}."
+  services.rain.FOOT: "Swivandzana swi huma eka vuprofeti bya ECMWF bya {date}."
+  services.rain.SPAN: "{a} ku ya {b}"
+  services.rain.AND: "na"
+  services.rain.STALE: "ACE a yi na vuprofeti bya maxelo bya sweswi bya {place}. Languta vuprofeti bya {met}."
+  services.rain.NEXT: "Kunguhata ntirho wa purasi eka masiku lama omeke."
+
+  services.warnings.FOUND: "Xilemukiso xa mfumo xa {place} ku suka eka {authority}, ku fikela {until}:"
+  services.warnings.NATIONAL: "Xilemukiso xa mfumo xa tiko hinkwaro ku suka eka {authority}, ku fikela {until}:"
+  services.warnings.MORE: "Swin'wana swa {n} swa ha tirha."
+  services.warnings.NONE: "A ku na xilemukiso xa mfumo ku suka eka {authority} lexi khumbaka {place} sweswi (swi kamberiwile {checked})."
+  services.warnings.STALE: "ACE a yi swi kotanga ku kambela swilemukiso swa {authority} khale khale, kutani a yi swi tivi loko swi ri kona. Yingisa swihumelelo swa mfumo ku suka eka {authority}."
+  services.warnings.GAP: "{authority} a yi kandziyisi swilemukiso hi ndlela leyi ACE yi nga yi hlayaka, kutani ACE a yi koti ku kambela swilemukiso kwalaho. Yingisa swihumelelo swa mfumo ku suka eka {authority} eka xiyanimoya na thelevhixini."
+  services.warnings.YOUR_AREA: "ndhawu ya wena"
+
+  services.facility.NEAR: "Xivandla xa rihanyo xa mfumo lexi nga ekusuhi:"
+  services.facility.IN_AREA: "Xivandla xa rihanyo xa mfumo eka {place}:"
+  services.facility.CAVEAT: "Ku suka eka nxaxamelo wa 2019 wa swivandla swa rihanyo swa mfumo; tiyisisa leswaku xi pfulekile u nga si ya."
+  services.facility.REGISTRY_CAVEAT: "Ku suka eka rhijisitara ya swivandla ya Ndzawulo ya Rihanyo; ringela u nga si ya loko u swi kota."
+  services.facility.EMERGENCY: "Xihatla: {numbers}."
+  services.facility.NO_NUMBER: "Loko ku ri xihatla, ringela nomboro ya xihatla ya ndhawu ya wena."
+  services.facility.NONE: "ACE a yi kumanga xivandla xa rihanyo xa mfumo endzeni ka {km} km eka nxaxamelo wa yona wa 2019."
+  services.facility.GAP: "ACE a yi si va na nxaxamelo wa swivandla swa rihanyo swa tiko leri."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} eka {market}: {currency} {price} {unit} hi {month}"
+  services.prices.CHANGE.up: "yi tlakukile hi {pct}% ku suka eka {prev}"
+  services.prices.CHANGE.down: "yi hungutekile hi {pct}% ku suka eka {prev}"
+  services.prices.CHANGE.same: "yi fana na {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km ku suka {place})"
+  services.prices.FOOT: "Minxavo ya WFP."
+  services.prices.TOP: "Minxavo ya sweswinyana ya WFP eka {market}{far}:"
+  services.prices.OLD: "Minxavo ya sweswinyana ya WFP leyi ACE yi nga na yona ya {country} i ya {month}, naswona yi dyuharile. Vutisa vaxavisi kumbe hofisi ya wena ya vurimi."
+  services.prices.GAP: "WFP a yi kandziyisi minxavo ya {country}, kutani ACE a yi koti ku nyika minxavo kwalaho. Vutisa vaxavisi kumbe hofisi ya wena ya vurimi."
+  services.prices.THIN: "Minxavo ya sweswinyana ya WFP ya {country} yi katsa swakudya swi nga ri swingani ntsena. Vutisa vaxavisi kumbe hofisi ya wena ya vurimi."
+  services.prices.NO_FOOD: "ACE a yi na nxavo wa sweswinyana wa WFP wa {food} ekusuhi na {place}."
+  services.prices.UNIT: "hi {unit}"
+  services.prices.UNIT_MANY: "hi {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Mavele", "maize flour": "Mugayo", "maize meal": "Mugayo", beans: "Tinyawa", rice: "Rhayisi", sorghum: "Mabele", millet: "Mahuva", sugar: "Swikiri", oil: "Mafurha", "wheat flour": "Fulawa", wheat: "Koroni", cowpeas: "Tinyawa", potatoes: "Matsavani", tomatoes: "Matamatisi", onions: "Anyanisi", salt: "Munyu", milk: "Masi", eggs: "Mandza", bread: "Xinkwa", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "yo basa", yellow: "yo tshopana", imported: "leyi nghenisiweke", local: "ya laha kaya", dry: "leyi omeke", red: "yo tshwuka"}
+
+  services.pregnancy.FIRST: "Loko u ri eka mavhiki ya {w}, famba eka nkambelo wa wena wo sungula wa vutikari sweswi, emahlweni ka vhiki ra 12."
+  services.pregnancy.DUE_NOW: "Loko u ri eka mavhiki ya {w}, nkambelo wa vutikari wu fanele sweswi. Lowu landzelaka i eka vhiki ra {next}."
+  services.pregnancy.NEXT: "Loko u ri eka mavhiki ya {w}, nkambelo wa wena lowu landzelaka wa vutikari i eka vhiki ra {next}."
+  services.pregnancy.LATE: "Loko u ri eka mavhiki ya {w} u hundzile nkambelo wo hetelela lowu kunguhatiweke eka vhiki ra 40. Vona mutirhi wa rihanyo namuntlha."
+  services.pregnancy.ASK: "U tikile mavhiki mangani? Hlamula hi nomboro, xik. mavhiki ya 22."
+  services.pregnancy.CALL: "Ringela {numbers}."
+
+  services.pests.LIKELY: "Leswi swi nga va {problem}. ACE a yi voni ximila xa wena, kutani languta swikombiso leswi:"
+  services.pests.MAYBE: "Kumbexana i {problem}."
+  services.pests.REFER: "Kombela mutirhi wa vurimi ku tiyisisa u nga si fafazela."
+  services.pests.NAMES.fall_armyworm: "xivungu xa mavele (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "vuvabyi lebyi dlayaka bya mavele (MLN)"
+  services.pests.NAMES.cassava_mosaic: "vuvabyi bya mosaic bya mufaki"
+  services.pests.NAMES.banana_xanthomonas_wilt: "vuvabyi byo vuna ka mabanana (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "xivungu xa matluka ya matamatisi (Tuta absoluta)"
+  services.pests.ASK: "I ximila xihi, naswona u vona yini? Xik.: matluka ya mavele ma na mingoti na ntshuri wo fana na wa ntsandza."
+  services.pests.UNKNOWN: "Sweswi ACE yi kambela mavele, mufaki, mabanana na matamatisi. Eka swimila swin'wana, vutisa mutirhi wa vurimi."
+
+phrases:
+  safety.PREGNANCY: ["u tikile", "ndzi tikile", "wansati la tikeke", "vutikari", "u na nyimba", "tikile tin'hweti"]
+  safety.POSTPARTUM: ["u ha ku veleka", "u velekile", "ndzi velekile", "endzhaku ko veleka", "loko a velekile"]
+  safety.MATERNAL_DANGER: ["ngati", "u huma ngati", "ku huma ngati", "wa rhurhumela", "xifafa", "ku vava ka nhloko ngopfu", "mahlo a ma voni kahle", "n'wana a nga tsekatseki", "nwana a nga tsekatseki", "mati ma tshovekile", "fivhara yo tlakuka"]
+  safety.URGENT: ["a nga hefemuli", "a nga swi koti ku hefemula", "u wisile", "u wile a nga pfuki", "xifafa", "u huma ngati ngopfu", "ku vava ka xifuva", "u lumiwile hi nyoka", "nyoka yi n'wi lumile", "u hisiwile ngopfu"]
+  safety.POISON_ACT: ["u nwile", "u mitile", "u dyile", "n'wana u nwile", "nwana u nwile"]
+  safety.POISON_WHAT: ["chefu", "chefu ya swifuwo", "chefu ya makondlo", "parafini", "petirolo", "bleach", "tikhemikhali"]
+  safety.POISONED: ["va n'wi nwisile chefu", "u nwile chefu", "u dyile chefu", "va n'wi nyikile chefu", "va n'wi chefile"]
+  safety.GBV: ["ndzi pfinyiwile", "va ndzi pfinyile", "wa ndzi ba", "nuna wa mina wa ndzi ba", "u ndzi bile", "madzolonga ekaya", "u ndzi xungeta ku ndzi dlaya"]
+  safety.CHILD: ["n'wana", "nwana", "n'wana wa mina", "nwana wa mina", "n'wana wa mina wa nhwanyana", "n'wana wa mina wa mufana", "xinhwanyatana", "vana"]
+  safety.CHILD_HARM: ["u pfinyiwile", "va n'wi pfinyile", "u xanisiwile", "va n'wi xanisa", "va n'wi ba", "u n'wi bile", "vukati bya ku sindzisiwa"]
+  safety.SELF_HARM: ["ku tidlaya", "ndzi ta tidlaya", "ndzi lava ku fa", "a ndza ha lavi ku hanya", "ndzi lava ku hetisa vutomi bya mina", "ku tivavisa"]
+
+  scam.PIN: ["pin", "phasiwedi", "nomboro ya xihundla"]
+  scam.ASK: ["rhumela", "ndzi nyike", "tiyisisa", "nghenisa", "tsala"]
+  scam.MISTAKE: ["hi xihoxo", "xihoxo", "vuyisa mali", "yi vuyise"]
+  scam.DOUBLE: ["kambirhi"]
+  scam.PRIZE: ["u hlule", "hakelo", "nyiko", "mali ya mahala"]
+  scam.URGENT: ["hi ku hatlisa", "sweswi sweswi", "eka tiawara ta 24", "yi ta pfariwa", "yi ta yimisiwa", "xilemukiso xo hetelela"]
+  scam.CLAIMS_OPERATOR: ["vodacom", "mtn", "cell c", "telkom", "movitel", "tmcel", "m-pesa", "e-mola"]
+  scam.DIAL: ["ringela"]
+
+  services.CUES.pregnancy_companion: ["nkambelo wa vutikari", "kliniki ya vutikari", "nkambelo lowu landzelaka"]
+  services.CUES.nearest_facility: ["xibedlhele", "kliniki", "dokodela"]
+  services.CUES.official_warnings: ["xilemukiso", "ndhambi", "xidzedze"]
+  services.CUES.rain_this_week: ["mpfula", "yi ta na", "maxelo", "vuprofeti"]
+  services.CUES.market_prices: ["nxavo", "i malini", "makete"]
+  services.CUES.pest_check: ["swifuwo", "xivungu", "vuvabyi", "matluka", "tshopana", "mingoti", "ma vuna", "ma fa"]
+  services.SEASONAL: ["ximumu", "vuxika", "nkarhi wa mpfula"]
+  services.PREGNANT: ["tikile", "vutikari"]
+  services.HOW_MUCH: ["malini"]
+  services.prices.FOODS: {mavele: maize, mugayo: maize meal, tinyawa: beans, rhayisi: rice, swikiri: sugar, mafurha: oil, matsavani: potatoes, matamatisi: tomatoes, anyanisi: onions, munyu: salt, mandza: eggs, xinkwa: bread}
+  services.pests.CROPS.maize: ["mavele"]
+  services.pests.CROPS.cassava: ["mufaki"]
+  services.pests.CROPS.banana: ["mabanana", "banana"]
+  services.pests.CROPS.tomato: ["matamatisi", "tamatisi"]
+  services.pests.PROBLEMS.fall_armyworm: ["xivungu", "mingoti", "ntshuri"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["tshopana", "ma vunile", "ma file"]
+  services.pregnancy.WEEK_WORDS: ["mavhiki", "vhiki"]
+  services.pregnancy.MONTH_WORDS: ["tin'hweti", "n'hweti", "tinhweti"]
+  commands.COMMANDS.help: ["pfuno"]
+  commands.COMMANDS.forget: ["sula"]
+  commands.COMMANDS.stop: ["yima"]
+  commands.COMMANDS.language: ["ririmi"]
+  commands.COMMANDS.tip: ["xitsundzuxo"]
+  commands.COMMANDS.scam: ["vuxisi"]
+  commands.COMMANDS.sources: ["swihlovo"]
+  commands.COMMANDS.more: ["swinwana"]
+  text.ACTION_CUES: ["ndzi endla yini", "ndzi fanele ku endla yini", "ndzi nga swi sivela njhani", "ndzi nga xi dlaya njhani", "ndzi nga swi hlayisa njhani", "ndzi pfune"]
+
+words:
+  stopwords: ["na", "hi", "eka", "leswaku", "kambe", "kumbe", "yini", "njhani", "hikuva", "swi", "ya", "ra", "wa", "loko", "ku"]
+  markers: ["ndzi", "leswaku", "eka", "swi", "xana", "inkomu", "mpfula", "ngati", "loko", "kumbe", "njhani", "xibedlhele", "mavele", "vhiki", "mavhiki", "tikile", "vutikari", "tinyawa", "mufaki", "matluka", "malini", "ekusuhi", "namuntlha", "tolo", "mundzuku", "mali", "wena", "mina", "sweswi", "ngopfu"]

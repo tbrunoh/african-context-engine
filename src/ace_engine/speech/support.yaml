@@ -1,10 +1,10 @@
 # What exists today to hear and speak each ACE language, and to translate it.
 # speak.say is a Google Cloud Text-to-Speech voice, the kind the Africa's Talking Say action reads with.
 # speak.play is a Gemini TTS model: ACE synthesises the audio and the call plays it with the Play action.
-# Every line was checked against the source named in `sources` on 25 November 2026. Preview means the provider
+# Every line was checked against the source named in `sources` on 26 November 2026. Preview means the provider
 # has not made the model generally available. Re-check before launching a voice line; providers add languages
 # without notice. `ace voice languages` prints this table.
-checked_on: "2026-11-25"
+checked_on: "2026-11-26"
 sources:
   google_stt: https://docs.cloud.google.com/speech-to-text/docs/models/chirp-3
   google_stt_languages: https://cloud.google.com/speech-to-text/v2/docs/speech-to-text-supported-languages
@@ -60,16 +60,203 @@ languages:
     translate: {provider: "google_translate", model: "NMT; Translation LLM experimental"}
     waxal: {asr_hours: 219.9, asr_utterances: 44354, note: "Transcribed speech from Digital Umuganda; no voice scripts"}
   om:
-    hear: null
+    hear: {provider: "google_stt", model: "chirp_2", locale: "om-ET", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1"}
     speak:
       say: null
       play: null
     translate: {provider: "google_translate", model: "NMT"}
     waxal: {asr_hours: 222.7, asr_utterances: 45045, note: "Transcribed speech from Digital Umuganda; no voice scripts"}
   so:
-    hear: {provider: "google_stt", model: "chirp", locale: "so-SO", stage: "Listed", note: "First generation Chirp model, region asia-southeast1"}
+    hear: {provider: "google_stt", model: "chirp_2", locale: "so-SO", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1; the first Chirp model also lists so-SO"}
     speak:
       say: null
       play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Not in Gemini 3.8 Flash-Lite TTS"}
     translate: {provider: "google_translate", model: "NMT; Translation LLM experimental"}
     waxal: null
+
+  # Added in ACE 2.3. Hearing and translation were checked against the Chirp 3 and Cloud Translation pages on
+  # 26 November 2026, and WAXAL membership against the WAXAL dataset card (revision 5f4d8ca). Voices were checked the
+  # same day against the Cloud Text-to-Speech voice list and the Gemini speech generation page: 12 languages are
+  # listed for Gemini 3.8 Flash TTS and are played on the voice line, and Afrikaans also has one Cloud voice that the
+  # Say action reads; the other 12 have no voice and are not spoken.
+  ha:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "ha-NG", stage: "Preview"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT; Translation LLM experimental"}
+    waxal: {listed: true, note: "Voice scripts; hours not yet measured"}
+  yo:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "yo-NG", stage: "Preview"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: {listed: true, note: "Voice scripts; hours not yet measured"}
+  ig:
+    hear: {provider: "google_stt", model: "chirp_2", locale: "ig-NG", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener; not in Flash-Lite TTS"}
+    translate: {provider: "google_translate", model: "NMT; Translation LLM experimental"}
+    waxal: {listed: true, note: "Voice scripts; hours not yet measured"}
+  pcm:
+    hear: null
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: null
+    waxal: {listed: true, note: "Voice scripts; hours not yet measured"}
+  zu:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "zu-ZA", stage: "Preview"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: null
+  xh:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "xh-ZA", stage: "Preview"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: null
+  af:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "af-ZA", stage: "Preview"}
+    speak:
+      say: {provider: "google_tts", locale: "af-ZA", voices: "Standard", note: "One voice, af-ZA-Standard-A; not yet heard by a fluent listener"}
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: null
+  st:
+    hear: {provider: "google_stt", model: "long", locale: "st-ZA", stage: "Listed", note: "Checked 26 November 2026; older long model, not Chirp"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener; not in Flash-Lite TTS"}
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: null
+  tn:
+    hear: {provider: "google_stt", model: "long", locale: "tn-Latn-ZA", stage: "Listed", note: "Checked 26 November 2026; older long model, not Chirp"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: null
+  ts:
+    hear: {provider: "google_stt", model: "long", locale: "ts-ZA", stage: "Listed", note: "Checked 26 November 2026; older long model, not Chirp"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: null
+  sn:
+    hear: {provider: "google_stt", model: "chirp_2", locale: "sn-ZW", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: {listed: true, note: "Transcribed speech; hours not yet measured"}
+  ny:
+    hear: {provider: "google_stt", model: "chirp_2", locale: "ny-MW", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT", note: "Listed as Chichewa (Nyanja)"}
+    waxal: null
+  bem:
+    hear: null
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener; not in Flash-Lite TTS"}
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: null
+  rw:
+    hear: {provider: "google_stt", model: "long", locale: "rw-RW", stage: "Listed", note: "Checked 26 November 2026; older long model, not Chirp"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: null
+  rn:
+    hear: null
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT", note: "Listed as Rundi"}
+    waxal: null
+  lg:
+    hear: {provider: "google_stt", model: "chirp_2", locale: "lg-UG", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT", note: "Listed as Ganda (Luganda)"}
+    waxal: {listed: true, note: "Transcribed speech and voice scripts; hours not yet measured"}
+  ln:
+    hear: {provider: "google_stt", model: "chirp_2", locale: "ln-CD", stage: "Listed", note: "Checked 26 November 2026; regional model, us-central1"}
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT and Translation LLM"}
+    waxal: {listed: true, note: "Transcribed speech; hours not yet measured"}
+  ak:
+    hear: null
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener"}
+    translate: {provider: "google_translate", model: "NMT", note: "Listed as Twi (Akan)"}
+    waxal: {listed: true, note: "Akan transcribed speech; Twi and Fante voice scripts; hours not yet measured"}
+  ee:
+    hear: null
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: {listed: true, note: "Transcribed speech; hours not yet measured"}
+  wo:
+    hear: {provider: "google_stt", model: "chirp_3", locale: "wo-SN", stage: "Preview"}
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: null
+    waxal: {listed: true, note: "Voice scripts in the repository; hours not yet measured"}
+  dyu:
+    hear: null
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener; not in Flash-Lite TTS"}
+    translate: null
+    waxal: null
+  mos:
+    hear: null
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice in Cloud Text-to-Speech or Gemini 3.8 Flash TTS on 26 November 2026"
+    translate: null
+    waxal: null
+  fuf:
+    hear: null
+    hear_note: "Speech-to-Text lists ff-SN (chirp_2), which is Pulaar of Senegal, not Pular"
+    speak:
+      say: null
+      play: null
+    speak_note: "No voice on 26 November 2026; Gemini 3.8 Flash TTS lists Nigerian Fulfulde, not Pular"
+    translate: {provider: "google_translate", model: "NMT", note: "Listed as Fulfulde (ff), not Pular specifically"}
+    waxal: {listed: true, note: "Pular voice scripts in the repository; Fula transcribed speech and voice scripts; hours not yet measured"}
+  ti:
+    hear: null
+    speak:
+      say: null
+      play: {provider: "gemini_tts", model: "gemini-3.8-flash-tts", note: "Listed for Gemini 3.8 Flash TTS on 26 November 2026; not yet heard by a fluent listener; not in Flash-Lite TTS"}
+    translate: {provider: "google_translate", model: "NMT"}
+    waxal: {listed: true, note: "Transcribed speech; hours not yet measured"}

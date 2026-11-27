@@ -1,0 +1,205 @@
+# Eʋegbe (Ewe) for Ghana and Togo, in the standard spelling. SMS folds the letters ɖ, ɛ, ƒ, ɣ, ŋ, ɔ and ʋ to
+# their closest Latin letters, as most people type them. Drafted for ACE 2.3. Awaiting review by fluent speakers
+# and, for the safety phrases, by clinicians.
+meta:
+  code: ee
+  name: Ewe
+  native: "Eʋegbe"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE aɖo eŋu na wò le Eʋegbe me."
+  names: ["evegbe", "eʋegbe", "ewe", "ee"]
+
+templates:
+  safety.OPENERS.self_harm: "Eve nam ŋutɔ be èse le ɖokuiwò me alea. Ele be nàxɔ kpeɖeŋu fifia. {numbers}"
+  safety.OPENERS.maternal: "Esia ate ŋu anye fuɖeɖe ƒe afɔku si hiã kabakaba. Yi kɔdzi si te ɖe ŋuwò fifia. {numbers}"
+  safety.OPENERS.poisoning: "Esia dze abe aɖi ene. Di dɔkta ƒe kpeɖeŋu fifia, eye nàtsɔ goe la ɖe asi. {numbers}"
+  safety.OPENERS.child_protection: "Ɖevi aɖe ate ŋu anɔ afɔku me. Meɖe kuku di kpeɖeŋu fifia. {numbers}"
+  safety.OPENERS.gbv: "Eve nam be esia le dzɔdzɔm ɖe ŋuwò. Àte ŋu axɔ kpeɖeŋu fifia. {numbers}"
+  safety.OPENERS.health_urgent: "Esia dze abe nya si hiã kabakaba ene. Di dɔkta ƒe kpeɖeŋu fifia. {numbers}"
+  safety.CALL_WORD: "Yɔ {numbers}"
+  safety.OR_WORD: "alo"
+  safety.EMERGENCY_WORD: "nya si hiã kabakaba"
+  safety.FALLBACK_NUMBERS: "Yɔ afɔku ƒe nɔmba si le wò nutoa me alo yi kɔdzi si te ɖe ŋuwò."
+
+  commands.TEXTS.help: "ACE naa aɖaŋuɖoɖo siwo wodzro le wò nuto me. Bia le wò gbe me. Sedede: AMEBLEBLE + gbedasi be woalé ŋku ɖe eŋu, AƉAŊU + wò aɖaŋu be nàma sidzedze, DZƆTSOƑE, BUBUWO, GBE + kɔd (abe GBE EN ene), TUTU be nàtutu wò nyatakakawo."
+  commands.TEXTS.help_short: "Bia ACE le wò gbe me. AMEBLEBLE + gbedasi lé ŋku ɖe eŋu. TUTU tutua wò nyatakakawo."
+  commands.TEXTS.forgotten: "Ewɔ vɔ. ACE tutu nu sia nu si nɔ esi tso nɔmba sia ŋu."
+  commands.TEXTS.stopped: "Màgaxɔ gbedasi aɖeke tso ACE gbɔ o negbe ɖe nèŋlɔ nu ake. Ɖo TUTU be nàtutu wò nyatakakawo."
+  commands.TEXTS.language: "Ɖo GBE kple kɔd:"
+  commands.TEXTS.tip_thanks: "Akpe. Wodzra wò aɖaŋu ɖo be aɖaŋuwɔla nadzro eme. Womama o va se ɖe esime wodzro eme."
+  commands.TEXTS.tip_usage: "Ɖo AƉAŊU kple wò aɖaŋu, abe: AƉAŊU neem ƒe aŋgbawo kpena ɖe ŋu le bli ƒe ŋɔ ŋu le Ho."
+  commands.TEXTS.scam_usage: "Ɖo AMEBLEBLE kple gbedasi si ŋu mèka ɖe o, eye ACE alé ŋku ɖe eŋu."
+  commands.TEXTS.no_sources: "Ŋuɖoɖo aɖeke meli si ƒe dzɔtsoƒe woafia o. Bia biabia aɖe gbã."
+  commands.TEXTS.no_more: "Esia koe nye nu si le ACE si tso nya sia ŋu fifia. Bia biabia bubu alo ɖo KPEƉEŊU."
+  commands.TEXTS.clarify: "Aɖaŋuɖoɖo si wodzro meli na ACE tso esia ŋu haɖe o. ACE ate ŋu akpe ɖe ŋuwò le: {topics}. Ɖo AƉAŊU be nàtsɔ sidzedze kpee."
+  commands.TEXTS.unread: "ACE mete ŋu xlẽa gbe sia haɖe o. Taflatse, ŋlɔ nu le gbe siawo dometɔ ɖeka me: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "EDZE ABE AMEBLEBLE ENE."
+  scam.HEADLINES.SUSPICIOUS: "KPƆ NYUIE."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Nyemekpɔ ameble ƒe dzesi siwo wonya aɖeke o, gake mefia be dedienɔnɔ le eme o."
+  scam.SIGNS_LABEL: "Nuxlɔ̃ame ƒe dzesiwo:"
+  scam.REPORT_LINE: "Ɖoe ɖe 333, femaxee."
+  scam.GENERIC_REPORT_LINE: "Mègaɖo eŋu alo aɖo ga ɖa o. Gblɔe na wò network to nɔmba si le woƒe website dzi alo SIM ƒe agba dzi."
+  scam.NEUTRAL_ADVICE: "Mègatsɔ wò PIN na ame aɖeke o, eye nàkpɔ ga si le wò mobile money me hafi nàwɔ nu si gbedasi aɖe gblɔ."
+  scam.SIGNAL.asks_for_pin: "ebia wò PIN alo password"
+  scam.SIGNAL.double_registration: "egblɔ be woŋlɔ wò SIM zi eve"
+  scam.SIGNAL.refund_request: "ebia be nàgbugbɔ ga si woɖo ɖa to vodada me"
+  scam.SIGNAL.confirmation_from_personal_number: "edze abe M-PESA ƒe kpeɖodzi ene gake etso ame ƒe nɔmba dzi"
+  scam.SIGNAL.unofficial_operator_number: "egblɔ be etso Safaricom gake etsɔ nɔmba si menye 0722000000 o na"
+  scam.SIGNAL.dial_code_instruction: "egblɔ na wò be nàyɔ kɔd aɖe le wò fon dzi"
+  scam.SIGNAL.prize_or_offer: "egblɔ be èɖu dzi alo enaa ga"
+  scam.SIGNAL.link: "link le eme"
+  scam.SIGNAL.pressure: "eʋã wò be nàwɔe kabakaba"
+
+  channels.ussd.UI:
+    ask: "Bia biabia"
+    scam: "Lé ŋku ɖe gbedasi ŋu"
+    lang: "Gbe"
+    more: "98 Bubuwo"
+    next: "1 Esi kplɔe ɖo"
+    back: "0 Trɔ yi megbe"
+    menu: "0 Menu"
+    ask_prompt: "Ŋlɔ wò biabia:"
+    scam_prompt: "Ŋlɔ alo tsɔ gbedasia de eme:"
+    invalid: "Tiatia la medze o."
+    end_pack: "Esiae nye wo katã le nya sia ŋu."
+    lang_prompt: "1 English"
+    topics: "Nyawo"
+    place_prompt: "Ŋlɔ wò {area} ƒe ŋkɔ:"
+    food_prompt: "Ŋlɔ nuɖuɖu kple wò {area}, abe bli {example}:"
+    weeks_prompt: "Kwasiɖa nenie wò fu xɔ?"
+    crop_prompt: "Ŋlɔ nukuku la kple nu si nèkpɔ:"
+  channels.voice.PROMPTS:
+    welcome: "Woezɔ va ACE."
+    press: "Ne enye {label} la, zi {n}."
+    repeat: "Be nàse menu la ake la, zi 0."
+    bye: "Míexɔ wò tiatia o. Hede nyuie."
+    invalid: "Ema menye tiatia nyuie o."
+
+  services.base.DAYS: ["Dzo", "Bla", "Kuɖ", "Yaw", "Fiɖ", "Mem", "Kɔs"]
+  services.base.MONTHS: ["Dzv", "Dzd", "Ted", "Afƒ", "Dam", "Mas", "Sia", "Dea", "Any", "Kel", "Ade", "Dzm"]
+  services.base.NEEDS_PLACE: "{area} kae nèle? Ɖo eƒe ŋkɔ, abe {example}."
+  services.base.AREA_DEFAULT: "nuto"
+  services.base.AREA_WORD: {GH: "nuto", TG: "nuto"}
+  services.base.COUNTRY_SAID: {GH: "Ghana", TG: "Togo"}
+
+  services.rain.WORDS.likely: "ate ŋu adzɔ ŋutɔ"
+  services.rain.WORDS.possible: "ate ŋu adzɔ"
+  services.rain.WORDS.dry: "ŋdɔ ayi ŋutɔ"
+  services.rain.HEAD: "Tsidzadza le {place} gbɔ:"
+  services.rain.HEAVY_LINE: "Tsi gã (20 mm alo wu nenema) ate ŋu adza {days}."
+  services.rain.FOOT: "Mɔnukpɔkpɔwo tso ECMWF ƒe yame nɔnɔme ŋuti nyagblɔɖi si nye {date} me."
+  services.rain.SPAN: "{a} va se ɖe {b}"
+  services.rain.AND: "kple"
+  services.rain.STALE: "ACE mekpɔ yame nɔnɔme ŋuti nyagblɔɖi yeye na {place} o. Kpɔ {met} ƒe nyagblɔɖi."
+  services.rain.NEXT: "Ɖo agble dɔwɔwɔ ɖi na ŋkeke siwo me ŋdɔ ayi."
+
+  services.warnings.FOUND: "Dziɖuɖu ƒe nuxlɔ̃ame na {place} tso {authority} gbɔ, va se ɖe {until}:"
+  services.warnings.NATIONAL: "Dziɖuɖu ƒe nuxlɔ̃ame na dukɔ blibo la tso {authority} gbɔ, va se ɖe {until}:"
+  services.warnings.MORE: "Bubu {n} gakpɔtɔ le dɔ wɔm."
+  services.warnings.NONE: "Dziɖuɖu ƒe nuxlɔ̃ame aɖeke tso {authority} gbɔ si ku ɖe {place} ŋu meli fifia o (wodzroe {checked})."
+  services.warnings.STALE: "ACE mete ŋu dzro {authority} ƒe nuxlɔ̃amewo me nyitsɔ laa o, eya ta menya ne aɖe li o. Ɖo to dziɖuɖu ƒe gbeƒãɖeɖe siwo tso {authority} gbɔ."
+  services.warnings.GAP: "{authority} meɖea nuxlɔ̃amewo ɖe go le mɔ si dzi ACE ate ŋu axlẽ wo le o, eya ta ACE mate ŋu adzro nuxlɔ̃amewo me le afima o. Ɖo to dziɖuɖu ƒe gbeƒãɖeɖe siwo tso {authority} gbɔ le radio kple TV dzi."
+  services.warnings.YOUR_AREA: "wò nuto"
+
+  services.facility.NEAR: "Dziɖuɖu ƒe kɔdzi si te ɖe ŋuwò:"
+  services.facility.IN_AREA: "Dziɖuɖu ƒe kɔdzi le {place}:"
+  services.facility.CAVEAT: "Tso dziɖuɖu ƒe kɔdziwo ƒe ŋkɔŋlɔgbalẽ si nye 2019 tɔ me; kpɔ egbɔ be eʋu hafi nàyi."
+  services.facility.REGISTRY_CAVEAT: "Tso Lãmesẽ Dɔwɔƒe ƒe kɔdziwo ƒe agbalẽ me; yɔ hafi nàyi ne àte ŋui."
+  services.facility.EMERGENCY: "Nya si hiã kabakaba: {numbers}."
+  services.facility.NO_NUMBER: "Ne enye nya si hiã kabakaba la, yɔ afɔku ƒe nɔmba si le wò nutoa me."
+  services.facility.NONE: "ACE mekpɔ dziɖuɖu ƒe kɔdzi aɖeke le {km} km me le eƒe 2019 ŋkɔŋlɔgbalẽ dzi o."
+  services.facility.GAP: "ACE mekpɔ kɔdziwo ƒe ŋkɔŋlɔgbalẽ na dukɔ sia haɖe o."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} le {market}: {currency} {price} {unit} le {month}"
+  services.prices.CHANGE.up: "eyi dzi {pct}% tso {prev}"
+  services.prices.CHANGE.down: "eɖiɖi {pct}% tso {prev}"
+  services.prices.CHANGE.same: "ele abe {prev} ene"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km tso {place})"
+  services.prices.FOOT: "WFP ƒe asiwo."
+  services.prices.TOP: "WFP ƒe asi yeyewo le {market}{far}:"
+  services.prices.OLD: "WFP ƒe asi yeye siwo le ACE si na {country} nye {month} tɔ, eye wotsi. Bia asitsalawo alo wò agbledede ɔfis."
+  services.prices.GAP: "WFP meɖea asiwo ɖe go na {country} o, eya ta ACE mate ŋu ana asiwo le afima o. Bia asitsalawo alo wò agbledede ɔfis."
+  services.prices.THIN: "WFP ƒe asi yeyewo na {country} ku ɖe nuɖuɖu ʋɛ aɖewo koŋu. Bia asitsalawo alo wò agbledede ɔfis."
+  services.prices.NO_FOOD: "WFP ƒe asi yeye aɖeke mele ACE si na {food} le {place} gbɔ o."
+  services.prices.UNIT: "{unit} ɖeka"
+  services.prices.UNIT_MANY: "{unit} ɖeka"
+  services.prices.LOCAL_FOOD: {maize: "Bli", "maize flour": "Blimɔ", "maize meal": "Blimɔ", beans: "Ayi", rice: "Mɔlu", sorghum: "Fo", millet: "Ŋɔ", sugar: "Sukli", oil: "Ami", "wheat flour": "Flawa", wheat: "Wit", cowpeas: "Ayi", potatoes: "Anagbe", tomatoes: "Timati", onions: "Sabala", salt: "Dze", milk: "Notsi", eggs: "Azi", bread: "Abolo", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "ɣi", yellow: "dzẽ", imported: "tso dutagbe", local: "tso afi sia", dry: "si ƒu", red: "dzĩ"}
+
+  services.pregnancy.FIRST: "Le kwasiɖa {w} dzi la, yi wò fuɖeɖe ƒe dodokpɔ gbãtɔ fifia, hafi kwasiɖa 12 naɖo."
+  services.pregnancy.DUE_NOW: "Le kwasiɖa {w} dzi la, fuɖeɖe ƒe dodokpɔ ƒe ɣeyiɣi ɖo fifia. Esi kplɔe ɖo nye kwasiɖa {next}."
+  services.pregnancy.NEXT: "Le kwasiɖa {w} dzi la, wò fuɖeɖe ƒe dodokpɔ si kplɔe ɖo nye kwasiɖa {next}."
+  services.pregnancy.LATE: "Le kwasiɖa {w} dzi la, èto dodokpɔ mamlɛtɔ si woɖo ɖi na kwasiɖa 40 la. Yi ɖakpɔ lãmesẽdɔwɔla egbea."
+  services.pregnancy.ASK: "Kwasiɖa nenie wò fu xɔ? Tsɔ xexlẽdzesi ɖo eŋu, abe kwasiɖa 22."
+  services.pregnancy.CALL: "Yɔ {numbers}."
+
+  services.pests.LIKELY: "Esia ate ŋu anye {problem}. ACE mekpɔa wò nukuku o, eya ta kpɔ dzesi siawo:"
+  services.pests.MAYBE: "Ɖewohĩ enye {problem}."
+  services.pests.REFER: "Bia agbledede aɖaŋuɖola be wòaɖo kpe edzi hafi nàƒu atike."
+  services.pests.NAMES.fall_armyworm: "bli ƒe ŋɔ (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "bli ƒe dɔlélé si wua nu (MLN)"
+  services.pests.NAMES.cassava_mosaic: "agbeli ƒe mosaic dɔlélé"
+  services.pests.NAMES.banana_xanthomonas_wilt: "akɔɖu ƒe ƒuƒu dɔlélé (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "timati aŋgba ƒe ŋɔ (Tuta absoluta)"
+  services.pests.ASK: "Nukuku kae, eye nu kae nèkpɔ? Abe: bli aŋgbawo ŋu do le eye ke le wo ŋu abe ati ƒe ke ene."
+  services.pests.UNKNOWN: "Fifia ACE dzroa bli, agbeli, akɔɖu kple timati me. Nukuku bubuwo ŋu la, bia agbledede aɖaŋuɖola."
+
+phrases:
+  safety.PREGNANCY: ["efɔ fu", "mefɔ fu", "fɔ fu", "fuɖeɖe", "nyɔnu si fɔ fu", "efɔ fu ɣleti", "le fu me"]
+  safety.POSTPARTUM: ["edzi vi etsɔ", "edzi vi", "medzi vi", "le vidzidzi megbe", "esi wòdzi vi"]
+  safety.MATERNAL_DANGER: ["ʋu le dodom", "ʋu dodo", "ele dzodzom", "dzidzi le edzi", "ta le veve ŋutɔ", "ŋku mekpɔ nu nyuie o", "vi la meʋãna o", "tsi la gbã", "ŋdɔdzɔ sesẽ"]
+  safety.URGENT: ["megbɔa ya o", "mate ŋu agbɔ ya o", "eku ŋkuli", "edze anyi mefɔ o", "dzidzi le edzi", "ʋu le dodom ŋutɔ", "akɔta ƒe veve", "da ɖu", "da ɖui", "dzo ʋi ŋutɔ"]
+  safety.POISON_ACT: ["ɖevi la no", "vinye no", "vinye mi", "ŋutsu mi", "nyɔnu mi", "eno atike", "emi atike"]
+  safety.POISON_WHAT: ["nudzodzoe ƒe atike", "afi ƒe atike", "kananzi", "petrol", "bleach"]
+  safety.POISONED: ["wotsɔ aɖi nɛ", "eno aɖi", "eɖu aɖi", "wode aɖi eme nɛ", "woƒo aɖi nɛ"]
+  safety.GBV: ["wodo ŋusẽ dɔ gbɔ nye", "edo ŋusẽ dɔ gbɔ nye", "eƒoa ame", "srɔ̃nye ƒoa ame", "eƒom", "aƒeme ŋutasẽnuwɔwɔ", "edo ŋɔdzi nam be yeawu m"]
+  safety.CHILD: ["ɖevi", "vinye", "vinye nyɔnu", "vinye ŋutsu", "nyɔnuvi", "ɖeviwo", "ɖevi sue"]
+  safety.CHILD_HARM: ["wodo ŋusẽ dɔ gbɔe", "edo ŋusẽ dɔ gbɔe", "do ŋusẽ dɔ gbɔe", "wole funyafunya wɔm", "wole funyafunyam", "wole eƒom", "srɔ̃ɖeɖe le ŋusẽ me"]
+  safety.SELF_HARM: ["wu ɖokuinye", "mawu ɖokuinye", "medi be maku", "nyemegadi be manɔ agbe o", "medi be maɖe nye agbe ɖa", "gbegblẽ ɖokuinye"]
+
+  scam.PIN: ["pin", "password", "nɔmba ɣaɣla"]
+  scam.ASK: ["ɖo", "na m", "ɖo kpe edzi", "de eme", "ŋlɔ"]
+  scam.MISTAKE: ["to vodada me", "vodada", "gbugbɔ ga la", "gbugbɔe"]
+  scam.DOUBLE: ["zi eve"]
+  scam.PRIZE: ["èɖu dzi", "fetu", "nunana", "ga femaxee"]
+  scam.URGENT: ["kabakaba", "fifia tututu", "le gaƒoƒo 24 me", "woatu", "woatɔtɔe", "nuxlɔ̃ame mamlɛtɔ"]
+  scam.CLAIMS_OPERATOR: ["mtn", "momo", "telecel", "moov", "flooz", "togocom", "tmoney"]
+  scam.DIAL: ["yɔ", "dial"]
+
+  services.CUES.pregnancy_companion: ["fuɖeɖe ƒe dodokpɔ", "antenatal", "dodokpɔ si kplɔe ɖo"]
+  services.CUES.nearest_facility: ["kɔdzi", "dɔyɔƒe", "dɔkta"]
+  services.CUES.official_warnings: ["nuxlɔ̃ame", "tsiɖɔɖɔ", "ahom"]
+  services.CUES.rain_this_week: ["tsi", "tsi adza", "yame nɔnɔme", "nyagblɔɖi"]
+  services.CUES.market_prices: ["asi", "ega nenie", "asime"]
+  services.CUES.pest_check: ["nudzodzoewo", "ŋɔ", "dɔlélé", "aŋgbawo", "dzẽ", "dowo", "le ƒuƒum", "le kukum"]
+  services.SEASONAL: ["tsidzaɣi", "ƒuƒɔɣi", "harmattan"]
+  services.PREGNANT: ["fuɖeɖe", "fɔ fu"]
+  services.HOW_MUCH: ["nenie"]
+  services.prices.FOODS: {bli: maize, ayi: beans, mɔlu: rice, sukli: sugar, ami: oil, timati: tomatoes, sabala: onions, dze: salt, azi: eggs, abolo: bread, gari: cassava}
+  services.pests.CROPS.maize: ["bli"]
+  services.pests.CROPS.cassava: ["agbeli"]
+  services.pests.CROPS.banana: ["akɔɖu", "abladzo"]
+  services.pests.CROPS.tomato: ["timati"]
+  services.pests.PROBLEMS.fall_armyworm: ["ŋɔ", "dowo", "ke"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["dzẽ", "ƒu", "ku"]
+  services.pregnancy.WEEK_WORDS: ["kwasiɖa", "kwasiɖawo"]
+  services.pregnancy.MONTH_WORDS: ["ɣleti", "ɣletiwo"]
+  commands.COMMANDS.help: ["kpeɖeŋu"]
+  commands.COMMANDS.forget: ["tutu"]
+  commands.COMMANDS.stop: ["dzudzɔ"]
+  commands.COMMANDS.language: ["gbe"]
+  commands.COMMANDS.tip: ["aɖaŋu"]
+  commands.COMMANDS.scam: ["amebleble"]
+  commands.COMMANDS.sources: ["dzɔtsoƒe"]
+  commands.COMMANDS.more: ["bubuwo"]
+  text.ACTION_CUES: ["nu kae mawɔ", "nu kae wòle be mawɔ", "aleke maxe mɔ", "aleke mawu", "aleke madzra ɖo", "kpe ɖe ŋunye"]
+
+words:
+  stopwords: ["kple", "alo", "gake", "esia", "afi", "fifia", "nuka", "aleke", "elabena", "be", "meɖe", "nye", "ŋutɔ", "le", "eye"]
+  markers: ["meɖe", "kuku", "nuka", "aleke", "fifia", "ameka", "afika", "elabena", "ɖevi", "kɔdzi", "bli", "akpe", "esia", "nyemenya", "medi", "ŋutɔ", "fuɖeɖe", "etsɔ", "egbe", "ga", "aŋgbawo", "agbeli", "kwasiɖa", "tsi", "ayi", "nenie", "mefɔ", "vinye", "srɔ̃nye", "kple", "gake", "ƒe", "dzi", "ŋu", "mele", "agble", "nukuku", "ɣesiaɣi"]

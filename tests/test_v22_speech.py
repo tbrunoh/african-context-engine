@@ -21,7 +21,7 @@ def no_declared_voices(monkeypatch):
 
 def test_support_table_covers_every_language_with_dated_sources():
     data = speech.support()
-    assert data["checked_on"] == "2026-11-25"
+    assert data["checked_on"] == "2026-11-26"
     assert set(data["languages"]) == set(SUPPORTED_LANGUAGES)
     assert all(url.startswith("https://") for url in data["sources"].values())
     for code in SUPPORTED_LANGUAGES:
@@ -37,7 +37,8 @@ def test_gemini_tts_closes_the_voice_gap_for_amharic_and_somali_but_not_oromo():
 
 
 def test_only_languages_with_a_known_voice_are_spoken():
-    assert {c for c in SUPPORTED_LANGUAGES if speech.speakable(c)} == {"en", "sw", "fr", "pt", "ar"}
+    # 2.3 added Afrikaans, which has one Cloud voice (af-ZA-Standard-A) that the Say action can read.
+    assert {c for c in SUPPORTED_LANGUAGES if speech.speakable(c)} == {"en", "sw", "fr", "pt", "ar", "af"}
     assert speech.spoken_language(["am", "om", "so", "en"]) == "en"
     assert speech.spoken_language(["so", "ar", "en"]) == "ar"
 
@@ -89,17 +90,19 @@ def test_google_speech_to_text_uses_chirp_3_for_amharic():
     assert base64.b64decode(body["content"]) == b"RIFF"
 
 
-def test_google_speech_to_text_routes_somali_to_the_first_chirp_region():
-    post = FakePost({"results": []})
-    google.GoogleSpeechToText(project="demo", post=post).transcribe("gs://bucket/call.wav", "so")
-    url, body = post.calls[0]
-    assert "asia-southeast1-speech.googleapis.com" in url and body["uri"] == "gs://bucket/call.wav"
-    assert body["config"]["model"] == "chirp"
+def test_google_speech_to_text_routes_somali_and_oromo_to_the_chirp_2_region():
+    # 2.3 checked the Speech-to-Text V2 list again: Chirp 2 hears so-SO and om-ET, in single regions only.
+    for lang, locale in (("so", "so-SO"), ("om", "om-ET")):
+        post = FakePost({"results": []})
+        google.GoogleSpeechToText(project="demo", post=post).transcribe("gs://bucket/call.wav", lang)
+        url, body = post.calls[0]
+        assert "us-central1-speech.googleapis.com" in url and body["uri"] == "gs://bucket/call.wav"
+        assert body["config"]["model"] == "chirp_2" and body["config"]["languageCodes"] == [locale]
 
 
 def test_google_speech_to_text_refuses_a_language_with_no_model():
     with pytest.raises(ValueError, match="keypad"):
-        google.GoogleSpeechToText(project="demo", post=FakePost({})).transcribe("gs://b/x.wav", "om")
+        google.GoogleSpeechToText(project="demo", post=FakePost({})).transcribe("gs://b/x.wav", "ti")
 
 
 def test_transcript_reaches_the_safety_rail_like_any_text(engine):

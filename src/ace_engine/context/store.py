@@ -49,6 +49,12 @@ class ScoredFact:
     relevance: float = 0.0  # BM25 component alone, 0 when the query has no text
 
 
+# Words for a phone number, which every fact that gives a country's lines answers, and words for an emergency, which
+# its national emergency lines answer, in English, Swahili, French and Portuguese, whatever language its pack is in.
+NUMBER_WORDS = "number numbers phone hotline helpline nambari namba simu numero numeros numéro numéros número números"
+EMERGENCY_WORDS = "emergency urgence urgences emergencia emergência emergencias police policia polícia ambulance ambulancia"
+
+
 @dataclass
 class _Index:
     """A small BM25 index over each fact's searchable text."""
@@ -65,6 +71,14 @@ class _Index:
         for kw in (*fact.keywords, *fact.subjects):
             for t in terms(kw):
                 tf[t] += 2
+        # A fact that gives emergency lines answers a request for a number, so emergency numbers in Kenya finds the
+        # national lines and not the M-PESA fraud line, whose text says numbers more often.
+        if fact.topic == "emergency_contacts":
+            for t in terms(NUMBER_WORDS):
+                tf[t] += 2
+            if any("emergency" in c.queues for c in fact.contacts):
+                for t in terms(EMERGENCY_WORDS):
+                    tf[t] += 2
         self.docs[fact.id] = tf
         self.lengths[fact.id] = sum(tf.values())
         self.df.update(tf.keys())

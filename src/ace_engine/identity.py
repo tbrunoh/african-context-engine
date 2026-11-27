@@ -29,26 +29,28 @@ DEV_SALT = "ace-development-salt-change-me"
 _COVERED_DIAL_CODES = tuple(c.dial for c in COUNTRIES.values())
 
 
-def normalize_msisdn(number: str, default_country_code: str = "254") -> str:
+def normalize_msisdn(number: str, default_country_code: str | None = None) -> str:
     """Normalize a phone number to E.164.
 
-    Handles the local formats seen in channel callbacks, for example
-    0712345678 or 254712345678 for Kenya. Pass another default country code
-    for other deployments.
+    Handles the local formats seen in channel callbacks, for example 0712345678 or 254712345678 in Kenya,
+    when the deployment names its country's dialling code. With no default, a number in local format has no
+    country, so it is refused rather than given one: ACE never assumes a caller is in Kenya or anywhere else.
     """
     digits = re.sub(r"[^\d+]", "", number.strip())
     if digits.startswith("+"):
         candidate = digits
     elif digits.startswith("00"):
         candidate = "+" + digits[2:]
-    elif digits.startswith("0"):
+    elif default_country_code and digits.startswith("0"):
         candidate = "+" + default_country_code + digits[1:]
-    elif digits.startswith(default_country_code):
+    elif default_country_code and digits.startswith(default_country_code):
         candidate = "+" + digits
     elif len(digits) >= 11 and any(digits.startswith(code) for code in _COVERED_DIAL_CODES):
         candidate = "+" + digits  # a full international number sent without the plus
-    else:
+    elif default_country_code:
         candidate = "+" + default_country_code + digits
+    else:
+        raise ValueError(f"No country for a number in local format: {number!r}")
     if not _E164.match(candidate):
         raise ValueError(f"Not a valid phone number: {number!r}")
     return candidate
@@ -90,7 +92,7 @@ class Profile:
 class ProfileStore:
     """In memory profiles. Implement the same methods over a database for production."""
 
-    def __init__(self, salt: str | None = None, default_country_code: str = "254",
+    def __init__(self, salt: str | None = None, default_country_code: str | None = None,
                  keep_history: bool = True, max_history: int = 20) -> None:
         self.salt = salt or os.environ.get("ACE_PSEUDONYM_SALT") or DEV_SALT
         if self.salt == DEV_SALT and os.environ.get("ACE_ENV") == "production":
@@ -101,7 +103,11 @@ class ProfileStore:
         self._profiles: dict[str, Profile] = {}
 
     def key_for(self, number: str) -> str:
-        return pseudonymize(normalize_msisdn(number, self.default_country_code), self.salt)
+        try:
+            canonical = normalize_msisdn(number, self.default_country_code)
+        except ValueError:  # a local number with no country still gets its own private key, and no country
+            canonical = "local:" + re.sub(r"\D", "", number)
+        return pseudonymize(canonical, self.salt)
 
     def get_or_create(self, number: str) -> Profile:
         key = self.key_for(number)

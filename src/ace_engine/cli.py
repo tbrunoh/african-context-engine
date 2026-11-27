@@ -57,7 +57,10 @@ def _engine(args: argparse.Namespace) -> Engine:
     if country and country not in COUNTRIES:
         sys.exit(f"Unknown country {country}. Covered: {', '.join(COUNTRIES)}")
     if getattr(args, "phone", "unset") is None:  # a sample number in the chosen country
-        args.phone = f"+{COUNTRIES[country or 'KE'].dial}700000001"
+        if not country:
+            sys.exit("Pass --country, for example KE, NG or SN, or --phone, so ACE knows whose facts and "
+                     f"emergency numbers to use. Covered: {', '.join(COUNTRIES)}")
+        args.phone = f"+{COUNTRIES[country].dial}700000001"
     config = EngineConfig(country=country)
     tips = TipQueue(getattr(args, "tips_file", None))
     snapshots = getattr(args, "snapshots", None) or "auto"
@@ -205,13 +208,13 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("text", nargs="+")
     p.add_argument("--channel", default="api", choices=[c.value for c in Channel])
     p.add_argument("--language", choices=list(SUPPORTED_LANGUAGES))
-    p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country")
+    p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country (or pass --country)")
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_ask)
 
     p = sub.add_parser("chat", parents=[common], help="interactive session")
     p.add_argument("--channel", default="sms", choices=["sms", "rcs", "ussd", "whatsapp", "voice", "api"])
-    p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country")
+    p.add_argument("--phone", default=None, help="caller number; its dialling code picks the country (or pass --country)")
     p.add_argument("--tips-file", dest="tips_file")
     p.set_defaults(func=cmd_chat)
 

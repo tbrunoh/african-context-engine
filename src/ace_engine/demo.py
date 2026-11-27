@@ -15,7 +15,7 @@ from .models import Channel, Message
 
 def run_demo(pack_roots: list[Path]) -> list[tuple[str, str]]:
     engine = Engine.from_packs(*pack_roots)
-    phone = "0712000000"  # fictional demo number
+    phone = "+254712000000"  # fictional demo number in Kenya
     voice, sms, ussd = VoiceAdapter(), SmsAdapter(), UssdApp(engine)
     log: list[tuple[str, str]] = []
 

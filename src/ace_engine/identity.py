@@ -28,6 +28,28 @@ DEV_SALT = "ace-development-salt-change-me"
 
 _COVERED_DIAL_CODES = tuple(c.dial for c in COUNTRIES.values())
 
+# A web session has no phone number. Its sender is web:<country>:<random token>, so it gets its own private key,
+# the country its visitor chose, and nothing that could match a real subscriber.
+WEB_PREFIX = "web:"
+
+
+def web_sender(country: str, token: str) -> str:
+    """The sender for a browser session in a covered country."""
+    code = country.upper()
+    if code not in COUNTRIES:
+        raise ValueError(f"unknown country {country!r}")
+    if not re.fullmatch(r"[A-Za-z0-9_-]{16,64}", token):
+        raise ValueError("invalid session token")
+    return f"{WEB_PREFIX}{code}:{token}"
+
+
+def web_country(sender: str) -> str | None:
+    """The country of a web session sender, or None for any other sender."""
+    if not sender.startswith(WEB_PREFIX):
+        return None
+    code = sender[len(WEB_PREFIX):].split(":", 1)[0]
+    return code if code in COUNTRIES else None
+
 
 def normalize_msisdn(number: str, default_country_code: str | None = None) -> str:
     """Normalize a phone number to E.164.
@@ -102,7 +124,15 @@ class ProfileStore:
         self.max_history = max_history
         self._profiles: dict[str, Profile] = {}
 
+    def save(self, profile: Profile) -> None:
+        """Persist a profile after a message. Profiles in memory are changed in place, so there is nothing to do."""
+
+    def begin_request(self) -> None:
+        """Called at the start of each web request. A store that caches reads drops them here."""
+
     def key_for(self, number: str) -> str:
+        if number.startswith(WEB_PREFIX):  # a web session: its random token is the identity
+            return pseudonymize(number, self.salt)
         try:
             canonical = normalize_msisdn(number, self.default_country_code)
         except ValueError:  # a local number with no country still gets its own private key, and no country

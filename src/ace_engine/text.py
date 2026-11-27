@@ -53,7 +53,8 @@ _SW_MARKERS = frozenset(
 _FR_MARKERS = frozenset(
     "le les des du est sont je mon mes vous nous que qui quoi comment pourquoi avec pour dans "
     "pas bonjour merci enceinte enfant argent malade sang aide maïs mais champ chenille "
-    "fille fils femme mari bebe mere pere aidez hier maintenant veux suis besoin tres".split()
+    "fille fils femme mari bebe mere pere aidez hier maintenant veux suis besoin tres "
+    "cette semaine pleuvoir pluie quel quelle temps fera prix hopital".split()
 )
 _EN_MARKERS = frozenset(
     "the and is are my what how when where why please help with have this that your "

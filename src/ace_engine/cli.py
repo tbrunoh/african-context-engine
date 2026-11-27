@@ -252,6 +252,8 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--source", action="append", help="connector name (repeatable; default: all)")
     p.add_argument("--country", action="append", help="ISO country code (repeatable; default: all 34)")
     p.add_argument("--out", default="snapshots", help="snapshots folder")
+    p.add_argument("--publish", metavar="BASE",
+                   help="a deployment's snapshot folder: refresh a copy of the set in use, check it, publish it")
     p.set_defaults(func=cmd_refresh)
 
     p = sub.add_parser("watch", help="recheck every served phone number against its source page (uses the network)")
@@ -346,6 +348,19 @@ def cmd_refresh(args: argparse.Namespace) -> int:
     if unknown:
         sys.exit(f"Unknown source {', '.join(unknown)}. Sources: {', '.join(CONNECTORS)}")
     countries = [c.upper() for c in (args.country or [])] or None
+    if args.publish:  # a deployment's snapshot sets: copy the set in use, refresh, check, then publish
+        from .snapshots.manifest import publish
+
+        result = publish(args.publish, lambda folder: refresh(folder, names, countries))
+        report = result["refresh"]
+        for name, country in report.written:
+            print(f"wrote   {name:26} {country}")
+        for h in report.failed:
+            print(f"FAILED  {h.name:26} {h.country}  {h.detail}")
+        for problem in result["problems"]:
+            print(f"CHECK   {problem}")
+        print(("published " if result["published"] else "NOT published ") + result["set"])
+        return 0 if result["published"] else 1
     report = refresh(args.out, names, countries)
     for name, country in report.written:
         print(f"wrote   {name:26} {country}")

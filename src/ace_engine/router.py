@@ -32,6 +32,7 @@ class Budget:
     max_chars: int
     short: bool          # prefer each fact's short rendering
     max_facts: int = 3
+    fitted: bool = False  # max_chars already counts the language's alphabet, as a USSD screen limit does
 
 
 @dataclass
@@ -135,19 +136,25 @@ class OpenAICompatibleProvider:
     """
 
     def __init__(self, base_url: str | None = None, model: str | None = None,
-                 api_key: str | None = None) -> None:
+                 api_key: str | None = None, reasoning_effort: str | None = None) -> None:
         self.base_url = (base_url or os.environ.get("ACE_LLM_BASE_URL", "")).rstrip("/")
         self.model = model or os.environ.get("ACE_LLM_MODEL", "")
         self.api_key = api_key or os.environ.get("ACE_LLM_API_KEY", "")
+        # Rephrasing cited facts needs no deliberation: ask for the least reasoning the model allows, which keeps
+        # replies fast and cheap (for Gemini through its OpenAI compatible endpoint, for example minimal or low).
+        self.reasoning_effort = reasoning_effort or os.environ.get("ACE_LLM_REASONING_EFFORT") or None
         if not self.base_url or not self.model:
             raise ValueError("Set ACE_LLM_BASE_URL and ACE_LLM_MODEL to use a language model")
         self.name = self.model
 
     def generate(self, system: str, prompt: str, timeout_s: float) -> str:
-        body = json.dumps({
+        request: dict = {
             "model": self.model, "temperature": 0,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
-        }).encode()
+        }
+        if self.reasoning_effort:
+            request["reasoning_effort"] = self.reasoning_effort
+        body = json.dumps(request).encode()
         headers = {"Content-Type": "application/json"}
         if self.api_key:
             headers["Authorization"] = f"Bearer {self.api_key}"

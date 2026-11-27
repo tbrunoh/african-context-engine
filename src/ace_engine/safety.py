@@ -24,7 +24,7 @@ from typing import Protocol
 
 from . import i18n
 from .context.schema import Contact, ContextFact
-from .text import phrase_in, token_hay
+from .text import _needle, phrase_in, token_hay
 
 # Groups of phrases. A rule is a tuple of groups; all groups must match.
 PREGNANCY = ("pregnant", "pregnancy", "expecting", "months pregnant", "mjamzito", "ujauzito", "mimba",
@@ -42,7 +42,8 @@ MATERNAL_DANGER = ("bleeding", "fits", "convulsion", "convulsions", "seizure", "
 URGENT = ("not breathing", "not breathin", "cannot breathe", "can't breathe", "cant breathe", "cant breath",
           "difficulty breathing", "unconscious",
           "collapsed", "fainted", "convulsion", "convulsions", "seizure", "having fits", "heavy bleeding",
-          "bleeding heavily", "chest pain", "snake bite", "snakebite", "bitten by a snake", "snake bit", "snake has bitten",
+          "bleeding heavily", "chest pain", "snake bite", "snakebite", "bitten by a snake", "snake bit",
+          "snake has bitten",
           "severe burn", "struggling to breathe", "trouble breathing", "hard to breathe", "short of breath",
           "can not breathe", "cannot breath", "gasping for air", "turning blue", "stopped breathing",
           "stop breathing", "no longer breathing", "passed out", "unconcious", "unconsious",
@@ -56,7 +57,8 @@ URGENT = ("not breathing", "not breathin", "cannot breathe", "can't breathe", "c
           "morsure de serpent", "mordu par un serpent", "mordue par un serpent", "serpent a mordu",
           "brulure grave", "a du mal a respirer", "difficulte a respirer", "n arrive pas a respirer",
           "n arrive plus a respirer")
-POISON_ACT = ("swallowed", "drank", "ate", "omodho", "amodho", "amekunywa", "amemeza", "alikunywa", "alimeza", "amekula",
+POISON_ACT = ("swallowed", "drank", "ate", "omodho", "amodho", "amekunywa", "amemeza", "alikunywa", "alimeza",
+              "amekula",
               "a avale", "avale", "a bu", "a mange")
 POISON_WHAT = ("poison", "pesticide", "insecticide", "chemical", "chemicals", "rat poison", "paraffin",
                "kerosene", "kerosine", "bleach", "jik", "sumu", "dawa ya wadudu", "dawa ya kuua wadudu",
@@ -68,7 +70,8 @@ POISONED = ("poisoned", "poisoning", "overdosed", "took an overdose", "took too 
 GBV = ("raped", "rape", "sexually assaulted", "assaulted me", "beats me", "beating me", "he hit me",
        "my husband beats", "domestic violence", "threatened to kill me", "hits me", "keeps hitting me",
        "beat me", "nimebakwa", "amebakwa", "kubakwa",
-       "ananipiga", "amenipiga", "amenichapa", "ananichapa", "mume wangu ananipiga", "dhuluma za kijinsia", "ukatili wa kijinsia",
+       "ananipiga", "amenipiga", "amenichapa", "ananichapa", "mume wangu ananipiga", "dhuluma za kijinsia",
+       "ukatili wa kijinsia",
        "viol", "violee", "agression sexuelle", "agressee sexuellement", "mon mari me bat", "il me bat",
        "il me frappe", "m a frappee", "violence conjugale", "violences conjugales", "violence domestique",
        "menace de me tuer", "violences basees sur le genre", "me frappe", "me bat", "me tabasse")
@@ -84,6 +87,99 @@ SELF_HARM = ("kill myself", "end my life", "suicide", "suicidal", "want to die",
              "hurt myself", "harm myself", "kujiua", "nataka kufa", "kujitoa uhai", "kujiumiza",
              "sitaki kuishi", "me suicider", "je vais me tuer", "je veux mourir", "mettre fin a mes jours",
              "en finir avec la vie", "me faire du mal", "je ne veux plus vivre")
+
+# Fire, drowning, stabbing (and other violent wounds) and road accidents, added in 2.4. Each phrase names the
+# emergency itself, so a word with an everyday meaning (fire alone, drowning in work, an accident last year) does not.
+FIRE = ("prend feu", "a pris feu", "le feu brule", "on fire", "is on fire", "are on fire", "house is on fire",
+        "home is on fire", "car is on fire",
+        "shop is on fire", "kitchen is on fire",
+        "building is on fire", "school is on fire", "market is on fire", "room is on fire", "hut is on fire",
+        "church is on fire", "office is on fire", "bus is on fire", "flat is on fire", "shack is on fire",
+        "kiosk is on fire", "set on fire", "caught fire", "catching fire", "burning house", "house is burning",
+        "house burning", "fire in the house", "fire in my house", "fire in our house", "fire outbreak",
+        "there is a fire",
+        "theres a fire", "there's a fire", "fire broke out", "a fire broke out", "school is burning", "shop is burning",
+        "market is burning", "building is burning", "bush fire", "bushfire", "wildfire", "trapped in a fire",
+        "trapped in the fire", "gas explosion", "gas cylinder exploded", "gas cylinder burst",
+        "nyumba inaungua", "nyumba yetu inaungua", "nyumba yangu inaungua", "inaungua moto", "imeshika moto",
+        "imeshika moto", "kuna moto", "moto mkubwa", "moto umezuka", "moto unawaka nyumba", "nyumba inawaka moto",
+        "soko linaungua", "shule inaungua", "duka linaungua", "mlipuko wa gesi", "mtungi wa gesi umelipuka",
+        "maison brule", "la maison brule", "ma maison brule", "notre maison brule", "maison en feu", "en feu",
+        "incendie", "au feu", "voiture en feu",
+        "immeuble en feu", "boutique en feu", "cuisine en feu", "marche en feu", "ecole en feu",
+        "maison est en feu", "voiture est en feu", "immeuble est en feu", "cuisine est en feu", "marche est en feu",
+        "ecole est en feu", "boutique est en feu", "au feu au secours",
+        "au secours au feu", "il y a le feu", "il y a un incendie", "un incendie a", "incendie dans", "incendie chez",
+        "le feu a pris", "pris feu", "explosion de gaz", "bouteille de gaz a explose",
+        "le marche brule", "l ecole brule")
+DROWNING = ("are drowning", "people are drowning", "boat capsized", "canoe capsized", "is drowning", "drowned",
+            "he is drowning", "she is drowning", "child is drowning", "someone is drowning",
+            "somebody is drowning",
+            "son is drowning", "daughter is drowning", "boy is drowning", "girl is drowning", "baby is drowning",
+            "man is drowning", "woman is drowning", "brother is drowning", "sister is drowning", "friend is drowning",
+            "kid is drowning",
+            "drowning in the river", "drowning in the lake", "drowning in the sea", "drowning in the dam",
+            "has drowned", "nearly drowned", "almost drowned", "drowned in the", "child drowned", "someone drowned",
+            "somebody drowned", "son drowned", "daughter drowned", "boy drowned", "girl drowned", "baby drowned",
+            "man drowned", "woman drowned", "brother drowned", "sister drowned", "friend drowned", "kid drowned",
+            "fell into the river", "fell in the river", "fell into the lake", "fell into the dam",
+            "fell into the water", "fell in the water", "fell into a well", "fell into the well", "fell in the well",
+            "pulled from the water", "swept away by the flood", "swept away by water", "swept away by the river",
+            "anazama", "amezama", "anazama majini", "amezama majini", "ametumbukia mtoni", "ametumbukia kisimani",
+            "ameanguka mtoni", "ameanguka kisimani", "ameanguka majini", "amesombwa na maji", "amesombwa na mafuriko",
+            "kuzama majini",
+            "se noie", "il se noie", "elle se noie", "s est noye", "s est noyee", "noye dans la riviere",
+            "noyee dans la riviere", "noye dans le fleuve", "noyee dans le fleuve",
+            "tombe dans le fleuve", "tombe dans la riviere", "tombe dans le puits", "tombee dans le puits",
+            "tombee dans la riviere", "tombe dans l eau", "emporte par les eaux", "emportee par les eaux",
+            "emporte par la crue")
+STABBING = ("stabbed", "been stabbed", "was stabbed", "stabbed me", "stabbed him", "stabbed her", "knife wound",
+            "stab wound", "cut with a machete", "slashed with a panga", "cut with a panga", "attacked with a knife",
+            "attacked with a machete", "was shot", "got shot", "been shot", "shot my", "shot his", "shot her",
+            "police shot", "someone shot", "was shot in", "was shot by", "was shot dead", "shot dead", "been shot in",
+            "has been shot", "shot him in the", "shot her in the", "shot me in the", "they shot him", "they shot her",
+            "gunshot", "gunshot wound", "bullet wound",
+            "amedungwa kisu", "amechomwa kisu", "amenichoma kisu", "amemchoma kisu", "kuchomwa kisu", "amepigwa kisu",
+            "amekatwa panga", "amekatwa kwa panga", "jeraha la kisu", "amepigwa risasi", "wamempiga risasi",
+            "poignarde", "poignardee", "coup de couteau", "coups de couteau", "blesse au couteau", "blessee au couteau",
+            "coup de machette", "coups de machette", "blessure par balle", "recu une balle", "recue une balle",
+            "tire sur mon", "tire sur ma", "tire sur son",
+            "tire sur sa", "tire sur lui", "tire sur elle", "on lui a tire dessus", "touche par balle",
+            "touchee par balle")
+ROAD_ACCIDENT = ("renverse un enfant", "renverse une personne", "renverse un pieton", "renverse une femme",
+                 "renverse un homme", "knocked my child", "knocked my son", "knocked my daughter", "knocked down by",
+                 "knocked down a", "road accident", "car accident", "bus accident", "motorbike accident",
+                 "motorcycle accident",
+                 "boda accident", "boda boda accident", "bodaboda accident", "matatu accident", "okada accident",
+                 "taxi accident", "lorry accident", "truck accident", "accident on the road",
+                 "accident on the highway", "accident on the motorway", "accident on the main road",
+                 "many injured", "people injured", "hit by a car",
+                 "hit by a motorbike", "hit by a boda", "hit by a bus", "hit by a lorry", "hit by a truck",
+                 "hit by a taxi", "knocked down by a car", "knocked down by a motorbike", "run over by", "car crash",
+                 "bus crash", "car hit", "a car hit", "lorry hit", "truck hit", "motorbike hit", "car overturned",
+                 "bus overturned",
+                 "ajali ya barabarani", "ajali ya gari", "ajali ya pikipiki", "ajali ya boda", "ajali ya bodaboda",
+                 "ajali ya basi", "ajali ya matatu", "amegongwa na gari", "amegongwa na pikipiki", "amegongwa na boda",
+                 "amegongwa na basi", "gari limemgonga", "gari limegonga", "pikipiki imemgonga", "gari limepinduka",
+                 "basi limepinduka",
+                 "accident de la route", "accident de voiture", "accident de moto", "accident de bus",
+                 "accident de circulation", "renverse par une voiture", "renversee par une voiture",
+                 "renverse par une moto", "renversee par une moto", "percute par une voiture",
+                 "percutee par une voiture", "heurte par une voiture", "la voiture s est renversee",
+                 "le bus s est renverse")
+
+# Everyday phrases that contain an emergency phrase. They are removed from a message before the rules are read, so
+# the broad phrases above keep their reach (my child is on fire, he was shot, she drowned) without these false alarms.
+LOOKALIKES = ("song is on fire", "track is on fire", "album is on fire", "beat is on fire", "player is on fire",
+              "team is on fire", "striker is on fire", "on fire tonight", "on fire this season", "drowned out",
+              "like it is on fire", "mouth on fire", "got shot of", "drowned his voice",
+              "drowned her voice", "drowned my voice", "drowned the sound",
+              "drowning in debt", "drowning in work", "drowning in paperwork", "drowning in bills", "drowning in emails",
+              "drowning in homework", "drowning in assignments", "shot a photo", "shot a video", "shot a film",
+              "shot me a message", "shot me an email", "shot me a text", "shot him a message", "shot her a message",
+              "shot down", "shot my shot", "shot his shot", "shot my first", "shot my video", "shot my film",
+              "assurance incendie", "detecteur d incendie", "extincteur", "mettre au feu",
+              "casserole au feu", "marmite au feu", "en feu ce soir")
 
 # A snake bite is a snake word and a bite word anywhere in the message, because verbs inflect in too many ways to list
 # as whole phrases: nimeumwa na nyoka, nyoka ameniuma and nyoka amemng'ata are all a bite. Each language lists its own
@@ -126,7 +222,9 @@ _FIRST = ((PREGNANCY, "mjamzito", "enceinte"), (POSTPARTUM, "amejifungua", "acco
           (MATERNAL_DANGER, "damu", "saigne"), (URGENT, "hapumui", "ne respire plus"),
           (POISON_ACT, "amekunywa", "a avale"), (POISON_WHAT, "sumu", "produit chimique"),
           (POISONED, "amewekewa sumu", "empoisonne"), (GBV, "nimebakwa", "viol"), (CHILD, "mtoto", "enfant"),
-          (CHILD_HARM, "amenajisiwa", "abusee"), (SELF_HARM, "kujiua", "me suicider"))
+          (CHILD_HARM, "amenajisiwa", "abusee"), (SELF_HARM, "kujiua", "me suicider"),
+          (FIRE, "nyumba inaungua", "maison brule"), (DROWNING, "anazama", "se noie"),
+          (STABBING, "amedungwa kisu", "poignarde"), (ROAD_ACCIDENT, "ajali ya barabarani", "accident de la route"))
 _BASE_EN: set[str] = set()
 _BASE_SW: set[str] = set()
 _BASE_FR: set[str] = set()
@@ -150,6 +248,10 @@ GBV = i18n.phrases("safety.GBV", GBV)
 CHILD = i18n.phrases("safety.CHILD", CHILD)
 CHILD_HARM = i18n.phrases("safety.CHILD_HARM", CHILD_HARM)
 SELF_HARM = i18n.phrases("safety.SELF_HARM", SELF_HARM)
+FIRE = i18n.phrases("safety.FIRE", FIRE)
+DROWNING = i18n.phrases("safety.DROWNING", DROWNING)
+STABBING = i18n.phrases("safety.STABBING", STABBING)
+ROAD_ACCIDENT = i18n.phrases("safety.ROAD_ACCIDENT", ROAD_ACCIDENT)
 
 DEFAULT_RULES: dict[str, tuple[tuple[str, ...], ...]] = {
     # Order matters: the first queue whose rule fires wins.
@@ -159,11 +261,18 @@ DEFAULT_RULES: dict[str, tuple[tuple[str, ...], ...]] = {
     "poisoning_act": (POISON_ACT, POISON_WHAT),
     "child_protection": (CHILD, CHILD_HARM),
     "gbv": ((*GBV,),),
+    "fire": ((*FIRE,),),
     "health_urgent": ((*URGENT,),),
+    "drowning": ((*DROWNING,),),
+    "stabbing": ((*STABBING,),),
+    "road_accident": ((*ROAD_ACCIDENT,),),
     "snake_bite": (SNAKE, BITE),
     "snake_bite_so": (("mas",), next(bites for code, _, bites in _SNAKE_BITE_ROWS if code == "so")),
 }
-_QUEUE_ALIASES = {"poisoning_act": "poisoning", "snake_bite": "health_urgent", "snake_bite_so": "health_urgent"}
+_QUEUE_ALIASES = {"poisoning_act": "poisoning", "snake_bite": "health_urgent", "snake_bite_so": "health_urgent",
+                  "drowning": "health_urgent", "stabbing": "health_urgent", "road_accident": "health_urgent"}
+# Queues whose own lines are often missing from a country's pack: their reply also gives the general emergency numbers.
+WITH_EMERGENCY = frozenset({"fire"})
 
 
 @dataclass
@@ -181,6 +290,9 @@ class EscalationPolicy:
         if not text.strip():
             return SafetyDecision(False)
         hay = token_hay(text)
+        for phrase in LOOKALIKES:
+            if phrase_in(hay, phrase):
+                hay = hay.replace(_needle(phrase), " ~ ")
         for queue, groups in self.rules.items():
             hits: list[str] = []
             for group in groups:
@@ -223,15 +335,18 @@ def alarm_language(text: str, lang: str, allowed: tuple[str, ...] | None) -> str
 class HandoffSink(Protocol):
     """Where escalations go: a nurse helpdesk, an extension officer queue, a ticketing system."""
 
-    def raise_handoff(self, queue: str, person_key: str, text: str, channel: str) -> None: ...
+    def raise_handoff(self, queue: str, person_key: str, text: str, channel: str,
+                      country: str | None = None) -> None: ...
 
 
 @dataclass
 class InMemoryHandoffs:
     events: list[dict[str, str]] = field(default_factory=list)
 
-    def raise_handoff(self, queue: str, person_key: str, text: str, channel: str) -> None:
-        self.events.append({"queue": queue, "person": person_key, "text": text, "channel": channel})
+    def raise_handoff(self, queue: str, person_key: str, text: str, channel: str,
+                      country: str | None = None) -> None:
+        self.events.append({"queue": queue, "person": person_key, "text": text, "channel": channel,
+                            "country": country or ""})
 
 
 # What ACE says for each queue. {numbers} is filled from the emergency pack.
@@ -249,7 +364,8 @@ OPENERS: dict[str, dict[str, str]] = {
     "poisoning": {
         "en": "This sounds like poisoning. Get medical help now and take the container with you. {numbers}",
         "sw": "Hii inaonekana kuwa sumu. Tafuta msaada wa matibabu sasa na ubebe chombo cha sumu. {numbers}",
-        "fr": "Cela ressemble à un empoisonnement. Obtenez une aide médicale maintenant et emportez le produit. {numbers}",
+        "fr" :
+        "Cela ressemble à un empoisonnement. Obtenez une aide médicale maintenant et emportez le produit. {numbers}",
     },
     "child_protection": {
         "en": "A child may be in danger. Please get help now. {numbers}",
@@ -260,6 +376,11 @@ OPENERS: dict[str, dict[str, str]] = {
         "en": "I am sorry this is happening. You can get help now. {numbers}",
         "sw": "Pole kwa yanayokupata. Unaweza kupata msaada sasa. {numbers}",
         "fr": "Je suis désolé que cela vous arrive. Vous pouvez obtenir de l'aide maintenant. {numbers}",
+    },
+    "fire": {
+        "en": "This sounds like a fire. Get everyone out now and stay out. {numbers}",
+        "sw": "Hii inaonekana kuwa moto. Watoe watu wote nje sasa na msirudi ndani. {numbers}",
+        "fr": "Cela ressemble à un incendie. Faites sortir tout le monde maintenant et ne rentrez pas. {numbers}",
     },
     "health_urgent": {
         "en": "This sounds urgent. Get medical help now. {numbers}",
@@ -282,13 +403,15 @@ i18n.localize("safety", globals(), ("OPENERS", "CALL_WORD", "OR_WORD", "EMERGENC
 
 
 def contacts_for(queue: str, facts: Iterable[ContextFact], country: str | None = None) -> list[Contact]:
-    """Every distinct contact that serves a queue, emergency numbers first."""
+    """Every distinct contact that serves a queue, emergency numbers first. A fire also gets the general emergency
+    numbers, because many countries' packs list no separate fire line."""
+    queues = {queue, "emergency"} if queue in WITH_EMERGENCY else {queue}
     seen: dict[str, Contact] = {}
     for f in facts:
         if country and f.scope.countries and country.upper() not in f.scope.countries:
             continue
         for c in f.contacts:
-            if queue in c.queues and c.number not in seen:
+            if queues & set(c.queues) and c.number not in seen:
                 seen[c.number] = c
     return sorted(seen.values(), key=lambda c: (0 if "emergency" in c.queues else 1, len(c.number)))
 

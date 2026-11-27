@@ -12,6 +12,7 @@ always the ones for that caller.
 """
 from __future__ import annotations
 
+import inspect
 from dataclasses import dataclass, field, replace
 from datetime import datetime
 from pathlib import Path
@@ -22,7 +23,7 @@ from .context.packs import ContextPack, load_packs
 from .context.schema import Contact, ContextFact, ReviewStatus
 from .context.store import ContextQuery, ContextStore, ScoredFact
 from .countries import COUNTRIES, country_for_msisdn, default_language, readable
-from .identity import Profile, ProfileStore, normalize_msisdn
+from .identity import WEB_PREFIX, Profile, ProfileStore, normalize_msisdn, web_country
 from .langid import LanguageIdentifier, carries_language, confirmed_by, detect_language, unread_language
 from .models import Channel, Citation, Message, Reply, ReplyKind
 from .router import Budget, ExtractiveComposer, GroundedGenerator
@@ -57,6 +58,8 @@ CHANNEL_BUDGETS: dict[Channel, Budget] = {
 
 
 SAFETY_CONTEXT = {"pregnancy_companion": "pregnant"}
+# Channels that never call a language model: USSD sessions time out in seconds and a call cannot pause for one.
+EXTRACTIVE_ONLY = frozenset({Channel.USSD, Channel.VOICE})
 
 
 @dataclass
@@ -64,6 +67,9 @@ class EngineConfig:
     country: str | None = None      # None: detect from each caller's number; set it to pin one country
     default_language: str = "en"    # used when the country is unknown
     min_review: ReviewStatus = ReviewStatus.SOURCED
+    # TIP stores what a person types for expert review. A deployment with no reviewer, such as a public demo, switches
+    # it off: TIP is then read as an ordinary message, and help and clarify replies do not offer it.
+    tips: bool = True
     include_verified: bool = False  # True only when this deployment holds a verified tier license
     budgets: dict[Channel, Budget] = field(default_factory=lambda: dict(CHANNEL_BUDGETS))
     # Optional: a fuller language identifier that confirms a message is in a language ACE does not speak before ACE
@@ -80,18 +86,27 @@ class Engine:
                  services: ServiceHub | None = None) -> None:
         self.store = store
         self.packs = sorted(packs or [], key=lambda p: (p.order, p.id))
+        _PACK_LICENCE.update({f.id: p.license for p in self.packs for f in p.facts})
         pinned = COUNTRIES.get(((config.country if config else None) or "").upper())
         # Local numbers take the pinned country's code; with none pinned, a caller's country comes only from their number
-        self.profiles = profiles or ProfileStore(default_country_code=pinned.dial if pinned else None)
+        self.profiles = profiles if profiles is not None else ProfileStore(default_country_code=pinned.dial if pinned else None)
         self.composer = composer or ExtractiveComposer()
         self.safety = safety or EscalationPolicy()
-        self.handoffs = handoffs or InMemoryHandoffs()
-        self.tips = tips or TipQueue()
+        self.handoffs = handoffs if handoffs is not None else InMemoryHandoffs()
+        self.tips = tips if tips is not None else TipQueue()
         self.config = config or EngineConfig()
-        self.services = services
-        if self.services is not None:
-            self.services.ctx.store = self.store
-            self.services.ctx.numbers = self.numbers_for
+        self.services = None
+        if services is not None:
+            self.use_services(services)
+
+    def use_services(self, hub: ServiceHub) -> None:
+        """Wire a service hub to this engine's packs and emergency numbers, then put it in use.
+
+        Every way a hub reaches the engine goes through here, including a snapshot set swapped in while serving, so a
+        service never answers without the pack facts and numbers it cites."""
+        hub.ctx.store = self.store
+        hub.ctx.numbers = self.numbers_for
+        self.services = hub
 
     @classmethod
     def from_packs(cls, *paths: str | Path, snapshots: str | Path | SnapshotStore | None = "auto",
@@ -122,6 +137,8 @@ class Engine:
         """The pinned country, or the covered country of a caller's number."""
         if self.config.country:
             return self.config.country.upper()
+        if phone.startswith(WEB_PREFIX):
+            return web_country(phone)
         try:
             found = country_for_msisdn(normalize_msisdn(phone, self.profiles.default_country_code))
         except ValueError:
@@ -174,11 +191,14 @@ class Engine:
         if reply.kind is not ReplyKind.EMERGENCY and len(reply.text) > budget.max_chars:
             reply.text = truncate_words(reply.text, budget.max_chars)  # last line of defence
         self.profiles.record_reply(profile, message.channel, reply.text)
+        self.profiles.save(profile)
         return reply
 
     @staticmethod
     def _fit_alphabet(budget: Budget, channel: Channel, lang: str) -> Budget:
         """Shrink SMS, RCS and USSD budgets for languages whose script needs UCS-2 (Arabic, Amharic)."""
+        if budget.fitted:  # the USSD app sizes its budget from the screen limit, which already counts the alphabet
+            return budget
         scaled = encoding.scale(budget.max_chars, channel.value, lang)
         return budget if scaled == budget.max_chars else replace(budget, max_chars=scaled)
 
@@ -209,8 +229,8 @@ class Engine:
         contacts = contacts_for(decision.queue, facts, country)
         numbers = {c.number for c in contacts}
         cited = [f for f in facts if f.topic == "emergency_contacts"
-                 and any(c.number in numbers and decision.queue in c.queues for c in f.contacts)]
-        self.handoffs.raise_handoff(decision.queue, profile.key, text, message.channel.value)
+                 and any(c.number in numbers for c in f.contacts)]
+        _raise(self.handoffs, decision.queue, profile.key, text, message.channel.value, country)
         return Reply(
             text=emergency_text(decision.queue, contacts, lang), kind=ReplyKind.EMERGENCY, language=lang,
             escalated=True, escalation_queue=decision.queue, citations=_cite(cited),
@@ -222,6 +242,8 @@ class Engine:
         if (cmd is not None and cmd.name in LANGUAGE_COMMANDS and profile.pending_service and self.services is not None
                 and self.services.resolve_place(text, country) is not None):
             cmd = None  # Somali answering ACE's region question in Ethiopia is a place, not a language switch
+        if cmd is not None and cmd.name == "tip" and not self.config.tips:
+            cmd = None
         if cmd is None:
             # A greeting or an empty message gets the help text; a bare place name, such as Oyo, answering ACE's own
             # question goes on to that question, even when the name is also a common word.
@@ -284,7 +306,8 @@ class Engine:
         return cache[country]
 
     def _help(self, lang: str, budget: Budget) -> Reply:
-        return self._system(say("help" if budget.max_chars >= 250 else "help_short", lang), lang)
+        full = budget.max_chars >= 250 and self.config.tips  # the full help offers TIP; the short one does not
+        return self._system(say("help" if full else "help_short", lang), lang)
 
     def run_command(self, cmd: Command, lang: str, profile: Profile, message: Message,
                     budget: Budget, country: str | None = None) -> Reply:
@@ -373,6 +396,7 @@ class Engine:
         if reply.kind is not ReplyKind.EMERGENCY and len(reply.text) > budget.max_chars:
             reply.text = truncate_words(reply.text, budget.max_chars)  # folding can lengthen a reply
         self.profiles.record_reply(profile, message.channel, reply.text)
+        self.profiles.save(profile)
         return reply
 
     def _service_reply(self, sid: str, asked: str, lang: str, profile: Profile, message: Message, budget: Budget,
@@ -409,6 +433,8 @@ class Engine:
         scored = [s for s in self.store.query(query) if s.fact.id not in exclude
                   # with no known country, a fact for one country, and its numbers, is for someone else
                   and (country is not None or not s.fact.scope.countries)]
+        if scored and not exclude and not self.store.on_topic(scored[0].fact.id, text):
+            scored = []  # the best fact shares only a word with the question: say so rather than answer off topic
         if not scored:
             if exclude:
                 return self._system(say("no_more", lang), lang)
@@ -424,8 +450,10 @@ class Engine:
                 human_line = format_numbers(contacts, lang)
         room = Budget(budget.max_chars - (len(human_line) + 1 if human_line else 0), budget.short,
                       budget.max_facts)
-        if isinstance(self.composer, GroundedGenerator):
+        if isinstance(self.composer, GroundedGenerator) and message.channel not in EXTRACTIVE_ONLY:
             composed = self.composer.compose(results, lang, room, question=text)
+        elif isinstance(self.composer, GroundedGenerator):  # USSD and voice cannot wait on a model
+            composed = self.composer.fallback.compose(results, lang, room)
         else:
             composed = self.composer.compose(results, lang, room)
         if human_line:  # do not repeat numbers the answer already gives
@@ -530,7 +558,11 @@ class Engine:
 
     def _clarify(self, lang: str, country: str | None = None) -> Reply:
         topics = ", ".join(self.topic_labels(lang, country)) or "help"
-        return Reply(say("clarify", lang, topics=topics), ReplyKind.CLARIFY, lang)
+        text = say("clarify", lang, topics=topics)
+        if not self.config.tips:  # every clarify text ends with a sentence offering TIP, after the topics
+            cut = text.rfind(topics) + len(topics)
+            text = text[:cut] + (text[cut] if cut < len(text) and text[cut] in ".։።۔" else ".")
+        return Reply(text, ReplyKind.CLARIFY, lang)
 
     @staticmethod
     def _system(text: str, lang: str, end: bool = False) -> Reply:
@@ -559,8 +591,30 @@ def coherent(scored: list[ScoredFact], keep_ratio: float = 0.75) -> list[Context
     return out
 
 
+# The licence of the pack each fact came from, so every citation names the terms its text is shared under.
+_PACK_LICENCE: dict[str, str] = {}
+
+
+def _date_text(value: object) -> str | None:
+    """A fact's checked date as text, or None when it has none (never the word None)."""
+    if value is None or value == "":
+        return None
+    return value.isoformat() if hasattr(value, "isoformat") else str(value)
+
+
 def _cite(facts: list[ContextFact]) -> list[Citation]:
     seen: dict[str, Citation] = {}
     for f in facts:
-        seen.setdefault(f.id, Citation(f.id, f.source, f.review_status.value, f.source_url))
+        checked = _date_text(f.checked_on)
+        seen.setdefault(f.id, Citation(f.id, f.source, f.review_status.value, f.source_url,
+                                       licence=_PACK_LICENCE.get(f.id), date=checked or None))
     return list(seen.values())
+
+
+def _raise(sink: HandoffSink, queue: str, key: str, text: str, channel: str, country: str | None) -> None:
+    """Raise a handoff, passing the country to sinks that take it (sinks written before 2.4 do not)."""
+    params = inspect.signature(sink.raise_handoff).parameters
+    if "country" in params or any(p.kind is inspect.Parameter.VAR_KEYWORD for p in params.values()):
+        sink.raise_handoff(queue, key, text, channel, country=country)
+    else:
+        sink.raise_handoff(queue, key, text, channel)

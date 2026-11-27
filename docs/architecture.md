@@ -66,7 +66,7 @@ Services sit after Scam Shield and before retrieval. `detect()` recognises the d
 | `app.py` | `create_app()`: one factory that builds the engine, stores and senders from the environment and refuses unsafe production settings |
 | `stores.py` | Firestore profiles with a 24 hour expiry, and escalation counts with no text |
 | `snapshots/manifest.py` | Publishing checked snapshot sets, and swapping them in while the service runs |
-| `ops/` | The spend guard and the weekly model check for a Google Cloud deployment |
+| `ops/` | The monthly spending cap (a meter, the guard that acts on it, and the edge it can close) and the weekly model check, for a Google Cloud deployment |
 | `mcp_server.py` | MCP tools for AI assistants |
 | `cli.py` | The `ace` command |
 

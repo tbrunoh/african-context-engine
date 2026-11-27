@@ -25,6 +25,26 @@ en:
   - {text: "My son fell into the river and is drowning", queue: health_urgent}
   - {text: "My brother was stabbed and is bleeding", queue: health_urgent}
   - {text: "A car hit my mother on the road", queue: health_urgent}
+  - {text: "My father is having a heart attack", queue: health_urgent}
+  - {text: "He had a stroke and his face is drooping", queue: health_urgent}
+  - {text: "My baby is choking", queue: health_urgent}
+  - {text: "My child took rat poison", queue: poisoning}
+  - {text: "She has taken poison", queue: poisoning}
+  - {text: "my daughter took pills", queue: poisoning}
+  - {text: "She cut her wrists", queue: self_harm}
+  - {text: "I am going to hang myself", queue: self_harm}
+  - {text: "I feel like dying", queue: self_harm}
+  - {text: "He is having a fit and is not responding", queue: health_urgent}
+  - {text: "There is a lot of blood", queue: health_urgent}
+  - {text: "He was electrocuted", queue: health_urgent}
+  - {text: "my husband is dying please help", queue: health_urgent}
+  - {text: "My wife is in labour and bleeding", queue: maternal}
+  - {text: "My water broke", queue: maternal}
+  - {text: "My husband beats me, what should I do?", queue: gbv}
+  - {text: "my boyfriend beats me what should I do", queue: gbv}
+  - {text: "the rape leaves me scared", queue: gbv}
+  - {text: "I cut myself", queue: self_harm}
+  - {text: "she is not responding, please help", queue: health_urgent}
 sw:
   - {text: "Mke wangu ni mjamzito na anatoka damu nyingi", queue: maternal}
   - {text: "Nina mimba ya miezi saba na mtoto hachezi tumboni", queue: maternal}
@@ -45,6 +65,13 @@ sw:
   - {text: "Mtoto ameanguka mtoni na anazama", queue: health_urgent}
   - {text: "Kaka yangu amechomwa kisu na anatoka damu", queue: health_urgent}
   - {text: "Mama amegongwa na gari barabarani", queue: health_urgent}
+  - {text: "Nataka kujinyonga", queue: self_harm}
+  - {text: "Amejinyonga", queue: self_harm}
+  - {text: "Mtoto anakabwa", queue: health_urgent}
+  - {text: "Baba amepata kiharusi", queue: health_urgent}
+  - {text: "Mtoto amekunywa dawa ya panya", queue: poisoning}
+  - {text: "Amepigwa na shoti ya umeme", queue: health_urgent}
+  - {text: "Mume wangu amenipiga simu akasema ataniua", queue: gbv}
 fr:
   - {text: "Ma femme est enceinte et elle saigne beaucoup", queue: maternal}
   - {text: "Je suis enceinte de sept mois et le bébé ne bouge plus", queue: maternal}
@@ -62,6 +89,13 @@ fr:
   - {text: "Mon fils est tombé dans la rivière, il se noie", queue: health_urgent}
   - {text: "Mon frère a été poignardé, il saigne", queue: health_urgent}
   - {text: "Ma mère a été renversée par une voiture", queue: health_urgent}
+  - {text: "Je veux me pendre", queue: self_harm}
+  - {text: "Il s'est pendu", queue: self_harm}
+  - {text: "Mon pere fait une crise cardiaque", queue: health_urgent}
+  - {text: "Il a fait un AVC", queue: health_urgent}
+  - {text: "Mon bebe s'etouffe", queue: health_urgent}
+  - {text: "Elle a pris du poison", queue: poisoning}
+  - {text: "Il fait une crise d'epilepsie", queue: health_urgent}
 # Added in 2.1. Renderings by the maintainers, not yet reviewed by fluent speakers or clinicians.
   - {text: "Mon mari me frappe tous les jours", queue: gbv}
   - {text: "Mon enfant a du mal à respirer", queue: health_urgent}

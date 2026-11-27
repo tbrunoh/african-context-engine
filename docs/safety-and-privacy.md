@@ -17,6 +17,7 @@ ACE talks to people about their crops, their pregnancies and their money. A wron
 
 ## What every deployment must do
 
+- **Fire, drowning, stabbing and road accidents.** The safety rail has no phrases for them yet, so a message about a house fire or a crash gets an ordinary reply, with the country's numbers only where a fact carries them. They are the next categories to add.
 - **Clinical and language review of the safety rules.** The phrase lists in `safety.py` were written from WHO and Kenyan helpline guidance, but they are a starting point. Have clinicians and fluent speakers review them for each language, and add a classifier on top. Keyword rules are a floor, not a ceiling.
 - **Fluent speaker review of translations.** Every Swahili and French rendering in the packs, every rendering in the 29 languages added since 2.1, and every added language file is marked `reviewed: false`. The 2.3 drafts in Bemba, Dyula, Pular, Wolof and, above all, Mooré are the least certain, so their safety phrases come first. Review and mark them before a public launch, safety phrases first.
 - **Re-check numbers.** Emergency contact facts expire after a year and are withheld until re-checked.

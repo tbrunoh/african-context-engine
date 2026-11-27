@@ -40,6 +40,7 @@ import hmac
 import json
 import logging
 import os
+import secrets
 from collections.abc import Callable, Iterable
 from importlib import resources
 from typing import Any
@@ -210,7 +211,7 @@ class AceApp:
             data = _json_body(body)
             params = {k: data[k] for k in ("weeks", "crop", "food") if data.get(k) is not None}
             if self.engine.safety.check(str(data.get("text", ""))).escalate:
-                message = Message(channel=Channel.API, sender=str(data.get("phone") or "+254700000000"),
+                message = Message(channel=Channel.API, sender=_sender(data),
                                   text=str(data["text"]), language=data.get("language"))
                 return _json(200, {"outcome": "emergency", **self.engine.handle(message).to_dict()})
             return _json(200, hub.call(path.rsplit("/", 1)[-1], data.get("country"), data.get("place"),
@@ -227,9 +228,11 @@ class AceApp:
             location = None
             if data.get("lat") is not None and data.get("lon") is not None:
                 location = GeoPoint(float(data["lat"]), float(data["lon"]), data.get("altitude_m"))
-            message = Message(channel=channel, sender=str(data.get("phone") or "+254700000000"), text=text,
+            message = Message(channel=channel, sender=_sender(data), text=text,
                               language=data.get("language"), location=location)
             reply = self.engine.handle(message)
+            if not data.get("phone"):
+                self.engine.profiles.forget(message.sender)  # a phone-less request keeps no profile
             out = reply.to_dict()
             if channel is Channel.SMS:
                 out["segments"] = self.sms.render(reply)
@@ -293,6 +296,17 @@ def _json(code: int, data: dict[str, Any]) -> tuple[str, list[tuple[str, str]], 
                405: "Method Not Allowed", 500: "Internal Server Error", 503: "Service Unavailable"}
     return (f"{code} {reasons.get(code, 'OK')}", [("Content-Type", "application/json; charset=utf-8")],
             json.dumps(data, ensure_ascii=False).encode())
+
+
+def _sender(data: dict) -> str:
+    """The caller's number, or one from the country the request names. With neither, a number outside every ACE
+    country, so the reply carries no country's emergency lines and says to call the local emergency number."""
+    if data.get("phone"):
+        return str(data["phone"])
+    country = COUNTRIES.get(str(data.get("country") or "").upper())
+    # A fresh number each time, so requests with no phone never share a session, a language choice or a pending question
+    suffix = f"{secrets.randbelow(10**9):09d}"
+    return f"+{country.dial}7{suffix[:8]}" if country else f"+888{suffix}"
 
 
 def _json_body(body: bytes) -> dict[str, Any]:

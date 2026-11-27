@@ -9,8 +9,10 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from functools import cache
 
 from . import i18n
+from .encoding import AFRICAN_LETTERS
 
 # Letters and digits in any script, so Arabic, Ge'ez and Latin text all tokenise.
 _TOKEN = re.compile(r"[^\W_]+")
@@ -27,7 +29,7 @@ STOPWORDS: dict[str, frozenset[str]] = {
         "na ya wa kwa ni la za cha vya pa ku mu katika kwenye hii huu hiyo hizo ile hilo hapa pale "
         "mimi wewe yeye sisi nyinyi wao yangu yako yake yetu yenu yao je nini gani vipi lini wapi "
         "nani kama lakini au tu sana pia bado hata ndiyo hapana sasa habari jambo tafadhali naomba "
-        "nina una ana tuna mna wana kuna".split()
+        "nina una ana tuna mna wana kuna wangu wako wake yuko kidogo".split()
     ),
     "fr": frozenset(
         "le la les un une des du de d l et ou mais si que qui quoi quel quelle quels comment quand ou "
@@ -92,7 +94,7 @@ _AR_PREFIX = re.compile(r"^(?:و)?(?:بال|لل|فال|كال|وال|ال)(?=\w
 def fold(text: str) -> str:
     """Lowercase, strip accents and harmonise letter forms so typing differences do not matter."""
     text = unicodedata.normalize("NFKD", text)
-    text = "".join(c for c in text if not unicodedata.combining(c)).lower()
+    text = "".join(AFRICAN_LETTERS.get(c, c) for c in text if not unicodedata.combining(c)).lower()
     if any("\u0600" <= c <= "\u06ff" for c in text):
         text = text.translate(_ARABIC)
     if any("\u1200" <= c <= "\u137f" for c in text):
@@ -130,46 +132,105 @@ def terms(text: str, drop_stopwords: bool = True) -> list[str]:
     return [stem(t) for t in tokens(text) if t not in stop and len(t) > 1]
 
 
-_ADDED_MARKERS = {code: frozenset(tokens(" ".join(ws))) for code, ws in i18n.words("markers").items()}
-_SCRIPT_LANGUAGE = (("\u0600", "\u06ff", "ar"), ("\u1200", "\u137f", "am"))
+# A marker counts only as one whole word: a marker such as "b'a" would split into "b" and "a", and "a" is in
+# every French sentence.
+_ADDED_MARKERS = {code: frozenset(t[0] for t in (tokens(w) for w in ws) if len(t) == 1)
+                  for code, ws in i18n.words("markers").items()}
+_MARKERS: dict[str, frozenset[str]] = {"sw": _SW_MARKERS, "en": _EN_MARKERS,
+                                       "fr": frozenset(fold(m) for m in _FR_MARKERS), **_ADDED_MARKERS}
+# Scripts that point to a language on their own. Ge'ez is written for Amharic and Tigrinya, so marker words
+# choose between them; Amharic wins a tie, as the language most people who type Ge'ez read.
+_SCRIPTS = (("\u0600", "\u06ff", ("ar",)), ("\u1200", "\u137f", ("am", "ti")))
 
 
-def script_language(text: str) -> str | None:
-    """The language a non Latin script points to: Arabic script to Arabic, Ge'ez to Amharic."""
+# A language that shares most of its words with another, as Nigerian Pidgin does with English, counts each of its
+# own marker words more, so a message with one Pidgin word among common English ones still reads as Pidgin.
+_MARKER_WEIGHT = {code: int(loc.meta.get("marker_weight", 1)) for code, loc in i18n.locales().items()}
+
+
+def _marker_counts(toks: list[str], candidates) -> dict[str, int]:
+    return {code: _MARKER_WEIGHT.get(code, 1) * sum(t in _MARKERS.get(code, ()) for t in toks) for code in candidates}
+
+
+def script_language(text: str, allowed: tuple[str, ...] | None = None) -> str | None:
+    """The language a non Latin script points to: Arabic script to Arabic, Ge'ez to Amharic or Tigrinya.
+
+    Script is evidence on its own, so it is not limited to the caller's country: an Amharic message from a
+    Kenyan number is still Amharic. Among the languages a script serves, the caller's languages come first."""
     letters = [c for c in text if c.isalpha()]
     if not letters:
         return None
-    for lo, hi, code in _SCRIPT_LANGUAGE:
-        if code in SUPPORTED_LANGUAGES and sum(lo <= c <= hi for c in letters) * 2 >= len(letters):
-            return code
+    for lo, hi, codes in _SCRIPTS:
+        codes = tuple(c for c in codes if c in SUPPORTED_LANGUAGES)
+        if not codes or sum(lo <= c <= hi for c in letters) * 2 < len(letters):
+            continue
+        if len(codes) == 1:
+            return codes[0]
+        preferred = tuple(c for c in codes if allowed is None or c in allowed) or codes
+        counts = _marker_counts(tokens(text), preferred)
+        best = max(counts.values())
+        winners = [c for c in preferred if counts[c] == best]
+        return winners[0]
     return None
 
 
-def guess_language(text: str, default: str = "en") -> str:
-    """The language of a message: its script first, then marker word counts. Ties go to the default."""
-    by_script = script_language(text)
+def has_marker(text: str, allowed: tuple[str, ...] | None = None) -> bool:
+    """True when any marker word of a Latin script language (among allowed, when given) is in the text."""
+    latin = [c for c in SUPPORTED_LANGUAGES if c not in ("ar", "am", "ti") and (allowed is None or c in allowed)]
+    return any(_marker_counts(tokens(text), latin).values())
+
+
+def guess_language(text: str, default: str = "en", allowed: tuple[str, ...] | None = None) -> str:
+    """The language of a message: its script first, then marker word counts. Ties go to the default.
+
+    A tie between two languages that are not the default goes to the one the caller's country lists first.
+
+    With ``allowed`` (the languages ACE serves in the caller's country), marker words only choose among those
+    languages, so a short English question from Kenya is never read as Portuguese because it shares a word
+    with Portuguese. A caller can still switch to any language with LANG and a code."""
+    by_script = script_language(text, allowed)
     if by_script:
         return by_script
     toks = tokens(text)
-    counts = {
-        "sw": sum(t in _SW_MARKERS for t in toks),
-        "en": sum(t in _EN_MARKERS for t in toks),
-        "fr": sum(fold(t) in {fold(m) for m in _FR_MARKERS} for t in toks),
-    }
-    for code, markers in _ADDED_MARKERS.items():
-        if code not in ("ar", "am"):
-            counts[code] = sum(t in markers for t in toks)
-    best = max(counts.values())
+    latin = [c for c in SUPPORTED_LANGUAGES if c not in ("ar", "am", "ti")]
+    candidates = [c for c in latin if allowed is None or c in allowed]
+    counts = _marker_counts(toks, candidates)
+    best = max(counts.values(), default=0)
     if best == 0:
+        # English is not offered everywhere, but a message plainly in English (two English marker words and none
+        # from the country's languages) still gets an English reply rather than one its writer may not read.
+        if allowed and "en" not in candidates and _marker_counts(toks, ("en",))["en"] >= 2:
+            return "en"
         return default
     winners = [lang for lang, n in counts.items() if n == best]
-    return default if default in winners else winners[0] if len(winners) == 1 else default
+    if default in winners:
+        return default
+    if len(winners) == 1 or not allowed:
+        return winners[0] if len(winners) == 1 else default
+    # Close languages of one country, such as Sesotho and Setswana, share words; a tie between them goes to the
+    # one the country lists first, which its speakers read, rather than to a default neither of them wrote in.
+    return next(lang for lang in allowed if lang in winners)
 
 
 def contains_phrase(haystack: str, phrase: str) -> bool:
     """Whole word phrase match on folded text, tolerant of punctuation and spacing."""
-    hay = " " + " ".join(tokens(haystack)) + " "
-    needle = " " + " ".join(tokens(phrase)) + " "
+    return phrase_in(token_hay(haystack), phrase)
+
+
+def token_hay(text: str) -> str:
+    """A message folded and tokenised once, ready for many phrase checks with phrase_in."""
+    return " " + " ".join(tokens(text)) + " "
+
+
+@cache
+def _needle(phrase: str) -> str:
+    return " " + " ".join(tokens(phrase)) + " "
+
+
+def phrase_in(hay: str, phrase: str) -> bool:
+    """contains_phrase on a hay from token_hay. Phrases are tokenised once and cached, so the safety rail checks
+    thousands of phrases in every language without re-reading the message for each one."""
+    needle = _needle(phrase)
     return needle.strip() != "" and needle in hay
 
 

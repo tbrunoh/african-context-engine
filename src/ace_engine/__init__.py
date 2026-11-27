@@ -2,8 +2,8 @@
 
 Checked, local, citable knowledge behind every entry point people in Africa
 actually use: USSD, SMS, RCS, voice, WhatsApp, apps and AI assistants. From 2.0, decision
-services turn dated public data into short, cited answers for 34 countries, in English, Swahili,
-French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali.
+services turn dated public data into short, cited answers for 34 countries. From 2.3, ACE answers
+in 32 languages, each offered in the countries that speak it.
 """
 from .context import ContextFact, ContextQuery, ContextStore, ReviewStatus, load_pack, load_packs
 from .engine import CHANNEL_BUDGETS, Engine, EngineConfig
@@ -11,7 +11,7 @@ from .identity import ProfileStore, normalize_msisdn
 from .models import Channel, Citation, GeoPoint, Message, Reply, ReplyKind
 from .scam import Verdict, analyse
 
-__version__ = "2.2.0b3"
+__version__ = "2.3.0b1"
 
 __all__ = [
     "CHANNEL_BUDGETS", "Channel", "Citation", "ContextFact", "ContextQuery", "ContextStore", "Engine",

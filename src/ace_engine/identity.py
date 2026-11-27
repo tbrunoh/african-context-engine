@@ -78,6 +78,7 @@ class Profile:
     last_place: tuple[str, str] | None = None     # (country, area code) the person last named, for V2 services
     pending_service: str | None = None            # a V2 service waiting for the person's place or details
     pending_text: str = ""                        # the question that service is answering
+    pending_language: str | None = None           # the language that question was asked in
     channels: list[Channel] = field(default_factory=list)
     history: list[Turn] = field(default_factory=list)
     opted_out: bool = False

@@ -30,11 +30,12 @@ for _name in list(COMMANDS):
     COMMANDS[_name] = i18n.phrases(f"commands.COMMANDS.{_name}", COMMANDS[_name])
 for _code, _loc in i18n.locales().items():
     _cmd = _loc.name.lower()
-    COMMANDS[_cmd] = tuple(fold(n) for n in _loc.names if len(n) > 2)  # the bare name works, as ENGLISH does
+    # The bare name works, as ENGLISH does, but not a name of three letters or fewer: BEM is Portuguese for well.
+    COMMANDS[_cmd] = tuple(fold(n) for n in _loc.names if len(n) > 3)
     LANGUAGE_COMMANDS[_cmd] = _code
 # Every name a language goes by, to read LANG PT, LUGHA KIARABU or LANGUE ARABE.
 LANGUAGE_NAMES: dict[str, str] = {"en": "en", "english": "en", "kiingereza": "en", "anglais": "en", "an": "en",
-                                  "sw": "sw", "swahili": "sw", "kiswahili": "sw", "ki": "sw",
+                                  "sw": "sw", "swahili": "sw", "kiswahili": "sw",
                                   "fr": "fr", "francais": "fr", "french": "fr", "kifaransa": "fr"}
 for _code, _loc in i18n.locales().items():
     for _n in _loc.names:
@@ -65,12 +66,19 @@ def parse_command(text: str) -> Command | None:
     if name in _BARE_ONLY and rest:
         return None
     if name == "language":
+        if not rest:
+            return Command("language")
         code = language_code(rest)
         if code:
             return Command(next(n for n, c in LANGUAGE_COMMANDS.items() if c == code))
-        return Command("language")
+        # A single word that names no language ACE speaks, such as LANG KIKUYU, gets the menu of the languages it
+        # does speak there. In many languages the word for language also means tongue, as in my tongue hurts, so
+        # anything longer that names no language is a question, not a command.
+        return Command("language") if len(rest.strip(" .!?").split()) == 1 else None
     if name in ("scam", "tip") and not rest:
         return Command(name)
+    if name == "tip" and rest.endswith("?"):
+        return None  # the word for tip often means advice too, so advice on armyworm? is a question
     return Command(name, rest)
 
 
@@ -84,7 +92,10 @@ def language_code(text: str) -> str | None:
     first = target.split()[0]
     if first in LANGUAGE_NAMES:
         return LANGUAGE_NAMES[first]
-    for prefix, code in (("sw", "sw"), ("ki", "sw"), ("en", "en"), ("an", "en"), ("fr", "fr")):
+    # Short and misspelt forms of the first three languages, such as swa, kiswahil, eng or franc. Only these, because
+    # many language names begin with ki: LANG KIKUYU must not switch to Swahili.
+    for prefix, code in (("swa", "sw"), ("kiswa", "sw"), ("eng", "en"), ("angl", "en"), ("kiinge", "en"),
+                         ("kinge", "en"), ("fran", "fr"), ("fren", "fr"), ("kifara", "fr")):
         if first.startswith(prefix):
             return code
     return None
@@ -156,6 +167,12 @@ TEXTS: dict[str, dict[str, str]] = {
         "sw": "ACE haina ushauri uliokaguliwa kuhusu hilo bado. ACE inaweza kusaidia: {topics}. Tuma DOKEZO kupendekeza.",
         "fr": "ACE n'a pas encore de conseil vérifié sur ce sujet. ACE peut aider pour : {topics}. Envoyez ASTUCE pour proposer.",
     },
+    # A message in a language ACE does not speak (see langid): said in the caller's country language.
+    "unread": {
+        "en": "ACE does not read this language yet. Please write in one of these: {languages}.",
+        "sw": "ACE bado haisomi lugha hii. Tafadhali andika kwa mojawapo ya hizi: {languages}.",
+        "fr": "ACE ne lit pas encore cette langue. Merci d'écrire dans l'une de celles-ci : {languages}.",
+    },
 }
 
 
@@ -167,12 +184,16 @@ for _key in ("english", "swahili", "french"):
 i18n.localize("commands", globals(), ("TEXTS",))
 
 
-def language_menu() -> str:
-    """Every language ACE serves, as LANG codes with each language's own name."""
-    return ", ".join(f"{code.upper()} {i18n.native_name(code)}" for code in i18n.all_languages())
+def language_menu(codes: tuple[str, ...] | None = None) -> str:
+    """LANG codes with each language's own name: the caller's country languages, or every language ACE serves.
+
+    32 names would not fit one SMS or a USSD screen, so a caller sees their own country's languages. Any other
+    language still works by name or code, as LANG HAUSA or LANG HA."""
+    langs = tuple(c for c in (codes or ()) if c in i18n.all_languages()) or i18n.all_languages()
+    return ", ".join(f"{code.upper()} {i18n.native_name(code)}" for code in langs)
 
 
-def say(key: str, language: str, **kwargs: str) -> str:
+def say(key: str, language: str, menu: tuple[str, ...] | None = None, **kwargs: str) -> str:
     lang = language if language in i18n.all_languages() else "en"
     text = (TEXTS[key].get(lang) or TEXTS[key]["en"]).format(**kwargs)
-    return f"{text} {language_menu()}." if key == "language" else text
+    return f"{text} {language_menu(menu)}." if key == "language" else text

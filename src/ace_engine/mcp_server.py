@@ -22,6 +22,7 @@ V2 decision services (preview), each answering with dated, cited data:
 from __future__ import annotations
 
 import argparse
+import secrets
 from typing import Any
 
 from .context import ContextQuery
@@ -65,9 +66,11 @@ def build_tools(engine: Engine) -> dict[str, Any]:
         """Answer a person's question from checked context packs for one country (ISO code such as KE, NG
         or SN). Returns text, kind and citations. Emergencies get that country's numbers."""
         location = GeoPoint(lat, lon) if lat is not None and lon is not None else None
-        sender = f"+{COUNTRIES[_country(country)].dial}700000009"
+        # A fresh number for each question, so agents never share a session, a language choice or a pending question
+        sender = f"+{COUNTRIES[_country(country)].dial}7{secrets.randbelow(10**8):08d}"
         reply = engine.handle(Message(channel=Channel.AGENT, sender=sender, text=question,
                                       language=language, location=location))
+        engine.profiles.forget(sender)  # one question, one profile: nothing builds up in a long running server
         return reply.to_dict()
 
     def search_context(question: str = "", country: str | None = None, vertical: str | None = None,

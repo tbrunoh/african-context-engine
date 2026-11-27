@@ -22,6 +22,13 @@ GSM7 = set(
 GSM7_EXT = set("^{}\\[~]|€")  # each costs two septets
 TYPOGRAPHY = {"’": "'", "‘": "'", "“": '"', "”": '"', "–": "-", "—": "-", "…": "...", " ": " ",
               "«": '"', "»": '"', "ç": "c", "œ": "oe", "Œ": "OE"}
+# Letters of African Latin alphabets that have no accent to strip, so Unicode cannot fold them: the hooked letters
+# of Hausa and Fula, the open vowels of Twi, Ewe, Lingala, Wolof and Mooré, and the velar nasal. Each becomes the
+# plain spelling people already type on phones without these keys (ɓ to b, ɛ to e, ŋ to ng).
+AFRICAN_LETTERS = {"ɓ": "b", "Ɓ": "B", "ɗ": "d", "Ɗ": "D", "ƙ": "k", "Ƙ": "K", "ƴ": "y", "Ƴ": "Y", "ɛ": "e", "Ɛ": "E",
+                   "ɔ": "o", "Ɔ": "O", "ŋ": "ng", "Ŋ": "Ng", "ɖ": "d", "Ɖ": "D", "ƒ": "f", "Ƒ": "F", "ɣ": "g",
+                   "Ɣ": "G", "ʋ": "v", "Ʋ": "V", "ɩ": "i", "Ɩ": "I", "ʊ": "u", "Ʊ": "U", "ɲ": "ny", "Ɲ": "Ny",
+                   "Ð": "D", "ð": "d"}  # Ð is often typed for the Ewe capital Ɖ, which it looks like
 
 SMS_GSM, SMS_GSM_MULTI = 160, 153
 SMS_UCS2, SMS_UCS2_MULTI = 70, 67
@@ -39,8 +46,11 @@ def gsm_fold(text: str) -> str:
     because folding cannot help it: it travels as UCS-2 and its budget is already smaller.
     """
     out = []
-    for c in text:
+    for c in unicodedata.normalize("NFC", text):
+        if unicodedata.combining(c) and out and out[-1].isascii():
+            continue  # a tone or dot left over on a Latin letter after composing, as in Yoruba ọ́: GSM-7 has none
         c = TYPOGRAPHY.get(c, c)
+        c = AFRICAN_LETTERS.get(c, c)
         if len(c) == 1 and c not in GSM7 and c not in GSM7_EXT and c.isalpha():
             base = unicodedata.normalize("NFKD", c)[0]
             c = base if base in GSM7 else c

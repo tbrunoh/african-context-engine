@@ -22,6 +22,9 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24565738
     description: Version 2.2.0b3, the first to include the tokenizer audit
+  - type: doi
+    value: 10.5281/zenodo.24579654
+    description: Version 2.3.0b1, 32 languages
 # The code licence. Packs, language profiles and snapshots carry their own licences: see NOTICE and DATA_LICENSE.md.
 license: Apache-2.0
 version: 2.3.0b1

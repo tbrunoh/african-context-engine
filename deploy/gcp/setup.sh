@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Stand up ACE on Google Cloud: the site and API, MCP, the snapshot refresh job, a global load balancer with a
-# managed certificate and Cloud Armor, durable sessions in Firestore, the spend guard and the weekly model check.
+# managed certificate and Cloud Armor, durable sessions in Firestore, the spend cap and the weekly model check.
 #
 #   PROJECT=your-project DOMAIN=ace.example.org bash deploy/gcp/setup.sh
 #   BILLING_ACCOUNT defaults to the account linked to the project.
@@ -110,7 +110,7 @@ gcloud builds submit --project "$PROJECT" --region="$REGION" --config deploy/gcp
 LLM_ENV=""
 LLM_SECRET=""
 if [ -n "$GEMINI" ]; then
-  LLM_ENV=",ACE_LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai,ACE_LLM_MODEL=gemini-flash-latest,ACE_LLM_REASONING_EFFORT=${LLM_EFFORT:-low},ACE_LLM_TIMEOUT=2"
+  LLM_ENV=",ACE_LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai,ACE_LLM_MODEL=gemini-flash-latest,ACE_LLM_REASONING_EFFORT=${LLM_EFFORT:-low},ACE_LLM_TIMEOUT=2,ACE_LLM_MAX_TOKENS=1024"
   LLM_SECRET=",ACE_LLM_API_KEY=ace-gemini-key:latest"
 fi
 
@@ -118,7 +118,7 @@ step "ace-web: the site, the /try phone and the API"
 gc run deploy ace-web --image "$IMAGE" --region "$REGION" --service-account "$(sa ace-web)" \
   --execution-environment gen2 --cpu 1 --memory 1Gi --concurrency 8 --min-instances 1 --max-instances 10 \
   --timeout 30 --no-invoker-iam-check --ingress "$INGRESS" \
-  --set-env-vars "ACE_PUBLIC=1,ACE_PROFILE_STORE=firestore,ACE_HANDOFFS=count,ACE_FIRESTORE_COUNTS=1,ACE_SNAPSHOT_BASE=/mnt/snapshots,ACE_COMMIT=${COMMIT}${LLM_ENV}" \
+  --set-env-vars "ACE_PUBLIC=1,ACE_PROFILE_STORE=firestore,ACE_HANDOFFS=count,ACE_FIRESTORE_COUNTS=1,ACE_SNAPSHOT_BASE=/mnt/snapshots${LLM_ENV}" \
   --set-secrets "ACE_PSEUDONYM_SALT=ace-pseudonym-salt:latest${LLM_SECRET}" \
   --add-volume "name=snapshots,type=cloud-storage,bucket=${BUCKET},readonly=true" \
   --add-volume-mount "volume=snapshots,mount-path=/mnt/snapshots" --quiet
@@ -128,7 +128,7 @@ gc run deploy ace-mcp --image "$IMAGE" --region "$REGION" --service-account "$(s
   --execution-environment gen2 --cpu 1 --memory 1Gi --concurrency 40 --min-instances 0 --max-instances 5 \
   --timeout 30 --no-invoker-iam-check --ingress "$INGRESS" \
   --command ace-mcp --args=--transport=http \
-  --set-env-vars "ACE_MCP_ALLOWED_HOSTS=${DOMAIN},ACE_SNAPSHOT_BASE=/mnt/snapshots,ACE_COMMIT=${COMMIT}" \
+  --set-env-vars "ACE_PUBLIC=1,ACE_MCP_ALLOWED_HOSTS=${DOMAIN},ACE_SNAPSHOT_BASE=/mnt/snapshots" \
   --add-volume "name=snapshots,type=cloud-storage,bucket=${BUCKET},readonly=true" \
   --add-volume-mount "volume=snapshots,mount-path=/mnt/snapshots" --quiet
 
@@ -168,23 +168,25 @@ for svc in ace-web ace-mcp; do
   exists gc compute network-endpoint-groups describe "${svc}-neg" --region "$REGION" || \
     gc compute network-endpoint-groups create "${svc}-neg" --region "$REGION" --network-endpoint-type serverless --cloud-run-service "$svc"
 done
-exists gc compute network-endpoint-groups describe ace-web-candidate-neg --region "$REGION" || \
-  gc compute network-endpoint-groups create ace-web-candidate-neg --region "$REGION" --network-endpoint-type serverless \
-    --cloud-run-service ace-web --cloud-run-tag candidate
+for svc in ace-web ace-mcp; do
+  exists gc compute network-endpoint-groups describe "${svc}-candidate-neg" --region "$REGION" || \
+    gc compute network-endpoint-groups create "${svc}-candidate-neg" --region "$REGION" --network-endpoint-type serverless \
+      --cloud-run-service "$svc" --cloud-run-tag candidate
+done
 exists gc compute security-policies describe ace-armor || gc compute security-policies create ace-armor \
   --description "ACE: per address limits, generous because many mobile users share one carrier address"
 exists gc compute security-policies rules describe 1000 --security-policy ace-armor || \
   gc compute security-policies rules create 1000 --security-policy ace-armor --expression "true" \
     --action throttle --rate-limit-threshold-count 300 --rate-limit-threshold-interval-sec 60 \
     --conform-action allow --exceed-action deny-429 --enforce-on-key IP
-for b in ace-web ace-mcp ace-web-candidate; do
+for b in ace-web ace-mcp ace-web-candidate ace-mcp-candidate; do
   if ! exists gc compute backend-services describe "${b}-backend" --global; then
-    gc compute backend-services create "${b}-backend" --global --load-balancing-scheme EXTERNAL_MANAGED \
-      --custom-response-header "Strict-Transport-Security: max-age=31536000; includeSubDomains"
+    gc compute backend-services create "${b}-backend" --global --load-balancing-scheme EXTERNAL_MANAGED
     gc compute backend-services add-backend "${b}-backend" --global --network-endpoint-group "${b}-neg" \
       --network-endpoint-group-region "$REGION"
   fi
-  gc compute backend-services update "${b}-backend" --global --security-policy ace-armor --quiet >/dev/null
+  gc compute backend-services update "${b}-backend" --global --security-policy ace-armor \
+    --custom-response-header "Strict-Transport-Security: max-age=31536000; includeSubDomains" --quiet >/dev/null
 done
 exists gc compute ssl-policies describe ace-tls --global || \
   gc compute ssl-policies create ace-tls --global --profile MODERN --min-tls-version 1.2
@@ -202,8 +204,15 @@ pathMatchers:
   - priority: 1
     matchRules:
     - prefixMatch: /mcp
-    service: https://www.googleapis.com/compute/v1/projects/${PROJECT}/global/backendServices/ace-mcp-backend
+      headerMatches:
+      - headerName: x-ace-candidate
+        exactMatch: '${CANDIDATE}'
+    service: https://www.googleapis.com/compute/v1/projects/${PROJECT}/global/backendServices/ace-mcp-candidate-backend
   - priority: 2
+    matchRules:
+    - prefixMatch: /mcp
+    service: https://www.googleapis.com/compute/v1/projects/${PROJECT}/global/backendServices/ace-mcp-backend
+  - priority: 3
     matchRules:
     - prefixMatch: /
       headerMatches:
@@ -221,28 +230,41 @@ gc compute target-https-proxies update ace-https --global --ssl-policy ace-tls -
 exists gc compute forwarding-rules describe ace-https-rule --global || \
   gc compute forwarding-rules create ace-https-rule --global --load-balancing-scheme EXTERNAL_MANAGED \
     --address ace-ip --target-https-proxy ace-https --ports 443
-if ! exists gc compute url-maps describe ace-redirect --global; then
-  cat > /tmp/ace-redirect.yaml <<YAML
+# Naming the host in the redirect keeps the port out of it: https://${DOMAIN}/ rather than https://${DOMAIN}:443/
+cat > /tmp/ace-redirect.yaml <<YAML
 name: ace-redirect
 defaultUrlRedirect:
   httpsRedirect: true
+  hostRedirect: ${DOMAIN}
   redirectResponseCode: MOVED_PERMANENTLY_DEFAULT
 YAML
-  gc compute url-maps import ace-redirect --global --source /tmp/ace-redirect.yaml --quiet
-  rm -f /tmp/ace-redirect.yaml
-fi
+gc compute url-maps import ace-redirect --global --source /tmp/ace-redirect.yaml --quiet
+rm -f /tmp/ace-redirect.yaml
 exists gc compute target-http-proxies describe ace-http --global || \
   gc compute target-http-proxies create ace-http --global --url-map ace-redirect
 exists gc compute forwarding-rules describe ace-http-rule --global || \
   gc compute forwarding-rules create ace-http-rule --global --load-balancing-scheme EXTERNAL_MANAGED \
     --address ace-ip --target-http-proxy ace-http --ports 80
 
-step "Spend guard: Gemini off at 90% of \$${BUDGET_USD}, the demo paused at 100%"
+step "Spend cap: the guard meters spending every ten minutes and stops the project before \$${BUDGET_USD}"
 exists gc pubsub topics describe ace-budget || gc pubsub topics create ace-budget
 gc run deploy ace-guard --image "$IMAGE" --region "$REGION" --service-account "$(sa ace-guard)" \
   --cpu 1 --memory 512Mi --min-instances 0 --max-instances 1 --no-allow-unauthenticated --ingress internal \
-  --command gunicorn --args=--bind=:8080,--workers=1,ace_engine.ops.guard:app \
-  --set-env-vars "^@^ACE_GUARD_PROJECT=${PROJECT}@ACE_GUARD_REGION=${REGION}@ACE_GUARD_SERVICES=ace-web,ace-mcp@ACE_GUARD_MIN_INSTANCES=ace-web=1" --quiet
+  --command gunicorn --args=--bind=:8080,--workers=1,--timeout=120,ace_engine.ops.guard:app \
+  --set-env-vars "^@^ACE_GUARD_PROJECT=${PROJECT}@ACE_GUARD_REGION=${REGION}@ACE_GUARD_SERVICES=ace-web,ace-mcp@ACE_GUARD_MIN_INSTANCES=ace-web=1@ACE_CAP_USD=${BUDGET_USD}@ACE_GUARD_ARMOR=ace-armor@ACE_GUARD_ADDRESS=ace-ip@ACE_GUARD_RULES=ace-https-rule=https:ace-https:443,ace-http-rule=http:ace-http:80" --quiet
+# The guard reads usage from Cloud Monitoring and the token count from Firestore, where it also keeps the month's level,
+# and at the top levels changes one Armor policy and the two forwarding rules: a custom role grants exactly that,
+# rather than a broad network or security role.
+gc projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$(sa ace-guard)" --role=roles/monitoring.viewer --condition=None -q >/dev/null
+gc projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$(sa ace-guard)" --role=roles/datastore.user --condition=None -q >/dev/null
+GUARD_PERMISSIONS="compute.securityPolicies.get,compute.securityPolicies.update,compute.globalForwardingRules.get,compute.globalForwardingRules.create,compute.globalForwardingRules.delete,compute.targetHttpsProxies.use,compute.targetHttpProxies.use,compute.globalAddresses.use"
+if exists gc iam roles describe aceGuard; then
+  gc iam roles update aceGuard --permissions "$GUARD_PERMISSIONS" --quiet >/dev/null
+else
+  gc iam roles create aceGuard --title "ACE spend guard" --description "Close the edge when the spend cap is reached" \
+    --permissions "$GUARD_PERMISSIONS" --stage GA --quiet >/dev/null
+fi
+gc projects add-iam-policy-binding "$PROJECT" --member="serviceAccount:$(sa ace-guard)" --role="projects/${PROJECT}/roles/aceGuard" --condition=None -q >/dev/null
 for svc in ace-web ace-mcp; do
   gc run services add-iam-policy-binding "$svc" --region "$REGION" --member="serviceAccount:$(sa ace-guard)" --role=roles/run.developer >/dev/null
   gc iam service-accounts add-iam-policy-binding "$(sa $svc)" --member="serviceAccount:$(sa ace-guard)" --role=roles/iam.serviceAccountUser >/dev/null
@@ -251,6 +273,15 @@ gc run services add-iam-policy-binding ace-guard --region "$REGION" --member="se
 gc iam service-accounts add-iam-policy-binding "$(sa ace-pubsub)" \
   --member="serviceAccount:service-${NUMBER}@gcp-sa-pubsub.iam.gserviceaccount.com" --role=roles/iam.serviceAccountTokenCreator >/dev/null
 GUARD_URL="$(gc run services describe ace-guard --region "$REGION" --format='value(status.url)')"
+gc run services add-iam-policy-binding ace-guard --region "$REGION" --member="serviceAccount:$(sa ace-scheduler)" --role=roles/run.invoker >/dev/null
+if exists gc scheduler jobs describe ace-meter --location "$SCHEDULER_REGION"; then
+  gc scheduler jobs update http ace-meter --location "$SCHEDULER_REGION" --schedule "*/10 * * * *" --uri "${GUARD_URL}/meter" \
+    --oidc-service-account-email "$(sa ace-scheduler)" --oidc-token-audience "$GUARD_URL" --time-zone UTC --quiet >/dev/null
+else
+  gc scheduler jobs create http ace-meter --location "$SCHEDULER_REGION" --schedule "*/10 * * * *" --uri "${GUARD_URL}/meter" \
+    --http-method POST --oidc-service-account-email "$(sa ace-scheduler)" --oidc-token-audience "$GUARD_URL" \
+    --attempt-deadline 120s --time-zone UTC --quiet >/dev/null
+fi
 exists gc pubsub subscriptions describe ace-budget-guard || gc pubsub subscriptions create ace-budget-guard \
   --topic ace-budget --push-endpoint "$GUARD_URL" --push-auth-service-account "$(sa ace-pubsub)" --ack-deadline 60
 BILLING_ACCOUNT="${BILLING_ACCOUNT:-$(gcloud billing projects describe "$PROJECT" --format='value(billingAccountName)' 2>/dev/null | sed 's#^billingAccounts/##')}"

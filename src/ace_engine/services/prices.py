@@ -9,7 +9,7 @@ from datetime import date
 
 from .. import i18n
 from ..connectors.hdx_prices import SLUGS
-from ..geo import haversine_km
+from ..geo import distance_to_rings_km, haversine_km, in_polygons
 from ..text import contains_phrase, fold, tokens, word_forms
 from .base import (
     LANGS,
@@ -28,6 +28,7 @@ from .base import (
 )
 
 MAX_AGE_DAYS = 125  # about four months
+MAX_KM = 150        # a market further than this says little about prices where the person is
 
 # words people type -> a word found in WFP commodity names
 FOODS = {
@@ -230,6 +231,21 @@ class PricesService:
             name = fold(item["commodity"])
             return next((n for n, word in enumerate(STAPLES) if word in name), len(STAPLES))
         items.sort(key=lambda i: (staple_rank(i), -len(i["series"]), i["commodity"]))
+        national = "national average" in fold(market["market"])  # a national average holds anywhere in the country
+        # How far the market is from the area the person named, not from its centre: a market inside a large
+        # region such as North Darfur is near anyone in it
+        reach = km
+        if q.place is not None and q.location is None:
+            rings = ctx.places.rings(q.place.country, q.place.code)
+            point = (market["lat"], market["lon"])
+            if rings:
+                reach = 0.0 if in_polygons(point, rings) else min(km, distance_to_rings_km(point, rings))
+        if reach > MAX_KM and not national:  # rice in Lagos is not answered from a market 1,000 km away
+            where = place_name or country
+            # With no food named, the refusal names the region's main staple, which the sentence covers in every language
+            staple = food or items[0]["commodity"].split(" (")[0]
+            text = {lang: say(NO_FOOD, lang, food=food_name(staple, lang).lower(), place=where) for lang in LANGS}
+            return Refusal(self.id, "no_match", text, [cite_snapshot(snap)], data={"nearest_market_km": round(km)})
         shown = items[:1] if food else items[:3]
         text = {}
         for lang in LANGS:
@@ -246,7 +262,8 @@ class PricesService:
                         kind = "up" if pct > 0 else "down" if pct < 0 else "same"
                         line += ", " + say(CHANGE[kind], lang, pct=abs(pct), prev=month_year(prev_m, lang))
                 lines.append(line)
-            far = f" {say(FAR, lang, km=round(km), place=place_name)}" if place_name and km > 25 else ""
+            # The distance from the area named, not its centre: Al Fashir is in North Darfur, so no distance is given
+            far = f" {say(FAR, lang, km=round(reach), place=place_name)}" if place_name and reach > 25 and not national else ""
             if food:
                 pieces = [f"{lines[0]}{far}.", say(FOOT, lang)]
             else:

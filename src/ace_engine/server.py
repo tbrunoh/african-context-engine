@@ -215,6 +215,8 @@ class AceApp:
                     return _json(403, {"error": "verification failed"})
                 return "200 OK", [("Content-Type", "text/plain")], secret.encode()
             if not self.rcs_token:  # never act on unsigned messages: they could trigger texts to any number
+                if self.public:  # a public deployment does not say which setting is missing
+                    return _json(404, {"error": "not found"})
                 return _json(503, {"error": "RCS webhook not configured: set RBM_CLIENT_TOKEN"})
             if not rcs_channel.verify_signature(body, environ.get("HTTP_X_GOOG_SIGNATURE"), self.rcs_token):
                 return _json(403, {"error": "invalid signature"})
@@ -273,6 +275,7 @@ class AceApp:
             return _json(405, {"error": "method not allowed"})
         data = _json_body(body)
         if path == "/v1/ask":
+            _check_fields(data, ("text", "language", "channel"), ("lat", "lon", "altitude_m"))
             text = str(data.get("text", "")).strip()
             if not text:
                 raise ValueError("text is required")
@@ -401,14 +404,23 @@ def _sender(data: dict, trust_phone: bool = True) -> str:
     return f"+{country.dial}7{suffix[:8]}" if country else f"+888{suffix}"
 
 
-def _check_service_fields(data: dict[str, Any]) -> None:
-    """Refuse a service request whose fields have the wrong type, with 400 and the field's name, not a 500."""
-    for key in ("country", "place", "language", "text", "crop", "food"):
+def _check_fields(data: dict[str, Any], strings: tuple[str, ...], numbers: tuple[str, ...]) -> None:
+    """Refuse a request whose fields have the wrong type, with 400 and the field's name, not a 500."""
+    for key in strings:
         if data.get(key) is not None and not isinstance(data[key], str):
             raise ValueError(f"{key} must be a string")
-    for key in ("lat", "lon"):
+    for key in numbers:
         if data.get(key) is not None and (isinstance(data[key], bool) or not isinstance(data[key], (int, float))):
             raise ValueError(f"{key} must be a number")
+
+
+def _check_service_fields(data: dict[str, Any]) -> None:
+    """Refuse a service request whose fields have the wrong type or an unknown language, with 400, not a 500."""
+    from .services.base import LANGS
+
+    _check_fields(data, ("country", "place", "language", "text", "crop", "food"), ("lat", "lon"))
+    if data.get("language") and data["language"] not in LANGS:
+        raise ValueError("language must be one of " + ", ".join(sorted(LANGS)))
     weeks = data.get("weeks")
     if weeks is not None and (isinstance(weeks, bool) or not isinstance(weeks, int) or not 1 <= weeks <= 45):
         raise ValueError("weeks must be a whole number from 1 to 45")

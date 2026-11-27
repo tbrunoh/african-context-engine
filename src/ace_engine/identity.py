@@ -103,6 +103,9 @@ class Profile:
     pending_service: str | None = None            # a V2 service waiting for the person's place or details
     pending_text: str = ""                        # the question that service is answering
     pending_language: str | None = None           # the language that question was asked in
+    pending_asked: bool = False                   # ACE already asked once about a place it could not find
+    last_service: str | None = None               # the V2 service that gave the last answer, for a follow-up
+    last_sources: list[str] = field(default_factory=list)  # that answer's sources, for SOURCES
     channels: list[Channel] = field(default_factory=list)
     history: list[Turn] = field(default_factory=list)
     opted_out: bool = False

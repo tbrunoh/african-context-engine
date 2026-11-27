@@ -18,7 +18,7 @@ classifier on top. Keyword rules are a floor, not a ceiling.
 """
 from __future__ import annotations
 
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 from typing import Protocol
 
@@ -71,6 +71,7 @@ GBV = ("raped", "rape", "sexually assaulted", "assaulted me", "beats me", "beati
        "my husband beats", "domestic violence", "threatened to kill me", "hits me", "keeps hitting me",
        "beat me", "nimebakwa", "amebakwa", "kubakwa",
        "ananipiga", "amenipiga", "amenichapa", "ananichapa", "mume wangu ananipiga", "dhuluma za kijinsia",
+       "ataniua", "anataka kuniua", "amenitishia kuniua", "ananitishia kuniua", "kunitishia kuniua",
        "ukatili wa kijinsia",
        "viol", "violee", "agression sexuelle", "agressee sexuellement", "mon mari me bat", "il me bat",
        "il me frappe", "m a frappee", "violence conjugale", "violences conjugales", "violence domestique",
@@ -168,6 +169,62 @@ ROAD_ACCIDENT = ("renverse un enfant", "renverse une personne", "renverse un pie
                  "percutee par une voiture", "heurte par une voiture", "la voiture s est renversee",
                  "le bus s est renverse")
 
+def _widen(group: tuple[str, ...], sw_first: str, fr_first: str, en: tuple[str, ...] = (), sw: tuple[str, ...] = (),
+           fr: tuple[str, ...] = ()) -> tuple[str, ...]:
+    """Add phrases in each base language where that language's part of the group sits, so the split by language
+    below still holds."""
+    i, j = group.index(sw_first), group.index(fr_first)
+    return tuple(dict.fromkeys((*en, *group[:i], *group[i:j], *sw, *group[j:], *fr)))
+
+
+# Common emergencies the first rules missed, found by the 2.4.1 audit: a heart attack, a stroke, choking, a fit, a
+# person who stops responding, heavy blood loss, electrocution, a person dying, hanging, cut wrists, poison taken,
+# and labour. Each names a person or the emergency itself, so an app that is not responding or a crop that is dying
+# does not raise an alarm.
+_DYING = ("husband is dying", "wife is dying", "father is dying", "mother is dying", "child is dying", "baby is dying",
+          "son is dying", "daughter is dying", "brother is dying", "sister is dying", "he is dying", "she is dying",
+          "someone is dying")
+URGENT = _widen(URGENT, "hapumui", "ne respire plus", en=(
+    "heart attack", "cardiac arrest", "had a stroke", "having a stroke", "face is drooping", "face drooping",
+    "baby is choking", "child is choking", "he is choking", "she is choking", "son is choking", "daughter is choking",
+    "someone is choking", "he started choking", "she started choking", "baby started choking", "child started choking",
+    "electrocuted", "he is not responding", "she is not responding", "baby is not responding",
+    "child is not responding", "he is unresponsive",
+    "she is unresponsive", "baby is unresponsive", "child is unresponsive", "bleeding badly",
+    "there is a lot of blood", "lost a lot of blood", "losing a lot of blood", "is losing blood", "having a fit",
+    *_DYING),
+    sw=("shambulio la moyo", "mshtuko wa moyo", "kiharusi", "amepata kiharusi", "anakabwa", "amekabwa",
+        "anakabwa koo", "amepigwa shoti", "amepigwa na shoti ya umeme", "amenaswa na umeme", "mtoto anakufa",
+        "mume wangu anakufa", "mke wangu anakufa", "anatoka damu sana"),
+    fr=("crise cardiaque", "arret cardiaque", "avc", "s etouffe", "electrocute", "electrocutee", "il ne repond plus",
+        "elle ne repond plus", "bebe ne repond plus", "saigne abondamment", "beaucoup de sang",
+        "est en train de mourir", "crise d epilepsie", "fait une convulsion"))
+SELF_HARM = _widen(SELF_HARM, "kujiua", "me suicider", en=(
+    "hang myself", "cut my wrists", "cut her wrists", "cut his wrists", "slit my wrists", "cut myself",
+    "cutting myself", "been cutting myself", "dont want to live", "don't want to live", "do not want to live", "feel like dying",
+    "want to end it", "no longer want to live"),
+    sw=("kujinyonga", "nitajinyonga", "amejinyonga", "kujikata"),
+    fr=("me pendre", "se pendre", "s est pendu", "s est pendue", "me couper les veines", "s est ouvert les veines",
+        "envie de mourir"))
+POISONED = _widen(POISONED, "amewekewa sumu", "empoisonne", en=(
+    "took poison", "taken poison", "drank poison", "drunk poison", "ate poison", "swallowed poison",
+    "took rat poison", "taken rat poison", "drank rat poison", "ate rat poison", "took the poison",
+    "drank the poison", "drank pesticide", "took all the pills", "took all her pills",
+    "took all his pills", "took all my pills", "took a lot of pills", "swallowed pills"),
+    sw=("amekunywa dawa ya panya", "amekula dawa ya panya", "amemeza vidonge vingi", "amemeza dawa nyingi"),
+    fr=("a pris du poison", "a bu du poison", "a avale du poison", "a pris de la mort aux rats",
+        "a avale des medicaments", "a pris trop de medicaments", "a avale trop de comprimes"))
+PREGNANCY = _widen(PREGNANCY, "mjamzito", "enceinte",
+                   en=("in labour", "in labor", "my water broke", "her water broke", "waters broke"),
+                   sw=("ana uchungu wa kujifungua", "uchungu wa uzazi"), fr=("en travail", "perdu les eaux"))
+CHILD = _widen(CHILD, "mtoto", "enfant", en=("baby", "my baby", "toddler"), sw=("mtoto mchanga",), fr=("bebe",))
+# A child who took pills is a poisoning, unless the message says what the pills were for (see LOOKALIKES).
+PILLS = ("took pills", "took tablets", "took the pills", "took the tablets", "took my pills", "took my tablets",
+         "took her pills", "took his pills", "took her tablets", "took his tablets", "swallowed pills",
+         "swallowed tablets", "ate pills", "ate tablets", "amemeza vidonge", "amekula vidonge", "a avale des comprimes",
+         "a avale des cachets", "a pris des comprimes")
+
+
 # Everyday phrases that contain an emergency phrase. They are removed from a message before the rules are read, so
 # the broad phrases above keep their reach (my child is on fire, he was shot, she drowned) without these false alarms.
 LOOKALIKES = ("song is on fire", "track is on fire", "album is on fire", "beat is on fire", "player is on fire",
@@ -179,7 +236,31 @@ LOOKALIKES = ("song is on fire", "track is on fire", "album is on fire", "beat i
               "shot me a message", "shot me an email", "shot me a text", "shot him a message", "shot her a message",
               "shot down", "shot my shot", "shot his shot", "shot my first", "shot my video", "shot my film",
               "assurance incendie", "detecteur d incendie", "extincteur", "mettre au feu",
-              "casserole au feu", "marmite au feu", "en feu ce soir")
+              "casserole au feu", "marmite au feu", "en feu ce soir",
+              # 2.4.1: a call is not a beating, rape is also a leafy crop, and crops, prices and stoves are not people
+              "amenipiga simu", "ananipiga simu", "alinipiga simu", "wamenipiga simu", "aliyenipiga simu",
+              "beat me to it", "ce qui me frappe", "plant rape", "planting rape", "grow rape", "growing rape",
+              "rape seedlings", "rape seed", "rape seeds", "rape crop", "rape vegetable",
+              "prices collapsed", "price collapsed", "prices have collapsed",
+              "seedlings are drowning", "crops are drowning", "plants are drowning", "maize is drowning",
+              "maize drowned", "crops drowned", "seedlings drowned", "plants drowned", "beans drowned",
+              "field drowned", "fields drowned", "prevent a bushfire", "prevent bushfire", "prevent bushfires",
+              "prevent a bush fire", "prevent bush fire", "au feu de bois", "stomach is on fire",
+              "prise de sang", "test de sang", "analyse de sang", "kipimo cha damu", "vipimo vya damu",
+              "kupima damu", "touched the stove", "touched the hot stove", "touched a hot stove",
+              *(f"took {what} for {illness}" for what in ("pills", "tablets", "the pills", "the tablets", "his pills",
+                                                           "her pills", "his tablets", "her tablets")
+                for illness in ("malaria", "fever", "worms", "deworming", "pain", "the pain", "headache", "a headache",
+                                "a cold", "flu", "cough", "his malaria", "her malaria")),
+              "feel like dying of hunger", "i am dying of hunger", "im dying of hunger", "dying of laughter",
+              "dying of boredom", "fit of laughter", "fit of rage",
+              "fit of anger", "not responding to my messages", "not responding to my calls", "not responding to calls",
+              "not responding to messages", "not responding to my texts", "not responding to texts",
+              "not responding to my emails", "cut myself while", "cut myself by accident", "cut myself accidentally",
+              "cut myself shaving", "cut myself cooking", "cut myself in the kitchen", "cut myself at work")
+# Everyday openings that contain an emergency phrase, set aside only at the very start of a message: beats me why
+# prices rose is an idiom, while my husband beats me, what should I do is not.
+LEADING_LOOKALIKES = ("beats me why", "beats me how", "beats me what", "beats me where", "beats me when")
 
 # A snake bite is a snake word and a bite word anywhere in the message, because verbs inflect in too many ways to list
 # as whole phrases: nimeumwa na nyoka, nyoka ameniuma and nyoka amemng'ata are all a bite. Each language lists its own
@@ -259,6 +340,7 @@ DEFAULT_RULES: dict[str, tuple[tuple[str, ...], ...]] = {
     "maternal": ((*PREGNANCY, *POSTPARTUM), MATERNAL_DANGER),
     "poisoning": ((*POISONED,),),
     "poisoning_act": (POISON_ACT, POISON_WHAT),
+    "poisoning_child": (CHILD, PILLS),
     "child_protection": (CHILD, CHILD_HARM),
     "gbv": ((*GBV,),),
     "fire": ((*FIRE,),),
@@ -269,7 +351,8 @@ DEFAULT_RULES: dict[str, tuple[tuple[str, ...], ...]] = {
     "snake_bite": (SNAKE, BITE),
     "snake_bite_so": (("mas",), next(bites for code, _, bites in _SNAKE_BITE_ROWS if code == "so")),
 }
-_QUEUE_ALIASES = {"poisoning_act": "poisoning", "snake_bite": "health_urgent", "snake_bite_so": "health_urgent",
+_QUEUE_ALIASES = {"poisoning_act": "poisoning", "poisoning_child": "poisoning", "snake_bite": "health_urgent",
+                  "snake_bite_so": "health_urgent",
                   "drowning": "health_urgent", "stabbing": "health_urgent", "road_accident": "health_urgent"}
 # Queues whose own lines are often missing from a country's pack: their reply also gives the general emergency numbers.
 WITH_EMERGENCY = frozenset({"fire"})
@@ -290,6 +373,9 @@ class EscalationPolicy:
         if not text.strip():
             return SafetyDecision(False)
         hay = token_hay(text)
+        for phrase in LEADING_LOOKALIKES:
+            if hay.startswith(_needle(phrase)):
+                hay = " ~ " + hay[len(_needle(phrase)):]
         for phrase in LOOKALIKES:
             if phrase_in(hay, phrase):
                 hay = hay.replace(_needle(phrase), " ~ ")
@@ -442,3 +528,22 @@ def emergency_text(queue: str, contacts: list[Contact], language: str) -> str:
     lang = language if language in CALL_WORD else "en"
     opener = OPENERS.get(queue, OPENERS["health_urgent"])[lang]
     return opener.format(numbers=format_numbers(contacts, lang))
+
+
+def emergency_text_within(queue: str, contacts: list[Contact], language: str, fits: Callable[[str], bool]) -> str:
+    """The emergency reply, shortened until it fits a small screen without losing a number.
+
+    The numbers come last in the full reply, so cutting from the end would drop them. Instead the reply gives up,
+    in turn, the advice after its first sentence, the labels beside the numbers, and then everything but the call
+    line and the numbers themselves."""
+    full = emergency_text(queue, contacts, language)
+    if fits(full) or not contacts:
+        return full
+    lang = language if language in CALL_WORD else "en"
+    opener = OPENERS.get(queue, OPENERS["health_urgent"])[lang].replace("{numbers}", "").strip()
+    first = next((opener[: i + 1] for i, c in enumerate(opener) if c in ".!?።؟" and i > 0), opener)
+    bare = call_line(", ".join(dict.fromkeys(c.number for c in contacts)), lang)
+    for text in (f"{first} {format_numbers(contacts, lang)}", f"{first} {bare}", bare):
+        if fits(text):
+            return text
+    return " ".join(dict.fromkeys(c.number for c in contacts))

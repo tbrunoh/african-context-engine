@@ -16,6 +16,7 @@ CountingHandoffs
 """
 from __future__ import annotations
 
+import json
 import threading
 from collections import Counter
 from dataclasses import fields
@@ -26,7 +27,8 @@ from .identity import Profile, ProfileStore
 from .models import Channel, GeoPoint
 
 PROFILE_TTL = timedelta(hours=24)
-_SCALARS = ("language", "last_query", "pending_service", "pending_text", "pending_language", "opted_out")
+_SCALARS = ("language", "last_query", "pending_service", "pending_text", "pending_language", "pending_asked",
+            "last_service", "opted_out")
 
 
 def profile_to_doc(profile: Profile, now: datetime | None = None) -> dict[str, Any]:
@@ -38,6 +40,7 @@ def profile_to_doc(profile: Profile, now: datetime | None = None) -> dict[str, A
         "last_location": [loc.lat, loc.lon, loc.altitude_m] if loc else None,
         "last_topic": list(profile.last_topic) if profile.last_topic else None,
         "last_fact_ids": list(profile.last_fact_ids),
+        "last_sources": list(profile.last_sources),
         "last_place": list(profile.last_place) if profile.last_place else None,
         "channels": [c.value for c in profile.channels],
         "updated_at": now,
@@ -50,6 +53,7 @@ def profile_from_doc(key: str, doc: dict[str, Any]) -> Profile:
     profile = Profile(key=key, **{name: doc.get(name) for name in _SCALARS if name in known and name in doc})
     profile.pending_text = profile.pending_text or ""
     profile.opted_out = bool(profile.opted_out)
+    profile.pending_asked = bool(profile.pending_asked)
     if doc.get("last_location"):
         lat, lon, alt = (list(doc["last_location"]) + [None])[:3]
         profile.last_location = GeoPoint(lat, lon, alt)
@@ -57,6 +61,7 @@ def profile_from_doc(key: str, doc: dict[str, Any]) -> Profile:
         profile.last_topic = tuple(doc["last_topic"])  # type: ignore[assignment]
     if doc.get("last_place"):
         profile.last_place = tuple(doc["last_place"])  # type: ignore[assignment]
+    profile.last_sources = list(doc.get("last_sources") or [])
     profile.last_fact_ids = list(doc.get("last_fact_ids") or [])
     profile.channels = [Channel(c) for c in doc.get("channels") or [] if c in {ch.value for ch in Channel}]
     return profile
@@ -162,3 +167,31 @@ class CountingHandoffs:
             day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
             self.client.collection(self.collection).document(day).set(
                 {"__".join(cell): firestore.Increment(1)}, merge=True)
+
+
+class ModelUsage:
+    """Gemini tokens counted for the spend cap: one document a month (Pacific time, as Cloud Billing counts) in the
+    spend collection, which the spend guard reads. The write runs beside the reply, so it adds no wait."""
+
+    def __init__(self, client: Any, collection: str = "spend") -> None:
+        self.client = client
+        self.collection = collection
+
+    @staticmethod
+    def month(now: datetime | None = None) -> str:
+        from zoneinfo import ZoneInfo
+        return (now or datetime.now(timezone.utc)).astimezone(ZoneInfo("America/Los_Angeles")).strftime("llm-%Y-%m")
+
+    def record(self, given: int, made: int) -> None:
+        threading.Thread(target=self._write, args=(given, made), daemon=True).start()
+
+    def _write(self, given: int, made: int) -> None:
+        try:
+            from google.cloud import firestore  # type: ignore[import-not-found]
+
+            self.client.collection(self.collection).document(self.month()).set(
+                {"calls": firestore.Increment(1), "input_tokens": firestore.Increment(given),
+                 "output_tokens": firestore.Increment(made)}, merge=True)
+        except Exception as exc:  # noqa: BLE001  the guard then prices the call at its ceiling instead
+            print(json.dumps({"severity": "WARNING", "message": "model usage not counted", "error": str(exc)}),
+                  flush=True)

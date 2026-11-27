@@ -19,7 +19,7 @@ import os
 import re
 import urllib.request
 from dataclasses import dataclass
-from typing import Protocol
+from typing import Any, Protocol
 
 from .context.schema import ContextFact
 from .text import truncate_words
@@ -143,13 +143,16 @@ class OpenAICompatibleProvider:
         # Rephrasing cited facts needs no deliberation: ask for the least reasoning the model allows, which keeps
         # replies fast and cheap (for Gemini through its OpenAI compatible endpoint, for example minimal or low).
         self.reasoning_effort = reasoning_effort or os.environ.get("ACE_LLM_REASONING_EFFORT") or None
+        # A ceiling on what one reply can cost, reasoning included; the spend cap prices every call at this ceiling.
+        self.max_tokens = int(os.environ.get("ACE_LLM_MAX_TOKENS") or 1024)
+        self.on_usage: Any = None  # called with (input tokens, output tokens), reasoning counted as output
         if not self.base_url or not self.model:
             raise ValueError("Set ACE_LLM_BASE_URL and ACE_LLM_MODEL to use a language model")
         self.name = self.model
 
     def generate(self, system: str, prompt: str, timeout_s: float) -> str:
         request: dict = {
-            "model": self.model, "temperature": 0,
+            "model": self.model, "temperature": 0, "max_tokens": self.max_tokens,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": prompt}],
         }
         if self.reasoning_effort:
@@ -161,4 +164,10 @@ class OpenAICompatibleProvider:
         req = urllib.request.Request(f"{self.base_url}/chat/completions", data=body, headers=headers)
         with urllib.request.urlopen(req, timeout=timeout_s) as resp:  # noqa: S310  operator configured URL
             data = json.loads(resp.read())
+        usage = data.get("usage") or {}
+        if self.on_usage is not None and usage:
+            given = int(usage.get("prompt_tokens") or 0)
+            total = int(usage.get("total_tokens") or 0)
+            # Total minus input counts reasoning even where a server leaves it out of completion_tokens
+            self.on_usage(given, max(total - given, int(usage.get("completion_tokens") or 0)))
         return str(data["choices"][0]["message"]["content"])

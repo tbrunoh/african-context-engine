@@ -195,14 +195,21 @@ def http_app(engine: Engine, allowed_hosts: list[str] | None = None, path: str =
         allowed_hosts=[*hosts, *(f"{h}:*" for h in hosts)],
         allowed_origins=[f"https://{h}" for h in hosts])
 
+    import os
+
     from starlette.requests import Request
     from starlette.responses import JSONResponse
 
     from . import __version__
 
-    @server.custom_route("/healthz", methods=["GET"])
+    commit = (os.environ.get("ACE_COMMIT") or "")[:12]
+
     async def healthz(request: Request) -> JSONResponse:
-        return JSONResponse({"status": "ok", "version": __version__, "tools": len(build_tools(engine))})
+        return JSONResponse({"status": "ok", "version": __version__, "commit": commit, "tools": len(build_tools(engine))})
+
+    # /healthz for Cloud Run, and /mcp/healthz so the release check can reach this service through the load balancer
+    server.custom_route("/healthz", methods=["GET"])(healthz)
+    server.custom_route(path.rstrip("/") + "/healthz", methods=["GET"])(healthz)
 
     try:  # SDK 2.x takes the transport settings here
         return server.streamable_http_app(streamable_http_path=path, stateless_http=True, json_response=True,
@@ -221,7 +228,7 @@ async def _paused_app(scope: dict[str, Any], receive: Any, send: Any) -> None:
         return
     from . import __version__
 
-    if scope.get("path") == "/healthz":
+    if scope.get("path") in ("/healthz", "/mcp/healthz"):
         status, body = 200, {"status": "paused", "version": __version__}
     else:
         status, body = 503, {"error": "This demonstration has reached its spending limit for the month and is paused "
@@ -229,6 +236,14 @@ async def _paused_app(scope: dict[str, Any], receive: Any, send: Any) -> None:
     await send({"type": "http.response.start", "status": status,
                 "headers": [(b"content-type", b"application/json"), (b"retry-after", b"86400")]})
     await send({"type": "http.response.body", "body": json.dumps(body).encode()})
+
+
+def tips_allowed(env: Any) -> bool:
+    """TIP stays off on a public deployment (ACE_PUBLIC=1) or when ACE_TIPS=off, as on the site: a public server
+    keeps nothing a caller sends."""
+    from .app import _off, _on
+
+    return not (_off(env, "ACE_TIPS") or _on(env, "ACE_PUBLIC"))
 
 
 def main() -> None:
@@ -248,7 +263,7 @@ def main() -> None:
     from .cli import _pack_roots
 
     roots = _pack_roots(args.packs)
-    engine = Engine.from_packs(*roots, config=EngineConfig(country=args.country))
+    engine = Engine.from_packs(*roots, config=EngineConfig(country=args.country, tips=tips_allowed(os.environ)))
     if args.transport == "stdio":
         build_server(engine).run()
         return

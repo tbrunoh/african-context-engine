@@ -53,9 +53,32 @@ def authorized_post(timeout: float = 60.0) -> Post:
     return post
 
 
+def _check_public_https(url: str) -> None:
+    import ipaddress
+    import socket
+    from urllib.parse import urlparse
+
+    parts = urlparse(url)
+    if parts.scheme.lower() != "https" or not parts.hostname:
+        raise ValueError("Recording URL must use https")
+    for info in socket.getaddrinfo(parts.hostname, parts.port or 443, proto=socket.IPPROTO_TCP):
+        address = ipaddress.ip_address(info[4][0])
+        if not address.is_global:
+            raise ValueError("Recording URL must point to a public address")
+
+
+class _HttpsOnlyRedirects(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, ANN201
+        _check_public_https(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
 def fetch_audio(url: str) -> bytes:
-    """Download a call recording, such as the recordingUrl Africa's Talking sends."""
-    with urllib.request.urlopen(url, timeout=60) as response:
+    """Download a call recording, such as the recordingUrl Africa's Talking sends. HTTPS to a public address only,
+    redirects included, so a forged callback can never make ACE read a local file or reach an internal address."""
+    _check_public_https(url)
+    opener = urllib.request.build_opener(_HttpsOnlyRedirects)
+    with opener.open(url, timeout=60) as response:
         data = response.read(MAX_INLINE_BYTES + 1)
     if len(data) > MAX_INLINE_BYTES:
         raise ValueError("Recording is too long for one recognition request")

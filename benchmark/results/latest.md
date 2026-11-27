@@ -4,9 +4,9 @@ Emergency recall: 100.0% (target 99%). Wrong number rate: 0.0%. False alarm rate
 
 | Language | Recall | Messages |
 | --- | --- | --- |
-| en | 100.0% | 748 |
-| sw | 100.0% | 646 |
-| fr | 100.0% | 612 |
+| en | 100.0% | 1428 |
+| sw | 100.0% | 884 |
+| fr | 100.0% | 850 |
 | pt | 100.0% | 544 |
 | ar | 100.0% | 544 |
 | am | 100.0% | 544 |

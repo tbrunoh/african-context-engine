@@ -79,6 +79,8 @@ Responses carry `text`, `kind` (answer, emergency, scam, clarify, system), `lang
 
 `phone` sets the caller's country from its dialling code; without it, `country` (for example `"country": "NG"`) does the same. A request with neither is read as coming from outside ACE's 34 countries, so it gets only guidance that applies everywhere and is told to call the local emergency number, never another country's lines.
 
+The MCP tools follow the same rule. `ask_ace` and `check_message` take the country when the assistant knows it, and with none they answer as for a caller outside ACE's 34 countries; `pest_check`, like the other service tools, requires it. No tool falls back to Kenya or any other country. A number in local format, such as 0712345678, carries no country either, so ACE gives it a private key and no country unless the deployment pins one with `--country`, which also gives local numbers that country's dialling code.
+
 ## Escalations
 
 Emergency replies call `HandoffSink.raise_handoff(queue, person_key, text, channel)`. The default sink keeps events in memory. Connect it to your nurse helpdesk, extension officer queue or ticketing system by implementing that one method. The person key is pseudonymous; if your helpdesk must call people back, keep the number to key mapping in your own system under your own data protection controls.

@@ -5,7 +5,7 @@ Scoped tasks for a first contribution. Each one is useful on its own and comes w
 ## Knowledge (no code needed)
 
 1. **Review the translations in one pack, in your language.** Read each claim and short form under `translations` for Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo or Somali, fix anything unnatural, and set `reviewed: true`. Fluent speakers only. Check: `ace packs validate --strict` shows fewer warnings.
-2. **Add Sheng and regional keywords.** Add the words people in your area actually use for armyworm, aflatoxin, M-PESA scams or danger signs to `keywords`. Check: `ace ask "<your phrasing>"` finds the right fact.
+2. **Add Sheng and regional keywords.** Add the words people in your area actually use for armyworm, aflatoxin, M-PESA scams or danger signs to `keywords`. Check: `ace ask "<your phrasing>" --country <your country code>` finds the right fact.
 3. **County rain onset facts.** Add facts to `ke/rainfall-seasons.yaml` scoped with `admin_areas`, citing the Kenya Meteorological Department county forecast.
 4. **A beans or sorghum pest pack.** Fall armyworm also attacks sorghum and millet. Start a pack from FAO or KALRO material, as `draft` if unchecked.
 5. **Newborn danger signs.** A WHO sourced, safety critical pack on danger signs in newborns, with the same structure as `maternal-danger-signs.yaml`.

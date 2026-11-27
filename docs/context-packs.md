@@ -82,7 +82,7 @@ Guidance that holds across borders, such as WHO danger signs or FAO pest guidanc
 1. Copy `context_packs/_template.yaml` into a folder for the country, for example `context_packs/ug/`.
 2. Fill in the pack fields, including menu `labels` in each language and an `order`.
 3. Add facts with sources. Start them as `draft` if you have not checked them against the source yourself.
-4. Run `ace packs validate context_packs/ug` and `ace chat --country UG`. Without `--country`, ACE picks the country from the phone number.
+4. Run `ace packs validate context_packs/ug` and `ace chat --country UG`. With `--phone` instead, the number's dialling code picks the country. ACE never assumes a country, so `ace ask` and `ace chat` need one or the other.
 5. Open a pull request using the context pack template.
 
 The JSON schema for editors and other tools is in [spec/context-pack.schema.json](../spec/context-pack.schema.json).

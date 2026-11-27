@@ -4,7 +4,7 @@ These rules apply to every AI coding agent working in this repository, including
 
 ## What ACE is
 
-ACE is an open source safety and decision layer for people on any phone in Africa (USSD, SMS/RCS, voice, WhatsApp and MCP). It covers 34 countries in eight languages: English, Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali. Six decision services run on dated public data; see [docs/services.md](docs/services.md). The [V2 design](docs/v2/README.md), the [2.1 design](docs/v2/release-2.1.md) and the [build plan](docs/v2/build-plan.md) set out the rest. Every service covers all 34 countries by default and names the gap wherever data does not exist: never build for one country first.
+ACE is an open source safety and decision layer for people on any phone in Africa (USSD, SMS/RCS, voice, WhatsApp and MCP). It covers 34 countries in 32 languages: English, Swahili and French in the code, and 29 more in `src/ace_engine/locales/` (see [docs/languages.md](docs/languages.md)). Six decision services run on dated public data; see [docs/services.md](docs/services.md). The [V2 design](docs/v2/README.md), the [2.1 design](docs/v2/release-2.1.md) and the [build plan](docs/v2/build-plan.md) set out the rest. Every service covers all 34 countries by default and names the gap wherever data does not exist: never build for one country first.
 
 ## Never break these rules
 
@@ -27,10 +27,11 @@ ACE is an open source safety and decision layer for people on any phone in Afric
 
 | Path | What it holds |
 | --- | --- |
-| `src/ace_engine/engine.py` | The pipeline: country, safety rail, commands, Scam Shield, retrieval, composition |
+| `src/ace_engine/engine.py` | The pipeline: country, safety rail, commands, the unread language check, Scam Shield, retrieval, composition |
 | `src/ace_engine/safety.py`, `scam.py` | The safety rail and Scam Shield |
 | `src/ace_engine/countries.py` | The 34 countries, their dialling codes and languages |
 | `src/ace_engine/i18n.py`, `locales/`, `encoding.py` | Added languages, one file each; GSM-7 and UCS-2 budgets |
+| `src/ace_engine/langid/` | Character profiles (CC BY-SA 4.0, built by `benchmark/langid/build.py`) for reading a message by its letters and telling a language ACE does not speak |
 | `src/ace_engine/context/` | Pack loading, schema checks and retrieval |
 | `src/ace_engine/channels/` | USSD, SMS, RCS, voice and WhatsApp adapters; RCS with SMS fallback |
 | `src/ace_engine/server.py`, `mcp_server.py` | The web server, JSON API and MCP server |

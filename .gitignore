@@ -12,3 +12,6 @@ benchmark/.waxal_cache/
 
 # Tokenizer audit downloads (FLORES-200, tokenizer files, tiktoken cache)
 benchmark/tokenizer-audit/cache/
+
+# Language profile build downloads (FLORES-200, UDHR)
+benchmark/langid/.cache/

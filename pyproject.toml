@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "ace-engine"
-version = "2.2.0b3"
-description = "The African Context Engine: checked, local, citable knowledge for Africa on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), with six decision services, for 34 African countries in eight languages"
+version = "2.3.0b1"
+description = "The African Context Engine: checked, local, citable knowledge for Africa on any phone (USSD, SMS/RCS, voice, WhatsApp and MCP), with six decision services, for 34 African countries in 32 languages"
 readme = "README.md"
-license = "Apache-2.0"
+license = "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND ODbL-1.0"  # code; packs; language profiles; ODbL snapshots (see NOTICE)
 license-files = ["LICENSE", "NOTICE"]
 requires-python = ">=3.10"
 authors = [{ name = "Tom Bruno" }]
-keywords = ["africa", "ussd", "sms", "rcs", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "weather", "early warning", "market prices", "mpesa", "swahili", "french", "portuguese", "arabic", "amharic", "oromo", "somali", "speech", "text to speech", "waxal"]
+keywords = ["africa", "ussd", "sms", "rcs", "whatsapp", "voice", "mcp", "context", "agriculture", "health", "weather", "early warning", "market prices", "mpesa", "swahili", "french", "portuguese", "arabic", "amharic", "oromo", "somali", "hausa", "yoruba", "igbo", "zulu", "xhosa", "afrikaans", "shona", "kinyarwanda", "lingala", "twi", "ewe", "wolof", "tigrinya", "speech", "text to speech", "waxal"]
 classifiers = [
   "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
@@ -52,7 +52,7 @@ packages = ["src/ace_engine"]
 "snapshots" = "ace_engine/data/snapshots"
 
 [tool.hatch.build.targets.sdist]
-exclude = ["PUBLISH.sh", "benchmark/.waxal_cache", "tips.jsonl", ".env"]
+exclude = ["PUBLISH.sh", "benchmark/.waxal_cache", "benchmark/langid/.cache", "tips.jsonl", ".env"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

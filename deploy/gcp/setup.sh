@@ -28,6 +28,8 @@ step() { printf '\n== %s\n' "$*"; }
 # Cloud Run takes traffic only from the load balancer, so Cloud Armor, HSTS and TLS 1.2 cannot be bypassed through
 # the run.app address. Set INGRESS=all only to test a deployment before its domain resolves.
 INGRESS="${INGRESS:-internal-and-cloud-load-balancing}"
+# The site and MCP are public by turning off Cloud Run's invoker IAM check rather than granting allUsers, which an
+# organisation with domain restricted sharing refuses.
 
 step "APIs"
 gc services enable run.googleapis.com artifactregistry.googleapis.com cloudbuild.googleapis.com \
@@ -42,7 +44,8 @@ gc logging sinks update _Default "logging.googleapis.com/projects/${PROJECT}/loc
 
 step "Service accounts, one per job, each with only what it needs"
 for name in ace-web ace-mcp ace-refresh ace-scheduler ace-guard ace-pubsub ace-modelcheck ace-build; do
-  exists gc iam service-accounts describe "$(sa $name)" || gc iam service-accounts create "$name" --display-name "$name"
+  # A new project may create only a few accounts a minute, so each creation is spaced out
+  exists gc iam service-accounts describe "$(sa $name)" || { gc iam service-accounts create "$name" --display-name "$name"; sleep 15; }
 done
 
 step "Artifact Registry"
@@ -114,7 +117,7 @@ fi
 step "ace-web: the site, the /try phone and the API"
 gc run deploy ace-web --image "$IMAGE" --region "$REGION" --service-account "$(sa ace-web)" \
   --execution-environment gen2 --cpu 1 --memory 1Gi --concurrency 8 --min-instances 1 --max-instances 10 \
-  --timeout 30 --allow-unauthenticated --ingress "$INGRESS" \
+  --timeout 30 --no-invoker-iam-check --ingress "$INGRESS" \
   --set-env-vars "ACE_PUBLIC=1,ACE_PROFILE_STORE=firestore,ACE_HANDOFFS=count,ACE_FIRESTORE_COUNTS=1,ACE_SNAPSHOT_BASE=/mnt/snapshots,ACE_COMMIT=${COMMIT}${LLM_ENV}" \
   --set-secrets "ACE_PSEUDONYM_SALT=ace-pseudonym-salt:latest${LLM_SECRET}" \
   --add-volume "name=snapshots,type=cloud-storage,bucket=${BUCKET},readonly=true" \
@@ -123,7 +126,7 @@ gc run deploy ace-web --image "$IMAGE" --region "$REGION" --service-account "$(s
 step "ace-mcp: MCP over Streamable HTTP at /mcp"
 gc run deploy ace-mcp --image "$IMAGE" --region "$REGION" --service-account "$(sa ace-mcp)" \
   --execution-environment gen2 --cpu 1 --memory 1Gi --concurrency 40 --min-instances 0 --max-instances 5 \
-  --timeout 30 --allow-unauthenticated --ingress "$INGRESS" \
+  --timeout 30 --no-invoker-iam-check --ingress "$INGRESS" \
   --command ace-mcp --args=--transport=http \
   --set-env-vars "ACE_MCP_ALLOWED_HOSTS=${DOMAIN},ACE_SNAPSHOT_BASE=/mnt/snapshots,ACE_COMMIT=${COMMIT}" \
   --add-volume "name=snapshots,type=cloud-storage,bucket=${BUCKET},readonly=true" \
@@ -254,10 +257,18 @@ BILLING_ACCOUNT="${BILLING_ACCOUNT:-$(gcloud billing projects describe "$PROJECT
 if [ -n "${BILLING_ACCOUNT:-}" ]; then
   BUDGET="$(gcloud billing budgets list --billing-account "$BILLING_ACCOUNT" --filter="displayName='ACE monthly cap'" --format='value(name)' | head -1)"
   if [ -z "$BUDGET" ]; then
-    gcloud billing budgets create --billing-account "$BILLING_ACCOUNT" --display-name "ACE monthly cap" \
+    # Publishing budget alerts to Pub/Sub grants Google's billing alert account on the topic, which an organisation
+    # with domain restricted sharing refuses. The budget then sends email alerts only, and the guard waits for an
+    # exception; cap Gemini with a daily request quota in the meantime (see README).
+    if ! gcloud billing budgets create --billing-account "$BILLING_ACCOUNT" --display-name "ACE monthly cap" \
       --budget-amount "${BUDGET_USD}USD" --filter-projects "projects/${PROJECT}" \
       --threshold-rule percent=0.9 --threshold-rule percent=1.0 \
-      --notifications-rule-pubsub-topic "projects/${PROJECT}/topics/ace-budget"
+      --notifications-rule-pubsub-topic "projects/${PROJECT}/topics/ace-budget"; then
+      echo "The budget could not publish to Pub/Sub, so it sends email alerts only and the spend guard is idle."
+      gcloud billing budgets create --billing-account "$BILLING_ACCOUNT" --display-name "ACE monthly cap" \
+        --budget-amount "${BUDGET_USD}USD" --filter-projects "projects/${PROJECT}" \
+        --threshold-rule percent=0.9 --threshold-rule percent=1.0
+    fi
   fi
 else
   echo "BILLING_ACCOUNT not set: create the ACE monthly cap budget with its Pub/Sub topic by hand (see README)."

@@ -574,19 +574,16 @@ def test_paused_mcp_answers_503_and_health_still_answers(engine):
     assert client.get("/healthz").json()["status"] == "paused"
 
 
-def test_spend_guard_turns_the_model_off_then_pauses():
+def test_spend_guard_turns_the_model_off_then_back_on():
     from ace_engine.ops import guard
 
-    assert guard.decide(40, 60) == {"ACE_LLM_DISABLED": None, "ACE_PAUSED": None}
-    assert guard.decide(55, 60) == {"ACE_LLM_DISABLED": "1", "ACE_PAUSED": None}
-    assert guard.decide(61, 60) == {"ACE_LLM_DISABLED": "1", "ACE_PAUSED": "1"}
     run = FakeRun({"ACE_PUBLIC": "1"})
     env = {"ACE_GUARD_PROJECT": "p", "ACE_GUARD_SERVICES": "ace-web"}
-    guard.handle({"costAmount": 56, "budgetAmount": 60}, http=run, env=env)
+    guard.apply(1, run, env)
     assert run.env == {"ACE_PUBLIC": "1", "ACE_LLM_DISABLED": "1"}
-    guard.handle({"costAmount": 56, "budgetAmount": 60}, http=run, env=env)
+    guard.apply(1, run, env)
     assert run.patches == 1  # no new revision when nothing changes
-    guard.handle({"costAmount": 1, "budgetAmount": 60}, http=run, env=env)  # a new month
+    guard.apply(0, run, env)  # a new month
     assert run.env == {"ACE_PUBLIC": "1"}
 
 
@@ -595,9 +592,9 @@ def test_pause_scales_to_zero_and_a_new_month_restores_the_minimum():
 
     run = FakeRun({"ACE_PUBLIC": "1"}, minimum=1, conflicts=1)
     env = {"ACE_GUARD_PROJECT": "p", "ACE_GUARD_SERVICES": "ace-web", "ACE_GUARD_MIN_INSTANCES": "ace-web=1"}
-    guard.handle({"costAmount": 61, "budgetAmount": 60}, http=run, env=env)
+    guard.apply(2, run, env)
     assert run.env["ACE_PAUSED"] == "1" and run.minimum == 0 and run.patches == 1  # retried after the conflict
-    guard.handle({"costAmount": 1, "budgetAmount": 60}, http=run, env=env)
+    guard.apply(0, run, env)
     assert "ACE_PAUSED" not in run.env and run.minimum == 1
 
 

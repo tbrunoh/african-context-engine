@@ -79,6 +79,12 @@ Responses carry `text`, `kind` (answer, emergency, scam, clarify, system), `lang
 
 `phone` sets the caller's country from its dialling code; without it, `country` (for example `"country": "NG"`) does the same. A request with neither is read as coming from outside ACE's 34 countries, so it gets only guidance that applies everywhere and is told to call the local emergency number, never another country's lines.
 
+On a public server (`ACE_PUBLIC=1`, see `ace_engine.app`), `phone` is ignored unless `ACE_API_TOKEN` is set and the caller sends it, so no one can act as a real subscriber; the request is answered for its `country`, and an API call keeps no profile.
+
+### The phone on the site
+
+`GET /try` serves a phone for USSD, SMS, voice, WhatsApp and RCS. It talks to `POST /try/ussd` (`{"country", "language", "text"}`, the USSD path so far) and `POST /try/message` (`{"country", "language", "channel", "text"}`), and `POST /try/forget` deletes the browser's session in every country. Each browser gets a random token in a cookie scoped to `/try`, kept for 24 hours; its sender is `web:<country>:<token>`, so it never needs or stores a phone number. All three accept only JSON, which a form on another site cannot send.
+
 The MCP tools follow the same rule. `ask_ace` and `check_message` take the country when the assistant knows it, and with none they answer as for a caller outside ACE's 34 countries; `pest_check`, like the other service tools, requires it. No tool falls back to Kenya or any other country. A number in local format, such as 0712345678, carries no country either, so ACE gives it a private key and no country unless the deployment pins one with `--country`, which also gives local numbers that country's dialling code.
 
 ## Escalations

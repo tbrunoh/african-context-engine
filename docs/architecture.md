@@ -61,7 +61,12 @@ Services sit after Scam Shield and before retrieval. `detect()` recognises the d
 | `tips.py` | Community tip queue |
 | `engine.py` | The pipeline |
 | `channels/` | USSD app, SMS, RCS with SMS fallback, voice IVR, WhatsApp |
-| `server.py` | WSGI server for every webhook, the JSON API and the playground |
+| `server.py` | WSGI server for every webhook, the JSON API and the site |
+| `site.py`, `web/site/` | The public site: the /try phone, coverage, developers, status and about pages |
+| `app.py` | `create_app()`: one factory that builds the engine, stores and senders from the environment and refuses unsafe production settings |
+| `stores.py` | Firestore profiles with a 24 hour expiry, and escalation counts with no text |
+| `snapshots/manifest.py` | Publishing checked snapshot sets, and swapping them in while the service runs |
+| `ops/` | The spend guard and the weekly model check for a Google Cloud deployment |
 | `mcp_server.py` | MCP tools for AI assistants |
 | `cli.py` | The `ace` command |
 

@@ -62,7 +62,7 @@ ACE is the shared layer underneath: open knowledge packs anyone can load, a chan
 | **34 countries, one engine** | The caller's dialling code picks the country, so the numbers, topics and default language are always right for that person | `countries.py`, `engine.py` |
 | **32 languages** | English, Swahili and French in the code; 29 more in one file each, so a new language needs no code change. Each is offered in the countries that speak it, and a message's language is guessed only among its country's languages | `i18n.py`, `locales/`, `text.py` |
 | **Grounded answers** | Short, practical answers in the person's language, each traced to a published source | `engine.py`, `context/` |
-| **Safety rail** | Emergency language in any of the 32 languages gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
+| **Safety rail** | A message about a medical emergency, poisoning, violence, child abuse or self harm, in any of the 32 languages, gets that country's verified numbers at once and a human handoff, before retrieval or any model. ACE never gives a number from another country | `safety.py` |
 | **Scam Shield** | Forward a suspicious mobile money message in any of the 32 languages and get an explained verdict. In Kenya it cites Safaricom's own guidance; elsewhere it gives no number it cannot cite. It never calls a message safe | `scam.py` |
 | **USSD app** | A full menu on any phone: browse topics, ask in your own words, check a message, switch language. Every screen fits 182 characters | `channels/ussd.py` |
 | **SMS** | Replies within three segments, folded into GSM-7 for Latin script, African letters included, and budgeted for UCS-2 in Arabic, Amharic and Tigrinya, keyword commands, Africa's Talking sending | `channels/sms.py`, `encoding.py` |
@@ -251,7 +251,7 @@ Everything else is in [CONTRIBUTING.md](CONTRIBUTING.md). The plan is in [ROADMA
 
 ## Safety and responsibility
 
-ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every translation, in all seven languages after English, need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
+ACE is not a doctor, agronomist, lawyer or bank. It shares published guidance and tells people when and where to get human help. The safety phrases and every translation, in all 31 languages after English, need review by clinicians and fluent speakers before a public launch, and each deployment is responsible for its own data protection obligations. Read [docs/safety-and-privacy.md](docs/safety-and-privacy.md) before you deploy. Report vulnerabilities through [SECURITY.md](SECURITY.md).
 
 ## Acknowledgments
 

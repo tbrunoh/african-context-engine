@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.3.0b1 (2026-11-26): 24 languages, and honesty about the rest
+## 2.3.0b1 (2026-11-26): 32 languages, and honesty about the rest
 
 ACE grows from eight to 32 languages, each offered in the countries that speak it, and learns to tell a language it speaks from one it does not. Every new language is a draft: it passes ACE's own tests and benchmark, but no fluent speaker has reviewed it yet. The guide is [docs/languages.md](docs/languages.md).
 
@@ -60,6 +60,7 @@ Nine independent reviews of the 2.3 draft found these before release:
 - **Umbundu** for Angola: the draft was not good enough to carry safety text, so it waits for a fluent speaker.
 - **Better coverage of Lusoga, Runyankole, Sidama and Wolaytta**: no open text was found to profile Lusoga, Sidama or Wolaytta, and Runyankole's profile comes from one short text, so ACE still answers almost all of them in another of its languages that many of their speakers read: Lusoga and Runyankole mostly in Luganda, Swahili or Kinyarwanda, Sidama and Wolaytta in Afaan Oromo or Somali.
 - **Answers on another topic**: a question that shares one word with a fact can still get that fact, so where can I donate blood gets bleeding in pregnancy, as in earlier releases. A draft rule that refused such matches also refused good answers to scam and crop questions, so it was dropped; a better test of relevance is planned.
+- **Fire, drowning, stabbing and road accidents in the safety rail**: the rail covers medical emergencies, poisoning, violence, child abuse and self harm; these four have no phrases yet, as in earlier releases.
 - **Every short city name**: 22 countries have city aliases, but short forms such as Dar, Nbi and Msa are not found yet.
 - **A paged USSD language menu**: the menu still shows four languages, so in South Africa Sesotho, Setswana and Xitsonga are one message away with LANG ST, LANG TN or LANG TS.
 

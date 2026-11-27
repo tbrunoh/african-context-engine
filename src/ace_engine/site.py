@@ -276,6 +276,21 @@ def page_simple(title: str, text: str) -> bytes:
     return out.encode("utf-8")
 
 
+# The ACE mark at the sizes browsers and phones ask for by name at the root of a site.
+ROOT_ICONS = {"/favicon.ico": "favicon.ico", "/apple-touch-icon.png": "apple-touch-icon.png",
+              "/apple-touch-icon-precomposed.png": "apple-touch-icon.png"}
+
+
+def manifest() -> bytes:
+    """The web app manifest: the name, the ACE mark and the Coast to Dunes colours a phone uses for a saved link."""
+    return json.dumps({
+        "name": "ACE, the African Context Engine", "short_name": "ACE", "start_url": "/", "display": "standalone",
+        "background_color": "#FFFFFF", "theme_color": "#006B69",
+        "icons": [{"src": "/static/icon-192.png", "sizes": "192x192", "type": "image/png"},
+                  {"src": "/static/icon-512.png", "sizes": "512x512", "type": "image/png"},
+                  {"src": "/static/mark.svg", "sizes": "any", "type": "image/svg+xml"}]}).encode()
+
+
 def robots() -> bytes:
     return f"User-agent: *\nAllow: /\nDisallow: /try/\nSitemap: {SITE_ORIGIN}/sitemap.xml\n".encode()
 

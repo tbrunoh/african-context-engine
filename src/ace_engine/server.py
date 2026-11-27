@@ -153,6 +153,12 @@ class AceApp:
                 if data is not None:
                     kind = site.CONTENT_TYPES.get(name[name.rfind("."):], "application/octet-stream")
                     return "200 OK", [("Content-Type", kind), ("Cache-Control", "public, max-age=3600")], data
+            if path in site.ROOT_ICONS:  # browsers and phones ask for these at the root, whatever the page links
+                return "200 OK", [("Content-Type", site.CONTENT_TYPES[path[path.rfind("."):]]),
+                                  ("Cache-Control", "public, max-age=86400")], site.asset_bytes(site.ROOT_ICONS[path])
+            if path == "/site.webmanifest":
+                return "200 OK", [("Content-Type", "application/manifest+json"),
+                                  ("Cache-Control", "public, max-age=86400")], site.manifest()
             if path == "/robots.txt":
                 return "200 OK", [("Content-Type", "text/plain; charset=utf-8")], site.robots()
             if path == "/sitemap.xml":

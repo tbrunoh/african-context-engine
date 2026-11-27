@@ -1,0 +1,204 @@
+# isiXhosa for South Africa, in the standard Latin script. Drafted for ACE 2.3. Awaiting review by fluent
+# speakers and, for the safety phrases, by clinicians.
+meta:
+  code: xh
+  name: Xhosa
+  native: "isiXhosa"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "I-ACE iza kuphendula ngesiXhosa."
+  names: ["isixhosa", "xhosa", "xh"]
+
+templates:
+  safety.OPENERS.self_harm: "Ndiyaxolisa kakhulu ukuba uziva ngolu hlobo. Ufanele ukufumana inkxaso ngoku. {numbers}"
+  safety.OPENERS.maternal: "Oku kunokuba yingxakeko yokukhulelwa. Yiya esibhedlele esikufutshane ngoku. {numbers}"
+  safety.OPENERS.poisoning: "Oku kubonakala ngathi yityhefu. Fumana uncedo lukagqirha ngoku, uphathe ibhotile. {numbers}"
+  safety.OPENERS.child_protection: "Umntwana usenokuba sengozini. Nceda ufumane uncedo ngoku. {numbers}"
+  safety.OPENERS.gbv: "Ndiyaxolisa ukuba oku kwenzeka kuwe. Unokufumana uncedo ngoku. {numbers}"
+  safety.OPENERS.health_urgent: "Oku kubonakala kungxamisekile. Fumana uncedo lukagqirha ngoku. {numbers}"
+  safety.CALL_WORD: "Tsalela {numbers}"
+  safety.OR_WORD: "okanye"
+  safety.EMERGENCY_WORD: "ingxakeko"
+  safety.FALLBACK_NUMBERS: "Tsalela inombolo yengxakeko yendawo yakho okanye uye esibhedlele esikufutshane."
+
+  commands.TEXTS.help: "I-ACE inika iingcebiso zendawo ezihloliweyo. Buza ngolwimi lwakho. Imiyalelo: UBUQHETSEBA + umyalezo ukuze uhlole umyalezo, ICEBO + icebo lakho ukwabelana ngolwazi, IMITHOMBO, NGAKUMBI, ULWIMI + ikhowudi (umz. ULWIMI EN), CIMA ukucima iinkcukacha zakho."
+  commands.TEXTS.help_short: "Buza i-ACE ngolwimi lwakho. UBUQHETSEBA + umyalezo iyawuhlola. CIMA icima iinkcukacha zakho."
+  commands.TEXTS.forgotten: "Kwenziwe. I-ACE icime yonke into ebinayo ngale nombolo."
+  commands.TEXTS.stopped: "Akusayi kufumana miyalezo kwi-ACE ngaphandle kokuba ubhala kwakhona. Thumela CIMA ukucima iinkcukacha zakho."
+  commands.TEXTS.language: "Phendula ngo-ULWIMI nekhowudi:"
+  commands.TEXTS.tip_thanks: "Enkosi. Icebo lakho ligciniwe ukuze lihlolwe yingcali. Alizukwabelwana lingekahlolwa."
+  commands.TEXTS.tip_usage: "Thumela ICEBO necebo lakho, umz.: ICEBO amagqabi e-neem ayanceda kwisibungu sombona eMpuma Koloni."
+  commands.TEXTS.scam_usage: "Thumela UBUQHETSEBA nomyalezo ongawuthembiyo, i-ACE iza kuwuhlola."
+  commands.TEXTS.no_sources: "Akukho mpendulo yangaphambili enokubonisa umthombo wayo. Buza umbuzo kuqala."
+  commands.TEXTS.no_more: "Yiloo nto kuphela i-ACE enayo ngalo mbandela okwangoku. Buza omnye umbuzo okanye uthumele UNCEDO."
+  commands.TEXTS.clarify: "I-ACE ayikabi nasikhokelo sihloliweyo ngoko. I-ACE inokukunceda nge: {topics}. Thumela ICEBO ukongeza ulwazi."
+  commands.TEXTS.unread: "I-ACE ayikakwazi ukufunda olu lwimi. Nceda ubhale ngolunye kwezi: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "KUBONAKALA KUBUQHETSEBA."
+  scam.HEADLINES.SUSPICIOUS: "LUMKA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Andiboni zimpawu zobuqhetseba ezaziwayo, kodwa oko akuthethi ukuba kukhuselekile."
+  scam.SIGNS_LABEL: "Iimpawu zesilumkiso:"
+  scam.REPORT_LINE: "Wudlulisele ku-333, simahla."
+  scam.GENERIC_REPORT_LINE: "Musa ukuphendula okanye ukuthumela imali. Xela kwinethiwekhi yakho ngenombolo ekwiwebhusayithi yayo okanye kwipakethe ye-SIM."
+  scam.NEUTRAL_ADVICE: "Musa ukwabelana nge-PIN yakho, kwaye ujonge ibhalansi yemali yakho yeselula phambi kokwenza nantoni na umyalezo okuxelela yona."
+  scam.SIGNAL.asks_for_pin: "ucela i-PIN yakho okanye igama lokugqitha"
+  scam.SIGNAL.double_registration: "uthi i-SIM yakho ibhaliswe kabini"
+  scam.SIGNAL.refund_request: "ukucela ukuba ubuyise imali ethunyelwe ngempazamo"
+  scam.SIGNAL.confirmation_from_personal_number: "ubonakala ngathi sisiqinisekiso se-M-PESA kodwa uvela kwinombolo yomntu"
+  scam.SIGNAL.unofficial_operator_number: "uthi uvela kwi-Safaricom kodwa unika inombolo engeyiyo 0722000000"
+  scam.SIGNAL.dial_code_instruction: "ukuxelela ukuba ucofe ikhowudi kwifowuni yakho"
+  scam.SIGNAL.prize_or_offer: "uthi uphumelele ibhaso okanye unika imali"
+  scam.SIGNAL.link: "unekhonkco"
+  scam.SIGNAL.pressure: "ukunyanzela ukuba wenze ngokukhawuleza"
+
+  channels.ussd.UI:
+    ask: "Buza umbuzo"
+    scam: "Hlola umyalezo"
+    lang: "Ulwimi"
+    more: "98 Ngakumbi"
+    next: "1 Okulandelayo"
+    back: "0 Emva"
+    menu: "0 Imenyu"
+    ask_prompt: "Bhala umbuzo wakho:"
+    scam_prompt: "Bhala okanye uncamathisele umyalezo:"
+    invalid: "Ukukhetha akulunganga."
+    end_pack: "Yiyo yonke loo nto ngesi sihloko."
+    lang_prompt: "1 English"
+    topics: "Izihloko"
+    place_prompt: "Bhala igama le-{area} lakho:"
+    food_prompt: "Bhala ukutya ne-{area} lakho, umz. umbona {example}:"
+    weeks_prompt: "Ukhulelwe iiveki ezingaphi?"
+    crop_prompt: "Bhala isityalo noko ukubonayo:"
+  channels.voice.PROMPTS:
+    welcome: "Wamkelekile kwi-ACE."
+    press: "Nge-{label}, cofa u-{n}."
+    repeat: "Ukuze uve imenyu kwakhona, cofa u-0."
+    bye: "Asikufumananga ukukhetha kwakho. Sala kakuhle."
+    invalid: "Oko akukhetho lulungileyo."
+
+  services.base.DAYS: ["Mvu", "Bin", "Tha", "Sin", "Hla", "Mgq", "Caw"]
+  services.base.MONTHS: ["Jan", "Feb", "Mat", "Epr", "Mey", "Jun", "Jul", "Aga", "Sep", "Okt", "Nov", "Dis"]
+  services.base.NEEDS_PLACE: "Ukweyiphi {area}? Phendula ngegama layo, umz. {example}."
+  services.base.AREA_DEFAULT: "indawo"
+  services.base.AREA_WORD: {ZA: "iphondo"}
+  services.base.COUNTRY_SAID: {ZA: "uMzantsi Afrika"}
+
+  services.rain.WORDS.likely: "kunokwenzeka kakhulu"
+  services.rain.WORDS.possible: "kunokwenzeka"
+  services.rain.WORDS.dry: "kuya koma kakhulu"
+  services.rain.HEAD: "Imvula kufutshane ne-{place}:"
+  services.rain.HEAVY_LINE: "Imvula enkulu (20 mm okanye ngaphezulu) inokuna {days}."
+  services.rain.FOOT: "Amathuba avela kuqikelelo lwe-ECMWF lwe-{date}."
+  services.rain.SPAN: "{a} ukuya ku-{b}"
+  services.rain.AND: "no"
+  services.rain.STALE: "I-ACE ayinalo uqikelelo lwemozulu lwangoku lwe-{place}. Jonga uqikelelo lwe-{met}."
+  services.rain.NEXT: "Cwangcisa umsebenzi wasefama kwiintsuku ezomileyo."
+
+  services.warnings.FOUND: "Isilumkiso sikarhulumente se-{place} esivela ku-{authority}, de kube ngu-{until}:"
+  services.warnings.NATIONAL: "Isilumkiso sikarhulumente selizwe lonke esivela ku-{authority}, de kube ngu-{until}:"
+  services.warnings.MORE: "Ezinye ezingu-{n} zisasebenza."
+  services.warnings.NONE: "Akukho silumkiso sikarhulumente sivela ku-{authority} sichaphazela i-{place} ngoku (kuhlolwe ngo-{checked})."
+  services.warnings.STALE: "I-ACE ayikwazanga ukuhlola izilumkiso ze-{authority} kutshanje, ngoko ayazi ukuba zikhona na. Mamela izaziso zikarhulumente ezivela ku-{authority}."
+  services.warnings.GAP: "I-{authority} ayipapashi izilumkiso ngendlela i-ACE enokuyifunda, ngoko i-ACE ayinakuhlola izilumkiso apho. Mamela izaziso zikarhulumente ezivela ku-{authority} kunomathotholo nakumabonwakude."
+  services.warnings.YOUR_AREA: "indawo yakho"
+
+  services.facility.NEAR: "Iziko lezempilo likarhulumente elikufutshane:"
+  services.facility.IN_AREA: "Iziko lezempilo likarhulumente e-{place}:"
+  services.facility.CAVEAT: "Ukusuka kuluhlu lwamaziko ezempilo karhulumente lowama-2019; qinisekisa ukuba livulekile phambi kokuya."
+  services.facility.REGISTRY_CAVEAT: "Ukusuka kwirejista yamaziko yeSebe lezeMpilo; tsalela phambi kokuya ukuba unako."
+  services.facility.EMERGENCY: "Ingxakeko: {numbers}."
+  services.facility.NO_NUMBER: "Ukuba yingxakeko, tsalela inombolo yengxakeko yendawo yakho."
+  services.facility.NONE: "I-ACE ayifumananga ziko lezempilo likarhulumente kwi-{km} km kuluhlu lwayo lowama-2019."
+  services.facility.GAP: "I-ACE ayikabi naluhlu lwamaziko ezempilo kweli lizwe."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} e-{market}: {currency} {price} {unit} ngo-{month}"
+  services.prices.CHANGE.up: "inyuke nge-{pct}% ukusuka ku-{prev}"
+  services.prices.CHANGE.down: "yehle nge-{pct}% ukusuka ku-{prev}"
+  services.prices.CHANGE.same: "iyafana no-{prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km ukusuka e-{place})"
+  services.prices.FOOT: "Amaxabiso e-WFP."
+  services.prices.TOP: "Amaxabiso amatsha e-WFP e-{market}{far}:"
+  services.prices.OLD: "Amaxabiso amatsha e-WFP i-ACE enawo e-{country} angawe-{month}, sele emadala. Buza abarhwebi okanye iofisi yakho yezolimo."
+  services.prices.GAP: "I-WFP ayipapashi amaxabiso e-{country}, ngoko i-ACE ayinakunika maxabiso apho. Buza abarhwebi okanye iofisi yakho yezolimo."
+  services.prices.THIN: "Amaxabiso amatsha e-WFP e-{country} aquka ukutya okumbalwa kuphela. Buza abarhwebi okanye iofisi yakho yezolimo."
+  services.prices.NO_FOOD: "I-ACE ayinalo ixabiso elitsha le-WFP le-{food} kufutshane ne-{place}."
+  services.prices.UNIT: "nge-{unit}"
+  services.prices.UNIT_MANY: "nge-{unit}"
+  services.prices.LOCAL_FOOD: {maize: "Umbona", "maize flour": "Umgubo wombona", "maize meal": "Umgubo wombona", beans: "Iimbotyi", rice: "Irayisi", sorghum: "Amazimba", millet: "Inyawuthi", sugar: "Iswekile", oil: "Ioli", "wheat flour": "Umgubo wengqolowa", wheat: "Ingqolowa", cowpeas: "Iimbotyi", potatoes: "Iitapile", tomatoes: "Itumato", onions: "Itswele", salt: "Ityuwa", milk: "Ubisi", eggs: "Amaqanda", bread: "Isonka", pasta: "I-pasta"}
+  services.prices.LOCAL_DETAIL: {white: "omhlophe", yellow: "omthubi", imported: "ongenisiweyo", local: "wasekhaya", dry: "owomileyo", red: "obomvu"}
+
+  services.pregnancy.FIRST: "Kwiiveki ezingu-{w}, yiya kuhlolo lwakho lokuqala lokukhulelwa ngoku, phambi kweveki 12."
+  services.pregnancy.DUE_NOW: "Kwiiveki ezingu-{w}, uhlolo lokukhulelwa lufanele ngoku. Olulandelayo lukwiveki {next}."
+  services.pregnancy.NEXT: "Kwiiveki ezingu-{w}, uhlolo lwakho olulandelayo lokukhulelwa lukwiveki {next}."
+  services.pregnancy.LATE: "Kwiiveki ezingu-{w} sele udlule kuhlolo lokugqibela olucwangciselwe iveki 40. Bona umsebenzi wezempilo namhlanje."
+  services.pregnancy.ASK: "Ukhulelwe iiveki ezingaphi? Phendula ngenombolo, umz. iiveki ezingu-22."
+  services.pregnancy.CALL: "Tsalela {numbers}."
+
+  services.pests.LIKELY: "Oku kunokuba yi-{problem}. I-ACE ayisiboni isityalo sakho, ngoko hlola ezi mpawu:"
+  services.pests.MAYBE: "Mhlawumbi yi-{problem}."
+  services.pests.REFER: "Cela igosa lezolimo ukuba liqinisekise phambi kokutshiza."
+  services.pests.NAMES.fall_armyworm: "isibungu sombona (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "isifo sombona esibulalayo (MLN)"
+  services.pests.NAMES.cassava_mosaic: "isifo se-mosaic somdumbula"
+  services.pests.NAMES.banana_xanthomonas_wilt: "isifo sokubuna kwebhanana (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "isibungu samagqabi etumato (Tuta absoluta)"
+  services.pests.ASK: "Sesiphi isityalo, ubona ntoni? Umz.: amagqabi ombona aneemingxuma nothuli olufana nomgubo womthi."
+  services.pests.UNKNOWN: "Okwangoku i-ACE ihlola umbona, umdumbula, ibhanana netumato. Kwezinye izityalo, buza igosa lezolimo."
+
+phrases:
+  safety.PREGNANCY: ["ukhulelwe", "ndikhulelwe", "umithi", "ndimithi", "umfazi okhulelweyo", "ukhulelwe iinyanga"]
+  safety.POSTPARTUM: ["usandul ukubeleka", "ubelekile", "ndibelekile", "emva kokubeleka", "uzele", "ndizele"]
+  safety.MATERNAL_DANGER: ["igazi", "uyopha", "uopha", "ophayo", "uyangcangcazela", "isifo sokuxhuzula", "uyaxhuzula", "intloko ebuhlungu kakhulu", "amehlo akaboni kakuhle", "umntwana akashukumi", "amanzi aqhekekile", "umkhuhlane ophezulu"]
+  safety.URGENT: ["akaphefumli", "akakwazi ukuphefumla", "uwile akavuki", "akazazi", "uyaxhuzula", "wopha kakhulu", "intlungu yesifuba", "ulunywe yinyoka", "inyoka imlumile", "utshiswe kakhulu"]
+  safety.POISON_ACT: ["usele", "uselile", "uginye", "uginyile", "utyile", "usele ityhefu"]
+  safety.POISON_WHAT: ["ityhefu", "ubuthi", "iyeza lezinambuzane", "ityhefu yeempuku", "iparafini", "ipetroli", "i-bleach", "iikhemikhali"]
+  safety.POISONED: ["bamtyhefile", "umtyhefile", "usele ityhefu", "utye ityhefu", "bamnike ityhefu"]
+  safety.GBV: ["ndidlwengulwe", "bandidlwengula", "uyandibetha", "umyeni wam uyandibetha", "undibethile", "ubundlobongela basekhaya", "usongela ukundibulala"]
+  safety.CHILD: ["umntwana", "umntwana wam", "intombi yam", "unyana wam", "intombazana", "abantwana", "usana"]
+  safety.CHILD_HARM: ["udlwengulwe", "bamdlwengula", "uxhatshazwe", "bayamxhaphaza", "bayambetha", "umbethile", "umtshato onyanzelwayo"]
+  safety.SELF_HARM: ["ukuzibulala", "ndiza kuzibulala", "ndifuna ukufa", "andisafuni ukuphila", "ndifuna ukuphelisa ubomi bam", "ukuzenzakalisa"]
+
+  scam.PIN: ["pin", "igama lokugqitha", "inombolo eyimfihlo"]
+  scam.ASK: ["thumela", "ndinike", "qinisekisa", "faka", "bhala"]
+  scam.MISTAKE: ["ngempazamo", "impazamo", "buyisa imali", "yibuyise"]
+  scam.DOUBLE: ["kabini"]
+  scam.PRIZE: ["uphumelele", "ibhaso", "isipho", "imali yasimahla"]
+  scam.URGENT: ["ngokukhawuleza", "ngoku nje", "kwiiyure ezingama-24", "iza kuvalwa", "iza kumiswa", "isilumkiso sokugqibela"]
+  scam.CLAIMS_OPERATOR: ["vodacom", "mtn", "cell c", "telkom", "fnb", "capitec"]
+  scam.DIAL: ["cofa"]
+
+  services.CUES.pregnancy_companion: ["uhlolo lokukhulelwa", "ikliniki yokukhulelwa", "uhlolo olulandelayo"]
+  services.CUES.nearest_facility: ["isibhedlele", "ikliniki", "ugqirha"]
+  services.CUES.official_warnings: ["isilumkiso", "izikhukhula", "isaqhwithi"]
+  services.CUES.rain_this_week: ["imvula", "iza kuna", "imozulu", "uqikelelo"]
+  services.CUES.market_prices: ["ixabiso", "kubiza malini", "imarike"]
+  services.CUES.pest_check: ["izinambuzane", "isibungu", "isifo", "amagqabi", "mthubi", "imingxuma", "iyabuna", "iyafa"]
+  services.SEASONAL: ["ihlobo", "ubusika", "ixesha lemvula"]
+  services.PREGNANT: ["ukhulelwe", "ndikhulelwe"]
+  services.HOW_MUCH: ["malini"]
+  services.prices.FOODS: {umbona: maize, iimbotyi: beans, irayisi: rice, iswekile: sugar, ioli: oil, iitapile: potatoes, itumato: tomatoes, itswele: onions, ityuwa: salt, amaqanda: eggs, isonka: bread}
+  services.pests.CROPS.maize: ["umbona"]
+  services.pests.CROPS.cassava: ["umdumbula"]
+  services.pests.CROPS.banana: ["ibhanana"]
+  services.pests.CROPS.tomato: ["itumato", "tumato"]
+  services.pests.PROBLEMS.fall_armyworm: ["isibungu", "imingxuma", "umgubo"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["mthubi", "abunile", "afile"]
+  services.pregnancy.WEEK_WORDS: ["iiveki", "iveki"]
+  services.pregnancy.MONTH_WORDS: ["iinyanga", "inyanga"]
+  commands.COMMANDS.help: ["uncedo"]
+  commands.COMMANDS.forget: ["cima"]
+  commands.COMMANDS.stop: ["yeka"]
+  commands.COMMANDS.language: ["ulwimi"]
+  commands.COMMANDS.tip: ["icebo"]
+  commands.COMMANDS.scam: ["ubuqhetseba"]
+  commands.COMMANDS.sources: ["imithombo"]
+  commands.COMMANDS.more: ["ngakumbi"]
+  text.ACTION_CUES: ["ndenze ntoni", "kufuneka ndenze ntoni", "ndingakuthintela njani", "ndingasibulala njani", "ndingakugcina njani", "ndincede"]
+
+words:
+  stopwords: ["kwaye", "okanye", "kodwa", "oku", "apha", "ngoku", "ntoni", "njani", "kuba", "ukuba", "ndicela", "wam", "yam", "kakhulu", "xa"]
+  markers: ["ndicela", "njani", "ntoni", "ngoku", "phi", "kwaye", "okanye", "umntwana", "isibhedlele", "umbona", "enkosi", "apha", "oku", "ukuba", "andazi", "ndifuna", "wam", "yam", "ndikhulelwe", "namhlanje", "ngomso", "amagqabi", "iimbotyi", "iveki", "iiveki", "ndine", "kule", "veki", "zibiza", "iza", "kakuhle", "ixesha", "iintsuku", "kufuneka", "nokuba", "izityalo", "isityalo", "intsimi", "ndiyabulela", "kunye", "phambi"]

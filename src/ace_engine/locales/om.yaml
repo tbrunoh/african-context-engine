@@ -34,6 +34,7 @@ templates:
   commands.TEXTS.no_sources: "Deebiin dura madda isaa agarsiisu hin jiru. Jalqaba gaaffii gaafadhu."
   commands.TEXTS.no_more: "Mata duree kana irratti kan ACE qabu kana qofa. Gaaffii biraa gaafadhu ykn GARGAARSA ergi."
   commands.TEXTS.clarify: "ACE waa'ee kanaa qajeelfama mirkanaa'e hin qabu. ACE kana irratti gargaaruu danda'a: {topics}. Beekumsa yaaduuf GORSA ergi."
+  commands.TEXTS.unread: "ACE afaan kana ammallee hin dubbisu. Maaloo isaan kana keessaa tokkoon barreessaa: {languages}."
 
   scam.HEADLINES.LIKELY_SCAM: "GOWWOOMSA TA'UU DANDA'A."
   scam.HEADLINES.SUSPICIOUS: "OF EEGI."

@@ -34,6 +34,7 @@ templates:
   commands.TEXTS.no_sources: "Ainda não há resposta para mostrar as fontes. Faça primeiro uma pergunta."
   commands.TEXTS.no_more: "É tudo o que o ACE tem sobre este tema por agora. Faça outra pergunta ou envie AJUDA."
   commands.TEXTS.clarify: "O ACE ainda não tem orientação verificada sobre isso. O ACE pode ajudar com: {topics}. Envie DICA para sugerir conhecimento."
+  commands.TEXTS.unread: "O ACE ainda não lê esta língua. Por favor, escreva numa destas: {languages}."
 
   scam.HEADLINES.LIKELY_SCAM: "PROVÁVEL FRAUDE."
   scam.HEADLINES.SUSPICIOUS: "TENHA CUIDADO."
@@ -150,14 +151,14 @@ phrases:
   safety.PREGNANCY: ["gravida", "gravidez", "estou gravida", "esta gravida", "meses de gravidez", "semanas de gravidez", "barriga"]
   safety.POSTPARTUM: ["deu a luz", "acabou de ter o bebe", "depois do parto", "pos parto", "teve o bebe"]
   safety.MATERNAL_DANGER: ["sangramento", "sangra", "sangrar", "hemorragia", "sangue", "convulsoes", "convulsao", "ataques", "dor de cabeca forte", "vista turva", "nao ve bem", "o bebe nao mexe", "bebe parou de mexer", "rebentou a bolsa", "perdeu agua", "febre alta", "deixou de mexer", "nao mexe", "nao se mexe", "parou de se mexer", "mexe menos"]
-  safety.URGENT: ["nao respira", "nao consegue respirar", "dificuldade em respirar", "inconsciente", "desmaiou", "desmaio", "convulsoes", "sangramento forte", "sangra muito", "dor no peito", "mordedura de cobra", "mordido por uma cobra", "mordida por uma cobra", "cobra mordeu", "queimadura grave"]
+  safety.URGENT: ["nao respira", "nao consegue respirar", "dificuldade em respirar", "inconsciente", "desmaiou", "desmaio", "convulsoes", "sangramento forte", "sangra muito", "dor no peito", "mordedura de cobra", "mordido por uma cobra", "mordida por uma cobra", "cobra mordeu", "queimadura grave", "picado por uma cobra", "picada por uma cobra", "picada de cobra", "mordida de cobra", "cobra picou", "nao esta a respirar", "não está a respirar", "não respira"]
   safety.POISON_ACT: ["engoliu", "bebeu", "comeu", "tomou"]
   safety.POISON_WHAT: ["veneno", "pesticida", "insecticida", "inseticida", "quimico", "produto quimico", "veneno de rato", "petroleo", "lixivia", "javel"]
   safety.POISONED: ["envenenado", "envenenada", "envenenamento", "intoxicado", "intoxicada", "intoxicacao"]
-  safety.GBV: ["violada", "violado", "violacao", "abusada sexualmente", "agressao sexual", "o meu marido bate me", "o meu marido bate-me", "ele bate me", "ele bate-me", "bateu me", "violencia domestica", "ameacou matar me", "violencia baseada no genero"]
+  safety.GBV: ["violada", "violado", "violacao", "abusada sexualmente", "agressao sexual", "o meu marido bate me", "o meu marido bate-me", "ele bate me", "ele bate-me", "bateu me", "violencia domestica", "ameacou matar me", "violencia baseada no genero", "me bate", "meu marido me bate", "ele me bate", "me bateu", "marido me bate"]
   safety.CHILD: ["crianca", "a minha filha", "o meu filho", "menina", "menino", "filha", "filho"]
   safety.CHILD_HARM: ["abusada", "abusado", "abuso sexual", "maltratada", "maltratado", "espancada", "espancado", "casamento forcado", "casada a forca", "tocaram lhe"]
-  safety.SELF_HARM: ["matar me", "suicidar me", "suicidio", "quero morrer", "acabar com a minha vida", "fazer mal a mim", "nao quero viver"]
+  safety.SELF_HARM: ["matar me", "suicidar me", "suicidio", "quero morrer", "acabar com a minha vida", "fazer mal a mim", "nao quero viver", "me matar", "quero me matar", "vou me matar", "me suicidar", "tirar a minha vida", "tirar minha vida"]
 
   scam.PIN: ["pin", "senha", "palavra passe", "codigo secreto"]
   scam.ASK: ["envie", "enviar", "mande", "partilhe", "confirme", "introduza", "digite", "responda com"]

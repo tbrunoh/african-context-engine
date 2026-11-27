@@ -1,0 +1,205 @@
+# Icibemba for Zambia, in the standard spelling. Drafted for ACE 2.3 with lower confidence than most added
+# languages: fluent speakers and, for the safety phrases, clinicians must review it first. Zambians often mix
+# Bemba with English, and the English safety phrases still apply to those messages.
+meta:
+  code: bem
+  name: Bemba
+  native: "Icibemba"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE ikalasuka mu Cibemba."
+  names: ["icibemba", "cibemba", "bemba", "bem"]
+
+templates:
+  safety.OPENERS.self_harm: "Ndeumfwa ubulanda sana pantu mulemfwa ifi. Mulingile ukwafwilishiwa nomba line. {numbers}"
+  safety.OPENERS.maternal: "Ici kuti caba ubwafya bwa fumo. Kabiyeni ku cipatala icili mupepi nomba line. {numbers}"
+  safety.OPENERS.poisoning: "Ici cilemoneka nga busungu. Fwayeni ubwafwilisho bwa ba dokota nomba line, musende ne botolo. {numbers}"
+  safety.OPENERS.child_protection: "Umwana kuti aba mu busanso. Mukwai fwayeni ubwafwilisho nomba line. {numbers}"
+  safety.OPENERS.gbv: "Ndeumfwa ubulanda pantu ici cilemucitikila. Kuti mwasanga ubwafwilisho nomba line. {numbers}"
+  safety.OPENERS.health_urgent: "Ici cilemoneka ica bwangu. Fwayeni ubwafwilisho bwa ba dokota nomba line. {numbers}"
+  safety.CALL_WORD: "Ituleni {numbers}"
+  safety.OR_WORD: "nangu"
+  safety.EMERGENCY_WORD: "ubwafya bwa bwangu"
+  safety.FALLBACK_NUMBERS: "Ituleni inamba ya bwafya bwa bwangu iya ku ncende yenu nangu kabiyeni ku cipatala icili mupepi."
+
+  commands.TEXTS.help: "ACE ilapeela amafunde ya ku ncende ayapimwa. Ipusheni mu lulimi lwenu. Amafunde: UBUCENJESHI + imeseji ukupima imeseji, AMAFUNDE + amafunde yenu ukwakanya amano, INTULO, FIMBI, ULULIMI + ikodi (pa cilangililo ULULIMI EN), FUUTA ukufuuta ifyebo fyenu."
+  commands.TEXTS.help_short: "Ipusheni ACE mu lulimi lwenu. UBUCENJESHI + imeseji ilaipima. FUUTA ilafuuta ifyebo fyenu."
+  commands.TEXTS.forgotten: "Cacitwa. ACE yafuuta fyonse ifyo yali nafyo pali iyi namba."
+  commands.TEXTS.stopped: "Tamukapokelele imeseji ukufuma kuli ACE kano mwalemba na kabili. Tumeni FUUTA ukufuuta ifyebo fyenu."
+  commands.TEXTS.language: "Asukeni ULULIMI ne kodi:"
+  commands.TEXTS.tip_thanks: "Natotela. Amafunde yenu yasungwa pa kuti kafundisha ayapime. Tayakaakanwe ilyo tayalapimwa."
+  commands.TEXTS.tip_usage: "Tumeni AMAFUNDE na mafunde yenu, pa cilangililo: AMAFUNDE amabula ya neem yalaafwa ku fishishi fya mataba ku Kasama."
+  commands.TEXTS.scam_usage: "Tumeni UBUCENJESHI ne meseji iyo tamucetekelemo, ACE ikaipima."
+  commands.TEXTS.no_sources: "Takuli icasuko ca kale ica kulanga uko cafuma. Ipusheni icipusho intanshi."
+  commands.TEXTS.no_more: "E fyonse ifyo ACE ikwete pali uyu mulandu pali nomba. Ipusheni icipusho cimbi nangu tumeni UBWAFWO."
+  commands.TEXTS.clarify: "ACE taikwete amafunde ayapimwa pali ico. ACE kuti yamwafwa na: {topics}. Tumeni AMAFUNDE ukulundapo amano."
+  commands.TEXTS.unread: "ACE tailabelenga ululimi ulu. Napapata lembeni mu lumo pali ishi: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "CILEMONEKA NGA BUCENJESHI."
+  scam.HEADLINES.SUSPICIOUS: "CENJELA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Nshilemona ifishibilo ifyaishibikwa fya bucenjeshi, lelo ico tacilola ukuti cacingililwa."
+  scam.SIGNS_LABEL: "Ifishibilo fya kusoka:"
+  scam.REPORT_LINE: "Itumeni ku 333, ni fye."
+  scam.GENERIC_REPORT_LINE: "Mwilasuka nangu ukutuma indalama. Lumbuleni ku netiweki yenu ukupitila mu namba iili pa webusaiti yabo nangu pa paketi ya SIM."
+  scam.NEUTRAL_ADVICE: "Mwilaakanya PIN yenu, kabili moneni indalama shenu isha pa foni ilyo tamulacita icili conse ico imeseji yalanda."
+  scam.SIGNAL.asks_for_pin: "ilelomba PIN yenu nangu ishiwi lya nkama"
+  scam.SIGNAL.double_registration: "ilelanda ukuti SIM yenu yalembeshiwa imiku ibili"
+  scam.SIGNAL.refund_request: "ilemulomba ukubwesha indalama ishatumwa ku lufyengo"
+  scam.SIGNAL.confirmation_from_personal_number: "ileimoneka nge cishininkisho ca M-PESA lelo ilefuma ku namba ya muntu"
+  scam.SIGNAL.unofficial_operator_number: "ilelanda ukuti ilefuma ku Safaricom lelo ilepeela namba iishili 0722000000"
+  scam.SIGNAL.dial_code_instruction: "ilemweba ukwitula ikodi pa foni yenu"
+  scam.SIGNAL.prize_or_offer: "ilelanda ukuti mwacimfya icilambu nangu ilepeela indalama"
+  scam.SIGNAL.link: "ilikwete link"
+  scam.SIGNAL.pressure: "ilemupatikisha ukucita bwangu"
+
+  channels.ussd.UI:
+    ask: "Ipusheni icipusho"
+    scam: "Pimeni imeseji"
+    lang: "Ululimi"
+    more: "98 Fimbi"
+    next: "1 Icikonkapo"
+    back: "0 Bwelelamo"
+    menu: "0 Menyu"
+    ask_prompt: "Lembeni icipusho cenu:"
+    scam_prompt: "Lembeni nangu bikeni imeseji:"
+    invalid: "Ukusala kwalubana."
+    end_pack: "E fyonse pali uyu mutwe."
+    lang_prompt: "1 English"
+    topics: "Imitwe"
+    place_prompt: "Lembeni ishina lya {area} lyenu:"
+    food_prompt: "Lembeni icakulya ne {area} lyenu, pa cilangililo mataba {example}:"
+    weeks_prompt: "Ifumo lyenu lyakwata imilungu inga?"
+    crop_prompt: "Lembeni icilimwa ne fyo mulemona:"
+  channels.voice.PROMPTS:
+    welcome: "Mwaiseni kuli ACE."
+    press: "Pa {label}, tinikeni {n}."
+    repeat: "Pa kumfwa menyu na kabili, tinikeni 0."
+    bye: "Tatwapokelele ukusala kwenu. Shalenipo."
+    invalid: "Ico tecakusala icalungama."
+
+  services.base.DAYS: ["Cim", "Cib", "Cit", "Cin", "Cis", "Mul", "Pas"]
+  services.base.MONTHS: ["Jan", "Feb", "Mac", "Epu", "Mei", "Jun", "Jul", "Oga", "Sep", "Oku", "Nov", "Dis"]
+  services.base.NEEDS_PLACE: "Muli mu {area} nshi? Asukeni ne shina lyakwe, pa cilangililo {example}."
+  services.base.AREA_DEFAULT: "incende"
+  services.base.AREA_WORD: {ZM: "provinsi"}
+  services.base.COUNTRY_SAID: {ZM: "Zambia"}
+
+  services.rain.WORDS.likely: "cilemoneka ukuti cikacitika"
+  services.rain.WORDS.possible: "kuti cacitika"
+  services.rain.WORDS.dry: "ukuuma sana"
+  services.rain.HEAD: "Imfula mupepi na {place}:"
+  services.rain.HEAVY_LINE: "Imfula iikalamba (20 mm nangu ukucila) kuti yaloka {days}."
+  services.rain.FOOT: "Amashuko yafuma mu kusobela kwa ECMWF ukwa {date}."
+  services.rain.SPAN: "{a} ukufika {b}"
+  services.rain.AND: "na"
+  services.rain.STALE: "ACE taikwete ukusobela kwa nshita iya pali nomba ukwa {place}. Moneni ukusobela kwa {met}."
+  services.rain.NEXT: "Pekanyeni imilimo ya mu bwala pa nshiku ishauma."
+
+  services.warnings.FOUND: "Ukusoka kwa buteko ukwa {place} ukufuma kuli {authority}, ukufika {until}:"
+  services.warnings.NATIONAL: "Ukusoka kwa buteko ukwa calo conse ukufuma kuli {authority}, ukufika {until}:"
+  services.warnings.MORE: "Fimbi {n} ficili filebomba."
+  services.warnings.NONE: "Takuli ukusoka kwa buteko ukufuma kuli {authority} ukukuma {place} pali nomba (kwapimwa {checked})."
+  services.warnings.STALE: "ACE taikwanishe ukupima ukusoka kwa {authority} mu nshita ishipi, e ico taishibe nga kulipo. Kutikeni ku mbila sha buteko ukufuma kuli {authority}."
+  services.warnings.GAP: "{authority} tailasabankanya ukusoka mu nshila iyo ACE ingabelenga, e ico ACE teti ipime ukusoka kulya. Kutikeni ku mbila sha buteko ukufuma kuli {authority} pa cilimba na pa TV."
+  services.warnings.YOUR_AREA: "incende yenu"
+
+  services.facility.NEAR: "Icipatala ca buteko icili mupepi:"
+  services.facility.IN_AREA: "Icipatala ca buteko ku {place}:"
+  services.facility.CAVEAT: "Ukufuma ku mutande wa 2019 uwa fipatala fya buteko; shininkisheni ukuti cilaisuka ilyo tamulaya."
+  services.facility.REGISTRY_CAVEAT: "Ukufuma mu calembwa ca fipatala ica Ministry of Health; ituleni ilyo tamulaya nga kuti mwacikwanisha."
+  services.facility.EMERGENCY: "Ubwafya bwa bwangu: {numbers}."
+  services.facility.NO_NUMBER: "Nga bwafya bwa bwangu, ituleni inamba ya bwafya bwa bwangu iya ku ncende yenu."
+  services.facility.NONE: "ACE taisangile icipatala ca buteko mukati ka {km} km mu mutande wayo uwa 2019."
+  services.facility.GAP: "ACE taikwete umutande wa fipatala uwa ici calo."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} ku {market}: {currency} {price} {unit} mu {month}"
+  services.prices.CHANGE.up: "yaninina ne {pct}% ukufuma pa {prev}"
+  services.prices.CHANGE.down: "yaikata ne {pct}% ukufuma pa {prev}"
+  services.prices.CHANGE.same: "yalingana na {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km ukufuma ku {place})"
+  services.prices.FOOT: "Imitengo ya WFP."
+  services.prices.TOP: "Imitengo ya WFP iipya ku {market}{far}:"
+  services.prices.OLD: "Imitengo ya WFP iipya iyo ACE ikwete iya {country} ni iya {month}, kabili yakota. Ipusheni abashitisha nangu ofesi yenu iya bulimi."
+  services.prices.GAP: "WFP tailasabankanya imitengo iya {country}, e ico ACE teti ipeele imitengo kulya. Ipusheni abashitisha nangu ofesi yenu iya bulimi."
+  services.prices.THIN: "Imitengo ya WFP iipya iya {country} ilelanda pa fyakulya finono fye. Ipusheni abashitisha nangu ofesi yenu iya bulimi."
+  services.prices.NO_FOOD: "ACE taikwete umutengo wa WFP uupya uwa {food} mupepi na {place}."
+  services.prices.UNIT: "pa {unit}"
+  services.prices.UNIT_MANY: "pa {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Amataba", "maize flour": "Ubunga", "maize meal": "Ubunga", beans: "Ifyumbu fya cilemba", rice: "Umupunga", sorghum: "Amasaka", millet: "Amale", sugar: "Shuga", oil: "Amafuta", "wheat flour": "Ubunga bwa wheat", wheat: "Wheat", cowpeas: "Ilanda", potatoes: "Ifyumbu", tomatoes: "Matimati", onions: "Onyoni", salt: "Umucele", milk: "Umukaka", eggs: "Amani", bread: "Umukate", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "ayabuuta", yellow: "ayakashikila", imported: "ayafuma ku calo cimbi", local: "aya muno", dry: "ayauma", red: "ayakashika"}
+
+  services.pregnancy.FIRST: "Pa milungu {w}, kabiyeni ku kupimwa kwenu kwa ntanshi ukwa fumo nomba line, ilyo umulungu wa 12 taulafika."
+  services.pregnancy.DUE_NOW: "Pa milungu {w}, ukupimwa kwa fumo kwafika nomba. Ukukonkapo kuli pa mulungu wa {next}."
+  services.pregnancy.NEXT: "Pa milungu {w}, ukupimwa kwenu ukukonkapo ukwa fumo kuli pa mulungu wa {next}."
+  services.pregnancy.LATE: "Pa milungu {w} mwacila ukupimwa kwa kulekelesha ukwapekanishiwa pa mulungu wa 40. Moneni kabomba wa bumi lelo."
+  services.pregnancy.ASK: "Ifumo lyenu lyakwata imilungu inga? Asukeni ne namba, pa cilangililo imilungu 22."
+  services.pregnancy.CALL: "Ituleni {numbers}."
+
+  services.pests.LIKELY: "Ici kuti caba {problem}. ACE tailemona icilimwa cenu, e ico moneni ifi fishibilo:"
+  services.pests.MAYBE: "Napamo ni {problem}."
+  services.pests.REFER: "Ipusheni kafundisha wa bulimi ukushininkisha ilyo tamulaasansa umuti."
+  services.pests.NAMES.fall_armyworm: "ifishishi fya mataba (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "ubulwele ubwipaya amataba (MLN)"
+  services.pests.NAMES.cassava_mosaic: "ubulwele bwa mosaic ubwa tute"
+  services.pests.NAMES.banana_xanthomonas_wilt: "ubulwele bwa kuuma kwa nkonde (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "ifishishi fya mabula ya matimati (Tuta absoluta)"
+  services.pests.ASK: "Cilimwa nshi, kabili mulemona finshi? Pa cilangililo: amabula ya mataba yali ne fipunda no lufu nge lwa muti."
+  services.pests.UNKNOWN: "Pali nomba ACE ilapima amataba, tute, inkonde na matimati. Pa filimwa fimbi, ipusheni kafundisha wa bulimi."
+
+phrases:
+  safety.PREGNANCY: ["ali ne fumo", "nkwete ifumo", "ifumo", "umwanakashi uli ne fumo", "ali ne mimba", "imyeshi ya fumo"]
+  safety.POSTPARTUM: ["ninshi afyala", "afyele", "nafyele", "pa numa ya kufyala", "ilyo afyele"]
+  safety.MATERNAL_DANGER: ["umulopa", "alefuma umulopa", "ukufuma umulopa", "aletutuma", "ifisushi", "umutwe ulekalipa sana", "amenso tayalemona bwino", "umwana talesela", "amenshi yapuka", "icikabilila ica maka"]
+  safety.URGENT: ["talepema", "takwata amaka ya kupema", "afitilwa", "awa tabuuka", "aletutuma sana", "alefuma umulopa sana", "ukukalipa mu cifuba", "alumwa ne nsoka", "insoka yamuluma", "apya sana"]
+  safety.POISON_ACT: ["anwa", "anwene", "alya", "umwana anwa"]
+  safety.POISON_WHAT: ["ubusungu", "umuti wa fishishi", "umuti wa mbeba", "parafini", "petulo", "bleach", "amakemikolo"]
+  safety.POISONED: ["bamupeele ubusungu", "anwa ubusungu", "alya ubusungu", "bamubikile ubusungu", "ubusungu bwamwikata"]
+  safety.GBV: ["bancitile ku nkonde", "ancitile ku nkonde", "alenuma", "umwaume wandi alenuma", "anumine", "ulukaakala mu ng'anda", "aletiinya ukuncipaya"]
+  safety.CHILD: ["umwana", "umwana wandi", "umwana wandi umwanakashi", "umwana wandi umwaume", "akakashana", "abana", "akana"]
+  safety.CHILD_HARM: ["bamucitile ku nkonde", "amucitile ku nkonde", "alecushiwa", "balemucusha", "balemuma", "amumine", "icupo ca kupatikishiwa"]
+  safety.SELF_HARM: ["ukuipaya", "nkaipaya", "ndefwaya ukufwa", "nshilefwaya ukuba no mweo", "ndefwaya ukupwisha umweo wandi", "ukuicena"]
+
+  scam.PIN: ["pin", "ishiwi lya nkama", "inamba ya nkama"]
+  scam.ASK: ["tumeni", "mpeeleni", "shininkisheni", "bikeni", "lembeni"]
+  scam.MISTAKE: ["ku lufyengo", "lufyengo", "bwesheni indalama", "shibwesheni"]
+  scam.DOUBLE: ["imiku ibili"]
+  scam.PRIZE: ["mwacimfya", "icilambu", "ubupe", "indalama sha fye"]
+  scam.URGENT: ["bwangu bwangu", "nomba line", "mu maawala 24", "ikesalwa", "ikemininwa", "ukusoka kwa kulekelesha"]
+  scam.CLAIMS_OPERATOR: ["airtel", "mtn", "zamtel", "zedmobile"]
+  scam.DIAL: ["ituleni", "dayeleni"]
+
+  services.CUES.pregnancy_companion: ["ukupimwa kwa fumo", "kiliniki ya banamayo", "ukupimwa ukukonkapo"]
+  services.CUES.nearest_facility: ["icipatala", "kiliniki", "dokota"]
+  services.CUES.official_warnings: ["ukusoka", "ilyeshi", "ichipupu"]
+  services.CUES.rain_this_week: ["imfula", "ikaloka", "imiceele ya nshita", "ukusobela"]
+  services.CUES.market_prices: ["umutengo", "shinga", "ku makete"]
+  services.CUES.pest_check: ["ifishishi", "fishishi", "ubulwele", "amabula", "ayakashikila", "ifipunda", "yalefota", "yalefwa"]
+  services.SEASONAL: ["umwela", "icikungulu", "inshita ya mfula"]
+  services.PREGNANT: ["ifumo", "ali ne fumo"]
+  services.HOW_MUCH: ["shinga"]
+  services.prices.FOODS: {amataba: maize, ubunga: maize meal, umupunga: rice, shuga: sugar, amafuta: oil, ifyumbu: potatoes, matimati: tomatoes, onyoni: onions, umucele: salt, amani: eggs, umukate: bread}
+  services.pests.CROPS.maize: ["amataba", "mataba"]
+  services.pests.CROPS.cassava: ["tute", "kalundwe"]
+  services.pests.CROPS.banana: ["inkonde", "nkonde"]
+  services.pests.CROPS.tomato: ["matimati"]
+  services.pests.PROBLEMS.fall_armyworm: ["ifishishi", "ifipunda", "ulufu"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["ayakashikila", "yauma", "yafwa"]
+  services.pregnancy.WEEK_WORDS: ["imilungu", "umulungu", "milungu"]
+  services.pregnancy.MONTH_WORDS: ["imyeshi", "umweshi"]
+  commands.COMMANDS.help: ["ubwafwo"]
+  commands.COMMANDS.forget: ["fuuta"]
+  commands.COMMANDS.stop: ["leka"]
+  commands.COMMANDS.language: ["ululimi"]
+  commands.COMMANDS.tip: ["amafunde"]
+  commands.COMMANDS.scam: ["ubucenjeshi"]
+  commands.COMMANDS.sources: ["intulo"]
+  commands.COMMANDS.more: ["fimbi"]
+  text.ACTION_CUES: ["ndecita shani", "finshi ndingacita", "kuti nacilesha shani", "kuti naipaya shani", "kuti nasunga shani", "ngafweniko"]
+
+words:
+  stopwords: ["na", "nangu", "lelo", "ici", "pano", "nomba", "cinshi", "shani", "pantu", "ukuti", "mukwai", "wandi", "sana", "ndi", "ne"]
+  markers: ["mukwai", "shani", "cinshi", "finshi", "nomba", "nani", "kwisa", "pantu", "umwana", "icipatala", "amataba", "natotela", "ndefwaya", "nshishibe", "wandi", "sana", "ifumo", "mailo", "lelo", "indalama", "amabula", "tute", "shinga", "umulungu", "imilungu", "imfula", "ukuti", "bushe", "nkwete", "uyu", "ifya", "ica", "ilya", "ukuba", "ilyo", "awe", "ibala", "inshiku", "inshita", "fyonse", "nalimo", "ifyakulya"]

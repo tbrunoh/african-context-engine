@@ -1,0 +1,206 @@
+# Jula (Dyula) for Côte d'Ivoire and Burkina Faso, in the standard spelling with ɛ, ɔ, ɲ and ŋ, which SMS folds
+# to e, o, ny and ng. Drafted for ACE 2.3 with lower confidence than most added languages: fluent speakers and, for
+# the safety phrases, clinicians must review it first. Many speakers mix Jula with French, and the French safety
+# phrases still apply to those messages.
+meta:
+  code: dyu
+  name: Dyula
+  native: "Julakan"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE bɛna i jaabi julakan na."
+  names: ["julakan", "jula", "dioula", "dyula", "dyu"]
+
+templates:
+  safety.OPENERS.self_harm: "Hakɛto, a ma diya ne ye kosɛbɛ ko i bɛ miiri ten. I ka kan ka dɛmɛ sɔrɔ sisan. {numbers}"
+  safety.OPENERS.maternal: "Nin bɛ se ka kɛ kɔnɔ ko teliman ye. Taa dɔgɔtɔrɔso surunman na sisan. {numbers}"
+  safety.OPENERS.poisoning: "Nin bɛ iko pɔsɔni. Dɔgɔtɔrɔ ka dɛmɛ ɲini sisan, ka butɛli ta taa. {numbers}"
+  safety.OPENERS.child_protection: "Den dɔ bɛ se ka kɛ farati la. Dɛmɛ ɲini sisan. {numbers}"
+  safety.OPENERS.gbv: "Hakɛto, a ma diya ne ye ko nin bɛ ka kɛ i la. I bɛ se ka dɛmɛ sɔrɔ sisan. {numbers}"
+  safety.OPENERS.health_urgent: "Nin bɛ iko ko teliman. Dɔgɔtɔrɔ ka dɛmɛ ɲini sisan. {numbers}"
+  safety.CALL_WORD: "Wele {numbers}"
+  safety.OR_WORD: "walima"
+  safety.EMERGENCY_WORD: "ko teliman"
+  safety.FALLBACK_NUMBERS: "Wele i ka mara ko teliman nimɔrɔ walima taa dɔgɔtɔrɔso surunman na."
+
+  commands.TEXTS.help: "ACE bɛ ladili di minnu sɛgɛsɛgɛra i ka mara kan. Ɲininkali kɛ i ka kan na. Cikanw: NAMARA + cikan ka a sɛgɛsɛgɛ, LADILI + i ka ladili ka dɔnniya tila, BƆYƆRƆ, WƐRƐW, KAN + kodi (iko KAN EN), JƆSI ka i ka kunnafoniw jɔsi."
+  commands.TEXTS.help_short: "Ɲininkali kɛ ACE fɛ i ka kan na. NAMARA + cikan bɛ a sɛgɛsɛgɛ. JƆSI bɛ i ka kunnafoniw jɔsi."
+  commands.TEXTS.forgotten: "A kɛra. ACE ye fɛn bɛɛ jɔsi a tun bɛ minnu sɔrɔ nin nimɔrɔ kan."
+  commands.TEXTS.stopped: "I tɛna cikan sɔrɔ tugun ACE fɛ fo i ka sɛbɛn tugun. JƆSI ci ka i ka kunnafoniw jɔsi."
+  commands.TEXTS.language: "KAN ni kodi jaabi:"
+  commands.TEXTS.tip_thanks: "I ni ce. I ka ladili marala walasa dɔnnikɛla ka a sɛgɛsɛgɛ. A tɛna tila ni a ma sɛgɛsɛgɛ."
+  commands.TEXTS.tip_usage: "LADILI ni i ka ladili ci, iko: LADILI neem furaw bɛ kaba tumuw kɛlɛ Buwake."
+  commands.TEXTS.scam_usage: "NAMARA ni cikan min ma i dalen ci, ACE bɛna a sɛgɛsɛgɛ."
+  commands.TEXTS.no_sources: "Jaabi fɔlɔ si tɛ yen min bɔyɔrɔ bɛ se ka jira. Ɲininkali kɛ fɔlɔ."
+  commands.TEXTS.no_more: "O de ye fɛn bɛɛ ye ACE bɛ min sɔrɔ nin ko kan sisan. Ɲininkali wɛrɛ kɛ walima DƐMƐ ci."
+  commands.TEXTS.clarify: "ACE ma ladili sɔrɔ fɔlɔ min sɛgɛsɛgɛra o ko kan. ACE bɛ se ka i dɛmɛ: {topics}. LADILI ci ka dɔnniya fara a kan."
+  commands.TEXTS.unread: "ACE tɛ se ka nin kan kalan fɔlɔ. Sɛbɛnni kɛ nin kanw dɔ la: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "A BƐ IKO NAMARA."
+  scam.HEADLINES.SUSPICIOUS: "I JANTO I YƐRƐ LA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "N ma namara taamashiyɛn si ye min bɛ dɔn, nka o kɔrɔ tɛ ko a tɛ farati la."
+  scam.SIGNS_LABEL: "Lasɔmini taamashiyɛnw:"
+  scam.REPORT_LINE: "A ci 333 ma, a ye fu ye."
+  scam.GENERIC_REPORT_LINE: "I kana jaabi kɛ walima wari ci. A fɔ i ka telefɔni sosiyete ye ni nimɔrɔ ye min bɛ u ka siti kan walima SIM paki kan."
+  scam.NEUTRAL_ADVICE: "I kana i ka PIN fɔ mɔgɔ si ye, ka i ka telefɔni wari lajɛ sani i ka fɛn kɛ cikan dɔ ko min fɔ."
+  scam.SIGNAL.asks_for_pin: "a bɛ i ka PIN walima gundo daɲɛ ɲini"
+  scam.SIGNAL.double_registration: "a b'a fɔ ko i ka SIM sɛbɛnna siɲɛ fila"
+  scam.SIGNAL.refund_request: "a bɛ i deli ka wari segin min cira filila fɛ"
+  scam.SIGNAL.confirmation_from_personal_number: "a bɛ iko M-PESA sɛmɛntiya nka a bɔra mɔgɔ ka nimɔrɔ kan"
+  scam.SIGNAL.unofficial_operator_number: "a b'a fɔ ko a bɔra Safaricom nka a bɛ nimɔrɔ di min tɛ 0722000000 ye"
+  scam.SIGNAL.dial_code_instruction: "a b'a fɔ i ye ko i ka kodi digi i ka telefɔni kan"
+  scam.SIGNAL.prize_or_offer: "a b'a fɔ ko i ye sara sɔrɔ walima a bɛ wari di"
+  scam.SIGNAL.link: "lien bɛ a la"
+  scam.SIGNAL.pressure: "a bɛ i teliya ka a kɛ joona"
+
+  channels.ussd.UI:
+    ask: "Ɲininkali kɛ"
+    scam: "Cikan sɛgɛsɛgɛ"
+    lang: "Kan"
+    more: "98 Wɛrɛw"
+    next: "1 Nata"
+    back: "0 Segin kɔ"
+    menu: "0 Menu"
+    ask_prompt: "I ka ɲininkali sɛbɛn:"
+    scam_prompt: "Cikan sɛbɛn walima a don:"
+    invalid: "Sugandili ma ɲi."
+    end_pack: "O de ye a bɛɛ ye nin ko kan."
+    lang_prompt: "1 English"
+    topics: "Kow"
+    place_prompt: "I ka {area} tɔgɔ sɛbɛn:"
+    food_prompt: "Dumuni ni i ka {area} sɛbɛn, iko kaba {example}:"
+    weeks_prompt: "I ka kɔnɔ ye dɔgɔkun joli ye?"
+    crop_prompt: "Sɛnɛfɛn ni i bɛ min ye sɛbɛn:"
+  channels.voice.PROMPTS:
+    welcome: "I ni ce ka na ACE la."
+    press: "{label} kama, {n} digi."
+    repeat: "Ka menu lamɛn tugun, 0 digi."
+    bye: "An ma i ka sugandili sɔrɔ. K'an bɛn."
+    invalid: "O tɛ sugandili ɲuman ye."
+
+  services.base.DAYS: ["Ten", "Tar", "Ara", "Ala", "Jum", "Sib", "Kar"]
+  services.base.MONTHS: ["Zan", "Feb", "Mar", "Awi", "Mɛ", "Zuw", "Zul", "Uti", "Sɛt", "Ɔku", "Now", "Des"]
+  services.base.NEEDS_PLACE: "I bɛ {area} jumɛn na? A tɔgɔ jaabi, iko {example}."
+  services.base.AREA_DEFAULT: "mara"
+  services.base.AREA_WORD: {CI: "mara", BF: "mara"}
+  services.base.COUNTRY_SAID: {CI: "Kodiwari", BF: "Burkina"}
+
+  services.rain.WORDS.likely: "a bɛ se ka kɛ kosɛbɛ"
+  services.rain.WORDS.possible: "a bɛ se ka kɛ"
+  services.rain.WORDS.dry: "tile bɛna gɛlɛya"
+  services.rain.HEAD: "Sanji {place} kɛrɛfɛ:"
+  services.rain.HEAVY_LINE: "Sanji belebele (20 mm walima ka tɛmɛ) bɛ se ka na {days}."
+  services.rain.FOOT: "Sababuw bɔra ECMWF ka waati kibaru la min kɛra {date}."
+  services.rain.SPAN: "{a} ka se {b}"
+  services.rain.AND: "ni"
+  services.rain.STALE: "ACE tɛ waati kibaru kura sɔrɔ {place} kama. {met} ka kibaru lajɛ."
+  services.rain.NEXT: "Foro baara labɛn tile jalenw kama."
+
+  services.warnings.FOUND: "Fanga ka lasɔmini {place} kama ka bɔ {authority} fɛ, ka se {until}:"
+  services.warnings.NATIONAL: "Fanga ka lasɔmini jamana bɛɛ kama ka bɔ {authority} fɛ, ka se {until}:"
+  services.warnings.MORE: "Wɛrɛ {n} bɛ baara la hali bi."
+  services.warnings.NONE: "Fanga ka lasɔmini si tɛ {authority} fɛ min bɛ {place} kan sisan (a sɛgɛsɛgɛra {checked})."
+  services.warnings.STALE: "ACE ma se ka {authority} ka lasɔminiw sɛgɛsɛgɛ nin waati in na, o la a t'a dɔn ni dɔ bɛ yen. Fanga ka kibaruya lamɛn min bɔra {authority} fɛ."
+  services.warnings.GAP: "{authority} tɛ lasɔminiw bɔ cogo la ACE bɛ se ka min kalan, o la ACE tɛ se ka lasɔminiw sɛgɛsɛgɛ yen. Fanga ka kibaruya lamɛn min bɔra {authority} fɛ arajo ni telewisɔn kan."
+  services.warnings.YOUR_AREA: "i ka mara"
+
+  services.facility.NEAR: "Fanga ka dɔgɔtɔrɔso surunman:"
+  services.facility.IN_AREA: "Fanga ka dɔgɔtɔrɔso {place}:"
+  services.facility.CAVEAT: "A bɔra fanga ka dɔgɔtɔrɔsow ka lisi la min kɛra 2019; a lajɛ ko a dayɛlɛlen don sani i ka taa."
+  services.facility.REGISTRY_CAVEAT: "A bɔra Kɛnɛya Minisiriso ka dɔgɔtɔrɔsow gafe la; wele sani i ka taa ni i bɛ se."
+  services.facility.EMERGENCY: "Ko teliman: {numbers}."
+  services.facility.NO_NUMBER: "Ni ko teliman don, i ka mara ko teliman nimɔrɔ wele."
+  services.facility.NONE: "ACE ma fanga ka dɔgɔtɔrɔso si sɔrɔ {km} km kɔnɔ a ka 2019 lisi kan."
+  services.facility.GAP: "ACE ma nin jamana ka dɔgɔtɔrɔsow lisi sɔrɔ fɔlɔ."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} {market}: {currency} {price} {unit} {month} kalo"
+  services.prices.CHANGE.up: "a yɛlɛla {pct}% ka bɔ {prev} la"
+  services.prices.CHANGE.down: "a jiginna {pct}% ka bɔ {prev} la"
+  services.prices.CHANGE.same: "a bɛ iko {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km ka bɔ {place})"
+  services.prices.FOOT: "WFP sɔngɔw."
+  services.prices.TOP: "WFP sɔngɔ kuraw {market}{far}:"
+  services.prices.OLD: "WFP sɔngɔ kura minnu bɛ ACE fɛ {country} kama, olu ye {month} taw ye, u kɔrɔla. Feerelaw walima i ka sɛnɛ biro ɲininka."
+  services.prices.GAP: "WFP tɛ sɔngɔw bɔ {country} kama, o la ACE tɛ se ka sɔngɔw di yen. Feerelaw walima i ka sɛnɛ biro ɲininka."
+  services.prices.THIN: "WFP sɔngɔ kuraw {country} kama bɛ dumuni dɔɔnin dɔrɔn de kan. Feerelaw walima i ka sɛnɛ biro ɲininka."
+  services.prices.NO_FOOD: "ACE tɛ WFP sɔngɔ kura sɔrɔ {food} kama {place} kɛrɛfɛ."
+  services.prices.UNIT: "{unit} kelen"
+  services.prices.UNIT_MANY: "{unit} kelen"
+  services.prices.LOCAL_FOOD: {maize: "Kaba", "maize flour": "Kaba mugu", "maize meal": "Kaba mugu", beans: "Sɔsɔ", rice: "Malo", sorghum: "Ɲɔ", millet: "Sanyo", sugar: "Sukaro", oil: "Tulu", "wheat flour": "Farini", wheat: "Bile", cowpeas: "Sɔsɔ", potatoes: "Pɔmutɛri", tomatoes: "Tamati", onions: "Jaba", salt: "Kɔgɔ", milk: "Nɔnɔ", eggs: "Shɛfan", bread: "Buru", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "jɛman", yellow: "nɛrɛmuguman", imported: "bɔra kɔkan", local: "yan ta", dry: "jalen", red: "bileman"}
+
+  services.pregnancy.FIRST: "Dɔgɔkun {w} la, taa i ka kɔnɔ lajɛli fɔlɔ kɛ sisan, sani dɔgɔkun 12 ka se."
+  services.pregnancy.DUE_NOW: "Dɔgɔkun {w} la, kɔnɔ lajɛli waati sera sisan. Nata ye dɔgɔkun {next} ye."
+  services.pregnancy.NEXT: "Dɔgɔkun {w} la, i ka kɔnɔ lajɛli nata ye dɔgɔkun {next} ye."
+  services.pregnancy.LATE: "Dɔgɔkun {w} la i tɛmɛna lajɛli laban kan min labɛnna dɔgɔkun 40 kama. Taa kɛnɛya baarakɛla ye bi."
+  services.pregnancy.ASK: "I ka kɔnɔ ye dɔgɔkun joli ye? Nimɔrɔ jaabi, iko dɔgɔkun 22."
+  services.pregnancy.CALL: "Wele {numbers}."
+
+  services.pests.LIKELY: "Nin bɛ se ka kɛ {problem} ye. ACE tɛ i ka sɛnɛfɛn ye, o la nin taamashiyɛnw lajɛ:"
+  services.pests.MAYBE: "A bɛ se ka kɛ {problem} ye."
+  services.pests.REFER: "Sɛnɛ ladilikɛla ɲininka a ka a sɛmɛntiya sani i ka fura fiyɛ."
+  services.pests.NAMES.fall_armyworm: "kaba tumuw (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "kaba bana min bɛ faga (MLN)"
+  services.pests.NAMES.cassava_mosaic: "bananku mosayiki bana"
+  services.pests.NAMES.banana_xanthomonas_wilt: "namasa jali bana (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "tamati furaw tumuw (Tuta absoluta)"
+  services.pests.ASK: "Sɛnɛfɛn jumɛn, ani i bɛ mun ye? Iko: kaba furaw wolo bɛ u la ni mugu bɛ iko yiri mugu."
+  services.pests.UNKNOWN: "Sisan ACE bɛ kaba, bananku, namasa ani tamati lajɛ. Sɛnɛfɛn wɛrɛw kama, sɛnɛ ladilikɛla ɲininka."
+
+phrases:
+  safety.PREGNANCY: ["kɔnɔ bɛ a la", "kɔnɔ bɛ ne la", "a kɔnɔma", "muso kɔnɔma", "kɔnɔma don", "kɔnɔ kalo"]
+  safety.POSTPARTUM: ["a jiginna kɔsa in", "a jiginna", "ne jiginna", "jigin kɔfɛ", "a ye den sɔrɔ"]
+  safety.MATERNAL_DANGER: ["joli bɛ bɔ", "joli bɔli", "a bɛ yɛrɛyɛrɛ", "kirikirimasiyɛn", "kirikirimasiyɛn b'a la", "kunkolo dimi gɛlɛn", "ɲɛ tɛ fɛn ye ka ɲɛ", "den tɛ lamaga", "ji farala", "farigan gɛlɛn"]
+  safety.URGENT: ["a tɛ ninakili", "a tɛ se ka ninakili", "a binna a ma wuli", "a hakili tɛ a la", "kirikirimasiyɛn b'a la", "joli bɛ bɔ kosɛbɛ", "disi dimi", "sa y'a cin", "sa ye den cin", "tasuma y'a jɛni kosɛbɛ"]
+  safety.POISON_ACT: ["a ye a min", "a ye min", "a ye a kunun", "a ye a dun", "den ye min"]
+  safety.POISON_WHAT: ["pɔsɔni", "binkɛnɛfagalan", "ɲinɛfagalan", "pitirolo", "esansi", "jawɛli"]
+  safety.POISONED: ["pitirolo min", "pɔsɔni min", "jawɛli min", "u ye pɔsɔni d'a ma", "a ye pɔsɔni min", "a ye pɔsɔni dun", "u ye pɔsɔni don a la", "u y'a pɔsɔni"]
+  safety.GBV: ["u ye ne cɛn barika la", "a ye ne cɛn barika la", "a bɛ ne gosi", "n cɛ bɛ ne gosi", "a ye ne gosi", "du kɔnɔ fariyakow", "a b'a fɛ ka ne faga"]
+  safety.CHILD: ["den", "ne den", "ne denmuso", "ne dencɛ", "sunguru fitini", "denmisɛnw", "den fitini"]
+  safety.CHILD_HARM: ["u y'a cɛn barika la", "y'a cɛn barika la", "u bɛ a tɔɔrɔ", "u b'a tɔɔrɔ", "u bɛ a gosi", "a y'a gosi", "furu barika la"]
+  safety.SELF_HARM: ["ne yɛrɛ faga", "n bɛna ne yɛrɛ faga", "n b'a fɛ ka sa", "n t'a fɛ ka ɲɛnamaya tugun", "n b'a fɛ ka ne ɲɛnamaya ban", "ne yɛrɛ jogin"]
+
+  scam.PIN: ["pin", "gundo daɲɛ", "gundo nimɔrɔ"]
+  scam.ASK: ["ci", "a di ne ma", "sɛmɛntiya", "a don", "sɛbɛn"]
+  scam.MISTAKE: ["filila fɛ", "fili", "wari segin", "a segin"]
+  scam.DOUBLE: ["siɲɛ fila"]
+  scam.PRIZE: ["i ye sara sɔrɔ", "sara", "nilifɛn", "wari fu"]
+  scam.URGENT: ["joona joona", "sisan sisan", "lɛri 24 kɔnɔ", "u bɛna a datugu", "u bɛna a jɔ", "lasɔmini laban"]
+  scam.CLAIMS_OPERATOR: ["orange", "orange money", "mtn", "momo", "moov", "moov money", "wave", "telecel"]
+  scam.DIAL: ["digi"]
+
+  services.CUES.pregnancy_companion: ["kɔnɔ lajɛli", "cpn", "lajɛli nata"]
+  services.CUES.nearest_facility: ["dɔgɔtɔrɔso", "dispansɛri", "dɔgɔtɔrɔ"]
+  services.CUES.official_warnings: ["lasɔmini", "jifa", "fiɲɛba"]
+  services.CUES.rain_this_week: ["sanji", "sanji bɛna na", "waati", "waati kibaru"]
+  services.CUES.market_prices: ["sɔngɔ", "joli", "sugu"]
+  services.CUES.pest_check: ["binkɛnɛw", "tumuw", "bana", "furaw", "nɛrɛmuguman", "wolo", "bɛ ka ja", "bɛ ka sa"]
+  services.SEASONAL: ["samiya", "tilema", "sanji waati"]
+  services.PREGNANT: ["kɔnɔma", "kɔnɔ"]
+  services.HOW_MUCH: ["joli"]
+  services.prices.FOODS: {kaba: maize, sɔsɔ: beans, malo: rice, sukaro: sugar, tulu: oil, tamati: tomatoes, jaba: onions, kɔgɔ: salt, shɛfan: eggs, buru: bread, sanyo: millet}
+  services.pests.CROPS.maize: ["kaba"]
+  services.pests.CROPS.cassava: ["bananku"]
+  services.pests.CROPS.banana: ["namasa", "banani"]
+  services.pests.CROPS.tomato: ["tamati"]
+  services.pests.PROBLEMS.fall_armyworm: ["tumuw", "wolo", "mugu"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["nɛrɛmuguman", "jalen", "salen"]
+  services.pregnancy.WEEK_WORDS: ["dɔgɔkun"]
+  services.pregnancy.MONTH_WORDS: ["kalo"]
+  commands.COMMANDS.help: ["dɛmɛ"]
+  commands.COMMANDS.forget: ["jɔsi"]
+  commands.COMMANDS.stop: ["dabila"]
+  commands.COMMANDS.language: ["kan"]
+  commands.COMMANDS.tip: ["ladili"]
+  commands.COMMANDS.scam: ["namara"]
+  commands.COMMANDS.sources: ["bɔyɔrɔ"]
+  commands.COMMANDS.more: ["wɛrɛw"]
+  text.ACTION_CUES: ["n ka kan ka mun kɛ", "n bɛ mun kɛ", "n bɛ a bali cogo di", "n bɛ u faga cogo di", "n bɛ a mara cogo di", "ne dɛmɛ"]
+
+words:
+  stopwords: ["ni", "walima", "nka", "nin", "yan", "sisan", "mun", "cogo", "katuguni", "ko", "ne", "kosɛbɛ", "bɛ", "ka", "la"]
+  markers: ["sisan", "mun", "cogo", "jɔn", "katuguni", "walima", "dɔgɔtɔrɔso", "kaba", "nin", "kosɛbɛ", "kɔnɔma", "kunu", "sini", "wari", "furaw", "bananku", "joli", "dɔgɔkun", "sanji", "sɔsɔ", "ɲininkali"]

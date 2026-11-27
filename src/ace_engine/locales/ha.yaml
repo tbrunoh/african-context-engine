@@ -1,0 +1,204 @@
+# Hausa for Nigeria, in the official Latin script (boko) with the hooked letters ɓ, ɗ, ƙ and ƴ.
+# Drafted for ACE 2.3. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ha
+  name: Hausa
+  native: "Hausa"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE zai amsa da Hausa."
+  names: ["hausa", "harshen hausa", "ha"]
+
+templates:
+  safety.OPENERS.self_harm: "Na yi baƙin ciki sosai da kuke jin haka. Kun cancanci tallafi a yanzu. {numbers}"
+  safety.OPENERS.maternal: "Wannan na iya zama gaggawar ciki. Ku je cibiyar lafiya mafi kusa yanzu. {numbers}"
+  safety.OPENERS.poisoning: "Wannan yana kama da guba. Ku nemi taimakon likita yanzu, ku tafi da kwalbar. {numbers}"
+  safety.OPENERS.child_protection: "Yaro na iya kasancewa cikin haɗari. Don Allah ku nemi taimako yanzu. {numbers}"
+  safety.OPENERS.gbv: "Na yi baƙin ciki da wannan ke faruwa. Kuna iya samun taimako yanzu. {numbers}"
+  safety.OPENERS.health_urgent: "Wannan yana kama da gaggawa. Ku nemi taimakon likita yanzu. {numbers}"
+  safety.CALL_WORD: "Ku kira {numbers}"
+  safety.OR_WORD: "ko"
+  safety.EMERGENCY_WORD: "gaggawa"
+  safety.FALLBACK_NUMBERS: "Ku kira lambar gaggawa ta yankinku ko ku je cibiyar lafiya mafi kusa."
+
+  commands.TEXTS.help: "ACE yana ba da shawarwari na gida da aka tabbatar. Ku yi tambaya da harshenku. Umarni: ZAMBA + saƙo don a duba saƙo, SHAWARA + shawararku don raba ilimi, MAJIYA, ƘARI, HARSHE + lamba (misali HARSHE EN), GOGE don share bayananku."
+  commands.TEXTS.help_short: "Ku tambayi ACE da harshenku. ZAMBA + saƙo yana duba shi. GOGE yana share bayananku."
+  commands.TEXTS.forgotten: "An gama. An share duk abin da ACE ke riƙe game da wannan lambar."
+  commands.TEXTS.stopped: "Ba za ku ƙara samun saƙo daga ACE ba sai kun sake rubutawa. Ku aika GOGE don share bayananku."
+  commands.TEXTS.language: "Ku amsa da HARSHE da lamba:"
+  commands.TEXTS.tip_thanks: "Na gode. An adana shawararku don ƙwararre ya duba. Ba za a raba ta ba sai an tabbatar da ita."
+  commands.TEXTS.tip_usage: "Ku aika SHAWARA tare da shawararku, misali: SHAWARA ganyen darbejiya yana taimakawa kan tsutsar masara a Kano."
+  commands.TEXTS.scam_usage: "Ku aika ZAMBA tare da saƙon da kuke shakka a kai, ACE zai duba shi."
+  commands.TEXTS.no_sources: "Babu amsar da ta gabata da za a nuna majiyoyinta. Ku fara yin tambaya."
+  commands.TEXTS.no_more: "Wannan shi ne duk abin da ACE ke da shi kan wannan batu yanzu. Ku yi wata tambaya ko ku aika TAIMAKO."
+  commands.TEXTS.clarify: "ACE ba shi da tabbatacciyar shawara kan wannan tukuna. ACE zai iya taimakawa da: {topics}. Ku aika SHAWARA don ba da ilimi."
+  commands.TEXTS.unread: "ACE ba ta iya karanta wannan harshe ba tukuna. Don Allah a rubuta da ɗaya daga cikin waɗannan: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "WATAƘILA ZAMBA CE."
+  scam.HEADLINES.SUSPICIOUS: "KU YI HANKALI."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Ban sami alamun zamba da aka sani ba, amma wannan bai tabbatar da cewa babu matsala ba."
+  scam.SIGNS_LABEL: "Alamun gargaɗi:"
+  scam.REPORT_LINE: "Ku tura shi zuwa 333, kyauta ne."
+  scam.GENERIC_REPORT_LINE: "Kada ku amsa ko ku aika kuɗi. Ku kai rahoto ga kamfanin layinku ta lambar da ke shafinsa na hukuma ko a kan katin SIM."
+  scam.NEUTRAL_ADVICE: "Kada ku taɓa bayyana lambar sirrinku (PIN), kuma ku duba kuɗin da ke cikin walat ɗin wayarku kafin ku yi aiki da kowane saƙo."
+  scam.SIGNAL.asks_for_pin: "yana neman lambar sirrinku (PIN) ko kalmar sirri"
+  scam.SIGNAL.double_registration: "yana cewa an yi wa SIM ɗinku rajista sau biyu"
+  scam.SIGNAL.refund_request: "yana neman ku mayar da kuɗin da aka aiko bisa kuskure"
+  scam.SIGNAL.confirmation_from_personal_number: "yana kama da tabbacin M-PESA amma ya fito daga lambar mutum"
+  scam.SIGNAL.unofficial_operator_number: "yana cewa daga Safaricom yake amma yana ba da lamba da ba 0722000000 ba"
+  scam.SIGNAL.dial_code_instruction: "yana umartar ku ku danna wata lamba a wayarku"
+  scam.SIGNAL.prize_or_offer: "yana cewa kun ci wani abu ko yana ba da kuɗi"
+  scam.SIGNAL.link: "yana ɗauke da hanyar shiga (link)"
+  scam.SIGNAL.pressure: "yana matsa muku ku yi gaggawa"
+
+  channels.ussd.UI:
+    ask: "Yi tambaya"
+    scam: "Duba saƙo"
+    lang: "Harshe"
+    more: "98 Ƙari"
+    next: "1 Na gaba"
+    back: "0 Koma baya"
+    menu: "0 Babban menu"
+    ask_prompt: "Rubuta tambayarku:"
+    scam_prompt: "Rubuta ko liƙa saƙon:"
+    invalid: "Zaɓi mara inganci."
+    end_pack: "Shi ke nan game da wannan batu."
+    lang_prompt: "1 English"
+    topics: "Batutuwa"
+    place_prompt: "Rubuta sunan {area}:"
+    food_prompt: "Rubuta abinci da sunan {area}, misali masara {example}:"
+    weeks_prompt: "Cikinku ya kai makonni nawa?"
+    crop_prompt: "Rubuta amfanin gona da abin da kuke gani:"
+  channels.voice.PROMPTS:
+    welcome: "Barka da zuwa ACE."
+    press: "Don {label}, danna {n}."
+    repeat: "Don sake jin menu, danna 0."
+    bye: "Ba mu sami zaɓinku ba. Sai an jima."
+    invalid: "Wannan ba zaɓi ne mai inganci ba."
+
+  services.base.DAYS: ["Lit", "Tal", "Lar", "Alh", "Jum", "Asa", "Lah"]
+  services.base.MONTHS: ["Jan", "Fab", "Mar", "Afr", "May", "Yun", "Yul", "Agu", "Sat", "Okt", "Nuw", "Dis"]
+  services.base.NEEDS_PLACE: "Wace {area} kuke ciki? Ku amsa da sunanta, misali {example}."
+  services.base.AREA_DEFAULT: "yanki"
+  services.base.AREA_WORD: {NG: "jiha"}
+  services.base.COUNTRY_SAID: {KE: "Kenya", TZ: "Tanzaniya", UG: "Yuganda", RW: "Ruwanda", ZA: "Afirka ta Kudu", BW: "Botswana", NA: "Namibiya", ZW: "Zimbabwe", NG: "Najeriya", GH: "Gana", SN: "Senegal", CI: "Kodibuwa", TG: "Togo", CD: "Kongo", MW: "Malawi", BI: "Burundi", CM: "Kamaru", BJ: "Benin", ZM: "Zambiya", TD: "Cadi", GN: "Gini", BF: "Burkina Faso", SS: "Sudan ta Kudu", ET: "Habasha", MZ: "Mozambik", GW: "Gini Bisau", AO: "Angola", SO: "Somaliya", SD: "Sudan", DZ: "Aljeriya", EG: "Masar", LY: "Libiya", MA: "Maroko", TN: "Tunisiya"}
+
+  services.rain.WORDS.likely: "da yiwuwa sosai"
+  services.rain.WORDS.possible: "mai yiwuwa"
+  services.rain.WORDS.dry: "galibi babu ruwa"
+  services.rain.HEAD: "Ruwan sama kusa da {place}:"
+  services.rain.HEAVY_LINE: "Ruwan sama mai yawa (mm 20 ko fiye) mai yiwuwa {days}."
+  services.rain.FOOT: "Yiwuwa daga hasashen ECMWF na {date}."
+  services.rain.SPAN: "{a} zuwa {b}"
+  services.rain.AND: "da"
+  services.rain.STALE: "ACE ba shi da hasashen yanayi na yanzu don {place}. Ku duba hasashen {met}."
+  services.rain.NEXT: "Ku tsara aikin gona don ranakun da ba ruwa sosai."
+
+  services.warnings.FOUND: "Gargaɗin hukuma don {place} daga {authority}, har zuwa {until}:"
+  services.warnings.NATIONAL: "Gargaɗin hukuma don ƙasar baki ɗaya daga {authority}, har zuwa {until}:"
+  services.warnings.MORE: "Wasu {n} suna aiki."
+  services.warnings.NONE: "Babu gargaɗin hukuma daga {authority} da ya shafi {place} a yanzu (an duba {checked})."
+  services.warnings.STALE: "ACE bai iya duba gargaɗin {authority} kwanan nan ba, don haka bai sani ko akwai gargaɗi ba. Ku saurari sanarwar hukuma daga {authority}."
+  services.warnings.GAP: "{authority} ba ya fitar da gargaɗin hukuma ta hanyar da ACE zai iya karantawa, don haka ACE ba zai iya duba gargaɗi a can ba. Ku saurari sanarwar hukuma daga {authority} a rediyo da talabijin."
+  services.warnings.YOUR_AREA: "yankinku"
+
+  services.facility.NEAR: "Cibiyoyin lafiya na gwamnati mafi kusa:"
+  services.facility.IN_AREA: "Asibitocin gwamnati a {place}:"
+  services.facility.CAVEAT: "Daga jerin cibiyoyin gwamnati na 2019; ku tabbatar a buɗe take kafin ku tafi."
+  services.facility.REGISTRY_CAVEAT: "Daga rajistar cibiyoyin lafiya ta Ma'aikatar Lafiya; ku kira kafin ku tafi idan za ku iya."
+  services.facility.EMERGENCY: "Gaggawa: {numbers}."
+  services.facility.NO_NUMBER: "Idan akwai gaggawa, ku kira lambar gaggawa ta yankinku."
+  services.facility.NONE: "ACE bai sami cibiyar gwamnati ba cikin {km} km a jerinsa na 2019."
+  services.facility.GAP: "ACE ba shi da jerin cibiyoyin lafiya na wannan ƙasa tukuna."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} a {market}: {currency} {price} {unit} a {month}"
+  services.prices.CHANGE.up: "ya hau {pct}% kan {prev}"
+  services.prices.CHANGE.down: "ya sauka {pct}% kan {prev}"
+  services.prices.CHANGE.same: "daidai da {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km daga {place})"
+  services.prices.FOOT: "Farashin WFP."
+  services.prices.TOP: "Sabbin farashin WFP a {market}{far}:"
+  services.prices.OLD: "Sabon farashin WFP da ACE ke da shi don {country} na {month} ne, ya tsufa sosai. Ku tambayi 'yan kasuwa ko ofishin noma."
+  services.prices.GAP: "WFP ba ya fitar da farashin kasuwa don {country}, don haka ACE ba zai iya ba da farashi a can ba. Ku tambayi 'yan kasuwa ko ofishin noma."
+  services.prices.THIN: "Sabbin farashin WFP don {country} sun shafi abinci kaɗan sosai. Ku tambayi 'yan kasuwa ko ofishin noma."
+  services.prices.NO_FOOD: "ACE ba shi da sabon farashin WFP na {food} kusa da {place}."
+  services.prices.UNIT: "kowane {unit}"
+  services.prices.UNIT_MANY: "kowane {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Masara", "maize flour": "Garin masara", "maize meal": "Garin masara", beans: "Wake", rice: "Shinkafa", sorghum: "Dawa", millet: "Gero", sugar: "Sukari", oil: "Man girki", "wheat flour": "Garin alkama", wheat: "Alkama", cowpeas: "Wake", potatoes: "Dankali", tomatoes: "Tumatir", onions: "Albasa", salt: "Gishiri", milk: "Madara", eggs: "Ƙwai", bread: "Burodi", pasta: "Taliya"}
+  services.prices.LOCAL_DETAIL: {white: "fari", yellow: "mai ruwan ɗorawa", imported: "na waje", local: "na gida", dry: "busasshe", red: "ja"}
+
+  services.pregnancy.FIRST: "A makonni {w}, ku je gwajin ciki na farko yanzu, kafin makonni 12."
+  services.pregnancy.DUE_NOW: "A makonni {w}, lokacin gwajin ciki ya yi yanzu. Na gaba a makonni {next}."
+  services.pregnancy.NEXT: "A makonni {w}, gwajin cikinku na gaba a makonni {next} ne."
+  services.pregnancy.LATE: "A makonni {w} kun wuce gwaji na ƙarshe da aka tsara a makonni 40. Ku ga ma'aikacin lafiya yau."
+  services.pregnancy.ASK: "Cikinku ya kai makonni nawa? Ku amsa da lamba, misali makonni 22."
+  services.pregnancy.CALL: "Ku kira {numbers}."
+
+  services.pests.LIKELY: "Wannan na iya zama {problem}. ACE ba ya ganin amfanin gonarku, don haka ku duba waɗannan alamu:"
+  services.pests.MAYBE: "Wataƙila {problem}."
+  services.pests.REFER: "Ku tambayi jami'in faɗakarwar noma ya tabbatar kafin ku fesa magani."
+  services.pests.NAMES.fall_armyworm: "tsutsar masara (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "cutar masara mai kisa (MLN)"
+  services.pests.NAMES.cassava_mosaic: "cutar mosaic ta rogo"
+  services.pests.NAMES.banana_xanthomonas_wilt: "cutar bushewar ayaba (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "tsutsar ganyen tumatir (Tuta absoluta)"
+  services.pests.ASK: "Wane amfanin gona, kuma me kuke gani? Misali: ganyen masara mai ramuka da gari kamar na katako."
+  services.pests.UNKNOWN: "Har yanzu ACE yana duba masara, rogo, ayaba da tumatir. Don sauran amfanin gona, ku tambayi jami'in faɗakarwar noma."
+
+phrases:
+  safety.PREGNANCY: ["mai ciki", "tana da ciki", "ina da ciki", "juna biyu", "ciki na wata", "matar da ke da ciki"]
+  safety.POSTPARTUM: ["ta haihu", "na haihu", "bayan haihuwa", "bayan ta haihu", "jego", "tana jego"]
+  safety.MATERNAL_DANGER: ["jini", "zubar jini", "tana zubar da jini", "jini da yawa", "farfaɗiya", "tana farfaɗiya", "ciwon kai mai tsanani", "gani ya dushe", "jaririn baya motsi", "jaririn ba ya motsi", "baya motsi", "ya daina motsi", "ruwan haihuwa ya fashe", "zazzaɓi mai zafi", "tana suma", "ta suma"]
+  safety.URGENT: ["baya numfashi", "ba ya numfashi", "ba ta numfashi", "ya kasa numfashi", "ya suma", "ta suma", "ya fadi sumamme", "sumamme", "farfaɗiya", "zubar jini mai yawa", "jini da yawa", "ciwon ƙirji", "maciji ya sare", "maciji ya cije", "sarar maciji", "maciji ya sari", "ƙuna mai tsanani"]
+  safety.POISON_ACT: ["ya sha", "ta sha", "ya haɗiye", "ta haɗiye", "ya ci", "ta ci"]
+  safety.POISON_WHAT: ["guba", "maganin ƙwari", "maganin kwari", "maganin bera", "kananzir", "fetur", "bilic", "sinadari"]
+  safety.POISONED: ["an sa masa guba", "an sa mata guba", "ya sha guba", "ta sha guba", "an ba shi guba", "an ba ta guba", "guba ta kama shi"]
+  safety.GBV: ["an yi min fyaɗe", "fyaɗe", "mijina yana dukana", "yana dukana", "ya buge ni", "ya daka ni", "cin zarafi", "tashin hankali a gida", "ya yi barazanar kashe ni", "an yi mata fyaɗe"]
+  safety.CHILD: ["yaro", "yarinya", "ɗana", "'yata", "jariri", "yara", "ɗiyata"]
+  safety.CHILD_HARM: ["an yi mata fyaɗe", "an ci zarafinta", "an ci zarafinsa", "an buge shi", "ana dukanta", "ana dukansa", "auren dole", "auren wuri", "kaciyar mata", "an taɓa ta", "fyaɗe"]
+  safety.SELF_HARM: ["kashe kaina", "zan kashe kaina", "ina son mutuwa", "ina so in mutu", "ba na son rayuwa", "kawo ƙarshen rayuwata", "cutar da kaina", "na gaji da rayuwa"]
+
+  scam.PIN: ["pin", "lambar sirri", "kalmar sirri"]
+  scam.ASK: ["aika", "turo", "ba ni", "tabbatar", "shigar", "rubuta"]
+  scam.MISTAKE: ["bisa kuskure", "kuskure", "mayar da kuɗin", "ku mayar"]
+  scam.DOUBLE: ["rajista sau biyu"]
+  scam.PRIZE: ["kun ci kyauta", "kun lashe", "kyauta", "lambar yabo", "kuɗi kyauta", "barka kun ci"]
+  scam.URGENT: ["gaggawa", "nan da nan", "cikin awa 24", "za a rufe", "za a dakatar", "gargaɗi na ƙarshe"]
+  scam.CLAIMS_OPERATOR: ["mtn", "airtel", "glo", "9mobile", "opay", "palmpay", "moniepoint", "kula da abokan ciniki"]
+  scam.DIAL: ["danna", "buga", "shigar"]
+
+  services.CUES.pregnancy_companion: ["gwajin ciki", "awon ciki", "asibitin mata masu ciki", "ganin likita na gaba"]
+  services.CUES.nearest_facility: ["asibiti", "asibitin", "cibiyar lafiya", "likita"]
+  services.CUES.official_warnings: ["gargaɗi", "gargaɗin", "ambaliya", "ambaliyar ruwa", "guguwa"]
+  services.CUES.rain_this_week: ["ruwan sama", "za a yi ruwa", "yanayi", "hasashen yanayi"]
+  services.CUES.market_prices: ["farashi", "farashin", "kasuwa", "nawa ne"]
+  services.CUES.pest_check: ["ƙwari", "kwari", "tsutsa", "tsutsotsi", "cuta", "ganye", "ganyen", "rawaya", "ramuka", "bushewa", "yana mutuwa"]
+  services.SEASONAL: ["damina", "rani", "lokacin ruwa"]
+  services.PREGNANT: ["mai ciki", "juna biyu", "ina da ciki"]
+  services.HOW_MUCH: ["nawa"]
+  services.prices.FOODS: {masara: maize, wake: beans, shinkafa: rice, dawa: sorghum, gero: millet, sukari: sugar, "man girki": oil, alkama: wheat, dankali: potatoes, tumatir: tomatoes, albasa: onions, gishiri: salt, madara: milk, kwai: eggs, burodi: bread, taliya: pasta, gari: flour}
+  services.pests.CROPS.maize: ["masara"]
+  services.pests.CROPS.cassava: ["rogo"]
+  services.pests.CROPS.banana: ["ayaba"]
+  services.pests.CROPS.tomato: ["tumatir"]
+  services.pests.PROBLEMS.fall_armyworm: ["tsutsa", "tsutsotsi", "ramuka", "an cinye", "gari kamar katako"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["rawaya", "bushewa", "ya bushe", "ya mutu"]
+  services.pregnancy.WEEK_WORDS: ["mako", "makonni", "sati"]
+  services.pregnancy.MONTH_WORDS: ["wata", "watanni"]
+  commands.COMMANDS.help: ["taimako", "farawa"]
+  commands.COMMANDS.forget: ["goge"]
+  commands.COMMANDS.stop: ["daina", "tsaya"]
+  commands.COMMANDS.language: ["harshe"]
+  commands.COMMANDS.tip: ["shawara"]
+  commands.COMMANDS.scam: ["zamba"]
+  commands.COMMANDS.sources: ["majiya", "majiyoyi"]
+  commands.COMMANDS.more: ["ƙari"]
+  text.ACTION_CUES: ["me zan yi", "me ya kamata in yi", "yaya zan hana", "yaya zan kashe", "yaya zan adana", "taimake ni", "ku taimaka"]
+
+words:
+  stopwords: ["da", "a", "na", "ta", "ne", "ce", "ko", "amma", "idan", "wannan", "wancan", "shi", "ita", "mu", "su", "yaya", "yaushe", "wane", "wace", "akwai", "babu", "don", "sannu", "kuma", "zuwa", "daga", "kan", "cikin"]
+  markers: ["yana", "tana", "wannan", "kuma", "zan", "masara", "ruwan", "ciki", "jini", "yaro", "yarinya", "kudi", "asibiti", "mijina", "matata", "dana", "yata", "jiya", "yau", "gobe", "nawa", "farashin", "akwai", "babu", "sosai", "kuke", "muke", "wane", "wace", "yaya", "yaushe", "haihu", "guba", "taimako", "ganyen", "rawaya", "rogo", "rogona", "amfanin", "gona"]

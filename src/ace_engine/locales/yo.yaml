@@ -1,0 +1,205 @@
+# Yoruba for Nigeria and Benin, in the standard Latin script with the dotted letters ẹ, ọ and ṣ. Tone marks are left
+# out, as most people type Yoruba on phones. Drafted for ACE 2.3. Awaiting review by fluent speakers and, for the
+# safety phrases, by clinicians.
+meta:
+  code: yo
+  name: Yoruba
+  native: "Yorùbá"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE yoo dahun ni ede Yoruba."
+  names: ["yoruba", "ede yoruba", "yo"]
+
+templates:
+  safety.OPENERS.self_harm: "Ma binu gidigidi pe o n ro bayi. O ye ki o gba atilẹyin ni bayi. {numbers}"
+  safety.OPENERS.maternal: "Eyi le jẹ pajawiri oyun. Lọ si ile iwosan to sunmọ julọ ni bayi. {numbers}"
+  safety.OPENERS.poisoning: "Eyi dabi majele. Wa iranlọwọ dokita ni bayi, ki o si mu igo naa lọwọ. {numbers}"
+  safety.OPENERS.child_protection: "Ọmọde kan le wa ninu ewu. Jọwọ wa iranlọwọ ni bayi. {numbers}"
+  safety.OPENERS.gbv: "Ma binu pe eyi n ṣẹlẹ si ọ. O le ri iranlọwọ gba ni bayi. {numbers}"
+  safety.OPENERS.health_urgent: "Eyi dabi pajawiri. Wa iranlọwọ dokita ni bayi. {numbers}"
+  safety.CALL_WORD: "Pe {numbers}"
+  safety.OR_WORD: "tabi"
+  safety.EMERGENCY_WORD: "pajawiri"
+  safety.FALLBACK_NUMBERS: "Pe nọmba pajawiri agbegbe rẹ tabi lọ si ile iwosan to sunmọ julọ."
+
+  commands.TEXTS.help: "ACE n fun ọ ni imọran agbegbe ti a ti ṣayẹwo. Beere ibeere ni ede rẹ. Awọn aṣẹ: JIBITI + ifiranṣẹ lati ṣayẹwo ifiranṣẹ, IMỌRAN + imọran rẹ lati pin imọ, ORISUN, SIWAJU, EDE + koodu (fun apẹẹrẹ EDE EN), PAARẸ lati pa data rẹ rẹ."
+  commands.TEXTS.help_short: "Beere ibeere lọwọ ACE ni ede rẹ. JIBITI + ifiranṣẹ yoo ṣayẹwo rẹ. PAARẸ yoo pa data rẹ rẹ."
+  commands.TEXTS.forgotten: "O ti pari. Gbogbo ohun ti ACE mọ nipa nọmba yii ti paarẹ."
+  commands.TEXTS.stopped: "O ko ni gba ifiranṣẹ kankan mọ lati ọdọ ACE ayafi ti o ba tun kọwe. Fi PAARẸ ranṣẹ lati pa data rẹ rẹ."
+  commands.TEXTS.language: "Dahun pẹlu EDE ati koodu kan:"
+  commands.TEXTS.tip_thanks: "O ṣeun. A ti fi imọran rẹ pamọ fun amoye lati ṣayẹwo. A ko ni pin in titi a o fi ṣayẹwo rẹ."
+  commands.TEXTS.tip_usage: "Fi IMỌRAN ranṣẹ pẹlu imọran rẹ, fun apẹẹrẹ: IMỌRAN ewe dongoyaro n ṣe iranlọwọ lodi si kokoro agbado ni Ọyọ."
+  commands.TEXTS.scam_usage: "Fi JIBITI ranṣẹ pẹlu ifiranṣẹ ti o ṣiyemeji rẹ, ACE yoo si ṣayẹwo rẹ."
+  commands.TEXTS.no_sources: "Ko si idahun ti tẹlẹ lati fi orisun rẹ han. Kọkọ beere ibeere kan."
+  commands.TEXTS.no_more: "Iyẹn ni gbogbo ohun ti ACE ni lori koko yii fun bayi. Beere ibeere miiran tabi fi IRANLỌWỌ ranṣẹ."
+  commands.TEXTS.clarify: "ACE ko tii ni imọran ti a ṣayẹwo lori iyẹn. ACE le ran ọ lọwọ pẹlu: {topics}. Fi IMỌRAN ranṣẹ lati daba imọ."
+  commands.TEXTS.unread: "ACE ko tii le ka ede yii. Jọwọ kọ ni ọkan ninu awọn wọnyi: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "O ṢEESE KI O JẸ JIBITI."
+  scam.HEADLINES.SUSPICIOUS: "ṢỌRA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Mi o ri ami jibiti ti a mọ, ṣugbọn iyẹn ko fihan pe ko lewu."
+  scam.SIGNS_LABEL: "Awọn ami ikilọ:"
+  scam.REPORT_LINE: "Fi ranṣẹ si 333, ọfẹ ni."
+  scam.GENERIC_REPORT_LINE: "Ma ṣe dahun tabi fi owo ranṣẹ. Fi ẹsun rẹ to ile iṣẹ nẹtiwọọki rẹ nipasẹ nọmba ti o wa lori oju opo wẹẹbu wọn tabi lori apo SIM."
+  scam.NEUTRAL_ADVICE: "Ma ṣe fi PIN rẹ han ẹnikẹni, ki o si ṣayẹwo owo ti o wa ninu apamọwọ foonu rẹ ki o to tẹle ifiranṣẹ eyikeyi."
+  scam.SIGNAL.asks_for_pin: "o n beere PIN rẹ tabi ọrọ igbaniwọle"
+  scam.SIGNAL.double_registration: "o sọ pe a ti forukọsilẹ SIM rẹ lẹẹmeji"
+  scam.SIGNAL.refund_request: "o n beere ki o da owo ti a fi ranṣẹ ni aṣiṣe pada"
+  scam.SIGNAL.confirmation_from_personal_number: "o dabi ijẹrisi M-PESA ṣugbọn o wa lati nọmba ẹni kọọkan"
+  scam.SIGNAL.unofficial_operator_number: "o sọ pe o wa lati Safaricom ṣugbọn o fun ni nọmba miiran yatọ si 0722000000"
+  scam.SIGNAL.dial_code_instruction: "o sọ fun ọ pe ki o tẹ koodu kan lori foonu rẹ"
+  scam.SIGNAL.prize_or_offer: "o sọ pe o ti jẹ ẹbun tabi o fun ọ ni owo"
+  scam.SIGNAL.link: "o ni ọna asopọ (link) kan"
+  scam.SIGNAL.pressure: "o n kan ọ lara lati ṣe ni kiakia"
+
+  channels.ussd.UI:
+    ask: "Beere ibeere"
+    scam: "Ṣayẹwo ifiranṣẹ"
+    lang: "Ede"
+    more: "98 Siwaju"
+    next: "1 Eyi to kan"
+    back: "0 Pada"
+    menu: "0 Akojọ"
+    ask_prompt: "Kọ ibeere rẹ:"
+    scam_prompt: "Kọ tabi lẹ ifiranṣẹ naa:"
+    invalid: "Aṣayan ti ko tọ."
+    end_pack: "Iyẹn ni gbogbo rẹ lori koko yii."
+    lang_prompt: "1 English"
+    topics: "Awọn koko"
+    place_prompt: "Kọ orukọ {area} rẹ:"
+    food_prompt: "Kọ ounjẹ ati {area} rẹ, fun apẹẹrẹ agbado {example}:"
+    weeks_prompt: "Oyun rẹ ti pe ọsẹ melo?"
+    crop_prompt: "Kọ irugbin ati ohun ti o ri:"
+  channels.voice.PROMPTS:
+    welcome: "Ẹ kaabọ si ACE."
+    press: "Fun {label}, tẹ {n}."
+    repeat: "Lati gbọ akojọ lẹẹkansi, tẹ 0."
+    bye: "A ko gba aṣayan rẹ. O dabọ."
+    invalid: "Iyẹn kii ṣe aṣayan to tọ."
+
+  services.base.DAYS: ["Aje", "Iṣẹ", "Ọru", "Ọbọ", "Ẹti", "Aba", "Aik"]
+  services.base.MONTHS: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  services.base.NEEDS_PLACE: "Ni {area} wo ni o wa? Dahun pẹlu orukọ rẹ, fun apẹẹrẹ {example}."
+  services.base.AREA_DEFAULT: "agbegbe"
+  services.base.AREA_WORD: {NG: "ipinlẹ", BJ: "ẹka"}
+  services.base.COUNTRY_SAID: {NG: "Naijiria", GH: "Gana", BJ: "Bẹnẹ"}
+
+  services.rain.WORDS.likely: "o ṣeeṣe pupọ"
+  services.rain.WORDS.possible: "o le ṣeeṣe"
+  services.rain.WORDS.dry: "pupọ julọ ko si ojo"
+  services.rain.HEAD: "Ojo nitosi {place}:"
+  services.rain.HEAVY_LINE: "Ojo nla (20 mm tabi ju bẹẹ lọ) le rọ {days}."
+  services.rain.FOOT: "Iṣeeṣe lati asọtẹlẹ ECMWF ti {date}."
+  services.rain.SPAN: "{a} si {b}"
+  services.rain.AND: "ati"
+  services.rain.STALE: "ACE ko ni asọtẹlẹ oju ọjọ lọwọlọwọ fun {place}. Ṣayẹwo asọtẹlẹ {met}."
+  services.rain.NEXT: "Ṣeto iṣẹ oko fun awọn ọjọ ti ko ni ojo pupọ."
+
+  services.warnings.FOUND: "Ikilọ osise fun {place} lati ọdọ {authority}, titi di {until}:"
+  services.warnings.NATIONAL: "Ikilọ osise fun gbogbo orilẹ-ede lati ọdọ {authority}, titi di {until}:"
+  services.warnings.MORE: "{n} miiran tun wa ni agbara."
+  services.warnings.NONE: "Ko si ikilọ osise lati ọdọ {authority} ti o kan {place} ni bayi (a ṣayẹwo {checked})."
+  services.warnings.STALE: "ACE ko le ṣayẹwo ikilọ {authority} laipẹ, nitorinaa ko le sọ boya ikilọ kan wa. Gbọ ikede osise lati ọdọ {authority}."
+  services.warnings.GAP: "{authority} ko ṣe atẹjade ikilọ osise ti ACE le ka, nitorinaa ACE ko le ṣayẹwo ikilọ nibẹ. Gbọ ikede osise lati ọdọ {authority} lori redio ati tẹlifisiọnu."
+  services.warnings.YOUR_AREA: "agbegbe rẹ"
+
+  services.facility.NEAR: "Awọn ile iwosan ijọba to sunmọ julọ:"
+  services.facility.IN_AREA: "Awọn ile iwosan ijọba ni {place}:"
+  services.facility.CAVEAT: "Lati inu atokọ awọn ile iwosan ijọba ti 2019; rii daju pe o ṣi silẹ ki o to rin irin ajo."
+  services.facility.REGISTRY_CAVEAT: "Lati inu iforukọsilẹ awọn ile iwosan ti Ile-iṣẹ Ilera; pe wọn tẹlẹ ti o ba le."
+  services.facility.EMERGENCY: "Pajawiri: {numbers}."
+  services.facility.NO_NUMBER: "Ni pajawiri, pe nọmba pajawiri agbegbe rẹ."
+  services.facility.NONE: "ACE ko ri ile iwosan ijọba kankan laarin {km} km ninu atokọ rẹ ti 2019."
+  services.facility.GAP: "ACE ko tii ni atokọ awọn ile iwosan fun orilẹ-ede yii."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} ni {market}: {currency} {price} {unit} ni {month}"
+  services.prices.CHANGE.up: "o ga soke {pct}% lori {prev}"
+  services.prices.CHANGE.down: "o lọ silẹ {pct}% lori {prev}"
+  services.prices.CHANGE.same: "bakan naa pẹlu {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km lati {place})"
+  services.prices.FOOT: "Iye owo WFP."
+  services.prices.TOP: "Iye owo WFP tuntun ni {market}{far}:"
+  services.prices.OLD: "Iye owo WFP tuntun ti ACE ni fun {country} jẹ ti {month}, o ti pẹ ju lati lo. Beere lọwọ awọn oniṣowo tabi ọfiisi iṣẹ-ogbin rẹ."
+  services.prices.GAP: "WFP ko ṣe atẹjade iye owo ọja fun {country}, nitorinaa ACE ko le fun ni iye owo nibẹ. Beere lọwọ awọn oniṣowo tabi ọfiisi iṣẹ-ogbin rẹ."
+  services.prices.THIN: "Iye owo WFP aipẹ fun {country} bo ounjẹ pataki diẹ ju lati wulo. Beere lọwọ awọn oniṣowo tabi ọfiisi iṣẹ-ogbin rẹ."
+  services.prices.NO_FOOD: "ACE ko ni iye owo WFP aipẹ fun {food} nitosi {place}."
+  services.prices.UNIT: "fun {unit} kan"
+  services.prices.UNIT_MANY: "fun {unit} kan"
+  services.prices.LOCAL_FOOD: {maize: "Agbado", "maize flour": "Iyẹfun agbado", "maize meal": "Iyẹfun agbado", beans: "Ẹwa", rice: "Iresi", sorghum: "Okababa", millet: "Jero", sugar: "Ṣuga", oil: "Epo", "wheat flour": "Iyẹfun alikama", wheat: "Alikama", cowpeas: "Ẹwa", potatoes: "Ọdunkun", tomatoes: "Tomati", onions: "Alubọsa", salt: "Iyọ", milk: "Wara", eggs: "Ẹyin", bread: "Burẹdi", pasta: "Pasita"}
+  services.prices.LOCAL_DETAIL: {white: "funfun", yellow: "ofeefee", imported: "ti ilẹ okeere", local: "ti ibilẹ", dry: "gbigbẹ", red: "pupa"}
+
+  services.pregnancy.FIRST: "Ni ọsẹ {w}, lọ fun ayẹwo oyun akọkọ rẹ ni bayi, ṣaaju ọsẹ 12."
+  services.pregnancy.DUE_NOW: "Ni ọsẹ {w}, akoko ayẹwo oyun ti to ni bayi. Eyi to kan wa ni ọsẹ {next}."
+  services.pregnancy.NEXT: "Ni ọsẹ {w}, ayẹwo oyun rẹ to kan wa ni ọsẹ {next}."
+  services.pregnancy.LATE: "Ni ọsẹ {w} o ti kọja ayẹwo to kẹhin ti a ṣeto ni ọsẹ 40. Ri oṣiṣẹ ilera loni."
+  services.pregnancy.ASK: "Oyun rẹ ti pe ọsẹ melo? Dahun pẹlu nọmba, fun apẹẹrẹ ọsẹ 22."
+  services.pregnancy.CALL: "Pe {numbers}."
+
+  services.pests.LIKELY: "Eyi le jẹ {problem}. ACE ko le ri irugbin rẹ, nitorinaa ṣayẹwo awọn ami wọnyi:"
+  services.pests.MAYBE: "Boya {problem}."
+  services.pests.REFER: "Beere lọwọ oṣiṣẹ itẹsiwaju iṣẹ-ogbin lati jẹrisi ki o to fun oogun."
+  services.pests.NAMES.fall_armyworm: "kokoro agbado (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "arun agbado apaniyan (MLN)"
+  services.pests.NAMES.cassava_mosaic: "arun mosaic gbaguda"
+  services.pests.NAMES.banana_xanthomonas_wilt: "arun gbigbẹ ọgẹdẹ (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "kokoro ewe tomati (Tuta absoluta)"
+  services.pests.ASK: "Irugbin wo, ati kini o ri? Fun apẹẹrẹ: ewe agbado ti o ni iho ati iyẹfun bi ti igi."
+  services.pests.UNKNOWN: "Fun bayi ACE le ṣayẹwo agbado, gbaguda, ọgẹdẹ ati tomati. Fun awọn irugbin miiran, beere lọwọ oṣiṣẹ itẹsiwaju iṣẹ-ogbin."
+
+phrases:
+  safety.PREGNANCY: ["oyun", "loyun", "o loyun", "mo loyun", "aboyun", "obinrin aboyun", "oyun oṣu"]
+  safety.POSTPARTUM: ["bimọ", "o bimọ", "ṣẹṣẹ bimọ", "lẹhin ibimọ", "lẹyin ibimọ", "o ṣẹṣẹ bi"]
+  safety.MATERNAL_DANGER: ["ẹjẹ", "ẹjẹ n jade", "ẹjẹ pupọ", "ṣe giri", "giri n mu", "o n gbọn", "ori fifọ to lagbara", "oju ko riran daradara", "ọmọ ko mira", "ọmọ inu ko mira mọ", "ọmọ ko gbe mọ", "omi ti fọ", "iba to lagbara"]
+  safety.URGENT: ["ko mi mọ", "ko le mi", "mimi ti duro", "o daku", "ṣe giri", "giri n mu", "ẹjẹ pupọ", "ẹjẹ n jade pupọ", "irora aya", "aya n dun", "ejo bu", "ejo ge", "ejo ṣan", "jona gidigidi", "mi daku", "ti daku", "ò mí mọ́", "kò mí mọ́", "ko le mi mo", "mimi re ti duro"]
+  safety.POISON_ACT: ["ti mu", "ti jẹ", "gbe mi", "ọmọ mi mu", "mu epo", "mu majele", "mu oogun"]
+  safety.POISON_WHAT: ["majele", "oogun kokoro", "oogun eku", "kẹrosini", "kerosini", "epo bẹntiroolu", "bilici", "kẹmika", "kẹrosíìnì", "kerosiini", "epo kẹrosíìnì", "kẹrosin", "kerosin"]
+  safety.POISONED: ["jẹ majele", "mu majele", "fun ni majele", "fun un ni majele", "majele pa"]
+  safety.GBV: ["fipa ba mi lo pọ", "fi ipa ba mi sun", "ifipabanilopọ", "ọkọ mi n lu mi", "o n lu mi", "o lu mi", "iwa ipa ninu ile", "o halẹ lati pa mi"]
+  safety.CHILD: ["ọmọ", "ọmọ mi", "ọmọbinrin mi", "ọmọkunrin mi", "ọmọde", "ọmọbinrin", "ọmọkunrin"]
+  safety.CHILD_HARM: ["fipa ba a lo pọ", "ifipabanilopọ", "fi ọwọ kan an", "wọn n lu u", "wọn lu u", "fi agbara fẹ ẹ", "igbeyawo ipa", "dida abẹ"]
+  safety.SELF_HARM: ["pa ara mi", "mo fẹ pa ara mi", "mo fẹ ku", "pari aye mi", "mi o fẹ wa laaye mọ", "ṣe ara mi leṣe", "gbẹmi ara mi", "igbẹmi ara ẹni"]
+
+  scam.PIN: ["pin", "nọmba aṣiri", "ọrọ igbaniwọle"]
+  scam.ASK: ["fi ranṣẹ", "firanṣẹ", "fun mi", "jẹrisi", "tẹ sii", "kọ"]
+  scam.MISTAKE: ["ni aṣiṣe", "aṣiṣe", "da owo pada", "da a pada"]
+  scam.DOUBLE: ["lẹẹmeji"]
+  scam.PRIZE: ["o ti jẹ ẹbun", "ẹbun", "oriire", "owo ọfẹ"]
+  scam.URGENT: ["ni kiakia", "lẹsẹkẹsẹ", "laarin wakati 24", "a o ti i pa", "a o da duro", "ikilọ ikẹhin"]
+  scam.CLAIMS_OPERATOR: ["mtn", "airtel", "glo", "9mobile", "opay", "palmpay", "moniepoint"]
+  scam.DIAL: ["tẹ"]
+
+  services.CUES.pregnancy_companion: ["ayẹwo oyun", "ile iwosan aboyun", "itọju oyun", "ipade to kan"]
+  services.CUES.nearest_facility: ["ile iwosan", "osibitu", "ọsibitu", "dokita"]
+  services.CUES.official_warnings: ["ikilọ", "iṣan omi", "omiyale", "iji"]
+  services.CUES.rain_this_week: ["ojo", "ojo yoo rọ", "oju ọjọ", "asọtẹlẹ"]
+  services.CUES.market_prices: ["iye owo", "elo ni", "ọja"]
+  services.CUES.pest_check: ["kokoro", "arun", "ewe", "ofeefee", "iho", "gbẹ", "n ku"]
+  services.SEASONAL: ["igba ojo", "ẹẹrun"]
+  services.PREGNANT: ["oyun", "aboyun", "loyun"]
+  services.HOW_MUCH: ["elo", "melo"]
+  services.prices.FOODS: {agbado: maize, ẹwa: beans, iresi: rice, okababa: sorghum, jero: millet, ṣuga: sugar, epo: oil, alikama: wheat, ọdunkun: potatoes, tomati: tomatoes, alubọsa: onions, iyọ: salt, wara: milk, ẹyin: eggs, burẹdi: bread, iyẹfun: flour}
+  services.pests.CROPS.maize: ["agbado"]
+  services.pests.CROPS.cassava: ["gbaguda", "ẹgẹ"]
+  services.pests.CROPS.banana: ["ọgẹdẹ"]
+  services.pests.CROPS.tomato: ["tomati"]
+  services.pests.PROBLEMS.fall_armyworm: ["kokoro", "iho", "iyẹfun"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["ofeefee", "gbẹ"]
+  services.pregnancy.WEEK_WORDS: ["ọsẹ"]
+  services.pregnancy.MONTH_WORDS: ["oṣu"]
+  commands.COMMANDS.help: ["iranlọwọ"]
+  commands.COMMANDS.forget: ["paarẹ"]
+  commands.COMMANDS.stop: ["duro"]
+  commands.COMMANDS.language: ["ede"]
+  commands.COMMANDS.tip: ["imọran"]
+  commands.COMMANDS.scam: ["jibiti"]
+  commands.COMMANDS.sources: ["orisun"]
+  commands.COMMANDS.more: ["siwaju"]
+  text.ACTION_CUES: ["kini ki n ṣe", "kini mo le ṣe", "bawo ni mo ṣe le dena", "bawo ni mo ṣe le pa", "bawo ni mo ṣe le tọju", "ran mi lọwọ"]
+
+words:
+  stopwords: ["ati", "ni", "ti", "si", "fun", "pẹlu", "tabi", "ṣugbọn", "eyi", "yii", "naa", "kini", "bawo", "nigba", "nibo", "tani", "jọwọ", "rẹ", "lati", "wọn"]
+  markers: ["ati", "ti", "mi", "naa", "yii", "bawo", "kini", "jọwọ", "ọmọ", "agbado", "ojo", "oyun", "ẹjẹ", "iwosan", "ọkọ", "iyawo", "lana", "loni", "pupọ", "elo", "nibo", "gbaguda", "ewe", "kokoro", "ọja", "ẹwa", "iye", "fẹ", "lati", "pẹlu", "tabi", "jibiti", "ifiranṣẹ", "ẹsun", "mo"]

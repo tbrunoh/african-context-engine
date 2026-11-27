@@ -1,0 +1,206 @@
+# Lingala for DR Congo, in the standard spelling without tone marks. Its commonest words, na and ya, are also
+# Swahili markers, so its own marker words count double (marker_weight). Drafted for ACE 2.3. Awaiting review by
+# fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ln
+  name: Lingala
+  native: "Lingala"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  marker_weight: 2
+  confirm: "ACE ekozongisa na Lingala."
+  names: ["lingala", "ln"]
+
+templates:
+  safety.OPENERS.self_harm: "Nayoki mawa mingi ete ozali koyoka boye. Osengeli kozwa lisalisi sikawa. {numbers}"
+  safety.OPENERS.maternal: "Oyo ekoki kozala likama ya zemi. Kende na lopitalo oyo ezali penepene sikawa. {numbers}"
+  safety.OPENERS.poisoning: "Oyo emonani lokola ngenge. Luka lisalisi ya monganga sikawa, memá molangi. {numbers}"
+  safety.OPENERS.child_protection: "Mwana akoki kozala na likama. Svp luka lisalisi sikawa. {numbers}"
+  safety.OPENERS.gbv: "Nayoki mawa ete likambo oyo ezali kokwela yo. Okoki kozwa lisalisi sikawa. {numbers}"
+  safety.OPENERS.health_urgent: "Oyo emonani lokola likama ya noki. Luka lisalisi ya monganga sikawa. {numbers}"
+  safety.CALL_WORD: "Benga {numbers}"
+  safety.OR_WORD: "to"
+  safety.EMERGENCY_WORD: "likama"
+  safety.FALLBACK_NUMBERS: "Benga nimero ya likama ya esika na yo to kende na lopitalo oyo ezali penepene."
+
+  commands.TEXTS.help: "ACE epesaka toli ya esika oyo etalelami. Tuna na monoko na yo. Mitindo: BOKOSI + nsango mpo na kotala nsango, TOLI + toli na yo mpo na kokabola boyebi, MBANDELA, MOSUSU, MONOKO + kode (ndakisa MONOKO EN), LONGOLA mpo na kolongola ba nsango na yo."
+  commands.TEXTS.help_short: "Tuna ACE na monoko na yo. BOKOSI + nsango ekotala yango. LONGOLA ekolongola ba nsango na yo."
+  commands.TEXTS.forgotten: "Esalemi. ACE elongoli nyonso oyo ezalaki na yango mpo na nimero oyo."
+  commands.TEXTS.stopped: "Okozwa lisusu nsango ya ACE te soki okomi lisusu te. Tinda LONGOLA mpo na kolongola ba nsango na yo."
+  commands.TEXTS.language: "Zongisa MONOKO na kode:"
+  commands.TEXTS.tip_thanks: "Melesi. Toli na yo ebombami mpo moyebi atala yango. Bakokabola yango te liboso batala yango."
+  commands.TEXTS.tip_usage: "Tinda TOLI na toli na yo, ndakisa: TOLI nkasa ya neem esalisaka mpo na banzoto ya masango na Kwilu."
+  commands.TEXTS.scam_usage: "Tinda BOKOSI na nsango oyo ondimi te, ACE ekotala yango."
+  commands.TEXTS.no_sources: "Eyano moko te ya liboso mpo na kolakisa esika euti. Tuna motuna liboso."
+  commands.TEXTS.no_more: "Wana nde nyonso ACE ezali na yango na likambo oyo sikawa. Tuna motuna mosusu to tinda LISALISI."
+  commands.TEXTS.clarify: "ACE ezali naino na toli oyo etalelami te na likambo yango. ACE ekoki kosalisa yo na: {topics}. Tinda TOLI mpo na kobakisa boyebi."
+  commands.TEXTS.unread: "ACE ekoki naino te kotánga monoko oyo. Tosɛngi, komá na moko ya minoko oyo: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "EMONANI LOKOLA BOKOSI."
+  scam.HEADLINES.SUSPICIOUS: "KEBA."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Namoni bilembo ya bokosi oyo eyebani te, kasi yango elakisi te ete ezali malamu."
+  scam.SIGNS_LABEL: "Bilembo ya likebisi:"
+  scam.REPORT_LINE: "Tinda yango na 333, ezali ofele."
+  scam.GENERIC_REPORT_LINE: "Kozongisa te mpe kotinda mbongo te. Yebisa kompani ya telefone na nimero oyo ezali na site na bango to na paquet ya SIM."
+  scam.NEUTRAL_ADVICE: "Kokabola PIN na yo te, mpe tala mbongo ya telefone na yo liboso osala eloko nyonso oyo nsango moko elobi."
+  scam.SIGNAL.asks_for_pin: "esengi PIN na yo to mot de passe"
+  scam.SIGNAL.double_registration: "elobi ete SIM na yo ekomami mbala mibale"
+  scam.SIGNAL.refund_request: "esengi yo ozongisa mbongo oyo etindamaki na libunga"
+  scam.SIGNAL.confirmation_from_personal_number: "emonani lokola ndingisa ya M-PESA kasi euti na nimero ya moto"
+  scam.SIGNAL.unofficial_operator_number: "elobi ete euti na Safaricom kasi epesi nimero oyo ezali 0722000000 te"
+  scam.SIGNAL.dial_code_instruction: "eyebisi yo obenga kode na telefone na yo"
+  scam.SIGNAL.prize_or_offer: "elobi ete olongi libonza to epesi mbongo"
+  scam.SIGNAL.link: "ezali na lien"
+  scam.SIGNAL.pressure: "ezali kotindika yo osala noki"
+
+  channels.ussd.UI:
+    ask: "Tuna motuna"
+    scam: "Tala nsango"
+    lang: "Monoko"
+    more: "98 Mosusu"
+    next: "1 Oyo elandi"
+    back: "0 Zonga"
+    menu: "0 Menu"
+    ask_prompt: "Koma motuna na yo:"
+    scam_prompt: "Koma to tia nsango:"
+    invalid: "Boponi ya mabe."
+    end_pack: "Wana nde nyonso na likambo oyo."
+    lang_prompt: "1 English"
+    topics: "Makambo"
+    place_prompt: "Koma nkombo ya {area} na yo:"
+    food_prompt: "Koma bilei mpe {area} na yo, ndakisa masango {example}:"
+    weeks_prompt: "Zemi na yo ezali na baposo boni?"
+    crop_prompt: "Koma bilona mpe oyo ozali komona:"
+  channels.voice.PROMPTS:
+    welcome: "Boyei malamu na ACE."
+    press: "Mpo na {label}, finá {n}."
+    repeat: "Mpo na koyoka menu lisusu, finá 0."
+    bye: "Tozwi boponi na yo te. Tikala malamu."
+    invalid: "Wana ezali boponi ya malamu te."
+
+  services.base.DAYS: ["Mok", "Mib", "Mis", "Min", "Mit", "Mps", "Eye"]
+  services.base.MONTHS: ["Yan", "Feb", "Mar", "Apr", "Mai", "Yun", "Yul", "Agu", "Sep", "Okt", "Nov", "Des"]
+  services.base.NEEDS_PLACE: "Ozali na {area} nini? Zongisa na nkombo na yango, ndakisa {example}."
+  services.base.AREA_DEFAULT: "esika"
+  services.base.AREA_WORD: {CD: "etuka"}
+  services.base.COUNTRY_SAID: {CD: "Kongo"}
+
+  services.rain.WORDS.likely: "ekoki mpenza kosalema"
+  services.rain.WORDS.possible: "ekoki kosalema"
+  services.rain.WORDS.dry: "moi makasi"
+  services.rain.HEAD: "Mbula penepene na {place}:"
+  services.rain.HEAVY_LINE: "Mbula makasi (20 mm to koleka) ekoki konoka {days}."
+  services.rain.FOOT: "Makoki euti na esakweli ya ECMWF ya {date}."
+  services.rain.SPAN: "{a} tii {b}"
+  services.rain.AND: "mpe"
+  services.rain.STALE: "ACE ezali na esakweli ya tango ya sikawa te mpo na {place}. Tala esakweli ya {met}."
+  services.rain.NEXT: "Bongisa misala ya bilanga na mikolo ya moi."
+
+  services.warnings.FOUND: "Likebisi ya leta mpo na {place} euti na {authority}, tii {until}:"
+  services.warnings.NATIONAL: "Likebisi ya leta mpo na ekolo mobimba euti na {authority}, tii {until}:"
+  services.warnings.MORE: "Mosusu {n} ezali naino kosala."
+  services.warnings.NONE: "Likebisi moko te ya leta euti na {authority} etali {place} sikawa (etalelamaki {checked})."
+  services.warnings.STALE: "ACE ekokaki kotala makebisi ya {authority} kala mingi te, yango wana eyebi te soki ezali. Yoka mayebisi ya leta oyo euti na {authority}."
+  services.warnings.GAP: "{authority} ebimisaka makebisi te na ndenge ACE ekoki kotanga, yango wana ACE ekoki kotala makebisi kuna te. Yoka mayebisi ya leta oyo euti na {authority} na radio mpe televizio."
+  services.warnings.YOUR_AREA: "esika na yo"
+
+  services.facility.NEAR: "Lopitalo ya leta oyo ezali penepene:"
+  services.facility.IN_AREA: "Lopitalo ya leta na {place}:"
+  services.facility.CAVEAT: "Euti na liste ya 2019 ya balopitalo ya leta; ndimisa ete efungwami liboso okende."
+  services.facility.REGISTRY_CAVEAT: "Euti na buku ya balopitalo ya Ministere ya Bokolongono; benga liboso okende soki okoki."
+  services.facility.EMERGENCY: "Likama: {numbers}."
+  services.facility.NO_NUMBER: "Soki ezali likama, benga nimero ya likama ya esika na yo."
+  services.facility.NONE: "ACE ezwi lopitalo moko te ya leta na kati ya {km} km na liste na yango ya 2019."
+  services.facility.GAP: "ACE ezali naino na liste ya balopitalo ya ekolo oyo te."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} na {market}: {currency} {price} {unit} na {month}"
+  services.prices.CHANGE.up: "emati {pct}% banda {prev}"
+  services.prices.CHANGE.down: "ekiti {pct}% banda {prev}"
+  services.prices.CHANGE.same: "ndenge moko na {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km longwa na {place})"
+  services.prices.FOOT: "Ntalo ya WFP."
+  services.prices.TOP: "Ntalo ya sika ya WFP na {market}{far}:"
+  services.prices.OLD: "Ntalo ya sika ya WFP oyo ACE ezali na yango mpo na {country} ezali ya {month}, mpe ekomi ya kala. Tuna bateki to biro ya bilanga."
+  services.prices.GAP: "WFP ebimisaka ntalo te mpo na {country}, yango wana ACE ekoki kopesa ntalo kuna te. Tuna bateki to biro ya bilanga."
+  services.prices.THIN: "Ntalo ya sika ya WFP mpo na {country} etali bilei moke kaka. Tuna bateki to biro ya bilanga."
+  services.prices.NO_FOOD: "ACE ezali na ntalo ya sika ya WFP te mpo na {food} penepene na {place}."
+  services.prices.UNIT: "na {unit}"
+  services.prices.UNIT_MANY: "na {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Masango", "maize flour": "Fufu ya masango", "maize meal": "Fufu ya masango", beans: "Madesu", rice: "Loso", sorghum: "Sorgo", millet: "Mile", sugar: "Sukali", oil: "Mafuta", "wheat flour": "Farine", wheat: "Ble", cowpeas: "Madesu", potatoes: "Mbala", tomatoes: "Tomati", onions: "Litungulu", salt: "Mungwa", milk: "Miliki", eggs: "Maki", bread: "Mampa", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "ya pembe", yellow: "ya mosaka", imported: "euti mboka mopaya", local: "ya mboka", dry: "ekauki", red: "ya motane"}
+
+  services.pregnancy.FIRST: "Na baposo {w}, kende na botaleli ya liboso ya zemi sikawa, liboso ya poso ya 12."
+  services.pregnancy.DUE_NOW: "Na baposo {w}, botaleli ya zemi ekoki sikawa. Oyo elandi ezali na poso ya {next}."
+  services.pregnancy.NEXT: "Na baposo {w}, botaleli na yo oyo elandi ya zemi ezali na poso ya {next}."
+  services.pregnancy.LATE: "Na baposo {w} oleki botaleli ya suka oyo ebongisamaki na poso ya 40. Kende komona mosali ya bokolongono lelo."
+  services.pregnancy.ASK: "Zemi na yo ezali na baposo boni? Zongisa na motango, ndakisa baposo 22."
+  services.pregnancy.CALL: "Benga {numbers}."
+
+  services.pests.LIKELY: "Oyo ekoki kozala {problem}. ACE emoni bilona na yo te, yango wana tala bilembo oyo:"
+  services.pests.MAYBE: "Mbele ezali {problem}."
+  services.pests.REFER: "Senga mosali ya bilanga andimisa liboso obwaka nkisi."
+  services.pests.NAMES.fall_armyworm: "banzoto ya masango (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "bokono oyo ebomaka masango (MLN)"
+  services.pests.NAMES.cassava_mosaic: "bokono ya mosaique ya mwanza"
+  services.pests.NAMES.banana_xanthomonas_wilt: "bokono ya kokauka ya makemba (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "banzoto ya nkasa ya tomati (Tuta absoluta)"
+  services.pests.ASK: "Bilona nini, mpe ozali komona nini? Ndakisa: nkasa ya masango ezali na mabulu mpe putulu lokola ya nzete."
+  services.pests.UNKNOWN: "Sikawa ACE etalaka masango, mwanza, makemba mpe tomati. Mpo na bilona mosusu, tuna mosali ya bilanga."
+
+phrases:
+  safety.PREGNANCY: ["azali na zemi", "nazali na zemi", "zemi", "mwasi ya zemi", "akangi zemi", "sanza ya zemi"]
+  safety.POSTPARTUM: ["abotaki sika", "abotaki", "nabotaki", "sima ya kobota", "asili kobota"]
+  safety.MATERNAL_DANGER: ["makila", "azali kobima makila", "kobima makila", "azali koningana", "kifafa", "akweyi kifafa", "motó ezali kobeta makasi", "miso ezali komona malamu te", "mwana azali koningana te", "mai epasuki", "fievre makasi"]
+  safety.URGENT: ["azali kopema te", "akoki kopema te", "akufi mayele", "akweyi alamuki te", "akweyi kifafa", "azali kobima makila mingi", "mpasi na ntolo", "nyoka eswi ye", "aswami na nyoka", "azikisami makasi", "kobimisa makila mingi", "azali kobimisa makila mingi", "makila mingi"]
+  safety.POISON_ACT: ["amelaki", "ameli", "amimeli", "aliaki", "mwana amelaki", "amweli", "amweli petrole"]
+  safety.POISON_WHAT: ["ngenge", "nkisi ya banyama", "nkisi ya mpuku", "petrole", "esanse", "javel", "bileko ya chimie", "essence", "mafuta ya petrole"]
+  safety.POISONED: ["bapesi ye ngenge", "amelaki ngenge", "aliaki ngenge", "batiaki ye ngenge", "bandoki ye na ngenge"]
+  safety.GBV: ["babebisi ngai na makasi", "abebisi ngai na makasi", "azali kobeta ngai", "mobali na ngai azali kobeta ngai", "abeti ngai", "mobulu na libala", "alingi koboma ngai", "abetaka ngai", "azali kobeta ngai mokolo nyonso", "mobali na ngai abetaka ngai", "abetaki ngai"]
+  safety.CHILD: ["mwana", "mwana na ngai", "mwana na ngai ya mwasi", "mwana na ngai ya mobali", "mwana mwasi", "bana", "mwana moke"]
+  safety.CHILD_HARM: ["babebisi ye na makasi", "abebisi ye na makasi", "bazali konyokola ye", "banyokoli ye", "bazali kobeta ye", "abeti ye", "libala ya makasi"]
+  safety.SELF_HARM: ["komiboma", "nakomiboma", "nalingi kokufa", "nalingi lisusu kozala na bomoi te", "nalingi kosilisa bomoi na ngai", "komizokisa"]
+
+  scam.PIN: ["pin", "mot de passe", "nimero ya sekele"]
+  scam.ASK: ["tinda", "pesa ngai", "ndimisa", "kotisa", "koma"]
+  scam.MISTAKE: ["na libunga", "libunga", "zongisa mbongo", "zongisa yango"]
+  scam.DOUBLE: ["mbala mibale"]
+  scam.PRIZE: ["olongi", "libonza", "likabo", "mbongo ya ofele"]
+  scam.URGENT: ["noki noki", "sikoyo", "na kati ya ngonga 24", "bakokanga", "bakotelemisa", "likebisi ya suka"]
+  scam.CLAIMS_OPERATOR: ["vodacom", "m-pesa", "orange", "orange money", "airtel", "airtel money", "africell"]
+  scam.DIAL: ["benga"]
+
+  services.CUES.pregnancy_companion: ["botaleli ya zemi", "cpn", "botaleli oyo elandi"]
+  services.CUES.nearest_facility: ["lopitalo", "dispanseri", "monganga"]
+  services.CUES.official_warnings: ["likebisi", "mpela", "mopepe makasi"]
+  services.CUES.rain_this_week: ["mbula", "mbula ekonoka", "tango", "esakweli"]
+  services.CUES.market_prices: ["ntalo", "boni", "zando"]
+  services.CUES.pest_check: ["banyama", "banzoto", "bokono", "nkasa", "mosaka", "mabulu", "ezali kokauka", "ezali kokufa"]
+  services.SEASONAL: ["eleko ya mbula", "eleko ya elanga", "eleko ya moi"]
+  services.PREGNANT: ["zemi"]
+  services.HOW_MUCH: ["boni"]
+  services.prices.FOODS: {masango: maize, madesu: beans, loso: rice, sukali: sugar, mafuta: oil, mbala: potatoes, tomati: tomatoes, litungulu: onions, mungwa: salt, maki: eggs, mampa: bread}
+  services.pests.CROPS.maize: ["masango"]
+  services.pests.CROPS.cassava: ["mwanza", "nsongo"]
+  services.pests.CROPS.banana: ["makemba", "ndizi"]
+  services.pests.CROPS.tomato: ["tomati"]
+  services.pests.PROBLEMS.fall_armyworm: ["banzoto", "mabulu", "putulu"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["mosaka", "ekauki", "ekufi"]
+  services.pregnancy.WEEK_WORDS: ["baposo", "poso"]
+  services.pregnancy.MONTH_WORDS: ["sanza"]
+  commands.COMMANDS.help: ["lisalisi"]
+  commands.COMMANDS.forget: ["longola"]
+  commands.COMMANDS.stop: ["telemisa"]
+  commands.COMMANDS.language: ["monoko"]
+  commands.COMMANDS.tip: ["toli"]
+  commands.COMMANDS.scam: ["bokosi"]
+  commands.COMMANDS.sources: ["mbandela"]
+  commands.COMMANDS.more: ["mosusu"]
+  text.ACTION_CUES: ["nasala nini", "nasengeli kosala nini", "nakoki kopekisa yango ndenge nini", "nakoki koboma yango ndenge nini", "nakoki kobomba yango ndenge nini", "salisa ngai"]
+
+words:
+  stopwords: ["mpe", "to", "kasi", "oyo", "awa", "sikawa", "nini", "ndenge", "mpo", "ete", "na", "ngai", "yo", "mingi", "ezali"]
+  markers: ["nazali", "ozali", "azali", "mpo", "boni", "ndenge", "lelo", "lobi", "mbula", "lopitalo", "mbongo", "malamu", "mingi", "oyo", "ngai", "nalingi", "nayebi", "koyeba", "ntalo", "masango", "masangu", "madesu", "melesi", "sikawa", "zemi", "baposo", "nkasa", "mwanza", "ezali", "eloko", "kende", "tala", "nakoki", "okoki", "akoki", "nsango", "sima", "penepene", "ekonoka", "mokolo", "eza", "awa", "yango", "pe", "moko", "liboso", "likolo", "biso", "boye", "bato", "bana", "nde", "lokola", "bango", "nyonso", "lisusu"]

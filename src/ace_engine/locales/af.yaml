@@ -1,0 +1,206 @@
+# Afrikaans for South Africa and Namibia, in standard spelling. It shares short words such as is and my with
+# English, so its own marker words count double (marker_weight). Drafted for ACE 2.3. Awaiting review by fluent
+# speakers and, for the safety phrases, by clinicians.
+meta:
+  code: af
+  name: Afrikaans
+  native: "Afrikaans"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  marker_weight: 2
+  confirm: "ACE sal in Afrikaans antwoord."
+  names: ["afrikaans", "af"]
+
+templates:
+  safety.OPENERS.self_harm: "Ek is baie jammer dat jy so voel. Jy verdien nou ondersteuning. {numbers}"
+  safety.OPENERS.maternal: "Dit kan 'n swangerskapnood wees. Gaan nou na die naaste hospitaal. {numbers}"
+  safety.OPENERS.poisoning: "Dit klink na vergiftiging. Kry nou mediese hulp en neem die bottel saam. {numbers}"
+  safety.OPENERS.child_protection: "'n Kind kan in gevaar wees. Kry asseblief nou hulp. {numbers}"
+  safety.OPENERS.gbv: "Ek is jammer dat dit met jou gebeur. Jy kan nou hulp kry. {numbers}"
+  safety.OPENERS.health_urgent: "Dit klink dringend. Kry nou mediese hulp. {numbers}"
+  safety.CALL_WORD: "Bel {numbers}"
+  safety.OR_WORD: "of"
+  safety.EMERGENCY_WORD: "noodgeval"
+  safety.FALLBACK_NUMBERS: "Bel jou plaaslike noodnommer of gaan na die naaste hospitaal."
+
+  commands.TEXTS.help: "ACE gee nagegaande plaaslike raad. Vra in jou taal. Opdragte: SWENDEL + boodskap om 'n boodskap na te gaan, WENK + jou wenk om kennis te deel, BRONNE, MEER, TAAL + kode (bv. TAAL EN), VERGEET om jou data uit te vee."
+  commands.TEXTS.help_short: "Vra ACE in jou taal. SWENDEL + boodskap gaan dit na. VERGEET vee jou data uit."
+  commands.TEXTS.forgotten: "Klaar. ACE het alles wat dit oor hierdie nommer gehad het, uitgevee."
+  commands.TEXTS.stopped: "Jy sal nie meer boodskappe van ACE kry nie, tensy jy weer skryf. Stuur VERGEET om jou data uit te vee."
+  commands.TEXTS.language: "Antwoord TAAL en 'n kode:"
+  commands.TEXTS.tip_thanks: "Dankie. Jou wenk is gestoor sodat 'n kenner dit kan nagaan. Dit word nie gedeel voordat dit nagegaan is nie."
+  commands.TEXTS.tip_usage: "Stuur WENK en jou wenk, bv.: WENK neemblare help teen die herfsruspe in Limpopo."
+  commands.TEXTS.scam_usage: "Stuur SWENDEL en die boodskap wat jy nie vertrou nie, en ACE sal dit nagaan."
+  commands.TEXTS.no_sources: "Daar is geen vorige antwoord om die bron van te wys nie. Vra eers 'n vraag."
+  commands.TEXTS.no_more: "Dit is al wat ACE nou oor hierdie onderwerp het. Vra 'n ander vraag of stuur HELP."
+  commands.TEXTS.clarify: "ACE het nog nie nagegaande raad daaroor nie. ACE kan help met: {topics}. Stuur WENK om kennis by te voeg."
+  commands.TEXTS.unread: "ACE lees nog nie hierdie taal nie. Skryf asseblief in een van hierdie tale: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "LYK SOOS SWENDELARY."
+  scam.HEADLINES.SUSPICIOUS: "WEES VERSIGTIG."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Ek sien geen bekende tekens van swendelary nie, maar dit beteken nie dat dit veilig is nie."
+  scam.SIGNS_LABEL: "Waarskuwingstekens:"
+  scam.REPORT_LINE: "Stuur dit aan na 333, dis gratis."
+  scam.GENERIC_REPORT_LINE: "Moenie antwoord of geld stuur nie. Rapporteer dit by jou netwerk met die nommer op hul webwerf of SIM-pakkie."
+  scam.NEUTRAL_ADVICE: "Moenie jou PIN deel nie, en gaan jou selfoongeldbalans na voordat jy doen wat enige boodskap sê."
+  scam.SIGNAL.asks_for_pin: "dit vra vir jou PIN of wagwoord"
+  scam.SIGNAL.double_registration: "dit sê jou SIM is twee keer geregistreer"
+  scam.SIGNAL.refund_request: "dit vra jou om geld terug te stuur wat per ongeluk gestuur is"
+  scam.SIGNAL.confirmation_from_personal_number: "dit lyk soos 'n M-PESA-bevestiging, maar kom van 'n persoonlike nommer"
+  scam.SIGNAL.unofficial_operator_number: "dit beweer dit is Safaricom, maar gee 'n ander nommer as 0722000000"
+  scam.SIGNAL.dial_code_instruction: "dit sê jy moet 'n kode op jou foon skakel"
+  scam.SIGNAL.prize_or_offer: "dit sê jy het 'n prys gewen of bied geld aan"
+  scam.SIGNAL.link: "dit bevat 'n skakel"
+  scam.SIGNAL.pressure: "dit druk jou om vinnig op te tree"
+
+  channels.ussd.UI:
+    ask: "Vra 'n vraag"
+    scam: "Gaan boodskap na"
+    lang: "Taal"
+    more: "98 Meer"
+    next: "1 Volgende"
+    back: "0 Terug"
+    menu: "0 Kieslys"
+    ask_prompt: "Tik jou vraag:"
+    scam_prompt: "Tik of plak die boodskap:"
+    invalid: "Ongeldige keuse."
+    end_pack: "Dit is alles oor hierdie onderwerp."
+    lang_prompt: "1 English"
+    topics: "Onderwerpe"
+    place_prompt: "Tik die naam van jou {area}:"
+    food_prompt: "Tik 'n voedsel en jou {area}, bv. mielies {example}:"
+    weeks_prompt: "Hoeveel weke swanger is jy?"
+    crop_prompt: "Tik die gewas en wat jy sien:"
+  channels.voice.PROMPTS:
+    welcome: "Welkom by ACE."
+    press: "Vir {label}, druk {n}."
+    repeat: "Om die kieslys weer te hoor, druk 0."
+    bye: "Ons het nie jou keuse gekry nie. Totsiens."
+    invalid: "Dit is nie 'n geldige keuse nie."
+
+  services.base.DAYS: ["Ma", "Di", "Wo", "Do", "Vr", "Sa", "So"]
+  services.base.MONTHS: ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Des"]
+  services.base.NEEDS_PLACE: "In watter {area} is jy? Antwoord met die naam, bv. {example}."
+  services.base.AREA_DEFAULT: "gebied"
+  services.base.AREA_WORD: {ZA: "provinsie", NA: "streek"}
+  services.base.COUNTRY_SAID: {ZA: "Suid-Afrika", NA: "Namibië"}
+
+  services.rain.WORDS.likely: "waarskynlik"
+  services.rain.WORDS.possible: "moontlik"
+  services.rain.WORDS.dry: "meestal droog"
+  services.rain.HEAD: "Reën naby {place}:"
+  services.rain.HEAVY_LINE: "Swaar reën (20 mm of meer) is moontlik {days}."
+  services.rain.FOOT: "Kanse uit die ECMWF-voorspelling van {date}."
+  services.rain.SPAN: "{a} tot {b}"
+  services.rain.AND: "en"
+  services.rain.STALE: "ACE het nie 'n huidige weervoorspelling vir {place} nie. Kyk na die voorspelling van {met}."
+  services.rain.NEXT: "Beplan plaaswerk vir die droë dae."
+
+  services.warnings.FOUND: "Regeringswaarskuwing vir {place} van {authority}, tot {until}:"
+  services.warnings.NATIONAL: "Landwye regeringswaarskuwing van {authority}, tot {until}:"
+  services.warnings.MORE: "Nog {n} is aktief."
+  services.warnings.NONE: "Geen regeringswaarskuwing van {authority} raak {place} tans nie (nagegaan {checked})."
+  services.warnings.STALE: "ACE kon onlangs nie die waarskuwings van {authority} nagaan nie, so dit weet nie of daar enige is nie. Luister na regeringsaankondigings van {authority}."
+  services.warnings.GAP: "{authority} publiseer nie waarskuwings op 'n manier wat ACE kan lees nie, so ACE kan nie waarskuwings daar nagaan nie. Luister na regeringsaankondigings van {authority} op radio en TV."
+  services.warnings.YOUR_AREA: "jou gebied"
+
+  services.facility.NEAR: "Naaste openbare gesondheidsfasiliteit:"
+  services.facility.IN_AREA: "Openbare gesondheidsfasiliteit in {place}:"
+  services.facility.CAVEAT: "Uit die 2019-lys van openbare gesondheidsfasiliteite; maak seker dit is oop voordat jy gaan."
+  services.facility.REGISTRY_CAVEAT: "Uit die fasiliteitsregister van die Ministerie van Gesondheid; bel voordat jy gaan as jy kan."
+  services.facility.EMERGENCY: "Noodgeval: {numbers}."
+  services.facility.NO_NUMBER: "As dit 'n noodgeval is, bel jou plaaslike noodnommer."
+  services.facility.NONE: "ACE het geen openbare gesondheidsfasiliteit binne {km} km in sy 2019-lys gevind nie."
+  services.facility.GAP: "ACE het nog nie 'n lys van gesondheidsfasiliteite vir hierdie land nie."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} in {market}: {currency} {price} {unit} in {month}"
+  services.prices.CHANGE.up: "{pct}% hoër as {prev}"
+  services.prices.CHANGE.down: "{pct}% laer as {prev}"
+  services.prices.CHANGE.same: "dieselfde as {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km van {place})"
+  services.prices.FOOT: "WFP-pryse."
+  services.prices.TOP: "Nuutste WFP-pryse in {market}{far}:"
+  services.prices.OLD: "Die nuutste WFP-pryse wat ACE vir {country} het, is van {month} en verouderd. Vra handelaars of jou landboukantoor."
+  services.prices.GAP: "WFP publiseer nie pryse vir {country} nie, so ACE kan nie pryse daar gee nie. Vra handelaars of jou landboukantoor."
+  services.prices.THIN: "Onlangse WFP-pryse vir {country} dek net 'n paar voedselsoorte. Vra handelaars of jou landboukantoor."
+  services.prices.NO_FOOD: "ACE het geen onlangse WFP-prys vir {food} naby {place} nie."
+  services.prices.UNIT: "per {unit}"
+  services.prices.UNIT_MANY: "per {unit}"
+  services.prices.LOCAL_FOOD: {maize: "Mielies", "maize flour": "Mieliemeel", "maize meal": "Mieliemeel", beans: "Bone", rice: "Rys", sorghum: "Sorghum", millet: "Manna", sugar: "Suiker", oil: "Olie", "wheat flour": "Koringmeel", wheat: "Koring", cowpeas: "Akkerbone", potatoes: "Aartappels", tomatoes: "Tamaties", onions: "Uie", salt: "Sout", milk: "Melk", eggs: "Eiers", bread: "Brood", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "wit", yellow: "geel", imported: "ingevoer", local: "plaaslik", dry: "droog", red: "rooi"}
+
+  services.pregnancy.FIRST: "By {w} weke, gaan nou vir jou eerste voorgeboortelike ondersoek, voor week 12."
+  services.pregnancy.DUE_NOW: "By {w} weke is 'n voorgeboortelike ondersoek nou nodig. Die volgende is by week {next}."
+  services.pregnancy.NEXT: "By {w} weke is jou volgende voorgeboortelike ondersoek by week {next}."
+  services.pregnancy.LATE: "By {w} weke is jy verby die laaste beplande ondersoek by week 40. Sien vandag 'n gesondheidswerker."
+  services.pregnancy.ASK: "Hoeveel weke swanger is jy? Antwoord met 'n getal, bv. 22 weke."
+  services.pregnancy.CALL: "Bel {numbers}."
+
+  services.pests.LIKELY: "Dit kan {problem} wees. ACE kan nie jou gewas sien nie, so kyk vir hierdie tekens:"
+  services.pests.MAYBE: "Moontlik {problem}."
+  services.pests.REFER: "Vra 'n voorligtingsbeampte om dit te bevestig voordat jy spuit."
+  services.pests.NAMES.fall_armyworm: "herfsruspe (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "dodelike mielienekrose (MLN)"
+  services.pests.NAMES.cassava_mosaic: "kassawe-mosaïeksiekte"
+  services.pests.NAMES.banana_xanthomonas_wilt: "piesang-Xanthomonas-verwelking"
+  services.pests.NAMES.tomato_leaf_miner: "tamatieblaarmyner (Tuta absoluta)"
+  services.pests.ASK: "Watter gewas, en wat sien jy? Bv.: mielieblare met gate en saagsel."
+  services.pests.UNKNOWN: "Tans gaan ACE mielies, kassawe, piesangs en tamaties na. Vir ander gewasse, vra 'n voorligtingsbeampte."
+
+phrases:
+  safety.PREGNANCY: ["swanger", "is swanger", "ek is swanger", "swangerskap", "verwag 'n baba", "maande swanger"]
+  safety.POSTPARTUM: ["geboorte gegee", "het geboorte gegee", "net geboorte gegee", "na die geboorte", "pas gebore"]
+  safety.MATERNAL_DANGER: ["bloei", "bloei baie", "bloeding", "stuiptrekkings", "stuipe", "baie erge hoofpyn", "sien nie goed nie", "baba beweeg nie", "water het gebreek", "hoë koors"]
+  safety.URGENT: ["asem nie", "kan nie asemhaal nie", "flou geword", "bewusteloos", "reageer nie", "stuiptrekkings", "bloei erg", "borspyn", "slang gepik", "deur 'n slang gepik", "erg gebrand"]
+  safety.POISON_ACT: ["gedrink", "ingesluk", "geëet", "het gedrink", "het ingesluk"]
+  safety.POISON_WHAT: ["gif", "insekgif", "rottegif", "paraffien", "petrol", "bleikmiddel", "chemikalieë", "plaagdoder"]
+  safety.POISONED: ["vergiftig", "is vergiftig", "gif gegee", "gif gedrink", "gif ingesluk"]
+  safety.GBV: ["verkrag", "ek is verkrag", "slaan my", "my man slaan my", "hy slaan my", "huishoudelike geweld", "dreig om my dood te maak"]
+  safety.CHILD: ["my kind", "die kind", "ons kind", "klein kind", "dogter", "seun", "dogtertjie", "seuntjie", "kinders"]
+  safety.CHILD_HARM: ["verkrag", "gemolesteer", "misbruik", "word geslaan", "slaan haar", "slaan hom", "gedwonge huwelik"]
+  safety.SELF_HARM: ["selfmoord", "myself doodmaak", "ek wil doodgaan", "wil nie meer lewe nie", "my lewe beëindig", "myself seermaak"]
+
+  scam.PIN: ["pin", "wagwoord", "geheime nommer"]
+  scam.ASK: ["stuur", "gee my", "bevestig", "sleutel in", "tik"]
+  scam.MISTAKE: ["per ongeluk", "fout", "stuur die geld terug", "stuur dit terug"]
+  scam.DOUBLE: ["twee keer"]
+  scam.PRIZE: ["jy het gewen", "prys", "geskenk", "gratis geld"]
+  scam.URGENT: ["dringend", "onmiddellik", "binne 24 uur", "sal gesluit word", "sal opgeskort word", "laaste waarskuwing"]
+  scam.CLAIMS_OPERATOR: ["vodacom", "mtn", "cell c", "telkom", "fnb", "capitec", "mtc"]
+  scam.DIAL: ["skakel"]
+
+  services.CUES.pregnancy_companion: ["voorgeboortelike", "kraamkliniek", "volgende ondersoek"]
+  services.CUES.nearest_facility: ["hospitaal", "kliniek", "dokter"]
+  services.CUES.official_warnings: ["waarskuwing", "vloed", "storm"]
+  services.CUES.rain_this_week: ["reën", "gaan dit reën", "weervoorspelling", "voorspelling"]
+  services.CUES.market_prices: ["prys", "hoeveel kos", "mark"]
+  services.CUES.pest_check: ["insekte", "ruspe", "siekte", "blare", "geel", "gate", "verwelk", "vrek"]
+  services.SEASONAL: ["reënseisoen", "droë seisoen", "winter"]
+  services.PREGNANT: ["swanger"]
+  services.HOW_MUCH: ["hoeveel"]
+  services.prices.FOODS: {mielies: maize, mieliemeel: maize meal, bone: beans, rys: rice, suiker: sugar, olie: oil, aartappels: potatoes, tamaties: tomatoes, uie: onions, sout: salt, eiers: eggs, brood: bread}
+  services.pests.CROPS.maize: ["mielies", "mielie"]
+  services.pests.CROPS.cassava: ["kassawe"]
+  services.pests.CROPS.banana: ["piesang", "piesangs"]
+  services.pests.CROPS.tomato: ["tamatie", "tamaties"]
+  services.pests.PROBLEMS.fall_armyworm: ["ruspe", "gate", "saagsel"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["geel", "verwelk", "dood"]
+  services.pregnancy.WEEK_WORDS: ["weke", "week"]
+  services.pregnancy.MONTH_WORDS: ["maande", "maand"]
+  commands.COMMANDS.help: ["help"]
+  commands.COMMANDS.forget: ["vergeet"]
+  commands.COMMANDS.stop: ["stop"]
+  commands.COMMANDS.language: ["taal"]
+  commands.COMMANDS.tip: ["wenk"]
+  commands.COMMANDS.scam: ["swendel"]
+  commands.COMMANDS.sources: ["bronne"]
+  commands.COMMANDS.more: ["meer"]
+  text.ACTION_CUES: ["wat moet ek doen", "wat kan ek doen", "hoe keer ek", "hoe maak ek dood", "hoe bêre ek", "help my"]
+
+words:
+  stopwords: ["en", "ek", "jy", "nie", "wat", "hoe", "waar", "van", "vir", "het", "my", "asseblief", "baie"]
+  markers: ["ek", "jy", "nie", "wat", "hoe", "waar", "asseblief", "dankie", "het", "wil", "kan", "vir", "baie", "bloed", "mielies", "reën", "hospitaal", "weke", "swanger", "ons", "gaan", "hoeveel", "kos", "blare", "kassawe", "gister", "vandag", "naaste", "wanneer", "volgende", "geel", "oes", "hierdie", "dit", "ook", "maar", "nog", "sal", "moet", "kry", "jou", "hulle", "daar", "hy", "geen", "oor", "tot", "binne", "dae", "plaas", "plante", "gewasse"]

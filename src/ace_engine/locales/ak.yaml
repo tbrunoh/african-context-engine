@@ -1,0 +1,204 @@
+# Akan (Twi) for Ghana, in the standard spelling with ɛ and ɔ. SMS folds ɛ to e and ɔ to o, as most people type
+# them. Drafted for ACE 2.3. Awaiting review by fluent speakers and, for the safety phrases, by clinicians.
+meta:
+  code: ak
+  name: Akan
+  native: "Twi"
+  script: Latn
+  encoding: gsm7
+  direction: ltr
+  reviewed: false
+  confirm: "ACE bɛbua wo wɔ Twi kasa mu."
+  names: ["twi", "akan", "asante twi", "ak"]
+
+templates:
+  safety.OPENERS.self_harm: "Me werɛ ahow paa sɛ wote nka saa. Ɛsɛ sɛ wunya mmoa seesei ara. {numbers}"
+  safety.OPENERS.maternal: "Ebia eyi yɛ nyinsɛn ho asiane a ɛho hia ntɛm. Kɔ ayaresabea a ɛbɛn wo seesei ara. {numbers}"
+  safety.OPENERS.poisoning: "Eyi te sɛ awuduru. Hwehwɛ dɔkota mmoa seesei ara, na fa toa no ka wo ho. {numbers}"
+  safety.OPENERS.child_protection: "Ebia abofra bi wɔ asiane mu. Mesrɛ wo hwehwɛ mmoa seesei ara. {numbers}"
+  safety.OPENERS.gbv: "Me werɛ ahow sɛ eyi reba wo so. Wubetumi anya mmoa seesei ara. {numbers}"
+  safety.OPENERS.health_urgent: "Eyi te sɛ ade a ɛho hia ntɛm. Hwehwɛ dɔkota mmoa seesei ara. {numbers}"
+  safety.CALL_WORD: "Frɛ {numbers}"
+  safety.OR_WORD: "anaa"
+  safety.EMERGENCY_WORD: "ntɛmntɛm asɛm"
+  safety.FALLBACK_NUMBERS: "Frɛ ntɛmntɛm nɔma a ɛwɔ wo mpɔtam anaa kɔ ayaresabea a ɛbɛn wo."
+
+  commands.TEXTS.help: "ACE de afotu a wɔahwɛ mu yiye ma wo mpɔtam. Bisa wɔ wo kasa mu. Ahyɛde: NNAADAA + nkra na yɛahwɛ mu, AFOTU + w'afotu na wakyɛ nimdeɛ, FIBEA, BEBREE, KASA + kood (sɛ KASA EN), POPA na yɛapopa wo ho nsɛm."
+  commands.TEXTS.help_short: "Bisa ACE wɔ wo kasa mu. NNAADAA + nkra hwɛ mu. POPA popa wo ho nsɛm."
+  commands.TEXTS.forgotten: "Yɛawie. ACE apopa biribiara a na ɛwɔ fa nɔma yi ho."
+  commands.TEXTS.stopped: "Worennya nkra biara mfi ACE nkyɛn bio gye sɛ wokyerɛw bio. Soma POPA na yɛapopa wo ho nsɛm."
+  commands.TEXTS.language: "Bua KASA ne kood:"
+  commands.TEXTS.tip_thanks: "Medaase. Yɛakora w'afotu sɛnea ɔbenimfo bɛhwɛ mu. Yɛrenkyɛ no kosi sɛ wɔbɛhwɛ mu."
+  commands.TEXTS.tip_usage: "Soma AFOTU ne w'afotu, sɛ: AFOTU neem nhaban boa tia aburow sumpii wɔ Techiman."
+  commands.TEXTS.scam_usage: "Soma NNAADAA ne nkra a wunnye nni no, na ACE bɛhwɛ mu."
+  commands.TEXTS.no_sources: "Mmuae bi nni hɔ a yɛbɛkyerɛ baabi a efi. Di kan bisa asɛm bi."
+  commands.TEXTS.no_more: "Ɛno ne nea ACE wɔ fa asɛm yi ho seesei. Bisa asɛm foforo anaa soma MMOA."
+  commands.TEXTS.clarify: "ACE nnya nni afotu a wɔahwɛ mu fa eyi ho. ACE betumi aboa wo wɔ: {topics}. Soma AFOTU na fa nimdeɛ ka ho."
+  commands.TEXTS.unread: "ACE ntumi nkenkan kasa yi nnya. Mesrɛ wo, fa eyinom mu baako kyerɛw: {languages}."
+
+  scam.HEADLINES.LIKELY_SCAM: "ƐTE SƐ NNAADAA."
+  scam.HEADLINES.SUSPICIOUS: "HWƐ YIE."
+  scam.HEADLINES.NO_KNOWN_SIGNS: "Minhu nnaadaa nsɛnkyerɛnne biara a yenim, nanso ɛnkyerɛ sɛ ɛyɛ dwoodwoo."
+  scam.SIGNS_LABEL: "Kɔkɔbɔ nsɛnkyerɛnne:"
+  scam.REPORT_LINE: "Soma kɔ 333, ɛyɛ kwa."
+  scam.GENERIC_REPORT_LINE: "Mmua anaa mmfa sika mmrɛ. Bɔ amanneɛ kyerɛ wo network denam nɔma a ɛwɔ wɔn website so anaa SIM no krataa so."
+  scam.NEUTRAL_ADVICE: "Mfa wo PIN nkyerɛ obiara, na hwɛ wo mobile money mu sika ansa na woayɛ nea nkra biara ka."
+  scam.SIGNAL.asks_for_pin: "ɛbisa wo PIN anaa password"
+  scam.SIGNAL.double_registration: "ɛka sɛ wɔakyerɛw wo SIM din mprenu"
+  scam.SIGNAL.refund_request: "ɛka sɛ fa sika a wɔde mmrɛ wo mfomso so no san"
+  scam.SIGNAL.confirmation_from_personal_number: "ɛte sɛ M-PESA nhyɛso nanso efi obi nɔma so"
+  scam.SIGNAL.unofficial_operator_number: "ɛka sɛ efi Safaricom nanso ɛde nɔma a ɛnyɛ 0722000000 ma"
+  scam.SIGNAL.dial_code_instruction: "ɛka sɛ pia kood wɔ wo fon so"
+  scam.SIGNAL.prize_or_offer: "ɛka sɛ woadi nkonim anaa ɛde sika rema"
+  scam.SIGNAL.link: "link wɔ mu"
+  scam.SIGNAL.pressure: "ɛhyɛ wo sɛ yɛ no ntɛm"
+
+  channels.ussd.UI:
+    ask: "Bisa asɛm"
+    scam: "Hwɛ nkra mu"
+    lang: "Kasa"
+    more: "98 Bebree"
+    next: "1 Nea edi so"
+    back: "0 San w'akyi"
+    menu: "0 Menu"
+    ask_prompt: "Kyerɛw wo asɛmmisa:"
+    scam_prompt: "Kyerɛw anaa fa nkra no hyɛ mu:"
+    invalid: "Nea woapaw no nyɛ."
+    end_pack: "Ɛno ne ne nyinaa wɔ asɛm yi ho."
+    lang_prompt: "1 English"
+    topics: "Nsɛm"
+    place_prompt: "Kyerɛw wo {area} din:"
+    food_prompt: "Kyerɛw aduan ne wo {area}, sɛ aburow {example}:"
+    weeks_prompt: "Wo nyinsɛn adi nnawɔtwe sɛn?"
+    crop_prompt: "Kyerɛw afifide no ne nea wuhu:"
+  channels.voice.PROMPTS:
+    welcome: "Akwaaba ba ACE."
+    press: "Sɛ ɛyɛ {label} a, pia {n}."
+    repeat: "Sɛ wopɛ sɛ wotie menu no bio a, pia 0."
+    bye: "Yennyaa nea woapaw no. Nante yie."
+    invalid: "Ɛno nyɛ nea wobɛpaw."
+
+  services.base.DAYS: ["Dwo", "Ben", "Wuk", "Yaw", "Fia", "Mem", "Kwa"]
+  services.base.MONTHS: ["Ɔpɛ", "Ɔgy", "Ɔbɛ", "Oful", "Kɔt", "Ayɛ", "Kit", "Ɔsa", "Ɛbɔ", "Ahi", "Obu", "Ɔpɛn"]
+  services.base.NEEDS_PLACE: "{area} bɛn mu na wowɔ? Bua ne din, sɛ {example}."
+  services.base.AREA_DEFAULT: "mpɔtam"
+  services.base.AREA_WORD: {GH: "mantam"}
+  services.base.COUNTRY_SAID: {GH: "Ghana"}
+
+  services.rain.WORDS.likely: "ebia ɛbɛba paa"
+  services.rain.WORDS.possible: "ebia"
+  services.rain.WORDS.dry: "awia bɛbɔ paa"
+  services.rain.HEAD: "Osu a ɛbɛn {place}:"
+  services.rain.HEAVY_LINE: "Osu kɛse (20 mm anaa nea ɛboro saa) betumi atɔ {days}."
+  services.rain.FOOT: "Ɛho kwan fi ECMWF wim tebea nkɔmhyɛ a ɛyɛ {date} no mu."
+  services.rain.SPAN: "{a} kosi {b}"
+  services.rain.AND: "ne"
+  services.rain.STALE: "ACE nni seesei wim tebea nkɔmhyɛ mma {place}. Hwɛ {met} nkɔmhyɛ."
+  services.rain.NEXT: "Yɛ w'afuom adwuma ho nhyehyɛe ma nna a ɛyɛ awia."
+
+  services.warnings.FOUND: "Aban kɔkɔbɔ ma {place} fi {authority}, kosi {until}:"
+  services.warnings.NATIONAL: "Aban kɔkɔbɔ ma ɔman no nyinaa fi {authority}, kosi {until}:"
+  services.warnings.MORE: "Afoforo {n} da so yɛ adwuma."
+  services.warnings.NONE: "Aban kɔkɔbɔ biara mfi {authority} a ɛfa {place} ho seesei (wɔhwɛɛ {checked})."
+  services.warnings.STALE: "ACE antumi anhwɛ {authority} kɔkɔbɔ nnansa yi, enti ennim sɛ ebi wɔ hɔ. Tie aban nkaebɔ a efi {authority}."
+  services.warnings.GAP: "{authority} mmɔ kɔkɔbɔ wɔ ɔkwan a ACE betumi akenkan so, enti ACE ntumi nhwɛ kɔkɔbɔ wɔ hɔ. Tie aban nkaebɔ a efi {authority} wɔ radio ne TV so."
+  services.warnings.YOUR_AREA: "wo mpɔtam"
+
+  services.facility.NEAR: "Aban ayaresabea a ɛbɛn:"
+  services.facility.IN_AREA: "Aban ayaresabea wɔ {place}:"
+  services.facility.CAVEAT: "Efi aban ayaresabea din krataa a ɛyɛ 2019 mu; hwɛ sɛ abue ansa na woakɔ."
+  services.facility.REGISTRY_CAVEAT: "Efi Apɔwmuden Ministeri ayaresabea nkrataa mu; frɛ ansa na woakɔ sɛ wubetumi a."
+  services.facility.EMERGENCY: "Ntɛmntɛm asɛm: {numbers}."
+  services.facility.NO_NUMBER: "Sɛ ɛyɛ ntɛmntɛm asɛm a, frɛ ntɛmntɛm nɔma a ɛwɔ wo mpɔtam."
+  services.facility.NONE: "ACE anhu aban ayaresabea biara wɔ {km} km mu wɔ ne 2019 din krataa so."
+  services.facility.GAP: "ACE nnya nni ayaresabea din krataa mma ɔman yi."
+  services.facility.KM: "{km} km"
+
+  services.prices.LINE: "{food} wɔ {market}: {currency} {price} {unit} wɔ {month}"
+  services.prices.CHANGE.up: "akɔ soro {pct}% fi {prev}"
+  services.prices.CHANGE.down: "aba fam {pct}% fi {prev}"
+  services.prices.CHANGE.same: "ɛte sɛ {prev}"
+  services.prices.ITEM: "{food} {currency} {price} {unit} ({month})"
+  services.prices.FAR: "({km} km fi {place})"
+  services.prices.FOOT: "WFP boɔ."
+  services.prices.TOP: "WFP boɔ foforo wɔ {market}{far}:"
+  services.prices.OLD: "WFP boɔ foforo a ACE wɔ ma {country} yɛ {month} de, na ayɛ dada. Bisa adetɔnfo anaa wo kuadwuma ɔfese."
+  services.prices.GAP: "WFP mmɔ boɔ mma {country}, enti ACE ntumi mma boɔ wɔ hɔ. Bisa adetɔnfo anaa wo kuadwuma ɔfese."
+  services.prices.THIN: "WFP boɔ foforo ma {country} fa aduan kakraa bi nkutoo ho. Bisa adetɔnfo anaa wo kuadwuma ɔfese."
+  services.prices.NO_FOOD: "ACE nni WFP boɔ foforo mma {food} a ɛbɛn {place}."
+  services.prices.UNIT: "{unit} biara"
+  services.prices.UNIT_MANY: "{unit} biara"
+  services.prices.LOCAL_FOOD: {maize: "Aburow", "maize flour": "Aburow esiam", "maize meal": "Aburow esiam", beans: "Adua", rice: "Ɛmo", sorghum: "Atoko", millet: "Ewio", sugar: "Asikyire", oil: "Ngo", "wheat flour": "Esiam", wheat: "Wiit", cowpeas: "Adua", potatoes: "Abrɔdwoma", tomatoes: "Ntoosi", onions: "Gyeene", salt: "Nkyene", milk: "Nufusu", eggs: "Nkesua", bread: "Paanoo", pasta: "Pasta"}
+  services.prices.LOCAL_DETAIL: {white: "fitaa", yellow: "akokɔsrades", imported: "a efi aburokyiri", local: "a efi ha", dry: "a awo", red: "kɔkɔɔ"}
+
+  services.pregnancy.FIRST: "Wɔ nnawɔtwe {w} so, kɔ wo nyinsɛn nhwehwɛmu a edi kan seesei, ansa na nnawɔtwe 12 adu."
+  services.pregnancy.DUE_NOW: "Wɔ nnawɔtwe {w} so, wo nyinsɛn nhwehwɛmu bere adu seesei. Nea edi so no yɛ nnawɔtwe {next}."
+  services.pregnancy.NEXT: "Wɔ nnawɔtwe {w} so, wo nyinsɛn nhwehwɛmu a edi so no yɛ nnawɔtwe {next}."
+  services.pregnancy.LATE: "Wɔ nnawɔtwe {w} so woatwam nhwehwɛmu a etwa to a wɔhyehyɛɛ ma nnawɔtwe 40. Kɔhu apɔwmuden adwumayɛfo nnɛ."
+  services.pregnancy.ASK: "Wo nyinsɛn adi nnawɔtwe sɛn? Fa nɔma bua, sɛ nnawɔtwe 22."
+  services.pregnancy.CALL: "Frɛ {numbers}."
+
+  services.pests.LIKELY: "Ebia eyi yɛ {problem}. ACE nhu w'afifide, enti hwɛ nsɛnkyerɛnne yi:"
+  services.pests.MAYBE: "Ebia ɛyɛ {problem}."
+  services.pests.REFER: "Bisa kuadwuma afotufo ma ɔnsi so dua ansa na woapete aduru."
+  services.pests.NAMES.fall_armyworm: "aburow sumpii (fall armyworm)"
+  services.pests.NAMES.maize_lethal_necrosis: "aburow yare a ɛkum (MLN)"
+  services.pests.NAMES.cassava_mosaic: "bankye mosaic yare"
+  services.pests.NAMES.banana_xanthomonas_wilt: "kwadu nkyenkyem yare (Xanthomonas)"
+  services.pests.NAMES.tomato_leaf_miner: "ntoosi nhaban mmoa (Tuta absoluta)"
+  services.pests.ASK: "Afifide bɛn, na dɛn na wuhu? Sɛ: aburow nhaban a ntokuru wom ne mfuturo te sɛ dua mfuturo."
+  services.pests.UNKNOWN: "Seesei ACE hwɛ aburow, bankye, kwadu ne ntoosi. Afifide afoforo ho no, bisa kuadwuma afotufo."
+
+phrases:
+  safety.PREGNANCY: ["ɔwɔ nyinsɛn", "mewɔ nyinsɛn", "nyinsɛn", "ɔbea a ɔwɔ nyinsɛn", "wayem", "mayem"]
+  safety.POSTPARTUM: ["ɔwoo nnɛra", "wawo", "mawo", "ɔwoo akyi", "wawo awie"]
+  safety.MATERNAL_DANGER: ["mogya", "mogya reba", "mogya ba", "ɔrewosow", "ne tirim yɛ no ya paa", "n'ani nhu ade yiye", "abofra no nkeka ne ho", "nsuo no apae", "atiridii kɛse", "otwa", "otwa yare", "atwa ahwe fam"]
+  safety.URGENT: ["ɔnhome", "ontumi nhome", "watɔ beraw", "ɔtɔɔ fam na ɔnnyaneɛ", "mogya reba no bebree", "ne koko yɛ no ya", "ɔwɔ aka", "ɔwɔ akɔ no", "ogya ahye no paa", "otwa yare", "atwa ahwe fam", "ntumi nhome", "nhome", "onnhome", "ɔnnhome", "ɔntumi nhome"]
+  safety.POISON_ACT: ["anom", "ɔnom", "amene", "ɔmene", "abofra no anom", "nom", "anom no", "no anom"]
+  safety.POISON_WHAT: ["awuduru", "mmoa aduru", "nkura aduru", "kananzin", "petro", "bleach", "kerosene", "kerosine"]
+  safety.POISONED: ["wɔde awuduru ama no", "wanom awuduru", "wadi awuduru", "wɔde awuduru agu ne mu", "wɔadua no awuduru"]
+  safety.GBV: ["wɔato me mmonnaa", "ɔto me mmonnaa", "ɔbɔ me", "me kunu bɔ me", "ɔbɔɔ me", "efie basabasayɛ", "ɔhunahuna sɛ ɔbɛkum me", "boro me", "kunu boro me", "ɔboro me", "ɔbɔ me daa"]
+  safety.CHILD: ["abofra", "me ba", "me babea", "me babarima", "akataasia", "mmofra", "abofra ketewa"]
+  safety.CHILD_HARM: ["wɔato no mmonnaa", "ɔto no mmonnaa", "ato no mmonnaa", "wɔyɛ no basabasa", "wɔhyɛ no so", "wɔbɔ no", "ɔbɔɔ no", "aware a wɔhyɛ"]
+  safety.SELF_HARM: ["kum me ho", "mɛkum me ho", "mepɛ sɛ mewu", "mempɛ sɛ mete ase bio", "mepɛ sɛ mewie me nkwa", "pira me ho"]
+
+  scam.PIN: ["pin", "password", "ahintasɛm nɔma"]
+  scam.ASK: ["soma", "ma me", "si so dua", "hyɛ mu", "kyerɛw"]
+  scam.MISTAKE: ["mfomso so", "mfomso", "fa sika no san", "fa san"]
+  scam.DOUBLE: ["mprenu"]
+  scam.PRIZE: ["woadi nkonim", "akyɛde", "abasobɔde", "sika kwa"]
+  scam.URGENT: ["ntɛm ntɛm", "seesei ara", "nnɔnhwerew 24 mu", "wɔbɛto mu", "wɔbɛgyae", "kɔkɔbɔ a etwa to"]
+  scam.CLAIMS_OPERATOR: ["mtn", "momo", "telecel", "vodafone", "airteltigo", "at money"]
+  scam.DIAL: ["pia", "dial"]
+
+  services.CUES.pregnancy_companion: ["nyinsɛn nhwehwɛmu", "antenatal", "nhwehwɛmu a edi so"]
+  services.CUES.nearest_facility: ["ayaresabea", "asopiti", "dɔkota"]
+  services.CUES.official_warnings: ["kɔkɔbɔ", "nsuyiri", "ahum"]
+  services.CUES.rain_this_week: ["osu", "osu bɛtɔ", "wim tebea", "nkɔmhyɛ"]
+  services.CUES.market_prices: ["boɔ", "ɛyɛ sɛn", "dwam"]
+  services.CUES.pest_check: ["mmoa", "sumpii", "yare", "nhaban", "akokɔsrades", "ntokuru", "rewu", "rehwan"]
+  services.SEASONAL: ["osu bere", "ɔpɛ bere", "harmattan"]
+  services.PREGNANT: ["nyinsɛn"]
+  services.HOW_MUCH: ["sɛn"]
+  services.prices.FOODS: {aburow: maize, adua: beans, ɛmo: rice, asikyire: sugar, ngo: oil, ntoosi: tomatoes, gyeene: onions, nkyene: salt, nkesua: eggs, paanoo: bread, gari: cassava}
+  services.pests.CROPS.maize: ["aburow"]
+  services.pests.CROPS.cassava: ["bankye"]
+  services.pests.CROPS.banana: ["kwadu", "brɔdeɛ"]
+  services.pests.CROPS.tomato: ["ntoosi"]
+  services.pests.PROBLEMS.fall_armyworm: ["sumpii", "ntokuru", "mfuturo"]
+  services.pests.PROBLEMS.maize_lethal_necrosis: ["akokɔsrades", "awo", "awu"]
+  services.pregnancy.WEEK_WORDS: ["nnawɔtwe", "dapɛn"]
+  services.pregnancy.MONTH_WORDS: ["abosome", "ɔbosome"]
+  commands.COMMANDS.help: ["mmoa"]
+  commands.COMMANDS.forget: ["popa"]
+  commands.COMMANDS.stop: ["gyae"]
+  commands.COMMANDS.language: ["kasa"]
+  commands.COMMANDS.tip: ["afotu"]
+  commands.COMMANDS.scam: ["nnaadaa"]
+  commands.COMMANDS.sources: ["fibea"]
+  commands.COMMANDS.more: ["bebree"]
+  text.ACTION_CUES: ["dɛn na menyɛ", "dɛn na ɛsɛ sɛ meyɛ", "mɛyɛ dɛn asi ano", "mɛyɛ dɛn akum", "mɛyɛ dɛn akora", "boa me"]
+
+words:
+  stopwords: ["ne", "anaa", "nanso", "eyi", "ha", "seesei", "dɛn", "sɛn", "efisɛ", "sɛ", "mesrɛ", "me", "paa", "wɔ", "na"]
+  markers: ["mesrɛ", "dɛn", "sɛn", "seesei", "hena", "ɛhe", "efisɛ", "anaa", "abofra", "ayaresabea", "aburow", "medaase", "eyi", "minnim", "mepɛ", "paa", "nyinsɛn", "ɛnnɛra", "nnɛ", "ɔkyena", "sika", "nhaban", "bankye", "nnawɔtwe", "osu", "adua", "mewɔ", "bɛtɔ", "nso", "baako", "nyinaa", "nnipa", "akyi", "anim", "nkyɛn", "ebinom", "bebree", "ɔno"]

@@ -22,17 +22,18 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
-### 2.4 preview (2.4.0b1 to 2.4.0b3, 27 November 2026): ACE as a public product
+### 2.4 preview (2.4.0b1 to 2.4.1, 27 November 2026): ACE as a public product
 
 - [x] The site at ace.korext.com: a phone for USSD, SMS, voice, WhatsApp and RCS, coverage, developers, status and about pages
 - [x] 2.4.0b2: the ACE mark as the favicon, the phone icons and a web app manifest
 - [x] 2.4.0b3: a new instance loads the published snapshot set before its first request
+- [x] 2.4.1: the emergencies a final audit found missing, every number on an Arabic USSD screen, no false alarm on a phone call or a crop, a place ACE does not know asked about, a monthly spending cap that acts, and a release gate that checks the commit on the site and MCP
 - [x] Private web sessions, a production factory that refuses unsafe settings, and no phone number trusted from an unauthenticated caller
 - [x] Firestore sessions with a 24 hour expiry, escalation counts with no text, and checked snapshot sets swapped in without a restart
 - [x] MCP over Streamable HTTP, a facility index, the model off for USSD and voice, citations with licence and date
 - [x] Fire, drowning, stabbing and road accidents in the safety rail, in all 32 languages, with red team messages
 - [x] The relevance test: no fact on another topic
-- [x] deploy/gcp: the same stack in any Google Cloud project, a spend guard and a weekly model check
+- [x] deploy/gcp: the same stack in any Google Cloud project, a monthly spending cap and a weekly model check
 - [ ] Fluent speaker and clinician review, language by language, lifting the preview label
 - [ ] Real phone numbers, country by country, after each privacy review
 

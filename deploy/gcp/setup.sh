@@ -2,7 +2,7 @@
 # Stand up ACE on Google Cloud: the site and API, MCP, the snapshot refresh job, a global load balancer with a
 # managed certificate and Cloud Armor, durable sessions in Firestore, the spend guard and the weekly model check.
 #
-#   PROJECT=your-project DOMAIN=ace.example.org deploy/gcp/setup.sh
+#   PROJECT=your-project DOMAIN=ace.example.org bash deploy/gcp/setup.sh
 #   BILLING_ACCOUNT defaults to the account linked to the project.
 #
 # Run it from a checkout of the release you want to deploy, in Cloud Shell or anywhere gcloud is signed in. Every step

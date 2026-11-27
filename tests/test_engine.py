@@ -9,27 +9,27 @@ from ace_engine.models import Channel, GeoPoint, Message, ReplyKind
 
 
 def test_grounded_answer_has_citations(engine):
-    reply = engine.ask("Armyworm is eating my maize, what do I do?", channel=Channel.SMS)
+    reply = engine.ask("Armyworm is eating my maize, what do I do?", sender="+254700000000", channel=Channel.SMS)
     assert reply.kind is ReplyKind.ANSWER
     assert reply.citations and all(c.source_url for c in reply.citations)
     assert any(c.fact_id.endswith(("squash-eggs-larvae", "push-pull")) for c in reply.citations)
 
 
 def test_swahili_question_gets_swahili_answer(engine):
-    reply = engine.ask("viwavi wanakula mahindi yangu nifanye nini", channel=Channel.SMS)
+    reply = engine.ask("viwavi wanakula mahindi yangu nifanye nini", sender="+254700000000", channel=Channel.SMS)
     assert reply.language == "sw"
     assert "mahindi" in reply.text.lower() or "viwavi" in reply.text.lower()
 
 
 def test_unknown_topic_is_admitted_not_invented(engine):
-    reply = engine.ask("which football team plays best in the league")
+    reply = engine.ask("which football team plays best in the league", sender="+254700000000")
     assert reply.kind is ReplyKind.CLARIFY and not reply.citations
     assert "no checked guidance" in reply.text
 
 
 def test_greeting_gets_help(engine):
-    assert engine.ask("Hello").kind is ReplyKind.SYSTEM
-    assert engine.ask("Habari").language == "sw"
+    assert engine.ask("Hello", sender="+254700000000").kind is ReplyKind.SYSTEM
+    assert engine.ask("Habari", sender="+254700000000").language == "sw"
 
 
 @pytest.mark.parametrize("channel", list(CHANNEL_BUDGETS))
@@ -43,7 +43,7 @@ def test_every_answer_fits_its_channel(engine, channel, question):
 
 
 def test_safety_critical_answers_carry_numbers(engine):
-    reply = engine.ask("what are pregnancy danger signs", channel=Channel.SMS)
+    reply = engine.ask("what are pregnancy danger signs", sender="+254700000000", channel=Channel.SMS)
     assert reply.kind is ReplyKind.ANSWER
     assert "999" in reply.text and "1199" in reply.text
     assert reply.text.count("999") == 1
@@ -108,7 +108,7 @@ def test_history_can_be_disabled():
 
 
 def test_one_identity_across_channels(engine):
-    engine.handle(Message(channel=Channel.VOICE, sender="0712000000", text="armyworm"))
+    engine.handle(Message(channel=Channel.VOICE, sender="00254712000000", text="armyworm"))
     engine.handle(Message(channel=Channel.WHATSAPP, sender="+254712000000", text="more"))
     profile = engine.profiles.peek("254712000000")
     assert profile.channels == [Channel.VOICE, Channel.WHATSAPP]
@@ -125,7 +125,16 @@ def test_location_is_remembered(engine):
     ("00254712345678", "+254712345678"),
 ])
 def test_normalize_msisdn(number, expected):
-    assert normalize_msisdn(number) == expected
+    assert normalize_msisdn(number, "254") == expected
+
+
+def test_a_local_number_gets_no_country_unless_the_deployment_names_one():
+    assert normalize_msisdn("+2348031234567") == "+2348031234567"
+    assert normalize_msisdn("2348031234567") == "+2348031234567"  # full international number without the plus
+    with pytest.raises(ValueError):
+        normalize_msisdn("0712345678")  # never assumed to be Kenyan
+    store = ProfileStore(salt="s")
+    assert store.key_for("0712345678") != store.key_for("0712345679")  # still a private key each
 
 
 def test_normalize_rejects_garbage():

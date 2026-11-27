@@ -42,29 +42,29 @@ def test_ordinary_questions_do_not_escalate(text):
 
 
 def test_emergency_reply_uses_verified_numbers(engine):
-    reply = engine.ask("I am pregnant and bleeding", channel=Channel.SMS)
+    reply = engine.ask("I am pregnant and bleeding", sender="+254700000000", channel=Channel.SMS)
     assert reply.kind is ReplyKind.EMERGENCY and reply.escalated
     assert "999" in reply.text and "1199" in reply.text
     assert all(c.fact_id.startswith("ke-emergency-contacts/") for c in reply.citations)
 
 
 def test_gbv_reply_gives_the_helpline(engine):
-    reply = engine.ask("my husband beats me", channel=Channel.SMS)
+    reply = engine.ask("my husband beats me", sender="+254700000000", channel=Channel.SMS)
     assert "1195" in reply.text and "999" in reply.text
 
 
 def test_child_reply_gives_childline(engine):
-    assert "116" in engine.ask("my daughter was defiled", channel=Channel.SMS).text
+    assert "116" in engine.ask("my daughter was defiled", sender="+254700000000", channel=Channel.SMS).text
 
 
 def test_self_harm_reply_is_supportive_and_gives_numbers(engine):
-    reply = engine.ask("I want to end my life", channel=Channel.SMS)
+    reply = engine.ask("I want to end my life", sender="+254700000000", channel=Channel.SMS)
     assert reply.text.startswith("I am really sorry")
     assert "1190" in reply.text and "999" in reply.text
 
 
 def test_swahili_emergency_reply(engine):
-    reply = engine.ask("mtoto amekunywa sumu", channel=Channel.SMS)
+    reply = engine.ask("mtoto amekunywa sumu", sender="+254700000000", channel=Channel.SMS)
     assert reply.language == "sw" and reply.text.startswith("Hii inaonekana kuwa sumu")
 
 
@@ -76,7 +76,7 @@ def test_handoff_is_raised_without_the_phone_number(engine):
 
 
 def test_safety_runs_before_commands(engine):
-    reply = engine.ask("HELP my baby is not breathing", channel=Channel.SMS)
+    reply = engine.ask("HELP my baby is not breathing", sender="+254700000000", channel=Channel.SMS)
     assert reply.kind is ReplyKind.EMERGENCY
 
 

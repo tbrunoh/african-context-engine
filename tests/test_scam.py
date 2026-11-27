@@ -50,15 +50,16 @@ def test_no_known_signs_never_says_safe(engine):
 
 
 def test_scam_command_and_auto_detection(engine):
-    by_command = engine.ask("SCAM your account will be blocked, act immediately", channel=Channel.SMS)
+    by_command = engine.ask("SCAM your account will be blocked, act immediately", sender="+254700000000", channel=Channel.SMS)
     assert by_command.kind is ReplyKind.SCAM and by_command.text.startswith("BE CAREFUL")
-    forwarded = engine.ask("Your SIM is registered twice. Send your M-PESA PIN to confirm", channel=Channel.SMS)
+    forwarded = engine.ask("Your SIM is registered twice. Send your M-PESA PIN to confirm",
+                           sender="+254700000000", channel=Channel.SMS)
     assert forwarded.kind is ReplyKind.SCAM and forwarded.text.startswith("LIKELY SCAM")
     assert "333" in forwarded.text
 
 
 def test_scam_reply_cites_operator_guidance(engine):
-    reply = engine.ask("SCAM please share your PIN", channel=Channel.WHATSAPP)
+    reply = engine.ask("SCAM please share your PIN", sender="+254700000000", channel=Channel.WHATSAPP)
     cited = {c.fact_id for c in reply.citations}
     assert "ke-mobile-money-safety/never-share-pin" in cited
     assert "ke-mobile-money-safety/report-333" in cited
@@ -67,7 +68,7 @@ def test_scam_reply_cites_operator_guidance(engine):
 
 
 def test_scam_reply_in_swahili(engine):
-    reply = engine.ask("UTAPELI tuma PIN yako sasa hivi", channel=Channel.SMS, language="sw")
+    reply = engine.ask("UTAPELI tuma PIN yako sasa hivi", sender="+254700000000", channel=Channel.SMS, language="sw")
     assert reply.text.startswith("HUU NI UTAPELI MTARAJIWA")
 
 

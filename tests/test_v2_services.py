@@ -334,7 +334,7 @@ def test_safety_rail_still_runs_before_every_service(engine):
 def test_v1_engine_without_snapshots_is_unchanged():
     v1 = Engine.from_packs(ROOT / "context_packs", snapshots=None)
     assert v1.services is None and detect("rain in Embu") == "rain_this_week"
-    assert v1.ask("rain in Embu").actions == []
+    assert v1.ask("rain in Embu", sender="+254700000000").actions == []
 
 
 def test_ussd_services_menu_and_flow(engine):
@@ -365,8 +365,10 @@ def test_api_services_routes(engine):
     assert listing["services"][1]["coverage"]["RW"]["available"] is False
     status, res = call("POST", "/v1/services/market_prices", {"country": "KE", "place": "Embu", "food": "maize"})
     assert res["outcome"] == "answer" and res["place"]["name"] == "Embu" and res["citations"]
+    before = len(engine.profiles._profiles)
     status, res = call("POST", "/v1/services/nearest_facility", {"country": "KE", "text": "my child drank paraffin"})
     assert res["outcome"] == "emergency"
+    assert len(engine.profiles._profiles) == before  # a phone-less emergency keeps no profile and no text
 
 
 def test_mcp_exposes_every_service(engine):

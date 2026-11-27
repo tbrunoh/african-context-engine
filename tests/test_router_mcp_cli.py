@@ -69,7 +69,7 @@ def test_known_numbers_are_allowed():
 def test_engine_with_model(packs_dir):
     model = FakeModel("Dry maize to about 13 percent moisture before storing it [1].")
     engine = Engine.from_packs(packs_dir, composer=GroundedGenerator(model))
-    reply = engine.ask("how do I store maize", channel=Channel.WHATSAPP)
+    reply = engine.ask("how do I store maize", sender="+254700000000", channel=Channel.WHATSAPP)
     assert reply.text.startswith("Dry maize to about 13 percent") and len(reply.citations) == 1
     assert "FACTS:" in model.prompts[0]
 
@@ -79,7 +79,7 @@ def test_mcp_tools(engine):
     assert {"ask_ace", "search_context", "check_message", "emergency_contacts", "list_packs"} <= set(tools)
     assert {"rain_this_week", "official_warnings", "nearest_facility", "market_prices", "pregnancy_companion",
             "pest_check", "service_coverage"} <= set(tools)
-    assert tools["ask_ace"]("how do I store maize")["citations"]
+    assert tools["ask_ace"]("how do I store maize", country="KE")["citations"]
     assert tools["search_context"]("armyworm")[0]["review_status"] == "sourced"
     assert tools["check_message"]("send your PIN")["verdict"] == "likely_scam"
     assert "1195" in {c["number"] for c in tools["emergency_contacts"]("KE", "gbv")}
@@ -90,12 +90,30 @@ def test_mcp_tools(engine):
     assert len(tools["list_packs"]()) >= 6
 
 
+def test_mcp_never_falls_back_to_kenya(engine):
+    """With no country, an MCP question is answered as for a caller outside ACE's 34 countries."""
+    tools = build_tools(engine)
+    before = len(engine.profiles._profiles)
+    out = tools["ask_ace"]("he is not breathing")
+    assert out["kind"] == "emergency" and "999" not in out["text"] and "112" not in out["text"]
+    assert "local emergency number" in out["text"].lower()
+    assert "193" in tools["ask_ace"]("he is not breathing", country="gh")["text"]
+    with pytest.raises(ValueError):
+        tools["ask_ace"]("he is not breathing", country="XX")
+    assert tools["check_message"]("send your PIN")["verdict"] == "likely_scam"
+    with pytest.raises(ValueError):
+        tools["pest_check"]("maize", "holes in the leaves")
+    assert tools["pest_check"]("maize", "holes in the leaves", country="NG")["outcome"] in {"answer", "gap", "no_match"}
+    assert len(engine.profiles._profiles) == before  # each question leaves no profile behind
+
+
 def test_cli_validate_list_ask_scam(capsys, packs_dir):
     assert main(["packs", "validate", str(packs_dir)]) == 0
     assert "PASS" in capsys.readouterr().out
     assert main(["packs", "list", "--packs", str(packs_dir)]) == 0
     capsys.readouterr()
-    assert main(["ask", "how", "do", "I", "store", "maize", "--packs", str(packs_dir), "--json"]) == 0
+    assert main(["ask", "how", "do", "I", "store", "maize", "--packs", str(packs_dir), "--country", "KE",
+                 "--json"]) == 0
     assert json.loads(capsys.readouterr().out)["kind"] == "answer"
     assert main(["scam", "send", "your", "PIN", "--packs", str(packs_dir)]) == 0
     assert "likely_scam" in capsys.readouterr().out

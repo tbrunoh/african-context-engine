@@ -23,7 +23,7 @@ Open packs live here under CC BY 4.0, one folder per country, plus `africa/` for
 | [ci/emergency-contacts.yaml](ci/emergency-contacts.yaml) | 3 | Côte d'Ivoire emergency and helpline numbers used by the safety rail |
 | [tg/emergency-contacts.yaml](tg/emergency-contacts.yaml) | 2 | Togo emergency and helpline numbers used by the safety rail |
 
-Every fact is `sourced`: a maintainer compared it with the cited public source on the `checked_on` date. None is expert reviewed yet, and every Swahili, French, Portuguese, Arabic, Amharic, Afaan Oromo and Somali rendering awaits review by a fluent speaker. Both are open invitations: see [docs/good-first-issues.md](../docs/good-first-issues.md).
+Every fact is `sourced`: a maintainer compared it with the cited public source on the `checked_on` date. None is expert reviewed yet, and every rendering in a language other than English awaits review by a fluent speaker. Both are open invitations: see [docs/good-first-issues.md](../docs/good-first-issues.md).
 
 To add a pack, copy [_template.yaml](_template.yaml), follow [docs/context-packs.md](../docs/context-packs.md), run `ace packs validate`, and open a pull request with the context pack template.
 

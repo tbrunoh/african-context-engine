@@ -50,6 +50,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("base")
     ap.add_argument("--header", action="append", default=[], help="extra header, for example the candidate header")
+    ap.add_argument("--commit", default=None, help="the commit the release built: the site and MCP must both run it")
     args = ap.parse_args()
     base = args.base.rstrip("/")
     headers = dict(h.split(": ", 1) for h in args.header)
@@ -58,6 +59,9 @@ def main() -> int:
     code, _, body = request(base, "/healthz", headers)
     health = json.loads(body) if code == 200 else {}
     check(health.get("status") == "ok" and health.get("facts", 0) > 0, f"/healthz: ACE {health.get('version')}")
+    if args.commit is not None:  # an empty commit means the release lost it: fail rather than skip the check
+        check(bool(args.commit) and bool(health.get("commit")) and args.commit.startswith(str(health.get("commit"))),
+              f"the site runs commit {args.commit[:12]}")
 
     for path in ("/", "/try", "/coverage", "/developers", "/status", "/about", "/static/ace.css", "/static/site.js",
                  "/robots.txt", "/sitemap.xml", "/v1/countries", "/v1/status", "/v1/services"):
@@ -104,10 +108,17 @@ def main() -> int:
     check(code == 200 and b"ace-context" in body, "MCP initialize")
     code, _, body = request(base, "/mcp", mcp_headers, {"jsonrpc": "2.0", "id": 2, "method": "tools/list", "params": {}})
     check(code == 200 and b"ask_ace" in body, "MCP tools/list")
+    if args.commit is not None:
+        code, _, body = request(base, "/mcp/healthz", headers)
+        mcp = json.loads(body) if code == 200 else {}
+        check(bool(args.commit) and bool(mcp.get("commit")) and args.commit.startswith(str(mcp.get("commit"))),
+              f"MCP runs commit {args.commit[:12]}")
 
     if base.startswith("https://") and "x-ace-candidate" not in {k.lower() for k in headers}:
-        code, h, _ = request("http://" + base[len("https://"):], "/", headers, follow=False)
-        check(code in (301, 308) and h.get("location", "").startswith("https://"), "HTTP redirects to HTTPS")
+        host = base[len("https://"):].split("/")[0]
+        code, h, _ = request("http://" + host, "/try?x=1", headers, follow=False)
+        check(code in (301, 308) and h.get("location", "") == f"https://{host}/try?x=1",
+              "HTTP redirects to the same page on HTTPS, with no port in the address")
         code, h, _ = request(base, "/", headers)
         check("strict-transport-security" in h, "HSTS from the load balancer")
 

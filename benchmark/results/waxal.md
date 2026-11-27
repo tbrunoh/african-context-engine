@@ -1,46 +1,46 @@
 # ACE on WAXAL speech text
 
-Real sentences from [WAXAL](https://huggingface.co/datasets/google/WaxalNLP) (dataset card revision 5f4d8ca, updated 1 September 2026): up to 600 per set from each test split, transcriptions of natural speech for ASR sets and voice scripts for TTS sets. Counts only; no WAXAL text is stored in this repository.
+Real sentences from [WAXAL](https://huggingface.co/datasets/google/WaxalNLP) (dataset card revision 5f4d8ca, updated 1 September 2026): up to 600 per set from each test split, transcriptions of natural speech for ASR sets and voice scripts for TTS sets. Each set is read as a message from a country where the language is spoken, so ACE guesses only among that country's languages, as it does for a real caller. A sentence ACE judges to be in a language it does not speak is not read: ACE says so and names the languages it reads in that country (see docs/languages.md). Counts only; no WAXAL text is stored in this repository, and none was used to build ACE's language profiles.
 
 ## ACE languages: recognised in real speech
 
-| Language | Sentences | Recognised | Other guesses | False alarms | Routed to a service |
-|:--|--:|--:|:--|--:|--:|
-| Amharic | 600 | 100.0% | none | 1 | 28 |
-| Swahili | 199 | 97.0% | none 6 | 1 | 18 |
-| Afaan Oromo | 600 | 93.2% | none 32, sw 5, so 4 | 0 | 136 |
+| Language | Read as from | Sentences | Recognised | Not read | Other guesses | False alarms | Routed to a service |
+|:--|:--|--:|--:|--:|:--|--:|--:|
+| Amharic | ET | 600 | 100.0% | 0.0% | none | 1 | 30 |
+| Shona | ZW | 600 | 100.0% | 0.0% | none | 0 | 44 |
+| Akan | GH | 600 | 99.5% | 0.0% | ee 2, en 1 | 0 | 28 |
+| Swahili | KE | 199 | 99.5% | 0.5% | none | 1 | 19 |
+| Afaan Oromo | ET | 600 | 99.0% | 0.0% | so 6 | 0 | 137 |
+| Twi | GH | 104 | 98.1% | 0.0% | country default 1, en 1 | 0 | 14 |
+| Igbo | NG | 200 | 97.5% | 0.0% | country default 3, yo 1, en 1 | 0 | 28 |
+| Luganda | UG | 600 | 97.0% | 0.0% | sw 18 | 0 | 27 |
+| Tigrinya | ET | 600 | 95.0% | 0.0% | am 30 | 0 | 32 |
+| Hausa | NG | 197 | 94.4% | 0.0% | country default 10, pcm 1 | 0 | 16 |
+| Yoruba | NG | 177 | 91.5% | 0.0% | country default 15 | 0 | 39 |
+| Fante (Akan) | GH | 101 | 88.1% | 0.0% | ee 10, country default 2 | 0 | 6 |
+| Fula (ACE writes Pular) | GN | 600 | 76.5% | 0.0% | fr 141 | 1 | 34 |
+| Lingala | CD | 600 | 75.7% | 0.5% | sw 143 | 0 | 20 |
+| Nigerian Pidgin | NG | 204 | 68.6% | 0.0% | en 52, country default 8, ig 4 | 1 | 20 |
 
-## Languages ACE does not speak: how often ACE claims them as its own
+## Languages ACE does not speak: told so, or answered in one of ACE's languages
 
-| Language | Sentences | Claimed | Claimed as | False alarms | Routed to a service |
-|:--|--:|--:|:--|--:|--:|
-| Tigrinya | 600 | 100.0% | am 600 | 0 | 10 |
-| Lingala | 600 | 97.2% | sw 583 | 0 | 3 |
-| Kikuyu | 214 | 89.7% | sw 192 | 0 | 1 |
-| Igbo | 200 | 77.5% | sw 155 | 0 | 1 |
-| Nigerian Pidgin | 204 | 70.1% | en 111, sw 32 | 0 | 17 |
-| Yoruba | 177 | 69.5% | sw 113, om 8, fr 2 | 0 | 0 |
-| Fante | 101 | 60.4% | sw 55, om 5, fr 1 | 0 | 0 |
-| Akan | 600 | 60.2% | sw 341, om 17, fr 2, en 1 | 0 | 0 |
-| Dagbani | 600 | 58.8% | sw 343, om 4, fr 4, so 1, pt 1 | 0 | 0 |
-| Masaaba | 600 | 58.3% | sw 323, pt 25, en 2 | 0 | 0 |
-| Dagaare | 600 | 58.2% | en 246, so 37, sw 34, om 21, fr 10, pt 1 | 0 | 0 |
-| Hausa | 197 | 55.8% | sw 100, om 10 | 0 | 0 |
-| Twi | 104 | 52.9% | sw 42, fr 7, om 6 | 0 | 0 |
-| Ikposo | 600 | 44.8% | sw 231, fr 34, pt 2, om 1, so 1 | 0 | 0 |
-| Fula | 600 | 32.7% | fr 89, sw 86, om 19, en 1, pt 1 | 1 | 2 |
-| Runyankole | 600 | 32.3% | sw 194 | 0 | 0 |
-| Dholuo | 209 | 28.2% | sw 46, fr 7, so 5, en 1 | 0 | 2 |
-| Acholi | 528 | 26.5% | sw 110, fr 20, so 6, en 2, om 2 | 0 | 19 |
-| Lusoga | 600 | 26.0% | sw 120, pt 35, om 1 | 0 | 0 |
-| Wolaytta | 600 | 14.8% | sw 49, so 31, fr 6, om 3 | 0 | 0 |
-| Luganda | 600 | 14.2% | sw 83, en 2 | 0 | 0 |
-| Malagasy | 600 | 11.8% | sw 69, fr 1, pt 1 | 0 | 0 |
-| Sidama | 600 | 8.7% | so 18, om 14, sw 12, fr 7, pt 1 | 0 | 0 |
-| Shona | 600 | 4.5% | so 15, om 4, fr 4, sw 4 | 0 | 0 |
+| Language | Read as from | Sentences | Not read | Answered | Answered in | False alarms | Routed to a service |
+|:--|:--|--:|--:|--:|:--|--:|--:|
+| Sidama | ET | 600 | 0.0% | 100.0% | om 562, so 22, country default 16 | 0 | 3 |
+| Wolaytta | ET | 600 | 0.0% | 100.0% | om 524, so 40, country default 36 | 0 | 9 |
+| Runyankole | UG | 600 | 0.0% | 100.0% | lg 207, sw 187, rw 152, country default 53, en 1 | 0 | 1 |
+| Lusoga | UG | 600 | 0.0% | 100.0% | lg 518, sw 67, country default 15 | 0 | 2 |
+| Masaaba | UG | 600 | 24.8% | 75.2% | sw 231, lg 175, rw 24, country default 20, en 1 | 0 | 101 |
+| Ikposo | TG | 600 | 32.7% | 67.3% | fr 211, ee 143, yo 27, country default 18, ak 5 | 0 | 54 |
+| Dagaare | GH | 600 | 50.8% | 49.2% | en 208, ak 62, ee 14, country default 8, ha 3 | 0 | 2 |
+| Acholi | UG | 528 | 83.3% | 16.7% | rw 34, sw 22, lg 18, country default 14 | 0 | 19 |
+| Dagbani | GH | 600 | 85.0% | 15.0% | ha 57, ee 23, country default 5, ak 4, en 1 | 0 | 4 |
+| Dholuo | KE | 209 | 87.1% | 12.9% | sw 11, country default 9, lg 3, en 2, so 2 | 0 | 3 |
+| Gikuyu | KE | 214 | 94.9% | 5.1% | sw 8, country default 3 | 0 | 1 |
+| Malagasy | any country | 600 | 100.0% | 0.0% | none | 0 | 0 |
 
-Average claimed rate: 45.8% across 23 languages, each language counted once. Tigrinya is listed but not averaged, because it shares Ge'ez script with Amharic.
+Across 12 languages ACE does not speak, each counted once, ACE tells the writer it does not read the language in 46.6% of sentences on average, and answers 53.4% in one of its own languages, most often a close neighbour. In ACE's own languages, at most 0.5% of a language's sentences are not read.
 
-Across 12,333 sentences in 27 sets, the safety rail fired 3 times (0.02%). Each firing is listed in waxal.json by queue for review.
+Across 12,333 sentences in 27 sets, the safety rail fired 4 times (0.03%). Each firing is listed in waxal.json by queue for review.
 
 Not measured: Ewe, Baoule. The dataset viewer could not serve their text on this run; load them with the datasets library instead.

@@ -1,0 +1,14 @@
+{
+  "split": "FLORES-200 devtest",
+  "flores_sha256": "b8b0b76783024b85797e5cc75064eb83fc5288b41e9654dabc7be6ae944011f6",
+  "checked": 141680,
+  "turned_away": 0,
+  "turned_away_by": {},
+  "english_checked": 32384,
+  "read_as_english": 5,
+  "read_as_english_by": {
+    "dyu BF": 2,
+    "dyu CI": 2,
+    "wo SN": 1
+  }
+}

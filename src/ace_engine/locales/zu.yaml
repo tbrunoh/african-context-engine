@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Lokhu kubukeka njengoshevu. Thola usizo lukadokotela manje, uphathe ibhodlela. {numbers}"
   safety.OPENERS.child_protection: "Ingane ingaba sengozini. Sicela uthole usizo manje. {numbers}"
   safety.OPENERS.gbv: "Ngiyaxolisa ukuthi lokhu kwenzeka kuwe. Ungathola usizo manje. {numbers}"
+  safety.OPENERS.fire: "Lokhu kubukeka kungumlilo. Khiphani wonke umuntu manje, ningabuyeli ngaphakathi. {numbers}"
   safety.OPENERS.health_urgent: "Lokhu kubukeka kuphuthuma. Thola usizo lukadokotela manje. {numbers}"
   safety.CALL_WORD: "Shayela {numbers}"
   safety.OR_WORD: "noma"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["ingane", "ingane yami", "umntwana", "indodakazi yami", "indodana yami", "intombazane", "abantwana"]
   safety.CHILD_HARM: ["udlwenguliwe", "bamdlwengula", "uhlukunyeziwe", "bayamhlukumeza", "bayamshaya", "umshayile", "umshado wokuphoqelelwa"]
   safety.SELF_HARM: ["ukuzibulala", "ngizozibulala", "ngifuna ukufa", "angisafuni ukuphila", "ngifuna ukuqeda impilo yami", "ukuzilimaza"]
+  safety.FIRE: ["indlu iyasha", "indlu yethu iyasha", "umlilo uvuthile", "kunomlilo", "umlilo ubhebhetheka", "kushe indlu", "igesi iqhumile", "imakethe iyasha"]
+  safety.DROWNING: ["uyaminza", "iyaminza", "uminzile", "uminze", "uwele emfuleni", "iwele emfuleni", "uwele emthonjeni", "uwele emanzini", "ukhukhulwe amanzi", "ukhukhulwe yizikhukhula"]
+  safety.STABBING: ["ugwazwe ngommese", "ugwaziwe", "bamgwazile", "umgwazile", "udutshuliwe", "bamdubulile", "ushaywe ngenhlamvu"]
+  safety.ROAD_ACCIDENT: ["ingozi yomgwaqo", "ingozi yemoto", "ingozi yetekisi", "ushayiswe yimoto", "ushayiswe imoto", "imoto imshayisile", "imoto igumbuqele", "ibhasi ligumbuqele"]
 
   scam.PIN: ["pin", "iphasiwedi", "inombolo eyimfihlo"]
   scam.ASK: ["thumela", "nginike", "qinisekisa", "faka", "bhala"]

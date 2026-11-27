@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Eyi te sɛ awuduru. Hwehwɛ dɔkota mmoa seesei ara, na fa toa no ka wo ho. {numbers}"
   safety.OPENERS.child_protection: "Ebia abofra bi wɔ asiane mu. Mesrɛ wo hwehwɛ mmoa seesei ara. {numbers}"
   safety.OPENERS.gbv: "Me werɛ ahow sɛ eyi reba wo so. Wubetumi anya mmoa seesei ara. {numbers}"
+  safety.OPENERS.fire: "Eyi te sɛ ogya. Yi obiara fi mu seesei, mommsan nkɔ mu. {numbers}"
   safety.OPENERS.health_urgent: "Eyi te sɛ ade a ɛho hia ntɛm. Hwehwɛ dɔkota mmoa seesei ara. {numbers}"
   safety.CALL_WORD: "Frɛ {numbers}"
   safety.OR_WORD: "anaa"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["abofra", "me ba", "me babea", "me babarima", "akataasia", "mmofra", "abofra ketewa"]
   safety.CHILD_HARM: ["wɔato no mmonnaa", "ɔto no mmonnaa", "ato no mmonnaa", "wɔyɛ no basabasa", "wɔhyɛ no so", "wɔbɔ no", "ɔbɔɔ no", "aware a wɔhyɛ"]
   safety.SELF_HARM: ["kum me ho", "mɛkum me ho", "mepɛ sɛ mewu", "mempɛ sɛ mete ase bio", "mepɛ sɛ mewie me nkwa", "pira me ho"]
+  safety.FIRE: ["ogya rehyew", "dan no rehyew", "yɛn dan no rehyew", "ogya asɔ", "ogya ato dan", "gas abɔ", "gaas abɔ", "dwa no rehyew"]
+  safety.DROWNING: ["nsuo rekum no", "nsu rekum no", "nsuo akum no", "tɔɔ asubɔnten mu", "tɔɔ nsuo mu", "tɔɔ abura mu", "nsuo afa no", "nsuyiri afa no"]
+  safety.STABBING: ["de sekan wɔɔ no", "sekan wɔɔ", "sekan apira no", "wɔtoo no tuo", "tuo abɔ no"]
+  safety.ROAD_ACCIDENT: ["kar abɔ no", "kar abɔ", "kar apem no", "okada abɔ no", "kar no adane", "bɔs no adane"]
 
   scam.PIN: ["pin", "password", "ahintasɛm nɔma"]
   scam.ASK: ["soma", "ma me", "si so dua", "hyɛ mu", "kyerɛw"]

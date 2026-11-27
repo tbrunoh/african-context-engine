@@ -19,6 +19,7 @@ templates:
   safety.OPENERS.poisoning: "Yɛl kãngã wõnda tiim-wẽnga. Bao dogtoor sõngre masã, la y zãa butɛllã. {numbers}"
   safety.OPENERS.child_protection: "Biig tõe n be zabr pugẽ. Bao sõngre masã. {numbers}"
   safety.OPENERS.gbv: "M sũur sãamame y sẽn paamd yɛl kãngã. Y tõe n paama sõngre masã. {numbers}"
+  safety.OPENERS.fire: "Yɛl kãngã wõnda bugum. Yiisi neb fãa masã, ra lebg n kẽ pʋgẽ ye. {numbers}"
   safety.OPENERS.health_urgent: "Yɛl kãngã wõnda yel-kaseng sẽn pa tar yaood ye. Bao dogtoor sõngre masã. {numbers}"
   safety.CALL_WORD: "Bool {numbers}"
   safety.OR_WORD: "bi"
@@ -163,6 +164,10 @@ phrases:
   safety.CHILD: ["biiga", "m biiga", "m bi-pugla", "m bi-ribla", "pug-sadga", "kamba", "bi-bila"]
   safety.CHILD_HARM: ["b pãnga a", "a pãnga a", "b namsda a", "b namsa a", "b puugda a", "a puuga a", "pãng kãadem"]
   safety.SELF_HARM: ["ku m menga", "m na n ku m menga", "m data n ki", "m ka le dat n viimd ye", "m data n siis m viimã", "nams m menga"]
+  safety.FIRE: ["roogã yaa bugum", "bugum yõoda roogã", "bugum yõogame", "gazã pusame"]
+  safety.DROWNING: ["lʋɩɩ koomẽ", "lʋɩɩme koomẽ", "yi koomẽ n ki", "lʋɩ kʋlgã pʋgẽ", "lʋɩ bulgã pʋgẽ", "koom rɩka", "koom n tʋʋg"]
+  safety.STABBING: ["sʋʋga wẽ", "kõ a sʋʋga", "sẽ sʋʋga", "tɩɩ a ne marfa", "marfa wẽ a"]
+  safety.ROAD_ACCIDENT: ["loor zabre", "sor zug zabre", "loor wẽ", "loorã wẽ", "moto wẽ", "loorã lebga"]
 
   scam.PIN: ["pin", "sogn-goama", "sogn nimero"]
   scam.ASK: ["tum", "kõ maam", "kiis", "ning", "guls"]

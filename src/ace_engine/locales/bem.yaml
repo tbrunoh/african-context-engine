@@ -18,6 +18,7 @@ templates:
   safety.OPENERS.poisoning: "Ici cilemoneka nga busungu. Fwayeni ubwafwilisho bwa ba dokota nomba line, musende ne botolo. {numbers}"
   safety.OPENERS.child_protection: "Umwana kuti aba mu busanso. Mukwai fwayeni ubwafwilisho nomba line. {numbers}"
   safety.OPENERS.gbv: "Ndeumfwa ubulanda pantu ici cilemucitikila. Kuti mwasanga ubwafwilisho nomba line. {numbers}"
+  safety.OPENERS.fire: "Ici cilemoneka kwati mulilo. Fumyeni abantu bonse nomba line, mwibwelela mu nganda. {numbers}"
   safety.OPENERS.health_urgent: "Ici cilemoneka ica bwangu. Fwayeni ubwafwilisho bwa ba dokota nomba line. {numbers}"
   safety.CALL_WORD: "Ituleni {numbers}"
   safety.OR_WORD: "nangu"
@@ -162,6 +163,10 @@ phrases:
   safety.CHILD: ["umwana", "umwana wandi", "umwana wandi umwanakashi", "umwana wandi umwaume", "akakashana", "abana", "akana"]
   safety.CHILD_HARM: ["bamucitile ku nkonde", "amucitile ku nkonde", "alecushiwa", "balemucusha", "balemuma", "amumine", "icupo ca kupatikishiwa"]
   safety.SELF_HARM: ["ukuipaya", "nkaipaya", "ndefwaya ukufwa", "nshilefwaya ukuba no mweo", "ndefwaya ukupwisha umweo wandi", "ukuicena"]
+  safety.FIRE: ["ing'anda ileoca", "ing'anda yesu ileoca", "kuli umulilo", "umulilo walilunguluka", "umulilo wakwata ing'anda", "ing'anda yapya", "gasi yaputuka"]
+  safety.DROWNING: ["alebila", "nabila", "awila mumumana", "awila mu menshi", "awila mucishima", "amenshi yamusenda"]
+  safety.STABBING: ["atuntwa ne cimpeni", "bamutunta", "amutunta ne cimpeni", "bamupoosa ne mfuti", "alaswa ne mfuti"]
+  safety.ROAD_ACCIDENT: ["ubusanso bwa mu musebo", "ubusanso bwa motoka", "motoka yamupuma", "apumwa ne motoka", "bapumwa ne motoka", "motoka yapilibuka", "basi yapilibuka"]
 
   scam.PIN: ["pin", "ishiwi lya nkama", "inamba ya nkama"]
   scam.ASK: ["tumeni", "mpeeleni", "shininkisheni", "bikeni", "lembeni"]

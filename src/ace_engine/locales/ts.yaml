@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Leswi swi twala onge i chefu. Kuma mpfuno wa dokodela sweswi, u teka bodlhela. {numbers}"
   safety.OPENERS.child_protection: "N'wana a nga va ekhombyeni. Hi kombela u kuma mpfuno sweswi. {numbers}"
   safety.OPENERS.gbv: "Ndzi khomiwa hi gome leswi swi ku humelelaka. U nga kuma mpfuno sweswi. {numbers}"
+  safety.OPENERS.fire: "Leswi swi languteka ku fana na ndzilo. Humesani vanhu hinkwavo sweswi, mi nga tlheleli endzeni. {numbers}"
   safety.OPENERS.health_urgent: "Leswi swi twala swi hatlisa. Kuma mpfuno wa dokodela sweswi. {numbers}"
   safety.CALL_WORD: "Ringela {numbers}"
   safety.OR_WORD: "kumbe"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["n'wana", "nwana", "n'wana wa mina", "nwana wa mina", "n'wana wa mina wa nhwanyana", "n'wana wa mina wa mufana", "xinhwanyatana", "vana"]
   safety.CHILD_HARM: ["u pfinyiwile", "va n'wi pfinyile", "u xanisiwile", "va n'wi xanisa", "va n'wi ba", "u n'wi bile", "vukati bya ku sindzisiwa"]
   safety.SELF_HARM: ["ku tidlaya", "ndzi ta tidlaya", "ndzi lava ku fa", "a ndza ha lavi ku hanya", "ndzi lava ku hetisa vutomi bya mina", "ku tivavisa"]
+  safety.FIRE: ["yindlu ya pfurha", "yindlu ya hina ya pfurha", "ku na ndzilo", "ndzilo wu pfurhile", "ndzilo wu sungurile", "gasi yi buluke"]
+  safety.DROWNING: ["u nwela", "u nwelerile", "u welile enambyeni", "u welile ematini", "u welile exihlobyeni", "mati ma n'wi tekile", "ndhambi yi n'wi tekile"]
+  safety.STABBING: ["u tlhaviwe hi mukwana", "u tlhaviwe", "va n'wi tlhavile", "u baleriwe", "va n'wi balerile"]
+  safety.ROAD_ACCIDENT: ["khombo ra gondzo", "khombo ra movha", "u bandzhiwe hi movha", "u biwe hi movha", "movha wu n'wi bile", "movha wu khinsamile", "bazi ri khinsamile"]
 
   scam.PIN: ["pin", "phasiwedi", "nomboro ya xihundla"]
   scam.ASK: ["rhumela", "ndzi nyike", "tiyisisa", "nghenisa", "tsala"]

@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Isto parece um envenenamento. Procure ajuda médica agora e leve a embalagem consigo. {numbers}"
   safety.OPENERS.child_protection: "Uma criança pode estar em perigo. Procure ajuda agora. {numbers}"
   safety.OPENERS.gbv: "Lamento que isto lhe esteja a acontecer. Pode obter ajuda agora. {numbers}"
+  safety.OPENERS.fire: "Isto parece um incêndio. Tire todos para fora agora e não volte a entrar. {numbers}"
   safety.OPENERS.health_urgent: "Isto parece urgente. Procure ajuda médica agora. {numbers}"
   safety.CALL_WORD: "Ligue {numbers}"
   safety.OR_WORD: "ou"
@@ -159,6 +160,10 @@ phrases:
   safety.CHILD: ["crianca", "a minha filha", "o meu filho", "menina", "menino", "filha", "filho"]
   safety.CHILD_HARM: ["abusada", "abusado", "abuso sexual", "maltratada", "maltratado", "espancada", "espancado", "casamento forcado", "casada a forca", "tocaram lhe"]
   safety.SELF_HARM: ["matar me", "suicidar me", "suicidio", "quero morrer", "acabar com a minha vida", "fazer mal a mim", "nao quero viver", "me matar", "quero me matar", "vou me matar", "me suicidar", "tirar a minha vida", "tirar minha vida"]
+  safety.FIRE: ["casa está a arder", "casa esta a arder", "casa a arder", "casa pegou fogo", "pegou fogo", "está a pegar fogo", "incêndio", "há um incêndio", "fogo em casa", "explosão de gás", "botija de gás explodiu", "mercado está a arder", "escola está a arder", "casa está pegando fogo"]
+  safety.DROWNING: ["está a afogar", "está a afogar-se", "afogar-se", "está se afogando", "afogou-se", "se afogou", "afogado", "afogada", "caiu no rio", "caiu no poço", "caiu na água", "caiu no lago", "levado pela água", "levada pela água", "levado pelas cheias"]
+  safety.STABBING: ["esfaqueado", "esfaqueada", "facada", "levou uma facada", "golpe de catana", "ferido com faca", "ferida com faca", "baleado", "baleada", "levou um tiro"]
+  safety.ROAD_ACCIDENT: ["acidente de viação", "acidente de carro", "acidente de mota", "acidente de moto", "acidente de chapa", "acidente na estrada", "acidente de trânsito", "atropelado", "atropelada", "o carro capotou", "o machimbombo capotou", "o autocarro capotou"]
 
   scam.PIN: ["pin", "senha", "palavra passe", "codigo secreto"]
   scam.ASK: ["envie", "enviar", "mande", "partilhe", "confirme", "introduza", "digite", "responda com"]

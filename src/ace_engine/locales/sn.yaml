@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Izvi zvinonzwika sechepfu. Tsvaga rubatsiro rwachiremba izvozvi, utore bhodhoro. {numbers}"
   safety.OPENERS.child_protection: "Mwana anogona kunge ari munjodzi. Ndapota tsvaga rubatsiro izvozvi. {numbers}"
   safety.OPENERS.gbv: "Ndine urombo kuti izvi zviri kuitika kwauri. Unogona kuwana rubatsiro izvozvi. {numbers}"
+  safety.OPENERS.fire: "Izvi zvinoita semoto. Budisai munhu wese izvozvi, musadzokera mukati. {numbers}"
   safety.OPENERS.health_urgent: "Izvi zvinonzwika sezvinokurumidzira. Tsvaga rubatsiro rwachiremba izvozvi. {numbers}"
   safety.CALL_WORD: "Fonera {numbers}"
   safety.OR_WORD: "kana"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["mwana", "mwana wangu", "mwanasikana wangu", "mwanakomana wangu", "musikana", "vana", "kamwana"]
   safety.CHILD_HARM: ["abatwa chibharo", "vakamubata chibharo", "ari kushungurudzwa", "vanomushungurudza", "vanomurova", "amurova", "kuroorwa nechisimba"]
   safety.SELF_HARM: ["kuzviuraya", "ndichazviuraya", "ndinoda kufa", "handichadi kurarama", "ndinoda kupedza hupenyu hwangu", "kuzvikuvadza"]
+  safety.FIRE: ["imba iri kutsva", "imba yedu iri kutsva", "pane moto", "moto watanga", "moto wabata imba", "imba yatsva", "gasi raputika"]
+  safety.DROWNING: ["ari kunyura", "anyura", "awira murwizi", "awira mumvura", "awira mutsime", "akukurwa nemvura", "mafashamo amutora"]
+  safety.STABBING: ["abaiwa nebanga", "abaiwa", "vamubaya", "amubaya nebanga", "apfurwa", "vamupfura"]
+  safety.ROAD_ACCIDENT: ["tsaona yemugwagwa", "tsaona yemotokari", "arohwa nemotokari", "varohwa nemotokari", "motokari yamurova", "motokari yakupuka", "bhazi rakupuka"]
 
   scam.PIN: ["pin", "pasiwedhi", "nhamba yakavanzika"]
   scam.ASK: ["tumira", "ndipe", "simbisa", "isa", "nyora"]

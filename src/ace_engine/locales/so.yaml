@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Tani waxay u egtahay sumoobid. Hadda raadi gargaar caafimaad oo qaado weelka. {numbers}"
   safety.OPENERS.child_protection: "Ilmo ayaa khatar ku jiri kara. Fadlan hadda raadi gargaar. {numbers}"
   safety.OPENERS.gbv: "Waan ka xumahay waxa kugu dhacaya. Hadda waad heli kartaa gargaar. {numbers}"
+  safety.OPENERS.fire: "Tani waxay u egtahay dab. Hadda dadka oo dhan soo saar, hana dib u gelin. {numbers}"
   safety.OPENERS.health_urgent: "Tani waxay u egtahay degdeg. Hadda raadi gargaar caafimaad. {numbers}"
   safety.CALL_WORD: "Wac {numbers}"
   safety.OR_WORD: "ama"
@@ -159,6 +160,10 @@ phrases:
   safety.CHILD: ["ilmo", "ilmaha", "gabadhayda", "wiilkayga", "gabar", "wiil", "caruur"]
   safety.CHILD_HARM: ["la kufsaday", "la xadgudbay", "la garaacay", "guur qasab", "guur hore", "gudniin", "la faraxumeeyay", "kufsaday", "kufsadeen", "faraxumeeyay"]
   safety.SELF_HARM: ["is dilid", "waan is dilayaa", "waxaan rabaa inaan dhinto", "noloshayda soo afjaro", "is dhaawac", "ma rabo inaan noolaado", "is dilo", "inaan is dilo", "is dili", "inaan sii noolaado", "ma doonayo inaan noolaado", "ma rabo inaan sii noolaado"]
+  safety.FIRE: ["gurigu wuu gubanayaa", "gurigii wuu gubtay", "gurigayaga ayaa gubanaya", "dab ayaa qabsaday", "dab ka kacay", "dab baa ka kacay", "shil dab", "gaaska ayaa qarxay", "suuqa ayaa gubanaya"]
+  safety.DROWNING: ["wuu qarqoomayaa", "qarqoomayaa", "qarqoomay", "biyo ku qarqoomay", "webiga ku dhacay", "ceelka ku dhacay", "biyaha ku dhacay", "daadku qaaday", "biyuhu qaadeen"]
+  safety.STABBING: ["mindi lagu dhuftay", "mindi lagu taagay", "toorray lagu dhuftay", "la mindiyeeyay", "xabbad lagu dhuftay", "rasaas lagu dhuftay"]
+  safety.ROAD_ACCIDENT: ["shil baabuur", "shil gaari", "shil mooto", "shil waddo", "baabuur ayaa jiiray", "gaari ayaa jiiray", "baabuur ayaa ku dhuftay", "gaarigu wuu rogmaday", "baskii wuu rogmaday"]
 
   scam.PIN: ["pin", "lambarka sirta", "furaha sirta", "erayga sirta"]
   scam.ASK: ["soo dir", "dir", "la wadaag", "i sii", "xaqiiji", "geli", "qor"]

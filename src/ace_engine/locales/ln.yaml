@@ -19,6 +19,7 @@ templates:
   safety.OPENERS.poisoning: "Oyo emonani lokola ngenge. Luka lisalisi ya monganga sikawa, memá molangi. {numbers}"
   safety.OPENERS.child_protection: "Mwana akoki kozala na likama. Svp luka lisalisi sikawa. {numbers}"
   safety.OPENERS.gbv: "Nayoki mawa ete likambo oyo ezali kokwela yo. Okoki kozwa lisalisi sikawa. {numbers}"
+  safety.OPENERS.fire: "Oyo emonani lokola moto. Bimisa bato nyonso sikawa, bozonga na kati te. {numbers}"
   safety.OPENERS.health_urgent: "Oyo emonani lokola likama ya noki. Luka lisalisi ya monganga sikawa. {numbers}"
   safety.CALL_WORD: "Benga {numbers}"
   safety.OR_WORD: "to"
@@ -163,6 +164,10 @@ phrases:
   safety.CHILD: ["mwana", "mwana na ngai", "mwana na ngai ya mwasi", "mwana na ngai ya mobali", "mwana mwasi", "bana", "mwana moke"]
   safety.CHILD_HARM: ["babebisi ye na makasi", "abebisi ye na makasi", "bazali konyokola ye", "banyokoli ye", "bazali kobeta ye", "abeti ye", "libala ya makasi"]
   safety.SELF_HARM: ["komiboma", "nakomiboma", "nalingi kokufa", "nalingi lisusu kozala na bomoi te", "nalingi kosilisa bomoi na ngai", "komizokisa"]
+  safety.FIRE: ["ndako ezali kopela", "ndako na biso ezali kopela", "moto ezali kopela ndako", "moto ekangi ndako", "ndako ezikisami", "gaz ebuki", "zando ezali kopela"]
+  safety.DROWNING: ["azali kozinda", "azindi na mai", "akwei na ebale", "akwei na mai", "akwei na libulu ya mai", "mai ememi ye", "mpela ememi ye"]
+  safety.STABBING: ["batuboli ye mbeli", "batuboli", "atubolami mbeli", "babeti ye masasi", "babeti ye lisasi"]
+  safety.ROAD_ACCIDENT: ["likama ya motuka", "likama ya nzela", "motuka etuti", "motuka ebeti ye", "pikipiki etuti", "motuka ebaluki", "bisi ebaluki"]
 
   scam.PIN: ["pin", "mot de passe", "nimero ya sekele"]
   scam.ASK: ["tinda", "pesa ngai", "ndimisa", "kotisa", "koma"]

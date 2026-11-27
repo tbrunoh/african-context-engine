@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Kino kiwulikika ng'obutwa. Funa obuyambi bw'omusawo kaakano, otwale eccupa. {numbers}"
   safety.OPENERS.child_protection: "Omwana ayinza okuba mu kabi. Nsaba ofune obuyambi kaakano. {numbers}"
   safety.OPENERS.gbv: "Nnina ennaku nti kino kikutuukako. Osobola okufuna obuyambi kaakano. {numbers}"
+  safety.OPENERS.fire: "Kino kifaanana omuliro. Fulumya abantu bonna kaakano, temuddayo munda. {numbers}"
   safety.OPENERS.health_urgent: "Kino kiwulikika ng'eky'amangu. Funa obuyambi bw'omusawo kaakano. {numbers}"
   safety.CALL_WORD: "Kuba {numbers}"
   safety.OR_WORD: "oba"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["omwana", "omwana wange", "muwala wange", "mutabani wange", "akawala", "abaana", "akaana"]
   safety.CHILD_HARM: ["yakakkibwako", "bamukakaatako", "atulugunyizibwa", "bamutulugunya", "bamukuba", "yamukubye", "okufumbizibwa olw'empaka"]
   safety.SELF_HARM: ["okwetta", "nja kwetta", "njagala kufa", "sikyayagala kubeera mulamu", "njagala kumalako obulamu bwange", "okwerumya", "njagala kwetta", "kwetta", "nneetta", "njagala okwetta"]
+  safety.FIRE: ["ennyumba eyaka", "ennyumba yaffe eyaka", "omuliro gukutte ennyumba", "waliwo omuliro", "ennyumba eyidde", "omuliro gwaka", "ggaasi ebwatuse", "akatale kayaka"]
+  safety.DROWNING: ["abbira", "abbidde", "agudde mu mugga", "agudde mu mazzi", "agudde mu luzzi", "amazzi gamututte", "amataba gamututte"]
+  safety.STABBING: ["afumitiddwa akambe", "bamufumise akambe", "afumitiddwa", "atemeddwa ejjambiya", "akubiddwa amasasi", "bamukubye essasi"]
+  safety.ROAD_ACCIDENT: ["akabenje k'oku luguudo", "akabenje k'emmotoka", "akabenje ka bodaboda", "atomeddwa emmotoka", "emmotoka emutomedde", "bodaboda emutomedde", "emmotoka efunye akabenje", "emmotoka ekyuse"]
 
   scam.PIN: ["pin", "ekigambo eky'ekyama", "namba ey'ekyama"]
   scam.ASK: ["weereza", "mpa", "kakasa", "teekamu", "wandiika"]

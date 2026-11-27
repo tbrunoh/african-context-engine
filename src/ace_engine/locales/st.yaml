@@ -17,6 +17,7 @@ templates:
   safety.OPENERS.poisoning: "Sena se utlwahala jwalo ka chefo. Fumana thuso ya ngaka hona joale, o nke botlolo. {numbers}"
   safety.OPENERS.child_protection: "Ngwana a ka ba kotsing. Ka kopo fumana thuso hona joale. {numbers}"
   safety.OPENERS.gbv: "Ke maswabi hore sena se o etsahalla. O ka fumana thuso hona joale. {numbers}"
+  safety.OPENERS.fire: "Sena se bonahala e le mollo. Ntshetsang batho bohle ka ntle jwale, le se ke la kgutlela ka hare. {numbers}"
   safety.OPENERS.health_urgent: "Sena se utlwahala se potlakile. Fumana thuso ya ngaka hona joale. {numbers}"
   safety.CALL_WORD: "Letsetsa {numbers}"
   safety.OR_WORD: "kapa"
@@ -161,6 +162,10 @@ phrases:
   safety.CHILD: ["ngwana", "ngwana wa ka", "moradi wa ka", "mora wa ka", "ngwanana", "bana", "lesea"]
   safety.CHILD_HARM: ["o betilwe", "ba mo betile", "o hlekefetswa", "ba a mo hlekefetsa", "ba a mo shapa", "o mo shapile", "lenyalo le qobellwang"]
   safety.SELF_HARM: ["ho ipolaya", "ke tla ipolaya", "ke batla ho shwa", "ha ke sa batla ho phela", "ke batla ho fedisa bophelo ba ka", "ho intsha kotsi"]
+  safety.FIRE: ["ntlo e a tjha", "ntlo ya rona e a tjha", "mollo o tjhesa ntlo", "ho na le mollo", "mollo o qhomile", "kgase e phatlohile"]
+  safety.DROWNING: ["o a qwela", "o qwetse", "o wetse nokeng", "o wetse ka metsing", "o wetse sedibeng", "o hohotswe ke metsi", "metsi a mo nkile"]
+  safety.STABBING: ["o hlabilwe ka thipa", "o hlabilwe", "ba mo hlabile", "o thuntswe", "ba mo thuntse"]
+  safety.ROAD_ACCIDENT: ["kotsi ya tsela", "kotsi ya koloi", "kotsi ya taxi", "o thutswe ke koloi", "koloi e mo thutse", "koloi e phethohile", "bese e phethohile"]
 
   scam.PIN: ["pin", "phasewete", "nomoro ya lekunutu"]
   scam.ASK: ["romela", "mphe", "netefatsa", "kenya", "ngola"]

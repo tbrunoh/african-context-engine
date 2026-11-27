@@ -18,6 +18,7 @@ templates:
   safety.OPENERS.poisoning: "Nke a dị ka nsi. Chọọ enyemaka dọkịta ugbu a, were karama ahụ gaa. {numbers}"
   safety.OPENERS.child_protection: "Nwatakịrị nwere ike ịnọ n'ihe egwu. Biko chọọ enyemaka ugbu a. {numbers}"
   safety.OPENERS.gbv: "Ọ dị m nwute na nke a na-eme gị. Ị nwere ike inweta enyemaka ugbu a. {numbers}"
+  safety.OPENERS.fire: "Nke a dị ka ọkụ. Mee ka mmadụ niile pụọ ugbu a, unu alaghachila n'ime. {numbers}"
   safety.OPENERS.health_urgent: "Nke a dị ka ihe mberede. Chọọ enyemaka dọkịta ugbu a. {numbers}"
   safety.CALL_WORD: "Kpọọ {numbers}"
   safety.OR_WORD: "ma ọ bụ"
@@ -162,6 +163,10 @@ phrases:
   safety.CHILD: ["nwa", "nwa m", "nwatakịrị", "nwa m nwanyị", "nwa m nwoke", "nwa agbọghọ", "ụmụaka"]
   safety.CHILD_HARM: ["dinara ya n'ike", "mmetọ", "metọrọ ya", "a na-eti ya ihe", "tie ya ihe", "alụ n'ike", "ibi nwanyị ugwu"]
   safety.SELF_HARM: ["igbu onwe m", "m ga-egbu onwe m", "achọrọ m ịnwụ", "achọghị m ịdị ndụ", "kwụsị ndụ m", "imerụ onwe m ahụ", "igbu onwe"]
+  safety.FIRE: ["ọkụ na-ere", "na-ere ọkụ", "ụlọ na-ere ọkụ", "ọkụ gbara", "ọkụ agbaala", "gas gbawara", "ahịa na-ere ọkụ"]
+  safety.DROWNING: ["na-emikpu na mmiri", "mikpuru na mmiri", "mmiri na-eri ya", "mmiri riri ya", "dabara n'osimiri", "dabara na mmiri", "dabara n'olulu mmiri", "mmiri buuru ya"]
+  safety.STABBING: ["maara ya mma", "mma mara ya", "gbaara ya egbe", "gbara ya egbe", "egbe gbara ya"]
+  safety.ROAD_ACCIDENT: ["ihe mberede ụgbọ ala", "ihe ọghọm ụgbọ ala", "ụgbọ ala kụrụ", "ụgbọ ala kụgburu", "ọkada kụrụ", "ụgbọ ala tụgharịrị", "ihe mberede okporo ụzọ"]
 
   scam.PIN: ["pin", "nọmba nzuzo", "okwuntughe"]
   scam.ASK: ["ziga", "nye m", "kwado", "tinye", "dee"]

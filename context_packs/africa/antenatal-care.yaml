@@ -17,6 +17,30 @@ labels:
   am: 'የቅድመ ወሊድ ክትትል'
   om: 'Hordoffii ulfaa'
   so: 'Booqashada uurka'
+  ti: 'ክንክን ጥንሲ'
+  fuf: 'Ndaarol reedu'
+  mos: 'Pug-tara gesgo'
+  dyu: 'Kɔnɔma musow lajɛli'
+  wo: 'Topptoo jigéen ju ëmb'
+  ee: 'Fuɖeɖe me dzikpɔkpɔ'
+  ak: 'Nyinsɛn mu hwɛ'
+  ln: 'Kobatela mwasi ya zemi'
+  lg: 'Okukeberebwa olubuto'
+  rn: 'Isuzuma ry''imbanyi'
+  rw: 'Kwita ku mugore utwite'
+  bem: 'Ukupimwa kwa fumo'
+  ny: 'Kuyezetsa mimba'
+  sn: 'Ongororo yepamuviri'
+  ts: 'Nkambelo wa vutikari'
+  tn: 'Tlhokomelo ya boimana'
+  st: 'Tlhahlobo ya boimana'
+  af: 'Voorgeboortelike sorg'
+  xh: 'Uhlolo lokukhulelwa'
+  zu: 'Ukuhlolwa kokukhulelwa'
+  pcm: 'Belle check (antenatal)'
+  ig: 'Nlekọta afọ ime'
+  yo: 'Ayẹwo oyun'
+  ha: 'Gwajin ciki'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -64,6 +88,102 @@ facts:
       claim: 'Ururka Caafimaadka Adduunka (WHO) wuxuu ku talinayaa ugu yaraan siddeed booqasho oo daryeel dhalmo ka hor ah oo lala yeesho shaqaale caafimaad uur kasta. Midda koowaad waa inay ahaato 12-ka toddobaad ee ugu horreeya, kadibna toddobaadyada 20, 26, 30, 34, 36, 38 iyo 40.'
       short: 'WHO waxay ku talisaa 8 booqasho uur: ka hor toddobaadka 12, kadib toddobaadyada 20, 26, 30, 34, 36, 38 iyo 40.'
       reviewed: false
+    ti:
+      claim: 'WHO ሓንቲ ሰበይቲ ኣብ ነፍሲ ወከፍ ጥንሲ ብውሑዱ ሸሞንተ ግዜ ሰራሕተኛ ጥዕና ክትርኢ ትመክር። እቲ ቀዳማይ ኣብ ውሽጢ ቀዳሞት 12 ሰሙናት ክኸውን ኣለዎ፣ ድሕሪኡ ኣብ ሰሙን 20፣ 26፣ 30፣ 34፣ 36፣ 38ን 40ን።'
+      short: 'WHO 8 ምርመራታት ጥንሲ ትመክር: ቅድሚ ሰሙን 12፣ ድሕሪኡ ኣብ ሰሙን 20፣ 26፣ 30፣ 34፣ 36፣ 38ን 40ን።'
+      reviewed: false
+    fuf:
+      claim: 'OMS ina wasiya debbo yiyda e golloowo cellal laabi jeetati ɓuri famɗude e kala reedu. Arandeere nde haani wonde nder yontaaji 12 arandeeji, caggal ɗuum e yontaaji 20, 26, 30, 34, 36, 38 e 40.'
+      short: 'OMS ina wasiya ndaarol reedu laabi 8: ado yontere 12 hewtude, caggal ɗuum e yontaaji 20, 26, 30, 34, 36, 38 e 40.'
+      reviewed: false
+    mos:
+      claim: 'OMS yeta ti pagb fãa segd n yã laafi tuumd-soab naoor a nii, puga fãa pugẽ. A pipi wã segd n yaa semen 12 a pipi pugẽ, la poor semen 20, 26, 30, 34, 36, 38 la 40.'
+      short: 'OMS yeta ti puga gesg naoor 8: reng ti semen 12 ta, la poor semen 20, 26, 30, 34, 36, 38 la 40.'
+      reviewed: false
+    dyu:
+      claim: 'OMS b''a fɔ ko muso ka kan ka kɛnɛya baarakɛla ye siɲɛ seegin dɔgɔmanba la kɔnɔ kelen kelen bɛɛ la. Fɔlɔ ka kan ka kɛ dɔgɔkun 12 fɔlɔw kɔnɔ, o kɔfɛ dɔgɔkun 20, 26, 30, 34, 36, 38 ani 40 la.'
+      short: 'OMS b''a fɔ kɔnɔ lajɛli 8: sani dɔgɔkun 12 ka se, o kɔfɛ dɔgɔkun 20, 26, 30, 34, 36, 38 ani 40 la.'
+      reviewed: false
+    wo:
+      claim: 'OMS dafa ne jigéen ju nekk ci ëmb na gis liggéeykatu wér-gi-yaram juróom ñett yoon lu tuuti ci ëmb bu nekk. Bu njëkk bi war na nekk ci biir 12 ayu-bés yu njëkk yi, ginnaaw ci ayu-bés 20, 26, 30, 34, 36, 38 ak 40.'
+      short: 'OMS dafa ne saytu ëmb 8: bala ayu-bés 12, ginnaaw ci ayu-bés 20, 26, 30, 34, 36, 38 ak 40.'
+      reviewed: false
+    ee:
+      claim: 'WHO ɖo aɖaŋu be nyɔnu nakpɔ lãmesẽdɔwɔla zi enyi ya teti le fuɖeɖe ɖesiaɖe me. Gbãtɔ la nanɔ kwasiɖa 12 gbãtɔwo me, emegbe le kwasiɖa 20, 26, 30, 34, 36, 38 kple 40 dzi.'
+      short: 'WHO ɖo aɖaŋu fuɖeɖe ƒe dodokpɔ 8: hafi kwasiɖa 12 naɖo, emegbe le kwasiɖa 20, 26, 30, 34, 36, 38 kple 40 dzi.'
+      reviewed: false
+    ak:
+      claim: 'WHO ka sɛ ɔbea biara nhu apɔwmuden adwumayɛfo mprɛnwɔtwe kakra koraa wɔ nyinsɛn biara mu. Nea edi kan no nyɛ nnawɔtwe 12 a edi kan no mu, na afei nnawɔtwe 20, 26, 30, 34, 36, 38 ne 40.'
+      short: 'WHO ka sɛ nyinsɛn nhwehwɛmu 8: ansa na nnawɔtwe 12 adu, na afei nnawɔtwe 20, 26, 30, 34, 36, 38 ne 40.'
+      reviewed: false
+    ln:
+      claim: 'OMS elobi ete mwasi amona mosali ya bokolongono mbala mwambe na moke mpo na kobatelama na zemi moko na moko. Ya liboso esengeli kozala na kati ya baposo 12 ya liboso, sima na baposo 20, 26, 30, 34, 36, 38 mpe 40.'
+      short: 'OMS elobi botaleli ya zemi mbala 8: liboso ya poso ya 12, sima na baposo 20, 26, 30, 34, 36, 38 mpe 40.'
+      reviewed: false
+    lg:
+      claim: 'WHO ewa amagezi omukazi okulaba omukozi w''ebyobulamu waakiri emirundi munaana okulabirirwa mu buli lubuto. Omulundi ogusooka gulina okuba mu wiiki 12 ezisooka, oluvannyuma ku wiiki 20, 26, 30, 34, 36, 38 ne 40.'
+      short: 'WHO ewa amagezi okukeberebwa olubuto emirundi 8: nga wiiki 12 tezinnatuuka, oluvannyuma ku wiiki 20, 26, 30, 34, 36, 38 ne 40.'
+      reviewed: false
+    rn:
+      claim: 'OMS isaba ko umugore abonana n''umukozi w''amagara nibura incuro umunani kugira yitwararikwe muri buri mbanyi. Ubwa mbere butegerezwa kuba mu ndwi 12 za mbere, hanyuma ku ndwi 20, 26, 30, 34, 36, 38 na 40.'
+      short: 'OMS isaba kwisuzumisha imbanyi incuro 8: imbere y''indwi ya 12, hanyuma ku ndwi 20, 26, 30, 34, 36, 38 na 40.'
+      reviewed: false
+    rw:
+      claim: 'OMS isaba ko umugore abonana n''umukozi w''ubuzima nibura inshuro umunani kugira ngo yitabweho kuri buri nda. Ubwa mbere bugomba kuba mu byumweru 12 bya mbere, hanyuma ku byumweru 20, 26, 30, 34, 36, 38 na 40.'
+      short: 'OMS isaba kwisuzumisha inda inshuro 8: mbere y''icyumweru cya 12, hanyuma ku byumweru 20, 26, 30, 34, 36, 38 na 40.'
+      reviewed: false
+    bem:
+      claim: 'WHO ilafunda ukuti umwanakashi amone kabomba wa bumi imiku cine konse limo ukusungwa mu fumo lyonse. Ukwa ntanshi kulingile ukuba mukati ka milungu 12 iya ntanshi, lyena pa milungu 20, 26, 30, 34, 36, 38 na 40.'
+      short: 'WHO ilafunda ukupimwa kwa fumo imiku 8: ilyo umulungu wa 12 taulafika, lyena pa milungu 20, 26, 30, 34, 36, 38 na 40.'
+      reviewed: false
+    ny:
+      claim: 'WHO imalangiza kuti mayi aziwonana ndi wogwira ntchito ya zaumoyo kasanu ndi katatu pa mimba iliyonse kuti alandire chisamaliro. Koyamba kuyenera kukhala m''masabata 12 oyambirira, kenako pa masabata 20, 26, 30, 34, 36, 38 ndi 40.'
+      short: 'WHO imalangiza kuyezetsa mimba ka 8: sabata 12 lisanafike, kenako pa masabata 20, 26, 30, 34, 36, 38 ndi 40.'
+      reviewed: false
+    sn:
+      claim: 'WHO inokurudzira kuti mukadzi aone mushandi wezveutano kanokwana kasere kuti achengetwe panguva yepamuviri pega pega. Kwekutanga kunofanira kuve mukati memavhiki 12 ekutanga, wozoita pamavhiki 20, 26, 30, 34, 36, 38 ne40.'
+      short: 'WHO inokurudzira ongororo 8 dzepamuviri: vhiki 12 isati yasvika, wozoita pamavhiki 20, 26, 30, 34, 36, 38 ne40.'
+      reviewed: false
+    ts:
+      claim: 'WHO yi tsundzuxa leswaku wansati a vona mutirhi wa rihanyo kan''we hi nhungu ku nyikiwa nhlayiso eka vutikari byin''wana na byin''wana. Ro sungula ri fanele ku va endzeni ka mavhiki ya 12 yo sungula, kutani eka mavhiki ya 20, 26, 30, 34, 36, 38 na 40.'
+      short: 'WHO yi tsundzuxa minkambelo ya 8 ya vutikari: emahlweni ka vhiki ra 12, kutani eka mavhiki ya 20, 26, 30, 34, 36, 38 na 40.'
+      reviewed: false
+    tn:
+      claim: 'WHO e gakolola gore mosadi a bone modiredi wa boitekanelo bonnye gangwe ga robedi go bona tlhokomelo ya boimana mo boimaneng bongwe le bongwe. Ya ntlha e tshwanetse go nna mo teng ga dibeke di le 12 tsa ntlha, morago mo dibekeng tsa 20, 26, 30, 34, 36, 38 le 40.'
+      short: 'WHO e gakolola ditlhatlhobo di le 8 tsa boimana: pele ga beke ya 12, morago mo dibekeng tsa 20, 26, 30, 34, 36, 38 le 40.'
+      reviewed: false
+    st:
+      claim: 'WHO e eletsa hore mosadi a bone mosebeletsi wa bophelo bonyane makgetlo a robedi bakeng sa tlhokomelo ya boimana boimaneng bo bong le bo bong. Ya pele e lokela ho ba ka hara dibeke tse 12 tsa pele, ebe dibekeng tsa 20, 26, 30, 34, 36, 38 le 40.'
+      short: 'WHO e eletsa ditlhahlobo tse 8 tsa boimana: pele ho beke 12, ebe dibekeng tsa 20, 26, 30, 34, 36, 38 le 40.'
+      reviewed: false
+    af:
+      claim: 'Die WHO beveel aan dat ''n vrou in elke swangerskap minstens agt keer ''n gesondheidswerker vir voorgeboortelike sorg sien. Die eerste besoek moet binne die eerste 12 weke wees, en dan by 20, 26, 30, 34, 36, 38 en 40 weke.'
+      short: 'Die WHO beveel 8 voorgeboortelike ondersoeke aan: voor week 12, dan by week 20, 26, 30, 34, 36, 38 en 40.'
+      reviewed: false
+    xh:
+      claim: 'I-WHO icebisa ukuba umfazi abone umsebenzi wezempilo ubuncinane kasibhozo ukuze akhathalelwe ngexesha lokukhulelwa ngalunye. Ukuqala kufanele kube kwiiveki zokuqala ezili-12, emva koko kwiiveki ezingama-20, 26, 30, 34, 36, 38 nama-40.'
+      short: 'I-WHO icebisa uhlolo lokukhulelwa olusi-8: phambi kweveki 12, emva koko kwiiveki 20, 26, 30, 34, 36, 38 no-40.'
+      reviewed: false
+    zu:
+      claim: 'I-WHO yeluleka ukuthi owesifazane abone isisebenzi sezempilo okungenani kasishiyagalombili ukuze anakekelwe ngesikhathi sokukhulelwa ngakunye. Okokuqala kufanele kube emasontweni okuqala angu-12, bese kuba emasontweni angu-20, 26, 30, 34, 36, 38 no-40.'
+      short: 'I-WHO yeluleka ukuhlolwa kokukhulelwa okungu-8: ngaphambi kwesonto 12, bese emasontweni angu-20, 26, 30, 34, 36, 38 no-40.'
+      reviewed: false
+    pcm:
+      claim: 'WHO talk say woman suppose see health worker at least eight times for antenatal care for every belle. The first one suppose happen inside the first 12 weeks, then for week 20, 26, 30, 34, 36, 38 and 40.'
+      short: 'WHO advise 8 antenatal checks: before week 12, then for week 20, 26, 30, 34, 36, 38 and 40.'
+      reviewed: false
+    ig:
+      claim: 'WHO na-adụ ọdụ ka nwanyị hụ onye ọrụ ahụike ma ọ dịkarịa ala ugboro asatọ maka nlekọta afọ ime n''oge afọ ime ọ bụla. Nke mbụ kwesịrị ịbụ n''ime izu 12 mbụ, wee sochie n''izu 20, 26, 30, 34, 36, 38 na 40.'
+      short: 'WHO na-adụ ọdụ nyocha afọ ime 8: tupu izu 12, wee n''izu 20, 26, 30, 34, 36, 38 na 40.'
+      reviewed: false
+    yo:
+      claim: 'WHO gba ni imọran pe ki obinrin ri oṣiṣẹ ilera o kere ju igba mẹjọ fun itọju oyun ni gbogbo oyun. Akọkọ yẹ ki o wa laarin ọsẹ 12 akọkọ, lẹhinna ni ọsẹ 20, 26, 30, 34, 36, 38 ati 40.'
+      short: 'WHO gba ni imọran ayẹwo oyun 8: ṣaaju ọsẹ 12, lẹhinna ni ọsẹ 20, 26, 30, 34, 36, 38 ati 40.'
+      reviewed: false
+    ha:
+      claim: 'WHO ta ba da shawarar a ga ma''aikacin lafiya akalla sau takwas don gwajin ciki a kowane ciki. Na farko ya kasance cikin makonni 12 na farko, sannan a makonni 20, 26, 30, 34, 36, 38 da 40.'
+      short: 'WHO ta ba da shawarar gwajin ciki 8: kafin makonni 12, sannan a makonni 20, 26, 30, 34, 36, 38 da 40.'
+      reviewed: false
   source: WHO, New guidelines on antenatal care for a positive pregnancy experience (7 November 2016)
   source_url: https://www.who.int/news/item/07-11-2016-new-guidelines-on-antenatal-care-for-a-positive-pregnancy-experience
   checked_on: 2026-11-24
@@ -108,6 +228,102 @@ facts:
     so:
       claim: 'Siddeed booqasho ama ka badan oo daryeel dhalmo ka hor ah waxay hoos u dhigi karaan dhimashada ilmaha agagaarka dhalmada ilaa 8 dhalmo kasta oo 1,000 ah, marka la barbar dhigo 4 booqasho, sababtoo ah dhibaatooyinka goor hore ayaa la ogaadaa oo la daaweeyaa.'
       short: 'Siddeed booqasho uur ama ka badan waxay ka hortagi karaan ilaa 8 dhimasho ilmo 1,000 dhalmo kasta, marka loo eego 4 booqasho.'
+      reviewed: false
+    ti:
+      claim: 'ሸሞንተ ወይ ልዕሊኡ ምርመራታት ጥንሲ ሞት ህጻናት ኣብ ግዜ ሕርሲ ክሳብ 8 ኣብ 1,000 ሕርስታት ክንክዮ ይኽእል፣ ምስ 4 ምብጻሓት ክነጻጸር ከሎ፣ ምኽንያቱ ጸገማት ቀልጢፎም ይርከቡን ይሕከሙን።'
+      short: '8 ወይ ልዕሊኡ ምርመራታት ጥንሲ ክሳብ 8 ሞት ህጻናት ኣብ 1,000 ሕርስታት ክከላኸል ይኽእል፣ ምስ 4 ምብጻሓት ክነጻጸር ከሎ።'
+      reviewed: false
+    fuf:
+      claim: 'Ndaarol reedu laabi jeetati walla ko ɓuri ɗum ina waawi ustude maayde ɓiɗɗo e saha jibinannde haa 8 e jibinannde 1,000, si ɗum fondaama e yillaare 4, ngam caɗeele ina keɓoo ina safree law.'
+      short: 'Ndaarol reedu laabi 8 walla ko ɓuri ɗum ina waawi haɗde maayde ɓiɗɗo haa 8 e jibinannde 1,000, si ɗum fondaama e yillaare 4.'
+      reviewed: false
+    mos:
+      claim: 'Puga gesg naoor a nii bi n yiig rẽ tõe n booga kamba kũum rogem wakat pugẽ n tãag 8 rogem 1,000 pugẽ, b sã n mak ne naoor 4, bala b yãta yel-beedã la b tipda tao-tao.'
+      short: 'Puga gesg naoor 8 bi n yiig rẽ tõe n gidga kamba kũum n tãag 8 rogem 1,000 pugẽ, b sã n mak ne naoor 4.'
+      reviewed: false
+    dyu:
+      claim: 'Kɔnɔ lajɛli siɲɛ seegin walima ka tɛmɛ o kan bɛ se ka denw ka saya dɔgɔya u bangeli waati la ka se 8 ma bangeli 1,000 kɔnɔ, n''a sanga ka taa lajɛli 4 ma, katuguni gɛlɛyaw bɛ ye ka furakɛ joona.'
+      short: 'Kɔnɔ lajɛli 8 walima ka tɛmɛ bɛ se ka denw ka saya bali ka se 8 ma bangeli 1,000 kɔnɔ, n''a sanga ka taa lajɛli 4 ma.'
+      reviewed: false
+    wo:
+      claim: 'Saytu ëmb juróom ñett yoon walla lu ko ëpp man na wàññi deewu xale yi ci jamonoy juddu ba 8 ci 1,000 juddu, su ñu ko méngaleek 4 nemmeeku, ndax dañuy gis jafe-jafe yi te faj leen ci teel.'
+      short: 'Saytu ëmb 8 yoon walla lu ko ëpp man na aar deewu xale yi ba 8 ci 1,000 juddu, su ñu ko méngaleek 4 nemmeeku.'
+      reviewed: false
+    ee:
+      claim: 'Fuɖeɖe ƒe dodokpɔ zi enyi alo wu nenema ate ŋu aɖe ɖeviwo ƒe ku dzi kpɔtɔ le vidzidzi ɣeyiɣi va se ɖe 8 le vidzidzi 1,000 me, ne wotsɔe sɔ kple sasrãkpɔ 4, elabena wokpɔa kuxiwo eye wodaa wo kaba.'
+      short: 'Fuɖeɖe ƒe dodokpɔ 8 alo wu nenema ate ŋu axe mɔ na ɖeviwo ƒe ku va se ɖe 8 le vidzidzi 1,000 me, ne wotsɔe sɔ kple sasrãkpɔ 4.'
+      reviewed: false
+    ak:
+      claim: 'Nyinsɛn nhwehwɛmu mprɛnwɔtwe anaa nea ɛboro saa betumi atew mmofra wuo ase bere a wɔwo wɔn de akosi 8 wɔ awo 1,000 mu, sɛ wɔde toto nsrahwɛ 4 ho a, efisɛ wohu ɔhaw ntɛm na wɔsa.'
+      short: 'Nyinsɛn nhwehwɛmu 8 anaa nea ɛboro saa betumi asi mmofra wuo ano akosi 8 wɔ awo 1,000 mu, sɛ wɔde toto nsrahwɛ 4 ho a.'
+      reviewed: false
+    ln:
+      claim: 'Botaleli ya zemi mbala mwambe to koleka ekoki kokitisa liwa ya bana na tango ya kobotama tii 8 na babotami 1,000, soki tokokanisi na botali 4, mpo bakomona mikakatano mpe bakosalisa yango noki.'
+      short: 'Botaleli ya zemi mbala 8 to koleka ekoki kopekisa liwa ya bana tii 8 na babotami 1,000, soki tokokanisi na botali 4.'
+      reviewed: false
+    lg:
+      claim: 'Okukeberebwa olubuto emirundi munaana oba okusingawo kuyinza okukendeeza okufa kw''abaana mu biseera by''okuzaalibwa okutuuka ku 8 ku buli bazaalibwa 1,000, bw''ogeraageranya n''okukyalira emirundi 4, kubanga ebizibu bizuulibwa era ne bijjanjabwa mangu.'
+      short: 'Okukeberebwa olubuto emirundi 8 oba okusingawo kuyinza okutangira okufa kw''abaana okutuuka ku 8 ku bazaalibwa 1,000, bw''ogeraageranya n''emirundi 4.'
+      reviewed: false
+    rn:
+      claim: 'Kwisuzumisha imbanyi incuro umunani canke zirenga birashobora kugabanya imfu z''abana mu gihe co kuvuka gushika kuri 8 ku bavuka 1,000, ugereranije n''incuro 4, kuko ingorane zimenyekana zikavurwa hakiri kare.'
+      short: 'Kwisuzumisha imbanyi incuro 8 canke zirenga birashobora gukingira imfu z''abana gushika kuri 8 ku bavuka 1,000, ugereranije n''incuro 4.'
+      reviewed: false
+    rw:
+      claim: 'Kwisuzumisha inda inshuro umunani cyangwa zirenga bishobora kugabanya impfu z''abana mu gihe cyo kuvuka kugeza kuri 8 ku bavuka 1,000, ugereranyije n''inshuro 4, kuko ibibazo bimenyekana bikavurwa kare.'
+      short: 'Kwisuzumisha inda inshuro 8 cyangwa zirenga bishobora kurinda impfu z''abana kugeza kuri 8 ku bavuka 1,000, ugereranyije n''inshuro 4.'
+      reviewed: false
+    bem:
+      claim: 'Ukupimwa kwa fumo imiku cine konse limo nangu ukucilapo kuti kwacefya imfwa sha bana ilyo bafyalwa ukufika ku 8 mu kufyalwa 1,000, nga kwalinganishiwa no kutandalila imiku 4, pantu amafya yasangwa no kundapwa bwangu.'
+      short: 'Ukupimwa kwa fumo imiku 8 nangu ukucilapo kuti kwacingilila imfwa sha bana ukufika ku 8 mu kufyalwa 1,000, nga kwalinganishiwa no kutandalila imiku 4.'
+      reviewed: false
+    ny:
+      claim: 'Kuyezetsa mimba kasanu ndi katatu kapena kupitirira kutha kuchepetsa imfa za makanda nthawi yobadwa mpaka 8 pa obadwa 1,000, poyerekeza ndi maulendo 4, chifukwa mavuto amapezeka ndi kuchiritsidwa msanga.'
+      short: 'Kuyezetsa mimba ka 8 kapena kupitirira kutha kupewa imfa za makanda mpaka 8 pa obadwa 1,000, poyerekeza ndi maulendo 4.'
+      reviewed: false
+    sn:
+      claim: 'Ongororo sere kana kupfuura dzepamuviri dzinogona kuderedza kufa kwevacheche panguva yekuzvarwa kusvika pa8 pakuzvarwa 1,000, kana zvichienzaniswa nekushanya 4, nekuti matambudziko anowanikwa uye anorapwa nekukurumidza.'
+      short: 'Ongororo sere kana kupfuura dzepamuviri dzinogona kudzivirira kufa kwevacheche kusvika pa8 pakuzvarwa 1,000, zvichienzaniswa nekushanya 4.'
+      reviewed: false
+    ts:
+      claim: 'Minkambelo ya nhungu kumbe ku tlula ya vutikari yi nga hunguta rifu ra tincece hi nkarhi wa ku velekiwa ku fika eka 8 eka mavelekelo ya 1,000, loko yi pimanisiwa na maendzo ya 4, hikuva swiphiqo swi kumiwa naswona swi tshunguriwa ka ha ri na nkarhi.'
+      short: 'Minkambelo ya 8 kumbe ku tlula ya vutikari yi nga sivela mafu ya tincece ku fika eka 8 eka mavelekelo ya 1,000, loko yi pimanisiwa na maendzo ya 4.'
+      reviewed: false
+    tn:
+      claim: 'Ditlhatlhobo di le robedi kgotsa go feta tsa boimana di ka fokotsa loso lwa masea fa a tsholwa go fitlha go 8 mo ditsholong di le 1,000, fa di tshwantshanngwa le diketelo di le 4, ka gonne mathata a bonwa mme a alafiwa ka bonako.'
+      short: 'Ditlhatlhobo di le 8 kgotsa go feta tsa boimana di ka thibela dintsho tsa masea di fitlha go 8 mo ditsholong di le 1,000, fa di bapiswa le diketelo di le 4.'
+      reviewed: false
+    st:
+      claim: 'Ditlhahlobo tse robedi kapa ho feta tsa boimana di ka fokotsa lefu la masea nakong ya tswalo ho fihla ho 8 ho ditswalo tse 1,000, ha ho bapiswa le diketelo tse 4, hobane mathata a fumanwa mme a alafuwa kapele.'
+      short: 'Ditlhahlobo tse robedi kapa ho feta tsa boimana di ka thibela mafu a masea a fihlang ho 8 ho ditswalo tse 1,000, ha ho bapiswa le diketelo tse 4.'
+      reviewed: false
+    af:
+      claim: 'Agt of meer voorgeboortelike ondersoeke kan sterftes van babas rondom geboorte met tot 8 per 1,000 geboortes verminder, vergeleke met 4 besoeke, omdat probleme vroeg gevind en behandel word.'
+      short: 'Agt of meer voorgeboortelike ondersoeke kan tot 8 babasterftes per 1,000 geboortes voorkom, vergeleke met 4 besoeke.'
+      reviewed: false
+    xh:
+      claim: 'Uhlolo lokukhulelwa olusi-8 okanye ngaphezulu lunokunciphisa ukufa kweentsana ngexesha lokuzalwa ukuya kutsho kwisi-8 kuzo zonke iinzalo eziyi-1,000, xa kuthelekiswa notyelelo olu-4, kuba iingxaki zifunyanwa kwaye zinyangwe kwangethuba.'
+      short: 'Uhlolo lokukhulelwa olusi-8 okanye ngaphezulu lunokuthintela ukufa kweentsana ukuya kutsho kwisi-8 kwiinzalo eziyi-1,000, xa kuthelekiswa notyelelo olu-4.'
+      reviewed: false
+    zu:
+      claim: 'Ukuhlolwa kokukhulelwa okungu-8 noma ngaphezulu kunganciphisa ukufa kwezingane ngesikhathi sokuzalwa kufike ku-8 kokuzalwa okungu-1,000, uma kuqhathaniswa nokuvakasha okungu-4, ngoba izinkinga zitholakala futhi zelashwe kusenesikhathi.'
+      short: 'Ukuhlolwa kokukhulelwa okungu-8 noma ngaphezulu kungavimbela ukufa kwezingane okufika ku-8 kokuzalwa okungu-1,000, uma kuqhathaniswa nokuvakasha okungu-4.'
+      reviewed: false
+    pcm:
+      claim: 'Eight or more antenatal checks fit reduce baby death around birth time by up to 8 for every 1,000 births, compare to 4 visits, because dem go see problem and treat am early.'
+      short: 'Eight or more antenatal checks fit stop up to 8 baby deaths for every 1,000 births, compare to 4 visits.'
+      reviewed: false
+    ig:
+      claim: 'Nyocha afọ ime ugboro asatọ ma ọ bụ karịa nwere ike ibelata ọnwụ ụmụaka n''oge ọmụmụ ruo 8 n''ime ọmụmụ 1,000, ma e jiri ya tụnyere nleta 4, n''ihi na a na-achọpụta nsogbu ma gwọọ ha n''oge.'
+      short: 'Nyocha afọ ime ugboro asatọ ma ọ bụ karịa nwere ike igbochi ọnwụ nwa ruo 8 n''ime ọmụmụ 1,000, ma e jiri ya tụnyere nleta 4.'
+      reviewed: false
+    yo:
+      claim: 'Ayẹwo oyun igba mẹjọ tabi ju bẹẹ lọ le dinku iku awọn ọmọ ni akoko ibimọ titi de 8 ninu ibimọ 1,000, ni afiwe pẹlu ibẹwo 4, nitori a ri awọn iṣoro ti a si tọju wọn ni kutukutu.'
+      short: 'Ayẹwo oyun igba mẹjọ tabi ju bẹẹ lọ le dena iku ọmọ titi de 8 ninu ibimọ 1,000, ni afiwe pẹlu ibẹwo 4.'
+      reviewed: false
+    ha:
+      claim: 'Gwajin ciki sau takwas ko fiye na iya rage mutuwar jarirai a lokacin haihuwa da har zuwa 8 cikin kowace haihuwa 1,000, idan aka kwatanta da ziyara 4, saboda ana gano matsaloli kuma ana magance su da wuri.'
+      short: 'Gwajin ciki sau takwas ko fiye na iya hana mutuwar jarirai har 8 cikin haihuwa 1,000, idan aka kwatanta da ziyara 4.'
       reviewed: false
   source: WHO, Pregnant women must be able to access the right care at the right time (7 November 2016)
   source_url: https://www.who.int/reproductivehealth/news/antenatal-care/en/

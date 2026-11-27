@@ -17,6 +17,30 @@ labels:
   am: 'የእርግዝና አደጋ ምልክቶች'
   om: 'Mallattoo balaa ulfaa'
   so: 'Khatarta uurka'
+  ti: 'ምልክታት ሓደጋ ኣብ ጥንሲ'
+  fuf: 'Maandeeji kulol e reedu'
+  mos: 'Zabr bãnd puga pugẽ'
+  dyu: 'Kɔnɔ farati taamashiyɛn'
+  wo: 'Màndargay musiba ci ëmb'
+  ee: 'Fuɖeɖe ƒe afɔkudzesiwo'
+  ak: 'Nyinsɛn asiane'
+  ln: 'Likama na zemi'
+  lg: 'Akabi mu lubuto'
+  rn: 'Akaga mu mbanyi'
+  rw: 'Akaga ku nda'
+  bem: 'Ubusanso mu fumo'
+  ny: 'Zoopsa pa mimba'
+  sn: 'Njodzi pamuviri'
+  ts: 'Khombo eka vutikari'
+  tn: 'Kotsi mo boimaneng'
+  st: 'Kotsi boimaneng'
+  af: 'Gevaartekens: swanger'
+  xh: 'Ingozi ekukhulelweni'
+  zu: 'Ingozi ekukhulelweni'
+  pcm: 'Danger signs for belle'
+  ig: 'Akara ihe egwu n''afọ ime'
+  yo: 'Ami ewu ninu oyun'
+  ha: 'Alamun haɗari a ciki'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -151,6 +175,102 @@ facts:
       claim: 'Haweeneyda uurka leh isla markiiba geey isbitaal ama xarun caafimaad haddii ay leedahay mid ka mid ah calaamadahan: dhiig ka imanaya xubinta taranka, gariir ama suuxdin, madax xanuun daran oo ay la socoto aragti cakiran, qandho iyo daciifnimo aysan sariirta uga kici karin, calool xanuun daran, ama neefsasho degdeg ah ama adag.'
       short: 'HADDA aad xarun caafimaad: dhiig bax, gariir ama suuxdin, madax xanuun daran oo aragti cakiran leh, qandho iyo daciifnimo daran, calool xanuun daran.'
       reviewed: false
+    ti:
+      claim: 'ነፍሰ ጾር ሰበይቲ ካብዞም ምልክታት ሓደ እንተሃልይዋ ብቕልጡፍ ናብ ሆስፒታል ወይ ጣቢያ ጥዕና ውሰዳ: ካብ ብልታ ደም ምፍሳስ፣ ምንፍርፋር ወይ ምንቅጥቃጥ፣ ብርቱዕ ቃንዛ ርእሲ ምስ ዘይንጹር ራእይ፣ ካብ ዓራት ክትትንስእ ዘየፍቅደላ ረስንን ድኻምን፣ ብርቱዕ ቃንዛ ከብዲ፣ ወይ ቅልጡፍ ወይ ከቢድ ምትንፋስ።'
+      short: 'ሕጂ ናብ ሆስፒታል ኪድ: ደም ምፍሳስ፣ ምንፍርፋር፣ ብርቱዕ ቃንዛ ርእሲ ምስ ዘይንጹር ራእይ፣ ረስንን ብርቱዕ ድኻምን፣ ብርቱዕ ቃንዛ ከብዲ።'
+      reviewed: false
+    fuf:
+      claim: 'Naŋ debbo jogiiɗo reedu yah lopitaal law si o jogii gooto e maandeeji ɗii: ƴiiƴam yaltooɗam e debbeere, jallo walla siwnude, hoore muusooɗo no feewi e gite ngi yiyataa no moƴƴi, wulnde e lohre haɗoore mo immaade e leeso, reedu muusooɗo no feewi, walla foofaade law walla e caɗeele.'
+      short: 'Yah lopitaal JOONI si ƴiiƴam ina yalta, jallo, hoore muusooɗo no feewi e gite ngi yiyataa, wulnde e lohre mawnde, reedu muusooɗo no feewi.'
+      reviewed: false
+    mos:
+      claim: 'Tall pagb sẽn tar puga n kẽng logtoeeg tao-tao a sã n tar bãnd-kãens a ye: zĩim sẽn yit a pagb-zĩigẽ, kiirsa bi zẽgdo, zugu sẽn zabd wusg la nin sẽn pa ne sõma, tool la yalemd sẽn pa kõt-a sor t''a yik gãnã zugu, pug zabd kãsenga, bi vuusg tao-tao bi toogo.'
+      short: 'Kẽng logtoeeg MASÃ zĩim sã n yitẽ, kiirsa, zugu sẽn zabd wusg la nin sẽn pa ne, tool la yalemd kãsenga, pug zabd kãsenga.'
+      reviewed: false
+    dyu:
+      claim: 'Muso kɔnɔma ta ka taa dɔgɔtɔrɔso la joona ni nin taamashiyɛnw dɔ b''a la: joli bɔli muso yɔrɔ la, kirikirimasiyɛn walima yɛrɛyɛrɛ, kunkolo dimi gɛlɛn ni ɲɛ min tɛ fɛn ye ka ɲɛ, farigan ni fanga dɔgɔya min t''a to a ka wuli dalan kan, kɔnɔ dimi gɛlɛn, walima ninakili teliman walima gɛlɛn.'
+      short: 'Taa dɔgɔtɔrɔso la SISAN ni joli bɔli, kirikirimasiyɛn, kunkolo dimi gɛlɛn ni ɲɛ min tɛ fɛn ye, farigan ni fanga dɔgɔya ba, kɔnɔ dimi gɛlɛn bɛ yen.'
+      reviewed: false
+    wo:
+      claim: 'Yóbbul jigéen ju ëmb ci opitaal ci gaaw bu amee benn ci màndarga yii: deret buy rot ci jigéenam, lox walla daanu, bopp buy metti lool ak bët yu gisul bu baax, tàng ak tayel bu ko tere jóg ci lal bi, biir buy metti lool, walla noyyi ci gaaw walla ci coono.'
+      short: 'Demal ci opitaal LÉEGI bu amee deret buy rot, lox, bopp buy metti lool ak bët yu gisul, tàng ak tayel bu réy, biir buy metti lool.'
+      reviewed: false
+    ee:
+      claim: 'Kplɔ nyɔnu si fɔ fu yi kɔdzi kaba ne dzesi siawo dometɔ ɖeka le esi: ʋu dodo tso nyɔnu ƒe akpa me, dzidzi alo dzodzo, ta veve sesẽ kple ŋku si mekpɔ nu nyuie o, ŋdɔdzɔ kple gbɔdzɔgbɔdzɔ si mena wòte ŋu fɔna le aba dzi o, dɔme veve sesẽ, alo ya gbɔgbɔ kaba alo kple sesẽ.'
+      short: 'Yi kɔdzi FIFIA ne ʋu dodo, dzidzi, ta veve sesẽ kple ŋku si mekpɔ nu o, ŋdɔdzɔ kple gbɔdzɔgbɔdzɔ gã, dɔme veve sesẽ le eme.'
+      reviewed: false
+    ak:
+      claim: 'Fa ɔbea a ɔwɔ nyinsɛn kɔ ayaresabea ntɛm ara sɛ ɔwɔ nsɛnkyerɛnne yi mu baako: mogya a efi ne mmaa fa mu, ɔsono anaa wosow, tirim yaw kɛse ne aniwa a enhu ade yiye, atiridii ne mmerɛwyɛ a ɛmma ontumi nsɔre mfi mpa so, yafunu yaw kɛse, anaa ɔhome ntɛm anaa ɛyɛ den.'
+      short: 'Kɔ ayaresabea SEESEI sɛ mogya reba, ɔsono, tirim yaw kɛse ne aniwa a enhu ade, atiridii ne mmerɛwyɛ kɛse, yafunu yaw kɛse.'
+      reviewed: false
+    ln:
+      claim: 'Mema mwasi ya zemi na lopitalo noki soki azali na elembo moko kati na oyo: kobima makila na nzoto ya mwasi, kifafa to koningana, motó ezali kobeta makasi mpe miso ezali komona malamu te, fievre mpe bolembu oyo epekisi ye kotelema na mbeto, mpasi makasi na libumu, to kopema noki to na mpasi.'
+      short: 'Kende na lopitalo SIKAWA soki kobima makila, kifafa, motó ezali kobeta makasi mpe miso emoni te, fievre mpe bolembu makasi, libumu ezali koyoka mpasi makasi.'
+      reviewed: false
+    lg:
+      claim: 'Twala omukazi ali olubuto mu ddwaaliro oba mu kiraliniki mangu ddala bw''aba n''akamu ku bubonero buno: okuvaamu omusaayi mu bitundu by''ekyama, ensimbu oba okukankana, omutwe ogumuluma ennyo n''amaaso agatalaba bulungi, omusujja n''obunafu obutamuganya kusituka ku kitanda, obulumi obw''amaanyi mu lubuto, oba okussa amangu oba mu buzibu.'
+      short: 'Genda mu ddwaaliro KAAKANO bwe wabaawo okuvaamu omusaayi, ensimbu, omutwe ogumuluma ennyo n''amaaso agatalaba, omusujja n''obunafu obungi, olubuto olulumwa ennyo.'
+      reviewed: false
+    rn:
+      claim: 'Jana umugore afise imbanyi ku bitaro canke ku ivuriro ningaho nimba afise kimwe muri ibi bimenyetso: kuva amaraso mu gihimba c''irondoka, igicuri canke kujugumira, umutwe urababaza cane n''amaso atabona neza, ubushuhe n''intege nke zituma adashobora kuva mu buriri, kubabara cane mu nda, canke guhema vuba canke bigoye.'
+      short: 'Ja ku bitaro UBU NYENE nimba hari kuva amaraso, igicuri, umutwe urababaza cane n''amaso atabona, ubushuhe n''intege nke cane, kubabara cane mu nda.'
+      reviewed: false
+    rw:
+      claim: 'Jyana umugore utwite ku bitaro cyangwa ku kigo nderabuzima ako kanya niba afite kimwe muri ibi bimenyetso: kuva amaraso mu gitsina, igicuri cyangwa gutitira, umutwe urababara cyane n''amaso atabona neza, umuriro n''intege nke zituma adashobora kuva mu buriri, kubabara cyane mu nda, cyangwa guhumeka vuba cyangwa bigoranye.'
+      short: 'Jya ku bitaro UBU niba hari kuva amaraso, igicuri, umutwe urababara cyane n''amaso atabona, umuriro n''intege nke cyane, kubabara cyane mu nda.'
+      reviewed: false
+    bem:
+      claim: 'Sendeni umwanakashi uli ne fumo ku cipatala bwangu nga akwete icishibilo cimo pali ifi: ukufuma umulopa mu fya bukashi, ifisushi nangu ukututuma, umutwe ukukalipa sana na menso ayashilemona bwino, icikabilila no bunake ubushilemusuminisha ukwima pa busanshi, ukukalipa kwa maka mu mala, nangu ukupema bwangu nangu ukupema ku bukose.'
+      short: 'Kabiyeni ku cipatala NOMBA nga kuli ukufuma umulopa, ifisushi, umutwe ukukalipa sana na menso ayashilemona, icikabilila no bunake, amala ayalekalipa sana.'
+      reviewed: false
+    ny:
+      claim: 'Tengani mayi woyembekezera kuchipatala nthawi yomweyo ngati ali ndi chizindikiro chilichonse mwa izi: kutuluka magazi kumaliseche, khunyu kapena kunjenjemera, mutu wopweteka kwambiri ndi maso osaona bwino, malungo ndi kufooka kosamulola kudzuka pabedi, kupweteka kwambiri m''mimba, kapena kupuma mofulumira kapena movutikira.'
+      short: 'Pitani kuchipatala TSOPANO ngati pali kutuluka magazi, khunyu, mutu wopweteka kwambiri ndi maso osaona, malungo ndi kufooka kwakukulu, mimba yopweteka kwambiri.'
+      reviewed: false
+    sn:
+      claim: 'Endesa mukadzi ane pamuviri kuchipatara kana kukiriniki ipapo ipapo kana aine chimwe chezviratidzo izvi: kubuda ropa panhengo yechikadzi, kugwinha kana kudedera, musoro unorwadza zvakanyanya nemaziso asingaone zvakanaka, fivha neutera zvisingamutenderi kumuka pamubhedha, kurwadza kukuru kwedumbu, kana kufema nekukurumidza kana zvakaoma.'
+      short: 'Enda kuchipatara IZVOZVI kana pane kubuda ropa, kugwinha, musoro unorwadza zvakanyanya nemaziso asingaone, fivha neutera hukuru, dumbu rinorwadza zvakanyanya.'
+      reviewed: false
+    ts:
+      claim: 'Yisa wansati la tikeke exibedlhele kumbe exivandleni xa rihanyo hi xihatla loko a ri na xin''wana xa swikombiso leswi: ku huma ngati eswirhweni swa xisati, xifafa kumbe ku rhurhumela, ku vava ka nhloko ngopfu na mahlo lama nga voniki kahle, fivhara na ku tsana loku nga n''wi pfumeleriki ku pfuka emubedweni, ku vava loku tiyeke ka khwiri, kumbe ku hefemula hi ku hatlisa kumbe hi ku tika.'
+      short: 'Famba exibedlhele SWESWI eka: ku huma ngati, xifafa, ku vava ka nhloko ngopfu na mahlo lama nga voniki, fivhara na ku tsana lokukulu, khwiri leri vavaka ngopfu.'
+      reviewed: false
+    tn:
+      claim: 'Isa mosadi yo o imileng kwa bookelong kgotsa kwa kokelwaneng ka bonako fa a na le lengwe la matshwao a: go tswa madi mo setlhong sa bosadi, sethoathoa kgotsa go roroma, tlhogo e e botlhoko thata le matlho a a sa boneng sentle, fefere le bokoa jo bo sa mo letleleng go tsoga mo bolaong, botlhoko jo bogolo jwa mpa, kgotsa go hema ka bonako kgotsa ka bokete.'
+      short: 'Ya kwa bookelong JAANONG ka ntlha ya: go tswa madi, sethoathoa, tlhogo e e botlhoko thata le matlho a a sa boneng, fefere le bokoa, mpa e e botlhoko thata.'
+      reviewed: false
+    st:
+      claim: 'Isa mosadi ya imileng sepetlele kapa setsing sa bophelo hang hang haeba a na le leha e le lefe la matshwao ana: ho tswa madi setho sa botona, sethoathoa kapa ho thothomela, hlooho e bohloko haholo le mahlo a sa boneng hantle, feberu le bofokodi bo sa mo dumelleng ho tsoha betheng, bohloko bo matla ba mpa, kapa ho hema kapele kapa ka thata.'
+      short: 'Eya sepetlele HONA JOALE bakeng sa: ho tswa madi, sethoathoa, hlooho e bohloko haholo le mahlo a sa boneng, feberu le bofokodi bo boholo, mpa e bohloko haholo.'
+      reviewed: false
+    af:
+      claim: 'Neem ''n swanger vrou dadelik na ''n hospitaal of gesondheidsentrum as sy enige van hierdie tekens het: vaginale bloeding, stuiptrekkings of stuipe, erge hoofpyn met dowwe sig, koors en swakheid sodat sy nie uit die bed kan opstaan nie, erge maagpyn, of vinnige of moeilike asemhaling.'
+      short: 'Gaan NOU hospitaal toe vir: bloeding, stuipe, erge hoofpyn met dowwe sig, koors en groot swakheid, erge maagpyn.'
+      reviewed: false
+    xh:
+      claim: 'Yisa umfazi okhulelweyo esibhedlele okanye kwiziko lezempilo ngokukhawuleza ukuba unayo nayiphi na kwezi mpawu: ukopha kwilungu lobufazi, ukuxhuzula okanye ukungcangcazela, intloko ebuhlungu kakhulu namehlo angaboni kakuhle, umkhuhlane nobuthathaka obungamvumeli ukuvuka ebhedini, intlungu yesisu enamandla, okanye ukuphefumla ngokukhawuleza okanye kanzima.'
+      short: 'Yiya esibhedlele NGOKU ukuba kukho ukopha, ukuxhuzula, intloko ebuhlungu kakhulu namehlo angaboni, umkhuhlane nobuthathaka obukhulu, isisu esibuhlungu kakhulu.'
+      reviewed: false
+    zu:
+      claim: 'Yisa owesifazane okhulelwe esibhedlela noma esikhungweni sezempilo ngokushesha uma enanoma yiziphi zalezi zimpawu: ukopha esithweni sangasese, isithuthwane noma ukuqhaqhazela, ikhanda elibuhlungu kakhulu namehlo angaboni kahle, imfiva nobuthakathaka obungamvumeli ukuvuka embhedeni, ubuhlungu besisu obunamandla, noma ukuphefumula ngokushesha noma kanzima.'
+      short: 'Yana esibhedlela MANJE uma kunokopha, isithuthwane, ikhanda elibuhlungu kakhulu namehlo angaboni, imfiva nobuthakathaka obukhulu, isisu esibuhlungu kakhulu.'
+      reviewed: false
+    pcm:
+      claim: 'Carry pregnant woman go hospital or health centre now now if she get any of these signs: blood from her private part, fits or shaking, strong headache with eye wey no dey see well, fever and weakness wey no let her fit stand from bed, strong belle pain, or fast breathing or hard breathing.'
+      short: 'Go hospital NOW for: blood, fits, strong headache with eye wey no see well, fever and big weakness, strong belle pain.'
+      reviewed: false
+    ig:
+      claim: 'Kpọga nwanyị dị ime n''ụlọ ọgwụ ma ọ bụ ebe ahụike ozugbo ma ọ bụrụ na o nwere nke ọ bụla n''ime akara ndị a: ọbara na-apụta n''ọtụ, ọdịdọ ma ọ bụ ịma jijiji, isi ọwụwa siri ike na anya anaghị ahụ ụzọ nke ọma, ahụ ọkụ na adịghị ike nke na ọ pụghị ibili n''ihe ndina, mgbu afọ siri ike, ma ọ bụ iku ume ngwa ngwa ma ọ bụ n''ike.'
+      short: 'Gaa n''ụlọ ọgwụ UGBU A maka: ọbara, ọdịdọ, isi ọwụwa siri ike na anya anaghị ahụ ụzọ, ahụ ọkụ na adịghị ike nke ukwuu, mgbu afọ siri ike.'
+      reviewed: false
+    yo:
+      claim: 'Gbe obinrin aboyun lọ si ile iwosan tabi ile-iṣẹ ilera lẹsẹkẹsẹ ti o ba ni eyikeyi ninu awọn ami wọnyi: ẹjẹ ti n jade lati oju ara, giri tabi gbigbọn, ori fifọ to lagbara pẹlu oju ti ko riran daradara, iba ati ailera ti ko jẹ ki o le dide lori ibusun, irora inu to lagbara, tabi mimi ni kiakia tabi pẹlu iṣoro.'
+      short: 'Lọ si ile iwosan NI BAYI fun: ẹjẹ, giri, ori fifọ to lagbara pẹlu oju ti ko riran, iba ati ailera pupọ, irora inu to lagbara.'
+      reviewed: false
+    ha:
+      claim: 'Ku kai mace mai ciki asibiti ko cibiyar lafiya nan da nan idan tana da ɗaya daga cikin waɗannan alamu: zubar jini ta farji, farfaɗiya ko girgiza, ciwon kai mai tsanani tare da dushewar gani, zazzaɓi da rauni har ba za ta iya tashi daga gado ba, ciwon ciki mai tsanani, ko numfashi da sauri ko da wahala.'
+      short: 'Ku je cibiyar lafiya YANZU idan akwai: zubar jini, farfaɗiya, ciwon kai mai tsanani da dushewar gani, zazzaɓi da rauni sosai, ciwon ciki mai tsanani.'
+      reviewed: false
   source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
   source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
   checked_on: 2026-11-23
@@ -269,6 +389,102 @@ facts:
       claim: 'Haweeneyda uurka leh waa inay sida ugu dhakhsaha badan u tagto xarun caafimaad haddii ay qabto qandho, calool xanuun, ay dareento jirro, ama ay bararaan farahu, wejigu iyo lugahu.'
       short: 'Dhakhso u tag shaqaale caafimaad haddii ay jiraan: qandho, calool xanuun, jirro, ama faro, weji iyo lugo bararay.'
       reviewed: false
+    ti:
+      claim: 'ነፍሰ ጾር ሰበይቲ ረስኒ፣ ቃንዛ ከብዲ እንተሃልይዋ፣ ሕማም እንተተሰሚዕዋ፣ ወይ ኣጻብዕ፣ ገጽን እግርን እንተሓቢጦም ብዝከኣል መጠን ቀልጢፋ ናብ ጣቢያ ጥዕና ክትከይድ ኣለዋ።'
+      short: 'ረስኒ፣ ቃንዛ ከብዲ፣ ሕማም ምስምማዕ፣ ወይ ምሕባጥ ኣጻብዕ፣ ገጽን እግርን እንተሃልዩ ቀልጢፍኪ ሰራሕተኛ ጥዕና ርኣዪ።'
+      reviewed: false
+    fuf:
+      claim: 'Debbo jogiiɗo reedu haani yahde lopitaal law no waawiraa si o jogii wulnde, muuseeki reedu, o ina yiyloo e ñawu, walla feɗeende, yeeso e koyɗe mum ɓuuftii.'
+      short: 'Yiy golloowo cellal law si wulnde, muuseeki reedu, a ina yiyloo e ñawu, walla ɓuuftugol feɗeende, yeeso e koyɗe ina woodi.'
+      reviewed: false
+    mos:
+      claim: 'Pagb sẽn tar puga segd n kẽng logtoeeg tao-tao a sã n tar tool, pug zabdo, a sã n wumd t''a bãada, bi a nug-bilsã, a nengã la a naoã fuume.'
+      short: 'Yã laafi tuumd-soab tao-tao tool sã n be, pug zabdo, y sã n wumd ti y bãada, bi nug-bilsã, nengã la naoã sã n fuume.'
+      reviewed: false
+    dyu:
+      claim: 'Muso kɔnɔma ka kan ka taa dɔgɔtɔrɔso la joona i n''a fɔ a bɛ se cogo min na ni farigan, kɔnɔ dimi b''a la, a b''a yɛrɛ sɔrɔ banabagatɔ, walima a bolo ni a ɲɛda ni a senw fununna.'
+      short: 'Kɛnɛya baarakɛla ye joona ni farigan, kɔnɔ dimi, i b''i yɛrɛ sɔrɔ banabagatɔ, walima bolokɔniw, ɲɛda ni senw funu bɛ yen.'
+      reviewed: false
+    wo:
+      claim: 'Jigéen ju ëmb war na dem ci opitaal ci gaaw bu amee tàng, metitu biir, mu yëg ne dafa feebar, walla baaraam yi, kanamam ak tànkam fun.'
+      short: 'Gisal liggéeykatu wér-gi-yaram ci gaaw bu amee tàng, metitu biir, yëg ne yaa ngi feebar, walla funu baaraam, kanam ak tànk.'
+      reviewed: false
+    ee:
+      claim: 'Ele be nyɔnu si fɔ fu nayi kɔdzi kaba alesi wòate ŋui ne ŋdɔdzɔ, dɔme veve le esi, ese le eɖokui me be yele dɔ lém, alo eƒe asibidɛwo, ŋkume kple afɔwo fũ.'
+      short: 'Kpɔ lãmesẽdɔwɔla kaba ne ŋdɔdzɔ, dɔme veve, ese le ɖokuiwò me be yele dɔ lém, alo asibidɛwo, ŋkume kple afɔwo fũ.'
+      reviewed: false
+    ak:
+      claim: 'Ɛsɛ sɛ ɔbea a ɔwɔ nyinsɛn kɔ ayaresabea ntɛm sɛnea ɛbɛyɛ yiye sɛ ɔwɔ atiridii, yafunu yaw, ɔte nka sɛ ɔyare, anaa ne nsateaa, n''anim ne ne nan ahonhon.'
+      short: 'Kɔhu apɔwmuden adwumayɛfo ntɛm sɛ atiridii, yafunu yaw, wote nka sɛ woyare, anaa nsateaa, anim ne nan ahonhon.'
+      reviewed: false
+    ln:
+      claim: 'Mwasi ya zemi asengeli kokende na dispanseri noki ndenge ekoki soki azali na fievre, mpasi na libumu, azali koyoka maladi, to misapi, elongi mpe makolo na ye evimbi.'
+      short: 'Mona mosali ya bokolongono noki soki fievre, mpasi na libumu, koyoka maladi, to kovimba misapi, elongi mpe makolo.'
+      reviewed: false
+    lg:
+      claim: 'Omukazi ali olubuto alina okugenda mu kiraliniki mangu nga bwe kisoboka bw''aba n''omusujja, obulumi mu lubuto, ng''awulira obulwadde, oba engalo, amaaso n''amagulu bye nga bizimbye.'
+      short: 'Laba omukozi w''ebyobulamu mangu bwe wabaawo omusujja, obulumi mu lubuto, okuwulira obulwadde, oba okuzimba engalo, amaaso n''amagulu.'
+      reviewed: false
+    rn:
+      claim: 'Umugore afise imbanyi ategerezwa kuja ku ivuriro vuba bishoboka nimba afise ubushuhe, kubabara mu nda, yiyumva arwaye, canke intoke, mu maso n''amaguru vyiwe vyavimbye.'
+      short: 'Ja kuraba umukozi w''amagara vuba nimba hari ubushuhe, kubabara mu nda, kwiyumva urwaye, canke kuvimba intoke, mu maso n''amaguru.'
+      reviewed: false
+    rw:
+      claim: 'Umugore utwite agomba kujya ku kigo nderabuzima vuba bishoboka niba afite umuriro, kubabara mu nda, yumva arwaye, cyangwa intoki, mu maso n''amaguru bye byabyimbye.'
+      short: 'Jya kureba umukozi w''ubuzima vuba niba hari umuriro, kubabara mu nda, kumva urwaye, cyangwa kubyimba intoki, mu maso n''amaguru.'
+      reviewed: false
+    bem:
+      claim: 'Umwanakashi uli ne fumo alingile ukuya ku cipatala bwangu nga fintu cingakwanisha nga akwete icikabilila, ukukalipa kwa mala, alemfwa ukulwala, nangu iminwe, icinso na makasa yakwe fyafimba.'
+      short: 'Moneni kabomba wa bumi bwangu nga kuli icikabilila, ukukalipa kwa mala, ukumfwa ukulwala, nangu ukufimba kwa minwe, icinso na makasa.'
+      reviewed: false
+    ny:
+      claim: 'Mayi woyembekezera ayenera kupita kuchipatala msanga momwe angathere ngati ali ndi malungo, kupweteka m''mimba, akumva kudwala, kapena zala, nkhope ndi miyendo yake zatupa.'
+      short: 'Onani wogwira ntchito ya zaumoyo msanga ngati pali malungo, kupweteka m''mimba, kumva kudwala, kapena kutupa kwa zala, nkhope ndi miyendo.'
+      reviewed: false
+    sn:
+      claim: 'Mukadzi ane pamuviri anofanira kuenda kukiriniki nekukurumidza sezvinobvira kana aine fivha, kurwadza kwedumbu, achinzwa achirwara, kana minwe, kumeso nemakumbo ake zvazvimba.'
+      short: 'Ona mushandi wezveutano nekukurumidza kana pane fivha, kurwadza kwedumbu, kunzwa uchirwara, kana kuzvimba kweminwe, kumeso nemakumbo.'
+      reviewed: false
+    ts:
+      claim: 'Wansati la tikeke u fanele ku ya exivandleni xa rihanyo hi ku hatlisa hilaha swi kotekaka hakona loko a ri na fivhara, ku vava ka khwiri, a titwa a vabya, kumbe tintiho, xikandza na milenge ya yena swi pfimbile.'
+      short: 'Vona mutirhi wa rihanyo hi ku hatlisa eka: fivhara, ku vava ka khwiri, ku titwa u vabya, kumbe ku pfimba ka tintiho, xikandza na milenge.'
+      reviewed: false
+    tn:
+      claim: 'Mosadi yo o imileng o tshwanetse go ya kwa kokelwaneng ka bonako jo bo kgonegang fa a na le fefere, botlhoko jwa mpa, a ikutlwa a lwala, kgotsa menwana, sefatlhego le maoto a gagwe a rurugile.'
+      short: 'Bona modiredi wa boitekanelo ka bonako ka ntlha ya: fefere, botlhoko jwa mpa, go ikutlwa o lwala, kgotsa go ruruga ga menwana, sefatlhego le maoto.'
+      reviewed: false
+    st:
+      claim: 'Mosadi ya imileng o lokela ho ya setsing sa bophelo kapele kamoo ho ka kgonehang haeba a na le feberu, bohloko ba mpa, a ikutlwa a kula, kapa menwana, sefahleho le maoto a hae a ruruhile.'
+      short: 'Bona mosebeletsi wa bophelo kapele bakeng sa: feberu, bohloko ba mpa, ho ikutlwa o kula, kapa ho ruruha ha menwana, sefahleho le maoto.'
+      reviewed: false
+    af:
+      claim: '''n Swanger vrou moet so gou moontlik na ''n gesondheidsentrum gaan as sy koors of maagpyn het, siek voel, of as haar vingers, gesig en bene geswel is.'
+      short: 'Sien gou ''n gesondheidswerker vir: koors, maagpyn, siek voel, of geswelde vingers, gesig en bene.'
+      reviewed: false
+    xh:
+      claim: 'Umfazi okhulelweyo kufuneka aye kwiziko lezempilo kamsinya kangangoko ukuba unomkhuhlane, intlungu yesisu, eziva egula, okanye iminwe, ubuso nemilenze yakhe idumbile.'
+      short: 'Bona umsebenzi wezempilo kamsinya ukuba kukho umkhuhlane, intlungu yesisu, ukuziva ugula, okanye ukudumba kweminwe, ubuso nemilenze.'
+      reviewed: false
+    zu:
+      claim: 'Owesifazane okhulelwe kufanele aye esikhungweni sezempilo ngokushesha okukhulu uma enemfiva, ubuhlungu besisu, ezizwa egula, noma iminwe, ubuso nemilenze yakhe kuvuvukile.'
+      short: 'Bona isisebenzi sezempilo maduze uma kunemfiva, ubuhlungu besisu, ukuzizwa ugula, noma ukuvuvuka kweminwe, ubuso nemilenze.'
+      reviewed: false
+    pcm:
+      claim: 'Pregnant woman suppose go health centre as soon as possible if she get fever, belle pain, if body no dey well, or if her fingers, face and legs swell.'
+      short: 'See health worker soon for: fever, belle pain, body wey no well, or swelling for fingers, face and legs.'
+      reviewed: false
+    ig:
+      claim: 'Nwanyị dị ime kwesịrị ịga ebe ahụike ozugbo o kwere mee ma ọ bụrụ na o nwere ahụ ọkụ, mgbu afọ, ahụ adịghị ya mma, ma ọ bụ mkpịsị aka, ihu na ụkwụ ya zara aza.'
+      short: 'Hụ onye ọrụ ahụike n''oge na-adịghị anya maka: ahụ ọkụ, mgbu afọ, ahụ adịghị mma, ma ọ bụ ọzịza mkpịsị aka, ihu na ụkwụ.'
+      reviewed: false
+    yo:
+      claim: 'Obinrin aboyun yẹ ki o lọ si ile-iṣẹ ilera ni kete bi o ti ṣee ti o ba ni iba, irora inu, ti ara rẹ ko ya, tabi ti awọn ika, oju ati ẹsẹ rẹ wu.'
+      short: 'Ri oṣiṣẹ ilera laipẹ fun: iba, irora inu, ara ti ko ya, tabi wiwu ika, oju ati ẹsẹ.'
+      reviewed: false
+    ha:
+      claim: 'Mace mai ciki ta je cibiyar lafiya da wuri idan tana da zazzaɓi, ciwon ciki, tana jin rashin lafiya, ko kumburin yatsu, fuska da ƙafafu.'
+      short: 'Ku ga ma''aikacin lafiya da wuri idan akwai: zazzaɓi, ciwon ciki, jin rashin lafiya, ko kumburin yatsu, fuska da ƙafafu.'
+      reviewed: false
   source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
   source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
   checked_on: 2026-11-23
@@ -374,6 +590,102 @@ facts:
     so:
       claim: 'Dhiig baxa uurka wuxuu u baahan yahay in isla markiiba la geeyo xarun caafimaad. Haweeney, gaar ahaan mid dhiig yaraan qabta, waxay ku dhiman kartaa saacado gudahood.'
       short: 'Dhiig bax uurka: isla markiiba aad xarun caafimaad. Wuxuu dili karaa saacado gudahood.'
+      reviewed: false
+    ti:
+      claim: 'ኣብ ግዜ ጥንሲ ደም ምፍሳስ ብቕልጡፍ ናብ ሆስፒታል ምውሳድ የድልዮ። ሰበይቲ፣ ብፍላይ እኹል ደም ዘይብላ (anaemia)፣ ኣብ ውሽጢ ውሑዳት ሰዓታት ክትመውት ትኽእል።'
+      short: 'ኣብ ጥንሲ ደም ምፍሳስ: ብቕልጡፍ ናብ ሆስፒታል ኪዲ። ኣብ ውሽጢ ውሑዳት ሰዓታት ክቐትል ይኽእል።'
+      reviewed: false
+    fuf:
+      claim: 'Ƴiiƴam yaltooɗam e reedu ina ɗaɓɓi debbo oo naŋee yahee lopitaal law. Debbo, ɓuri fof mo ƴiiƴam mum heewaani (anaemia), ina waawi maayde nder waktuuji seeɗa.'
+      short: 'Ƴiiƴam e reedu: yah lopitaal law. Ina waawi warde nder waktuuji seeɗa.'
+      reviewed: false
+    mos:
+      claim: 'Zĩim sẽn yit puga wakat pugẽ rata ti b tall pagbã n kẽng logtoeeg tao-tao. Pagb, sẽn yiid fãa sẽn ka tar zĩim sẽn sek (anaemia), tõe n ki lɛɛr bilf pugẽ.'
+      short: 'Zĩim puga pugẽ: kẽng logtoeeg tao-tao. A tõe n ku ned lɛɛr bilf pugẽ.'
+      reviewed: false
+    dyu:
+      claim: 'Joli bɔli kɔnɔ waati la b''a ɲini ko muso ka ta ka taa dɔgɔtɔrɔso la joona. Muso, kɛrɛnkɛrɛnnenya la min joli ma ca (anaemia), o bɛ se ka sa lɛri dɔɔnin kɔnɔ.'
+      short: 'Joli bɔli kɔnɔ la: taa dɔgɔtɔrɔso la joona. A bɛ se ka mɔgɔ faga lɛri dɔɔnin kɔnɔ.'
+      reviewed: false
+    wo:
+      claim: 'Deret buy rot ci ëmb dafa laaj ñu yóbbu ko ci opitaal ci gaaw. Jigéen, rawatina ku amul deret bu doy (anaemia), man na dee ci biir ay waxtu yu tuuti.'
+      short: 'Deret ci ëmb: demal ci opitaal ci gaaw. Man na rey ci biir ay waxtu yu tuuti.'
+      reviewed: false
+    ee:
+      claim: 'Ʋu dodo le fuɖeɖe me hiã be woakplɔ nyɔnu la ayi kɔdzi kaba. Nyɔnu, vevietɔ esi ʋu mesɔ gbɔ nɛ o (anaemia), ate ŋu aku le gaƒoƒo ʋɛ aɖewo me.'
+      short: 'Ʋu dodo le fuɖeɖe me: yi kɔdzi kaba. Ate ŋu awu ame le gaƒoƒo ʋɛ aɖewo me.'
+      reviewed: false
+    ak:
+      claim: 'Mogya a ɛba wɔ nyinsɛn mu hia sɛ wɔde ɔbea no kɔ ayaresabea ntɛm ara. Ɔbea, titiriw nea ne mogya nnɔɔso (anaemia), betumi awu wɔ nnɔnhwerew kakra mu.'
+      short: 'Mogya wɔ nyinsɛn mu: kɔ ayaresabea ntɛm ara. Ebetumi akum wɔ nnɔnhwerew kakra mu.'
+      reviewed: false
+    ln:
+      claim: 'Kobima makila na tango ya zemi esengi ete bamema ye na lopitalo noki. Mwasi, mingi oyo azali na makila ekoki te (anaemia), akoki kokufa na kati ya ngonga moke.'
+      short: 'Kobima makila na zemi: kende na lopitalo noki. Ekoki koboma na kati ya ngonga moke.'
+      reviewed: false
+    lg:
+      claim: 'Okuvaamu omusaayi ng''oli olubuto kyetaagisa okutwalibwa mu ddwaaliro mangu ddala. Omukazi, naddala atalina musaayi gumala (anaemia), ayinza okufa mu ssaawa ntono.'
+      short: 'Okuvaamu omusaayi mu lubuto: genda mu ddwaaliro mangu ddala. Kiyinza okutta mu ssaawa ntono.'
+      reviewed: false
+    rn:
+      claim: 'Kuva amaraso ufise imbanyi bisaba kujanwa ku bitaro ningaho. Umugore, canecane adafise amaraso akwiye (anaemia), arashobora gupfa mu masaha make.'
+      short: 'Kuva amaraso mu mbanyi: ja ku bitaro ningaho. Birashobora kwica mu masaha make.'
+      reviewed: false
+    rw:
+      claim: 'Kuva amaraso utwite bisaba kujyanwa ku bitaro ako kanya. Umugore, cyane cyane udafite amaraso ahagije (anaemia), ashobora gupfa mu masaha make.'
+      short: 'Kuva amaraso utwite: jya ku bitaro ako kanya. Bishobora kwica mu masaha make.'
+      reviewed: false
+    bem:
+      claim: 'Ukufuma umulopa mu fumo kulafwaya ukuti umwanakashi asendwe ku cipatala bwangu. Umwanakashi, maka maka uushikwete umulopa uukumana (anaemia), kuti afwa mukati ka maawala yanono.'
+      short: 'Ukufuma umulopa mu fumo: kabiyeni ku cipatala bwangu. Kuti kwaipaya mukati ka maawala yanono.'
+      reviewed: false
+    ny:
+      claim: 'Kutuluka magazi pa mimba kumafuna kuti mayi atengedwe kuchipatala nthawi yomweyo. Mayi, makamaka yemwe alibe magazi okwanira (anaemia), akhoza kufa m''maola ochepa.'
+      short: 'Kutuluka magazi pa mimba: pitani kuchipatala nthawi yomweyo. Kutha kupha m''maola ochepa.'
+      reviewed: false
+    sn:
+      claim: 'Kubuda ropa panguva yepamuviri kunoda kuti aendeswe kuchipatara ipapo ipapo. Mukadzi, kunyanya asina ropa rakakwana (anaemia), anogona kufa mukati memaawa mashoma.'
+      short: 'Kubuda ropa pamuviri: enda kuchipatara ipapo ipapo. Kunogona kuuraya mukati memaawa mashoma.'
+      reviewed: false
+    ts:
+      claim: 'Ku huma ngati hi nkarhi wa vutikari swi lava leswaku a yisiwa exibedlhele hi xihatla. Wansati, ngopfungopfu loyi a nga riki na ngati yo ringana (anaemia), a nga fa endzeni ka tiawara ti nga ri tingani.'
+      short: 'Ku huma ngati eka vutikari: famba exibedlhele hi xihatla. Swi nga dlaya endzeni ka tiawara ti nga ri tingani.'
+      reviewed: false
+    tn:
+      claim: 'Go tswa madi mo boimaneng go tlhoka gore a isiwe kwa bookelong ka bonako. Mosadi, bogolosegolo yo o se nang madi a a lekaneng (anaemia), a ka swa mo diureng di le mmalwa.'
+      short: 'Go tswa madi mo boimaneng: ya kwa bookelong ka bonako. Go ka bolaya mo diureng di le mmalwa.'
+      reviewed: false
+    st:
+      claim: 'Ho tswa madi nakong ya boimana ho hloka hore a iswe sepetlele hang hang. Mosadi, haholoholo ya se nang madi a lekaneng (anaemia), a ka shwa ka hara dihora tse mmalwa.'
+      short: 'Ho tswa madi boimaneng: eya sepetlele hang hang. Ho ka bolaya ka hara dihora tse mmalwa.'
+      reviewed: false
+    af:
+      claim: 'Bloeding in swangerskap vra dat sy dadelik na ''n hospitaal geneem word. ''n Vrou, veral een met bloedarmoede (anaemia), kan binne ''n paar uur sterf.'
+      short: 'Bloeding in swangerskap: gaan dadelik hospitaal toe. Dit kan binne ''n paar uur dodelik wees.'
+      reviewed: false
+    xh:
+      claim: 'Ukopha ngexesha lokukhulelwa kufuna ukusiwa esibhedlele ngokukhawuleza. Umfazi, ingakumbi ongenalo igazi elaneleyo (anaemia), angasweleka kwiiyure ezimbalwa.'
+      short: 'Ukopha ekukhulelweni: yiya esibhedlele ngokukhawuleza. Kunokubulala kwiiyure ezimbalwa.'
+      reviewed: false
+    zu:
+      claim: 'Ukopha ngesikhathi sokukhulelwa kudinga ukuyiswa esibhedlela ngokushesha. Owesifazane, ikakhulukazi ongenalo igazi elanele (anaemia), angafa emahoreni ambalwa.'
+      short: 'Ukopha ekukhulelweni: yana esibhedlela ngokushesha. Kungabulala emahoreni ambalwa.'
+      reviewed: false
+    pcm:
+      claim: 'Blood when woman get belle mean say dem must carry her go hospital now now. Woman, especially one wey no get enough blood (anaemia), fit die inside few hours.'
+      short: 'Blood for belle: go hospital now now. E fit kill person inside few hours.'
+      reviewed: false
+    ig:
+      claim: 'Ọbara n''afọ ime chọrọ ka a kpọga ya n''ụlọ ọgwụ ozugbo. Nwanyị, karịsịa onye na-enweghị ọbara zuru ezu (anaemia), nwere ike ịnwụ n''ime awa ole na ole.'
+      short: 'Ọbara n''afọ ime: gaa n''ụlọ ọgwụ ozugbo. Ọ nwere ike igbu mmadụ n''ime awa ole na ole.'
+      reviewed: false
+    yo:
+      claim: 'Ẹjẹ ninu oyun nilo gbigbe lọ si ile iwosan lẹsẹkẹsẹ. Obinrin kan, paapaa ẹni ti ko ni ẹjẹ to (anaemia), le ku laarin wakati diẹ.'
+      short: 'Ẹjẹ ninu oyun: lọ si ile iwosan lẹsẹkẹsẹ. O le pa eniyan laarin wakati diẹ.'
+      reviewed: false
+    ha:
+      claim: 'Zubar jini a lokacin ciki yana buƙatar kai ta cibiyar lafiya nan da nan. Mace, musamman mai ƙarancin jini, na iya mutuwa cikin ''yan awanni.'
+      short: 'Zubar jini a lokacin ciki: ku je cibiyar lafiya nan da nan. Yana iya kashewa cikin awanni.'
       reviewed: false
   source: WHO, Counselling for maternal and newborn health care (NCBI Bookshelf NBK304178)
   source_url: https://www.ncbi.nlm.nih.gov/books/NBK304178/
@@ -485,6 +797,102 @@ facts:
     so:
       claim: 'Uurka inta lagu jiro isla markiiba raadso daryeel haddii dhaqdhaqaaqa ilmuhu isbeddelo, ama kadib dhaawac kasta oo calooshu gaadho.'
       short: 'Ilmuhu ma ka yar yahay dhaqdhaqaaqiisa ama si kale ayuu u dhaqaaqaa, ama calool baa la garaacay? Isla markiiba raadso daryeel.'
+      reviewed: false
+    ti:
+      claim: 'ኣብ ግዜ ጥንሲ ምንቅስቓስ ህጻን እንተተቐዪሩ፣ ወይ ድሕሪ ዝኾነ ማህሰይቲ ከብዲ፣ ብቕልጡፍ ሕክምና ድለዪ።'
+      short: 'ህጻን ውሑድ ወይ ብዝተፈልየ መንገዲ ይንቀሳቐስ፣ ወይ ከብዲ ተሃሲዩ? ብቕልጡፍ ሕክምና ድለዪ።'
+      reviewed: false
+    fuf:
+      claim: 'Yiylo safaara law e reedu si no ɓiɗɗo oo dillirta waylii, walla caggal kala gaañande reedu.'
+      short: 'Ɓiɗɗo oo ina dilla seeɗa walla e laawol goɗɗo, walla reedu gaañii? Yiylo safaara law.'
+      reviewed: false
+    mos:
+      claim: 'Bao logtoeeg tao-tao puga wakat pugẽ biigã yĩgimdg sã n toeeme, bi pugã sã n paam zabr bũmb fãa poore.'
+      short: 'Biigã yĩgimda bilf bi ne sor a to, bi pugã paama zabre? Bao logtoeeg tao-tao.'
+      reviewed: false
+    dyu:
+      claim: 'Furakɛli ɲini joona kɔnɔ waati la ni den ka lamaga cogo yɛlɛmana, walima kɔnɔ jogin o jogin kɔfɛ.'
+      short: 'Den bɛ lamaga dɔɔnin walima cogo wɛrɛ la, walima kɔnɔ joginna? Furakɛli ɲini joona.'
+      reviewed: false
+    wo:
+      claim: 'Seetal fajkat ci gaaw ci ëmb bu yëngu-yënguy xale bi soppeekoo, walla ginnaaw bu biir bi gaañoo.'
+      short: 'Xale bi dafay yëngu tuuti walla ci beneen anam, walla biir bi gaañu na? Seetal fajkat ci gaaw.'
+      reviewed: false
+    ee:
+      claim: 'Di dɔyɔyɔ kaba le fuɖeɖe me ne alesi vi la ʋãna trɔ, alo le abi ɖesiaɖe si dze dɔ me megbe.'
+      short: 'Vi la ʋãna sue alo le mɔ bubu nu, alo dɔ xɔ abi? Di dɔyɔyɔ kaba.'
+      reviewed: false
+    ak:
+      claim: 'Hwehwɛ ayaresa ntɛm ara wɔ nyinsɛn mu sɛ abofra no keka ne ho kwan sesa, anaa sɛ yafunu no pira biara a.'
+      short: 'Abofra no keka ne ho kakra anaa ɔkwan foforo so, anaa yafunu apira? Hwehwɛ ayaresa ntɛm ara.'
+      reviewed: false
+    ln:
+      claim: 'Luka lisalisi noki na tango ya zemi soki ndenge mwana azali koningana ebongwani, to sima ya bozoki nyonso na libumu.'
+      short: 'Mwana azali koningana moke to na ndenge mosusu, to libumu ezoki? Luka lisalisi noki.'
+      reviewed: false
+    lg:
+      claim: 'Noonya obujjanjabi mangu ddala ng''oli olubuto singa engeri omwana gy''asagaasaganamu ekyuse, oba oluvannyuma lw''okulumizibwa kwonna mu lubuto.'
+      short: 'Omwana asagaasagana kitono oba mu ngeri ya njawulo, oba olubuto lulumiziddwa? Noonya obujjanjabi mangu ddala.'
+      reviewed: false
+    rn:
+      claim: 'Rondera ubuvuzi ningaho ufise imbanyi nimba ukuntu umwana anyiganyiga vyahindutse, canke inyuma yo gukomereka mu nda.'
+      short: 'Umwana anyiganyiga gake canke ukundi, canke inda yakomeretse? Rondera ubuvuzi ningaho.'
+      reviewed: false
+    rw:
+      claim: 'Shaka ubuvuzi ako kanya utwite niba uko umwana anyeganyega byahindutse, cyangwa nyuma yo gukomereka mu nda.'
+      short: 'Umwana anyeganyega gake cyangwa ukundi, cyangwa inda yakomeretse? Shaka ubuvuzi ako kanya.'
+      reviewed: false
+    bem:
+      claim: 'Fwayeni ukusungwa bwangu mu fumo nga ukusela kwa mwana kwaluka, nangu pa numa ya kucenwa kuli konse ukwa mala.'
+      short: 'Umwana alesela panono nangu mu nshila yapusana, nangu amala yacenwa? Fwayeni ukusungwa bwangu.'
+      reviewed: false
+    ny:
+      claim: 'Pezani chithandizo nthawi yomweyo pa mimba ngati kusuntha kwa mwana kwasintha, kapena mutavulala m''mimba.'
+      short: 'Mwana akusuntha pang''ono kapena mosiyana, kapena mimba yavulala? Pezani chithandizo nthawi yomweyo.'
+      reviewed: false
+    sn:
+      claim: 'Tsvaga rubatsiro ipapo ipapo panguva yepamuviri kana kufamba kwemwana kwachinja, kana mushure mekukuvara kupi zvako kwedumbu.'
+      short: 'Mwana ari kufamba zvishoma kana zvakasiyana, kana dumbu rakakuvara? Tsvaga rubatsiro ipapo ipapo.'
+      reviewed: false
+    ts:
+      claim: 'Lava nhlayiso hi xihatla hi nkarhi wa vutikari loko ku tsekatseka ka n''wana ku cinca, kumbe endzhaku ka ku vaviseka kun''wana ka khwiri.'
+      short: 'N''wana u tsekatseka switsongo kumbe hi ndlela yo hambana, kumbe khwiri ri vavisekile? Lava nhlayiso hi xihatla.'
+      reviewed: false
+    tn:
+      claim: 'Batla tlhokomelo ka bonako mo boimaneng fa metsamao ya lesea e fetoga, kgotsa morago ga kgobalo epe ya mpa.'
+      short: 'Lesea le tshikinyega go le kalo kgotsa ka tsela e e farologaneng, kgotsa mpa e gobetse? Batla tlhokomelo ka bonako.'
+      reviewed: false
+    st:
+      claim: 'Batla tlhokomelo hang hang nakong ya boimana haeba metsamao ya lesea e fetoha, kapa kamora kotsi efe kapa efe ya mpa.'
+      short: 'Lesea le sisinyeha ka tlase kapa ka tsela e fapaneng, kapa mpa e lemetse? Batla tlhokomelo hang hang.'
+      reviewed: false
+    af:
+      claim: 'Kry dadelik sorg in swangerskap as die baba se bewegings verander, of na enige besering aan die maag.'
+      short: 'Beweeg die baba minder of anders, of is die maag beseer? Kry dadelik sorg.'
+      reviewed: false
+    xh:
+      claim: 'Fumana ukhathalelo ngokukhawuleza ngexesha lokukhulelwa ukuba ukushukuma komntwana kuyatshintsha, okanye emva kokwenzakala kwesisu.'
+      short: 'Umntwana ushukuma kancinci okanye ngendlela eyahlukileyo, okanye isisu senzakele? Fumana ukhathalelo ngokukhawuleza.'
+      reviewed: false
+    zu:
+      claim: 'Thola ukunakekelwa ngokushesha ngesikhathi sokukhulelwa uma ukunyakaza kwengane kushintsha, noma emva kokulimala kwesisu.'
+      short: 'Ingane inyakaza kancane noma ngendlela ehlukile, noma isisu silimele? Thola ukunakekelwa ngokushesha.'
+      reviewed: false
+    pcm:
+      claim: 'Find care now now when belle dey if the way baby dey move change, or after any wound or blow for the belle.'
+      short: 'Baby dey move less or different, or belle get wound? Find care now now.'
+      reviewed: false
+    ig:
+      claim: 'Chọọ nlekọta ozugbo n''afọ ime ma ọ bụrụ na mmegharị ahụ nwa agbanwee, ma ọ bụ mgbe mmerụ ahụ ọ bụla metụrụ afọ.'
+      short: 'Nwa anaghị akpali ma ọ bụ na-akpali n''ụzọ dị iche, ma ọ bụ afọ merụrụ ahụ? Chọọ nlekọta ozugbo.'
+      reviewed: false
+    yo:
+      claim: 'Wa itọju lẹsẹkẹsẹ ninu oyun ti mimira ọmọ ba yipada, tabi lẹhin ipalara eyikeyi si ikun.'
+      short: 'Ọmọ n mira kere tabi yatọ, tabi ikun gba ipalara? Wa itọju lẹsẹkẹsẹ.'
+      reviewed: false
+    ha:
+      claim: 'Ku nemi kulawa nan da nan a lokacin ciki idan motsin jariri ya canza, ko bayan kowane rauni a ciki.'
+      short: 'Jariri yana motsi ƙasa ko daban, ko an buge ciki? Ku nemi kulawa nan da nan.'
       reviewed: false
   source: WHO, World Health Day 2025 key messages
   source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages
@@ -603,6 +1011,102 @@ facts:
     so:
       claim: 'Dhalmada kadib, isla markiiba raadso caawimaad haddii ay jiraan dhiig bax badan ama xinjiro waaweyn, lugo casaan ah ama bararay, madax xanuun aan tagin, qandho daran ama matag, laab xanuun, neefsasho dhib ah, ama gariir.'
       short: 'Dhalmada kadib HADDA raadso caawimaad: dhiig bax badan ama xinjiro, lugo bararay, madax xanuun joogto ah, qandho daran, laab xanuun, gariir.'
+      reviewed: false
+    ti:
+      claim: 'ድሕሪ ሕርሲ፣ ብዙሕ ደም ምፍሳስ ወይ ዓበይቲ ርጉእ ደም፣ ቀይሕ ወይ ዝሓበጠ እግሪ፣ ዘይሓልፍ ቃንዛ ርእሲ፣ ልዑል ረስኒ ወይ ምትፋእ፣ ቃንዛ ኣፍልቢ፣ ከቢድ ምትንፋስ፣ ወይ ምንፍርፋር እንተሃልዩ ብቕልጡፍ ሓገዝ ድለዪ።'
+      short: 'ድሕሪ ሕርሲ፣ ሕጂ ሓገዝ ድለዪ: ብዙሕ ደም ወይ ርጉእ ደም፣ ዝሓበጠ እግሪ፣ ዘይሓልፍ ቃንዛ ርእሲ፣ ልዑል ረስኒ፣ ቃንዛ ኣፍልቢ፣ ምንፍርፋር።'
+      reviewed: false
+    fuf:
+      claim: 'Caggal jibinde, yiylo ballal law si ƴiiƴam heewɗam ina yalta walla ƴiiƴam ñiiɓuɗam mawɗam, koyngal boɗeewal walla ɓuuftungal, hoore muusooɗo mo gasataa, wulnde mawnde walla tuutde, ɓernde muusooɗo, foofaade e caɗeele, walla jallo.'
+      short: 'Caggal jibinde, yiylo ballal JOONI: ƴiiƴam heewɗam walla ñiiɓuɗam, koyngal ɓuuftungal, hoore muusooɗo mo gasataa, wulnde mawnde, ɓernde muusooɗo, jallo.'
+      reviewed: false
+    mos:
+      claim: 'Rogem poore, bao sõngre tao-tao zĩim sã n yitẽ wusgo bi zĩim-pigdi kãsems, naoor sẽn yaa miuug bi sẽn fuume, zugu zabd sẽn pa sãand ye, tool kãsenga bi tiisgo, sũur zabdo, vuusg toogo, bi kiirsa.'
+      short: 'Rogem poore, bao sõngre MASÃ: zĩim wusg bi zĩim-pigdi, naoor sẽn fuume, zugu zabd sẽn pa sãand ye, tool kãsenga, sũur zabdo, kiirsa.'
+      reviewed: false
+    dyu:
+      claim: 'Jigin kɔfɛ, dɛmɛ ɲini joona ni joli caman bɛ bɔ walima joli kurun belebelew, sen min bilenna walima ka funu, kunkolo dimi min tɛ ban, farigan gɛlɛn walima fɔɔnɔ, disi dimi, ninakili gɛlɛn, walima kirikirimasiyɛn.'
+      short: 'Jigin kɔfɛ, dɛmɛ ɲini SISAN: joli caman walima kurunw, sen funulen, kunkolo dimi min tɛ ban, farigan gɛlɛn, disi dimi, kirikirimasiyɛn.'
+      reviewed: false
+    wo:
+      claim: 'Ginnaaw wasin, seetal ndimbal ci gaaw bu amee deret bu bari walla deret bu fatt bu réy, tànk bu xonq walla bu fun, bopp buy metti te du jeex, tàng bu metti walla waccu, metitu dënn, noyyi ci coono, walla lox.'
+      short: 'Ginnaaw wasin, seetal ndimbal LÉEGI: deret bu bari walla bu fatt, tànk bu fun, bopp bu dul jeex, tàng bu metti, metitu dënn, lox.'
+      reviewed: false
+    ee:
+      claim: 'Ne èdzi vi vɔ la, di kpeɖeŋu kaba ne ʋu geɖe le dodom alo ʋu ƒe ƒuƒoƒo gãwo, afɔ si dzĩ alo fũ, ta veve si mevɔna o, ŋdɔdzɔ sesẽ alo xɔxɔ, akɔta veve, ya gbɔgbɔ sesẽ, alo dzidzi.'
+      short: 'Ne èdzi vi vɔ la, di kpeɖeŋu FIFIA: ʋu geɖe alo ƒuƒoƒowo, afɔ si fũ, ta veve si mevɔna o, ŋdɔdzɔ sesẽ, akɔta veve, dzidzi.'
+      reviewed: false
+    ak:
+      claim: 'Sɛ wowo wie a, hwehwɛ mmoa ntɛm ara sɛ mogya pii reba anaa mogya kuru akɛse, nan a ɛyɛ kɔkɔɔ anaa ahonhon, tirim yaw a enni awiei, atiridii kɛse anaa wo fe, koko yaw, ɔhome a ɛyɛ den, anaa ɔsono.'
+      short: 'Sɛ wowo wie a, hwehwɛ mmoa SEESEI: mogya pii anaa mogya kuru, nan a ahonhon, tirim yaw a enni awiei, atiridii kɛse, koko yaw, ɔsono.'
+      reviewed: false
+    ln:
+      claim: 'Sima ya kobota, luka lisalisi noki soki makila mingi to biteni minene ya makila, lokolo ya motane to evimbi, motó oyo ebetaka kozanga kosila, fievre makasi to kosanza, mpasi na ntolo, kopema na mpasi, to kifafa.'
+      short: 'Sima ya kobota, luka lisalisi SIKAWA: makila mingi to biteni, lokolo evimbi, motó ebeti kozanga kosila, fievre makasi, mpasi na ntolo, kifafa.'
+      reviewed: false
+    lg:
+      claim: 'Oluvannyuma lw''okuzaala, noonya obuyambi mangu ddala bwe wabaawo okuvaamu omusaayi mungi oba ebitole by''omusaayi ebinene, okugulu okumyufu oba okuzimbye, omutwe ogulumwa ogutakoma, omusujja omungi oba okusesema, obulumi mu kifuba, okussa mu buzibu, oba ensimbu.'
+      short: 'Oluvannyuma lw''okuzaala, noonya obuyambi KAAKANO: omusaayi omungi oba ebitole, okugulu okuzimbye, omutwe ogutakoma, omusujja omungi, ekifuba ekiluma, ensimbu.'
+      reviewed: false
+    rn:
+      claim: 'Inyuma yo kwibaruka, rondera imfashanyo ningaho nimba hari kuva amaraso menshi canke ibibumbe binini vy''amaraso, ukuguru gutukura canke kwavimbye, umutwe urababaza udakira, ubushuhe bwinshi canke kudahwa, kubabara mu gikiriza, guhema bigoye, canke igicuri.'
+      short: 'Inyuma yo kwibaruka, rondera imfashanyo UBU NYENE: amaraso menshi canke ibibumbe, ukuguru kwavimbye, umutwe udakira, ubushuhe bwinshi, igicuri.'
+      reviewed: false
+    rw:
+      claim: 'Nyuma yo kubyara, shaka ubufasha ako kanya niba hari kuva amaraso menshi cyangwa ibibumbe binini by''amaraso, ukuguru gutukura cyangwa kwabyimbye, umutwe urababara udakira, umuriro mwinshi cyangwa kuruka, kubabara mu gatuza, guhumeka bigoranye, cyangwa igicuri.'
+      short: 'Nyuma yo kubyara, shaka ubufasha UBU: amaraso menshi cyangwa ibibumbe, ukuguru kwabyimbye, umutwe udakira, umuriro mwinshi, gatuza kababara, igicuri.'
+      reviewed: false
+    bem:
+      claim: 'Pa numa ya kufyala, fwayeni ubwafwilisho bwangu nga kuli ukufuma umulopa uwingi nangu ifibumba fikalamba fya mulopa, ukuulu ukwakashika nangu ukwafimba, umutwe ukukalipa ukushilepwa, icikabilila icikalamba nangu ukuluka, ukukalipa mu cifuba, ukupema ku bukose, nangu ifisushi.'
+      short: 'Pa numa ya kufyala, fwayeni ubwafwilisho NOMBA: umulopa uwingi nangu ifibumba, ukuulu ukwafimba, umutwe ukushilepwa, icikabilila, icifuba icilekalipa, ifisushi.'
+      reviewed: false
+    ny:
+      claim: 'Mutabereka, pezani thandizo nthawi yomweyo ngati pali kutuluka magazi kwambiri kapena magazi ouma akuluakulu, mwendo wofiira kapena wotupa, mutu wopweteka wosatha, malungo aakulu kapena kusanza, kupweteka pachifuwa, kupuma movutikira, kapena khunyu.'
+      short: 'Mutabereka, pezani thandizo TSOPANO: magazi ambiri kapena ouma, mwendo wotupa, mutu wosatha, malungo aakulu, chifuwa chopweteka, khunyu.'
+      reviewed: false
+    sn:
+      claim: 'Mushure mekusununguka, tsvaga rubatsiro ipapo ipapo kana pane kubuda ropa zvakanyanya kana mapundu makuru eropa, gumbo dzvuku kana rakazvimba, musoro unorwadza usingaperi, fivha yakanyanya kana kurutsa, kurwadza kwechipfuva, kufema zvakaoma, kana kugwinha.'
+      short: 'Mushure mekusununguka, tsvaga rubatsiro IZVOZVI: ropa rakawanda kana mapundu, gumbo rakazvimba, musoro usingaperi, fivha, chipfuva chinorwadza, kugwinha.'
+      reviewed: false
+    ts:
+      claim: 'Endzhaku ko veleka, lava mpfuno hi xihatla eka ku huma ngati ngopfu kumbe swirhangu swa ngati leswikulu, nenge lowo tshwuka kumbe lowu pfimbeke, ku vava ka nhloko loku nga heliki, fivhara ya le henhla kumbe ku hlanta, ku vava ka xifuva, ku hefemula hi ku tika, kumbe xifafa.'
+      short: 'Endzhaku ko veleka, lava mpfuno SWESWI: ku huma ngati ngopfu kumbe swirhangu, nenge lowu pfimbeke, nhloko leyi nga heliki, fivhara, xifuva lexi vavaka, xifafa.'
+      reviewed: false
+    tn:
+      claim: 'Morago ga go belega, batla thuso ka bonako ka ntlha ya go tswa madi thata kgotsa mamina a madi a magolo, leoto le le khibidu kgotsa le le rurugileng, tlhogo e e botlhoko e e sa feleng, fefere e kgolo kgotsa go tlhatsa, botlhoko jwa sehuba, go hema ka bokete, kgotsa sethoathoa.'
+      short: 'Morago ga go belega, batla thuso JAANONG: go tswa madi thata kgotsa mamina, leoto le le rurugileng, tlhogo e e sa feleng, fefere, sehuba se se botlhoko.'
+      reviewed: false
+    st:
+      claim: 'Kamora ho pepa, batla thuso hang hang bakeng sa ho tswa madi haholo kapa makgapetla a maholo a madi, leoto le lefubedu kapa le ruruhileng, hlooho e bohloko e sa feleng, feberu e phahameng kapa ho hlatsa, bohloko ba sefuba, ho hema ka thata, kapa sethoathoa.'
+      short: 'Kamora ho pepa, batla thuso HONA JOALE: ho tswa madi haholo kapa makgapetla, leoto le ruruhileng, hlooho e sa feleng, feberu, sefuba se bohloko, sethoathoa.'
+      reviewed: false
+    af:
+      claim: 'Na die geboorte, kry dadelik hulp vir swaar bloeding of groot bloedklonte, ''n rooi of geswelde been, ''n hoofpyn wat nie weggaan nie, hoë koors of braking, borspyn, moeilike asemhaling, of stuipe.'
+      short: 'Na die geboorte, kry NOU hulp vir: swaar bloeding of klonte, ''n geswelde been, aanhoudende hoofpyn, hoë koors, borspyn, stuipe.'
+      reviewed: false
+    xh:
+      claim: 'Emva kokubeleka, fumana uncedo ngokukhawuleza ukuba kukho ukopha okukhulu okanye amaqhuma egazi amakhulu, umlenze obomvu okanye odumbileyo, intloko ebuhlungu engapheliyo, umkhuhlane ophezulu okanye ukugabha, intlungu yesifuba, ukuphefumla kanzima, okanye ukuxhuzula.'
+      short: 'Emva kokubeleka, fumana uncedo NGOKU: ukopha okukhulu okanye amaqhuma, umlenze odumbileyo, intloko engapheliyo, umkhuhlane, isifuba esibuhlungu, ukuxhuzula.'
+      reviewed: false
+    zu:
+      claim: 'Emva kokubeletha, thola usizo ngokushesha uma kunokopha okukhulu noma amahlule egazi amakhulu, umlenze obomvu noma ovuvukile, ikhanda elibuhlungu elingapheli, imfiva ephezulu noma ukuhlanza, ubuhlungu besifuba, ukuphefumula kanzima, noma isithuthwane.'
+      short: 'Emva kokubeletha, thola usizo MANJE: ukopha okukhulu noma amahlule, umlenze ovuvukile, ikhanda elingapheli, imfiva ephezulu, isifuba esibuhlungu, isithuthwane.'
+      reviewed: false
+    pcm:
+      claim: 'After you born, find help now now for plenty blood or big blood clot, leg wey red or swell, headache wey no go, high fever or vomit, chest pain, hard breathing, or fits.'
+      short: 'After you born, find help NOW for: plenty blood or clot, leg wey swell, headache wey no go, high fever, chest pain, fits.'
+      reviewed: false
+    ig:
+      claim: 'Mgbe ịmụchara nwa, chọọ enyemaka ozugbo maka ọbara dị ukwuu ma ọ bụ ọbara kpụkọrọ akpụkọ buru ibu, ụkwụ na-acha uhie ma ọ bụ zara aza, isi ọwụwa na-adịghị apụ, ahụ ọkụ dị elu ma ọ bụ agbọ, mgbu obi, nsogbu iku ume, ma ọ bụ ọdịdọ.'
+      short: 'Mgbe ịmụchara nwa, chọọ enyemaka UGBU A maka: ọbara dị ukwuu ma ọ bụ kpụkọrọ akpụkọ, ụkwụ zara aza, isi ọwụwa na-adịghị apụ, ahụ ọkụ, mgbu obi, ọdịdọ.'
+      reviewed: false
+    yo:
+      claim: 'Lẹhin ibimọ, wa iranlọwọ lẹsẹkẹsẹ fun ẹjẹ pupọ tabi didi ẹjẹ nla, ẹsẹ ti o pupa tabi ti o wu, ori fifọ ti ko lọ, iba giga tabi eebi, irora aya, iṣoro mimi, tabi giri.'
+      short: 'Lẹhin ibimọ, wa iranlọwọ NI BAYI fun: ẹjẹ pupọ tabi didi ẹjẹ, ẹsẹ wiwu, ori fifọ ti ko lọ, iba giga, irora aya, giri.'
+      reviewed: false
+    ha:
+      claim: 'Bayan haihuwa, ku nemi taimako nan da nan idan akwai zubar jini mai yawa ko manyan gudan jini, ƙafafu masu ja ko kumbura, ciwon kai da ba ya tafiya, zazzaɓi mai zafi ko amai, ciwon ƙirji, wahalar numfashi, ko farfaɗiya.'
+      short: 'Bayan haihuwa, nemi taimako YANZU idan akwai: jini mai yawa ko gudan jini, ƙafafu sun kumbura, ciwon kai mai ɗorewa, zazzaɓi mai zafi, ciwon ƙirji, farfaɗiya.'
       reviewed: false
   source: WHO, World Health Day 2025 key messages
   source_url: https://www.who.int/campaigns/world-health-day/2025/key-messages

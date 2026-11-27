@@ -19,6 +19,30 @@ labels:
   am: 'ተባዮችና በሽታዎች'
   om: 'Ilbiisaa fi dhukkuba'
   so: 'Cayayaan iyo cudurro'
+  ti: 'ባልዕን ሕማማትን ዘርእታት'
+  fuf: 'Ɓowɗi e ñabbuuji ko aawi'
+  mos: 'Koodã yoyo la bãase'
+  dyu: 'Sɛnɛfɛn banaw'
+  wo: 'Gunóor ak feebaru gàncax'
+  ee: 'Nukuku ƒe dɔléléwo'
+  ak: 'Nnɔbae nyarewa'
+  ln: 'Bokono ya bilona'
+  lg: 'Endwadde z''ebirime'
+  rn: 'Indwara z''ibimera'
+  rw: 'Indwara z''ibihingwa'
+  bem: 'Amalwele ya filimwa'
+  ny: 'Matenda a mbewu'
+  sn: 'Zvirwere zvezvirimwa'
+  ts: 'Mavabyi ya swimila'
+  tn: 'Malwetse a dijalo'
+  st: 'Mafu a dijalo'
+  af: 'Gewasplae en -siektes'
+  xh: 'Izifo zezityalo'
+  zu: 'Izifo zezitshalo'
+  pcm: 'Crop insect and disease'
+  ig: 'Ọrịa ihe ọkụkụ'
+  yo: 'Kokoro ati arun irugbin'
+  ha: 'Cututtukan amfanin gona'
 license: CC-BY-4.0
 language: en
 maintainers:
@@ -66,6 +90,102 @@ facts:
     so:
       claim: 'Cudurka dila galleyda (MLN) wuxuu ku bilaabmaa dhibco huruud ah oo caleemaha ku firirsan. Kadib caleemaha ayaa ka dhinta cidhifyada xagga gudaha, bartamaha yar ee geedka ayaa dhinta (wadne dhintay), qolofta sabuulka ayaa goor hore engegta, sabuulkuna wuxuu buuxsamaa iniin yar ama midna.'
       short: 'Calaamadaha MLN: caleemo dhibco huruud leh oo cidhifyada ka dhinta, bartame dhintay, qolof goor hore engegta, sabuul iniin yar ama aan lahayn.'
+      reviewed: false
+    ti:
+      claim: 'ቀታሊ ሕማም ዕፉን (MLN) ከም ብጫ ነጠብጣባት ኣብ ቆጽሊ ይጅምር። ድሕሪኡ ቆጽሊ ካብ ጫፉ ናብ ውሽጢ ይመውት፣ ልቢ ናይ ንእሽቶ ተኽሊ ይመውት (ዝሞተ ልቢ)፣ ቅራፍ ዕፉን ቀልጢፉ ይነቕጽ፣ ዕፉን ድማ ውሑድ ፍረ ወይ ዋላ ሓንቲ ፍረ የብሉን።'
+      short: 'ምልክታት MLN: ብጫ ነጠብጣባት ዘለዎ ቆጽሊ ካብ ጫፉ ዝመውት፣ ዝሞተ ልቢ፣ ቀልጢፉ ዝነቕጽ ቅራፍ፣ ውሑድ ፍረ ዘለዎ ዕፉን።'
+      reviewed: false
+    fuf:
+      claim: 'Ñawu makka warooɗo (MLN) ina fuɗɗoo no tobbe oolɗe e haakoo. Caggal ɗuum haakoo ɗoo ina maaya iwde e ceŋol haa nder, ɓernde ko aawi tokooso ina maaya (ɓernde maayɗo), ɗowɗi makka ina yooroo law, makka ina heewa e ɓiɓɓe seeɗa walla alaa.'
+      short: 'Maandeeji MLN: haakoo jogiiɗo tobbe oolɗe maayooɗo iwde e ceŋol, ɓernde maayɗo, ɗowɗi yoorooɗi law, makka jogiiɗo ɓiɓɓe seeɗa.'
+      reviewed: false
+    mos:
+      claim: 'Kamaan bãag sẽn kuud (MLN) singda wa miuug bãnd vãado zugu. Poor vãadã kiida n yi a noorã n kẽng sukã, kood bilfã sũurã kiida (sũur sẽn ki), kamaan pɛɛg kuumda tao-tao, la kamaanã tara buul bilf bi a ka tar ye.'
+      short: 'MLN bãnde: vãad sẽn tar miuug bãnd la b kiid n yi noorã, sũur sẽn ki, kamaan pɛɛg sẽn kuumd tao-tao, kamaan sẽn tar buul bilf.'
+      reviewed: false
+    dyu:
+      claim: 'Kaba bana min bɛ faga (MLN) bɛ daminɛ iko nɛrɛmuguman tomiw furaw kan. O kɔfɛ furaw bɛ sa ka bɔ u da la ka don cɛma, sɛnɛfɛn fitini dusukun bɛ sa (dusukun salen), kaba fara bɛ ja joona, ani kaba kisɛw bɛ dɔɔnin walima u tɛ yen.'
+      short: 'MLN taamashiyɛnw: nɛrɛmuguman tomiw furaw kan minnu bɛ sa ka bɔ u da la, dusukun salen, kaba fara bɛ ja joona, kaba kisɛ dɔɔnin.'
+      reviewed: false
+    wo:
+      claim: 'Feebar bu ray mbóq (MLN) dafay tàmbalee ni tomb yu mboq ci xob yi. Ginnaaw xob yi dañuy dee jóge ci cat bi ba ci biir, xolu gàncax gu ndaw gi dafay dee (xol bu dee), mbuxum mbóq mi dafay wow ci teel, te mbóq yi dañuy fees ak doom yu tuuti walla amuñu.'
+      short: 'Màndargay MLN: xob yu am tomb yu mboq yuy dee jóge ci cat bi, xol bu dee, mbuxum mbuy wow ci teel, mbóq mu am doom yu tuuti.'
+      reviewed: false
+    ee:
+      claim: 'Bli ƒe dɔlélé si wua nu (MLN) dzea egɔme abe dzẽ ƒe dzesiwo ene le aŋgbawo dzi. Emegbe aŋgbawo kuna tso ŋgɔ yi titina, nukuku sue ƒe dzi kuna (dzi si ku), bli ƒe gbalẽ ƒuna kaba, eye bliwo yɔa kple ku ʋɛ aɖewo alo womele eme o.'
+      short: 'MLN ƒe dzesiwo: aŋgba siwo dzi dzẽ ƒe dzesiwo le eye wokuna tso ŋgɔ, dzi si ku, bli ƒe gbalẽ si ƒuna kaba, bli siwo me ku ʋɛ aɖewo le.'
+      reviewed: false
+    ak:
+      claim: 'Aburow yare a ɛkum (MLN) fi ase sɛ akokɔsrades nsɛnkyerɛnne wɔ nhaban so. Afei nhaban no wu fi ano kɔ mfinimfini, afifide ketewa no koma wu (koma a awu), aburow ho nhoma wo ntɛm, na aburow no mu aba sua anaa enni hɔ koraa.'
+      short: 'MLN nsɛnkyerɛnne: nhaban a akokɔsrades nsɛnkyerɛnne wɔ so na ɛwu fi ano, koma a awu, aburow ho nhoma a ewo ntɛm, aburow a ne mu aba sua.'
+      reviewed: false
+    ln:
+      claim: 'Bokono oyo ebomaka masango (MLN) ebandaka lokola matono ya mosaka na nkasa. Sima nkasa ekufaka kobanda na nsuka kokota na kati, motema ya bilona ya moke ekufaka (motema ekufi), mposo ya masango ekaukaka noki, mpe masango etondaka na mbuma moke to ezali na yango te.'
+      short: 'Bilembo ya MLN: nkasa na matono ya mosaka oyo ekufaka kobanda na nsuka, motema ekufi, mposo ekaukaka noki, masango na mbuma moke to te.'
+      reviewed: false
+    lg:
+      claim: 'Obulwadde obutta kasooli (MLN) butandika ng''amabala aga kyenvu ku bikoola. Oluvannyuma ebikoola bifa okuva ku mabbali nga biyingira munda, omutima gw''ekirime ekito gufa (omutima ogufudde), ebisusunku by''ebikonde bikala mangu, era ebikonde bijjula empeke ntono oba nga tebirina.'
+      short: 'Obubonero bwa MLN: ebikoola ebirina amabala aga kyenvu ebifa okuva ku mabbali, omutima ogufudde, ebisusunku ebikala mangu, ebikonde ebirina empeke ntono.'
+      reviewed: false
+    rn:
+      claim: 'Indwara yica ibigori (MLN) itangura ari amabara y''umuhondo ku mababi. Hanyuma amababi arapfa ahereye ku mpera yinjira imbere, umutima w''ikimera gito urapfa (umutima wapfuye), ibishishwa vy''ikigori vyuma hakiri kare, kandi ibigori bikuzuramwo impeke nke canke ntizibemwo.'
+      short: 'Ibimenyetso vya MLN: amababi afise amabara y''umuhondo apfa ahereye ku mpera, umutima wapfuye, ibishishwa vyuma kare, ibigori bifise impeke nke.'
+      reviewed: false
+    rw:
+      claim: 'Indwara yica ibigori (MLN) itangira ari amabara y''umuhondo ku mababi. Hanyuma amababi apfa ahereye ku nkengero yinjira imbere, umutima w''igihingwa gito urapfa (umutima wapfuye), ibishishwa by''igikoro byuma kare, kandi ibikoro byuzuramo intete nke cyangwa ntizibemo.'
+      short: 'Ibimenyetso bya MLN: amababi afite amabara y''umuhondo apfa ahereye ku nkengero, umutima wapfuye, ibishishwa byuma kare, ibikoro bifite intete nke.'
+      reviewed: false
+    bem:
+      claim: 'Ubulwele ubwipaya amataba (MLN) butendeka nga utubala twa kashikila pa mabula. Lyena amabula yalafwa ukufuma ku mbali ukwingila mukati, umutima wa cilimwa icinono ulafwa (umutima uwafwa), ifikanda fya mataba filauma bwangu, kabili amataba yalaisulamo imbuto shinono nangu ukukanaba nashiko.'
+      short: 'Ifishibilo fya MLN: amabula ya tubala twa kashikila ayalefwa ukufuma ku mbali, umutima uwafwa, ifikanda ifyauma bwangu, amataba ayali ne mbuto shinono.'
+      reviewed: false
+    ny:
+      claim: 'Matenda opha chimanga (MLN) amayamba ngati mawanga achikasu pa masamba. Kenako masamba amafa kuyambira m''mbali kulowa mkati, mtima wa mbewu yaing''ono umafa (mtima wakufa), makoko a chisononkho amauma msanga, ndipo zisononkho zimadzaza ndi njere zochepa kapena kusakhala nazo.'
+      short: 'Zizindikiro za MLN: masamba a mawanga achikasu omwe amafa kuyambira m''mbali, mtima wakufa, makoko omwe amauma msanga, zisononkho za njere zochepa.'
+      reviewed: false
+    sn:
+      claim: 'Chirwere chinouraya chibage (MLN) chinotanga semavara eyero pamashizha. Mashizha anobva afa kubva kumicheto achipinda mukati, moyo wechirimwa chidiki unofa (moyo wakafa), mashizha emagwere anooma nekukurumidza, uye magwere anozara nembeu shoma kana kusava nadzo.'
+      short: 'Zviratidzo zveMLN: mashizha ane mavara eyero anofa kubva kumicheto, moyo wakafa, mashizha emagwere anooma nekukurumidza, magwere ane mbeu shoma kana asina.'
+      reviewed: false
+    ts:
+      claim: 'Vuvabyi lebyi dlayaka bya mavele (MLN) byi sungula tanihi swivati swo tshopana eka matluka. Kutani matluka ma fa ku suka emakumu ma nghena endzeni, mbilu ya ximila lexintsongo yi fa (mbilu leyi feke), matluka ya xithavi ma oma ka ha ri na nkarhi, naswona swithavi swi tala hi timbewu ti nga ri tingani kumbe ku nga ri na tona.'
+      short: 'Swikombiso swa MLN: matluka ya swivati swo tshopana lama fa emakumu, mbilu leyi feke, swithavi leswi omaka ka ha ri na nkarhi swi ri na timbewu titsongo.'
+      reviewed: false
+    tn:
+      claim: 'Bolwetse jo bo bolayang jwa mmidi (MLN) bo simolola jaaka matheba a serolwana mo matlhareng. Morago matlhare a swa go simolola kwa dintlheng a tsena kwa teng, pelo ya semela se sennye e a swa (pelo e e suleng), matlhare a ditsebe a omelela ka bonako, mme ditsebe di tlala ka ditlhaka di le mmalwa kgotsa di sa nne le tsone.'
+      short: 'Matshwao a MLN: matlhare a matheba a serolwana a swang kwa dintlheng, pelo e e suleng, ditsebe tse di omelelang ka bonako di na le ditlhaka di le mmalwa.'
+      reviewed: false
+    st:
+      claim: 'Lefu le bolayang la poone (MLN) le qala e le matheba a mosehla makgasing. Ebe makgasi a shwa ho tloha mathokong a kena ka hare, pelo ya semela se senyenyane e a shwa (pelo e shweleng), makgasi a sefaha a omella kapele, mme difaha di tlala ka dithollo tse fokolang kapa ha di na tsona.'
+      short: 'Matshwao a MLN: makgasi a matheba a mosehla a shwang mathokong, pelo e shweleng, makgasi a sefaha a omellang kapele, difaha tse nang le dithollo tse fokolang.'
+      reviewed: false
+    af:
+      claim: 'Dodelike mielienekrose (MLN) begin as geel kolle op die blare. Dan sterf die blare van die rand na binne, die hart van jong plante sterf (dooie hart), die kopblare droog vroeg uit, en die koppe vul met min of geen pitte.'
+      short: 'MLN-tekens: geel gevlekte blare wat van die rand af sterf, dooie hart, kopblare wat vroeg uitdroog, koppe met min of geen pitte.'
+      reviewed: false
+    xh:
+      claim: 'Isifo sombona esibulalayo (MLN) siqala njengamabala amthubi kumagqabi. Emva koko amagqabi ayafa ukusuka emiphethweni engena ngaphakathi, intliziyo yesityalo esincinci iyafa (intliziyo efileyo), amakhoba omqondo oma kwangethuba, kwaye imiqondo igcwala ngeenkozo ezimbalwa okanye ingabi nazo.'
+      short: 'Iimpawu ze-MLN: amagqabi anamabala amthubi afa emiphethweni, intliziyo efileyo, amakhoba oma kwangethuba, imiqondo eneenkozo ezimbalwa okanye engenazo.'
+      reviewed: false
+    zu:
+      claim: 'Isifo sommbila esibulalayo (MLN) siqala njengamabala aphuzi emaqabungeni. Bese amaqabunga efa kusukela emaphethelweni engena ngaphakathi, inhliziyo yesitshalo esisencane iyafa (inhliziyo efile), amakhasi esikhwebu ayoma kusenesikhathi, futhi izikhwebu zigcwala izinhlamvu ezimbalwa noma zingabi nazo.'
+      short: 'Izimpawu ze-MLN: amaqabunga anamabala aphuzi afa emaphethelweni, inhliziyo efile, izikhwebu ezoma ngaphambi kwesikhathi ezinezinhlamvu ezimbalwa.'
+      reviewed: false
+    pcm:
+      claim: 'Maize lethal necrosis (MLN) dey start as yellow marks for leaf. After, the leaf dey die from the edge go inside, the middle of young plant dey die (dead heart), the corn cover dey dry early, and the corn dey fill with small seed or no seed at all.'
+      short: 'MLN signs: yellow mark for leaf wey dey die from edge, dead heart, corn cover wey dry early, corn wey get small seed or no seed.'
+      reviewed: false
+    ig:
+      claim: 'Ọrịa ọka na-egbu egbu (MLN) na-amalite dịka ntụpọ edo edo n''akwụkwọ. Mgbe ahụ akwụkwọ na-anwụ site na nsọtụ banye n''ime, etiti osisi na-eto eto na-anwụ (etiti nwụrụ anwụ), ekpuchi ọka na-akpọnwụ n''oge, ọka na-ejupụta na mkpụrụ ole na ole ma ọ bụ enweghị.'
+      short: 'Akara MLN: akwụkwọ nwere ntụpọ edo edo na-anwụ site na nsọtụ, etiti nwụrụ anwụ, ekpuchi na-akpọnwụ n''oge, ọka nwere mkpụrụ ole na ole ma ọ bụ enweghị.'
+      reviewed: false
+    yo:
+      claim: 'Arun agbado apaniyan (MLN) bẹrẹ bi abawọn ofeefee lori ewe. Lẹhinna awọn ewe n ku lati eti wọ inu, aarin ọdọ ọgbin naa n ku (aarin ti o ku), eepo agbado n gbẹ ni kutukutu, ati ṣuku agbado n kun pẹlu irugbin diẹ tabi ko si rara.'
+      short: 'Ami MLN: ewe ti o ni abawọn ofeefee ti n ku lati eti, aarin ti o ku, eepo ti n gbẹ ni kutukutu, ṣuku agbado ti o ni irugbin diẹ tabi ko si.'
+      reviewed: false
+    ha:
+      claim: 'Cutar masara mai kisa (MLN) tana farawa da ɗigon rawaya a kan ganye. Sannan ganyen suna mutuwa daga gefe zuwa ciki, tsakiyar shukar mai ƙuruciya tana mutuwa (mataccen tsakiya), ɓawon kai yana bushewa da wuri kuma kan masara yana cika da ƙwaya kaɗan ko babu.'
+      short: 'Alamun MLN: ganye masu ɗigon rawaya da ke mutuwa daga gefe, mataccen tsakiya, ɓawon kai yana bushewa da wuri, kan masara da ƙwaya kaɗan ko babu.'
       reviewed: false
   source: CIMMYT, Disease symptoms of maize lethal necrosis (MLN), farmer flyer
   source_url: https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf
@@ -119,6 +239,102 @@ facts:
       claim: 'Ka saar oo gub geedaha galleyda ee qaba cudurka dila galleyda. Ha siin xoolaha, hana kaydsan iniintooda. Beer abuur shahaado leh, galleyda kadib beer digir ama dalag kale oo aan galley ahayn, ka tag laba bilood oo aan galley lahayn, nadiifi qalabkaaga oo saar haramaha. Weydii xafiiska beeraha ka hor intaadan buufin cayayaanka faafiya.'
       short: 'MLN: ka saar oo gub geedaha jiran; ha siin xoolaha, hana kaydsan iniintooda. Isticmaal abuur shahaado leh, ku beddel digir, weydii xafiiska beeraha.'
       reviewed: false
+    ti:
+      claim: 'MLN ዘርኢ ዝኾነ ተኽሊ ዕፉን ምንቀሎን ኣንድዶን። ንእንስሳ ኣይትሃቦ ዘርኡውን ኣይተዕቍብ። ዝተረጋገጸ ዘርኢ ዝራእ፣ ድሕሪ ዕፉን ባልደንጓ ወይ ካልእ ዕፉን ዘይኮነ ዘርኢ ዝራእ፣ ክልተ ኣዋርሕ ብዘይ ዕፉን ግደፍ፣ መሳርሕኻ ኣጽሪ ሳዕሪ ድማ ኣልግስ። ነቶም ዘስፋሕፍሑ ባልዕ ቅድሚ ምንጻግካ ቤት ጽሕፈት ሕርሻኻ ሕተት።'
+      short: 'MLN: ዝሓመመ ተኽሊ ምንቀሎ ኣንድዶ፤ ንእንስሳ ኣይትሃብ ዘርኢ ኣይተዕቍብ። ዝተረጋገጸ ዘርኢ ተጠቐም፣ ምስ ባልደንጓ ቀያይር፣ ቤት ጽሕፈት ሕርሻ ሕተት።'
+      reviewed: false
+    fuf:
+      claim: 'Ittu kala lekki makka hollirɗo MLN, sunnaa ɗum. Wata ñaamnu ɗum kulle, wata resu aawdi mum. Aawu aawdi teeŋtinaandi, aawu ñebbe walla huunde goɗɗum nde wonaa makka caggal makka, accu lebbi ɗiɗi alaa makka, laɓɓin kuutorɗe maa e ittude huɗo. Naamnu biro ndema maa ado mbuuftaa lekki e ɓowɗi saakooɗi ñawu oo.'
+      short: 'MLN: ittu lekki ñawɗo, sunnaa ɗum; wata ñaamnu kulle walla resude aawdi. Huutoro aawdi teeŋtinaandi, waylu e ñebbe, naamnu biro ndema.'
+      reviewed: false
+    mos:
+      claim: 'Vuk kamaan kood ninga fãa sẽn wilgd MLN la y yõog-a. Ra kõ rũms ye, la ra bĩng a buulã ye. Bud buul sẽn kiisa, bud benga bi kood a to sẽn pa kamaan ye kamaan poore, bas kiuug a yiib ti kamaan ka be, peeg y tuum-teedo la y vuk moodo. Sok y koodb biro reng ti y sãag tiim yoyã sẽn yaood bãagã zugu.'
+      short: 'MLN: vuk kood sẽn bãad la y yõog-a; ra kõ rũms bi y bĩng buul ye. Tum ne buul sẽn kiisa, toeem ne benga, sok koodb biro.'
+      reviewed: false
+    dyu:
+      claim: 'Kaba sɛnɛfɛn o sɛnɛfɛn min bɛ MLN jira, a bɔ ka a jeni. I kana a di baganw ma, i kana a kisɛ mara. Si sɛmɛntiyalen dan, sɔsɔ walima sɛnɛfɛn wɛrɛ min tɛ kaba ye dan kaba kɔfɛ, kalo fila to kaba tɛ, i ka baarakɛminɛnw saniya ka binw bɔ. I ka sɛnɛ biro ɲininka sani i ka fura fiyɛ binkɛnɛ minnu bɛ a jɛnsɛn.'
+      short: 'MLN: sɛnɛfɛn banabagatɔ bɔ ka a jeni; i kana a di baganw ma walima ka a si mara. Si sɛmɛntiyalen ta, a falen sɔsɔ ye, sɛnɛ biro ɲininka.'
+      reviewed: false
+    wo:
+      claim: 'Bëtal te lakk bépp garu mbóq gu wone MLN. Bul ko jox jur te bul denc jiwam. Jiil jiwu bu ñu dëggal, jiil ñebbe walla beneen gàncax gu dul mbóq ginnaaw mbóq, bàyyil ñaari weer te amul mbóq, setal say jumtukaay te dindi ñax mi. Laajal sa biiro mbay bala ngay saq garab ci gunóor yiy wasaare feebar bi.'
+      short: 'MLN: bëtal te lakk gàncax gu feebar; bul ko jox jur walla denc jiw. Jëfandikoo jiw bu ñu dëggal, soppi ak ñebbe, laajal biiro mbay.'
+      reviewed: false
+    ee:
+      claim: 'Ho bli ɖesiaɖe si ɖe MLN fia eye nàtɔ dzoe. Mègana lãwo naɖui o eye mègadzra eƒe kuwo ɖo o. De ku siwo ŋu woɖo kpe, de ayi alo nukuku bubu si menye bli o le bli megbe, na ɣleti eve nato bli manɔmee, klɔ wò dɔwɔnuwo eye nàɖe gbe ɖa. Bia wò agbledede ɔfis hafi nàƒu atike ɖe nudzodzoe siwo kakaa dɔlélé la dzi.'
+      short: 'MLN: ho nukuku si le dɔ lém eye nàtɔ dzoe; mègana lãwo o alo nàdzra kuwo ɖo o. Zã ku siwo ŋu woɖo kpe, trɔ kple ayi, bia agbledede ɔfis.'
+      reviewed: false
+    ak:
+      claim: 'Tu aburow dua biara a ɛda MLN adi na hyew. Mfa mma mmoa nnwe na nkora n''aba. Dua aba a wɔasi so dua, dua adua anaa afifide foforo a ɛnyɛ aburow wɔ aburow akyi, ma abosome abien nkɔ a aburow nni hɔ, popa wo nnwinnade ho na yi wura no. Bisa wo kuadwuma ɔfese ansa na woapete aduru agu mmoa a ɛtrɛw no so.'
+      short: 'MLN: tu afifide a ɛyare na hyew; mfa mma mmoa anaa nkora n''aba. Fa aba a wɔasi so dua yɛ adwuma, sesa ne adua, bisa kuadwuma ɔfese.'
+      reviewed: false
+    ln:
+      claim: 'Pikola mpe tumba bilona nyonso ya masango oyo emonisi MLN. Koleisa yango banyama te mpe kobomba mboto na yango te. Lona mboto oyo endimami, lona madesu to bilona mosusu oyo ezali masango te sima ya masango, tika sanza mibale kozanga masango, sukola bisaleli na yo mpe longola matiti. Tuna biro ya bilanga liboso obwaka nkisi na banyama oyo epalanganisaka yango.'
+      short: 'MLN: pikola mpe tumba bilona ya maladi; koleisa banyama te to kobomba mboto te. Salela mboto oyo endimami, bongola na madesu, tuna biro ya bilanga.'
+      reviewed: false
+    lg:
+      claim: 'Simbula era wokye buli kirime kya kasooli ekiraga MLN. Tokiriisa bisolo era totereka nsigo zaakyo. Simba ensigo ezakakasibwa, simba ebijanjaalo oba ekirime ekirala ekitali kasooli oluvannyuma lwa kasooli, leka emyezi ebiri nga tewali kasooli, yoza ebikozesebwa byo era oggyewo omuddo. Buuza ofiisi y''ebyobulimi nga tonnafuuyira biwuka ebibusaasaanya.'
+      short: 'MLN: simbula wokye ekirime ekirwadde; tokiriisa bisolo oba okutereka ensigo. Kozesa ensigo ezakakasibwa, kyusakyusa n''ebijanjaalo, buuza ofiisi y''ebyobulimi.'
+      reviewed: false
+    rn:
+      claim: 'Randura kandi uturire ikimera c''ibigori cose kigaragaza MLN. Ntukigaburire amatungo kandi ntubike imbuto zaco. Tera imbuto zemewe, tera ibiharage canke ikindi kimera kitari ibigori inyuma y''ibigori, umare amezi abiri ata bigori, wozeze ibikoresho vyawe kandi ukure ivyatsi. Baza ibiro vy''uburimyi imbere yo kumisha umuti udukoko tuyikwiragiza.'
+      short: 'MLN: randura uturire ikimera kirwaye; ntukigaburire amatungo canke ngo ubike imbuto. Koresha imbuto zemewe, subiranya n''ibiharage, baza ibiro vy''uburimyi.'
+      reviewed: false
+    rw:
+      claim: 'Randura kandi utwike igihingwa cy''ibigori cyose kigaragaza MLN. Ntukigaburire amatungo kandi ntuzigame imbuto zacyo. Tera imbuto zemewe, tera ibishyimbo cyangwa ikindi gihingwa kitari ibigori nyuma y''ibigori, umare amezi abiri nta bigori, usukure ibikoresho byawe kandi ukure ibyatsi. Baza ibiro by''ubuhinzi mbere yo gutera umuti udukoko tuyikwirakwiza.'
+      short: 'MLN: randura utwike igihingwa kirwaye; ntukigaburire amatungo cyangwa ngo uzigame imbuto. Koresha imbuto zemewe, simburanya n''ibishyimbo, baza abajyanama.'
+      reviewed: false
+    bem:
+      claim: 'Kuuleni no kooca icilimwa conse ica mataba icilelanga MLN. Mwilaacilisha ku nama kabili mwilasunga imbuto shaciko. Byaleni imbuto ishashininkishiwa, byaleni ifyumbu fya cilemba nangu icilimwa cimbi icishili mataba pa numa ya mataba, sheni imyeshi ibili ukwabula amataba, sambeni ifibombelo fyenu no kufumyamo amasote. Ipusheni ofesi yenu iya bulimi ilyo tamulaasansa umuti ku fishishi ifyasalanganya ubulwele.'
+      short: 'MLN: kuuleni mooce icilimwa icilwele; mwilaacilisha ku nama nangu ukusunga imbuto. Byaleni imbuto ishashininkishiwa, ipusheni ofesi ya bulimi.'
+      reviewed: false
+    ny:
+      claim: 'Zulani ndi kuwotcha mbewu iliyonse ya chimanga yomwe ikuonetsa MLN. Musadyetse ziweto ndipo musasunge mbewu zake. Bzalani mbewu zotsimikizika, bzalani nyemba kapena mbewu ina yosakhala chimanga pambuyo pa chimanga, siyani miyezi iwiri popanda chimanga, tsukani zida zanu ndi kuchotsa udzu. Funsani ofesi yanu ya zaulimi musanapopere tizilombo tofalitsa matendawa.'
+      short: 'MLN: zulani ndi kuwotcha mbewu zodwala; musadyetse ziweto kapena kusunga mbewu. Bzalani mbewu zotsimikizika, sinthanitsani ndi nyemba, funsani alangizi.'
+      reviewed: false
+    sn:
+      claim: 'Dzura uye upise chirimwa chipi zvacho chechibage chinoratidza MLN. Usachipa mhuka uye usachengeta mbeu yacho. Dyara mbeu yakasimbiswa, dyara bhinzi kana chimwe chirimwa chisiri chibage mushure mechibage, siya mwedzi miviri usina chibage, chenesa maturusi ako uye ubvise sora. Bvunza hofisi yako yeAgritex usati wapfapfaidza zvipembenene zvinochiparadzira.'
+      short: 'MLN: dzura upise chirimwa chirwere; usachipa mhuka kana kuchengeta mbeu. Shandisa mbeu yakasimbiswa, chinjana nebhinzi, bvunza hofisi yeAgritex.'
+      reviewed: false
+    ts:
+      claim: 'Tsuvula u hisa ximila xin''wana na xin''wana xa mavele lexi kombisaka MLN. U nga xi nyiki swifuwo naswona u nga hlayisi mbewu ya xona. Byala mbewu leyi tiyisisiweke, byala tinyawa kumbe ximila xin''wana lexi nga riki mavele endzhaku ka mavele, tshika tin''hweti timbirhi handle ka mavele, basisa switirho swa wena u susa nhova. Vutisa hofisi ya wena ya vurimi u nga si fafazela swifuwo leswi byi hangalasaka.'
+      short: 'MLN: tsuvula u hisa ximila lexi vabyaka; u nga xi nyiki swifuwo kumbe ku hlayisa mbewu. Tirhisa mbewu leyi tiyisisiweke, cinca na tinyawa, vutisa vurimi.'
+      reviewed: false
+    tn:
+      claim: 'Ntsha mme o fise semela sengwe le sengwe sa mmidi se se bontshang MLN. O se ka wa se fepa diphologolo mme o se ka wa boloka peo ya sone. Jala peo e e netefaditsweng, jala dinawa kgotsa sejalo se sengwe se e seng mmidi morago ga mmidi, tlogela dikgwedi di le pedi kwa ntle ga mmidi, phepafatsa didirisiwa tsa gago mme o tlose mefero. Botsa ofisi ya gago ya temo pele o gasetsa ditshenekegi tse di bo anamisang.'
+      short: 'MLN: ntsha o fise semela se se lwalang; o se ka wa fepa diphologolo kgotsa wa boloka peo. Dirisa peo e e netefaditsweng, fapanya le dinawa, botsa ofisi ya temo.'
+      reviewed: false
+    st:
+      claim: 'Ntsha mme o tjhese semela sefe kapa sefe sa poone se bontshang MLN. O se ke wa se fepa diphoofolo mme o se ke wa boloka peo ya sona. Jala peo e netefaditsweng, jala dinawa kapa sejalo se seng seo e seng poone kamora poone, tlohela dikgwedi tse pedi ntle le poone, hlwekisa disebediswa tsa hao mme o tlose mofoka. Botsa ofisi ya hao ya temo pele o fafatsa dikokonyana tse le hasanyang.'
+      short: 'MLN: ntsha o tjhese semela se kulang; o se ke wa fepa diphoofolo kapa wa boloka peo. Sebedisa peo e netefaditsweng, fapanya le dinawa, botsa ofisi ya temo.'
+      reviewed: false
+    af:
+      claim: 'Trek enige mielieplant wat MLN toon uit en verbrand dit. Moenie dit vir diere voer nie en hou nie die saad nie. Plant gesertifiseerde saad, plant bone of ''n ander gewas wat nie mielies is nie na mielies, laat twee maande sonder mielies, maak jou gereedskap skoon en verwyder onkruid. Vra jou landboukantoor voordat jy spuit teen die insekte wat dit versprei.'
+      short: 'MLN: trek siek plante uit en verbrand dit; moenie dit vir diere voer of die saad hou nie. Gebruik gesertifiseerde saad, wissel met bone af, vra raad.'
+      reviewed: false
+    xh:
+      claim: 'Nyothula uze utshise nasiphi na isityalo sombona esibonisa i-MLN. Musa ukusinika izilwanyana kwaye musa ukugcina imbewu yaso. Tyala imbewu eqinisekisiweyo, tyala iimbotyi okanye esinye isityalo esingesosombona emva kombona, shiya iinyanga ezimbini ngaphandle kombona, coca izixhobo zakho uze ususe ukhula. Buza iofisi yakho yezolimo phambi kokutshiza izinambuzane eziwusasazayo.'
+      short: 'MLN: nyothula utshise isityalo esinesifo; musa ukusinika izilwanyana. Sebenzisa imbewu eqinisekisiweyo, tshintshisa neembotyi, buza iofisi yezolimo.'
+      reviewed: false
+    zu:
+      claim: 'Siphule futhi usishise noma yisiphi isitshalo sommbila esibonisa i-MLN. Ungasiphi izilwane futhi ungagcini imbewu yaso. Tshala imbewu egunyaziwe, tshala ubhontshisi noma esinye isitshalo esingesiyo ummbila emva kommbila, shiya izinyanga ezimbili ngaphandle kommbila, hlanza amathuluzi akho futhi uhlanze ukhula. Buza ihhovisi lakho lezolimo ngaphambi kokufafaza izinambuzane eziwusabalalisayo.'
+      short: 'MLN: siphule usishise isitshalo esinesifo; ungasiphi izilwane. Sebenzisa imbewu egunyaziwe, shintshanisa nobhontshisi, buza ihhovisi lezolimo.'
+      reviewed: false
+    pcm:
+      claim: 'Pull out and burn any maize plant wey show MLN. No give am to animals and no keep the seed. Plant certified seed, plant beans or another crop wey no be maize after maize, leave two months without maize, clean your tools and clear the weed. Ask your agriculture office before you spray for the insects wey dey spread am.'
+      short: 'MLN: pull out and burn sick plant; no give animals or keep the seed. Use certified seed, rotate with beans, ask your agriculture office.'
+      reviewed: false
+    ig:
+      claim: 'Fopụta ma kpọọ osisi ọka ọ bụla nwere ọrịa MLN ọkụ. Enyela ụmụ anụmanụ ha, echekwakwala mkpụrụ ha. Kụọ mkpụrụ a kwadoro, kụọ agwa ma ọ bụ ihe ọkụkụ ọzọ na-abụghị ọka mgbe ọka gasịrị, hapụ ọnwa abụọ na-enweghị ọka, sachaa ngwa ọrụ gị ma wepụ ahịhịa. Jụọ ụlọ ọrụ ugbo gị tupu ị gbaa ọgwụ megide ụmụ ahụhụ na-ebufe ya.'
+      short: 'MLN: fopụta osisi nwere ọrịa ma kpọọ ya ọkụ; enyela anụmanụ ma ọ bụ chekwaa mkpụrụ ya. Jiri mkpụrụ a kwadoro, gbanwee na agwa, jụọ ụlọ ọrụ ugbo.'
+      reviewed: false
+    yo:
+      claim: 'Fa ọgbin agbado ti o fi arun MLN han tu ki o si sun wọn. Ma ṣe fi wọn bọ ẹran, ma si ṣe tọju irugbin wọn. Gbin irugbin ti a fọwọsi, gbin ẹwa tabi irugbin miiran ti kii ṣe agbado lẹhin agbado, fi oṣu meji silẹ laisi agbado, nu awọn irinṣẹ rẹ ki o si ko koriko kuro. Beere lọwọ ọfiisi iṣẹ-ogbin rẹ ki o to fun oogun si awọn kokoro ti n tan an kalẹ.'
+      short: 'MLN: fa ọgbin ti o ni arun tu ki o sun un; ma fi bọ ẹran tabi tọju irugbin rẹ. Lo irugbin ti a fọwọsi, yi pada pẹlu ẹwa, beere lọwọ ọfiisi iṣẹ-ogbin.'
+      reviewed: false
+    ha:
+      claim: 'Ku tumɓuke ku ƙone shukar masara da ke nuna cutar MLN. Kada ku ba dabbobi su ci, kuma kada ku ajiye irinta. Ku shuka iri da aka tabbatar, ku shuka wake ko wani amfanin gona da ba masara ba bayan masara, ku bar watanni biyu ba masara, ku tsaftace kayan aikinku kuma ku cire ciyawa. Ku tambayi ofishin noma kafin ku fesa magani kan ƙwarin da ke yaɗa ta.'
+      short: 'MLN: ku tumɓuke ku ƙone shukar da ta kamu; kada ku ba dabbobi ko ku ajiye irinta. Ku shuka iri da aka tabbatar, ku musanya da wake, ku tambayi ofishin noma.'
+      reviewed: false
   source: CIMMYT, Best practices to avoid maize lethal necrosis, farmer flyer
   source_url: https://mln.cimmyt.org/wp-content/uploads/sites/39/2016/06/MLN-FLYER-final-complete.pdf
   checked_on: 2026-11-24
@@ -168,6 +384,102 @@ facts:
     so:
       claim: 'Cudurka moosaygga kasaafada wuxuu u muuqdaa caleemo duuban oo leh dhibco cagaar huruud ah ama cagaar caddaan ah. Xaaladaha daran caleemaha cusub waa yar yihiin oo qalloocan, geedkuna wuu gaabnaadaa. Caleemaha si siman u huruud ah ama u bunni ah waxay tilmaamaan dhibaato kale. Duqsiga cad ayaa cudurka ka gudbiya geed ilaa geed.'
       short: 'Calaamadaha moosaygga kasaafada: caleemo duuban oo dhibco cagaar huruud leh; caleemo cusub oo yar oo qalloocan; geed gaaban. Duqsiga cad ayaa faafiya.'
+      reviewed: false
+    ti:
+      claim: 'ሕማም ሞዛይክ ካሳቫ ቀጠልያን ብጫን ወይ ቀጠልያን ጻዕዳን ነጠብጣባት ዘለዎ ዝተጠውየ ቆጽሊ የርኢ። ኣዝዩ ምስ ዝብኢስ፣ ሓደስቲ ቆጽሊ ንኣሽቱን ዝተጠውዩን ይኾኑ፣ ተኽሊ ድማ ጽቡቕ ኣይዓቢን። ብሙሉኡ ብጫ ወይ ቡናዊ ዝኾነ ቆጽሊ ካልእ ጸገም የመልክት። ጻዕዳ ጻንጸያ (whiteflies) ነቲ ሕማም ካብ ሓደ ተኽሊ ናብ ካልእ የስፋሕፍሕዎ።'
+      short: 'ምልክታት ሞዛይክ ካሳቫ: ቀጠልያን ብጫን ነጠብጣባት ዘለዎ ዝተጠውየ ቆጽሊ፤ ንኣሽቱ ሓደስቲ ቆጽሊ፤ ዘይዓቢ ተኽሊ። ጻዕዳ ጻንጸያ የስፋሕፍሖ።'
+      reviewed: false
+    fuf:
+      claim: 'Ñawu mosayik bantara ina holla haakoo ɓilliiɗo jogiiɗo tobbe haakeeje e oolɗe walla haakeeje e daneeje. Si ɗum tiiɗii, haakoo kesoo ina tokoosi ina ɓillii, lekki oo mawnataa no moƴƴi. Haakoo oolo walla ɓoɗeejo kala ɗo ina holla caɗeele goɗɗe. Ɓuuɓi daneeji (whiteflies) ina saaka ñawu oo iwde e lekki gooto haa goɗɗo.'
+      short: 'Maandeeji mosayik bantara: haakoo ɓilliiɗo jogiiɗo tobbe haakeeje e oolɗe; haakoo kesoo tokooso; lekki mo mawnataa. Ɓuuɓi daneeji ina saaka ɗum.'
+      reviewed: false
+    mos:
+      claim: 'Maniok mozayik bãag wilgda vãad sẽn gilgame la vers ne miuug bi vers ne peelg bãnd be b zugu. A sã n wa yaa toogo, vãad-paalã yaa bilf la b gilgame, la koodã pa yãkd sõma ye. Vãad sẽn yaa miuug bi zẽe zĩig fãa wilgda yel-beed a to. Zĩinsa peelse (whiteflies) yaoodame bãagã n yi kood a ye n kẽng a to zugu.'
+      short: 'Maniok mozayik bãnde: vãad sẽn gilgame la vers ne miuug bãnd be b zugu; vãad-paal bilfu; kood sẽn pa yãkd ye. Zĩinsa peelse n yaood-a.'
+      reviewed: false
+    dyu:
+      claim: 'Bananku mosayiki bana bɛ furaw jira minnu kurunna ani binkɛnɛman ni nɛrɛmuguman walima binkɛnɛman ni jɛman tomiw bɛ u la. Ni a gɛlɛyara, fura kuraw ka dɔgɔ ka kurun, sɛnɛfɛn tɛ bonya ka ɲɛ. Furaw minnu bɛɛ nɛrɛmuguman don walima wulennin don, olu bɛ gɛlɛya wɛrɛ jira. Dimɔgɔ jɛmanw (whiteflies) bɛ bana jɛnsɛn ka bɔ sɛnɛfɛn kelen na ka taa dɔ wɛrɛ la.'
+      short: 'Bananku mosayiki taamashiyɛnw: furaw kurunnenw binkɛnɛman ni nɛrɛmuguman tomiw bɛ minnu na; fura kura fitininw; sɛnɛfɛn min tɛ bonya. Dimɔgɔ jɛmanw b''a jɛnsɛn.'
+      reviewed: false
+    wo:
+      claim: 'Feebaru mosayik bu ñambi dafay wone xob yu ñaxñaxu yu am tomb yu wert ak mboq walla wert ak weex. Bu metti lool, xob yu bees yi dañuy ndaw te ñaxñaxu, te gàncax gi du màgg bu baax. Xob yu mboq walla yu ruus fépp dafay wone beneen jafe-jafe. Wànk yu weex (whiteflies) ñooy wasaare feebar bi jóge ci gàncax ba ci beneen.'
+      short: 'Màndargay mosayik bu ñambi: xob yu ñaxñaxu yu am tomb yu wert ak mboq; xob yu bees yu ndaw; gàncax gu dul màgg. Wànk yu weex ñoo koy wasaare.'
+      reviewed: false
+    ee:
+      claim: 'Agbeli ƒe mosaic dɔlélé ɖea aŋgba siwo gɔ̃ eye gbemumu kple dzẽ alo gbemumu kple ɣi ƒe dzesiwo le wo dzi fiana. Ne evɔ̃ ŋutɔ la, aŋgba yeyewo le sue eye wogɔ̃, eye nukuku la mekpɔa nyuie o. Aŋgba siwo katã nye dzẽ alo kɔ fiaa kuxi bubu. Ʋuʋudedi ɣiwo (whiteflies) kakaa dɔlélé la tso nukuku ɖeka dzi yi bubu dzi.'
+      short: 'Agbeli ƒe mosaic ƒe dzesiwo: aŋgba siwo gɔ̃ eye gbemumu kple dzẽ ƒe dzesiwo le wo dzi; aŋgba yeye suewo; nukuku si mekpɔ o. Ʋuʋudedi ɣiwo kakaa.'
+      reviewed: false
+    ak:
+      claim: 'Bankye mosaic yare da nhaban a akyea a ahabammono ne akokɔsrades anaa ahabammono ne fitaa nsɛnkyerɛnne wɔ so adi. Sɛ ɛyɛ den a, nhaban foforo no yɛ nketewa na akyea, na afifide no nnyin yiye. Nhaban a ɛyɛ akokɔsrades anaa dodowa wɔ baabiara kyerɛ ɔhaw foforo. Nwansena fitaa (whiteflies) trɛw yare no fi afifide baako so kɔ foforo so.'
+      short: 'Bankye mosaic nsɛnkyerɛnne: nhaban a akyea a ahabammono ne akokɔsrades nsɛnkyerɛnne wɔ so; nhaban foforo nketewa; afifide a ennyin. Nwansena fitaa trɛw no.'
+      reviewed: false
+    ln:
+      claim: 'Bokono ya mosaique ya mwanza emonisaka nkasa oyo egumbami na matono ya langi ya matiti mpe ya mosaka to ya matiti mpe ya pembe. Soki ebebi mingi, nkasa ya sika ezalaka moke mpe egumbami, mpe bilona ekolaka malamu te. Nkasa ya mosaka to ya langi ya mabele bisika nyonso elakisaka mokakatano mosusu. Banzinzi ya pembe (whiteflies) epalanganisaka bokono longwa na bilona moko tii na mosusu.'
+      short: 'Bilembo ya mosaique ya mwanza: nkasa egumbami na matono ya matiti mpe ya mosaka; nkasa ya sika moke; bilona ekolaka te. Banzinzi ya pembe epalanganisaka yango.'
+      reviewed: false
+    lg:
+      claim: 'Obulwadde bwa mosaic obwa muwogo bulaga ebikoola ebyekyusizza ebirina amabala aga kiragala ne kyenvu oba aga kiragala n''ejjeru. Bwe kiba kibi nnyo, ebikoola ebipya biba bitono era byekyusizza, era ekirime tekikula bulungi. Ebikoola ebya kyenvu oba kitaka wonna biraga obuzibu obulala. Ensowera enjeru (whiteflies) zisaasaanya obulwadde okuva ku kirime ekimu okudda ku kirala.'
+      short: 'Mosaic ya muwogo: ebikoola ebyekyusizza ebirina amabala aga kiragala ne kyenvu; ebikoola ebipya ebitono; ekirime ekitakula. Ensowera enjeru zibusaasaanya.'
+      reviewed: false
+    rn:
+      claim: 'Indwara ya mozayike y''imyumbati igaragaza amababi agoramye afise amabara y''icatsi n''umuhondo canke icatsi n''umweru. Iyo bikabije, amababi mashasha aba mato kandi agoramye, kandi ikimera ntigikura neza. Amababi y''umuhondo canke ikigina hose agaragaza iyindi ngorane. Isazi z''umweru (whiteflies) zikwiragiza indwara ziva ku kimera kimwe zija ku kindi.'
+      short: 'Ibimenyetso vya mozayike y''imyumbati: amababi agoramye afise amabara y''icatsi n''umuhondo; amababi mashasha mato; ikimera kidakura. Isazi z''umweru ziyikwiragiza.'
+      reviewed: false
+    rw:
+      claim: 'Indwara ya kabore y''imyumbati igaragaza amababi agoramye afite amabara y''icyatsi n''umuhondo cyangwa icyatsi n''umweru. Iyo bikabije, amababi mashya aba mato kandi agoramye, kandi igihingwa ntigikura neza. Amababi y''umuhondo cyangwa ikigina hose agaragaza ikindi kibazo. Isazi z''umweru (whiteflies) zikwirakwiza indwara ziva ku gihingwa kimwe zijya ku kindi.'
+      short: 'Ibimenyetso bya kabore y''imyumbati: amababi agoramye afite amabara y''icyatsi n''umuhondo; amababi mashya mato; igihingwa kidakura. Isazi z''umweru ziyikwirakwiza.'
+      reviewed: false
+    bem:
+      claim: 'Ubulwele bwa mosaic ubwa tute bulalanga amabula ayapombana ayali no tubala twa cimbala na kashikila nangu twa cimbala na buuta. Nga cabipa sana, amabula ayapya yaba ayanono kabili ayapombana, kabili icilimwa tacilakula bwino. Amabula ayakashikila nangu aya bulauni konse yalalanga ubwafya bumbi. Ifipelebesha ifyabuuta (whiteflies) filasalanganya ubulwele ukufuma ku cilimwa cimo ukuya ku cimbi.'
+      short: 'Ifishibilo fya mosaic ya tute: amabula ayapombana aya tubala twa cimbala na kashikila; amabula ayapya ayanono; icilimwa icishilekula. Ifipelebesha filabutwala.'
+      reviewed: false
+    ny:
+      claim: 'Matenda a mosaic a chinangwa amaonetsa masamba opotoka ali ndi mawanga obiriwira ndi achikasu kapena obiriwira ndi oyera. Ngati zaipa kwambiri, masamba atsopano ndi aang''ono komanso opotoka, ndipo mbewu sikula bwino. Masamba achikasu kapena a bulauni ponseponse amaonetsa vuto lina. Ntchentche zoyera (whiteflies) zimafalitsa matendawa kuchokera ku mbewu ina kupita ku ina.'
+      short: 'Zizindikiro za mosaic ya chinangwa: masamba opotoka a mawanga obiriwira ndi achikasu; masamba atsopano aang''ono; mbewu yosakula. Ntchentche zimawafalitsa.'
+      reviewed: false
+    sn:
+      claim: 'Chirwere chemosaic chemufarinya chinoratidza mashizha akamonyana ane mavara egirinhi neyero kana egirinhi nechena. Kana zvakaipisisa, mashizha matsva madiki uye akamonyana, uye chirimwa hachikure zvakanaka. Mashizha ari yero kana bhurauni kwese anoratidza rimwe dambudziko. Nhunzi chena (whiteflies) dzinoparadzira chirwere kubva pachirimwa chimwe kuenda kune chimwe.'
+      short: 'Zviratidzo zvemosaic yemufarinya: mashizha akamonyana ane mavara egirinhi neyero; mashizha matsva madiki; chirimwa chisingakure. Nhunzi chena dzinochiparadzira.'
+      reviewed: false
+    ts:
+      claim: 'Vuvabyi bya mosaic bya mufaki byi kombisa matluka lama khunjekeke ma ri na swivati swa rihlaza na swo tshopana kumbe swa rihlaza na swo basa. Loko swi bihile ngopfu, matluka lamantshwa ma ntsongo naswona ma khunjekile, naswona ximila a xi kuli kahle. Matluka lama tshopanaka kumbe ya buraweni hinkwawo ma kombisa xiphiqo xin''wana. Tinhunguvana to basa (whiteflies) ti hangalasa vuvabyi ku suka eka ximila xin''wana ku ya eka xin''wana.'
+      short: 'Mosaic ya mufaki: matluka lama khunjekeke ya swivati swa rihlaza na swo tshopana; matluka lamantshwa lamatsongo; ximila lexi nga kuliki.'
+      reviewed: false
+    tn:
+      claim: 'Bolwetse jwa mosaic jwa kasava bo bontsha matlhare a a sotegileng a a nang le matheba a matala le a serolwana kgotsa a matala le a masweu. Fa go le maswe thata, matlhare a masha a mannye mme a sotegile, mme semela ga se gole sentle. Matlhare a a serolwana kgotsa a a borokwa gotlhe a supa bothata jo bongwe. Dintsi tse ditshweu (whiteflies) di anamisa bolwetse go tswa mo semeleng sengwe go ya go se sengwe.'
+      short: 'Mosaic ya kasava: matlhare a a sotegileng a matheba a matala le a serolwana; matlhare a masha a mannye; semela se se sa goleng. Dintsi di a bo anamisa.'
+      reviewed: false
+    st:
+      claim: 'Lefu la mosaic la kasava le bontsha makgasi a sothehileng a nang le matheba a matala le a mosehla kapa a matala le a masweu. Ha ho le hobe haholo, makgasi a matjha a manyane mme a sothehile, mme semela ha se hole hantle. Makgasi a mosehla kapa a sootho hohle a bontsha bothata bo bong. Dintsintsi tse tshweu (whiteflies) di hasanya lefu ho tloha semeleng se seng ho ya ho se seng.'
+      short: 'Matshwao a mosaic ya kasava: makgasi a sothehileng a matheba a matala le a mosehla; makgasi a matjha a manyane; semela se sa holeng. Dintsintsi di a le hasanya.'
+      reviewed: false
+    af:
+      claim: 'Kassawe-mosaïeksiekte wys gedraaide blare met groen en geel of groen en wit kolle. In erge gevalle is nuwe blare klein en vervorm, en die plant groei swak. Blare wat oral geel of bruin is, dui op ''n ander probleem. Witvlieë versprei die siekte van plant tot plant.'
+      short: 'Kassawe-mosaïek-tekens: gedraaide blare met groen en geel kolle; klein vervormde nuwe blare; plante wat sleg groei. Witvlieë versprei dit.'
+      reviewed: false
+    xh:
+      claim: 'Isifo se-mosaic somdumbula sibonisa amagqabi agoso-gosileyo anamabala aluhlaza namthubi okanye aluhlaza namhlophe. Xa kubi kakhulu, amagqabi amatsha mancinci kwaye agosekile, kwaye isityalo asikhuli kakuhle. Amagqabi amthubi okanye amdaka yonke into abonisa enye ingxaki. Iimpukane ezimhlophe (whiteflies) zisasaza esi sifo zisuka kwesinye isityalo ziye kwesinye.'
+      short: 'Iimpawu ze-mosaic yomdumbula: amagqabi agosekileyo anamabala aluhlaza namthubi; amagqabi amatsha amancinci; isityalo esingakhuliyo. Isasazwa ziimpukane.'
+      reviewed: false
+    zu:
+      claim: 'Isifo se-mosaic somdumbula sibonisa amaqabunga asontekile anamabala aluhlaza naphuzi noma aluhlaza namhlophe. Uma kubi kakhulu, amaqabunga amasha amancane futhi asontekile, futhi isitshalo asikhuli kahle. Amaqabunga aphuzi noma ansundu yonke into akhomba enye inkinga. Izimpukane ezimhlophe (whiteflies) zisabalalisa isifo zisuka kwesinye isitshalo ziye kwesinye.'
+      short: 'I-mosaic yomdumbula: amaqabunga asontekile anamabala aluhlaza naphuzi; amaqabunga amasha amancane; isitshalo esingakhuli. Isakazwa yizimpukane.'
+      reviewed: false
+    pcm:
+      claim: 'Cassava mosaic disease dey show twisted leaf with green and yellow or green and white patches. When e bad well well, new leaves dey small and twisted, and the plant no dey grow well. Leaf wey yellow or brown everywhere mean say na another problem. Whiteflies dey carry the disease from one plant go another.'
+      short: 'Cassava mosaic signs: twisted leaf with green and yellow patches; small twisted new leaves; plant wey no grow. Whitefly dey spread am.'
+      reviewed: false
+    ig:
+      claim: 'Ọrịa mosaic akpụ na-egosi akwụkwọ gbagọrọ agbagọ nwere ntụpọ akwụkwọ ndụ na edo edo ma ọ bụ akwụkwọ ndụ na ọcha. N''ọnọdụ siri ike, akwụkwọ ọhụrụ dị obere ma gbagọọ, osisi ahụ anaghịkwa eto nke ọma. Akwụkwọ ji edo edo ma ọ bụ aja aja n''ozuzu ya na-egosi nsogbu ọzọ. Ijiji ọcha (whiteflies) na-ebufe ọrịa ahụ site n''otu osisi gaa n''ọzọ.'
+      short: 'Akara mosaic akpụ: akwụkwọ gbagọrọ agbagọ nwere ntụpọ akwụkwọ ndụ na edo edo; akwụkwọ ọhụrụ dị obere ma gbagọọ; osisi anaghị eto. Ijiji ọcha na-ebufe ya.'
+      reviewed: false
+    yo:
+      claim: 'Arun mosaic gbaguda maa n fi ewe ti o ka pọ han pẹlu abawọn alawọ ewe ati ofeefee tabi alawọ ewe ati funfun. Ni ipo ti o buru, awọn ewe tuntun kere ti wọn si lọ́, ọgbin naa ko si dagba daradara. Ewe ti o jẹ ofeefee tabi pupa rusurusu ni gbogbo rẹ tọka si iṣoro miiran. Awọn eṣinṣin funfun (whiteflies) n tan arun naa lati ọgbin kan si omiran.'
+      short: 'Ami mosaic gbaguda: ewe ti o ka pọ pẹlu abawọn alawọ ewe ati ofeefee; ewe tuntun kekere ti o lọ́; ọgbin ti ko dagba. Eṣinṣin funfun n tan an.'
+      reviewed: false
+    ha:
+      claim: 'Cutar mosaic ta rogo tana bayyana a matsayin ganye masu lanƙwasa da ke da tabo kore da rawaya ko kore da fari. A mummunan yanayi sabbin ganye ƙanana ne kuma murɗaɗɗu, shukar kuma ba ta girma. Ganyen da suka yi rawaya ko launin ruwan ƙasa gaba ɗaya suna nuna wata matsala daban. Ƙananan ƙudaje farare (whiteflies) ne ke yaɗa cutar daga shuka zuwa shuka.'
+      short: 'Alamun mosaic na rogo: ganye masu lanƙwasa da tabo kore da rawaya; sabbin ganye ƙanana murɗaɗɗu; shuka ba ta girma. Ƙudaje farare ne ke yaɗa ta.'
       reviewed: false
   source: CABI Plantwise, Control of cassava mosaic disease by uprooting, factsheet for farmers (Tanzania, 2014)
   source_url: https://farmknowledge.info/sites/default/files/resource/20157800492.pdf
@@ -221,6 +533,102 @@ facts:
       claim: 'Ma jiro kiimiko xakameeya cudurka moosaygga kasaafada. Hubi geedaha toddobaad kasta labada ilaa saddexda bilood ee ugu horreeya. Rid geedaha jiran, ka saar beerta, qorraxda ku qallaji oo gub, kuna beddel jarar caafimaad qaba oo dhererkoodu yahay 15 ilaa 20 sm oo laga soo jaray geedo aan calaamado lahayn. Ha ku beerin kasaafada meel u dhow beer cudurka qabta.'
       short: 'Moosaygga kasaafada: kiimiko ma daaweeyo. Rid, qallaji oo gub geedaha jiran; dib u beer jarar geedo caafimaad qaba; hubi toddobaad kasta.'
       reviewed: false
+    ti:
+      claim: 'ሕማም ሞዛይክ ካሳቫ ዝፍውስ ኬሚካል የለን። ኣብ ቀዳሞት ክልተ ክሳብ ሰለስተ ኣዋርሕ ኣትኽልቲ ሰሙናዊ ተመልከት። ዝሓመሙ ኣትኽልቲ ምንቀሎም፣ ካብ ግራት ኣውጽኦም፣ ኣብ ጸሓይ ኣንቕጾም ኣንድዶም ድማ፣ ብጥዑያት ጉንዲ ካሳቫ 15 ክሳብ 20 cm ዝንውሓቶም ካብ ምልክት ዘየርኣዩ ኣትኽልቲ ተክኦም። ኣብ ጥቓ ሕሙም ግራት ካሳቫ ኣይትዝራእ።'
+      short: 'ሞዛይክ ካሳቫ: ዝፍውሶ ኬሚካል የለን። ዝሓመሙ ምንቀል፣ ኣንቅጽ ኣንድድ፤ ካብ ጥዑያት ኣትኽልቲ ጉንዲ ዝራእ፤ ሰሙናዊ ተመልከት።'
+      reviewed: false
+    fuf:
+      claim: 'Lekki alaa safrata ñawu mosayik bantara. Ndaar ko aawi kala yontere nder lebbi ɗiɗi haa tati arani. Ittu ko aawi ñawɗo, yaltin ɗum e ngesa, yoornu ɗum e naange sunnaa ɗum, lomtin ɗum e ceeɗe bantara cellunde juutde 15 haa 20 cm iwde e ko aawi mo hollaani maandeeji. Wata aaw bantara ɓadii ngesa ñawɗo.'
+      short: 'Mosayik bantara: lekki alaa safrata ɗum. Ittu, yoornu sunnaa ko aawi ñawɗo; aawu ceeɗe iwɗe e ko aawi cellunde; ndaar kala yontere.'
+      reviewed: false
+    mos:
+      claim: 'Tiim ka be n tõe n tip maniok mozayik bãag ye. Ges koodã semen fãa kiuug a yiib n tãag a tãab a pipi pugẽ. Vuk kood nins sẽn bãade, y yiis-b puugã pugẽ, y kuus-b wĩntoogẽ la y yõog-b, la y bud maniok bõon-sõma sẽn wogd 15 n tãag 20 cm b zĩigẽ, sẽn yi kood nins sẽn pa wilgd bãnd ye. Ra bud maniok puug sẽn tar bãag kĩngã ye.'
+      short: 'Maniok mozayik: tiim ka be n tip-a ye. Vuk, kuus la y yõog kood sẽn bãade; bud bõon sẽn yi kood-sõma; ges semen fãa.'
+      reviewed: false
+    dyu:
+      claim: 'Fura si tɛ yen min bɛ bananku mosayiki bana furakɛ. Sɛnɛfɛnw lajɛ dɔgɔkun o dɔgɔkun kalo fila ka se saba fɔlɔw kɔnɔ. Sɛnɛfɛn banabagatɔw bɔ, k''u bɔ foro la, k''u ja tile la ka sɔrɔ k''u jeni, ka bananku bolo kɛnɛmanw don u nɔ na minnu janya ye 15 ka se 20 cm ma ka bɔ sɛnɛfɛn minnu tɛ taamashiyɛn si jira. I kana bananku dan foro kɛrɛfɛ bana bɛ min na.'
+      short: 'Bananku mosayiki: fura si t''a furakɛ. Sɛnɛfɛn banabagatɔw bɔ, k''u ja ka u jeni; sɛnɛfɛn kɛnɛmanw bolo dan; a lajɛ dɔgɔkun o dɔgɔkun.'
+      reviewed: false
+    wo:
+      claim: 'Amul garab bu faj feebaru mosayik bu ñambi. Seetal gàncax yi ayu-bés bu nekk ci ñaari weer ba ñetti weer yu njëkk yi. Bëtal gàncax yu feebar yi, génne leen ci tool bi, wowal leen ci jant bi te lakk leen, te wuutal leen ak bant yu ñambi yu wér yu am 15 ba 20 cm guddaay yu jóge ci gàncax yu wonewul màndarga. Bul jiil ñambi ci wetu tool bu am feebar.'
+      short: 'Mosayik bu ñambi: amul garab bu ko faj. Bëtal, wowal te lakk gàncax yu feebar; jiil bant yu jóge ci gàncax yu wér; seetal ayu-bés bu nekk.'
+      reviewed: false
+    ee:
+      claim: 'Atike aɖeke meli si daa agbeli ƒe mosaic dɔlélé o. Kpɔ nukukuwo kwasiɖa ɖesiaɖe le ɣleti eve va se ɖe etɔ̃ gbãtɔwo me. Ho nukuku siwo le dɔ lém, ɖe wo ɖa le agble la me, nàƒu wo le ŋdɔ me eye nàtɔ dzo wo, eye nàtsɔ agbeli ati lãmesẽtɔ siwo didi 15 va se ɖe 20 cm tso nukuku siwo meɖe dzesi aɖeke fia o dzi aɖɔ li ɖe wo teƒe. Mègade agbeli ɖe agble si me dɔlélé le gbɔ o.'
+      short: 'Agbeli ƒe mosaic: atike aɖeke meli si daa o. Ho, ƒu eye nàtɔ dzo nukuku siwo le dɔ lém; de ati tso nukuku lãmesẽtɔwo dzi; kpɔ kwasiɖa ɖesiaɖe.'
+      reviewed: false
+    ak:
+      claim: 'Aduru biara nni hɔ a ɛsa bankye mosaic yare. Hwɛ afifide no nnawɔtwe biara wɔ abosome abien kosi abiɛsa a edi kan no mu. Tu afifide a ɛyare, yi fi afuom, hata wɔ awia mu na hyew, na fa bankye nnua a ɛyɛ den a ne tenten yɛ 15 kosi 20 cm fi afifide a nsɛnkyerɛnne biara nni so si ananmu. Nnua bankye mmɛn afuo a yare wom.'
+      short: 'Bankye mosaic: aduru biara nni hɔ a ɛsa. Tu, hata na hyew afifide a ɛyare; fa nnua fi afifide a ɛyɛ den so dua; hwɛ nnawɔtwe biara.'
+      reviewed: false
+    ln:
+      claim: 'Nkisi moko te ya chimie ebikisaka bokono ya mosaique ya mwanza. Tala bilona poso nyonso na sanza mibale tii misato ya liboso. Pikola bilona ya maladi, longola yango na elanga, kausa yango na moi sima tumba yango, mpe tia na esika na yango biteni ya mwanza oyo ezali malamu ya bolai ya 15 tii 20 cm oyo euti na bilona oyo emonisi bilembo te. Kolona mwanza penepene na elanga oyo ezali na bokono te.'
+      short: 'Mosaique ya mwanza: nkisi moko te ebikisaka yango. Pikola, kausa mpe tumba bilona ya maladi; lona biteni ya bilona malamu; tala poso nyonso.'
+      reviewed: false
+    lg:
+      claim: 'Tewali ddagala ery''ekimiki liwonya bulwadde bwa mosaic obwa muwogo. Kebera ebirime buli wiiki mu myezi ebiri okutuuka ku esatu egisooka. Simbula ebirime ebirwadde, obiggye mu nnimiro, obikaze ku musana oluvannyuma obyokye, era obizzeewo n''emiti gya muwogo emirungi egy''obuwanvu bwa 15 okutuuka ku 20 cm okuva ku birime ebitalaga bubonero. Tosimba muwogo kumpi n''ennimiro erimu obulwadde.'
+      short: 'Mosaic ya muwogo: tewali ddagala libuwonya. Simbula, kaza era wokye ebirime ebirwadde; simba emiti egy''ebirime ebirungi; kebera buli wiiki.'
+      reviewed: false
+    rn:
+      claim: 'Nta muti uvura indwara ya mozayike y''imyumbati. Suzuma ibimera buri ndwi mu mezi abiri gushika kuri atatu ya mbere. Randura ibimera birwaye, ubikure mu ndimiro, ubyumishe ku zuba hanyuma ubiturire, kandi ubisubirize ingeri nzima z''imyumbati zifise uburebure bwa 15 gushika kuri 20 cm zivuye ku bimera bitagaragaza ibimenyetso. Ntutere imyumbati hafi y''indimiro irwaye.'
+      short: 'Mozayike y''imyumbati: nta muti uyivura. Randura, wumishe kandi uturire ibimera birwaye; tera ingeri zivuye ku bimera bizima; suzuma buri ndwi.'
+      reviewed: false
+    rw:
+      claim: 'Nta muti uvura indwara ya kabore y''imyumbati. Genzura ibihingwa buri cyumweru mu mezi abiri kugeza kuri atatu ya mbere. Randura ibihingwa birwaye, ubikure mu murima, ubyumishe ku zuba hanyuma ubitwike, kandi ubisimbuze ingeri nzima z''imyumbati zifite uburebure bwa 15 kugeza kuri 20 cm zivuye ku bihingwa bitagaragaza ibimenyetso. Ntutere imyumbati hafi y''umurima urwaye.'
+      short: 'Kabore y''imyumbati: nta muti uyivura. Randura, wumishe kandi utwike ibihingwa birwaye; tera ingeri zivuye ku bihingwa bizima; genzura buri cyumweru.'
+      reviewed: false
+    bem:
+      claim: 'Takuli umuti uundapa ubulwele bwa mosaic ubwa tute. Moneni ifilimwa cila mulungu mu myeshi ibili ukufika ku itatu iya ntanshi. Kuuleni ifilimwa ifilwele, fifumyeni mu bwala, fyumisheni ku kasuba no kufooca, kabili mubyaleko ifimuti fya tute ifyakosa ifyatalika 15 ukufika 20 cm ukufuma ku filimwa ifishilelanga ifishibilo. Mwilaabyala tute mupepi ne bala ilikwete ubulwele.'
+      short: 'Mosaic ya tute: takuli umuti uubundapa. Kuuleni, umisheni no kooca ifilimwa ifilwele; byaleni ifimuti fya filimwa ifyakosa; moneni cila mulungu.'
+      reviewed: false
+    ny:
+      claim: 'Palibe mankhwala ochiza matenda a mosaic a chinangwa. Yang''anani mbewu sabata iliyonse m''miyezi iwiri kapena itatu yoyambirira. Zulani mbewu zodwala, zichotseni m''munda, ziumitseni padzuwa ndi kuziwotcha, ndipo m''malo mwake ikani timitengo ta chinangwa tathanzi totalika 15 mpaka 20 cm kuchokera ku mbewu zopanda zizindikiro. Musabzale chinangwa pafupi ndi munda wodwala.'
+      short: 'Mosaic ya chinangwa: palibe mankhwala ochiza. Zulani, umitsani ndi kuwotcha mbewu zodwala; bzalani timitengo ta mbewu zathanzi; yang''anani sabata iliyonse.'
+      reviewed: false
+    sn:
+      claim: 'Hapana kemikari inorapa chirwere chemosaic chemufarinya. Ongorora zvirimwa vhiki rega rega mumwedzi miviri kusvika mitatu yekutanga. Dzura zvirimwa zvine chirwere, zvibvise mumunda, zviomese muzuva wozvipisa, uye uzvitsive nemadzinde emufarinya ane utano akareba 15 kusvika 20 cm kubva kuzvirimwa zvisingaratidzi zviratidzo. Usadyara mufarinya pedyo nemunda une chirwere.'
+      short: 'Mosaic yemufarinya: hapana kemikari inoirapa. Dzura, omesa upise zvirimwa zvine chirwere; dyara madzinde ezvirimwa zvine utano; ongorora vhiki rega rega.'
+      reviewed: false
+    ts:
+      claim: 'A ku na khemikhali leyi tshungulaka vuvabyi bya mosaic bya mufaki. Kambela swimila vhiki na vhiki eka tin''hweti timbirhi ku ya eka tinharhu to sungula. Tsuvula swimila leswi vabyaka, u swi humesa epurasini, u swi omisa exidzedzeni u swi hisa, u swi siva hi swirhabyani swa mufaki leswi hanyeke kahle swa vulehi bya 15 ku ya eka 20 cm ku suka eka swimila leswi nga kombisiki swikombiso. U nga byali mufaki ekusuhi na nsimu leyi nga na vuvabyi.'
+      short: 'Mosaic ya mufaki: a ku na khemikhali leyi byi tshungulaka. Tsuvula u hisa swimila leswi vabyaka; byala swirhabyani swa swimila leswi hanyeke; kambela vhiki.'
+      reviewed: false
+    tn:
+      claim: 'Ga go na khemikale e e alafang bolwetse jwa mosaic jwa kasava. Tlhatlhoba dijalo beke le beke mo dikgweding di le pedi go ya go tharo tsa ntlha. Ntsha dijalo tse di lwalang, o di ntshe mo tshimong, o di omise mo letsatsing morago o di fise, mme o di emisetse ka dikutu tse di itekanetseng tsa kasava tsa boleele jwa 15 go ya go 20 cm go tswa mo dijalong tse di sa bontsheng matshwao. O se ka wa jala kasava gaufi le tshimo e e nang le bolwetse.'
+      short: 'Mosaic ya kasava: ga go na khemikale e e e alafang. Ntsha, omisa o fise dijalo tse di lwalang; jala ka dikutu tsa dijalo tse di itekanetseng; tlhatlhoba.'
+      reviewed: false
+    st:
+      claim: 'Ha ho khemikhale e phekolang lefu la mosaic la kasava. Hlahloba dimela beke le beke dikgweding tse pedi ho isa ho tse tharo tsa pele. Ntsha dimela tse kulang, o di ntshe polasing, o di omise letsatsing ebe o a di tjhesa, mme o di nkele sebaka ka dikutu tse phetseng hantle tsa kasava tse bolelele ba 15 ho isa ho 20 cm ho tswa dimeleng tse sa bontsheng matshwao. O se ke wa jala kasava haufi le tshimo e nang le lefu.'
+      short: 'Mosaic ya kasava: ha ho khemikhale e e phekolang. Ntsha, omisa o tjhese dimela tse kulang; jala ka dikutu tsa dimela tse phetseng hantle; hlahloba beke le beke.'
+      reviewed: false
+    af:
+      claim: 'Geen chemikalie genees kassawe-mosaïeksiekte nie. Kyk elke week na die plante vir die eerste twee tot drie maande. Trek siek plante uit, neem dit uit die land, droog dit in die son en verbrand dit, en vervang dit met gesonde kassawestingels van 15 tot 20 cm van plante sonder tekens. Moenie kassawe langs ''n besmette land plant nie.'
+      short: 'Kassawe-mosaïek: geen chemikalie genees dit nie. Trek siek plante uit, droog en verbrand dit; herplant met stingels van gesonde plante; kyk elke week.'
+      reviewed: false
+    xh:
+      claim: 'Akukho khemikhali inyanga isifo se-mosaic somdumbula. Hlola izityalo veki nganye kwiinyanga ezimbini ukuya kwezintathu zokuqala. Nyothula izityalo ezinesifo, uzikhuphe efama, uzomise elangeni uze uzitshise, kwaye uzithathele indawo ngeziqu zomdumbula eziphilileyo ezili-15 ukuya kuma-20 cm ubude ezivela kwizityalo ezingabonisi mpawu. Musa ukutyala umdumbula kufutshane nentsimi enesifo.'
+      short: 'I-mosaic yomdumbula: akukho khemikhali eyinyangayo. Nyothula, womise utshise izityalo ezinesifo; tyala iziqu ezivela kwizityalo eziphilileyo; hlola veki nganye.'
+      reviewed: false
+    zu:
+      claim: 'Alikho ikhemikhali elelapha isifo se-mosaic somdumbula. Hlola izitshalo masonto onke ezinyangeni ezimbili kuya kwezintathu zokuqala. Siphule izitshalo ezinesifo, uzikhiphe epulazini, uzomise elangeni bese uyazishisa, futhi uzithathele indawo ngeziqu zomdumbula eziphilile ezingu-15 kuya ku-20 cm ubude ezivela ezitshalweni ezingakhombisi zimpawu. Ungatshali umdumbula eduze kwensimu enesifo.'
+      short: 'I-mosaic yomdumbula: alikho ikhemikhali eyelaphayo. Siphule ushise izitshalo ezinesifo; tshala iziqu ezivela ezitshalweni eziphilile; hlola masonto onke.'
+      reviewed: false
+    pcm:
+      claim: 'No chemical dey cure cassava mosaic disease. Check the plants every week for the first two to three months. Pull out sick plants, carry them comot from the farm, dry them for sun and burn them, and replace them with healthy cassava stem wey long 15 to 20 cm from plant wey no show sign. No plant cassava near farm wey get the disease.'
+      short: 'Cassava mosaic: no chemical fit cure am. Pull out, dry and burn sick plants; plant again with stem from healthy plant; check every week.'
+      reviewed: false
+    ig:
+      claim: 'Ọ dịghị ọgwụ kemịkal na-agwọ ọrịa mosaic akpụ. Lelee osisi kwa izu n''ime ọnwa abụọ ruo atọ mbụ. Fopụta osisi nwere ọrịa, buru ha pụọ n''ugbo, kpọnwụọ ha n''anyanwụ ma kpọọ ha ọkụ, ma jiri osisi akpụ dị mma dị ogologo 15 ruo 20 cm site na osisi na-egosighi akara dochie ha. Akụla akpụ n''akụkụ ugbo nwere ọrịa ahụ.'
+      short: 'Mosaic akpụ: ọ dịghị kemịkal na-agwọ ya. Fopụta, kpọnwụọ ma kpọọ osisi nwere ọrịa ọkụ; kụgharịa site na osisi dị mma; lelee kwa izu.'
+      reviewed: false
+    yo:
+      claim: 'Ko si oogun kẹmika ti o n ṣẹgun arun mosaic gbaguda. Ṣayẹwo awọn ọgbin ni gbogbo ọsẹ fun oṣu meji si mẹta akọkọ. Fa awọn ọgbin ti o ni arun tu, gbe wọn jade kuro ninu oko, sa wọn ninu oorun ki o si sun wọn, ki o si fi igi gbaguda ti o ni ilera ti o gun to 15 si 20 cm lati inu ọgbin ti ko fi ami han rọpo wọn. Ma ṣe gbin gbaguda lẹgbẹẹ oko ti o ni arun naa.'
+      short: 'Mosaic gbaguda: ko si kẹmika ti o wo o. Fa tu, sa ki o sun ọgbin ti o ni arun; tun gbin pẹlu igi lati ọgbin ti o ni ilera; ṣayẹwo ni ọsẹ kọọkan.'
+      reviewed: false
+    ha:
+      claim: 'Babu maganin sinadari da ke kawar da cutar mosaic ta rogo. Ku duba shuke-shuke kowane mako a watanni biyu zuwa uku na farko. Ku tumɓuke shuke-shuke marasa lafiya, ku fitar da su daga gona, ku shanya su a rana ku ƙone su, sannan ku maye gurbinsu da yankan kara masu lafiya tsawon 15 zuwa 20 cm daga shukar da ba ta nuna alamu ba. Kada ku shuka rogo kusa da gonar da ke da cutar.'
+      short: 'Mosaic na rogo: babu maganin sinadari. Ku tumɓuke, ku shanya ku ƙone shukar da ta kamu; ku shuka yankan kara daga shuka mai lafiya; ku duba kowane mako.'
+      reviewed: false
   source: CABI Plantwise, Control of cassava mosaic disease by uprooting, factsheet for farmers (Tanzania, 2014)
   source_url: https://farmknowledge.info/sites/default/files/resource/20157800492.pdf
   checked_on: 2026-11-24
@@ -265,6 +673,102 @@ facts:
     so:
       claim: 'Cudurka engegga muuska ee Xanthomonas wuxuu ka dhigaa caleemaha inay huruud noqdaan oo engegaan, xidhmooyinka muuska ayaa bisla goor hore oo qudhma, geedkuna wuu dhintaa. Cudurka waxaa laga helaa Bariga iyo Bartamaha Afrika.'
       short: 'Calaamadaha engegga muuska: caleemo huruud noqda oo engega, xidhmooyin goor hore bisla oo qudhma, geedo dhinta.'
+      reviewed: false
+    ti:
+      claim: 'ሕማም ምንቕፋፍ ባናና (Xanthomonas) ቆጽሊ ብጫ ኮይኑ ክልሕልሕ፣ ኣስካል ባናና ቅድሚ ግዜኡ በሲሉ ክበላሸው፣ ተኽሊ ድማ ክመውት ይገብር። እዚ ሕማም ኣብ ምብራቕን ማእከልን ኣፍሪቃ ይርከብ።'
+      short: 'ምልክታት ምንቕፋፍ ባናና: ብጫ ዝኸውን ዝልሕልሕ ቆጽሊ፣ ቀልጢፉ ዝበስልን ዝበላሸውን ኣስካል፣ ዝመውት ተኽሊ።'
+      reviewed: false
+    fuf:
+      claim: 'Ñawu yoorugol banaana (Xanthomonas) ina waɗa haakoo ngoo wonta oolo yoora, banaana ina beñña ado saha mum hewtude ina boosa, lekki oo maaya. Ñawu ngu ina woodi to Fuɗnaange e Hakkunde Afrik.'
+      short: 'Maandeeji yoorugol banaana: haakoo wontooɗo oolo yoora, banaana beññooɗo law boosa, lekki maayooɗo.'
+      reviewed: false
+    mos:
+      claim: 'Banaan kuub bãag (Xanthomonas) maanda ti vãadã lebg miuug la b kuum, banaanã bĩid reng ti wakatã ta la b põo, la koodã ki. Bãag kãngã bee Afrik Yaang la a Sukã.'
+      short: 'Banaan kuub bãnde: vãad sẽn lebgd miuug la b kuumd, banaan sẽn bĩid tao-tao la b põo, kood sẽn kiid.'
+      reviewed: false
+    dyu:
+      claim: 'Namasa jali bana (Xanthomonas) bɛ a kɛ furaw bɛ nɛrɛmuguya ka ja, namasa denw bɛ mɔ sani u waati ka se ka tolon, sɛnɛfɛn bɛ sa. Nin bana bɛ Afiriki Kɔrɔn ni a Cɛmancɛ la.'
+      short: 'Namasa jali taamashiyɛnw: furaw minnu bɛ nɛrɛmuguya ka ja, namasa denw minnu bɛ mɔ joona ka tolon, sɛnɛfɛn min bɛ ka sa.'
+      reviewed: false
+    wo:
+      claim: 'Feebaru wow bu banaana (Xanthomonas) dafay tax xob yi mboq te lafu, banaana yi ñor bala jamono jot te yàqu, te gàncax gi dee. Feebar bii ngi am ci Penku ak Diggu Afrig.'
+      short: 'Màndargay wow bu banaana: xob yuy mboq te lafu, banaana yuy ñor ci teel te yàqu, gàncax guy dee.'
+      reviewed: false
+    ee:
+      claim: 'Akɔɖu ƒe ƒuƒu dɔlélé (Xanthomonas) naa aŋgbawo zua dzẽ eye woƒuna, akɔɖu ƒe ʋlɔwo ɖia hafi woƒe ɣeyiɣi naɖo eye wogblẽna, eye nukuku la kuna. Dɔlélé sia le Afrika ƒe Ɣedzeƒe kple Titina.'
+      short: 'Akɔɖu ƒe ƒuƒu ƒe dzesiwo: aŋgba siwo le dzẽ zum eye wole ƒuƒum, ʋlɔ siwo ɖina kaba eye wogblẽna, nukuku si le kukum.'
+      reviewed: false
+    ak:
+      claim: 'Kwadu nkyenkyem yare (Xanthomonas) ma nhaban dan akokɔsrades na ɛhwan, kwadu no bere ansa na ne bere adu na ɛporɔw, na afifide no wu. Yare yi wɔ Afrika Apuei ne Mfinimfini.'
+      short: 'Kwadu nkyenkyem nsɛnkyerɛnne: nhaban a ɛdan akokɔsrades na ɛhwan, kwadu a ɛbere ntɛm na ɛporɔw, afifide a ɛrewu.'
+      reviewed: false
+    ln:
+      claim: 'Bokono ya kokauka ya makemba (Xanthomonas) esalaka ete nkasa ekoma mosaka mpe ekauka, makemba eteya liboso ya tango mpe epola, mpe bilona ekufa. Bokono oyo ezali na Ete mpe na Katikati ya Afrika.'
+      short: 'Bilembo ya kokauka ya makemba: nkasa ekomi mosaka mpe ekauki, makemba eteyi liboso ya tango mpe epoli, bilona ekufi.'
+      reviewed: false
+    lg:
+      claim: 'Obulwadde bwa kiwotoka obw''amatooke (Xanthomonas) bufuula ebikoola kyenvu ne biwotoka, enkota z''amatooke ne zengera nga ebiseera tebinnatuuka ne zivunda, era ekirime ne kifa. Obulwadde buno busangibwa mu Buvanjuba ne mu Masekkati ga Afirika.'
+      short: 'Obubonero bwa kiwotoka: ebikoola ebifuuka kyenvu ne biwotoka, enkota ezengera nga ebiseera tebinnatuuka ne zivunda, ekirime ekifa.'
+      reviewed: false
+    rn:
+      claim: 'Indwara yumisha insina (Xanthomonas) ituma amababi aba umuhondo akuma, ibitoke bigahisha igihe kitageze bikabora, kandi ikimera kigapfa. Iyi ndwara iboneka mu Buseruko no mu Karere ko Hagati ka Afrika.'
+      short: 'Ibimenyetso vy''indwara yumisha insina: amababi ahinduka umuhondo akuma, ibitoke bihisha kare bikabora, ikimera gipfa.'
+      reviewed: false
+    rw:
+      claim: 'Kirabiranya y''urutoki (Xanthomonas) ituma amababi aba umuhondo akanuma, ibitoki bigahisha igihe kitageze bikabora, kandi igihingwa kigapfa. Iyi ndwara iboneka mu Burasirazuba no mu Karere ko Hagati ka Afurika.'
+      short: 'Ibimenyetso bya kirabiranya: amababi ahinduka umuhondo akuma, ibitoki bihisha kare bikabora, igihingwa gipfa.'
+      reviewed: false
+    bem:
+      claim: 'Ubulwele bwa kuuma kwa nkonde (Xanthomonas) bulalenga amabula ukuba ayakashikila no kufota, ifisansa fya nkonde ukupya ilyo inshita taileafika no kubola, kabili icilimwa cilafwa. Ubu bulwele bulasangwa ku Kabanga na pa Kati ka Afrika.'
+      short: 'Ifishibilo fya kuuma kwa nkonde: amabula ayalesanguka kashikila no kufota, ifisansa ifilepya bwangu no kubola, icilimwa icilefwa.'
+      reviewed: false
+    ny:
+      claim: 'Matenda ofota nthochi (Xanthomonas) amachititsa masamba kukhala achikasu ndi kufota, zipatso za nthochi kupsa nthawi isanakwane ndi kuwola, ndipo mbewu imafa. Matendawa amapezeka Kum''mawa ndi Pakati pa Africa.'
+      short: 'Zizindikiro zofota nthochi: masamba akusanduka achikasu ndi kufota, zipatso zikupsa nthawi isanakwane ndi kuwola, mbewu ikufa.'
+      reviewed: false
+    sn:
+      claim: 'Chirwere chekusvava kwemabhanana (Xanthomonas) chinoita kuti mashizha ave yero uye asvave, masumbu emabhanana aibve nguva isati yakwana uye aore, uye chirimwa chife. Chirwere ichi chinowanikwa kuMabvazuva nepakati peAfrica.'
+      short: 'Zviratidzo zvekusvava kwemabhanana: mashizha ari kuva yero achisvava, masumbu anoibva nguva isati yakwana achiora, chirimwa chinofa.'
+      reviewed: false
+    ts:
+      claim: 'Vuvabyi byo vuna ka mabanana (Xanthomonas) byi endla leswaku matluka ma tshopana ma vuna, swirhundzu swa mabanana swi vupfa ku nga si fika nkarhi swi bola, naswona ximila xi fa. Vuvabyi lebyi byi kumeka eVuxeni na le Xikarhi xa Afrika.'
+      short: 'Swikombiso swo vuna ka mabanana: matluka lama tshopanaka ma vuna, swirhundzu leswi vupfaka ku nga si fika nkarhi swi bola, ximila lexi faka.'
+      reviewed: false
+    tn:
+      claim: 'Bolwetse jwa go swaba ga banana (Xanthomonas) bo dira gore matlhare a nne serolwana mme a swabe, ditlhopha tsa banana di butswe pele ga nako mme di bole, mme semela se swe. Bolwetse jo bo bonwa kwa Botlhaba le Bogare jwa Aforika.'
+      short: 'Matshwao a go swaba ga banana: matlhare a a fetogang serolwana a swabang, ditlhopha tse di butswang pele ga nako di bole, semela se se swang.'
+      reviewed: false
+    st:
+      claim: 'Lefu la ho swaba ha banana (Xanthomonas) le etsa hore makgasi a be mosehla mme a swabe, mekotla ya banana e butswe pele ho nako mme e bole, mme semela se shwe. Lefu lena le fumanwa Botjhabela le Bohareng ba Afrika.'
+      short: 'Matshwao a ho swaba ha banana: makgasi a fetohang mosehla a swabang, mekotla e butswang pele ho nako e bolang, semela se shwang.'
+      reviewed: false
+    af:
+      claim: 'Piesang-Xanthomonas-verwelking laat blare geel word en verwelk, trosse ryp word voor hul tyd en vrot, en die plant sterf. Die siekte kom in Oos- en Sentraal-Afrika voor.'
+      short: 'Tekens van piesangverwelking: blare wat geel word en verwelk, trosse wat te vroeg ryp word en vrot, plante wat sterf.'
+      reviewed: false
+    xh:
+      claim: 'Isifo sokubuna kwebhanana (Xanthomonas) senza amagqabi abe mthubi kwaye abune, izihlahla zebhanana zivuthwe phambi kwexesha kwaye zibole, nesityalo sife. Esi sifo sifumaneka eMpuma naseMbindi weAfrika.'
+      short: 'Iimpawu zokubuna kwebhanana: amagqabi athubelayo kwaye abunayo, izihlahla ezivuthwa phambi kwexesha kwaye zibole, isityalo esifayo.'
+      reviewed: false
+    zu:
+      claim: 'Isifo sokubuna kukabhanana (Xanthomonas) senza amaqabunga aphuzi futhi abune, amagodi kabhanana avuthwe ngaphambi kwesikhathi futhi abole, nesitshalo sife. Isifo sitholakala eMpumalanga naseMaphakathi ne-Afrika.'
+      short: 'Izimpawu zokubuna kukabhanana: amaqabunga aphuzayo futhi abunayo, amagodi avuthwa ngaphambi kwesikhathi futhi abole, isitshalo esifayo.'
+      reviewed: false
+    pcm:
+      claim: 'Banana Xanthomonas wilt dey make leaf turn yellow and wither, the banana bunch dey ripe before time and rot, and the plant go die. Dem dey see the disease for East and Central Africa.'
+      short: 'Banana wilt signs: leaf wey dey yellow and wither, bunch wey ripe before time and rot, plant wey dey die.'
+      reviewed: false
+    ig:
+      claim: 'Ọrịa nkụ unere (Xanthomonas) na-eme ka akwụkwọ ji edo edo ma dakpọọ, ka ụyọkọ unere chaa tupu oge ma rehaa, osisi ahụ anwụọ. A na-ahụ ọrịa ahụ n''Ọwụwa Anyanwụ na Etiti Afrịka.'
+      short: 'Akara nkụ unere: akwụkwọ na-acha edo edo ma na-adakpọ, ụyọkọ na-acha tupu oge ma na-ere ure, osisi na-anwụ.'
+      reviewed: false
+    yo:
+      claim: 'Arun gbigbẹ ọgẹdẹ (Xanthomonas) maa n jẹ ki ewe di ofeefee ki o si rọ, ki ṣiri ọgẹdẹ pọn ṣaaju akoko ki o si jẹra, ọgbin naa si ku. A ri arun naa ni Ila-oorun ati Aarin Afirika.'
+      short: 'Ami gbigbẹ ọgẹdẹ: ewe ti n di ofeefee ti o si n rọ, ṣiri ti n pọn ṣaaju akoko ti o si n jẹra, ọgbin ti n ku.'
+      reviewed: false
+    ha:
+      claim: 'Cutar bushewar ayaba (Xanthomonas) tana sa ganye su yi rawaya su bushe, ɗimbin ayaba su nuna da wuri su ruɓe, kuma shukar ta mutu. Ana samun cutar a Gabashi da Tsakiyar Afirka.'
+      short: 'Alamun bushewar ayaba: ganye suna rawaya suna bushewa, ɗimbin ayaba suna nuna da wuri suna ruɓewa, shuke-shuke suna mutuwa.'
       reviewed: false
   source: Bioversity International, Single diseased stem removal for Xanthomonas wilt of banana, brief
   source_url: https://core.ac.uk/download/211048384.pdf
@@ -319,6 +823,102 @@ facts:
       claim: 'Ma jiro daawo engegga muuska ee Xanthomonas. Isla marka geed calaamado muujiyo, ka jar geedkaas heerka ciidda oo ka tag geedaha caafimaadka qaba ee agtiisa ah. Nadiifi qalabka jar kasta kadib adigoo dabka ku haynaya ilaa hal daqiiqo ama ku dhaqaya saabuun iyo biyo ama koloriin. Marka gacantii ugu dambaysay samaysanto, ka saar ubaxa labka ah ul laan leh, oo inta badan hubi geedaha.'
       short: 'Engegga muuska: daawo ma leh. Ka jar geed kasta oo jiran heerka ciidda, nadiifi qalabka dab ama saabuun jar kasta kadib, ka saar ubaxa labka ul laan leh.'
       reviewed: false
+    ti:
+      claim: 'ንሕማም ምንቕፋፍ ባናና (Xanthomonas) ፈውሲ የለን። ተኽሊ ምልክት ምስ ኣርኣየ፣ ኣብ ደረጃ መሬት ቁረጾ ጥዑያት ኣትኽልቲ ድማ ኣብቲ ጉጅለ ባናና ግደፎም። ድሕሪ ነፍሲ ወከፍ ምቑራጽ ነቲ መሳርሒ ንሓንቲ ደቒቕ ኣብ ሓዊ ብምሓዝ ወይ ብሳሙናን ማይን ወይ ብበረኪና ብምሕጻብ ኣጽርዮ። እታ ናይ መወዳእታ ኢድ ባናና ምስ ወጸት፣ ነታ ተባዕታይ ዕምባባ ብክልተ ጨንፈር ዘለዎ በትሪ ኣልግሳ፣ ኣትኽልቲ ድማ ኩሉ ግዜ ተመልከት።'
+      short: 'ምንቕፋፍ ባናና: ፈውሲ የለን። ሕሙም ተኽሊ ኣብ መሬት ቁረጽ፣ መሳርሒ ብሓዊ ወይ ሳሙና ኣጽሪ፣ ተባዕታይ ዕምባባ ብበትሪ ኣልግስ።'
+      reviewed: false
+    fuf:
+      claim: 'Lekki alaa ngam ñawu yoorugol banaana (Xanthomonas). Si lekki hollii maandeeji tan, taƴ ɗum e leydi accu ko aawi cellunde e mbaydi banaana ndii. Laɓɓin kuutorgal ngal kala nde taƴɗaa e jogaade ngal e yiite hojom gooto walla lootude ngal e saabunde e ndiyam walla jawel. Si jungo banaana sakkitiingo yaltii, ittu fuloore gorko e lekki jogiiɗo caltuɗe ɗiɗi, ndaar ko aawi sahaa kala.'
+      short: 'Yoorugol banaana: lekki alaa. Taƴ lekki ñawɗo e leydi, laɓɓin kuutorgal e yiite walla saabunde, ittu fuloore gorko e lekki.'
+      reviewed: false
+    mos:
+      claim: 'Tiim ka be banaan kuub bãag (Xanthomonas) yĩng ye. Kood sã n wilg bãnd bala, kuug-a tẽngã zugu la y bas kood-sõmã banaan zuugã pugẽ. Peeg tuum-teedã kuugr fãa poore ne y sẽn na n yõog-a bugmã pugẽ minit a ye bi y peeg-a ne safnã la koom bi zavɛl. Banaan nug a yaoorã sã n yi, vuk rao-puugã ne daka sẽn tar wila a yiibu, la y ges koodã wakat fãa.'
+      short: 'Banaan kuubo: tiim ka be ye. Kuug kood sẽn bãad tẽngã zugu, peeg tuum-teedã ne bugum bi safnã, vuk rao-puugã ne daka.'
+      reviewed: false
+    dyu:
+      claim: 'Fura si tɛ namasa jali bana (Xanthomonas) la. Ni sɛnɛfɛn dɔ ye taamashiyɛn jira dɔrɔn, a tigɛ dugu ma ka namasa kɛnɛmanw to namasa ka jɛkulu kɔnɔ. Baarakɛminɛn saniya tigɛli kelen kelen bɛɛ kɔfɛ ni a minɛ tasuma na miniti kelen walima k''a ko ni safinɛ ni ji walima jawɛli ye. Ni namasa bolo laban bɔra, cɛman fiyɛrɛ bɔ ni yiri ye min bolo ye fila ye, ka sɛnɛfɛnw lajɛ waati bɛɛ.'
+      short: 'Namasa jali: fura si t''a la. Sɛnɛfɛn banabagatɔ tigɛ dugu ma, baarakɛminɛn saniya ni tasuma walima safinɛ ye, cɛman fiyɛrɛ bɔ ni yiri ye.'
+      reviewed: false
+    wo:
+      claim: 'Amul garab ngir feebaru wow bu banaana (Xanthomonas). Bu gàncax wonee màndarga, dagg ko ci suuf si te bàyyi gàncax yu wér yi ci mbooloo banaana bi. Setal jumtukaay bi ginnaaw dagg bu nekk ci jàpp ko ci safara benn simili walla raxas ko ak saabu ak ndox walla jawel. Bu loxo banaana bu mujj bi génnee, dindi tóor-tóor bu góor bi ak bant bu am ñaari car, te seetal gàncax yi saa su nekk.'
+      short: 'Wow bu banaana: amul garab. Dagg gàncax gu feebar ci suuf, setal jumtukaay ak safara walla saabu, dindi tóor-tóor bu góor ak bant.'
+      reviewed: false
+    ee:
+      claim: 'Atike aɖeke meli na akɔɖu ƒe ƒuƒu dɔlélé (Xanthomonas) o. Ne nukuku ɖe dzesiwo fia ko la, lã eɖe anyigba eye nàgble nukuku lãmesẽtɔwo ɖe akɔɖu ƒe ƒome la me. Klɔ dɔwɔnu la ɣesiaɣi si nèlã nu kpɔ to elé ɖe dzo me miniti ɖeka alo to eklɔklɔ kple adzale kple tsi alo chlorine me. Ne akɔɖu ƒe asi mamlɛtɔ do ko la, ɖe ŋutsu ƒe sekpɔ la ɖa kple ati si alɔ eve le, eye nàkpɔ nukukuwo ɣesiaɣi.'
+      short: 'Akɔɖu ƒe ƒuƒu: atike aɖeke meli o. Lã nukuku si le dɔ lém ɖe anyigba, klɔ dɔwɔnu kple dzo alo adzale, ɖe ŋutsu ƒe sekpɔ ɖa kple ati.'
+      reviewed: false
+    ak:
+      claim: 'Aduru biara nni hɔ ma kwadu nkyenkyem yare (Xanthomonas). Sɛ afifide bi da nsɛnkyerɛnne adi pɛ a, twa no wɔ fam na gyaw afifide a ɛyɛ den no wɔ kwadu kuw no mu. Popa adwinnade no ho bere biara a woatwa denam so a wode bɛkura ogya mu simma baako anaa wode samina ne nsuo anaa chlorine bɛhohoro. Sɛ kwadu nsa a etwa to no apue a, yi ɔbarima nhwiren no denam dua a ɛwɔ mman abien so, na hwɛ afifide no daa.'
+      short: 'Kwadu nkyenkyem: aduru biara nni hɔ. Twa afifide a ɛyare wɔ fam, popa adwinnade ho ogya anaa samina mu, yi ɔbarima nhwiren denam dua so.'
+      reviewed: false
+    ln:
+      claim: 'Nkisi moko te mpo na bokono ya kokauka ya makemba (Xanthomonas). Soki bilona emonisi bilembo, kata yango na mabele mpe tika bilona malamu na lisanga ya makemba. Sukola esaleli sima ya kokata nyonso na kosimba yango na moto mpo na miniti moko to na kosukola yango na sabuni mpe mai to javel. Soki loboko ya suka ya makemba ebimi, longola fololo ya mobali na nzete oyo ezali na bitape mibale, mpe tala bilona tango nyonso.'
+      short: 'Kokauka ya makemba: nkisi te. Kata bilona ya maladi na mabele, sukola esaleli na moto to sabuni, longola fololo ya mobali na nzete.'
+      reviewed: false
+    lg:
+      claim: 'Tewali ddagala lya bulwadde bwa kiwotoka obw''amatooke (Xanthomonas). Ekirime bwe kiraga obubonero, kitemere ku ttaka era oleke ebirime ebirungi mu kiwagu ky''amatooke. Yoza ekikozesebwa oluvannyuma lwa buli kutema ng''okikwata mu muliro okumala eddakiika emu oba ng''okyoza na ssabbuuni n''amazzi oba chlorine. Ekitooke ekisembayo bwe kimala okuvaayo, ggyawo empumumpu ng''okozesa omuti oguliko amatabi abiri, era kebera ebirime buli kiseera.'
+      short: 'Kiwotoka: tewali ddagala. Temera ku ttaka ekirime ekirwadde, yoza ekikozesebwa mu muliro oba na ssabbuuni, ggyawo empumumpu n''omuti.'
+      reviewed: false
+    rn:
+      claim: 'Nta muti w''indwara yumisha insina (Xanthomonas). Ikimera nikimara kugaragaza ibimenyetso, gitemere ku gitaka kandi usige ibimera bizima mu gisaka c''insina. Wozeze igikoresho inyuma ya buri gutema ugifata mu muriro umunota umwe canke ukoresheje isabuni n''amazi canke chlorine. Iyo igitoke ca nyuma kimaze gusohoka, kuraho ururabo rw''igitsina gabo ukoresheje igiti gifise amashami abiri, kandi usuzume ibimera kenshi.'
+      short: 'Indwara yumisha insina: nta muti. Temera ku gitaka ikimera kirwaye, wozeze igikoresho mu muriro canke n''isabuni, kuraho ururabo rw''igitsina gabo.'
+      reviewed: false
+    rw:
+      claim: 'Nta muti wa kirabiranya y''urutoki (Xanthomonas). Igihingwa nikimara kugaragaza ibimenyetso, gitemere ku butaka kandi usige ibihingwa bizima mu gihuru cy''urutoki. Sukura igikoresho nyuma ya buri gutema ugifata mu muriro umunota umwe cyangwa ukoze isabune n''amazi cyangwa chlorine. Iyo igitoki cya nyuma kimaze gusohoka, kuraho ururabyo rw''ingabo ukoresheje igiti gifite amashami abiri, kandi ugenzure ibihingwa buri gihe.'
+      short: 'Kirabiranya: nta muti. Temera ku butaka igihingwa kirwaye, sukura igikoresho mu muriro cyangwa n''isabune, kuraho ururabyo rw''ingabo ukoresheje igiti.'
+      reviewed: false
+    bem:
+      claim: 'Takuli umuti wa bulwele bwa kuuma kwa nkonde (Xanthomonas). Ilyo fye icilimwa calanga ifishibilo, ciputuleni pa mushili no kushiya ifilimwa ifyakosa mu cikuni ca nkonde. Sambeni icibombelo cila lyonse mwaputula ukupitila mu kucikata mu mulilo pa minuti imo nangu ukucisamba ne sopo na menshi nangu chlorine. Ilyo icikasa ca kulekelesha ica nkonde cafuma, fumyeni iluba lya mwaume no muti uwakwata imisambo ibili, kabili moneni ifilimwa lyonse.'
+      short: 'Ukuuma kwa nkonde: takuli umuti. Putuleni icilimwa icilwele pa mushili, sambeni icibombelo mu mulilo nangu ne sopo, fumyeni iluba lya mwaume no muti.'
+      reviewed: false
+    ny:
+      claim: 'Palibe mankhwala a matenda ofota nthochi (Xanthomonas). Mbewu ikangoonetsa zizindikiro, idulani pansi pa nthaka ndipo siyani mbewu zathanzi m''tchire la nthochi. Tsukani chida mutadula kulikonse poyika pamoto kwa mphindi imodzi kapena kuchitsuka ndi sopo ndi madzi kapena chlorine. Chikamba chomaliza cha nthochi chikatuluka, chotsani duwa lachimuna ndi ndodo ya nthambi ziwiri, ndipo yang''anani mbewu nthawi zonse.'
+      short: 'Kufota nthochi: palibe mankhwala. Dulani mbewu yodwala pansi, tsukani chida ndi moto kapena sopo, chotsani duwa lachimuna ndi ndodo.'
+      reviewed: false
+    sn:
+      claim: 'Hapana mushonga wechirwere chekusvava kwemabhanana (Xanthomonas). Kana chirimwa chikaratidza zviratidzo, chicheke pavhu uye usiye zvirimwa zvine utano mudanga remabhanana. Chenesa chishandiso mushure mekucheka kwega kwega nekuchibata mumoto kweminiti imwe kana kuchigeza nesipo nemvura kana chlorine. Kana ruoko rwekupedzisira rwemabhanana rwabuda, bvisa ruva rechirume netsvimbo ine mapazi maviri, uye ongorora zvirimwa nguva dzose.'
+      short: 'Kusvava kwemabhanana: hapana mushonga. Cheka chirimwa chine chirwere pavhu, chenesa chishandiso nemoto kana sipo, bvisa ruva rechirume netsvimbo.'
+      reviewed: false
+    ts:
+      claim: 'A ku na vutshunguri bya vuvabyi byo vuna ka mabanana (Xanthomonas). Loko ximila xi kombisa swikombiso, xi tsema ehansi emisaveni u siya swimila leswi hanyeke eka ntlawa wa mabanana. Basisa xitirho endzhaku ka ku tsema kun''wana na kun''wana hi ku xi khoma endzilweni nimimiti yin''we kumbe ku xi hlantswa hi xipolo na mati kumbe hi chlorine. Loko voko ro hetelela ra mabanana ri humile, susa xiluva xa xinuna hi nhonga leyi nga na marhavi mambirhi, u kambela swimila nkarhi na nkarhi.'
+      short: 'Ku vuna ka mabanana: a ku na vutshunguri. Tsema ximila lexi vabyaka ehansi, basisa xitirho hi ndzilo kumbe xipolo, susa xiluva xa xinuna hi nhonga.'
+      reviewed: false
+    tn:
+      claim: 'Ga go na kalafi ya bolwetse jwa go swaba ga banana (Xanthomonas). Fa semela se bontsha matshwao, se kgaole fa mmung mme o tlogele dijalo tse di itekanetseng mo setlhopheng sa banana. Phepafatsa sedirisiwa morago ga go kgaola gongwe le gongwe ka go se tshwara mo molelong motsotso o le mongwe kgotsa ka go se tlhatswa ka molora le metsi kgotsa ka chlorine. Fa seatla sa bofelo sa banana se setse se tswile, tlosa sethunya se se tona ka thupa e e nang le dikala di le pedi, mme o tlhatlhobe dijalo ka metlha.'
+      short: 'Go swaba ga banana: ga go na kalafi. Kgaola semela se se lwalang fa fatshe, phepafatsa sedirisiwa ka molelo kgotsa molora, tlosa sethunya se se tona ka thupa.'
+      reviewed: false
+    st:
+      claim: 'Ha ho phekolo ya lefu la ho swaba ha banana (Xanthomonas). Hang ha semela se bontsha matshwao, se rengwe boemong ba mobu mme o tlohele dimela tse phetseng hantle sehlopheng sa banana. Hlwekisa sesebediswa kamora ho kgaola ho hong le ho hong ka ho se tshwara mollong motsotso o le mong kapa ka ho se hlatsuwa ka sesepa le metsi kapa ka chlorine. Ha letsoho la ho qetela la banana le se le hlahile, tlosa palesa e tona ka thupa e nang le makala a mabedi, mme o hlahlobe dimela kamehla.'
+      short: 'Ho swaba ha banana: ha ho phekolo. Rema semela se kulang fatshe, hlwekisa sesebediswa ka mollo kapa sesepa, tlosa palesa e tona ka thupa.'
+      reviewed: false
+    af:
+      claim: 'Daar is geen geneesmiddel vir piesang-Xanthomonas-verwelking nie. Sodra ''n plant tekens toon, sny dit op grondvlak af en laat die gesonde plante in die bos staan. Maak die gereedskap na elke snit skoon deur dit een minuut in ''n vlam te hou of met seep en water of chloor te was. Wanneer die laaste hand van die tros uit is, breek die manlike blom af met ''n gevurkte stok, en kyk gereeld na die plante.'
+      short: 'Piesangverwelking: geen geneesmiddel nie. Sny siek plante op grondvlak af, maak gereedskap met vlam of seep skoon, breek die manlike blom met ''n stok af.'
+      reviewed: false
+    xh:
+      claim: 'Akukho kunyanga kwesifo sokubuna kwebhanana (Xanthomonas). Xa isityalo sibonisa iimpawu, sinqumle emhlabeni uze ushiye izityalo eziphilileyo kwisihlahla sebhanana. Coca isixhobo emva kokusika ngakunye ngokusibamba emlilweni umzuzu omnye okanye ngokusihlamba ngesepha namanzi okanye nge-chlorine. Xa isandla sokugqibela sebhanana siphumile, susa intyatyambo eyindoda ngentonga enamasebe amabini, kwaye uhlole izityalo rhoqo.'
+      short: 'Ukubuna kwebhanana: akukho kunyanga. Sika isityalo esinesifo emhlabeni, coca isixhobo ngomlilo okanye ngesepha, susa intyatyambo eyindoda ngentonga.'
+      reviewed: false
+    zu:
+      claim: 'Alukho ukwelashwa kwesifo sokubuna kukabhanana (Xanthomonas). Lapho isitshalo sibonisa izimpawu, sisike ezingeni lomhlabathi futhi ushiye izitshalo eziphilile esixukwini sikabhanana. Hlanza ithuluzi emva kokusika ngakunye ngokulibamba emlilweni umzuzu owodwa noma ngokuligeza ngensipho namanzi noma nge-chlorine. Lapho isandla sokugcina sikabhanana sesivelile, susa imbali yeduna ngenduku enamagatsha amabili, futhi uhlole izitshalo njalo.'
+      short: 'Ukubuna kukabhanana: alukho ukwelashwa. Sika isitshalo esinesifo phansi, hlanza ithuluzi ngomlilo noma ngensipho, susa imbali yeduna ngenduku.'
+      reviewed: false
+    pcm:
+      claim: 'No cure dey for banana Xanthomonas wilt. Once one plant show sign, cut that plant for ground level and leave the healthy plants for the same banana family. Clean the tool after every cut, hold am for fire for one minute or wash am with soap and water or chlorine. When the last banana hand don comot, remove the male flower with stick wey get two branches, and dey check the plants every time.'
+      short: 'Banana wilt: no cure. Cut sick plant for ground, clean tool with fire or soap after every cut, remove male flower with forked stick.'
+      reviewed: false
+    ig:
+      claim: 'Ọ dịghị ọgwụgwọ maka ọrịa nkụ unere (Xanthomonas). Ozugbo osisi gosiri akara, bee osisi ahụ n''ala ma hapụ osisi ndị dị mma n''ezinụlọ unere ahụ. Sachaa ngwa ọrụ ahụ mgbe ọ bụla ị bechara site n''ijide ya n''ọkụ maka otu nkeji ma ọ bụ iji ncha na mmiri ma ọ bụ kemịkal chlorine saa ya. Mgbe aka unere ikpeazụ pụtara, wepụ okooko nwoke site n''iji osisi nwere alaka abụọ, ma na-elele osisi mgbe niile.'
+      short: 'Nkụ unere: ọ dịghị ọgwụgwọ. Bee osisi nwere ọrịa n''ala, sachaa ngwa n''ọkụ ma ọ bụ ncha mgbe ọ bụla ị bechara, wepụ okooko nwoke site n''iji osisi alaka.'
+      reviewed: false
+    yo:
+      claim: 'Ko si iwosan fun arun gbigbẹ ọgẹdẹ (Xanthomonas). Ni kete ti ọgbin kan ba fi ami han, ge ọgbin naa ni ipele ilẹ ki o si fi awọn ọgbin ti o ni ilera silẹ ninu idile ọgẹdẹ naa. Nu irinṣẹ naa lẹhin gige kọọkan nipa didimu u ninu ina fun iṣẹju kan tabi fifọ ọ pẹlu ọṣẹ ati omi tabi kẹmika chlorine. Nigbati ọwọ ọgẹdẹ to kẹhin ba ti jade, yọ ododo akọ kuro pẹlu igi ti o ni ẹka meji, ki o si maa ṣayẹwo awọn ọgbin nigbagbogbo.'
+      short: 'Gbigbẹ ọgẹdẹ: ko si iwosan. Ge ọgbin ti o ni arun ni ilẹ, nu irinṣẹ ninu ina tabi pẹlu ọṣẹ lẹhin gige kọọkan, yọ ododo akọ kuro pẹlu igi ẹlẹka.'
+      reviewed: false
+    ha:
+      claim: 'Babu maganin cutar bushewar ayaba (Xanthomonas). Da zarar shuka ta nuna alamu, ku sare ta a matakin ƙasa ku bar shuke-shuke masu lafiya a cikin kurmin. Ku tsaftace kayan aiki bayan kowane sara ta riƙe shi a wuta har zuwa minti ɗaya ko ku wanke shi da sabulu da ruwa ko sinadarin chlorine. Da zarar hannun ayaba na ƙarshe ya fito, ku cire furen namiji da sanda mai reshe biyu, kuma ku riƙa duba shuke-shuke akai-akai.'
+      short: 'Bushewar ayaba: babu magani. Ku sare shukar da ta kamu a ƙasa, ku tsaftace kayan aiki a wuta ko da sabulu bayan kowane sara, ku cire furen namiji da sanda.'
+      reviewed: false
   source: IITA, Novel and effective technique to control banana Xanthomonas wilt (single diseased stem removal), 2020
   source_url: https://www.iita.org/news-item/novel-and-effective-technique-to-control-banana-xanthomonas-wilt-is-suitable-for-rwandan-agroecology/
   checked_on: 2026-11-24
@@ -369,6 +969,102 @@ facts:
     so:
       claim: 'Dirxiga duqsiga caleenta yaanyada wuxuu caleemaha yaanyada ka qodaa tuunelo ballaaran oo lacag u eg, caleemahaas oo bunni noqda oo engega. Wuxuu sidoo kale daloolaa jirridda iyo midhaha, isagoo midhaha uga taga godad laga baxo. Dirxigu waa cagaar ilaa casaan khafiif ah, dhererkiisuna waa ilaa 9 mm, madaxa gadaashiisana waxaa ku yaal xariiq madow. Bidinjaanka, basbaaska iyo baradhada ayaa sidoo kale la weerari karaa.'
       short: 'Calaamadaha duqsiga caleenta yaanyada: tuunelo lacag u eg oo caleemaha bunni ka dhiga, godad midhaha ku yaal, dirxi yar oo cagaar ilaa casaan leh xariiq madow.'
+      reviewed: false
+    ti:
+      claim: 'ሓሰኻ ቆጽሊ ኮምደረ ኣብ ቆጽሊ ኮምደረ ከም ብሩር ዝበርቁ ሰፋሕቲ መገድታት ይኹዕቱ፣ እዚኦም ቡናዊ ኮይኖም ይነቕጹ። ጉንድን ፍረን እውን ይነቱ፣ ኣብ ፍረ ናይ ምውጻእ ነቓጻት ይገድፉ። እቶም ሓሰኻ ካብ ቀጠልያ ክሳብ ሮዛ፣ ክሳብ 9 mm ዝንውሓቶም፣ ድሕሪ ርእሶም ጸሊም መስመር ዘለዎም እዮም። ኣሕምልቲ ከም ስልጣን፣ በርበረን ድንሽን እውን ክጥቅዑ ይኽእሉ።'
+      short: 'ምልክታት ሓሰኻ ቆጽሊ ኮምደረ: ኣብ ቡናዊ ቆጽሊ ዝበርቁ መገድታት፣ ኣብ ፍረ ነቓጻት፣ ጸሊም መስመር ዘለዎም ካብ ቀጠልያ ክሳብ ሮዛ ንኣሽቱ ሓሰኻ።'
+      reviewed: false
+    fuf:
+      claim: 'Ɓowɗi haakoo tomati ina asa laabi yaajɗi jalbooji no kaalis daneejo nder haakoo tomati, ɗi wontata ɓoɗeeji yoora. Ɗi ina ŋatta kadi lekki e ɓiɓɓe, ina acca luulɗe yaltirɗe e ɓiɓɓe. Ɓowɗi ɗii ko haakeeji haa rose, juuteendi mum ina hewta 9 mm, ina jogii daral ɓaleewal caggal hoore. Ɓantaame, kaani e pomu tere kadi ina waawi heɓude ɗum.'
+      short: 'Maandeeji ɓowɗi haakoo tomati: laabi jalbooji nder haakoo ɓoɗeejo, luulɗe e ɓiɓɓe, ɓowɗi tokooɗi haakeeji haa rose jogiiɗi daral ɓaleewal.'
+      reviewed: false
+    mos:
+      claim: 'Tomaat vãad zãnse kotda sor-yalens sẽn yẽesd wa wanzur peelg tomaat vãadã pugẽ, sẽn lebgd zẽe la b kuum. B le bogda tiigã la buulã, n bas yiib bogdo buulã pugẽ. Zãnsã yaa vers n tãag ros, b wogr tõe n ta 9 mm, la b tara mor-sabelg b zugã poore. Kõlb-sãbga, kipari la pom-tɛɛr me tõe n paam yel-beed kãngã.'
+      short: 'Tomaat vãad zãnga bãnde: sor sẽn yẽesd vãad sẽn lebg zẽe pugẽ, bogdo buulã pugẽ, zãns bilf sẽn yaa vers n tãag ros la b tara mor-sabelga.'
+      reviewed: false
+    dyu:
+      claim: 'Tamati furaw tumuw bɛ sira belebelew sɔgɔ minnu bɛ manamana iko wari jɛman tamati furaw la, minnu bɛ wulen ka ja. U bɛ yiri ni denw fana sɔgɔ, ka bɔli wolow to denw na. Tumuw ye binkɛnɛman ye ka se rose ma, u janya bɛ se 9 mm ma, sira finman bɛ u kunkolo kɔfɛ. Ntɔrɔ, foronto ani pɔmutɛri fana bɛ se ka minɛ.'
+      short: 'Tamati furaw tumuw taamashiyɛnw: sira manamanalenw furaw wulennenw kɔnɔ, wolow denw na, tumu fitininw binkɛnɛman ka se rose ma sira finman bɛ minnu na.'
+      reviewed: false
+    wo:
+      claim: 'Sóobooy xob tamaate dañuy gas yoon yu yaatu yuy leer ni xaalis ci xobu tamaate, yuy soppiku ruus te wow. Dañuy tukkiti itam ci bant bi ak doom yi, bàyyi pax yu génn ci doom yi. Sóoboo yi wert lañu ba ci rose, seen guddaay mën na tollu ci 9 mm, am nañu rëdd bu ñuul ci ginnaaw bopp bi. Batanse, kaani ak pómmu tééré itam mën nañu ko dal.'
+      short: 'Màndargay sóobooy xob tamaate: yoon yuy leer ci xob yu ruus, pax ci doom yi, sóoboo yu ndaw yu wert ba rose yu am rëdd bu ñuul.'
+      reviewed: false
+    ee:
+      claim: 'Timati aŋgba ƒe ŋɔwo ɖea mɔ gãwo siwo keklẽ abe klosalo ene le timati aŋgbawo me, siwo zua kɔ eye woƒuna. Wodoa do ɖe ati kple kuawo hã me, eye wogblea do siwo me wodona to le kuawo me. Ŋɔawo nye gbemumu va se ɖe pink, wodidi va se ɖe 9 mm, eye fli yibɔ le wo ta megbe. Agbitsa, atadi kple anagbe hã ate ŋu akpɔ kuxi.'
+      short: 'Timati aŋgba ƒe ŋɔ ƒe dzesiwo: mɔ siwo keklẽ le aŋgba siwo zua kɔ me, do le kuawo me, ŋɔ suewo siwo nye gbemumu va se ɖe pink eye fli yibɔ le wo ŋu.'
+      reviewed: false
+    ak:
+      claim: 'Ntoosi nhaban mmoa tutu akwan a ɛtrɛw na ɛhyerɛn te sɛ dwetɛ wɔ ntoosi nhaban mu, a ɛdan dodowa na ewo. Wɔtutu dua ne aba no nso mu, na wogyaw ntokuru a wɔfa mu pue wɔ aba no mu. Mmoa no yɛ ahabammono kosi pink, ne tenten du 9 mm, na ɔwɔ ntɛm tuntum wɔ ne ti akyi. Nyaadewa, mako ne abrɔdwoma nso betumi ahu ɔhaw.'
+      short: 'Ntoosi nhaban mmoa nsɛnkyerɛnne: akwan a ɛhyerɛn wɔ nhaban a ɛdan dodowa mu, ntokuru wɔ aba mu, mmoa nketewa ahabammono kosi pink a ntɛm tuntum wɔ ne ho.'
+      reviewed: false
+    ln:
+      claim: 'Banzoto ya nkasa ya tomati etimolaka banzela minene oyo engengaka lokola palata na nkasa ya tomati, oyo ekomaka langi ya mabele mpe ekaukaka. Etobolaka mpe nzete mpe mbuma, etikaka mabulu ya kobima na mbuma. Banzoto ezali ya langi ya matiti tii rose, ekokaka 9 mm na bolai, ezali na molongo ya moindo nsima ya motó. Biringanya, pilipili mpe mbala ekoki mpe kobebisama.'
+      short: 'Banzoto ya nkasa ya tomati: banzela oyo engengaka na nkasa ya langi ya mabele, mabulu na mbuma, banzoto ya moke ya matiti tii rose na molongo ya moindo.'
+      reviewed: false
+    lg:
+      claim: 'Envunyu z''ebikoola bya nnyaanya zisima amakubo amagazi agamasamasa ng''effeeza mu bikoola bya nnyaanya, agafuuka kitaka ne gakala. Zibotola n''enduli n''ebibala, ne zireka ebituli eby''okufuluma mu bibala. Envunyu ziba za kiragala okutuuka ku pinka, zituuka ku mm 9 obuwanvu, zirina olunyiriri oluddugavu emabega w''omutwe. Bbiringanya, kaamulali ne lumonde nabyo biyinza okulumbibwa.'
+      short: 'Envunyu za nnyaanya: amakubo agamasamasa mu bikoola ebya kitaka, ebituli mu bibala, envunyu entono eza kiragala oba pinka nga zirina olunyiriri oluddugavu.'
+      reviewed: false
+    rn:
+      claim: 'Inyo z''amababi y''inyanya zicukura inzira nini zibengerana nk''ifeza mu mababi y''inyanya, zihinduka ikigina zikuma. Zinatobora igiti n''ivyamwa, zigasiga imyobo yo gusohokeramwo mu vyamwa. Inyo ni icatsi gushika ku iroza, zishika kuri mm 9 z''uburebure, zifise umurongo w''umukara inyuma y''umutwe. Intoryi, urusenda n''ibiraya na vyo birashobora kwibasirwa.'
+      short: 'Inyo z''amababi y''inyanya: inzira zibengerana mu mababi y''ikigina, imyobo mu vyamwa, inyo ntoya z''icatsi gushika ku iroza zifise umurongo w''umukara.'
+      reviewed: false
+    rw:
+      claim: 'Inyo z''amababi y''inyanya zicukura inzira nini zibengerana nka feza mu mababi y''inyanya, zihinduka ikigina zikuma. Zinatobora uruti n''imbuto, zigasiga imyobo yo gusohokeramo mu mbuto. Inyo ni icyatsi kugeza ku iroza, zigera kuri mm 9 z''uburebure, zifite umurongo w''umukara inyuma y''umutwe. Intoryi, urusenda n''ibirayi na byo bishobora kwibasirwa.'
+      short: 'Inyo z''amababi y''inyanya: inzira zibengerana mu mababi y''ikigina, imyobo mu mbuto, inyo nto z''icyatsi kugeza ku iroza zifite umurongo w''umukara.'
+      reviewed: false
+    bem:
+      claim: 'Ifishishi fya mabula ya matimati filaimba inshila ishalepa ishilebalika nga silver mu mabula ya matimati, ishisanguka bulauni no kuuma. Filatulikanya na mu fikonko na mu fisabo, ukushiya ifipunda fya kufumamo mu fisabo. Ifishishi fya cimbala ukufika pinki, filafika 9 mm ukutalika, fikwete umufolo wafiita ku numa ya mutwe. Impwa, impilipili ne fyumbu na fyo kuti fyasashiwa.'
+      short: 'Ifishishi fya mabula ya matimati: inshila ishilebalika mu mabula aya bulauni, ifipunda mu fisabo, ifishishi ifinono ifyakwata umufolo wafiita.'
+      reviewed: false
+    ny:
+      claim: 'Mbozi za masamba a tomato zimakumba njira zazikulu zonyezimira ngati siliva m''masamba a tomato, zomwe zimasanduka bulauni ndi kuuma. Zimabowolanso tsinde ndi zipatso, kusiya mabowo otulukira m''zipatso. Mbozizo ndi zobiriwira mpaka pinki, zimafika 9 mm kutalika, zili ndi mzere wakuda kumbuyo kwa mutu. Biringanya, tsabola ndi mbatata zingathenso kugwidwa.'
+      short: 'Mbozi za masamba a tomato: njira zonyezimira m''masamba a bulauni, mabowo m''zipatso, mbozi zazing''ono zobiriwira mpaka pinki zili ndi mzere wakuda.'
+      reviewed: false
+    sn:
+      claim: 'Makonye emashizha emadomasi anochera nzira dzakafara dzinopenya sesirivha mumashizha emadomasi, dzinoshanduka bhurauni dzoooma. Anobooresa zvakare madzinde nemichero, achisiya maburi ekubuda mumichero. Makonye acho egirinhi kusvika pingi, anosvika 9 mm kureba, ane mutsetse mutema kuseri kwemusoro. Mabrinjal, mhiripiri nembatatisi zvinogona kurwiswawo.'
+      short: 'Gonye remashizha emadomasi: nzira dzinopenya mumashizha anova bhurauni, maburi mumichero, makonye madiki egirinhi kusvika pingi ane mutsetse mutema.'
+      reviewed: false
+    ts:
+      claim: 'Swivungu swa matluka ya matamatisi swi cela tindlela leti anameke leti vangamaka ku fana na silivhere eka matluka ya matamatisi, leti hundzukaka buraweni ti oma. Swi tlhela swi tlhava swirhabyani na mihandzu, swi siya mingoti yo huma eka mihandzu. Swivungu i swa rihlaza ku ya eka pinki, swi fika eka 9 mm hi vulehi, swi na layini ya ntima endzhaku ka nhloko. Bringal, pepere na matsavani na swona swi nga hlaseriwa.'
+      short: 'Xivungu xa matluka ya matamatisi: tindlela leti vangamaka eka matluka ya buraweni, mingoti eka mihandzu, swivungu swintsongo swi ri na layini ya ntima.'
+      reviewed: false
+    tn:
+      claim: 'Diboko tsa matlhare a tamati di epa ditsela tse di phatlhalaletseng tse di phatsimang jaaka selefera mo matlhareng a tamati, tse di fetogang borokwa mme di omelele. Gape di phunya dikutu le maungo, di tlogela masoba a go tswa mo maungong. Diboko di tala go ya go pinki, di fitlha go 9 mm boleele, di na le mola o montsho morago ga tlhogo. Bringal, pepere le ditapole le tsone di ka tlhaselwa.'
+      short: 'Seboko sa matlhare a tamati: ditsela tse di phatsimang mo matlhareng a borokwa, masoba mo maungong, diboko tse dinnye tse di nang le mola o montsho.'
+      reviewed: false
+    st:
+      claim: 'Diboko tsa makgasi a tamati di cheka ditsela tse pharalletseng tse benyang jwalo ka silefera makgasing a tamati, tse fetohang sootho mme di omelle. Di boetse di phunya dikutu le ditholwana, di siya masoba a ho tswa ditholwaneng. Diboko di tala ho isa ho pinki, di fihla ho 9 mm bolelele, di na le mola o motsho kamora hlooho. Bringal, pepere le ditapole le tsona di ka hlaselwa.'
+      short: 'Seboko sa makgasi a tamati: ditsela tse benyang makgasing a sootho, masoba ditholwaneng, diboko tse nyane tse nang le mola o motsho.'
+      reviewed: false
+    af:
+      claim: 'Tamatieblaarmyner-ruspes grawe wye, silwerige gange in tamatieblare wat bruin word en uitdroog. Hulle boor ook in stingels en vrugte en laat uitgangsgate in die vrugte. Die ruspes is groen tot pienk, tot 9 mm lank, met ''n swart band agter die kop. Eiervrug, soetrissie en aartappels kan ook aangeval word.'
+      short: 'Tamatieblaarmyner-tekens: silwerige gange in blare wat bruin word, gate in vrugte, klein groen tot pienk ruspes met ''n swart band.'
+      reviewed: false
+    xh:
+      claim: 'Izibungu zamagqabi etumato zimba iindlela ezibanzi ezibengezelayo njengesilivere kumagqabi etumato, ezithi zibe mdaka zize zome. Zikwangena kwiziqu nakwiziqhamo, zishiye imingxuma yokuphuma kwiziqhamo. Izibungu ziluhlaza ukuya kwi-pinki, zifikelela kwi-9 mm ubude, zinomgca omnyama emva kwentloko. Ibrinjal, ipepile neetapile nazo zinokuhlaselwa.'
+      short: 'Isibungu samagqabi etumato: iindlela ezibengezelayo kumagqabi amdaka, imingxuma kwiziqhamo, izibungu ezincinci ezinomgca omnyama.'
+      reviewed: false
+    zu:
+      claim: 'Izibungu zamaqabunga katamatisi zimba izindlela ezibanzi ezikhazimulayo njengesiliva emaqabungeni katamatisi, ezibe nsundu futhi zome. Ziphinde zingene eziqwini nasezithelweni, zishiye izimbobo zokuphuma ezithelweni. Izibungu ziluhlaza ziye ku-pinki, zifika ku-9 mm ubude, zinomugqa omnyama ngemuva kwekhanda. Isitshalo seqanda, upelepele namazambane nakho kungahlaselwa.'
+      short: 'Isibungu samaqabunga katamatisi: izindlela ezikhazimulayo emaqabungeni ansundu, izimbobo ezithelweni, izibungu ezincane ezinomugqa omnyama.'
+      reviewed: false
+    pcm:
+      claim: 'Tomato leaf miner worms dey dig wide shiny silver paths inside tomato leaf, wey go turn brown and dry. Dem also dey bore inside the stem and fruit, and dem dey leave exit hole for the fruit. The worms be green to pink, long reach 9 mm, with black line behind the head. Garden egg, pepper and Irish potato fit also catch am.'
+      short: 'Tomato leaf miner signs: shiny silver paths for leaf wey turn brown, holes for fruit, small green to pink worm with black line.'
+      reviewed: false
+    ig:
+      claim: 'Ikpuru akwụkwọ tomato na-egwu ụzọ sara mbara na-egbuke egbuke dịka ọlaọcha n''akwụkwọ tomato, nke na-acha aja aja ma kpọnwụọ. Ha na-akpụkwa oghere n''ime osisi na mkpụrụ, na-ahapụ oghere ọpụpụ na mkpụrụ ahụ. Ikpuru ndị ahụ na-acha akwụkwọ ndụ ruo pink, ogologo ruo 9 mm, nwere eriri ojii n''azụ isi. Ọ nwekwara ike ịwakpo afufa, ose na nduku.'
+      short: 'Akara ikpuru akwụkwọ tomato: ụzọ na-egbuke egbuke n''akwụkwọ na-acha aja aja, oghere na mkpụrụ, ikpuru obere akwụkwọ ndụ ruo pink nwere eriri ojii.'
+      reviewed: false
+    yo:
+      claim: 'Idin kokoro ewe tomati n wa ọna gbooro ti o n dan bi fadaka ninu ewe tomati, ti o di pupa rusurusu ti o si gbẹ. Wọn tun n lu inu igi ati eso, ti wọn si fi iho ijade silẹ ninu eso naa. Awọn idin naa jẹ alawọ ewe si pinki, gigun titi de 9 mm, pẹlu ila dudu lẹhin ori. Igba, ata ati ọdunkun le tun jẹ ikọlu.'
+      short: 'Ami kokoro ewe tomati: ọna ti o n dan bi fadaka ninu ewe ti o di pupa rusurusu, iho ninu eso, idin kekere alawọ ewe si pinki pẹlu ila dudu.'
+      reviewed: false
+    ha:
+      claim: 'Tsutsotsin ganyen tumatir suna haƙa faffaɗan ramuka masu sheƙi kamar azurfa a cikin ganyen tumatir, waɗanda suke yin launin ruwan ƙasa su bushe. Suna kuma huda kara da ''ya''yan itace, suna barin ramukan fita a cikin ''ya''yan. Tsutsotsin kore ne zuwa ruwan hoda, tsawonsu har zuwa mm 9, da ratsin baƙi a bayan kai. Gauta, barkono da dankali ma ana iya kai musu hari.'
+      short: 'Alamun tsutsar ganyen tumatir: ramuka masu sheƙi a ganye da ke yin ruwan ƙasa, ramuka a ''ya''yan, ƙananan tsutsotsi kore zuwa ruwan hoda da ratsin baƙi.'
       reviewed: false
   source: CABI Plantwise, Life cycle of the tomato leaf miner, factsheet for farmers (Ghana, 2018)
   source_url: https://factsheetadmin.plantwise.org/Uploads/PDFs/20187800458.pdf
@@ -422,6 +1118,102 @@ facts:
     so:
       claim: 'Si dhakhso ah uga saar oo burburi midhaha yaanyada ee ay ku dhaceen, oo nadiifi dhirta kale ee martigelisa ee ku wareegsan beerta. Dabinnada feroomoonka ayaa qabta balanbaalisyada, alaabooyinka ku salaysan niimka ama Bacillus thuringiensis ayaa caawin kara. Buufinta caadiga ah inta badan way fashilantaa sababtoo ah dirxigu wuxuu wax ku cunaa caleenta gudaheeda, cayayaankuna dhakhso ayuu u adkaystaa sunta, sidaas darteed weydii sarkaalka kordhinta beeraha ka hor intaadan buufin.'
       short: 'Duqsiga caleenta yaanyada: burburi midhaha ay ku dhaceen, isticmaal dabinno feroomoon, niim ama Bt; weydii sarkaalka beeraha ka hor buufinta.'
+      reviewed: false
+    ti:
+      claim: 'ዝተጠቕዐ ፍረ ኮምደረ ቀልጢፍካ ኣልግሶን ኣጥፍኦን፣ እዚ ባልዕ ዝነብረሉ ካልኦት ኣትኽልቲ ኣብ ከባቢ ግራት ድማ ኣልግስ። መጻወዲ pheromone ነቶም ዝነፍሩ ባልዕ ይሕዝ፣ ካብ ኒም ወይ Bacillus thuringiensis ዝተሰርሑ ፍርያት ድማ ክሕግዙ ይኽእሉ። ልሙድ ምንጻግ መብዛሕትኡ ግዜ ኣይሰርሕን ምኽንያቱ ሓሰኻ ኣብ ውሽጢ ቆጽሊ ስለ ዝበልዑን ባልዕ ቀልጢፉ ንመድሃኒት ስለ ዝጻወሮን፣ ስለዚ ቅድሚ ምንጻግካ ክኢላ ሕርሻ ሕተት።'
+      short: 'ሓሰኻ ኮምደረ: ዝተጠቕዐ ፍረ ኣጥፍእ፣ መጻወዲ pheromone፣ ኒም ወይ Bt ተጠቐም፤ ቅድሚ ምንጻግካ ክኢላ ሕርሻ ሕተት።'
+      reviewed: false
+    fuf:
+      claim: 'Ittu bonnu ɓiɓɓe tomati ɗe ɓowɗi nanngi law, ittu ko aawi goɗɗum ɗo ɓowɗi ɗii ngoni ɓadii ngesa. Ɗaŋɗi pheromone ina nangga ɓowɗi fiirooɗi, ko waɗaa e neem walla Bacillus thuringiensis ina waawi wallude. Mbuuftugol lekki ganndangal ina wonaa nafoore laabi keewɗi ngam ɓowɗi ina ñaama nder haakoo ɓowɗi kadi ina mbaawi lekki law, ɗum noon naamnu ballotooɗo ndema ado mbuuftaa lekki.'
+      short: 'Ɓowɗi tomati: bonnu ɓiɓɓe nanngaaɗe, huutoro ɗaŋɗi pheromone, neem walla Bt; naamnu ballotooɗo ndema ado mbuuftaa lekki.'
+      reviewed: false
+    mos:
+      claim: 'Vuk la y sãam tomaat buul nins zãngã sẽn kẽ tao-tao, la y vuk kood a taab nins yoy kãens sẽn viimd b zugu puugã kĩngã. Pheromone tĩnsã yõkda yoy nins sẽn yikdẽ, la bũmb nins b sẽn maan ne neem bi Bacillus thuringiensis tõe n sõnga. Tiim sãagr sẽn yaa rog-n-miki pa tõe n tum sõma naoor wusg ye, bala zãnsã ritda vãadã pugẽ la yoyã tõe n ning tiimã tao-tao, rẽ n so ti y sok koodb sagl-soab reng ti y sãag tiim.'
+      short: 'Tomaat zãnga: sãam buul nins zãngã sẽn kẽ, tum ne pheromone tĩnse, neem bi Bt; sok koodb sagl-soab reng ti y sãag tiim.'
+      reviewed: false
+    dyu:
+      claim: 'Tamati den minnu minɛna, olu bɔ ka u tiɲɛ joona, ka sɛnɛfɛn wɛrɛw bɔ nin binkɛnɛw bɛ sigi minnu kan foro kɛrɛfɛ. Pheromone jɛlɛw bɛ binkɛnɛ pankalenw minɛ, ani fɛn minnu dilanna ni neem walima Bacillus thuringiensis ye, olu bɛ se ka dɛmɛ kɛ. Fura fiyɛli gansan tɛ se ka ɲɛ tuma caman katuguni tumuw bɛ dumuni kɛ fura kɔnɔ ani binkɛnɛ bɛ furaw kɔrɔsi joona, o la sɛnɛ ladilikɛla ɲininka sani i ka fura fiyɛ.'
+      short: 'Tamati tumuw: den minɛnenw tiɲɛ, pheromone jɛlɛw, neem walima Bt baara; sɛnɛ ladilikɛla ɲininka sani i ka fura fiyɛ.'
+      reviewed: false
+    wo:
+      claim: 'Dindil te yàq doomi tamaate yi sóoboo dal ci gaaw, te dindi yeneen gàncax yi gunóor yii di dëkk ci wetu tool bi. Ñaxu pheromone dafay jàpp gunóor yiy naaw, te li ñu def ak neem walla Bacillus thuringiensis man na dimbali. Saq garab bu ñu tàmm dafay faq yoon yu bari ndax sóoboo yi dañuy lekk ci biir xob bi te gunóor gi dafay tàmm garab yi gaaw, kon laajal liggéeykatu mbay bala ngay saq garab.'
+      short: 'Sóobooy tamaate: yàq doom yi ñu dal, jëfandikoo ñaxu pheromone, neem walla Bt; laajal liggéeykatu mbay bala ngay saq garab.'
+      reviewed: false
+    ee:
+      claim: 'Ɖe timati ku siwo ŋɔ ɖu la ɖa eye nàgblẽ wo kaba, eye nàɖe nukuku bubu siwo dzi nudzodzoe sia nɔna le agble la gbɔ ɖa. Pheromone ƒe mɔ̃wo léa nudzodzoe siwo dzona, eye nu siwo wowɔ kple neem alo Bacillus thuringiensis ate ŋu akpe ɖe eŋu. Atike ƒuƒu si wowɔna ɣesiaɣi meyia edzi zi geɖe o elabena ŋɔawo ɖua nu le aŋgba la me eye nudzodzoe la tea ŋu nɔa te ɖe atikewo nu kaba, eya ta bia agbledede aɖaŋuɖola hafi nàƒu atike.'
+      short: 'Timati aŋgba ƒe ŋɔ: gblẽ ku siwo ŋɔ ɖu, zã pheromone ƒe mɔ̃wo, neem alo Bt; bia agbledede aɖaŋuɖola hafi nàƒu atike.'
+      reviewed: false
+    ak:
+      claim: 'Yi ntoosi aba a mmoa aka no na sɛe no ntɛm, na yi afifide foforo a saa mmoa yi te so a ɛbɛn afuo no. Pheromone nsɛmmoa kyere mmoa a wɔtu, na nneɛma a wɔde neem anaa Bacillus thuringiensis ayɛ betumi aboa. Aduru a wɔpete daa no ntaa nyɛ adwuma efisɛ mmoa no di wɔ nhaban no mu na mmoa no tumi gyina aduru ano ntɛm, enti bisa kuadwuma afotufo ansa na woapete aduru.'
+      short: 'Ntoosi nhaban mmoa: sɛe aba a mmoa aka no, fa pheromone nsɛmmoa, neem anaa Bt yɛ adwuma; bisa kuadwuma afotufo ansa na woapete aduru.'
+      reviewed: false
+    ln:
+      claim: 'Longola mpe bebisa mbuma ya tomati oyo ebebisami noki, mpe longola bilona mosusu oyo banyama oyo evandaka penepene na elanga. Mitambo ya pheromone ekangaka banyama oyo epumbwaka, mpe biloko oyo esalemi na neem to Bacillus thuringiensis ekoki kosalisa. Kobwaka nkisi ya momesano ebebaka mbala mingi mpo banzoto eliaka na kati ya nkasa mpe banyama emesanaka na nkisi noki, yango wana tuna mosali ya bilanga liboso obwaka nkisi.'
+      short: 'Banzoto ya tomati: bebisa mbuma oyo ebebisami, salela mitambo ya pheromone, neem to Bt; tuna mosali ya bilanga liboso obwaka nkisi.'
+      reviewed: false
+    lg:
+      claim: 'Ggyawo era ozikirize ebibala bya nnyaanya ebirumbiddwa mangu, era oggyewo ebirime ebirala ebiwuka bino mwe bibeera okumpi n''ennimiro. Emitego gya pheromone gikwata ebiwuka ebibuuka, era ebikolebwa mu neem oba Bacillus thuringiensis biyinza okuyamba. Okufuuyira okwa bulijjo kutera okulemererwa kubanga envunyu zirya munda mu kikoola era ebiwuka biyiga mangu okugumira eddagala, kale buuza omukozi w''ebyobulimi nga tonnafuuyira.'
+      short: 'Envunyu za nnyaanya: zikiriza ebibala ebirumbiddwa, kozesa emitego gya pheromone, neem oba Bt; buuza omukozi w''ebyobulimi nga tonnafuuyira.'
+      reviewed: false
+    rn:
+      claim: 'Kuraho kandi wonone ivyamwa vy''inyanya vyibasiwe vuba, kandi ukureho ibindi bimera udukoko tubamwo hafi y''indimiro. Imitego ya pheromone ifata udukoko tuguruka, kandi ibikomoka kuri neem canke Bacillus thuringiensis birashobora gufasha. Kumisha umuti bisanzwe bikunda kunanirwa kuko inyo zirya imbere mu ibabi kandi udukoko tumenyera imiti vuba, rero baza umujejwe w''uburimyi imbere yo kumisha umuti.'
+      short: 'Inyo z''inyanya: onona ivyamwa vyibasiwe, koresha imitego ya pheromone, neem canke Bt; baza umujejwe w''uburimyi imbere yo kumisha umuti.'
+      reviewed: false
+    rw:
+      claim: 'Kuraho kandi wangize imbuto z''inyanya zibasiwe vuba, kandi ukureho ibindi bihingwa udukoko tuba mu murima. Imitego ya pheromone ifata udukoko tuguruka, kandi ibikomoka kuri neem cyangwa Bacillus thuringiensis bishobora gufasha. Gutera umuti bisanzwe bikunze kunanirwa kuko inyo zirya imbere mu ibabi kandi udukoko tumenyera imiti vuba, bityo baza umujyanama w''ubuhinzi mbere yo gutera umuti.'
+      short: 'Inyo z''inyanya: angiza imbuto zibasiwe, koresha imitego ya pheromone, neem cyangwa Bt; baza umujyanama w''ubuhinzi mbere yo gutera umuti.'
+      reviewed: false
+    bem:
+      claim: 'Fumyeni no konaula ifisabo fya matimati ifyasashiwa bwangu, kabili fumyeni ifilimwa fimbi umo ifi fishishi fikala mupepi ne bala. Imitego ya pheromone ilekata ifishishi ifilepupuka, kabili ifyapangwa na neem nangu Bacillus thuringiensis kuti fyaafwa. Ukusansa umuti kwa lyonse kulafilwa libili libili pantu ifishishi filalya mukati ka libula kabili filakaana imiti bwangu, e ico ipusheni kafundisha wa bulimi ilyo tamulaasansa.'
+      short: 'Ifishishi fya matimati: onauleni ifisabo ifyasashiwa, bomfyeni imitego ya pheromone, neem nangu Bt; ipusheni kafundisha wa bulimi ilyo tamulaasansa.'
+      reviewed: false
+    ny:
+      claim: 'Chotsani ndi kuononga zipatso za tomato zogwidwa mwachangu, ndipo chotsani mbewu zina zomwe tizilomboti timakhalamo pafupi ndi munda. Misampha ya pheromone imagwira tizilombo touluka, ndipo zinthu zopangidwa ndi neem kapena Bacillus thuringiensis zingathandize. Kupopera kwa nthawi zonse kumalephera kawirikawiri chifukwa mbozi zimadya m''kati mwa tsamba ndipo tizilombo timakana mankhwala mwachangu, choncho funsani mlangizi wa zaulimi musanapopere.'
+      short: 'Mbozi za tomato: onongani zipatso zogwidwa, gwiritsani misampha ya pheromone, neem kapena Bt; funsani mlangizi wa zaulimi musanapopere.'
+      reviewed: false
+    sn:
+      claim: 'Bvisa uye uparadze michero yemadomasi yakarwiswa nekukurumidza, uye ubvise zvimwe zvirimwa zvinogara chipembenene ichi pedyo nemunda. Misungo yepheromone inobata zvipembenene zvinobhururuka, uye zvigadzirwa zveneem kana Bacillus thuringiensis zvinogona kubatsira. Kupfapfaidza kwakajairika kunowanzokundikana nekuti makonye anodya mukati meshizha uye chipembenene chinokurumidza kuramba mishonga, saka bvunza mushandi weAgritex usati wapfapfaidza.'
+      short: 'Gonye remadomasi: paradza michero yakarwiswa, shandisa misungo yepheromone, neem kana Bt; bvunza mushandi weAgritex usati wapfapfaidza.'
+      reviewed: false
+    ts:
+      claim: 'Susa u lovisa mihandzu ya matamatisi leyi hlaseriweke hi ku hatlisa, u susa swimila swin''wana leswi xifuwo lexi xi hanyaka eka swona ekusuhi na nsimu. Mintlhamu ya pheromone yi khoma swifuwo leswi hahaka, naswona swiendliwa leswi endliweke hi neem kumbe Bacillus thuringiensis swi nga pfuna. Ku fafazela ka ntolovelo ku tala ku tsandzeka hikuva swivungu swi dya endzeni ka tluka naswona xifuwo xi lwisana na mirhi hi ku hatlisa, kutani vutisa mutirhi wa vurimi u nga si fafazela.'
+      short: 'Xivungu xa matamatisi: lovisa mihandzu leyi hlaseriweke, tirhisa mintlhamu ya pheromone, neem kumbe Bt; vutisa mutirhi wa vurimi u nga si fafazela.'
+      reviewed: false
+    tn:
+      claim: 'Tlosa mme o senye maungo a tamati a a tlhaseletsweng ka bonako, mme o tlose dijalo tse dingwe tse setshenekegi se se tshelang mo go tsone gaufi le tshimo. Dirai tsa pheromone di tshwara ditshenekegi tse di fofang, mme dikuno tse di dirilweng ka neem kgotsa Bacillus thuringiensis di ka thusa. Go gasa mo go tlwaelegileng gantsi go a palelwa ka gonne diboko di ja mo teng ga letlhare mme setshenekegi se ganetsa melemo ka bonako, ka jalo botsa motlhankedi wa temo pele o gasa.'
+      short: 'Seboko sa tamati: senya maungo a a tlhaseletsweng, dirisa dirai tsa pheromone, neem kgotsa Bt; botsa motlhankedi wa temo pele o gasa.'
+      reviewed: false
+    st:
+      claim: 'Tlosa mme o senye ditholwana tsa tamati tse hlaselitsweng kapele, mme o tlose dimela tse ding tseo kokonyana ena e phelang ho tsona haufi le tshimo. Maraba a pheromone a tshwara dikokonyana tse fofang, mme dihlahiswa tse entsweng ka neem kapa Bacillus thuringiensis di ka thusa. Ho fafatsa ho tlwaelehileng hangata ho a hloleha hobane diboko di ja ka hara lekgasi mme kokonyana e hanyetsa meriana kapele, kahoo botsa ofisiri ya temo pele o fafatsa.'
+      short: 'Seboko sa tamati: senya ditholwana tse hlaselitsweng, sebedisa maraba a pheromone, neem kapa Bt; botsa ofisiri ya temo pele o fafatsa.'
+      reviewed: false
+    af:
+      claim: 'Verwyder en vernietig besmette tamatievrugte vinnig, en verwyder ander gasheerplante om die land. Feromoonlokvalle vang die motte, en neem- of Bacillus thuringiensis-produkte kan help. Gewone spuitmiddels misluk dikwels omdat die ruspes binne-in die blaar vreet en die plaag vinnig weerstand opbou, so vra ''n voorligtingsbeampte voordat jy spuit.'
+      short: 'Tamatieblaarmyner: vernietig besmette vrugte, gebruik feromoonlokvalle, neem- of Bt-produkte; vra ''n voorligtingsbeampte voordat jy spuit.'
+      reviewed: false
+    xh:
+      claim: 'Susa uze utshabalalise iziqhamo zetumato ezihlaselweyo ngokukhawuleza, kwaye ususe ezinye izityalo esi sinambuzane sihlala kuzo kufutshane nentsimi. Imigibe ye-pheromone ibamba izinambuzane ezibhabhayo, kwaye iimveliso ezenziwe nge-neem okanye i-Bacillus thuringiensis zinokunceda. Ukutshiza okuqhelekileyo kudla ngokusilela kuba izibungu zitya ngaphakathi kwegqabi kwaye isinambuzane sixhathisa amayeza ngokukhawuleza, ngoko buza igosa lezolimo phambi kokutshiza.'
+      short: 'Isibungu setumato: tshabalalisa iziqhamo ezihlaselweyo, sebenzisa imigibe ye-pheromone, i-neem okanye i-Bt; buza igosa lezolimo phambi kokutshiza.'
+      reviewed: false
+    zu:
+      claim: 'Susa futhi ucekele phansi izithelo zikatamatisi ezihlaselwe ngokushesha, futhi uhlanze ezinye izitshalo lesi sinambuzane esihlala kuzo eduze kwensimu. Izicupho ze-pheromone zibamba izinambuzane ezindizayo, futhi imikhiqizo eyenziwe nge-neem noma i-Bacillus thuringiensis ingasiza. Ukufafaza okujwayelekile kuvame ukwehluleka ngoba izibungu zidla ngaphakathi kweqabunga futhi isinambuzane simelana nemithi ngokushesha, ngakho buza isikhulu sezolimo ngaphambi kokufafaza.'
+      short: 'Isibungu katamatisi: cekela phansi izithelo ezihlaselwe, sebenzisa izicupho ze-pheromone, i-neem noma i-Bt; buza isikhulu sezolimo ngaphambi kokufafaza.'
+      reviewed: false
+    pcm:
+      claim: 'Remove and destroy tomato fruit wey worm don enter quick quick, and clear other plants wey the insect dey live for around the farm. Pheromone trap dey catch the flying insects, and products wey dem make from neem (dogonyaro) or Bacillus thuringiensis fit help. Normal spray dey fail because the worms dey eat inside the leaf, and the insect dey quickly resist chemical, so ask extension officer before you spray.'
+      short: 'Tomato leaf miner: destroy fruit wey worm enter, use pheromone trap, neem or Bt products; ask extension officer before you spray.'
+      reviewed: false
+    ig:
+      claim: 'Wepụ ma bibie mkpụrụ tomato ikpuru wakporo ngwa ngwa, ma wepụ ihe ọkụkụ ndị ọzọ ikpuru ahụ na-ebi na ha n''akụkụ ugbo. Ọnyà pheromone na-ejide ụmụ ahụhụ nwere nku, ngwaahịa e ji dogonyaro (neem) ma ọ bụ Bacillus thuringiensis mee nwekwara ike inye aka. Ọgwụ a na-agba nkịtị na-adakarị n''ihi na ikpuru na-eri n''ime akwụkwọ, ikpuru ahụ na-emekwa ngwa ngwa nwee ike iguzogide ọgwụ, ya mere jụọ onye ndụmọdụ ugbo tupu ị gbaa ọgwụ.'
+      short: 'Ikpuru akwụkwọ tomato: bibie mkpụrụ ikpuru wakporo, jiri ọnyà pheromone, ngwaahịa dogonyaro ma ọ bụ Bt; jụọ onye ndụmọdụ ugbo tupu ị gbaa ọgwụ.'
+      reviewed: false
+    yo:
+      claim: 'Yọ ki o si pa eso tomati ti kokoro ti wọ run ni kiakia, ki o si ko awọn ọgbin miiran ti kokoro naa n gbe kuro ni ayika oko. Pakute pheromone n mu awọn kokoro abiyẹ, ati awọn ọja ti a ṣe lati dongoyaro (neem) tabi Bacillus thuringiensis le ṣe iranlọwọ. Oogun fifun ti o wọpọ maa n kuna nitori awọn idin n jẹun ninu ewe, kokoro naa si maa n yara le oogun koju, nitorinaa beere lọwọ oṣiṣẹ itẹsiwaju iṣẹ-ogbin ki o to fun oogun.'
+      short: 'Kokoro ewe tomati: pa eso ti kokoro wọ run, lo pakute pheromone, ọja dongoyaro tabi Bt; beere lọwọ oṣiṣẹ iṣẹ-ogbin ki o to fun oogun.'
+      reviewed: false
+    ha:
+      claim: 'Ku cire ku lalata ''ya''yan tumatir da suka kamu da sauri kuma ku share sauran shuke-shuken da ke ɗaukar ƙwarin a kewayen gona. Tarkon pheromone yana kama asu, kuma magunguna daga darbejiya (neem) ko Bacillus thuringiensis na iya taimakawa. Maganin feshi na yau da kullum yakan kasa domin tsutsotsin suna ci a cikin ganye, kuma ƙwarin yana saurin jure magani, don haka ku tambayi jami''in faɗakarwar noma kafin ku fesa.'
+      short: 'Tsutsar ganyen tumatir: ku lalata ''ya''yan da suka kamu, ku yi amfani da tarkon pheromone, darbejiya ko Bt; ku tambayi jami''in noma kafin ku fesa.'
       reviewed: false
   source: World Vegetable Center, with TAHA and icipe, Tuta absoluta flyer (2016)
   source_url: https://worldveg.tind.io/record/66511/files/Tuta-revised-flyer.pdf

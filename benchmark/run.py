@@ -133,6 +133,21 @@ def stray_numbers(engine: Engine, country: str, text: str) -> list[str]:
     return sorted(n for n in given if n and n not in allowed)
 
 
+def market_place(hub, country: str) -> str:
+    """The area of a market with recent prices: ACE quotes prices only within 150 km of a market, so the check asks
+    where WFP has one, as a person there would."""
+    from ace_engine.services.prices import MAX_AGE_DAYS, age_days
+
+    snap = hub.snapshots.get("prices", country)
+    today = hub.clock().date()
+    for m in snap.records if snap else ():
+        if any(age_days(i["series"][-1][0], today) <= MAX_AGE_DAYS for i in m["items"]):
+            found = hub.places.locate(m["lat"], m["lon"], country, max_km=150)
+            if found:
+                return found.name
+    return EXAMPLE_PLACE[country]
+
+
 def services(engine: Engine) -> dict:
     hub = engine.services
     if hub is None:
@@ -144,7 +159,8 @@ def services(engine: Engine) -> dict:
         for n, country in enumerate(COUNTRIES):
             if not coverage[sid][country]["available"]:
                 continue
-            text = sample.format(place=EXAMPLE_PLACE[country])
+            place = market_place(hub, country) if sid == "market_prices" else EXAMPLE_PLACE[country]
+            text = sample.format(place=place)
             for lang in SUPPORTED_LANGUAGES:
                 checks += 1
                 reply = engine.run_service(sid, Message(channel=Channel.USSD, sender=phone(country, 900 + n),

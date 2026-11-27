@@ -32,6 +32,14 @@ python3 deploy/gcp/smoke.py https://ace.example.org
 
 Both services answer only through the load balancer, where Cloud Armor, HSTS and the TLS policy apply. To test before the domain resolves, run the script with `INGRESS=all`, then run it again without.
 
+In an organisation that enforces domain restricted sharing, the script makes both services public by turning off Cloud Run's invoker IAM check, which Google recommends for this case, rather than by granting `allUsers`. The budget cannot publish its alerts to Pub/Sub there, so it sends email alerts only and `ace-guard` stays idle until an exception allows Google's billing alert account on the `ace-budget` topic. Cap Gemini meanwhile with a daily request quota, as ace.korext.com does:
+
+```
+gcloud beta quotas preferences create --service=generativelanguage.googleapis.com \
+  --quota-id=GenerateRequestsPerDayPerProjectPerModel --preferred-value=1000 --preference-id=ace-gemini-daily \
+  --project=PROJECT --billing-project=PROJECT --allow-quota-decrease-below-usage --allow-high-percentage-quota-decrease
+```
+
 To use Gemini, store an API key first as the secret `ace-gemini-key` (Secret Manager, in your region). Without it, ACE answers by extraction only, which is complete and cited; the model only rephrases.
 
 ## Release

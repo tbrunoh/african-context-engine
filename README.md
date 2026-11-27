@@ -12,7 +12,7 @@ ACE answers the questions that matter to people who will never install an app: a
 
 **Reach by default, richer by choice.** USSD, SMS and voice are the default, because they reach every phone with no app and no data. People with a smartphone and data can choose WhatsApp, or RCS where their carrier supports it, to see the sources under every answer, with suggested replies on RCS; RCS falls back to SMS, so a reply never depends on RCS. Other services and AI assistants connect through the API and MCP.
 
-**Release 2.4 preview (2.4.0b1 and 2.4.0b2, 27 November 2026)** is ACE as a public product: try it at [ace.korext.com](https://ace.korext.com) on a simulated phone, call the API or connect an assistant over MCP, or stand up the same stack with [deploy/gcp](deploy/gcp/README.md). The safety rail adds fire, drowning, stabbing and road accidents in all 32 languages, and an answer must be on the question's topic.
+**Release 2.4 preview (2.4.0b1 to 2.4.0b3, 27 November 2026)** is ACE as a public product: try it at [ace.korext.com](https://ace.korext.com) on a simulated phone, call the API or connect an assistant over MCP, or stand up the same stack with [deploy/gcp](deploy/gcp/README.md). The safety rail adds fire, drowning, stabbing and road accidents in all 32 languages, and an answer must be on the question's topic.
 
 **Release 2.3 preview (2.3.0b1, 26 November 2026; 2.3.0b2, 27 November, removes the last defaults that assumed a caller is in Kenya)** added 24 languages, each offered in the countries that speak it: Hausa, Yoruba, Igbo and Nigerian Pidgin in Nigeria; isiZulu, isiXhosa, Afrikaans, Sesotho, Setswana and Xitsonga in South Africa; Akan and Ewe in Ghana; Wolof, Dyula, Mooré and Pular in West Africa; Shona, Chichewa and Bemba in Southern Africa; Kinyarwanda, Kirundi, Luganda and Lingala in East and Central Africa; and Tigrinya in Ethiopia. ACE now guesses a message's language only among the languages of the caller's country, reads a message with no marker word by its letters, and tells a person when it does not read their language yet, naming the languages it does read in their country instead of answering in one they may not read. It folds letters such as ɓ, ɛ and ŋ into the SMS alphabet so replies keep 160 characters a segment, gives 12 of the new languages a voice, and answers every red team message in its benchmark with the emergency reply, in all 32 languages, with no false alarm on the benchmark's ordinary messages. Every new language is a draft that no fluent speaker has reviewed yet; see [docs/languages.md](docs/languages.md) for how confident each draft is and what to review first. Cite this version as [10.5281/zenodo.24579654](https://doi.org/10.5281/zenodo.24579654).
 
@@ -199,7 +199,7 @@ cd african-context-engine
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 
-pytest                                   # 922 tests, about four minutes
+pytest                                   # 923 tests, about five minutes
 ace demo                                 # one person, four channels, one memory
 ace services                             # the V2 services and their coverage in each country
 ace ask "bei ya mahindi Mwanza" --phone +255711000001
@@ -209,7 +209,7 @@ ace scam "Your SIM is registered twice. Send your M-PESA PIN to confirm"
 ace serve                                # open http://127.0.0.1:8000 to try ACE on a simulated phone
 ```
 
-The preview wheel is attached to the [v2.4.0b2 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
+The preview wheel is attached to the [v2.4.0b3 release](https://github.com/tbrunoh/african-context-engine/releases). Publishing to PyPI waits on a one time trusted publisher setup by the maintainer. Connect a real shortcode in [docs/channels.md](docs/channels.md). Add a language model in [docs/architecture.md](docs/architecture.md#language-models).
 
 ## How it works
 

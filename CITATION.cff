@@ -33,7 +33,7 @@ identifiers:
     description: Version 2.4.0b1, the public product at ace.korext.com
 # The code licence. Packs, language profiles and snapshots carry their own licences: see NOTICE and DATA_LICENSE.md.
 license: Apache-2.0
-version: 2.4.0b2
+version: 2.4.0b3
 date-released: "2026-11-27"
 keywords:
   - Africa

@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 2.4.0b2 (2026-11-27): the ACE icon everywhere
 
 ### Fixed
+- **The ACE mark is every icon a browser or phone asks for.** ace.korext.com linked only an SVG icon, so a browser that asks for /favicon.ico, or one that had cached another korext.com icon, showed the wrong one. The site now serves the mark as /favicon.ico (16, 32 and 48 pixels), /apple-touch-icon.png, 192 and 512 pixel app icons and a web app manifest in the Coast to Dunes colours, and every icon link carries the version, so browsers fetch the new icon after each release.
 - **`deploy/gcp/setup.sh`, from the first deployment of ace.korext.com.** Service accounts are created a few seconds apart, because a new project may create only a few a minute. The site and MCP are made public by turning off Cloud Run's invoker IAM check, which Google recommends where domain restricted sharing refuses an `allUsers` grant. Where the budget cannot publish its alerts to Pub/Sub for the same reason, it is created with email alerts only, and the README shows how to cap Gemini with a daily request quota until the spend guard can act.
 
 ## 2.4.0b1 (2026-11-27): ACE as a public product

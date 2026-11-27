@@ -22,9 +22,10 @@
 
 The design is published in [docs/v2](docs/v2/README.md). Every service covers every country by default and names the gap wherever open data does not exist.
 
-### 2.4 preview (2.4.0b1, 27 November 2026): ACE as a public product
+### 2.4 preview (2.4.0b1 and 2.4.0b2, 27 November 2026): ACE as a public product
 
 - [x] The site at ace.korext.com: a phone for USSD, SMS, voice, WhatsApp and RCS, coverage, developers, status and about pages
+- [x] 2.4.0b2: the ACE mark as the favicon, the phone icons and a web app manifest
 - [x] Private web sessions, a production factory that refuses unsafe settings, and no phone number trusted from an unauthenticated caller
 - [x] Firestore sessions with a 24 hour expiry, escalation counts with no text, and checked snapshot sets swapped in without a restart
 - [x] MCP over Streamable HTTP, a facility index, the model off for USSD and voice, citations with licence and date

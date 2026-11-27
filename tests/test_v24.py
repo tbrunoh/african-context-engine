@@ -145,6 +145,18 @@ def test_every_page_is_served_with_security_headers(public, path):
     assert b"style=" not in body  # the content security policy blocks inline styles
 
 
+def test_the_ace_mark_is_every_icon_a_browser_or_phone_asks_for(public):
+    for path, kind in (("/favicon.ico", "image/x-icon"), ("/apple-touch-icon.png", "image/png"),
+                       ("/static/icon-192.png", "image/png"), ("/static/icon-512.png", "image/png")):
+        status, headers, _, payload = call(public, "GET", path)
+        assert status == 200 and headers["Content-Type"] == kind and payload, path
+    status, headers, _, payload = call(public, "GET", "/site.webmanifest")
+    data = json.loads(payload)
+    assert status == 200 and data["short_name"] == "ACE" and data["theme_color"] == "#006B69"
+    page = call(public, "GET", "/")[3].decode()
+    assert f'href="/favicon.ico?v={__version__}"' in page and 'rel="apple-touch-icon"' in page
+
+
 def test_static_files_and_no_path_tricks(public):
     code, h, _, body = call(public, "GET", "/static/ace.css")
     assert code == 200 and h["Content-Type"].startswith("text/css") and b"#006B69" in body

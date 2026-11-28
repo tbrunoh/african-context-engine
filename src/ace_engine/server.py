@@ -28,6 +28,11 @@ Security
     RBM_CLIENT_TOKEN      the RCS webhook client token: answers console verification and checks X-Goog-Signature.
                           Without it, POST /rcs answers 503, so unsigned messages can never trigger texts
 
+HTTPS
+    ACE_HTTPS_HOST        the public host name, for example ace.korext.com. A request the load balancer marks as plain
+                          HTTP (X-Ace-Scheme: http) is answered with a permanent redirect to the same path on
+                          https://<host>, with no port in the address. Without it, no request is redirected
+
 Public demonstration (ACE_PUBLIC=1, set through ace_engine.app.create_app)
     The API ignores a phone number it is passed unless ACE_API_TOKEN is set, so no caller can act as a real
     subscriber; requests are answered for the country they name, or as from outside ACE's countries.
@@ -48,10 +53,11 @@ import hmac
 import json
 import logging
 import os
+import re
 import secrets
 from collections.abc import Callable, Iterable
 from typing import Any
-from urllib.parse import parse_qs
+from urllib.parse import parse_qs, quote
 
 from . import __version__, site
 from .channels import (
@@ -93,8 +99,12 @@ class AceApp:
                  api_token: str | None = None, webhook_secret: str | None = None,
                  whatsapp_verify_token: str | None = None, whatsapp_app_secret: str | None = None,
                  rcs_sender: Any = None, rcs_client_token: str | None = None,
-                 rcs_countries: Iterable[str] | None = None, public: bool = False, paused: bool = False) -> None:
+                 rcs_countries: Iterable[str] | None = None, public: bool = False, paused: bool = False,
+                 https_host: str = "") -> None:
         self.engine = engine
+        self.https_host = https_host.strip().lower()
+        if self.https_host and not _HOST.fullmatch(self.https_host):
+            raise ValueError(f"ACE_HTTPS_HOST must be a bare host name, such as ace.korext.com: {https_host!r}")
         self.public = public
         self.paused = paused
         self.watcher: Any = None  # a SnapshotWatcher, when the deployment publishes snapshot sets
@@ -121,6 +131,12 @@ class AceApp:
 
     def __call__(self, environ: dict[str, Any], start_response: StartResponse) -> Iterable[bytes]:
         method, path = environ.get("REQUEST_METHOD", "GET"), environ.get("PATH_INFO", "/")
+        location = https_location(environ, self.https_host)
+        if location:  # before anything else, so a paused demo still sends HTTP visitors to HTTPS
+            status = "301 Moved Permanently" if method in ("GET", "HEAD") else "308 Permanent Redirect"
+            start_response(status, _secure([("Location", location), ("Content-Length", "0"),
+                                            ("Cache-Control", "public, max-age=3600")], path))
+            return [b""]
         query = {k: v[0] for k, v in parse_qs(environ.get("QUERY_STRING", "")).items()}
         self.engine.profiles.begin_request()
         try:
@@ -366,6 +382,31 @@ class AceApp:
         if length > MAX_BODY:
             raise ValueError("request body too large")
         return environ["wsgi.input"].read(length) if length else b""
+
+
+# The load balancer's HTTP listener adds this header and its HTTPS listener removes it, so only plain HTTP carries it.
+HTTP_MARK = "HTTP_X_ACE_SCHEME"
+_HOST = re.compile(r"[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+")
+_PATH_SAFE = "/:@!$&'()*+,;=-._~"
+
+
+def https_location(environ: dict[str, Any], host: str) -> str | None:
+    """The HTTPS address for a request that came in over plain HTTP, or None.
+
+    The host is always the configured one, never the request's Host header, so the redirect cannot be pointed
+    anywhere else. A port never appears: Google's load balancer adds :443 to its own redirects, which is why ACE
+    redirects here instead.
+    """
+    if not host or environ.get(HTTP_MARK, "").strip().lower() != "http":
+        return None
+    raw = environ.get("PATH_INFO", "/") or "/"
+    path = quote(raw.encode("latin-1", "replace"), safe=_PATH_SAFE)
+    if not path.startswith("/"):
+        path = "/" + path
+    query = environ.get("QUERY_STRING", "")
+    if any(ord(c) < 33 or ord(c) > 126 for c in query):
+        query = quote(query, safe="=&;%+/:@!$'()*,-._~?")
+    return f"https://{host}{path}" + (f"?{query}" if query else "")
 
 
 def _json(code: int, data: dict[str, Any], cache: int = 0) -> tuple[str, list[tuple[str, str]], bytes]:

@@ -118,7 +118,7 @@ step "ace-web: the site, the /try phone and the API"
 gc run deploy ace-web --image "$IMAGE" --region "$REGION" --service-account "$(sa ace-web)" \
   --execution-environment gen2 --cpu 1 --memory 1Gi --concurrency 8 --min-instances 1 --max-instances 10 \
   --timeout 30 --no-invoker-iam-check --ingress "$INGRESS" \
-  --set-env-vars "ACE_PUBLIC=1,ACE_PROFILE_STORE=firestore,ACE_HANDOFFS=count,ACE_FIRESTORE_COUNTS=1,ACE_SNAPSHOT_BASE=/mnt/snapshots${LLM_ENV}" \
+  --set-env-vars "ACE_PUBLIC=1,ACE_HTTPS_HOST=${DOMAIN},ACE_PROFILE_STORE=firestore,ACE_HANDOFFS=count,ACE_FIRESTORE_COUNTS=1,ACE_SNAPSHOT_BASE=/mnt/snapshots${LLM_ENV}" \
   --set-secrets "ACE_PSEUDONYM_SALT=ace-pseudonym-salt:latest${LLM_SECRET}" \
   --add-volume "name=snapshots,type=cloud-storage,bucket=${BUCKET},readonly=true" \
   --add-volume-mount "volume=snapshots,mount-path=/mnt/snapshots" --quiet
@@ -191,15 +191,20 @@ done
 exists gc compute ssl-policies describe ace-tls --global || \
   gc compute ssl-policies create ace-tls --global --profile MODERN --min-tls-version 1.2
 CANDIDATE="$(gc secrets versions access latest --secret ace-candidate-header)"
+# HTTPS removes x-ace-scheme, the mark the HTTP listener adds, so no visitor can fake it and loop
 cat > /tmp/ace-urlmap.yaml <<YAML
 name: ace-urlmap
 defaultService: https://www.googleapis.com/compute/v1/projects/${PROJECT}/global/backendServices/ace-web-backend
+headerAction:
+  requestHeadersToRemove: [x-ace-scheme]
 hostRules:
 - hosts: ['${DOMAIN}']
   pathMatcher: ace
 pathMatchers:
 - name: ace
   defaultService: https://www.googleapis.com/compute/v1/projects/${PROJECT}/global/backendServices/ace-web-backend
+  headerAction:
+    requestHeadersToRemove: [x-ace-scheme]
   routeRules:
   - priority: 1
     matchRules:
@@ -230,13 +235,16 @@ gc compute target-https-proxies update ace-https --global --ssl-policy ace-tls -
 exists gc compute forwarding-rules describe ace-https-rule --global || \
   gc compute forwarding-rules create ace-https-rule --global --load-balancing-scheme EXTERNAL_MANAGED \
     --address ace-ip --target-https-proxy ace-https --ports 443
-# Naming the host in the redirect keeps the port out of it: https://${DOMAIN}/ rather than https://${DOMAIN}:443/
+# Google's own HTTPS redirect writes https://${DOMAIN}:443/ even with the host named, so the HTTP listener marks the
+# request and ace-web answers it with https://${DOMAIN}/ and the same path (ACE_HTTPS_HOST); the name ace-redirect stays
 cat > /tmp/ace-redirect.yaml <<YAML
 name: ace-redirect
-defaultUrlRedirect:
-  httpsRedirect: true
-  hostRedirect: ${DOMAIN}
-  redirectResponseCode: MOVED_PERMANENTLY_DEFAULT
+defaultService: https://www.googleapis.com/compute/v1/projects/${PROJECT}/global/backendServices/ace-web-backend
+headerAction:
+  requestHeadersToAdd:
+  - headerName: x-ace-scheme
+    headerValue: http
+    replace: true
 YAML
 gc compute url-maps import ace-redirect --global --source /tmp/ace-redirect.yaml --quiet
 rm -f /tmp/ace-redirect.yaml

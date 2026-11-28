@@ -37,9 +37,12 @@ identifiers:
   - type: doi
     value: 10.5281/zenodo.24602172
     description: Version 2.4.0b3, fresh data from the first request
+  - type: doi
+    value: 10.5281/zenodo.24613487
+    description: Version 2.4.1, a safer rail, a spending cap and places ACE does not know
 # The code licence. Packs, language profiles and snapshots carry their own licences: see NOTICE and DATA_LICENSE.md.
 license: Apache-2.0
-version: 2.4.1
+version: 2.4.2
 date-released: "2026-11-27"
 keywords:
   - Africa

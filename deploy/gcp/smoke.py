@@ -119,6 +119,8 @@ def main() -> int:
         code, h, _ = request("http://" + host, "/try?x=1", headers, follow=False)
         check(code in (301, 308) and h.get("location", "") == f"https://{host}/try?x=1",
               "HTTP redirects to the same page on HTTPS, with no port in the address")
+        code, _, _ = request(base, "/try", headers, extra={"X-Ace-Scheme": "http"}, follow=False)
+        check(code == 200, "HTTPS ignores a faked HTTP mark, so no visitor can loop")
         code, h, _ = request(base, "/", headers)
         check("strict-transport-security" in h, "HSTS from the load balancer")
 

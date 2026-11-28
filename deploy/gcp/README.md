@@ -7,7 +7,7 @@ These files stand up the stack that runs [ace.korext.com](https://ace.korext.com
 | `ace-web` | Cloud Run service: the site, the /try phone and the API (gunicorn, one warm instance, at most ten) |
 | `ace-mcp` | Cloud Run service: MCP over Streamable HTTP at /mcp, stateless (scales to zero, at most five) |
 | `ace-refresh` | Cloud Run job: refreshes snapshots into a copy of the set in use, checks them, and publishes the set only if every check passes |
-| Load balancer | Global Application Load Balancer with a Google-managed certificate, TLS 1.2 or later, an HTTP to HTTPS redirect, HSTS, and Cloud Armor limits per address; /mcp goes to `ace-mcp`, everything else to `ace-web`. Both services take traffic only from it |
+| Load balancer | Global Application Load Balancer with a Google-managed certificate, TLS 1.2 or later, an HTTP to HTTPS redirect (the HTTP listener marks the request and `ace-web` redirects it to `ACE_HTTPS_HOST`, because Google's own redirect adds :443 to the address), HSTS, and Cloud Armor limits per address; /mcp goes to `ace-mcp`, everything else to `ace-web`. Both services take traffic only from it |
 | Firestore | Web sessions (24 hour expiry) and escalation counts with no text, in the same region |
 | Cloud Storage | Snapshot sets, mounted read only into both services; sets older than seven days are deleted, never the one in use |
 | Cloud Scheduler | Warnings every hour, weather twice a day, market prices every Monday, the model check every Tuesday, the spend meter every ten minutes |
@@ -18,7 +18,7 @@ These files stand up the stack that runs [ace.korext.com](https://ace.korext.com
 
 ```
 git clone https://github.com/tbrunoh/african-context-engine && cd african-context-engine
-git checkout v2.4.1
+git checkout v2.4.2
 PROJECT=your-project DOMAIN=ace.example.org bash deploy/gcp/setup.sh
 ```
 

@@ -80,10 +80,9 @@ def test_the_api_still_asks_for_a_place_it_cannot_find(engine):
 # ---------------------------------------------------------------- the HTTPS redirect
 
 
-def test_the_redirect_names_the_host_so_no_port_appears():
+def test_the_redirect_map_is_applied_on_every_run():
     setup = (ROOT / "deploy" / "gcp" / "setup.sh").read_text()
-    block = setup[setup.index("name: ace-redirect"):setup.index("YAML", setup.index("name: ace-redirect"))]
-    assert "httpsRedirect: true" in block and "hostRedirect: ${DOMAIN}" in block
+    assert "name: ace-redirect" in setup  # 2.4.2 moved the redirect itself into ace-web: see test_v242.py
     assert "if ! exists gc compute url-maps describe ace-redirect" not in setup  # every run applies it
     smoke = (ROOT / "deploy" / "gcp" / "smoke.py").read_text()
     assert 'f"https://{host}/try?x=1"' in smoke

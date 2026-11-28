@@ -16,6 +16,8 @@ create_app() reads these settings, and refuses to start in production with anyth
                               a language model that may only rephrase cited facts; never used for USSD or voice
     ACE_LLM_DISABLED=1        switch the model off without removing its settings (the spend guard sets this)
     ACE_LLM_HELD=1            the model check found no model that passes: the model stays off until one does
+    ACE_HTTPS_HOST            the public host name: a request the load balancer marks as plain HTTP is redirected to
+                              https://<host> with the same path and no port
     ACE_PAUSED=1              answer every page with a short notice that the demo is paused (the spend guard sets this)
     AT_USERNAME, AT_API_KEY   send SMS through Africa's Talking (needs ACE_WEBHOOK_SECRET in production)
     WHATSAPP_TOKEN            send WhatsApp replies (needs WHATSAPP_APP_SECRET in production)
@@ -135,7 +137,8 @@ def create_app(env: Mapping[str, str] | None = None, engine: Engine | None = Non
     public = _on(env, "ACE_PUBLIC")
     if public or env.get("ACE_TIPS", "").lower() == "off":
         engine.config.tips = False  # an engine passed in, as by ace serve, follows the same rule as build_engine
-    app = AceApp(engine, public=public, paused=_on(env, "ACE_PAUSED"), **senders)
+    app = AceApp(engine, public=public, paused=_on(env, "ACE_PAUSED"),
+                 https_host=env.get("ACE_HTTPS_HOST", ""), **senders)
     if engine.services is not None and start_threads:
         _start_background(app, engine, env)
     return app

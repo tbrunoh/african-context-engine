@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.2 (2026-11-27): HTTPS with no port in the address
+
+### Fixed
+- **The HTTP to HTTPS redirect still named port 443.** 2.4.1 named the host in the load balancer's redirect, but Google's load balancer adds :443 to the address it writes either way, so http://ace.korext.com/try went to https://ace.korext.com:443/try. The release gate caught it on the live site. The HTTP listener now marks each request with `x-ace-scheme: http` and passes it to `ace-web`, which answers with a permanent redirect to the same path and query on https://ace.korext.com, with no port: 301 for a page, 308 for a POST, so an assistant calling /mcp over HTTP keeps its method. The host is always `ACE_HTTPS_HOST`, never the request's own Host header, so the redirect cannot be pointed anywhere else; the HTTPS listener removes the mark, so no visitor can fake it and loop; and a paused demo still redirects. Without `ACE_HTTPS_HOST`, nothing is redirected, so a local server behaves as before. The release gate also checks that a faked mark over HTTPS is ignored.
+
 ## 2.4.1 (2026-11-27): a safer rail, a spending cap and places ACE does not know
 
 2.4.1 follows the final independent audit of 2.4.0b3. The audit found emergencies the safety rail missed and Arabic USSD screens that lost their numbers; both are fixed first. A second independent review of the 2.4.1 draft then found that some of its own changes went too far (lookalikes that hid real reports, place questions asked about ordinary words, a meter that could act on one failed read), and those were fixed before release.
@@ -13,7 +18,7 @@
 - **Market prices had no distance limit.** Rice in Lagos was answered from a market 1,003 km away. A market more than 150 km from the area named is no longer quoted; a market inside the area counts as near, and a national average still holds, without a distance.
 - **The pregnancy service accepted any week count from MCP.** A count outside 1 to 45 is asked again, as the API already did. The API also refuses a misspelt language, and a position that is not a number, with 400 rather than 500.
 - **The USSD menu failed in 24 languages.** A caller who chose Hausa, isiZulu or any language without its own service titles got an error on every later screen, emergencies included, since 2.3. Titles now fall back to English, and a test opens the menu and sends an emergency in every language.
-- **The HTTP to HTTPS redirect named port 443.** It now names the host, so http://ace.korext.com/try lands on https://ace.korext.com/try, and setup.sh applies the redirect on every run.
+- **The HTTP to HTTPS redirect named port 443.** It now names the host, and setup.sh applies the redirect on every run. The port stayed in the address all the same, which 2.4.2 fixes.
 
 ### Added
 - **A monthly spending cap that acts.** A Google Cloud budget only sends alerts, and the organisation behind ace.korext.com refuses to let one publish to Pub/Sub, so the project meters itself: every ten minutes the spend guard reads month to date usage from Cloud Monitoring, prices it at list prices with no free tier counted, adds the fixed charges, and steps down before the cap ($60 by default): the language model off, then the demo paused with no warm instance, then every request turned away by Cloud Armor, and as a last step the forwarding rules removed. The month's highest level is kept in Firestore, so the level never falls within a month, and a failed read changes nothing until the next run; on the 1st the guard restores everything. Gemini is priced from the tokens ace-web counts for each call, at or above the highest Flash list price, and every reply has a ceiling of 1,024 tokens. The guard holds a custom role with only the permissions it uses.
